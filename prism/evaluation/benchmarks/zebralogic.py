@@ -72,10 +72,13 @@ def load_zebralogic(
     puzzles: List[PuzzleInstance] = []
 
     for record in _iter_records(root):
-        size = record.get("size", "")
-        if size not in size_filter:
+        # Auto-detect HF vs legacy format and normalise size
+        if "puzzle" in record:
+            puzzle = zebralogic_record_to_puzzle(record)
+        else:
+            puzzle = _record_to_puzzle(record)
+        if puzzle.size not in size_filter:
             continue
-        puzzle = _record_to_puzzle(record)
         puzzles.append(puzzle)
 
     if max_per_size:
@@ -166,20 +169,30 @@ def evaluate_zebralogic(
 # --------------------------------------------------------------------------- #
 
 def _iter_records(root: Path) -> Iterator[dict]:
-    """Yield raw puzzle dicts from all JSON files under *root*."""
-    json_files = sorted(root.rglob("*.json"))
-    if not json_files:
-        logger.warning("No JSON files found under %s", root)
+    """Yield raw puzzle dicts from all JSON/JSONL files under *root*."""
+    # Support both .json and .jsonl; also treat the path itself as a file
+    if root.is_file():
+        files = [root]
+    else:
+        files = sorted(root.rglob("*.json")) + sorted(root.rglob("*.jsonl"))
+    if not files:
+        logger.warning("No JSON/JSONL files found under %s", root)
         return
 
-    for json_file in json_files:
+    for json_file in files:
         try:
             with open(json_file, encoding="utf-8") as fh:
-                data = json.load(fh)
-            if isinstance(data, list):
-                yield from data
-            elif isinstance(data, dict):
-                yield data
+                if json_file.suffix == ".jsonl":
+                    for line in fh:
+                        line = line.strip()
+                        if line:
+                            yield json.loads(line)
+                else:
+                    data = json.load(fh)
+                    if isinstance(data, list):
+                        yield from data
+                    elif isinstance(data, dict):
+                        yield data
         except (json.JSONDecodeError, OSError) as exc:
             logger.warning("Skipping %s: %s", json_file, exc)
 

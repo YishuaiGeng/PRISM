@@ -239,7 +239,7 @@ class PuzzleGenerator:
     def _count_conflicts(self, clues: List[str], n: int) -> int:
         """Count Z3 solver conflicts (proxy for difficulty) for the given clue set."""
         solver = z3.Solver()
-        solver.set("smt.restart_max", 1000)
+        solver.set("restart.max", 1000)
         vars_: Dict[str, z3.ArithRef] = {}
 
         for clue in clues:
