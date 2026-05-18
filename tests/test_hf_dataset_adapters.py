@@ -25,6 +25,34 @@ def test_zebralogic_hf_record_maps_to_puzzle_instance():
     assert puzzle.raw_data == record
 
 
+def test_zebralogic_hf_record_uses_oracle_when_solution_is_blank_table():
+    record = {
+        "id": "zebra_oracle",
+        "size": "2*2",
+        "puzzle": """There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:
+ - Each person has a unique name: `Alice`, `Bob`
+ - Each person has a favorite color: `red`, `blue`
+
+## Clues:
+1. Alice is in the first house.
+2. Bob is the person whose favorite color is blue.
+""",
+        "solution": {
+            "header": ["House", "Name", "Color"],
+            "rows": [["___", "___", "___"], ["___", "___", "___"]],
+        },
+    }
+
+    puzzle = zebralogic_record_to_puzzle(record)
+
+    assert puzzle.solution == {
+        "Color_blue": "house2",
+        "Color_red": "house1",
+        "Name_Alice": "house1",
+        "Name_Bob": "house2",
+    }
+
+
 def test_zebralogic_hf_record_accepts_list_solution_pairs():
     record = {
         "id": "zebra_002",

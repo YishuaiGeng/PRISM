@@ -1,5 +1,5 @@
 llm_backend: anthropic  # anthropic or openai
-model_name: claude-opus-4-7
+model_name: Claude-Opus-4-7
 
 thresholds:
   stagnation_jaccard: 0.75

@@ -24,6 +24,7 @@ from typing import Dict, Iterator, List, Optional
 
 from prism.core.types import PuzzleInstance, SolveResult
 from prism.evaluation.metrics import solve_accuracy
+from prism.evaluation.benchmarks.zebra_oracle import solve_zebra_puzzle
 
 logger = logging.getLogger(__name__)
 
@@ -204,7 +205,7 @@ def zebralogic_record_to_puzzle(record: dict) -> PuzzleInstance:
     """Convert one Hugging Face ZebraLogicBench record to a PuzzleInstance."""
     size = str(record.get("size", "")).replace("*", "x")
     puzzle_text = str(record.get("puzzle") or record.get("nl_description") or "")
-    solution = _coerce_solution(record.get("solution"))
+    solution = _coerce_solution(record.get("solution"), puzzle_text)
     return PuzzleInstance(
         puzzle_id=str(record.get("id", "")),
         nl_description=puzzle_text,
@@ -237,10 +238,12 @@ def _flatten_solution(raw: dict) -> Dict[str, str]:
     return flat
 
 
-def _coerce_solution(raw) -> Dict[str, str]:
+def _coerce_solution(raw, puzzle_text: str = "") -> Optional[Dict[str, str]]:
     if raw is None:
-        return {}
+        return solve_zebra_puzzle(puzzle_text) if puzzle_text else None
     if isinstance(raw, dict):
+        if _is_blank_grid_solution(raw):
+            return solve_zebra_puzzle(puzzle_text) if puzzle_text else None
         return {str(k): str(v) for k, v in raw.items()}
     if isinstance(raw, list):
         result: Dict[str, str] = {}
@@ -253,7 +256,15 @@ def _coerce_solution(raw) -> Dict[str, str]:
                 if key is not None and value is not None:
                     result[str(key)] = str(value)
         return result
-    return {}
+    return None
+
+
+def _is_blank_grid_solution(raw: dict) -> bool:
+    rows = raw.get("rows")
+    if not isinstance(rows, list) or not rows:
+        return False
+    values = [cell for row in rows if isinstance(row, list) for cell in row]
+    return bool(values) and all(str(value) == "___" for value in values)
 
 
 def _extract_clues_from_text(text: str) -> List[str]:
