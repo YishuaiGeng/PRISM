@@ -42,17 +42,21 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 logger = logging.getLogger(__name__)
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PRISM experiment runner")
-    p.add_argument("--experiment", choices=["ablation", "generalization"], required=True)
+    p.add_argument("--experiment", choices=["ablation", "generalization"], default="ablation")
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--exp-config", default=None, help="Override experiment config path")
     p.add_argument("--output-dir", default="results/experiments")
     p.add_argument("--model", default=None)
     p.add_argument("--library", default="paradigm_store/prism.db")
-    p.add_argument("--data-dir", default="data/ZebraLogicBench")
-    p.add_argument("--knk-data-dir", default="data/KnightsKnaves")
-    return p.parse_args()
+    p.add_argument("--data-dir", default="allenai/ZebraLogicBench")
+    p.add_argument("--data-source", default="auto", choices=["auto", "hf", "local"])
+    p.add_argument("--data-subset", default="grid_mode")
+    p.add_argument("--knk-data-dir", default="K-and-K/knights-and-knaves")
+    p.add_argument("--knk-data-source", default="auto", choices=["auto", "hf", "local"])
+    p.add_argument("--knk-subset", default="test")
+    return p.parse_args(argv)
 
 
 def load_config(path: str) -> dict:
@@ -84,7 +88,12 @@ def main() -> None:
 def run_ablation(args, config, exp_config, model_name, output_dir):
     """Exp-4: remove each PRISM component and measure the accuracy delta."""
     sizes = exp_config.get("sizes", ["4x5", "5x5", "6x6"])
-    puzzles = load_zebralogic(args.data_dir, sizes=sizes)
+    puzzles = load_zebralogic(
+        args.data_dir,
+        sizes=sizes,
+        source=args.data_source,
+        subset=args.data_subset,
+    )
     if not puzzles:
         logger.error("No ablation puzzles loaded.")
         return
@@ -128,7 +137,12 @@ def run_generalization(args, config, exp_config, model_name, output_dir):
         train_sizes = cfg.get("train_sizes", [])
         lib_path = cfg.get("library_path", args.library)
 
-        puzzles = load_zebralogic(args.data_dir, sizes=test_sizes)
+        puzzles = load_zebralogic(
+            args.data_dir,
+            sizes=test_sizes,
+            source=args.data_source,
+            subset=args.data_subset,
+        )
         solver = _build_solver(model_name=model_name, library_path=lib_path)
         results = evaluate_zebralogic(solver, puzzles)
         for r in results:
@@ -142,9 +156,19 @@ def run_generalization(args, config, exp_config, model_name, output_dir):
     # ── L2: cross-domain ─────────────────────────────────────────────
     if l2_enabled:
         logger.info("Running L2 KnK transfer...")
-        knk_puzzles = load_knights_knaves(args.knk_data_dir, max_puzzles=200)
+        knk_puzzles = load_knights_knaves(
+            args.knk_data_dir,
+            max_puzzles=200,
+            source=args.knk_data_source,
+            subset=args.knk_subset,
+        )
         solver = _build_solver(model_name=model_name, library_path=args.library)
-        zebra_results = load_zebralogic(args.data_dir, sizes=["4x5"])
+        zebra_results = load_zebralogic(
+            args.data_dir,
+            sizes=["4x5"],
+            source=args.data_source,
+            subset=args.data_subset,
+        )
         zebra_eval = evaluate_zebralogic(solver, zebra_results[:50] if zebra_results else [])
         knk_results = evaluate_knights_knaves(solver, knk_puzzles)
 

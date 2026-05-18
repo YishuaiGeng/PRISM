@@ -50,19 +50,21 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 logger = logging.getLogger(__name__)
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PRISM online inference on ZebraLogic")
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--model", default=None)
     p.add_argument("--library", default="paradigm_store/prism.db")
-    p.add_argument("--data-dir", default="data/ZebraLogicBench")
+    p.add_argument("--data-dir", default="allenai/ZebraLogicBench")
+    p.add_argument("--data-source", default="auto", choices=["auto", "hf", "local"])
+    p.add_argument("--data-subset", default="grid_mode")
     p.add_argument("--sizes", default=None, help="Comma-separated sizes, e.g. '4x5,5x5'")
     p.add_argument("--max-repair", type=int, default=5)
     p.add_argument("--output", default="results/online_results.csv")
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--no-paradigm", action="store_true")
     p.add_argument("--no-memory", action="store_true")
-    return p.parse_args()
+    return p.parse_args(argv)
 
 
 def load_config(path: str) -> dict:
@@ -78,7 +80,12 @@ def main() -> None:
     logger.info("Model: %s | sizes: %s", model_name, sizes or "all")
 
     # ── Load benchmark ────────────────────────────────────────────────
-    puzzles = load_zebralogic(args.data_dir, sizes=sizes)
+    puzzles = load_zebralogic(
+        args.data_dir,
+        sizes=sizes,
+        source=args.data_source,
+        subset=args.data_subset,
+    )
     if not puzzles:
         logger.error("No puzzles loaded from %s. Check --data-dir.", args.data_dir)
         sys.exit(1)

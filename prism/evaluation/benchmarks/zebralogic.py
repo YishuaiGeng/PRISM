@@ -37,6 +37,8 @@ def load_zebralogic(
     sizes: Optional[List[str]] = None,
     split: str = "test",
     max_per_size: Optional[int] = None,
+    source: str = "auto",
+    subset: str = "grid_mode",
 ) -> List[PuzzleInstance]:
     """Load ZebraLogic puzzles from *data_dir*.
 
@@ -51,6 +53,15 @@ def load_zebralogic(
     Returns:
         List of :class:`~prism.core.types.PuzzleInstance` objects.
     """
+    if source in ("hf", "auto") and _looks_like_hf_dataset_id(data_dir):
+        return _load_zebralogic_hf(
+            dataset_id=data_dir,
+            subset=subset,
+            split=split,
+            sizes=sizes,
+            max_per_size=max_per_size,
+        )
+
     root = Path(data_dir)
     if not root.exists():
         logger.warning("ZebraLogic data dir not found: %s", data_dir)
@@ -74,6 +85,43 @@ def load_zebralogic(
 
     logger.info("Loaded %d ZebraLogic puzzles (sizes=%s, split=%s)", len(puzzles), sizes, split)
     return puzzles
+
+
+def _load_zebralogic_hf(
+    dataset_id: str,
+    subset: str,
+    split: str,
+    sizes: Optional[List[str]],
+    max_per_size: Optional[int],
+) -> List[PuzzleInstance]:
+    size_filter = set(sizes) if sizes else None
+    puzzles: List[PuzzleInstance] = []
+    for record in _load_hf_dataset(dataset_id, subset, split):
+        puzzle = zebralogic_record_to_puzzle(dict(record))
+        if size_filter is not None and puzzle.size not in size_filter:
+            continue
+        puzzles.append(puzzle)
+
+    if max_per_size:
+        by_size: Dict[str, List[PuzzleInstance]] = {}
+        for p in puzzles:
+            by_size.setdefault(p.size, []).append(p)
+        puzzles = [p for ps in by_size.values() for p in ps[:max_per_size]]
+
+    logger.info("Loaded %d ZebraLogic HF puzzles (dataset=%s, subset=%s, split=%s)", len(puzzles), dataset_id, subset, split)
+    return puzzles
+
+
+def _load_hf_dataset(dataset_id: str, subset: str, split: str):
+    try:
+        from datasets import load_dataset  # noqa: PLC0415
+    except ImportError as exc:
+        raise ImportError("Install `datasets` to load Hugging Face datasets.") from exc
+    return load_dataset(dataset_id, subset, split=split)
+
+
+def _looks_like_hf_dataset_id(path_or_id: str) -> bool:
+    return "/" in path_or_id and not Path(path_or_id).exists()
 
 
 def evaluate_zebralogic(
@@ -152,6 +200,22 @@ def _record_to_puzzle(record: dict) -> PuzzleInstance:
     )
 
 
+def zebralogic_record_to_puzzle(record: dict) -> PuzzleInstance:
+    """Convert one Hugging Face ZebraLogicBench record to a PuzzleInstance."""
+    size = str(record.get("size", "")).replace("*", "x")
+    puzzle_text = str(record.get("puzzle") or record.get("nl_description") or "")
+    solution = _coerce_solution(record.get("solution"))
+    return PuzzleInstance(
+        puzzle_id=str(record.get("id", "")),
+        nl_description=puzzle_text,
+        constraints_nl=_extract_clues_from_text(puzzle_text),
+        solution=solution,
+        size=size,
+        domain="zebralogic",
+        raw_data=record,
+    )
+
+
 def _clues_to_nl(clues: List[str], size: str) -> str:
     parts = size.split("x") if "x" in size else ["?", "?"]
     n_entities, n_attrs = parts[0], parts[1]
@@ -171,6 +235,29 @@ def _flatten_solution(raw: dict) -> Dict[str, str]:
         else:
             flat[house] = str(attrs)
     return flat
+
+
+def _coerce_solution(raw) -> Dict[str, str]:
+    if raw is None:
+        return {}
+    if isinstance(raw, dict):
+        return {str(k): str(v) for k, v in raw.items()}
+    if isinstance(raw, list):
+        result: Dict[str, str] = {}
+        for item in raw:
+            if isinstance(item, (list, tuple)) and len(item) == 2:
+                result[str(item[0])] = str(item[1])
+            elif isinstance(item, dict):
+                key = item.get("key") or item.get("attribute") or item.get("name")
+                value = item.get("value") or item.get("house")
+                if key is not None and value is not None:
+                    result[str(key)] = str(value)
+        return result
+    return {}
+
+
+def _extract_clues_from_text(text: str) -> List[str]:
+    return [line.strip() for line in text.splitlines() if line.strip()]
 
 
 def _solution_to_str(sol: Optional[Dict[str, str]]) -> Optional[str]:
