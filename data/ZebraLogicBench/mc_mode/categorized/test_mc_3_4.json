@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "lgp-test-3x4-0#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - The people keep unique animals: `bird`, `horse`, `cat`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n\n## Clues:\n1. The bird keeper is somewhere to the left of the person who keeps horses.\n2. The Swedish person is in the first house.\n3. The British person is in the second house.\n4. The cat lover is in the second house.\n5. The person who loves science fiction books is directly left of Eric.\n6. The person who loves mystery books is in the third house.\n7. The person who loves romance books is Peter.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "dane",
+      "brit",
+      "swede"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.309201"
+  },
+  {
+    "id": "lgp-test-3x4-0#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - The people keep unique animals: `bird`, `horse`, `cat`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n\n## Clues:\n1. The bird keeper is somewhere to the left of the person who keeps horses.\n2. The Swedish person is in the first house.\n3. The British person is in the second house.\n4. The cat lover is in the second house.\n5. The person who loves science fiction books is directly left of Eric.\n6. The person who loves mystery books is in the third house.\n7. The person who loves romance books is Peter.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold",
+      "Peter"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.309215"
+  },
+  {
+    "id": "lgp-test-3x4-0#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - The people keep unique animals: `bird`, `horse`, `cat`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n\n## Clues:\n1. The bird keeper is somewhere to the left of the person who keeps horses.\n2. The Swedish person is in the first house.\n3. The British person is in the second house.\n4. The cat lover is in the second house.\n5. The person who loves science fiction books is directly left of Eric.\n6. The person who loves mystery books is in the third house.\n7. The person who loves romance books is Peter.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "dane",
+      "brit",
+      "swede"
+    ],
+    "answer": "dane",
+    "created_at": "2024-07-03T21:21:31.309240"
+  },
+  {
+    "id": "lgp-test-3x4-1#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people keep unique animals: `horse`, `bird`, `cat`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`, `Janelle`\n\n## Clues:\n1. The bird keeper is somewhere to the left of Eric.\n2. The bird keeper is directly left of the Prince smoker.\n3. The person partial to Pall Mall is Arnold.\n4. Eric is not in the third house.\n5. The person partial to Pall Mall is the cat lover.\n6. The person whose mother's name is Aniya is the bird keeper.\n7. The person whose mother's name is Janelle is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.309256"
+  },
+  {
+    "id": "lgp-test-3x4-1#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people keep unique animals: `horse`, `bird`, `cat`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`, `Janelle`\n\n## Clues:\n1. The bird keeper is somewhere to the left of Eric.\n2. The bird keeper is directly left of the Prince smoker.\n3. The person partial to Pall Mall is Arnold.\n4. Eric is not in the third house.\n5. The person partial to Pall Mall is the cat lover.\n6. The person whose mother's name is Aniya is the bird keeper.\n7. The person whose mother's name is Janelle is not in the second house.\n",
+    "question": "What is Cigar of the person who lives in House 1?",
+    "choices": [
+      "prince",
+      "blue master",
+      "pall mall"
+    ],
+    "answer": "blue master",
+    "created_at": "2024-07-03T21:21:31.309265"
+  },
+  {
+    "id": "lgp-test-3x4-1#mc-5",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people keep unique animals: `horse`, `bird`, `cat`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`, `Janelle`\n\n## Clues:\n1. The bird keeper is somewhere to the left of Eric.\n2. The bird keeper is directly left of the Prince smoker.\n3. The person partial to Pall Mall is Arnold.\n4. Eric is not in the third house.\n5. The person partial to Pall Mall is the cat lover.\n6. The person whose mother's name is Aniya is the bird keeper.\n7. The person whose mother's name is Janelle is not in the second house.\n",
+    "question": "What is Animal of the person who lives in House 2?",
+    "choices": [
+      "cat",
+      "bird",
+      "horse"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.309280"
+  },
+  {
+    "id": "lgp-test-3x4-1#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - The people keep unique animals: `horse`, `bird`, `cat`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`, `Janelle`\n\n## Clues:\n1. The bird keeper is somewhere to the left of Eric.\n2. The bird keeper is directly left of the Prince smoker.\n3. The person partial to Pall Mall is Arnold.\n4. Eric is not in the third house.\n5. The person partial to Pall Mall is the cat lover.\n6. The person whose mother's name is Aniya is the bird keeper.\n7. The person whose mother's name is Janelle is not in the second house.\n",
+    "question": "What is Mother of the person who lives in House 2?",
+    "choices": [
+      "Holly",
+      "Janelle",
+      "Aniya"
+    ],
+    "answer": "Holly",
+    "created_at": "2024-07-03T21:21:31.309289"
+  },
+  {
+    "id": "lgp-test-3x4-2#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n - They all have a unique favorite flower: `carnations`, `lilies`, `daffodils`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`, `blue master`\n\n## Clues:\n1. The person who smokes Blue Master is the person who loves a bouquet of daffodils.\n2. Arnold is somewhere to the right of the person who loves a carnations arrangement.\n3. Eric is somewhere to the right of the Prince smoker.\n4. The one who only drinks water is the person partial to Pall Mall.\n5. The person who loves the boquet of lilies is Peter.\n6. The tea drinker is not in the third house.\n",
+    "question": "What is Drink of the person who lives in House 3?",
+    "choices": [
+      "tea",
+      "water",
+      "milk"
+    ],
+    "answer": "milk",
+    "created_at": "2024-07-03T21:21:31.309353"
+  },
+  {
+    "id": "lgp-test-3x4-3#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person lives in a unique style of house: `ranch`, `victorian`, `colonial`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`, `blue master`\n - Each person has a unique type of pet: `dog`, `fish`, `cat`\n\n## Clues:\n1. The person who owns a dog is the person in a ranch-style home.\n2. Arnold is in the first house.\n3. The Prince smoker is the person living in a colonial-style house.\n4. Peter is the person residing in a Victorian house.\n5. The person who owns a dog is directly left of the person who has a cat.\n6. The person with an aquarium of fish is the person partial to Pall Mall.\n",
+    "question": "What is Cigar of the person who lives in House 1?",
+    "choices": [
+      "pall mall",
+      "prince",
+      "blue master"
+    ],
+    "answer": "blue master",
+    "created_at": "2024-07-03T21:21:31.309378"
+  },
+  {
+    "id": "lgp-test-3x4-3#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person lives in a unique style of house: `ranch`, `victorian`, `colonial`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`, `blue master`\n - Each person has a unique type of pet: `dog`, `fish`, `cat`\n\n## Clues:\n1. The person who owns a dog is the person in a ranch-style home.\n2. Arnold is in the first house.\n3. The Prince smoker is the person living in a colonial-style house.\n4. Peter is the person residing in a Victorian house.\n5. The person who owns a dog is directly left of the person who has a cat.\n6. The person with an aquarium of fish is the person partial to Pall Mall.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold",
+      "Peter"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.309388"
+  },
+  {
+    "id": "lgp-test-3x4-4#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - Each person has a unique level of education: `high school`, `bachelor`, `associate`\n - The people keep unique animals: `cat`, `bird`, `horse`\n\n## Clues:\n1. The person with an associate's degree is Eric.\n2. The person who enjoys mountain retreats is in the second house.\n3. Arnold is somewhere to the right of the cat lover.\n4. The bird keeper is the person who enjoys mountain retreats.\n5. The person with a high school diploma is somewhere to the right of the person who loves beach vacations.\n6. The person with a high school diploma is in the third house.\n7. The person with an associate's degree is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Peter",
+      "Arnold"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.309425"
+  },
+  {
+    "id": "lgp-test-3x4-4#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - Each person has a unique level of education: `high school`, `bachelor`, `associate`\n - The people keep unique animals: `cat`, `bird`, `horse`\n\n## Clues:\n1. The person with an associate's degree is Eric.\n2. The person who enjoys mountain retreats is in the second house.\n3. Arnold is somewhere to the right of the cat lover.\n4. The bird keeper is the person who enjoys mountain retreats.\n5. The person with a high school diploma is somewhere to the right of the person who loves beach vacations.\n6. The person with a high school diploma is in the third house.\n7. The person with an associate's degree is not in the first house.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "high school",
+      "bachelor",
+      "associate"
+    ],
+    "answer": "bachelor",
+    "created_at": "2024-07-03T21:21:31.309437"
+  },
+  {
+    "id": "lgp-test-3x4-4#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - Each person has a unique level of education: `high school`, `bachelor`, `associate`\n - The people keep unique animals: `cat`, `bird`, `horse`\n\n## Clues:\n1. The person with an associate's degree is Eric.\n2. The person who enjoys mountain retreats is in the second house.\n3. Arnold is somewhere to the right of the cat lover.\n4. The bird keeper is the person who enjoys mountain retreats.\n5. The person with a high school diploma is somewhere to the right of the person who loves beach vacations.\n6. The person with a high school diploma is in the third house.\n7. The person with an associate's degree is not in the first house.\n",
+    "question": "What is Vacation of the person who lives in House 3?",
+    "choices": [
+      "mountain",
+      "beach",
+      "city"
+    ],
+    "answer": "city",
+    "created_at": "2024-07-03T21:21:31.309469"
+  },
+  {
+    "id": "lgp-test-3x4-4#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - Each person has a unique level of education: `high school`, `bachelor`, `associate`\n - The people keep unique animals: `cat`, `bird`, `horse`\n\n## Clues:\n1. The person with an associate's degree is Eric.\n2. The person who enjoys mountain retreats is in the second house.\n3. Arnold is somewhere to the right of the cat lover.\n4. The bird keeper is the person who enjoys mountain retreats.\n5. The person with a high school diploma is somewhere to the right of the person who loves beach vacations.\n6. The person with a high school diploma is in the third house.\n7. The person with an associate's degree is not in the first house.\n",
+    "question": "What is Animal of the person who lives in House 3?",
+    "choices": [
+      "bird",
+      "horse",
+      "cat"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.309480"
+  },
+  {
+    "id": "lgp-test-3x4-5#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - They all have a unique favorite flower: `carnations`, `daffodils`, `lilies`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. Eric is the person who prefers city breaks.\n2. Peter is the person who loves beach vacations.\n3. Arnold is somewhere to the right of the person who loves a carnations arrangement.\n4. The person whose birthday is in April is the person who loves a bouquet of daffodils.\n5. The person who loves a carnations arrangement is Peter.\n6. The person whose birthday is in September is somewhere to the left of Peter.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "daffodils",
+      "carnations",
+      "lilies"
+    ],
+    "answer": "lilies",
+    "created_at": "2024-07-03T21:21:31.309496"
+  },
+  {
+    "id": "lgp-test-3x4-5#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - They all have a unique favorite flower: `carnations`, `daffodils`, `lilies`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. Eric is the person who prefers city breaks.\n2. Peter is the person who loves beach vacations.\n3. Arnold is somewhere to the right of the person who loves a carnations arrangement.\n4. The person whose birthday is in April is the person who loves a bouquet of daffodils.\n5. The person who loves a carnations arrangement is Peter.\n6. The person whose birthday is in September is somewhere to the left of Peter.\n",
+    "question": "What is Birthday of the person who lives in House 2?",
+    "choices": [
+      "jan",
+      "sept",
+      "april"
+    ],
+    "answer": "jan",
+    "created_at": "2024-07-03T21:21:31.309520"
+  },
+  {
+    "id": "lgp-test-3x4-5#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - They all have a unique favorite flower: `carnations`, `daffodils`, `lilies`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. Eric is the person who prefers city breaks.\n2. Peter is the person who loves beach vacations.\n3. Arnold is somewhere to the right of the person who loves a carnations arrangement.\n4. The person whose birthday is in April is the person who loves a bouquet of daffodils.\n5. The person who loves a carnations arrangement is Peter.\n6. The person whose birthday is in September is somewhere to the left of Peter.\n",
+    "question": "What is Vacation of the person who lives in House 3?",
+    "choices": [
+      "city",
+      "beach",
+      "mountain"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.309531"
+  },
+  {
+    "id": "lgp-test-3x4-6#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique hair colors: `black`, `blonde`, `brown`\n - Everyone has a favorite smoothie: `watermelon`, `desert`, `cherry`\n\n## Clues:\n1. The person who owns a Tesla Model 3 is the person who has blonde hair.\n2. The person who owns a Tesla Model 3 is Eric.\n3. The person who likes Cherry smoothies is Eric.\n4. Eric and the Desert smoothie lover are next to each other.\n5. The person who has black hair is somewhere to the right of the person who likes Cherry smoothies.\n6. The Desert smoothie lover is Arnold.\n7. The person who owns a Ford F-150 is somewhere to the right of Peter.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "tesla model 3",
+      "toyota camry",
+      "ford f150"
+    ],
+    "answer": "toyota camry",
+    "created_at": "2024-07-03T21:21:31.309551"
+  },
+  {
+    "id": "lgp-test-3x4-6#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique hair colors: `black`, `blonde`, `brown`\n - Everyone has a favorite smoothie: `watermelon`, `desert`, `cherry`\n\n## Clues:\n1. The person who owns a Tesla Model 3 is the person who has blonde hair.\n2. The person who owns a Tesla Model 3 is Eric.\n3. The person who likes Cherry smoothies is Eric.\n4. Eric and the Desert smoothie lover are next to each other.\n5. The person who has black hair is somewhere to the right of the person who likes Cherry smoothies.\n6. The Desert smoothie lover is Arnold.\n7. The person who owns a Ford F-150 is somewhere to the right of Peter.\n",
+    "question": "What is HairColor of the person who lives in House 1?",
+    "choices": [
+      "brown",
+      "blonde",
+      "black"
+    ],
+    "answer": "brown",
+    "created_at": "2024-07-03T21:21:31.309556"
+  },
+  {
+    "id": "lgp-test-3x4-6#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique hair colors: `black`, `blonde`, `brown`\n - Everyone has a favorite smoothie: `watermelon`, `desert`, `cherry`\n\n## Clues:\n1. The person who owns a Tesla Model 3 is the person who has blonde hair.\n2. The person who owns a Tesla Model 3 is Eric.\n3. The person who likes Cherry smoothies is Eric.\n4. Eric and the Desert smoothie lover are next to each other.\n5. The person who has black hair is somewhere to the right of the person who likes Cherry smoothies.\n6. The Desert smoothie lover is Arnold.\n7. The person who owns a Ford F-150 is somewhere to the right of Peter.\n",
+    "question": "What is Smoothie of the person who lives in House 1?",
+    "choices": [
+      "desert",
+      "watermelon",
+      "cherry"
+    ],
+    "answer": "watermelon",
+    "created_at": "2024-07-03T21:21:31.309561"
+  },
+  {
+    "id": "lgp-test-3x4-7#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Meredith`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The British person is directly left of Eric.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person's child is named Fred is in the second house.\n4. The person's child is named Bella is Arnold.\n5. The Swedish person is the person whose birthday is in January.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold",
+      "Peter"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.309603"
+  },
+  {
+    "id": "lgp-test-3x4-7#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Meredith`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The British person is directly left of Eric.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person's child is named Fred is in the second house.\n4. The person's child is named Bella is Arnold.\n5. The Swedish person is the person whose birthday is in January.\n",
+    "question": "What is Children of the person who lives in House 1?",
+    "choices": [
+      "Bella",
+      "Meredith",
+      "Fred"
+    ],
+    "answer": "Meredith",
+    "created_at": "2024-07-03T21:21:31.309608"
+  },
+  {
+    "id": "lgp-test-3x4-7#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Meredith`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The British person is directly left of Eric.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person's child is named Fred is in the second house.\n4. The person's child is named Bella is Arnold.\n5. The Swedish person is the person whose birthday is in January.\n",
+    "question": "What is Birthday of the person who lives in House 1?",
+    "choices": [
+      "jan",
+      "april",
+      "sept"
+    ],
+    "answer": "april",
+    "created_at": "2024-07-03T21:21:31.309617"
+  },
+  {
+    "id": "lgp-test-3x4-7#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Meredith`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The British person is directly left of Eric.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person's child is named Fred is in the second house.\n4. The person's child is named Bella is Arnold.\n5. The Swedish person is the person whose birthday is in January.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "brit",
+      "dane",
+      "swede"
+    ],
+    "answer": "dane",
+    "created_at": "2024-07-03T21:21:31.309630"
+  },
+  {
+    "id": "lgp-test-3x4-7#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Meredith`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The British person is directly left of Eric.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person's child is named Fred is in the second house.\n4. The person's child is named Bella is Arnold.\n5. The Swedish person is the person whose birthday is in January.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "swede",
+      "dane",
+      "brit"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.309647"
+  },
+  {
+    "id": "lgp-test-3x4-8#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - People have unique favorite sports: `basketball`, `tennis`, `soccer`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n\n## Clues:\n1. The person who prefers city breaks is in the third house.\n2. The person who loves beach vacations is the person who owns a dog.\n3. The person with an aquarium of fish is directly left of the person who loves tennis.\n4. Arnold is the person who owns a dog.\n5. The person who enjoys mountain retreats and Eric are next to each other.\n6. The person who loves soccer is Arnold.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric",
+      "Peter"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.309676"
+  },
+  {
+    "id": "lgp-test-3x4-8#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `mountain`, `city`\n - People have unique favorite sports: `basketball`, `tennis`, `soccer`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n\n## Clues:\n1. The person who prefers city breaks is in the third house.\n2. The person who loves beach vacations is the person who owns a dog.\n3. The person with an aquarium of fish is directly left of the person who loves tennis.\n4. Arnold is the person who owns a dog.\n5. The person who enjoys mountain retreats and Eric are next to each other.\n6. The person who loves soccer is Arnold.\n",
+    "question": "What is FavoriteSport of the person who lives in House 2?",
+    "choices": [
+      "tennis",
+      "soccer",
+      "basketball"
+    ],
+    "answer": "basketball",
+    "created_at": "2024-07-03T21:21:31.309685"
+  },
+  {
+    "id": "lgp-test-3x4-9#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique birthday month: `jan`, `sept`, `april`\n - The people are of nationalities: `brit`, `swede`, `dane`\n - Each person has a favorite color: `yellow`, `white`, `red`\n\n## Clues:\n1. The Dane is the person whose favorite color is red.\n2. The person who loves yellow is the person whose birthday is in September.\n3. The person whose birthday is in September is directly left of the person whose birthday is in April.\n4. The person whose birthday is in September is somewhere to the left of Arnold.\n5. The Dane is in the second house.\n6. The person whose birthday is in January is Peter.\n7. The British person is the person who loves white.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.309712"
+  },
+  {
+    "id": "lgp-test-3x4-9#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique birthday month: `jan`, `sept`, `april`\n - The people are of nationalities: `brit`, `swede`, `dane`\n - Each person has a favorite color: `yellow`, `white`, `red`\n\n## Clues:\n1. The Dane is the person whose favorite color is red.\n2. The person who loves yellow is the person whose birthday is in September.\n3. The person whose birthday is in September is directly left of the person whose birthday is in April.\n4. The person whose birthday is in September is somewhere to the left of Arnold.\n5. The Dane is in the second house.\n6. The person whose birthday is in January is Peter.\n7. The British person is the person who loves white.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "swede",
+      "brit",
+      "dane"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.309722"
+  },
+  {
+    "id": "lgp-test-3x4-10#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite book genres: `romance`, `mystery`, `science fiction`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n\n## Clues:\n1. The person who loves mystery books is somewhere to the left of the person who likes Cherry smoothies.\n2. Eric is in the second house.\n3. Peter is in the first house.\n4. Eric is the person who loves romance books.\n5. The Desert smoothie lover is in the third house.\n6. The person who is a pizza lover is Arnold.\n7. The person who loves the spaghetti eater and the person who likes Cherry smoothies are next to each other.\n",
+    "question": "What is Smoothie of the person who lives in House 1?",
+    "choices": [
+      "desert",
+      "watermelon",
+      "cherry"
+    ],
+    "answer": "watermelon",
+    "created_at": "2024-07-03T21:21:31.309787"
+  },
+  {
+    "id": "lgp-test-3x4-10#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite book genres: `romance`, `mystery`, `science fiction`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n\n## Clues:\n1. The person who loves mystery books is somewhere to the left of the person who likes Cherry smoothies.\n2. Eric is in the second house.\n3. Peter is in the first house.\n4. Eric is the person who loves romance books.\n5. The Desert smoothie lover is in the third house.\n6. The person who is a pizza lover is Arnold.\n7. The person who loves the spaghetti eater and the person who likes Cherry smoothies are next to each other.\n",
+    "question": "What is Food of the person who lives in House 2?",
+    "choices": [
+      "pizza",
+      "spaghetti",
+      "grilled cheese"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.309801"
+  },
+  {
+    "id": "lgp-test-3x4-10#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite book genres: `romance`, `mystery`, `science fiction`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n\n## Clues:\n1. The person who loves mystery books is somewhere to the left of the person who likes Cherry smoothies.\n2. Eric is in the second house.\n3. Peter is in the first house.\n4. Eric is the person who loves romance books.\n5. The Desert smoothie lover is in the third house.\n6. The person who is a pizza lover is Arnold.\n7. The person who loves the spaghetti eater and the person who likes Cherry smoothies are next to each other.\n",
+    "question": "What is BookGenre of the person who lives in House 3?",
+    "choices": [
+      "mystery",
+      "science fiction",
+      "romance"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.309816"
+  },
+  {
+    "id": "lgp-test-3x4-11#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person lives in a unique style of house: `colonial`, `victorian`, `ranch`\n - The people keep unique animals: `bird`, `horse`, `cat`\n - People own unique car models: `ford f150`, `toyota camry`, `tesla model 3`\n\n## Clues:\n1. The person in a ranch-style home is not in the third house.\n2. Peter is the person who keeps horses.\n3. The person who owns a Ford F-150 is the cat lover.\n4. The person in a ranch-style home is the person who owns a Toyota Camry.\n5. The person in a ranch-style home is the person who keeps horses.\n6. The person residing in a Victorian house is Arnold.\n7. The bird keeper is in the first house.\n8. Eric is not in the third house.\n",
+    "question": "What is HouseStyle of the person who lives in House 1?",
+    "choices": [
+      "victorian",
+      "ranch",
+      "colonial"
+    ],
+    "answer": "colonial",
+    "created_at": "2024-07-03T21:21:31.309836"
+  },
+  {
+    "id": "lgp-test-3x4-11#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person lives in a unique style of house: `colonial`, `victorian`, `ranch`\n - The people keep unique animals: `bird`, `horse`, `cat`\n - People own unique car models: `ford f150`, `toyota camry`, `tesla model 3`\n\n## Clues:\n1. The person in a ranch-style home is not in the third house.\n2. Peter is the person who keeps horses.\n3. The person who owns a Ford F-150 is the cat lover.\n4. The person in a ranch-style home is the person who owns a Toyota Camry.\n5. The person in a ranch-style home is the person who keeps horses.\n6. The person residing in a Victorian house is Arnold.\n7. The bird keeper is in the first house.\n8. Eric is not in the third house.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "ford f150",
+      "tesla model 3",
+      "toyota camry"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.309845"
+  },
+  {
+    "id": "lgp-test-3x4-12#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique type of pet: `dog`, `cat`, `fish`\n - Each person has a unique hobby: `gardening`, `cooking`, `photography`\n - People have unique favorite music genres: `pop`, `classical`, `rock`\n\n## Clues:\n1. The person who loves cooking is the person who loves pop music.\n2. The person who loves pop music is not in the first house.\n3. The photography enthusiast is Peter.\n4. The person who loves rock music is in the second house.\n5. The person who enjoys gardening is directly left of the person with an aquarium of fish.\n6. Eric is the person who has a cat.\n7. The person who has a cat is in the first house.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "pop",
+      "rock",
+      "classical"
+    ],
+    "answer": "classical",
+    "created_at": "2024-07-03T21:21:31.309904"
+  },
+  {
+    "id": "lgp-test-3x4-12#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique type of pet: `dog`, `cat`, `fish`\n - Each person has a unique hobby: `gardening`, `cooking`, `photography`\n - People have unique favorite music genres: `pop`, `classical`, `rock`\n\n## Clues:\n1. The person who loves cooking is the person who loves pop music.\n2. The person who loves pop music is not in the first house.\n3. The photography enthusiast is Peter.\n4. The person who loves rock music is in the second house.\n5. The person who enjoys gardening is directly left of the person with an aquarium of fish.\n6. Eric is the person who has a cat.\n7. The person who has a cat is in the first house.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Eric",
+      "Arnold",
+      "Peter"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.309926"
+  },
+  {
+    "id": "lgp-test-3x4-12#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique type of pet: `dog`, `cat`, `fish`\n - Each person has a unique hobby: `gardening`, `cooking`, `photography`\n - People have unique favorite music genres: `pop`, `classical`, `rock`\n\n## Clues:\n1. The person who loves cooking is the person who loves pop music.\n2. The person who loves pop music is not in the first house.\n3. The photography enthusiast is Peter.\n4. The person who loves rock music is in the second house.\n5. The person who enjoys gardening is directly left of the person with an aquarium of fish.\n6. Eric is the person who has a cat.\n7. The person who has a cat is in the first house.\n",
+    "question": "What is Pet of the person who lives in House 3?",
+    "choices": [
+      "dog",
+      "cat",
+      "fish"
+    ],
+    "answer": "dog",
+    "created_at": "2024-07-03T21:21:31.309931"
+  },
+  {
+    "id": "lgp-test-3x4-13#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n\n## Clues:\n1. The person who loves pop music is directly left of the tea drinker.\n2. The person who is a pizza lover is directly left of the person who loves classical music.\n3. Eric is the person who loves classical music.\n4. Arnold is the person who loves pop music.\n5. The person who loves the spaghetti eater is in the third house.\n6. The person who likes milk and Arnold are next to each other.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.309946"
+  },
+  {
+    "id": "lgp-test-3x4-13#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n\n## Clues:\n1. The person who loves pop music is directly left of the tea drinker.\n2. The person who is a pizza lover is directly left of the person who loves classical music.\n3. Eric is the person who loves classical music.\n4. Arnold is the person who loves pop music.\n5. The person who loves the spaghetti eater is in the third house.\n6. The person who likes milk and Arnold are next to each other.\n",
+    "question": "What is Food of the person who lives in House 1?",
+    "choices": [
+      "pizza",
+      "grilled cheese",
+      "spaghetti"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.309951"
+  },
+  {
+    "id": "lgp-test-3x4-13#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n\n## Clues:\n1. The person who loves pop music is directly left of the tea drinker.\n2. The person who is a pizza lover is directly left of the person who loves classical music.\n3. Eric is the person who loves classical music.\n4. Arnold is the person who loves pop music.\n5. The person who loves the spaghetti eater is in the third house.\n6. The person who likes milk and Arnold are next to each other.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "rock",
+      "classical",
+      "pop"
+    ],
+    "answer": "rock",
+    "created_at": "2024-07-03T21:21:31.309958"
+  },
+  {
+    "id": "lgp-test-3x4-13#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`, `spaghetti`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n\n## Clues:\n1. The person who loves pop music is directly left of the tea drinker.\n2. The person who is a pizza lover is directly left of the person who loves classical music.\n3. Eric is the person who loves classical music.\n4. Arnold is the person who loves pop music.\n5. The person who loves the spaghetti eater is in the third house.\n6. The person who likes milk and Arnold are next to each other.\n",
+    "question": "What is Drink of the person who lives in House 2?",
+    "choices": [
+      "water",
+      "milk",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.309981"
+  },
+  {
+    "id": "lgp-test-3x4-14#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Janelle`, `Aniya`, `Holly`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n\n## Clues:\n1. The person who owns a dog is in the first house.\n2. The person whose mother's name is Janelle is the person with an aquarium of fish.\n3. There is one house between Eric and The person whose mother's name is Holly.\n4. The person who loves mystery books is in the first house.\n5. The person who loves romance books is directly left of Peter.\n",
+    "question": "What is Mother of the person who lives in House 1?",
+    "choices": [
+      "Holly",
+      "Janelle",
+      "Aniya"
+    ],
+    "answer": "Aniya",
+    "created_at": "2024-07-03T21:21:31.310011"
+  },
+  {
+    "id": "lgp-test-3x4-14#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Janelle`, `Aniya`, `Holly`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n\n## Clues:\n1. The person who owns a dog is in the first house.\n2. The person whose mother's name is Janelle is the person with an aquarium of fish.\n3. There is one house between Eric and The person whose mother's name is Holly.\n4. The person who loves mystery books is in the first house.\n5. The person who loves romance books is directly left of Peter.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.310026"
+  },
+  {
+    "id": "lgp-test-3x4-14#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Janelle`, `Aniya`, `Holly`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n\n## Clues:\n1. The person who owns a dog is in the first house.\n2. The person whose mother's name is Janelle is the person with an aquarium of fish.\n3. There is one house between Eric and The person whose mother's name is Holly.\n4. The person who loves mystery books is in the first house.\n5. The person who loves romance books is directly left of Peter.\n",
+    "question": "What is BookGenre of the person who lives in House 3?",
+    "choices": [
+      "mystery",
+      "science fiction",
+      "romance"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.310052"
+  },
+  {
+    "id": "lgp-test-3x4-14#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Janelle`, `Aniya`, `Holly`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n\n## Clues:\n1. The person who owns a dog is in the first house.\n2. The person whose mother's name is Janelle is the person with an aquarium of fish.\n3. There is one house between Eric and The person whose mother's name is Holly.\n4. The person who loves mystery books is in the first house.\n5. The person who loves romance books is directly left of Peter.\n",
+    "question": "What is Pet of the person who lives in House 3?",
+    "choices": [
+      "fish",
+      "cat",
+      "dog"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.310057"
+  },
+  {
+    "id": "lgp-test-3x4-15#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n - Each person has an occupation: `doctor`, `teacher`, `engineer`\n\n## Clues:\n1. The person who loves science fiction books is directly left of the person who is a teacher.\n2. Arnold is in the third house.\n3. The person who owns a Ford F-150 is the person who is a teacher.\n4. The person who is an engineer is the person who owns a Toyota Camry.\n5. The person who is an engineer is somewhere to the right of the person who is a teacher.\n6. The person who loves mystery books is the person who is a teacher.\n7. The person who loves science fiction books is Eric.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "tesla model 3",
+      "toyota camry",
+      "ford f150"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.310069"
+  },
+  {
+    "id": "lgp-test-3x4-15#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n - Each person has an occupation: `doctor`, `teacher`, `engineer`\n\n## Clues:\n1. The person who loves science fiction books is directly left of the person who is a teacher.\n2. Arnold is in the third house.\n3. The person who owns a Ford F-150 is the person who is a teacher.\n4. The person who is an engineer is the person who owns a Toyota Camry.\n5. The person who is an engineer is somewhere to the right of the person who is a teacher.\n6. The person who loves mystery books is the person who is a teacher.\n7. The person who loves science fiction books is Eric.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "teacher",
+      "doctor",
+      "engineer"
+    ],
+    "answer": "doctor",
+    "created_at": "2024-07-03T21:21:31.310080"
+  },
+  {
+    "id": "lgp-test-3x4-15#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n - Each person has an occupation: `doctor`, `teacher`, `engineer`\n\n## Clues:\n1. The person who loves science fiction books is directly left of the person who is a teacher.\n2. Arnold is in the third house.\n3. The person who owns a Ford F-150 is the person who is a teacher.\n4. The person who is an engineer is the person who owns a Toyota Camry.\n5. The person who is an engineer is somewhere to the right of the person who is a teacher.\n6. The person who loves mystery books is the person who is a teacher.\n7. The person who loves science fiction books is Eric.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310085"
+  },
+  {
+    "id": "lgp-test-3x4-15#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - People own unique car models: `toyota camry`, `tesla model 3`, `ford f150`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n - Each person has an occupation: `doctor`, `teacher`, `engineer`\n\n## Clues:\n1. The person who loves science fiction books is directly left of the person who is a teacher.\n2. Arnold is in the third house.\n3. The person who owns a Ford F-150 is the person who is a teacher.\n4. The person who is an engineer is the person who owns a Toyota Camry.\n5. The person who is an engineer is somewhere to the right of the person who is a teacher.\n6. The person who loves mystery books is the person who is a teacher.\n7. The person who loves science fiction books is Eric.\n",
+    "question": "What is BookGenre of the person who lives in House 3?",
+    "choices": [
+      "science fiction",
+      "mystery",
+      "romance"
+    ],
+    "answer": "romance",
+    "created_at": "2024-07-03T21:21:31.310113"
+  },
+  {
+    "id": "lgp-test-3x4-16#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `city`, `mountain`\n - People have unique favorite sports: `soccer`, `basketball`, `tennis`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The person whose birthday is in April is not in the third house.\n2. There is one house between the person who enjoys mountain retreats and the person who loves beach vacations.\n3. The person who loves soccer is Peter.\n4. The person who loves tennis is the person who prefers city breaks.\n5. Eric is directly left of the person who loves tennis.\n6. The person who loves beach vacations is the person who loves soccer.\n7. The person who prefers city breaks is the person whose birthday is in January.\n",
+    "question": "What is FavoriteSport of the person who lives in House 1?",
+    "choices": [
+      "tennis",
+      "soccer",
+      "basketball"
+    ],
+    "answer": "basketball",
+    "created_at": "2024-07-03T21:21:31.310134"
+  },
+  {
+    "id": "lgp-test-3x4-16#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `city`, `mountain`\n - People have unique favorite sports: `soccer`, `basketball`, `tennis`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The person whose birthday is in April is not in the third house.\n2. There is one house between the person who enjoys mountain retreats and the person who loves beach vacations.\n3. The person who loves soccer is Peter.\n4. The person who loves tennis is the person who prefers city breaks.\n5. Eric is directly left of the person who loves tennis.\n6. The person who loves beach vacations is the person who loves soccer.\n7. The person who prefers city breaks is the person whose birthday is in January.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold",
+      "Peter"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.310144"
+  },
+  {
+    "id": "lgp-test-3x4-16#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `city`, `mountain`\n - People have unique favorite sports: `soccer`, `basketball`, `tennis`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The person whose birthday is in April is not in the third house.\n2. There is one house between the person who enjoys mountain retreats and the person who loves beach vacations.\n3. The person who loves soccer is Peter.\n4. The person who loves tennis is the person who prefers city breaks.\n5. Eric is directly left of the person who loves tennis.\n6. The person who loves beach vacations is the person who loves soccer.\n7. The person who prefers city breaks is the person whose birthday is in January.\n",
+    "question": "What is Birthday of the person who lives in House 3?",
+    "choices": [
+      "april",
+      "jan",
+      "sept"
+    ],
+    "answer": "sept",
+    "created_at": "2024-07-03T21:21:31.310177"
+  },
+  {
+    "id": "lgp-test-3x4-17#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique level of education: `high school`, `associate`, `bachelor`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person lives in a unique style of house: `ranch`, `colonial`, `victorian`\n\n## Clues:\n1. Peter is somewhere to the left of the person living in a colonial-style house.\n2. The person in a ranch-style home is Arnold.\n3. The person with an associate's degree is in the second house.\n4. The person who loves soccer is in the first house.\n5. The person who loves basketball is not in the third house.\n6. Peter is somewhere to the right of Arnold.\n7. Arnold is somewhere to the left of the person with a bachelor's degree.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "associate",
+      "bachelor",
+      "high school"
+    ],
+    "answer": "high school",
+    "created_at": "2024-07-03T21:21:31.310189"
+  },
+  {
+    "id": "lgp-test-3x4-17#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique level of education: `high school`, `associate`, `bachelor`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person lives in a unique style of house: `ranch`, `colonial`, `victorian`\n\n## Clues:\n1. Peter is somewhere to the left of the person living in a colonial-style house.\n2. The person in a ranch-style home is Arnold.\n3. The person with an associate's degree is in the second house.\n4. The person who loves soccer is in the first house.\n5. The person who loves basketball is not in the third house.\n6. Peter is somewhere to the right of Arnold.\n7. Arnold is somewhere to the left of the person with a bachelor's degree.\n",
+    "question": "What is HouseStyle of the person who lives in House 2?",
+    "choices": [
+      "ranch",
+      "victorian",
+      "colonial"
+    ],
+    "answer": "victorian",
+    "created_at": "2024-07-03T21:21:31.310217"
+  },
+  {
+    "id": "lgp-test-3x4-17#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique level of education: `high school`, `associate`, `bachelor`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person lives in a unique style of house: `ranch`, `colonial`, `victorian`\n\n## Clues:\n1. Peter is somewhere to the left of the person living in a colonial-style house.\n2. The person in a ranch-style home is Arnold.\n3. The person with an associate's degree is in the second house.\n4. The person who loves soccer is in the first house.\n5. The person who loves basketball is not in the third house.\n6. Peter is somewhere to the right of Arnold.\n7. Arnold is somewhere to the left of the person with a bachelor's degree.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Arnold",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.310222"
+  },
+  {
+    "id": "lgp-test-3x4-17#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique level of education: `high school`, `associate`, `bachelor`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person lives in a unique style of house: `ranch`, `colonial`, `victorian`\n\n## Clues:\n1. Peter is somewhere to the left of the person living in a colonial-style house.\n2. The person in a ranch-style home is Arnold.\n3. The person with an associate's degree is in the second house.\n4. The person who loves soccer is in the first house.\n5. The person who loves basketball is not in the third house.\n6. Peter is somewhere to the right of Arnold.\n7. Arnold is somewhere to the left of the person with a bachelor's degree.\n",
+    "question": "What is FavoriteSport of the person who lives in House 3?",
+    "choices": [
+      "tennis",
+      "soccer",
+      "basketball"
+    ],
+    "answer": "tennis",
+    "created_at": "2024-07-03T21:21:31.310234"
+  },
+  {
+    "id": "lgp-test-3x4-18#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - They all have a unique favorite flower: `carnations`, `lilies`, `daffodils`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - Everyone has a favorite smoothie: `cherry`, `watermelon`, `desert`\n\n## Clues:\n1. Eric is somewhere to the left of Arnold.\n2. The Watermelon smoothie lover is the person who loves a carnations arrangement.\n3. The person who loves the boquet of lilies is directly left of the British person.\n4. Arnold is the person who likes Cherry smoothies.\n5. Peter is directly left of the person who likes Cherry smoothies.\n6. Eric and the Swedish person are next to each other.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "swede",
+      "dane",
+      "brit"
+    ],
+    "answer": "dane",
+    "created_at": "2024-07-03T21:21:31.310254"
+  },
+  {
+    "id": "lgp-test-3x4-18#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - They all have a unique favorite flower: `carnations`, `lilies`, `daffodils`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - Everyone has a favorite smoothie: `cherry`, `watermelon`, `desert`\n\n## Clues:\n1. Eric is somewhere to the left of Arnold.\n2. The Watermelon smoothie lover is the person who loves a carnations arrangement.\n3. The person who loves the boquet of lilies is directly left of the British person.\n4. Arnold is the person who likes Cherry smoothies.\n5. Peter is directly left of the person who likes Cherry smoothies.\n6. Eric and the Swedish person are next to each other.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "dane",
+      "brit",
+      "swede"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.310272"
+  },
+  {
+    "id": "lgp-test-3x4-18#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - They all have a unique favorite flower: `carnations`, `lilies`, `daffodils`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - Everyone has a favorite smoothie: `cherry`, `watermelon`, `desert`\n\n## Clues:\n1. Eric is somewhere to the left of Arnold.\n2. The Watermelon smoothie lover is the person who loves a carnations arrangement.\n3. The person who loves the boquet of lilies is directly left of the British person.\n4. Arnold is the person who likes Cherry smoothies.\n5. Peter is directly left of the person who likes Cherry smoothies.\n6. Eric and the Swedish person are next to each other.\n",
+    "question": "What is Smoothie of the person who lives in House 2?",
+    "choices": [
+      "watermelon",
+      "desert",
+      "cherry"
+    ],
+    "answer": "desert",
+    "created_at": "2024-07-03T21:21:31.310277"
+  },
+  {
+    "id": "lgp-test-3x4-18#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - They all have a unique favorite flower: `carnations`, `lilies`, `daffodils`\n - The people are of nationalities: `dane`, `swede`, `brit`\n - Everyone has a favorite smoothie: `cherry`, `watermelon`, `desert`\n\n## Clues:\n1. Eric is somewhere to the left of Arnold.\n2. The Watermelon smoothie lover is the person who loves a carnations arrangement.\n3. The person who loves the boquet of lilies is directly left of the British person.\n4. Arnold is the person who likes Cherry smoothies.\n5. Peter is directly left of the person who likes Cherry smoothies.\n6. Eric and the Swedish person are next to each other.\n",
+    "question": "What is Flower of the person who lives in House 3?",
+    "choices": [
+      "daffodils",
+      "carnations",
+      "lilies"
+    ],
+    "answer": "daffodils",
+    "created_at": "2024-07-03T21:21:31.310286"
+  },
+  {
+    "id": "lgp-test-3x4-19#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has an occupation: `engineer`, `teacher`, `doctor`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is directly left of Arnold.\n2. The person who uses a Google Pixel 6 is the one who only drinks water.\n3. The person who likes milk is the person who is an engineer.\n4. Eric is the person who likes milk.\n5. The person who is a teacher is directly left of the tea drinker.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310336"
+  },
+  {
+    "id": "lgp-test-3x4-19#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has an occupation: `engineer`, `teacher`, `doctor`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is directly left of Arnold.\n2. The person who uses a Google Pixel 6 is the one who only drinks water.\n3. The person who likes milk is the person who is an engineer.\n4. Eric is the person who likes milk.\n5. The person who is a teacher is directly left of the tea drinker.\n",
+    "question": "What is Occupation of the person who lives in House 3?",
+    "choices": [
+      "engineer",
+      "teacher",
+      "doctor"
+    ],
+    "answer": "doctor",
+    "created_at": "2024-07-03T21:21:31.310341"
+  },
+  {
+    "id": "lgp-test-3x4-19#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has an occupation: `engineer`, `teacher`, `doctor`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is directly left of Arnold.\n2. The person who uses a Google Pixel 6 is the one who only drinks water.\n3. The person who likes milk is the person who is an engineer.\n4. Eric is the person who likes milk.\n5. The person who is a teacher is directly left of the tea drinker.\n",
+    "question": "What is PhoneModel of the person who lives in House 3?",
+    "choices": [
+      "google pixel 6",
+      "samsung galaxy s21",
+      "iphone 13"
+    ],
+    "answer": "iphone 13",
+    "created_at": "2024-07-03T21:21:31.310349"
+  },
+  {
+    "id": "lgp-test-3x4-20#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n - The mothers' names in different houses are unique: `Janelle`, `Holly`, `Aniya`\n\n## Clues:\n1. The person whose mother's name is Aniya is not in the first house.\n2. The person who smokes Blue Master is in the third house.\n3. Peter and the person partial to Pall Mall are next to each other.\n4. The person whose mother's name is Janelle is in the third house.\n5. The person with an aquarium of fish is somewhere to the left of the person who owns a dog.\n6. The person who has a cat is The person whose mother's name is Janelle.\n7. Peter is not in the third house.\n8. The person whose mother's name is Aniya is Arnold.\n",
+    "question": "What is Cigar of the person who lives in House 1?",
+    "choices": [
+      "pall mall",
+      "blue master",
+      "prince"
+    ],
+    "answer": "prince",
+    "created_at": "2024-07-03T21:21:31.310361"
+  },
+  {
+    "id": "lgp-test-3x4-20#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n - The mothers' names in different houses are unique: `Janelle`, `Holly`, `Aniya`\n\n## Clues:\n1. The person whose mother's name is Aniya is not in the first house.\n2. The person who smokes Blue Master is in the third house.\n3. Peter and the person partial to Pall Mall are next to each other.\n4. The person whose mother's name is Janelle is in the third house.\n5. The person with an aquarium of fish is somewhere to the left of the person who owns a dog.\n6. The person who has a cat is The person whose mother's name is Janelle.\n7. Peter is not in the third house.\n8. The person whose mother's name is Aniya is Arnold.\n",
+    "question": "What is Mother of the person who lives in House 1?",
+    "choices": [
+      "Aniya",
+      "Janelle",
+      "Holly"
+    ],
+    "answer": "Holly",
+    "created_at": "2024-07-03T21:21:31.310371"
+  },
+  {
+    "id": "lgp-test-3x4-20#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n - The mothers' names in different houses are unique: `Janelle`, `Holly`, `Aniya`\n\n## Clues:\n1. The person whose mother's name is Aniya is not in the first house.\n2. The person who smokes Blue Master is in the third house.\n3. Peter and the person partial to Pall Mall are next to each other.\n4. The person whose mother's name is Janelle is in the third house.\n5. The person with an aquarium of fish is somewhere to the left of the person who owns a dog.\n6. The person who has a cat is The person whose mother's name is Janelle.\n7. Peter is not in the third house.\n8. The person whose mother's name is Aniya is Arnold.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Eric",
+      "Peter",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.310396"
+  },
+  {
+    "id": "lgp-test-3x4-21#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - The people keep unique animals: `cat`, `horse`, `bird`\n - Each mother is accompanied by their child: `Meredith`, `Bella`, `Fred`\n\n## Clues:\n1. The bird keeper and the person's child is named Meredith are next to each other.\n2. The person who loves classical music is Arnold.\n3. Eric is the person's child is named Fred.\n4. The person who keeps horses is somewhere to the left of the person's child is named Bella.\n5. The person's child is named Meredith is directly left of Arnold.\n6. The bird keeper is not in the third house.\n7. Arnold is not in the second house.\n8. Eric is the person who loves rock music.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310438"
+  },
+  {
+    "id": "lgp-test-3x4-21#mc-5",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - The people keep unique animals: `cat`, `horse`, `bird`\n - Each mother is accompanied by their child: `Meredith`, `Bella`, `Fred`\n\n## Clues:\n1. The bird keeper and the person's child is named Meredith are next to each other.\n2. The person who loves classical music is Arnold.\n3. Eric is the person's child is named Fred.\n4. The person who keeps horses is somewhere to the left of the person's child is named Bella.\n5. The person's child is named Meredith is directly left of Arnold.\n6. The bird keeper is not in the third house.\n7. Arnold is not in the second house.\n8. Eric is the person who loves rock music.\n",
+    "question": "What is MusicGenre of the person who lives in House 2?",
+    "choices": [
+      "pop",
+      "rock",
+      "classical"
+    ],
+    "answer": "pop",
+    "created_at": "2024-07-03T21:21:31.310443"
+  },
+  {
+    "id": "lgp-test-3x4-21#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - The people keep unique animals: `cat`, `horse`, `bird`\n - Each mother is accompanied by their child: `Meredith`, `Bella`, `Fred`\n\n## Clues:\n1. The bird keeper and the person's child is named Meredith are next to each other.\n2. The person who loves classical music is Arnold.\n3. Eric is the person's child is named Fred.\n4. The person who keeps horses is somewhere to the left of the person's child is named Bella.\n5. The person's child is named Meredith is directly left of Arnold.\n6. The bird keeper is not in the third house.\n7. Arnold is not in the second house.\n8. Eric is the person who loves rock music.\n",
+    "question": "What is Animal of the person who lives in House 3?",
+    "choices": [
+      "cat",
+      "horse",
+      "bird"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.310468"
+  },
+  {
+    "id": "lgp-test-3x4-22#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each mother is accompanied by their child: `Fred`, `Meredith`, `Bella`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person's child is named Fred is directly left of the person who loves mystery books.\n2. Peter is in the first house.\n3. The person who loves mystery books is the person who loves classical music.\n4. The person who loves science fiction books is the person's child is named Meredith.\n5. Eric is the person who loves mystery books.\n6. The person who loves rock music is somewhere to the right of the person who loves romance books.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "rock",
+      "pop",
+      "classical"
+    ],
+    "answer": "pop",
+    "created_at": "2024-07-03T21:21:31.310485"
+  },
+  {
+    "id": "lgp-test-3x4-22#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each mother is accompanied by their child: `Fred`, `Meredith`, `Bella`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person's child is named Fred is directly left of the person who loves mystery books.\n2. Peter is in the first house.\n3. The person who loves mystery books is the person who loves classical music.\n4. The person who loves science fiction books is the person's child is named Meredith.\n5. Eric is the person who loves mystery books.\n6. The person who loves rock music is somewhere to the right of the person who loves romance books.\n",
+    "question": "What is Children of the person who lives in House 2?",
+    "choices": [
+      "Bella",
+      "Meredith",
+      "Fred"
+    ],
+    "answer": "Bella",
+    "created_at": "2024-07-03T21:21:31.310508"
+  },
+  {
+    "id": "lgp-test-3x4-22#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique favorite music genres: `pop`, `rock`, `classical`\n - Each mother is accompanied by their child: `Fred`, `Meredith`, `Bella`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person's child is named Fred is directly left of the person who loves mystery books.\n2. Peter is in the first house.\n3. The person who loves mystery books is the person who loves classical music.\n4. The person who loves science fiction books is the person's child is named Meredith.\n5. Eric is the person who loves mystery books.\n6. The person who loves rock music is somewhere to the right of the person who loves romance books.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.310517"
+  },
+  {
+    "id": "lgp-test-3x4-23#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `city`, `mountain`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n - People have unique heights: `short`, `average`, `very short`\n\n## Clues:\n1. Arnold is not in the third house.\n2. Arnold is the person who enjoys mountain retreats.\n3. The person in a ranch-style home is somewhere to the right of the person who is short.\n4. The person who loves beach vacations is not in the first house.\n5. Peter is the person residing in a Victorian house.\n6. The person living in a colonial-style house is in the third house.\n7. The person who has an average height is the person who enjoys mountain retreats.\n",
+    "question": "What is Vacation of the person who lives in House 1?",
+    "choices": [
+      "mountain",
+      "city",
+      "beach"
+    ],
+    "answer": "city",
+    "created_at": "2024-07-03T21:21:31.310542"
+  },
+  {
+    "id": "lgp-test-3x4-23#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person prefers a unique type of vacation: `beach`, `city`, `mountain`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n - People have unique heights: `short`, `average`, `very short`\n\n## Clues:\n1. Arnold is not in the third house.\n2. Arnold is the person who enjoys mountain retreats.\n3. The person in a ranch-style home is somewhere to the right of the person who is short.\n4. The person who loves beach vacations is not in the first house.\n5. Peter is the person residing in a Victorian house.\n6. The person living in a colonial-style house is in the third house.\n7. The person who has an average height is the person who enjoys mountain retreats.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.310574"
+  },
+  {
+    "id": "lgp-test-3x4-24#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - The mothers' names in different houses are unique: `Holly`, `Janelle`, `Aniya`\n - People have unique heights: `very short`, `average`, `short`\n - People have unique favorite sports: `basketball`, `tennis`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the left of The person whose mother's name is Aniya.\n2. The person who is short is The person whose mother's name is Holly.\n3. The person who loves tennis and the person who is very short are next to each other.\n4. The person who loves soccer is somewhere to the right of Arnold.\n5. Eric is not in the first house.\n6. Arnold is in the second house.\n7. The person whose mother's name is Holly is in the third house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310594"
+  },
+  {
+    "id": "lgp-test-3x4-24#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - The mothers' names in different houses are unique: `Holly`, `Janelle`, `Aniya`\n - People have unique heights: `very short`, `average`, `short`\n - People have unique favorite sports: `basketball`, `tennis`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the left of The person whose mother's name is Aniya.\n2. The person who is short is The person whose mother's name is Holly.\n3. The person who loves tennis and the person who is very short are next to each other.\n4. The person who loves soccer is somewhere to the right of Arnold.\n5. Eric is not in the first house.\n6. Arnold is in the second house.\n7. The person whose mother's name is Holly is in the third house.\n",
+    "question": "What is Mother of the person who lives in House 1?",
+    "choices": [
+      "Janelle",
+      "Aniya",
+      "Holly"
+    ],
+    "answer": "Janelle",
+    "created_at": "2024-07-03T21:21:31.310600"
+  },
+  {
+    "id": "lgp-test-3x4-24#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - The mothers' names in different houses are unique: `Holly`, `Janelle`, `Aniya`\n - People have unique heights: `very short`, `average`, `short`\n - People have unique favorite sports: `basketball`, `tennis`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the left of The person whose mother's name is Aniya.\n2. The person who is short is The person whose mother's name is Holly.\n3. The person who loves tennis and the person who is very short are next to each other.\n4. The person who loves soccer is somewhere to the right of Arnold.\n5. Eric is not in the first house.\n6. Arnold is in the second house.\n7. The person whose mother's name is Holly is in the third house.\n",
+    "question": "What is Height of the person who lives in House 1?",
+    "choices": [
+      "very short",
+      "average",
+      "short"
+    ],
+    "answer": "average",
+    "created_at": "2024-07-03T21:21:31.310605"
+  },
+  {
+    "id": "lgp-test-3x4-24#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - The mothers' names in different houses are unique: `Holly`, `Janelle`, `Aniya`\n - People have unique heights: `very short`, `average`, `short`\n - People have unique favorite sports: `basketball`, `tennis`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the left of The person whose mother's name is Aniya.\n2. The person who is short is The person whose mother's name is Holly.\n3. The person who loves tennis and the person who is very short are next to each other.\n4. The person who loves soccer is somewhere to the right of Arnold.\n5. Eric is not in the first house.\n6. Arnold is in the second house.\n7. The person whose mother's name is Holly is in the third house.\n",
+    "question": "What is FavoriteSport of the person who lives in House 2?",
+    "choices": [
+      "basketball",
+      "tennis",
+      "soccer"
+    ],
+    "answer": "basketball",
+    "created_at": "2024-07-03T21:21:31.310628"
+  },
+  {
+    "id": "lgp-test-3x4-25#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person has a favorite color: `yellow`, `white`, `red`\n - The mothers' names in different houses are unique: `Aniya`, `Janelle`, `Holly`\n\n## Clues:\n1. The person who loves tennis is The person whose mother's name is Aniya.\n2. Eric is in the second house.\n3. The person who loves soccer is directly left of the person whose favorite color is red.\n4. The person who loves yellow is in the first house.\n5. The person whose mother's name is Holly is the person who loves soccer.\n6. The person whose mother's name is Aniya is the person who loves yellow.\n7. The person who loves yellow is Arnold.\n",
+    "question": "What is Color of the person who lives in House 2?",
+    "choices": [
+      "white",
+      "yellow",
+      "red"
+    ],
+    "answer": "white",
+    "created_at": "2024-07-03T21:21:31.310680"
+  },
+  {
+    "id": "lgp-test-3x4-25#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person has a favorite color: `yellow`, `white`, `red`\n - The mothers' names in different houses are unique: `Aniya`, `Janelle`, `Holly`\n\n## Clues:\n1. The person who loves tennis is The person whose mother's name is Aniya.\n2. Eric is in the second house.\n3. The person who loves soccer is directly left of the person whose favorite color is red.\n4. The person who loves yellow is in the first house.\n5. The person whose mother's name is Holly is the person who loves soccer.\n6. The person whose mother's name is Aniya is the person who loves yellow.\n7. The person who loves yellow is Arnold.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310689"
+  },
+  {
+    "id": "lgp-test-3x4-25#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person has a favorite color: `yellow`, `white`, `red`\n - The mothers' names in different houses are unique: `Aniya`, `Janelle`, `Holly`\n\n## Clues:\n1. The person who loves tennis is The person whose mother's name is Aniya.\n2. Eric is in the second house.\n3. The person who loves soccer is directly left of the person whose favorite color is red.\n4. The person who loves yellow is in the first house.\n5. The person whose mother's name is Holly is the person who loves soccer.\n6. The person whose mother's name is Aniya is the person who loves yellow.\n7. The person who loves yellow is Arnold.\n",
+    "question": "What is FavoriteSport of the person who lives in House 3?",
+    "choices": [
+      "tennis",
+      "basketball",
+      "soccer"
+    ],
+    "answer": "basketball",
+    "created_at": "2024-07-03T21:21:31.310694"
+  },
+  {
+    "id": "lgp-test-3x4-25#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`\n - Each person has a favorite color: `yellow`, `white`, `red`\n - The mothers' names in different houses are unique: `Aniya`, `Janelle`, `Holly`\n\n## Clues:\n1. The person who loves tennis is The person whose mother's name is Aniya.\n2. Eric is in the second house.\n3. The person who loves soccer is directly left of the person whose favorite color is red.\n4. The person who loves yellow is in the first house.\n5. The person whose mother's name is Holly is the person who loves soccer.\n6. The person whose mother's name is Aniya is the person who loves yellow.\n7. The person who loves yellow is Arnold.\n",
+    "question": "What is Mother of the person who lives in House 3?",
+    "choices": [
+      "Janelle",
+      "Holly",
+      "Aniya"
+    ],
+    "answer": "Janelle",
+    "created_at": "2024-07-03T21:21:31.310703"
+  },
+  {
+    "id": "lgp-test-3x4-26#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`, `spaghetti`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n - Each person has a unique type of pet: `fish`, `dog`, `cat`\n\n## Clues:\n1. The person who likes Cherry smoothies is the person with an aquarium of fish.\n2. The person who loves the spaghetti eater is directly left of the person who has a cat.\n3. The person who has a cat is Eric.\n4. The Watermelon smoothie lover is Arnold.\n5. The person who owns a dog is directly left of the person who is a pizza lover.\n6. The Desert smoothie lover is not in the third house.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Arnold",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310747"
+  },
+  {
+    "id": "lgp-test-3x4-26#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`, `spaghetti`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n - Each person has a unique type of pet: `fish`, `dog`, `cat`\n\n## Clues:\n1. The person who likes Cherry smoothies is the person with an aquarium of fish.\n2. The person who loves the spaghetti eater is directly left of the person who has a cat.\n3. The person who has a cat is Eric.\n4. The Watermelon smoothie lover is Arnold.\n5. The person who owns a dog is directly left of the person who is a pizza lover.\n6. The Desert smoothie lover is not in the third house.\n",
+    "question": "What is Food of the person who lives in House 3?",
+    "choices": [
+      "spaghetti",
+      "grilled cheese",
+      "pizza"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.310752"
+  },
+  {
+    "id": "lgp-test-3x4-27#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n - The people are of nationalities: `dane`, `swede`, `brit`\n\n## Clues:\n1. The photography enthusiast is the British person.\n2. Arnold is directly left of the British person.\n3. The person who enjoys gardening is somewhere to the right of the Dane.\n4. The Swedish person is the Desert smoothie lover.\n5. The photography enthusiast is somewhere to the left of Eric.\n6. Arnold is directly left of the Watermelon smoothie lover.\n",
+    "question": "What is Smoothie of the person who lives in House 1?",
+    "choices": [
+      "watermelon",
+      "cherry",
+      "desert"
+    ],
+    "answer": "cherry",
+    "created_at": "2024-07-03T21:21:31.310772"
+  },
+  {
+    "id": "lgp-test-3x4-27#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n - The people are of nationalities: `dane`, `swede`, `brit`\n\n## Clues:\n1. The photography enthusiast is the British person.\n2. Arnold is directly left of the British person.\n3. The person who enjoys gardening is somewhere to the right of the Dane.\n4. The Swedish person is the Desert smoothie lover.\n5. The photography enthusiast is somewhere to the left of Eric.\n6. Arnold is directly left of the Watermelon smoothie lover.\n",
+    "question": "What is Hobby of the person who lives in House 1?",
+    "choices": [
+      "photography",
+      "gardening",
+      "cooking"
+    ],
+    "answer": "cooking",
+    "created_at": "2024-07-03T21:21:31.310776"
+  },
+  {
+    "id": "lgp-test-3x4-27#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n - The people are of nationalities: `dane`, `swede`, `brit`\n\n## Clues:\n1. The photography enthusiast is the British person.\n2. Arnold is directly left of the British person.\n3. The person who enjoys gardening is somewhere to the right of the Dane.\n4. The Swedish person is the Desert smoothie lover.\n5. The photography enthusiast is somewhere to the left of Eric.\n6. Arnold is directly left of the Watermelon smoothie lover.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310785"
+  },
+  {
+    "id": "lgp-test-3x4-27#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `cherry`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n - The people are of nationalities: `dane`, `swede`, `brit`\n\n## Clues:\n1. The photography enthusiast is the British person.\n2. Arnold is directly left of the British person.\n3. The person who enjoys gardening is somewhere to the right of the Dane.\n4. The Swedish person is the Desert smoothie lover.\n5. The photography enthusiast is somewhere to the left of Eric.\n6. Arnold is directly left of the Watermelon smoothie lover.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "swede",
+      "dane",
+      "brit"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.310816"
+  },
+  {
+    "id": "lgp-test-3x4-28#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person who loves mystery books is directly left of Peter.\n2. The Swedish person is the person who likes milk.\n3. Arnold is the Dane.\n4. Eric is somewhere to the left of the tea drinker.\n5. Eric is not in the first house.\n6. Peter is the person who loves science fiction books.\n",
+    "question": "What is Drink of the person who lives in House 1?",
+    "choices": [
+      "milk",
+      "water",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.310827"
+  },
+  {
+    "id": "lgp-test-3x4-28#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person who loves mystery books is directly left of Peter.\n2. The Swedish person is the person who likes milk.\n3. Arnold is the Dane.\n4. Eric is somewhere to the left of the tea drinker.\n5. Eric is not in the first house.\n6. Peter is the person who loves science fiction books.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "mystery",
+      "romance",
+      "science fiction"
+    ],
+    "answer": "romance",
+    "created_at": "2024-07-03T21:21:31.310836"
+  },
+  {
+    "id": "lgp-test-3x4-28#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person who loves mystery books is directly left of Peter.\n2. The Swedish person is the person who likes milk.\n3. Arnold is the Dane.\n4. Eric is somewhere to the left of the tea drinker.\n5. Eric is not in the first house.\n6. Peter is the person who loves science fiction books.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "swede",
+      "brit",
+      "dane"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.310849"
+  },
+  {
+    "id": "lgp-test-3x4-28#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - People have unique favorite book genres: `mystery`, `romance`, `science fiction`\n\n## Clues:\n1. The person who loves mystery books is directly left of Peter.\n2. The Swedish person is the person who likes milk.\n3. Arnold is the Dane.\n4. Eric is somewhere to the left of the tea drinker.\n5. Eric is not in the first house.\n6. Peter is the person who loves science fiction books.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "dane",
+      "brit",
+      "swede"
+    ],
+    "answer": "brit",
+    "created_at": "2024-07-03T21:21:31.310868"
+  },
+  {
+    "id": "lgp-test-3x4-29#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique type of pet: `fish`, `cat`, `dog`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n\n## Clues:\n1. The person who loves romance books is the person who has a cat.\n2. The person who owns a dog is somewhere to the left of Peter.\n3. The Prince smoker and the person who has a cat are next to each other.\n4. The person partial to Pall Mall is Arnold.\n5. There is one house between the Prince smoker and the person who smokes Blue Master.\n6. The Prince smoker is somewhere to the left of the person who loves mystery books.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Peter",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.310879"
+  },
+  {
+    "id": "lgp-test-3x4-29#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique type of pet: `fish`, `cat`, `dog`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n\n## Clues:\n1. The person who loves romance books is the person who has a cat.\n2. The person who owns a dog is somewhere to the left of Peter.\n3. The Prince smoker and the person who has a cat are next to each other.\n4. The person partial to Pall Mall is Arnold.\n5. There is one house between the Prince smoker and the person who smokes Blue Master.\n6. The Prince smoker is somewhere to the left of the person who loves mystery books.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "romance",
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.310893"
+  },
+  {
+    "id": "lgp-test-3x4-29#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique type of pet: `fish`, `cat`, `dog`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `prince`\n - People have unique favorite book genres: `romance`, `science fiction`, `mystery`\n\n## Clues:\n1. The person who loves romance books is the person who has a cat.\n2. The person who owns a dog is somewhere to the left of Peter.\n3. The Prince smoker and the person who has a cat are next to each other.\n4. The person partial to Pall Mall is Arnold.\n5. There is one house between the Prince smoker and the person who smokes Blue Master.\n6. The Prince smoker is somewhere to the left of the person who loves mystery books.\n",
+    "question": "What is Pet of the person who lives in House 3?",
+    "choices": [
+      "dog",
+      "cat",
+      "fish"
+    ],
+    "answer": "fish",
+    "created_at": "2024-07-03T21:21:31.310921"
+  },
+  {
+    "id": "lgp-test-3x4-30#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique level of education: `bachelor`, `high school`, `associate`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n - Each person has a favorite color: `yellow`, `white`, `red`\n\n## Clues:\n1. The Prince smoker is Arnold.\n2. The person who loves yellow is Eric.\n3. The person with an associate's degree is directly left of the person who smokes Blue Master.\n4. The person with an associate's degree is the person partial to Pall Mall.\n5. The person partial to Pall Mall is somewhere to the left of Arnold.\n6. The person whose favorite color is red is in the first house.\n7. The person with a high school diploma is the person who smokes Blue Master.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.310938"
+  },
+  {
+    "id": "lgp-test-3x4-30#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique level of education: `bachelor`, `high school`, `associate`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n - Each person has a favorite color: `yellow`, `white`, `red`\n\n## Clues:\n1. The Prince smoker is Arnold.\n2. The person who loves yellow is Eric.\n3. The person with an associate's degree is directly left of the person who smokes Blue Master.\n4. The person with an associate's degree is the person partial to Pall Mall.\n5. The person partial to Pall Mall is somewhere to the left of Arnold.\n6. The person whose favorite color is red is in the first house.\n7. The person with a high school diploma is the person who smokes Blue Master.\n",
+    "question": "What is Education of the person who lives in House 3?",
+    "choices": [
+      "high school",
+      "associate",
+      "bachelor"
+    ],
+    "answer": "bachelor",
+    "created_at": "2024-07-03T21:21:31.310982"
+  },
+  {
+    "id": "lgp-test-3x4-30#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique level of education: `bachelor`, `high school`, `associate`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n - Each person has a favorite color: `yellow`, `white`, `red`\n\n## Clues:\n1. The Prince smoker is Arnold.\n2. The person who loves yellow is Eric.\n3. The person with an associate's degree is directly left of the person who smokes Blue Master.\n4. The person with an associate's degree is the person partial to Pall Mall.\n5. The person partial to Pall Mall is somewhere to the left of Arnold.\n6. The person whose favorite color is red is in the first house.\n7. The person with a high school diploma is the person who smokes Blue Master.\n",
+    "question": "What is Color of the person who lives in House 3?",
+    "choices": [
+      "yellow",
+      "red",
+      "white"
+    ],
+    "answer": "white",
+    "created_at": "2024-07-03T21:21:31.310992"
+  },
+  {
+    "id": "lgp-test-3x4-31#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique favorite book genres: `romance`, `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`, `jan`\n - The people are of nationalities: `brit`, `dane`, `swede`\n\n## Clues:\n1. Arnold is the person who loves mystery books.\n2. Peter is directly left of the person who loves romance books.\n3. Peter is somewhere to the left of the person who loves mystery books.\n4. The person whose birthday is in April is somewhere to the right of the person whose birthday is in January.\n5. The person whose birthday is in September is the Swedish person.\n6. The Dane is in the third house.\n7. The person who loves science fiction books is the person whose birthday is in September.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "dane",
+      "swede",
+      "brit"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.311014"
+  },
+  {
+    "id": "lgp-test-3x4-31#mc-4",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique favorite book genres: `romance`, `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`, `jan`\n - The people are of nationalities: `brit`, `dane`, `swede`\n\n## Clues:\n1. Arnold is the person who loves mystery books.\n2. Peter is directly left of the person who loves romance books.\n3. Peter is somewhere to the left of the person who loves mystery books.\n4. The person whose birthday is in April is somewhere to the right of the person whose birthday is in January.\n5. The person whose birthday is in September is the Swedish person.\n6. The Dane is in the third house.\n7. The person who loves science fiction books is the person whose birthday is in September.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.311018"
+  },
+  {
+    "id": "lgp-test-3x4-31#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique favorite book genres: `romance`, `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`, `jan`\n - The people are of nationalities: `brit`, `dane`, `swede`\n\n## Clues:\n1. Arnold is the person who loves mystery books.\n2. Peter is directly left of the person who loves romance books.\n3. Peter is somewhere to the left of the person who loves mystery books.\n4. The person whose birthday is in April is somewhere to the right of the person whose birthday is in January.\n5. The person whose birthday is in September is the Swedish person.\n6. The Dane is in the third house.\n7. The person who loves science fiction books is the person whose birthday is in September.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "swede",
+      "dane",
+      "brit"
+    ],
+    "answer": "brit",
+    "created_at": "2024-07-03T21:21:31.311033"
+  },
+  {
+    "id": "lgp-test-3x4-32#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`, `google pixel 6`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The person who uses an iPhone 13 is Peter.\n2. The tea drinker is somewhere to the right of Eric.\n3. The person whose birthday is in April is not in the third house.\n4. The person whose birthday is in January is directly left of the person who likes milk.\n5. The person who uses a Samsung Galaxy S21 and the person who uses an iPhone 13 are next to each other.\n6. The person whose birthday is in September is Peter.\n7. Eric is directly left of the person who uses an iPhone 13.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Peter",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.311058"
+  },
+  {
+    "id": "lgp-test-3x4-32#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`, `google pixel 6`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The person who uses an iPhone 13 is Peter.\n2. The tea drinker is somewhere to the right of Eric.\n3. The person whose birthday is in April is not in the third house.\n4. The person whose birthday is in January is directly left of the person who likes milk.\n5. The person who uses a Samsung Galaxy S21 and the person who uses an iPhone 13 are next to each other.\n6. The person whose birthday is in September is Peter.\n7. Eric is directly left of the person who uses an iPhone 13.\n",
+    "question": "What is Drink of the person who lives in House 1?",
+    "choices": [
+      "water",
+      "milk",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.311063"
+  },
+  {
+    "id": "lgp-test-3x4-32#mc-2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`, `google pixel 6`\n - Each person has a unique birthday month: `april`, `jan`, `sept`\n\n## Clues:\n1. The person who uses an iPhone 13 is Peter.\n2. The tea drinker is somewhere to the right of Eric.\n3. The person whose birthday is in April is not in the third house.\n4. The person whose birthday is in January is directly left of the person who likes milk.\n5. The person who uses a Samsung Galaxy S21 and the person who uses an iPhone 13 are next to each other.\n6. The person whose birthday is in September is Peter.\n7. Eric is directly left of the person who uses an iPhone 13.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "samsung galaxy s21",
+      "iphone 13",
+      "google pixel 6"
+    ],
+    "answer": "google pixel 6",
+    "created_at": "2024-07-03T21:21:31.311068"
+  },
+  {
+    "id": "lgp-test-3x4-33#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique type of pet: `dog`, `fish`, `cat`\n\n## Clues:\n1. The person who owns a dog is directly left of Peter.\n2. Eric is in the second house.\n3. The Dane is the person in a ranch-style home.\n4. The person who owns a dog is the person living in a colonial-style house.\n5. The person who has a cat is the Dane.\n6. The British person is in the third house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric",
+      "Peter"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.311119"
+  },
+  {
+    "id": "lgp-test-3x4-33#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique type of pet: `dog`, `fish`, `cat`\n\n## Clues:\n1. The person who owns a dog is directly left of Peter.\n2. Eric is in the second house.\n3. The Dane is the person in a ranch-style home.\n4. The person who owns a dog is the person living in a colonial-style house.\n5. The person who has a cat is the Dane.\n6. The British person is in the third house.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "dane",
+      "brit",
+      "swede"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.311146"
+  },
+  {
+    "id": "lgp-test-3x4-33#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique type of pet: `dog`, `fish`, `cat`\n\n## Clues:\n1. The person who owns a dog is directly left of Peter.\n2. Eric is in the second house.\n3. The Dane is the person in a ranch-style home.\n4. The person who owns a dog is the person living in a colonial-style house.\n5. The person who has a cat is the Dane.\n6. The British person is in the third house.\n",
+    "question": "What is HouseStyle of the person who lives in House 3?",
+    "choices": [
+      "ranch",
+      "colonial",
+      "victorian"
+    ],
+    "answer": "victorian",
+    "created_at": "2024-07-03T21:21:31.311159"
+  },
+  {
+    "id": "lgp-test-3x4-33#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n - The people are of nationalities: `dane`, `brit`, `swede`\n - Each person has a unique type of pet: `dog`, `fish`, `cat`\n\n## Clues:\n1. The person who owns a dog is directly left of Peter.\n2. Eric is in the second house.\n3. The Dane is the person in a ranch-style home.\n4. The person who owns a dog is the person living in a colonial-style house.\n5. The person who has a cat is the Dane.\n6. The British person is in the third house.\n",
+    "question": "What is Pet of the person who lives in House 3?",
+    "choices": [
+      "cat",
+      "dog",
+      "fish"
+    ],
+    "answer": "fish",
+    "created_at": "2024-07-03T21:21:31.311168"
+  },
+  {
+    "id": "lgp-test-3x4-34#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`, `white`\n - People own unique car models: `tesla model 3`, `toyota camry`, `ford f150`\n - The mothers' names in different houses are unique: `Janelle`, `Aniya`, `Holly`\n\n## Clues:\n1. The person whose favorite color is red is Peter.\n2. The person whose mother's name is Aniya is somewhere to the left of the person who loves white.\n3. The person who loves yellow is in the second house.\n4. The person who owns a Toyota Camry is in the second house.\n5. The person who owns a Tesla Model 3 is not in the third house.\n6. Eric is The person whose mother's name is Holly.\n7. Peter is The person whose mother's name is Aniya.\n8. The person whose mother's name is Janelle is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Arnold",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.311215"
+  },
+  {
+    "id": "lgp-test-3x4-34#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`, `white`\n - People own unique car models: `tesla model 3`, `toyota camry`, `ford f150`\n - The mothers' names in different houses are unique: `Janelle`, `Aniya`, `Holly`\n\n## Clues:\n1. The person whose favorite color is red is Peter.\n2. The person whose mother's name is Aniya is somewhere to the left of the person who loves white.\n3. The person who loves yellow is in the second house.\n4. The person who owns a Toyota Camry is in the second house.\n5. The person who owns a Tesla Model 3 is not in the third house.\n6. Eric is The person whose mother's name is Holly.\n7. Peter is The person whose mother's name is Aniya.\n8. The person whose mother's name is Janelle is not in the second house.\n",
+    "question": "What is CarModel of the person who lives in House 3?",
+    "choices": [
+      "toyota camry",
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "ford f150",
+    "created_at": "2024-07-03T21:21:31.311225"
+  },
+  {
+    "id": "lgp-test-3x4-35#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique hobby: `gardening`, `photography`, `cooking`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`, `blue master`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n\n## Clues:\n1. Eric is directly left of the Prince smoker.\n2. There is one house between the person who likes milk and the person who enjoys gardening.\n3. Arnold is the Prince smoker.\n4. Peter is not in the third house.\n5. The tea drinker is the person who loves cooking.\n6. The person partial to Pall Mall is the photography enthusiast.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "blue master",
+      "pall mall",
+      "prince"
+    ],
+    "answer": "blue master",
+    "created_at": "2024-07-03T21:21:31.311263"
+  },
+  {
+    "id": "lgp-test-3x4-35#mc-11",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique hobby: `gardening`, `photography`, `cooking`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`, `blue master`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n\n## Clues:\n1. Eric is directly left of the Prince smoker.\n2. There is one house between the person who likes milk and the person who enjoys gardening.\n3. Arnold is the Prince smoker.\n4. Peter is not in the third house.\n5. The tea drinker is the person who loves cooking.\n6. The person partial to Pall Mall is the photography enthusiast.\n",
+    "question": "What is Drink of the person who lives in House 3?",
+    "choices": [
+      "milk",
+      "water",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.311286"
+  },
+  {
+    "id": "lgp-test-3x4-36#mc-5",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a unique level of education: `bachelor`, `associate`, `high school`\n - Each person has a unique hobby: `photography`, `gardening`, `cooking`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n\n## Clues:\n1. There is one house between Peter and the person with a bachelor's degree.\n2. The photography enthusiast is Arnold.\n3. The person with a high school diploma is the person who enjoys gardening.\n4. Peter is the one who only drinks water.\n5. Peter is directly left of the person who likes milk.\n6. The tea drinker is the person who loves cooking.\n",
+    "question": "What is Education of the person who lives in House 2?",
+    "choices": [
+      "high school",
+      "bachelor",
+      "associate"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.311314"
+  },
+  {
+    "id": "lgp-test-3x4-36#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a unique level of education: `bachelor`, `associate`, `high school`\n - Each person has a unique hobby: `photography`, `gardening`, `cooking`\n - Each person has a unique favorite drink: `water`, `milk`, `tea`\n\n## Clues:\n1. There is one house between Peter and the person with a bachelor's degree.\n2. The photography enthusiast is Arnold.\n3. The person with a high school diploma is the person who enjoys gardening.\n4. Peter is the one who only drinks water.\n5. Peter is directly left of the person who likes milk.\n6. The tea drinker is the person who loves cooking.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Arnold",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.311328"
+  },
+  {
+    "id": "lgp-test-3x4-37#mc-1",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - The people are of nationalities: `swede`, `dane`, `brit`\n - People have unique hair colors: `blonde`, `brown`, `black`\n - Each person has a unique hobby: `cooking`, `gardening`, `photography`\n\n## Clues:\n1. The Dane is the person who enjoys gardening.\n2. The person who has blonde hair and the British person are next to each other.\n3. Arnold is somewhere to the left of the person who has black hair.\n4. The Swedish person is Arnold.\n5. The photography enthusiast is not in the third house.\n6. The person who has brown hair is not in the third house.\n7. The person who has blonde hair is not in the third house.\n8. The photography enthusiast is Eric.\n9. The Swedish person is not in the second house.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "brit",
+      "swede",
+      "dane"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.311353"
+  },
+  {
+    "id": "lgp-test-3x4-37#mc-3",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - The people are of nationalities: `swede`, `dane`, `brit`\n - People have unique hair colors: `blonde`, `brown`, `black`\n - Each person has a unique hobby: `cooking`, `gardening`, `photography`\n\n## Clues:\n1. The Dane is the person who enjoys gardening.\n2. The person who has blonde hair and the British person are next to each other.\n3. Arnold is somewhere to the left of the person who has black hair.\n4. The Swedish person is Arnold.\n5. The photography enthusiast is not in the third house.\n6. The person who has brown hair is not in the third house.\n7. The person who has blonde hair is not in the third house.\n8. The photography enthusiast is Eric.\n9. The Swedish person is not in the second house.\n",
+    "question": "What is Hobby of the person who lives in House 1?",
+    "choices": [
+      "photography",
+      "cooking",
+      "gardening"
+    ],
+    "answer": "cooking",
+    "created_at": "2024-07-03T21:21:31.311363"
+  },
+  {
+    "id": "lgp-test-3x4-37#mc-8",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - The people are of nationalities: `swede`, `dane`, `brit`\n - People have unique hair colors: `blonde`, `brown`, `black`\n - Each person has a unique hobby: `cooking`, `gardening`, `photography`\n\n## Clues:\n1. The Dane is the person who enjoys gardening.\n2. The person who has blonde hair and the British person are next to each other.\n3. Arnold is somewhere to the left of the person who has black hair.\n4. The Swedish person is Arnold.\n5. The photography enthusiast is not in the third house.\n6. The person who has brown hair is not in the third house.\n7. The person who has blonde hair is not in the third house.\n8. The photography enthusiast is Eric.\n9. The Swedish person is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.311387"
+  },
+  {
+    "id": "lgp-test-3x4-38#mc-5",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n\n## Clues:\n1. There is one house between Arnold and Eric.\n2. Peter is directly left of the person who loves cooking.\n3. Peter is the person with an aquarium of fish.\n4. The person who owns a dog is the person who likes milk.\n5. Arnold is the person who enjoys gardening.\n6. The tea drinker is in the third house.\n",
+    "question": "What is Drink of the person who lives in House 2?",
+    "choices": [
+      "tea",
+      "milk",
+      "water"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.311432"
+  },
+  {
+    "id": "lgp-test-3x4-38#mc-7",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n\n## Clues:\n1. There is one house between Arnold and Eric.\n2. Peter is directly left of the person who loves cooking.\n3. Peter is the person with an aquarium of fish.\n4. The person who owns a dog is the person who likes milk.\n5. Arnold is the person who enjoys gardening.\n6. The tea drinker is in the third house.\n",
+    "question": "What is Hobby of the person who lives in House 2?",
+    "choices": [
+      "cooking",
+      "gardening",
+      "photography"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.311441"
+  },
+  {
+    "id": "lgp-test-3x4-38#mc-10",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n - Each person has a unique type of pet: `cat`, `dog`, `fish`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n\n## Clues:\n1. There is one house between Arnold and Eric.\n2. Peter is directly left of the person who loves cooking.\n3. Peter is the person with an aquarium of fish.\n4. The person who owns a dog is the person who likes milk.\n5. Arnold is the person who enjoys gardening.\n6. The tea drinker is in the third house.\n",
+    "question": "What is Pet of the person who lives in House 3?",
+    "choices": [
+      "dog",
+      "cat",
+      "fish"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.311454"
+  },
+  {
+    "id": "lgp-test-3x4-39#mc-0",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has an occupation: `teacher`, `doctor`, `engineer`\n - People have unique favorite music genres: `classical`, `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`, `Meredith`\n\n## Clues:\n1. The person who loves rock music is in the third house.\n2. The person who is a doctor is not in the third house.\n3. The person's child is named Bella is somewhere to the right of the person's child is named Meredith.\n4. Arnold is directly left of the person who loves rock music.\n5. The person who is a teacher is directly left of the person's child is named Fred.\n6. Eric is somewhere to the right of the person who is a teacher.\n7. The person who loves pop music is somewhere to the left of the person's child is named Fred.\n8. The person who is a teacher is in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric",
+      "Peter"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.311465"
+  },
+  {
+    "id": "lgp-test-3x4-39#mc-6",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has an occupation: `teacher`, `doctor`, `engineer`\n - People have unique favorite music genres: `classical`, `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`, `Meredith`\n\n## Clues:\n1. The person who loves rock music is in the third house.\n2. The person who is a doctor is not in the third house.\n3. The person's child is named Bella is somewhere to the right of the person's child is named Meredith.\n4. Arnold is directly left of the person who loves rock music.\n5. The person who is a teacher is directly left of the person's child is named Fred.\n6. Eric is somewhere to the right of the person who is a teacher.\n7. The person who loves pop music is somewhere to the left of the person's child is named Fred.\n8. The person who is a teacher is in the first house.\n",
+    "question": "What is MusicGenre of the person who lives in House 2?",
+    "choices": [
+      "classical",
+      "rock",
+      "pop"
+    ],
+    "answer": "classical",
+    "created_at": "2024-07-03T21:21:31.311496"
+  },
+  {
+    "id": "lgp-test-3x4-39#mc-9",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has an occupation: `teacher`, `doctor`, `engineer`\n - People have unique favorite music genres: `classical`, `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`, `Meredith`\n\n## Clues:\n1. The person who loves rock music is in the third house.\n2. The person who is a doctor is not in the third house.\n3. The person's child is named Bella is somewhere to the right of the person's child is named Meredith.\n4. Arnold is directly left of the person who loves rock music.\n5. The person who is a teacher is directly left of the person's child is named Fred.\n6. Eric is somewhere to the right of the person who is a teacher.\n7. The person who loves pop music is somewhere to the left of the person's child is named Fred.\n8. The person who is a teacher is in the first house.\n",
+    "question": "What is Occupation of the person who lives in House 3?",
+    "choices": [
+      "engineer",
+      "teacher",
+      "doctor"
+    ],
+    "answer": "engineer",
+    "created_at": "2024-07-03T21:21:31.311511"
+  }
+]

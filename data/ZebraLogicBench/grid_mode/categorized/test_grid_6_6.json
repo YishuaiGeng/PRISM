@@ -1,0 +1,2922 @@
+[
+  {
+    "id": "lgp-test-6x6-0",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Alice`, `Bob`, `Arnold`, `Carol`\n - People have unique favorite book genres: `mystery`, `fantasy`, `romance`, `historical fiction`, `science fiction`, `biography`\n - Everyone has a favorite smoothie: `cherry`, `desert`, `lime`, `watermelon`, `blueberry`, `dragonfruit`\n - The people keep unique animals: `fish`, `rabbit`, `bird`, `cat`, `horse`, `dog`\n - People have unique favorite music genres: `classical`, `hip hop`, `country`, `jazz`, `rock`, `pop`\n - Everyone has a unique favorite cigar: `prince`, `dunhill`, `blends`, `pall mall`, `blue master`, `yellow monster`\n\n## Clues:\n1. The person who smokes many unique blends is the person who loves fantasy books.\n2. The person who loves biography books is the Desert smoothie lover.\n3. There are two houses between the person who loves pop music and the person who loves country music.\n4. The rabbit owner is in the third house.\n5. Arnold is the bird keeper.\n6. The person who loves country music is in the fifth house.\n7. The person who loves mystery books is not in the first house.\n8. The person who drinks Lime smoothies is not in the third house.\n9. The fish enthusiast is somewhere to the right of the person who loves rock music.\n10. The Prince smoker is somewhere to the left of the person who likes Cherry smoothies.\n11. Bob is the cat lover.\n12. Eric is the person who likes Cherry smoothies.\n13. The person who smokes Yellow Monster is in the sixth house.\n14. The Prince smoker is the Dragonfruit smoothie lover.\n15. Carol is directly left of Arnold.\n16. The person who smokes Blue Master is directly left of the person who loves classical music.\n17. The person who loves classical music is the person who loves historical fiction books.\n18. The Dunhill smoker and the person who loves science fiction books are next to each other.\n19. The person who keeps horses is directly left of Peter.\n20. The Watermelon smoothie lover is the cat lover.\n21. The person who smokes many unique blends is directly left of the person who loves jazz music.\n22. The cat lover is in the first house.\n23. The Desert smoothie lover is the person who loves jazz music.\n24. The person who drinks Lime smoothies is directly left of the fish enthusiast.\n25. The person who smokes Blue Master is not in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "BookGenre",
+        "Smoothie",
+        "Animal",
+        "MusicGenre",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "romance",
+          "watermelon",
+          "cat",
+          "rock",
+          "pall mall"
+        ],
+        [
+          "2",
+          "Alice",
+          "fantasy",
+          "blueberry",
+          "horse",
+          "pop",
+          "blends"
+        ],
+        [
+          "3",
+          "Peter",
+          "biography",
+          "desert",
+          "rabbit",
+          "jazz",
+          "blue master"
+        ],
+        [
+          "4",
+          "Carol",
+          "historical fiction",
+          "dragonfruit",
+          "dog",
+          "classical",
+          "prince"
+        ],
+        [
+          "5",
+          "Arnold",
+          "mystery",
+          "lime",
+          "bird",
+          "country",
+          "dunhill"
+        ],
+        [
+          "6",
+          "Eric",
+          "science fiction",
+          "cherry",
+          "fish",
+          "hip hop",
+          "yellow monster"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210874"
+  },
+  {
+    "id": "lgp-test-6x6-1",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Arnold`, `Eric`, `Alice`, `Carol`\n - People have unique hair colors: `red`, `gray`, `auburn`, `blonde`, `brown`, `black`\n - People have unique favorite book genres: `historical fiction`, `biography`, `romance`, `fantasy`, `mystery`, `science fiction`\n - People have unique heights: `very short`, `very tall`, `tall`, `short`, `super tall`, `average`\n - Each person has a unique level of education: `associate`, `doctorate`, `high school`, `trade school`, `bachelor`, `master`\n - Each person has a unique favorite drink: `boba tea`, `milk`, `water`, `root beer`, `coffee`, `tea`\n\n## Clues:\n1. The person with a doctorate and Bob are next to each other.\n2. There is one house between Carol and the person who has black hair.\n3. Peter is the person with a doctorate.\n4. The person who loves science fiction books is Eric.\n5. The one who only drinks water is the person who has an average height.\n6. Alice is the person who loves mystery books.\n7. The person who loves romance books is Bob.\n8. The person who has brown hair is in the second house.\n9. The person who has an average height is in the fourth house.\n10. The boba tea drinker is the person who is very tall.\n11. The person with a high school diploma is Bob.\n12. The person who is short is somewhere to the left of the person who is super tall.\n13. The person who loves historical fiction books and the person with a bachelor's degree are next to each other.\n14. The person who attended trade school is the person who has red hair.\n15. Carol is the person who has auburn hair.\n16. The person who is very short is somewhere to the right of the person who has gray hair.\n17. There are two houses between Eric and the person who loves fantasy books.\n18. There are two houses between the tea drinker and the person who is very short.\n19. Eric is somewhere to the left of the person with a bachelor's degree.\n20. The root beer lover is Alice.\n21. The person with an associate's degree is Arnold.\n22. The person who is tall is not in the second house.\n23. The person who loves science fiction books is the boba tea drinker.\n24. The person who has black hair is not in the fourth house.\n25. The person who is short is the coffee drinker.\n26. The coffee drinker and the person with a high school diploma are next to each other.\n27. The coffee drinker is not in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HairColor",
+        "BookGenre",
+        "Height",
+        "Education",
+        "Drink"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "gray",
+          "biography",
+          "short",
+          "doctorate",
+          "coffee"
+        ],
+        [
+          "2",
+          "Bob",
+          "brown",
+          "romance",
+          "super tall",
+          "high school",
+          "tea"
+        ],
+        [
+          "3",
+          "Eric",
+          "red",
+          "science fiction",
+          "very tall",
+          "trade school",
+          "boba tea"
+        ],
+        [
+          "4",
+          "Carol",
+          "auburn",
+          "historical fiction",
+          "average",
+          "master",
+          "water"
+        ],
+        [
+          "5",
+          "Alice",
+          "blonde",
+          "mystery",
+          "very short",
+          "bachelor",
+          "root beer"
+        ],
+        [
+          "6",
+          "Arnold",
+          "black",
+          "fantasy",
+          "tall",
+          "associate",
+          "milk"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210883"
+  },
+  {
+    "id": "lgp-test-6x6-2",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Alice`, `Eric`, `Peter`, `Arnold`, `Bob`\n - The mothers' names in different houses are unique: `Penny`, `Janelle`, `Aniya`, `Sarah`, `Holly`, `Kailyn`\n - Everyone has a unique favorite cigar: `blends`, `dunhill`, `blue master`, `prince`, `yellow monster`, `pall mall`\n - Each person has a unique type of pet: `cat`, `dog`, `rabbit`, `hamster`, `bird`, `fish`\n - The people keep unique animals: `bird`, `horse`, `cat`, `rabbit`, `dog`, `fish`\n - Everyone has a favorite smoothie: `desert`, `watermelon`, `lime`, `cherry`, `blueberry`, `dragonfruit`\n\n## Clues:\n1. The dog owner is not in the third house.\n2. The fish enthusiast is not in the fourth house.\n3. The person who owns a dog is Eric.\n4. The cat lover is not in the second house.\n5. The person who smokes Blue Master is somewhere to the right of The person whose mother's name is Sarah.\n6. The cat lover is not in the fourth house.\n7. There are two houses between Carol and the person who owns a rabbit.\n8. The person whose mother's name is Penny is the person with a pet hamster.\n9. The person whose mother's name is Kailyn is somewhere to the right of the person with a pet hamster.\n10. The dog owner and the person who drinks Lime smoothies are next to each other.\n11. The Prince smoker is somewhere to the right of The person whose mother's name is Janelle.\n12. There is one house between The person whose mother's name is Penny and Bob.\n13. There are two houses between the person partial to Pall Mall and The person whose mother's name is Penny.\n14. Peter is somewhere to the left of the person who drinks Lime smoothies.\n15. The bird keeper is the Watermelon smoothie lover.\n16. The person with a pet hamster is the Prince smoker.\n17. The person who smokes Yellow Monster is the person who drinks Lime smoothies.\n18. The person whose mother's name is Sarah is the person who smokes Yellow Monster.\n19. The Dunhill smoker is somewhere to the left of the Watermelon smoothie lover.\n20. The person whose mother's name is Holly is directly left of the person who owns a dog.\n21. The bird keeper is The person whose mother's name is Kailyn.\n22. The person whose mother's name is Sarah is not in the third house.\n23. The person who smokes many unique blends is the rabbit owner.\n24. The person who has a cat is somewhere to the right of the person with an aquarium of fish.\n25. The person who smokes Yellow Monster is Eric.\n26. The person who keeps a pet bird is the Desert smoothie lover.\n27. Alice is The person whose mother's name is Kailyn.\n28. The Dragonfruit smoothie lover is Carol.\n29. The person who keeps horses is the person who likes Cherry smoothies.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Mother",
+        "Cigar",
+        "Pet",
+        "Animal",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "Holly",
+          "pall mall",
+          "bird",
+          "dog",
+          "desert"
+        ],
+        [
+          "2",
+          "Eric",
+          "Sarah",
+          "yellow monster",
+          "dog",
+          "fish",
+          "lime"
+        ],
+        [
+          "3",
+          "Carol",
+          "Janelle",
+          "dunhill",
+          "fish",
+          "cat",
+          "dragonfruit"
+        ],
+        [
+          "4",
+          "Arnold",
+          "Penny",
+          "prince",
+          "hamster",
+          "horse",
+          "cherry"
+        ],
+        [
+          "5",
+          "Alice",
+          "Kailyn",
+          "blue master",
+          "cat",
+          "bird",
+          "watermelon"
+        ],
+        [
+          "6",
+          "Bob",
+          "Aniya",
+          "blends",
+          "rabbit",
+          "rabbit",
+          "blueberry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210890"
+  },
+  {
+    "id": "lgp-test-6x6-3",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Bob`, `Carol`, `Arnold`, `Eric`\n - Each person has an occupation: `engineer`, `doctor`, `lawyer`, `artist`, `nurse`, `teacher`\n - Everyone has something unique for lunch: `soup`, `stew`, `grilled cheese`, `spaghetti`, `pizza`, `stir fry`\n - Everyone has a favorite smoothie: `cherry`, `dragonfruit`, `watermelon`, `lime`, `blueberry`, `desert`\n - Each person prefers a unique type of vacation: `camping`, `cultural`, `city`, `cruise`, `beach`, `mountain`\n - People use unique phone models: `iphone 13`, `google pixel 6`, `oneplus 9`, `samsung galaxy s21`, `xiaomi mi 11`, `huawei p50`\n\n## Clues:\n1. The person who likes Cherry smoothies is directly left of the person who enjoys camping trips.\n2. The person who is a lawyer is the person who uses a Xiaomi Mi 11.\n3. The person who is a doctor is Eric.\n4. The person who is a doctor and the Desert smoothie lover are next to each other.\n5. The person who is an artist is the person who prefers city breaks.\n6. The person who loves beach vacations is Alice.\n7. There are two houses between the person who is a pizza lover and the person who uses a Huawei P50.\n8. The person who uses a Xiaomi Mi 11 is the person who enjoys camping trips.\n9. The person who is an artist is directly left of the person who loves eating grilled cheese.\n10. The person who uses a Google Pixel 6 is in the first house.\n11. There is one house between the person who is a teacher and the person who loves stir fry.\n12. There are two houses between the person who is a pizza lover and the person who is an engineer.\n13. The person who is a pizza lover is somewhere to the left of the person who loves eating grilled cheese.\n14. The Watermelon smoothie lover is the person who uses a Xiaomi Mi 11.\n15. The person who loves eating grilled cheese is Carol.\n16. Alice is the person who drinks Blueberry smoothies.\n17. The person who likes Cherry smoothies is the person who loves the stew.\n18. The person who loves the soup is the person who uses a Samsung Galaxy S21.\n19. The person who uses an iPhone 13 is directly left of the Dragonfruit smoothie lover.\n20. The person who loves the stew is somewhere to the left of Peter.\n21. Arnold is somewhere to the right of the Desert smoothie lover.\n22. The person who likes going on cruises is the person who uses a Google Pixel 6.\n23. The person who goes on cultural tours is not in the fifth house.\n24. The person who is a teacher is Alice.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Occupation",
+        "Food",
+        "Smoothie",
+        "Vacation",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "doctor",
+          "spaghetti",
+          "lime",
+          "cruise",
+          "google pixel 6"
+        ],
+        [
+          "2",
+          "Bob",
+          "artist",
+          "pizza",
+          "desert",
+          "city",
+          "iphone 13"
+        ],
+        [
+          "3",
+          "Carol",
+          "nurse",
+          "grilled cheese",
+          "dragonfruit",
+          "cultural",
+          "oneplus 9"
+        ],
+        [
+          "4",
+          "Alice",
+          "teacher",
+          "soup",
+          "blueberry",
+          "beach",
+          "samsung galaxy s21"
+        ],
+        [
+          "5",
+          "Arnold",
+          "engineer",
+          "stew",
+          "cherry",
+          "mountain",
+          "huawei p50"
+        ],
+        [
+          "6",
+          "Peter",
+          "lawyer",
+          "stir fry",
+          "watermelon",
+          "camping",
+          "xiaomi mi 11"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210899"
+  },
+  {
+    "id": "lgp-test-6x6-4",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Carol`, `Peter`, `Bob`, `Arnold`, `Eric`\n - They all have a unique favorite flower: `carnations`, `iris`, `tulips`, `daffodils`, `lilies`, `roses`\n - Each person prefers a unique type of vacation: `camping`, `mountain`, `city`, `beach`, `cultural`, `cruise`\n - Each person lives in a unique style of house: `colonial`, `modern`, `mediterranean`, `craftsman`, `ranch`, `victorian`\n - People have unique heights: `short`, `very short`, `average`, `tall`, `super tall`, `very tall`\n - People have unique hair colors: `red`, `black`, `gray`, `brown`, `auburn`, `blonde`\n\n## Clues:\n1. The person who loves the boquet of lilies is not in the fifth house.\n2. The person who is very short is the person who has auburn hair.\n3. Arnold is the person who enjoys camping trips.\n4. The person who has auburn hair is Eric.\n5. The person who goes on cultural tours is somewhere to the left of the person who is super tall.\n6. There are two houses between the person who has gray hair and the person who is short.\n7. The person who is tall is somewhere to the left of the person who has brown hair.\n8. The person in a Craftsman-style house is Bob.\n9. The person who is very short is somewhere to the left of the person who has blonde hair.\n10. The person who is very tall is Bob.\n11. There are two houses between the person who loves the rose bouquet and Peter.\n12. The person in a modern-style house is not in the fourth house.\n13. The person who prefers city breaks is the person who is short.\n14. The person living in a colonial-style house is somewhere to the left of the person who loves the vase of tulips.\n15. The person who loves a carnations arrangement is the person who has brown hair.\n16. The person who has red hair is the person who loves the boquet of lilies.\n17. The person who enjoys mountain retreats is the person residing in a Victorian house.\n18. The person who loves a bouquet of daffodils is the person in a modern-style house.\n19. Arnold is the person who has an average height.\n20. The person in a Mediterranean-style villa is not in the first house.\n21. The person who is tall is not in the fifth house.\n22. The person who loves the vase of tulips is not in the fourth house.\n23. Carol is directly left of Bob.\n24. The person who is very tall is the person who goes on cultural tours.\n25. The person in a Mediterranean-style villa is the person who has red hair.\n26. The person who is super tall is the person who has black hair.\n27. Eric is the person who loves the rose bouquet.\n28. The person who enjoys mountain retreats is directly left of the person who likes going on cruises.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower",
+        "Vacation",
+        "HouseStyle",
+        "Height",
+        "HairColor"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "roses",
+          "mountain",
+          "victorian",
+          "very short",
+          "auburn"
+        ],
+        [
+          "2",
+          "Carol",
+          "daffodils",
+          "cruise",
+          "modern",
+          "tall",
+          "gray"
+        ],
+        [
+          "3",
+          "Bob",
+          "carnations",
+          "cultural",
+          "craftsman",
+          "very tall",
+          "brown"
+        ],
+        [
+          "4",
+          "Peter",
+          "iris",
+          "beach",
+          "colonial",
+          "super tall",
+          "black"
+        ],
+        [
+          "5",
+          "Alice",
+          "tulips",
+          "city",
+          "ranch",
+          "short",
+          "blonde"
+        ],
+        [
+          "6",
+          "Arnold",
+          "lilies",
+          "camping",
+          "mediterranean",
+          "average",
+          "red"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210908"
+  },
+  {
+    "id": "lgp-test-6x6-5",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Carol`, `Eric`, `Peter`, `Bob`, `Arnold`\n - People have unique favorite music genres: `classical`, `hip hop`, `jazz`, `pop`, `rock`, `country`\n - The mothers' names in different houses are unique: `Sarah`, `Penny`, `Aniya`, `Janelle`, `Kailyn`, `Holly`\n - Each mother is accompanied by their child: `Alice`, `Fred`, `Timothy`, `Bella`, `Samantha`, `Meredith`\n - People have unique heights: `very short`, `tall`, `short`, `very tall`, `super tall`, `average`\n - The people keep unique animals: `bird`, `dog`, `horse`, `rabbit`, `cat`, `fish`\n\n## Clues:\n1. The person who loves pop music is the cat lover.\n2. The rabbit owner is directly left of The person whose mother's name is Aniya.\n3. The person whose mother's name is Holly is directly left of Carol.\n4. The person whose mother's name is Holly is the person's child is named Alice.\n5. The person whose mother's name is Holly is the person who loves classical music.\n6. The person who loves jazz music is The person whose mother's name is Sarah.\n7. The person's child is named Meredith is somewhere to the right of The person whose mother's name is Aniya.\n8. The person who is super tall is The person whose mother's name is Holly.\n9. The person who is the mother of Timothy is Bob.\n10. The person who is very short is somewhere to the left of The person whose mother's name is Aniya.\n11. Eric is the fish enthusiast.\n12. The person's child is named Samantha is somewhere to the right of the person who is very tall.\n13. The person who loves rock music is The person whose mother's name is Janelle.\n14. There is one house between the person who keeps horses and the person's child is named Meredith.\n15. The person's child is named Bella is somewhere to the right of Peter.\n16. The fish enthusiast is somewhere to the left of the bird keeper.\n17. The fish enthusiast is somewhere to the right of the person's child is named Alice.\n18. There is one house between the person's child is named Bella and the person who loves rock music.\n19. The person who is short is the cat lover.\n20. Alice is directly left of the person who loves classical music.\n21. The person's child is named Bella is The person whose mother's name is Aniya.\n22. There are two houses between The person whose mother's name is Penny and the person who is short.\n23. The person who loves hip-hop music is in the first house.\n24. Carol is the person who is tall.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre",
+        "Mother",
+        "Children",
+        "Height",
+        "Animal"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "hip hop",
+          "Penny",
+          "Fred",
+          "very short",
+          "dog"
+        ],
+        [
+          "2",
+          "Peter",
+          "classical",
+          "Holly",
+          "Alice",
+          "super tall",
+          "rabbit"
+        ],
+        [
+          "3",
+          "Carol",
+          "country",
+          "Aniya",
+          "Bella",
+          "tall",
+          "horse"
+        ],
+        [
+          "4",
+          "Bob",
+          "pop",
+          "Kailyn",
+          "Timothy",
+          "short",
+          "cat"
+        ],
+        [
+          "5",
+          "Eric",
+          "rock",
+          "Janelle",
+          "Meredith",
+          "very tall",
+          "fish"
+        ],
+        [
+          "6",
+          "Arnold",
+          "jazz",
+          "Sarah",
+          "Samantha",
+          "average",
+          "bird"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210915"
+  },
+  {
+    "id": "lgp-test-6x6-6",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Arnold`, `Carol`, `Alice`, `Peter`\n - Each person has a unique hobby: `cooking`, `painting`, `knitting`, `photography`, `woodworking`, `gardening`\n - People have unique hair colors: `brown`, `auburn`, `black`, `red`, `gray`, `blonde`\n - People have unique favorite sports: `swimming`, `volleyball`, `basketball`, `baseball`, `tennis`, `soccer`\n - The mothers' names in different houses are unique: `Sarah`, `Holly`, `Penny`, `Janelle`, `Kailyn`, `Aniya`\n - Everyone has a unique favorite cigar: `dunhill`, `blends`, `pall mall`, `prince`, `yellow monster`, `blue master`\n\n## Clues:\n1. The person who has gray hair is directly left of The person whose mother's name is Janelle.\n2. The person who loves soccer is in the sixth house.\n3. Arnold is the person who has blonde hair.\n4. The photography enthusiast is the person who smokes Yellow Monster.\n5. There is one house between the Dunhill smoker and the person who loves cooking.\n6. The person who paints as a hobby is the person who has blonde hair.\n7. The Dunhill smoker is directly left of Alice.\n8. The person who paints as a hobby is directly left of the person who loves volleyball.\n9. The person who loves soccer is The person whose mother's name is Aniya.\n10. The person partial to Pall Mall is somewhere to the left of Carol.\n11. The person who enjoys knitting and the person who loves basketball are next to each other.\n12. The person partial to Pall Mall is directly left of The person whose mother's name is Holly.\n13. The person who loves soccer is the Prince smoker.\n14. The person who loves swimming is The person whose mother's name is Penny.\n15. The person whose mother's name is Kailyn is the person who loves volleyball.\n16. The person who loves basketball is The person whose mother's name is Janelle.\n17. The person who enjoys knitting is the person who loves volleyball.\n18. The person who enjoys knitting is not in the third house.\n19. The person who has auburn hair is somewhere to the left of the photography enthusiast.\n20. The person whose mother's name is Sarah is not in the fifth house.\n21. Bob is directly left of the person who has red hair.\n22. The Dunhill smoker is the person who enjoys gardening.\n23. The person who loves baseball is the person who has auburn hair.\n24. Eric is the person who smokes many unique blends.\n25. The person who has brown hair is somewhere to the right of The person whose mother's name is Penny.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby",
+        "HairColor",
+        "FavoriteSport",
+        "Mother",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "painting",
+          "blonde",
+          "tennis",
+          "Sarah",
+          "blue master"
+        ],
+        [
+          "2",
+          "Eric",
+          "knitting",
+          "gray",
+          "volleyball",
+          "Kailyn",
+          "blends"
+        ],
+        [
+          "3",
+          "Peter",
+          "woodworking",
+          "black",
+          "basketball",
+          "Janelle",
+          "pall mall"
+        ],
+        [
+          "4",
+          "Bob",
+          "gardening",
+          "auburn",
+          "baseball",
+          "Holly",
+          "dunhill"
+        ],
+        [
+          "5",
+          "Alice",
+          "photography",
+          "red",
+          "swimming",
+          "Penny",
+          "yellow monster"
+        ],
+        [
+          "6",
+          "Carol",
+          "cooking",
+          "brown",
+          "soccer",
+          "Aniya",
+          "prince"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210923"
+  },
+  {
+    "id": "lgp-test-6x6-7",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Eric`, `Peter`, `Carol`, `Bob`, `Arnold`\n - Everyone has a favorite smoothie: `watermelon`, `blueberry`, `desert`, `cherry`, `dragonfruit`, `lime`\n - Everyone has something unique for lunch: `stew`, `pizza`, `grilled cheese`, `stir fry`, `soup`, `spaghetti`\n - People use unique phone models: `google pixel 6`, `iphone 13`, `xiaomi mi 11`, `huawei p50`, `samsung galaxy s21`, `oneplus 9`\n - People own unique car models: `tesla model 3`, `honda civic`, `toyota camry`, `ford f150`, `chevrolet silverado`, `bmw 3 series`\n - Each person lives in a unique style of house: `craftsman`, `ranch`, `modern`, `victorian`, `mediterranean`, `colonial`\n\n## Clues:\n1. Bob is the person who uses a Xiaomi Mi 11.\n2. The person who loves the soup is in the fourth house.\n3. The Dragonfruit smoothie lover is somewhere to the left of the person in a ranch-style home.\n4. There is one house between the person who owns a Chevrolet Silverado and the person residing in a Victorian house.\n5. The person in a Mediterranean-style villa is the person who drinks Lime smoothies.\n6. Eric is in the sixth house.\n7. The Desert smoothie lover is the person who is a pizza lover.\n8. The person living in a colonial-style house is the person who drinks Blueberry smoothies.\n9. The Dragonfruit smoothie lover and the person who uses a Google Pixel 6 are next to each other.\n10. The person who loves the soup is Peter.\n11. Alice is somewhere to the right of the person who owns a BMW 3 Series.\n12. The person who loves stir fry is the person in a ranch-style home.\n13. The person who owns a Ford F-150 is the person living in a colonial-style house.\n14. The person in a Craftsman-style house is somewhere to the right of the person in a modern-style house.\n15. The person who loves the stew is directly left of the person in a ranch-style home.\n16. The person who owns a Tesla Model 3 is directly left of the person who loves stir fry.\n17. The person who loves eating grilled cheese is the person who owns a Honda Civic.\n18. The person in a Mediterranean-style villa is the person who uses a Google Pixel 6.\n19. The person in a Craftsman-style house is the Watermelon smoothie lover.\n20. The person in a modern-style house is Carol.\n21. The person who uses an iPhone 13 is in the first house.\n22. The person who owns a Honda Civic is somewhere to the left of the person who owns a BMW 3 Series.\n23. The person who uses a Xiaomi Mi 11 is the person who is a pizza lover.\n24. The person who uses a Samsung Galaxy S21 is the person who loves stir fry.\n25. The person residing in a Victorian house is directly left of the person who uses a OnePlus 9.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie",
+        "Food",
+        "PhoneModel",
+        "CarModel",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "dragonfruit",
+          "spaghetti",
+          "iphone 13",
+          "chevrolet silverado",
+          "modern"
+        ],
+        [
+          "2",
+          "Arnold",
+          "lime",
+          "grilled cheese",
+          "google pixel 6",
+          "honda civic",
+          "mediterranean"
+        ],
+        [
+          "3",
+          "Bob",
+          "desert",
+          "pizza",
+          "xiaomi mi 11",
+          "bmw 3 series",
+          "victorian"
+        ],
+        [
+          "4",
+          "Peter",
+          "blueberry",
+          "soup",
+          "oneplus 9",
+          "ford f150",
+          "colonial"
+        ],
+        [
+          "5",
+          "Alice",
+          "watermelon",
+          "stew",
+          "huawei p50",
+          "tesla model 3",
+          "craftsman"
+        ],
+        [
+          "6",
+          "Eric",
+          "cherry",
+          "stir fry",
+          "samsung galaxy s21",
+          "toyota camry",
+          "ranch"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210931"
+  },
+  {
+    "id": "lgp-test-6x6-8",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Bob`, `Arnold`, `Carol`, `Alice`\n - Each person has a unique birthday month: `may`, `sept`, `jan`, `mar`, `feb`, `april`\n - People have unique hair colors: `brown`, `blonde`, `red`, `auburn`, `black`, `gray`\n - Each mother is accompanied by their child: `Alice`, `Samantha`, `Fred`, `Meredith`, `Timothy`, `Bella`\n - Everyone has a favorite smoothie: `blueberry`, `cherry`, `watermelon`, `lime`, `dragonfruit`, `desert`\n - The mothers' names in different houses are unique: `Sarah`, `Aniya`, `Janelle`, `Holly`, `Kailyn`, `Penny`\n\n## Clues:\n1. The person whose birthday is in September and the person's child is named Alice are next to each other.\n2. The person whose birthday is in April is the person who is the mother of Timothy.\n3. The person who likes Cherry smoothies is the person who has gray hair.\n4. Alice is somewhere to the right of Arnold.\n5. The person's child is named Alice is somewhere to the right of The person whose mother's name is Sarah.\n6. Peter is the person who drinks Blueberry smoothies.\n7. The person whose mother's name is Janelle is the person whose birthday is in May.\n8. The person whose birthday is in January is somewhere to the left of The person whose mother's name is Sarah.\n9. The Watermelon smoothie lover is the person who has brown hair.\n10. The person who has red hair is somewhere to the right of the person who has gray hair.\n11. The person who drinks Lime smoothies is in the fifth house.\n12. The person who has black hair and the person's child is named Meredith are next to each other.\n13. The person whose birthday is in March is somewhere to the right of the person who has red hair.\n14. The person whose mother's name is Sarah is somewhere to the left of the person who has auburn hair.\n15. The person who has black hair is directly left of The person whose mother's name is Penny.\n16. The person's child is named Samantha is The person whose mother's name is Holly.\n17. The person who has blonde hair and Bob are next to each other.\n18. The person who has gray hair is the person whose birthday is in January.\n19. The person who has black hair is in the first house.\n20. The person whose mother's name is Sarah is the person who has blonde hair.\n21. The person whose mother's name is Kailyn is Arnold.\n22. The person whose birthday is in January is The person whose mother's name is Kailyn.\n23. The person whose birthday is in September is Carol.\n24. The person who drinks Lime smoothies is somewhere to the right of the Desert smoothie lover.\n25. The person's child is named Fred is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Birthday",
+        "HairColor",
+        "Children",
+        "Smoothie",
+        "Mother"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "april",
+          "black",
+          "Timothy",
+          "blueberry",
+          "Aniya"
+        ],
+        [
+          "2",
+          "Eric",
+          "feb",
+          "brown",
+          "Meredith",
+          "watermelon",
+          "Penny"
+        ],
+        [
+          "3",
+          "Arnold",
+          "jan",
+          "gray",
+          "Bella",
+          "cherry",
+          "Kailyn"
+        ],
+        [
+          "4",
+          "Carol",
+          "sept",
+          "blonde",
+          "Fred",
+          "desert",
+          "Sarah"
+        ],
+        [
+          "5",
+          "Bob",
+          "may",
+          "red",
+          "Alice",
+          "lime",
+          "Janelle"
+        ],
+        [
+          "6",
+          "Alice",
+          "mar",
+          "auburn",
+          "Samantha",
+          "dragonfruit",
+          "Holly"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210939"
+  },
+  {
+    "id": "lgp-test-6x6-9",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Peter`, `Carol`, `Alice`\n - Each mother is accompanied by their child: `Fred`, `Bella`, `Timothy`, `Meredith`, `Samantha`, `Alice`\n - Everyone has something unique for lunch: `pizza`, `stir fry`, `grilled cheese`, `spaghetti`, `soup`, `stew`\n - Each person has a unique type of pet: `rabbit`, `fish`, `cat`, `dog`, `bird`, `hamster`\n - Each person has a unique birthday month: `may`, `sept`, `mar`, `jan`, `april`, `feb`\n - Each person has a unique favorite drink: `water`, `milk`, `coffee`, `tea`, `boba tea`, `root beer`\n\n## Clues:\n1. The person whose birthday is in May is the person who loves the spaghetti eater.\n2. The person's child is named Fred is the person who loves the stew.\n3. The person who likes milk is the person with a pet hamster.\n4. There is one house between the person who loves the spaghetti eater and the person who has a cat.\n5. The person who is the mother of Timothy is Bob.\n6. The person whose birthday is in January is directly left of the one who only drinks water.\n7. Carol is the coffee drinker.\n8. Peter is not in the fifth house.\n9. The person whose birthday is in April is the person's child is named Alice.\n10. The person who loves eating grilled cheese is somewhere to the right of the person whose birthday is in September.\n11. The person's child is named Bella and Bob are next to each other.\n12. The person who owns a rabbit is Peter.\n13. The person who keeps a pet bird is the person who loves the soup.\n14. The person who owns a rabbit is somewhere to the right of the person who loves stir fry.\n15. The person who loves eating grilled cheese is somewhere to the left of the person who owns a rabbit.\n16. The person whose birthday is in March is the tea drinker.\n17. Peter is the person's child is named Bella.\n18. The person who is the mother of Timothy is somewhere to the right of the person's child is named Bella.\n19. The person with an aquarium of fish and the person's child is named Bella are next to each other.\n20. The one who only drinks water is the person's child is named Fred.\n21. The person whose birthday is in May is somewhere to the right of the person with an aquarium of fish.\n22. The person with a pet hamster is the person's child is named Meredith.\n23. The root beer lover is the person who loves the spaghetti eater.\n24. Carol is directly left of Alice.\n25. Eric is in the third house.\n26. The person who is a pizza lover is Bob.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children",
+        "Food",
+        "Pet",
+        "Birthday",
+        "Drink"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "Alice",
+          "soup",
+          "bird",
+          "april",
+          "coffee"
+        ],
+        [
+          "2",
+          "Alice",
+          "Meredith",
+          "stir fry",
+          "hamster",
+          "sept",
+          "milk"
+        ],
+        [
+          "3",
+          "Eric",
+          "Samantha",
+          "grilled cheese",
+          "fish",
+          "mar",
+          "tea"
+        ],
+        [
+          "4",
+          "Peter",
+          "Bella",
+          "spaghetti",
+          "rabbit",
+          "may",
+          "root beer"
+        ],
+        [
+          "5",
+          "Bob",
+          "Timothy",
+          "pizza",
+          "dog",
+          "jan",
+          "boba tea"
+        ],
+        [
+          "6",
+          "Arnold",
+          "Fred",
+          "stew",
+          "cat",
+          "feb",
+          "water"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210946"
+  },
+  {
+    "id": "lgp-test-6x6-10",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Bob`, `Peter`, `Alice`, `Carol`, `Eric`\n - Everyone has something unique for lunch: `stew`, `grilled cheese`, `stir fry`, `soup`, `pizza`, `spaghetti`\n - People have unique heights: `tall`, `average`, `super tall`, `very short`, `very tall`, `short`\n - Each person has a unique favorite drink: `root beer`, `boba tea`, `coffee`, `water`, `tea`, `milk`\n - Each person has a unique type of pet: `hamster`, `fish`, `cat`, `dog`, `bird`, `rabbit`\n - People use unique phone models: `samsung galaxy s21`, `xiaomi mi 11`, `google pixel 6`, `iphone 13`, `huawei p50`, `oneplus 9`\n\n## Clues:\n1. The person who uses an iPhone 13 is in the third house.\n2. Bob is the person who is tall.\n3. The person who loves the soup is in the second house.\n4. The root beer lover is directly left of the person who uses a Xiaomi Mi 11.\n5. The person who uses a Huawei P50 is directly left of the person who loves eating grilled cheese.\n6. The person who loves stir fry is the person who likes milk.\n7. The person who loves eating grilled cheese is the person who is tall.\n8. The person who uses a Xiaomi Mi 11 is the coffee drinker.\n9. The person who uses a OnePlus 9 is Arnold.\n10. The person who owns a rabbit is not in the fifth house.\n11. The person with a pet hamster is somewhere to the right of the person who uses a Google Pixel 6.\n12. The person who is super tall is the person with an aquarium of fish.\n13. The person with an aquarium of fish is Alice.\n14. The tea drinker is directly left of the person who is a pizza lover.\n15. The person who uses a Samsung Galaxy S21 is Carol.\n16. The person who is a pizza lover is the person who is short.\n17. Arnold is the person who is very tall.\n18. The person who loves the spaghetti eater is the person who uses a Google Pixel 6.\n19. The boba tea drinker is somewhere to the right of the person who loves the soup.\n20. The person with a pet hamster is not in the fifth house.\n21. The person who is very tall is not in the second house.\n22. The person who is super tall is somewhere to the left of Peter.\n23. The person who is very short is the person who loves the spaghetti eater.\n24. The person who keeps a pet bird is somewhere to the left of the person who loves the spaghetti eater.\n25. The person with an aquarium of fish is directly left of Eric.\n26. The person who owns a dog is the person who likes milk.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food",
+        "Height",
+        "Drink",
+        "Pet",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "stir fry",
+          "very tall",
+          "milk",
+          "dog",
+          "oneplus 9"
+        ],
+        [
+          "2",
+          "Carol",
+          "soup",
+          "average",
+          "water",
+          "bird",
+          "samsung galaxy s21"
+        ],
+        [
+          "3",
+          "Alice",
+          "stew",
+          "super tall",
+          "boba tea",
+          "fish",
+          "iphone 13"
+        ],
+        [
+          "4",
+          "Eric",
+          "spaghetti",
+          "very short",
+          "tea",
+          "rabbit",
+          "google pixel 6"
+        ],
+        [
+          "5",
+          "Peter",
+          "pizza",
+          "short",
+          "root beer",
+          "cat",
+          "huawei p50"
+        ],
+        [
+          "6",
+          "Bob",
+          "grilled cheese",
+          "tall",
+          "coffee",
+          "hamster",
+          "xiaomi mi 11"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210955"
+  },
+  {
+    "id": "lgp-test-6x6-11",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Peter`, `Eric`, `Bob`, `Alice`, `Arnold`\n - Each person prefers a unique type of vacation: `cruise`, `mountain`, `city`, `camping`, `cultural`, `beach`\n - Each person has a unique hobby: `knitting`, `photography`, `cooking`, `painting`, `gardening`, `woodworking`\n - Everyone has something unique for lunch: `stew`, `pizza`, `spaghetti`, `grilled cheese`, `stir fry`, `soup`\n - People own unique car models: `chevrolet silverado`, `honda civic`, `toyota camry`, `ford f150`, `tesla model 3`, `bmw 3 series`\n - They all have a unique favorite flower: `tulips`, `daffodils`, `carnations`, `lilies`, `iris`, `roses`\n\n## Clues:\n1. Arnold is the person who enjoys camping trips.\n2. The photography enthusiast is the person who loves the soup.\n3. Carol is the person who loves eating grilled cheese.\n4. The person who owns a Honda Civic is the person who loves a carnations arrangement.\n5. The person who loves beach vacations is not in the first house.\n6. The person who enjoys gardening is the person who owns a Toyota Camry.\n7. There is one house between the person who loves the boquet of iris and the person who loves the vase of tulips.\n8. The person who prefers city breaks is the person who loves the stew.\n9. The person who loves a bouquet of daffodils is Carol.\n10. The person who prefers city breaks is Eric.\n11. Carol is the person who loves cooking.\n12. Eric is directly left of the photography enthusiast.\n13. The person who loves the rose bouquet is Bob.\n14. There is one house between Arnold and the person who likes going on cruises.\n15. The person who owns a Tesla Model 3 and the person who enjoys mountain retreats are next to each other.\n16. The person who loves the rose bouquet is the person who owns a Toyota Camry.\n17. The person who owns a BMW 3 Series is somewhere to the right of the person who loves cooking.\n18. The woodworking hobbyist is not in the third house.\n19. The person who owns a Ford F-150 is the person who enjoys mountain retreats.\n20. The person who is a pizza lover is not in the second house.\n21. The person who loves the vase of tulips is not in the fourth house.\n22. The person who loves the spaghetti eater is somewhere to the left of the person who enjoys knitting.\n23. Peter is somewhere to the right of the photography enthusiast.\n24. The person who owns a Honda Civic is the person who is a pizza lover.\n25. The person who loves cooking is in the fifth house.\n26. The person who likes going on cruises is the person who enjoys knitting.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation",
+        "Hobby",
+        "Food",
+        "CarModel",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "cultural",
+          "woodworking",
+          "pizza",
+          "honda civic",
+          "carnations"
+        ],
+        [
+          "2",
+          "Bob",
+          "beach",
+          "gardening",
+          "spaghetti",
+          "toyota camry",
+          "roses"
+        ],
+        [
+          "3",
+          "Eric",
+          "city",
+          "painting",
+          "stew",
+          "chevrolet silverado",
+          "lilies"
+        ],
+        [
+          "4",
+          "Arnold",
+          "camping",
+          "photography",
+          "soup",
+          "tesla model 3",
+          "iris"
+        ],
+        [
+          "5",
+          "Carol",
+          "mountain",
+          "cooking",
+          "grilled cheese",
+          "ford f150",
+          "daffodils"
+        ],
+        [
+          "6",
+          "Peter",
+          "cruise",
+          "knitting",
+          "stir fry",
+          "bmw 3 series",
+          "tulips"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210962"
+  },
+  {
+    "id": "lgp-test-6x6-12",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Carol`, `Alice`, `Eric`, `Bob`\n - People have unique favorite music genres: `pop`, `hip hop`, `rock`, `jazz`, `classical`, `country`\n - The people keep unique animals: `fish`, `dog`, `cat`, `rabbit`, `horse`, `bird`\n - Each person lives in a unique style of house: `modern`, `colonial`, `mediterranean`, `ranch`, `victorian`, `craftsman`\n - Each person has a unique hobby: `gardening`, `woodworking`, `knitting`, `cooking`, `painting`, `photography`\n - The people are of nationalities: `brit`, `german`, `norwegian`, `swede`, `dane`, `chinese`\n\n## Clues:\n1. The cat lover is the person in a Mediterranean-style villa.\n2. The person who loves country music is somewhere to the right of the rabbit owner.\n3. The person who loves pop music is not in the second house.\n4. Alice is somewhere to the right of Arnold.\n5. The person who loves jazz music and the photography enthusiast are next to each other.\n6. The person who loves rock music is the German.\n7. The woodworking hobbyist is somewhere to the right of the person in a modern-style house.\n8. The person who loves hip-hop music is the Norwegian.\n9. The cat lover is somewhere to the left of the woodworking hobbyist.\n10. Alice is the person who paints as a hobby.\n11. The person in a Craftsman-style house is Carol.\n12. Peter is the fish enthusiast.\n13. The person who loves hip-hop music is not in the fifth house.\n14. The person who loves pop music is not in the sixth house.\n15. The person who loves cooking is somewhere to the left of the Swedish person.\n16. The Dane is directly left of the person who keeps horses.\n17. The rabbit owner is somewhere to the left of the British person.\n18. There is one house between Alice and the person who loves country music.\n19. The person who paints as a hobby is the person living in a colonial-style house.\n20. The German is somewhere to the left of the photography enthusiast.\n21. Eric is the Norwegian.\n22. The person residing in a Victorian house is directly left of the person who enjoys gardening.\n23. There are two houses between the person who loves cooking and the person who loves classical music.\n24. The bird keeper is the person who loves cooking.\n25. The cat lover is directly left of Bob.\n26. Eric is not in the first house.\n27. Carol is somewhere to the right of the German.\n28. The rabbit owner is directly left of the person in a modern-style house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre",
+        "Animal",
+        "HouseStyle",
+        "Hobby",
+        "Nationality"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "pop",
+          "cat",
+          "mediterranean",
+          "knitting",
+          "chinese"
+        ],
+        [
+          "2",
+          "Bob",
+          "rock",
+          "bird",
+          "victorian",
+          "cooking",
+          "german"
+        ],
+        [
+          "3",
+          "Eric",
+          "hip hop",
+          "dog",
+          "ranch",
+          "gardening",
+          "norwegian"
+        ],
+        [
+          "4",
+          "Alice",
+          "jazz",
+          "rabbit",
+          "colonial",
+          "painting",
+          "swede"
+        ],
+        [
+          "5",
+          "Peter",
+          "classical",
+          "fish",
+          "modern",
+          "photography",
+          "dane"
+        ],
+        [
+          "6",
+          "Carol",
+          "country",
+          "horse",
+          "craftsman",
+          "woodworking",
+          "brit"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210970"
+  },
+  {
+    "id": "lgp-test-6x6-13",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Carol`, `Peter`, `Alice`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `iris`, `lilies`, `roses`, `tulips`, `carnations`\n - People have unique hair colors: `gray`, `red`, `blonde`, `auburn`, `brown`, `black`\n - Each person has a favorite color: `white`, `blue`, `green`, `purple`, `red`, `yellow`\n - People own unique car models: `tesla model 3`, `ford f150`, `honda civic`, `toyota camry`, `chevrolet silverado`, `bmw 3 series`\n - The mothers' names in different houses are unique: `Janelle`, `Holly`, `Kailyn`, `Sarah`, `Penny`, `Aniya`\n\n## Clues:\n1. There is one house between Arnold and the person who loves blue.\n2. The person whose mother's name is Janelle is directly left of the person who has auburn hair.\n3. The person who owns a Chevrolet Silverado and the person who owns a BMW 3 Series are next to each other.\n4. Carol is the person who loves a carnations arrangement.\n5. The person who loves the boquet of iris is the person who has gray hair.\n6. The person who loves the rose bouquet is The person whose mother's name is Kailyn.\n7. Bob is the person who loves the boquet of lilies.\n8. The person who loves a bouquet of daffodils is somewhere to the left of the person who owns a Chevrolet Silverado.\n9. Bob is in the third house.\n10. The person who owns a Honda Civic is in the sixth house.\n11. The person who loves the vase of tulips is somewhere to the left of The person whose mother's name is Penny.\n12. The person who has brown hair is in the fourth house.\n13. The person who has brown hair is somewhere to the left of the person who has blonde hair.\n14. The person whose mother's name is Holly is Bob.\n15. The person who owns a Ford F-150 is in the third house.\n16. Eric is directly left of the person who has auburn hair.\n17. The person who owns a Tesla Model 3 is the person who loves yellow.\n18. There are two houses between the person who loves purple and The person whose mother's name is Aniya.\n19. The person who loves purple is in the first house.\n20. The person whose favorite color is green is not in the fourth house.\n21. The person who has gray hair is the person who owns a BMW 3 Series.\n22. The person who has gray hair is somewhere to the left of Alice.\n23. The person whose mother's name is Holly is somewhere to the left of the person who loves the vase of tulips.\n24. The person who has red hair is the person who loves white.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower",
+        "HairColor",
+        "Color",
+        "CarModel",
+        "Mother"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "daffodils",
+          "black",
+          "purple",
+          "toyota camry",
+          "Janelle"
+        ],
+        [
+          "2",
+          "Carol",
+          "carnations",
+          "auburn",
+          "yellow",
+          "tesla model 3",
+          "Sarah"
+        ],
+        [
+          "3",
+          "Bob",
+          "lilies",
+          "red",
+          "white",
+          "ford f150",
+          "Holly"
+        ],
+        [
+          "4",
+          "Arnold",
+          "tulips",
+          "brown",
+          "red",
+          "chevrolet silverado",
+          "Aniya"
+        ],
+        [
+          "5",
+          "Peter",
+          "iris",
+          "gray",
+          "green",
+          "bmw 3 series",
+          "Penny"
+        ],
+        [
+          "6",
+          "Alice",
+          "roses",
+          "blonde",
+          "blue",
+          "honda civic",
+          "Kailyn"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210979"
+  },
+  {
+    "id": "lgp-test-6x6-14",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Alice`, `Peter`, `Eric`, `Arnold`\n - Each person has a unique level of education: `master`, `doctorate`, `high school`, `bachelor`, `trade school`, `associate`\n - People have unique favorite book genres: `romance`, `fantasy`, `historical fiction`, `science fiction`, `mystery`, `biography`\n - Each mother is accompanied by their child: `Alice`, `Samantha`, `Timothy`, `Meredith`, `Bella`, `Fred`\n - Everyone has something unique for lunch: `stew`, `soup`, `stir fry`, `spaghetti`, `pizza`, `grilled cheese`\n - People have unique favorite sports: `volleyball`, `basketball`, `tennis`, `baseball`, `swimming`, `soccer`\n\n## Clues:\n1. Alice is the person who loves swimming.\n2. The person's child is named Alice is directly left of the person who loves historical fiction books.\n3. The person who loves the stew is the person who loves historical fiction books.\n4. The person with a doctorate is the person who loves the soup.\n5. The person who loves science fiction books is in the sixth house.\n6. The person who attended trade school is directly left of the person who loves historical fiction books.\n7. The person who loves baseball and the person's child is named Bella are next to each other.\n8. The person with a master's degree is somewhere to the left of the person who loves mystery books.\n9. The person who loves soccer is somewhere to the left of the person who loves fantasy books.\n10. The person who loves stir fry is the person with an associate's degree.\n11. The person who is a pizza lover is Peter.\n12. Bob is not in the sixth house.\n13. The person's child is named Meredith is directly left of the person who loves fantasy books.\n14. The person's child is named Samantha is Eric.\n15. There is one house between the person who loves eating grilled cheese and Bob.\n16. The person who loves eating grilled cheese is the person's child is named Samantha.\n17. The person who loves volleyball is the person's child is named Samantha.\n18. The person's child is named Fred is somewhere to the left of the person's child is named Samantha.\n19. Bob is the person who loves tennis.\n20. The person who loves soccer is directly left of Carol.\n21. The person who loves eating grilled cheese is somewhere to the left of the person who loves mystery books.\n22. The person's child is named Meredith is the person who loves biography books.\n23. The person's child is named Meredith is the person who loves the soup.\n24. Carol is the person with a high school diploma.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Education",
+        "BookGenre",
+        "Children",
+        "Food",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "doctorate",
+          "biography",
+          "Meredith",
+          "soup",
+          "soccer"
+        ],
+        [
+          "2",
+          "Carol",
+          "high school",
+          "fantasy",
+          "Fred",
+          "spaghetti",
+          "basketball"
+        ],
+        [
+          "3",
+          "Eric",
+          "master",
+          "romance",
+          "Samantha",
+          "grilled cheese",
+          "volleyball"
+        ],
+        [
+          "4",
+          "Peter",
+          "trade school",
+          "mystery",
+          "Alice",
+          "pizza",
+          "baseball"
+        ],
+        [
+          "5",
+          "Bob",
+          "bachelor",
+          "historical fiction",
+          "Bella",
+          "stew",
+          "tennis"
+        ],
+        [
+          "6",
+          "Alice",
+          "associate",
+          "science fiction",
+          "Timothy",
+          "stir fry",
+          "swimming"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210989"
+  },
+  {
+    "id": "lgp-test-6x6-15",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Carol`, `Bob`, `Peter`, `Alice`\n - Each person lives in a unique style of house: `ranch`, `victorian`, `modern`, `colonial`, `craftsman`, `mediterranean`\n - Each person has a unique favorite drink: `coffee`, `water`, `root beer`, `tea`, `milk`, `boba tea`\n - Each person has an occupation: `engineer`, `nurse`, `doctor`, `artist`, `lawyer`, `teacher`\n - The people keep unique animals: `horse`, `fish`, `dog`, `cat`, `rabbit`, `bird`\n - Each person has a favorite color: `red`, `purple`, `white`, `green`, `yellow`, `blue`\n\n## Clues:\n1. The fish enthusiast is in the first house.\n2. Carol is somewhere to the left of the person in a Mediterranean-style villa.\n3. The bird keeper is the person who loves purple.\n4. The person in a ranch-style home is the one who only drinks water.\n5. The coffee drinker is not in the fourth house.\n6. The person living in a colonial-style house and the boba tea drinker are next to each other.\n7. The cat lover is the person who is a teacher.\n8. The person in a modern-style house is in the third house.\n9. The person who is an engineer and Peter are next to each other.\n10. Arnold is the person who is an artist.\n11. The person whose favorite color is red is Arnold.\n12. The coffee drinker is somewhere to the right of the person who is a teacher.\n13. The bird keeper is the person in a ranch-style home.\n14. The rabbit owner is in the sixth house.\n15. The boba tea drinker is Peter.\n16. Eric is the cat lover.\n17. The person who is a nurse is directly left of the person in a modern-style house.\n18. The bird keeper is Carol.\n19. There are two houses between the cat lover and the boba tea drinker.\n20. Bob is the tea drinker.\n21. The person residing in a Victorian house is the dog owner.\n22. The person whose favorite color is green is in the fourth house.\n23. The person who loves blue is the root beer lover.\n24. The person who loves white is not in the sixth house.\n25. Peter is the person who is a doctor.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle",
+        "Drink",
+        "Occupation",
+        "Animal",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "craftsman",
+          "milk",
+          "artist",
+          "fish",
+          "red"
+        ],
+        [
+          "2",
+          "Carol",
+          "ranch",
+          "water",
+          "nurse",
+          "bird",
+          "purple"
+        ],
+        [
+          "3",
+          "Eric",
+          "modern",
+          "root beer",
+          "teacher",
+          "cat",
+          "blue"
+        ],
+        [
+          "4",
+          "Bob",
+          "victorian",
+          "tea",
+          "lawyer",
+          "dog",
+          "green"
+        ],
+        [
+          "5",
+          "Alice",
+          "colonial",
+          "coffee",
+          "engineer",
+          "horse",
+          "white"
+        ],
+        [
+          "6",
+          "Peter",
+          "mediterranean",
+          "boba tea",
+          "doctor",
+          "rabbit",
+          "yellow"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.210997"
+  },
+  {
+    "id": "lgp-test-6x6-16",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Alice`, `Peter`, `Carol`, `Eric`\n - Each person prefers a unique type of vacation: `mountain`, `city`, `cultural`, `camping`, `beach`, `cruise`\n - Everyone has a favorite smoothie: `lime`, `desert`, `cherry`, `blueberry`, `dragonfruit`, `watermelon`\n - People have unique favorite sports: `tennis`, `volleyball`, `basketball`, `baseball`, `swimming`, `soccer`\n - Everyone has a unique favorite cigar: `blends`, `yellow monster`, `dunhill`, `pall mall`, `blue master`, `prince`\n - People have unique heights: `tall`, `very tall`, `average`, `super tall`, `very short`, `short`\n\n## Clues:\n1. Peter is the Prince smoker.\n2. The person who smokes many unique blends is the person who enjoys mountain retreats.\n3. The person who loves baseball is the person who is tall.\n4. The person who goes on cultural tours is the person who drinks Blueberry smoothies.\n5. The person who likes Cherry smoothies is not in the fourth house.\n6. The person who loves soccer is the person who enjoys camping trips.\n7. The person who is super tall is somewhere to the right of the person who likes going on cruises.\n8. The person who drinks Blueberry smoothies is the person who is tall.\n9. The person who is very tall is the Dunhill smoker.\n10. The person who enjoys mountain retreats is Eric.\n11. The person who is super tall is Alice.\n12. Bob is the person who smokes Blue Master.\n13. The person who loves volleyball is in the first house.\n14. Peter and the person who drinks Lime smoothies are next to each other.\n15. Carol is the person who likes Cherry smoothies.\n16. Peter is the person who is short.\n17. The person who smokes many unique blends is somewhere to the right of the Dragonfruit smoothie lover.\n18. The person who loves swimming is Carol.\n19. The person who is very short is the person who smokes Blue Master.\n20. The person who loves tennis is somewhere to the left of the person who is very short.\n21. The person who loves swimming is directly left of the person who enjoys camping trips.\n22. The person who drinks Blueberry smoothies is not in the third house.\n23. Alice is somewhere to the right of the person who drinks Lime smoothies.\n24. The person who loves tennis is the person who is super tall.\n25. The person who smokes Yellow Monster and the person who prefers city breaks are next to each other.\n26. The Watermelon smoothie lover is the person who is very short.\n27. The person who loves beach vacations is somewhere to the left of the person who is very tall.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation",
+        "Smoothie",
+        "FavoriteSport",
+        "Cigar",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cruise",
+          "dragonfruit",
+          "volleyball",
+          "prince",
+          "short"
+        ],
+        [
+          "2",
+          "Eric",
+          "mountain",
+          "lime",
+          "basketball",
+          "blends",
+          "average"
+        ],
+        [
+          "3",
+          "Alice",
+          "beach",
+          "desert",
+          "tennis",
+          "pall mall",
+          "super tall"
+        ],
+        [
+          "4",
+          "Arnold",
+          "cultural",
+          "blueberry",
+          "baseball",
+          "yellow monster",
+          "tall"
+        ],
+        [
+          "5",
+          "Carol",
+          "city",
+          "cherry",
+          "swimming",
+          "dunhill",
+          "very tall"
+        ],
+        [
+          "6",
+          "Bob",
+          "camping",
+          "watermelon",
+          "soccer",
+          "blue master",
+          "very short"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211005"
+  },
+  {
+    "id": "lgp-test-6x6-17",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Alice`, `Eric`, `Carol`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`, `Kailyn`, `Janelle`, `Penny`, `Sarah`\n - Everyone has something unique for lunch: `stir fry`, `stew`, `spaghetti`, `soup`, `pizza`, `grilled cheese`\n - The people keep unique animals: `dog`, `horse`, `cat`, `fish`, `rabbit`, `bird`\n - Everyone has a favorite smoothie: `watermelon`, `desert`, `lime`, `cherry`, `blueberry`, `dragonfruit`\n - Each person lives in a unique style of house: `mediterranean`, `craftsman`, `victorian`, `colonial`, `modern`, `ranch`\n\n## Clues:\n1. The person whose mother's name is Penny is the person residing in a Victorian house.\n2. The person in a modern-style house is The person whose mother's name is Kailyn.\n3. The person in a modern-style house is somewhere to the right of the person residing in a Victorian house.\n4. The person who drinks Blueberry smoothies is not in the sixth house.\n5. The person whose mother's name is Sarah is the person who drinks Blueberry smoothies.\n6. The person who likes Cherry smoothies is not in the third house.\n7. The person who likes Cherry smoothies is Eric.\n8. The person whose mother's name is Janelle is not in the third house.\n9. The person who loves the spaghetti eater is in the third house.\n10. The fish enthusiast is The person whose mother's name is Holly.\n11. The person who keeps horses is in the first house.\n12. The person in a Mediterranean-style villa is the person who loves the stew.\n13. The bird keeper is in the third house.\n14. The person living in a colonial-style house is the person who drinks Blueberry smoothies.\n15. Carol is the person who keeps horses.\n16. There are two houses between the Desert smoothie lover and Peter.\n17. The person who loves eating grilled cheese is the Dragonfruit smoothie lover.\n18. The person who is a pizza lover is somewhere to the right of the Dragonfruit smoothie lover.\n19. The person whose mother's name is Janelle is somewhere to the left of Arnold.\n20. Carol is directly left of The person whose mother's name is Aniya.\n21. The person in a ranch-style home is The person whose mother's name is Aniya.\n22. Arnold is somewhere to the right of the person in a Craftsman-style house.\n23. The cat lover is Bob.\n24. There is one house between the Watermelon smoothie lover and the person who is a pizza lover.\n25. There are two houses between the cat lover and the person who loves stir fry.\n26. Arnold is the rabbit owner.\n27. Peter is The person whose mother's name is Janelle.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Mother",
+        "Food",
+        "Animal",
+        "Smoothie",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "Penny",
+          "soup",
+          "horse",
+          "desert",
+          "victorian"
+        ],
+        [
+          "2",
+          "Bob",
+          "Aniya",
+          "grilled cheese",
+          "cat",
+          "dragonfruit",
+          "ranch"
+        ],
+        [
+          "3",
+          "Alice",
+          "Sarah",
+          "spaghetti",
+          "bird",
+          "blueberry",
+          "colonial"
+        ],
+        [
+          "4",
+          "Peter",
+          "Janelle",
+          "stew",
+          "dog",
+          "watermelon",
+          "mediterranean"
+        ],
+        [
+          "5",
+          "Eric",
+          "Holly",
+          "stir fry",
+          "fish",
+          "cherry",
+          "craftsman"
+        ],
+        [
+          "6",
+          "Arnold",
+          "Kailyn",
+          "pizza",
+          "rabbit",
+          "lime",
+          "modern"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211013"
+  },
+  {
+    "id": "lgp-test-6x6-18",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Carol`, `Eric`, `Alice`, `Peter`, `Arnold`\n - Each person prefers a unique type of vacation: `camping`, `cruise`, `mountain`, `cultural`, `city`, `beach`\n - Each person has a unique type of pet: `fish`, `hamster`, `bird`, `rabbit`, `dog`, `cat`\n - The people are of nationalities: `brit`, `swede`, `german`, `norwegian`, `dane`, `chinese`\n - People have unique favorite book genres: `biography`, `romance`, `mystery`, `fantasy`, `science fiction`, `historical fiction`\n - People own unique car models: `tesla model 3`, `bmw 3 series`, `honda civic`, `chevrolet silverado`, `toyota camry`, `ford f150`\n\n## Clues:\n1. The person who loves fantasy books is Peter.\n2. The Chinese is somewhere to the right of the Dane.\n3. The person who owns a Tesla Model 3 is the person with a pet hamster.\n4. Carol is the person who loves beach vacations.\n5. The person who has a cat is in the second house.\n6. There is one house between the person who loves mystery books and the person who prefers city breaks.\n7. The person who owns a Honda Civic is in the first house.\n8. The person who loves science fiction books is directly left of the person who prefers city breaks.\n9. The British person is the person who owns a Honda Civic.\n10. There is one house between the person who loves fantasy books and the person who owns a Toyota Camry.\n11. The person who keeps a pet bird is the person who owns a Toyota Camry.\n12. The Dane is not in the third house.\n13. Eric is not in the sixth house.\n14. The person who loves romance books is the person who enjoys camping trips.\n15. Arnold is the person who likes going on cruises.\n16. The person who owns a dog is in the fifth house.\n17. The person who enjoys camping trips is directly left of the person who owns a rabbit.\n18. The person who owns a Ford F-150 is the person who owns a rabbit.\n19. The person who loves fantasy books is directly left of Eric.\n20. The German is the person who owns a BMW 3 Series.\n21. The person who goes on cultural tours is not in the first house.\n22. The person who loves mystery books is not in the sixth house.\n23. The person who loves historical fiction books is somewhere to the left of the person who enjoys camping trips.\n24. The Dane is Bob.\n25. There is one house between the Dane and the Chinese.\n26. The Swedish person is somewhere to the right of the person who likes going on cruises.\n27. Eric is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation",
+        "Pet",
+        "Nationality",
+        "BookGenre",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "mountain",
+          "fish",
+          "brit",
+          "fantasy",
+          "honda civic"
+        ],
+        [
+          "2",
+          "Eric",
+          "cultural",
+          "cat",
+          "german",
+          "mystery",
+          "bmw 3 series"
+        ],
+        [
+          "3",
+          "Arnold",
+          "cruise",
+          "bird",
+          "norwegian",
+          "science fiction",
+          "toyota camry"
+        ],
+        [
+          "4",
+          "Bob",
+          "city",
+          "hamster",
+          "dane",
+          "historical fiction",
+          "tesla model 3"
+        ],
+        [
+          "5",
+          "Alice",
+          "camping",
+          "dog",
+          "swede",
+          "romance",
+          "chevrolet silverado"
+        ],
+        [
+          "6",
+          "Carol",
+          "beach",
+          "rabbit",
+          "chinese",
+          "biography",
+          "ford f150"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211021"
+  },
+  {
+    "id": "lgp-test-6x6-19",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Bob`, `Alice`, `Eric`, `Peter`\n - They all have a unique favorite flower: `carnations`, `tulips`, `lilies`, `roses`, `daffodils`, `iris`\n - People have unique favorite book genres: `science fiction`, `fantasy`, `romance`, `mystery`, `biography`, `historical fiction`\n - People use unique phone models: `huawei p50`, `oneplus 9`, `iphone 13`, `xiaomi mi 11`, `samsung galaxy s21`, `google pixel 6`\n - People have unique hair colors: `black`, `gray`, `red`, `auburn`, `blonde`, `brown`\n - Each person has a favorite color: `yellow`, `green`, `red`, `white`, `blue`, `purple`\n\n## Clues:\n1. There is one house between the person who has gray hair and the person who uses an iPhone 13.\n2. The person who loves the rose bouquet is the person who has blonde hair.\n3. There is one house between the person who has gray hair and the person who loves yellow.\n4. Carol is somewhere to the right of the person who loves a bouquet of daffodils.\n5. The person who loves white is somewhere to the left of Peter.\n6. The person who loves white is somewhere to the left of the person who loves science fiction books.\n7. Arnold is directly left of the person who loves historical fiction books.\n8. The person who uses a Huawei P50 is the person who loves a bouquet of daffodils.\n9. The person who loves purple is somewhere to the left of the person who loves fantasy books.\n10. Eric is the person who loves science fiction books.\n11. The person who loves a bouquet of daffodils is the person who has auburn hair.\n12. Alice is the person whose favorite color is green.\n13. The person who loves fantasy books is in the second house.\n14. The person who uses a Samsung Galaxy S21 is Carol.\n15. The person who uses a Xiaomi Mi 11 is not in the fourth house.\n16. Eric is the person who has auburn hair.\n17. The person who loves the rose bouquet is somewhere to the left of the person who has red hair.\n18. The person who loves historical fiction books is the person who loves the rose bouquet.\n19. The person who uses a Xiaomi Mi 11 is somewhere to the right of the person who loves white.\n20. The person who has black hair is in the fourth house.\n21. The person whose favorite color is red is the person who loves mystery books.\n22. The person who loves historical fiction books and the person who loves the vase of tulips are next to each other.\n23. The person who has brown hair is the person who uses a OnePlus 9.\n24. The person who loves romance books is somewhere to the left of the person who loves fantasy books.\n25. The person who loves the boquet of lilies is in the second house.\n26. The person who loves the boquet of iris is somewhere to the right of the person whose favorite color is green.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower",
+        "BookGenre",
+        "PhoneModel",
+        "HairColor",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "carnations",
+          "romance",
+          "oneplus 9",
+          "brown",
+          "purple"
+        ],
+        [
+          "2",
+          "Arnold",
+          "lilies",
+          "fantasy",
+          "google pixel 6",
+          "gray",
+          "white"
+        ],
+        [
+          "3",
+          "Alice",
+          "roses",
+          "historical fiction",
+          "xiaomi mi 11",
+          "blonde",
+          "green"
+        ],
+        [
+          "4",
+          "Peter",
+          "tulips",
+          "biography",
+          "iphone 13",
+          "black",
+          "yellow"
+        ],
+        [
+          "5",
+          "Eric",
+          "daffodils",
+          "science fiction",
+          "huawei p50",
+          "auburn",
+          "blue"
+        ],
+        [
+          "6",
+          "Carol",
+          "iris",
+          "mystery",
+          "samsung galaxy s21",
+          "red",
+          "red"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211029"
+  },
+  {
+    "id": "lgp-test-6x6-20",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Eric`, `Bob`, `Arnold`, `Carol`\n - Everyone has a unique favorite cigar: `pall mall`, `yellow monster`, `dunhill`, `blue master`, `prince`, `blends`\n - People have unique favorite music genres: `hip hop`, `jazz`, `country`, `pop`, `classical`, `rock`\n - Each person has a unique favorite drink: `water`, `milk`, `boba tea`, `tea`, `root beer`, `coffee`\n - The mothers' names in different houses are unique: `Kailyn`, `Penny`, `Janelle`, `Holly`, `Sarah`, `Aniya`\n - Everyone has something unique for lunch: `soup`, `pizza`, `spaghetti`, `stir fry`, `stew`, `grilled cheese`\n\n## Clues:\n1. Carol is directly left of the person who loves eating grilled cheese.\n2. Eric is not in the second house.\n3. The person whose mother's name is Holly is somewhere to the right of Carol.\n4. The person who loves eating grilled cheese is somewhere to the right of the person who loves rock music.\n5. Eric is directly left of Carol.\n6. The person who loves pop music is not in the third house.\n7. Eric is the person who loves country music.\n8. The person who loves classical music is in the sixth house.\n9. The coffee drinker is Bob.\n10. The person who smokes many unique blends is Peter.\n11. The person who loves the stew is not in the fifth house.\n12. The root beer lover is directly left of The person whose mother's name is Janelle.\n13. There are two houses between The person whose mother's name is Sarah and the person who smokes Yellow Monster.\n14. Eric is the tea drinker.\n15. The person partial to Pall Mall is somewhere to the right of the person who loves stir fry.\n16. The person who loves the soup is Bob.\n17. The person who loves hip-hop music is directly left of The person whose mother's name is Kailyn.\n18. Arnold is somewhere to the right of The person whose mother's name is Kailyn.\n19. The one who only drinks water is directly left of the person who smokes Blue Master.\n20. The person who loves the spaghetti eater is somewhere to the left of the person who smokes many unique blends.\n21. The person whose mother's name is Sarah is directly left of the person who loves jazz music.\n22. The person who loves hip-hop music is directly left of the root beer lover.\n23. The one who only drinks water is the person who loves the stew.\n24. The Dunhill smoker is not in the second house.\n25. The person who likes milk is The person whose mother's name is Janelle.\n26. Eric is The person whose mother's name is Aniya.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar",
+        "MusicGenre",
+        "Drink",
+        "Mother",
+        "Food"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "dunhill",
+          "country",
+          "tea",
+          "Aniya",
+          "spaghetti"
+        ],
+        [
+          "2",
+          "Carol",
+          "prince",
+          "rock",
+          "water",
+          "Penny",
+          "stew"
+        ],
+        [
+          "3",
+          "Alice",
+          "blue master",
+          "hip hop",
+          "boba tea",
+          "Sarah",
+          "grilled cheese"
+        ],
+        [
+          "4",
+          "Peter",
+          "blends",
+          "jazz",
+          "root beer",
+          "Kailyn",
+          "stir fry"
+        ],
+        [
+          "5",
+          "Arnold",
+          "pall mall",
+          "pop",
+          "milk",
+          "Janelle",
+          "pizza"
+        ],
+        [
+          "6",
+          "Bob",
+          "yellow monster",
+          "classical",
+          "coffee",
+          "Holly",
+          "soup"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211037"
+  },
+  {
+    "id": "lgp-test-6x6-21",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Alice`, `Arnold`, `Carol`, `Bob`\n - People have unique heights: `very tall`, `very short`, `tall`, `super tall`, `short`, `average`\n - Each person prefers a unique type of vacation: `cruise`, `mountain`, `camping`, `beach`, `city`, `cultural`\n - People have unique hair colors: `blonde`, `red`, `gray`, `brown`, `auburn`, `black`\n - Each person has a unique favorite drink: `tea`, `boba tea`, `milk`, `water`, `coffee`, `root beer`\n - They all have a unique favorite flower: `lilies`, `carnations`, `iris`, `tulips`, `roses`, `daffodils`\n\n## Clues:\n1. The person who loves the vase of tulips is the person who has auburn hair.\n2. The person who is short is somewhere to the right of Arnold.\n3. The person who goes on cultural tours is Arnold.\n4. The person who has auburn hair is Bob.\n5. The person who is very short is the person who loves a bouquet of daffodils.\n6. The person who loves the boquet of iris is the person who is very tall.\n7. Peter is somewhere to the right of the root beer lover.\n8. The person who loves beach vacations is directly left of the person who prefers city breaks.\n9. Bob is directly left of the coffee drinker.\n10. The person who is very short is the person who has gray hair.\n11. Eric is somewhere to the right of the tea drinker.\n12. The person who has red hair is the person who is tall.\n13. The person who is tall is somewhere to the right of the person who is short.\n14. The person who has black hair is the person who enjoys mountain retreats.\n15. The one who only drinks water is the person who prefers city breaks.\n16. The person who has brown hair is Carol.\n17. The person who has an average height is Arnold.\n18. The person who has brown hair is directly left of the person who likes milk.\n19. The root beer lover is the person who is very short.\n20. The person who is short is somewhere to the left of the coffee drinker.\n21. The person who enjoys camping trips is the person who loves a carnations arrangement.\n22. The person who is super tall and Arnold are next to each other.\n23. There is one house between the person who loves the boquet of lilies and Peter.\n24. The person who loves the vase of tulips is directly left of the person who has black hair.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height",
+        "Vacation",
+        "HairColor",
+        "Drink",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "very short",
+          "beach",
+          "gray",
+          "root beer",
+          "daffodils"
+        ],
+        [
+          "2",
+          "Carol",
+          "super tall",
+          "city",
+          "brown",
+          "water",
+          "roses"
+        ],
+        [
+          "3",
+          "Arnold",
+          "average",
+          "cultural",
+          "blonde",
+          "milk",
+          "lilies"
+        ],
+        [
+          "4",
+          "Bob",
+          "short",
+          "cruise",
+          "auburn",
+          "tea",
+          "tulips"
+        ],
+        [
+          "5",
+          "Peter",
+          "very tall",
+          "mountain",
+          "black",
+          "coffee",
+          "iris"
+        ],
+        [
+          "6",
+          "Eric",
+          "tall",
+          "camping",
+          "red",
+          "boba tea",
+          "carnations"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211046"
+  },
+  {
+    "id": "lgp-test-6x6-22",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Carol`, `Arnold`, `Bob`, `Alice`\n - Each person has a favorite color: `blue`, `red`, `green`, `yellow`, `purple`, `white`\n - Each person prefers a unique type of vacation: `city`, `beach`, `cruise`, `cultural`, `mountain`, `camping`\n - People have unique hair colors: `blonde`, `black`, `gray`, `brown`, `red`, `auburn`\n - Each person has an occupation: `artist`, `lawyer`, `engineer`, `teacher`, `doctor`, `nurse`\n - They all have a unique favorite flower: `roses`, `iris`, `daffodils`, `carnations`, `tulips`, `lilies`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is the person who is an artist.\n2. The person who enjoys camping trips is the person whose favorite color is green.\n3. The person who has brown hair is in the first house.\n4. The person who loves blue is somewhere to the right of the person who enjoys mountain retreats.\n5. The person who loves the vase of tulips is the person who enjoys mountain retreats.\n6. Eric is in the second house.\n7. The person who likes going on cruises and Arnold are next to each other.\n8. The person who loves yellow and the person who enjoys camping trips are next to each other.\n9. The person who loves yellow is somewhere to the left of Peter.\n10. The person who is a lawyer and Arnold are next to each other.\n11. The person who has red hair is Arnold.\n12. Alice is the person who is a doctor.\n13. The person who loves purple is directly left of the person who loves the vase of tulips.\n14. The person who has brown hair is somewhere to the left of the person who is an engineer.\n15. The person who has gray hair is somewhere to the left of the person whose favorite color is red.\n16. The person who is an artist is somewhere to the right of Arnold.\n17. Alice is the person who loves the boquet of lilies.\n18. The person whose favorite color is red is directly left of the person who prefers city breaks.\n19. The person who prefers city breaks is somewhere to the right of the person who has blonde hair.\n20. There is one house between Alice and Bob.\n21. The person who loves the rose bouquet is directly left of the person who is a nurse.\n22. The person whose favorite color is green is in the fourth house.\n23. The person who loves beach vacations is somewhere to the left of the person who has red hair.\n24. The person who has black hair is Alice.\n25. The person who loves blue is the person who loves a carnations arrangement.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color",
+        "Vacation",
+        "HairColor",
+        "Occupation",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "white",
+          "beach",
+          "brown",
+          "teacher",
+          "iris"
+        ],
+        [
+          "2",
+          "Eric",
+          "purple",
+          "cruise",
+          "gray",
+          "lawyer",
+          "roses"
+        ],
+        [
+          "3",
+          "Arnold",
+          "yellow",
+          "mountain",
+          "red",
+          "nurse",
+          "tulips"
+        ],
+        [
+          "4",
+          "Alice",
+          "green",
+          "camping",
+          "black",
+          "doctor",
+          "lilies"
+        ],
+        [
+          "5",
+          "Peter",
+          "red",
+          "cultural",
+          "blonde",
+          "artist",
+          "daffodils"
+        ],
+        [
+          "6",
+          "Bob",
+          "blue",
+          "city",
+          "auburn",
+          "engineer",
+          "carnations"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211053"
+  },
+  {
+    "id": "lgp-test-6x6-23",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`, `Bob`, `Alice`, `Carol`\n - The people keep unique animals: `rabbit`, `dog`, `fish`, `bird`, `cat`, `horse`\n - Each person has a unique hobby: `cooking`, `knitting`, `painting`, `woodworking`, `photography`, `gardening`\n - People have unique favorite sports: `basketball`, `soccer`, `swimming`, `tennis`, `baseball`, `volleyball`\n - Each person prefers a unique type of vacation: `cruise`, `cultural`, `city`, `camping`, `mountain`, `beach`\n - Each person has a unique favorite drink: `water`, `root beer`, `boba tea`, `tea`, `milk`, `coffee`\n\n## Clues:\n1. The person who enjoys camping trips is the person who loves cooking.\n2. The person who loves baseball is the photography enthusiast.\n3. The person who loves volleyball is somewhere to the left of the person who prefers city breaks.\n4. Carol is the person who loves tennis.\n5. The dog owner is the person who loves swimming.\n6. The photography enthusiast is the tea drinker.\n7. The person who loves baseball is directly left of the person who goes on cultural tours.\n8. Peter is the person who enjoys camping trips.\n9. The person who enjoys knitting is the person who keeps horses.\n10. The coffee drinker is directly left of the person who loves soccer.\n11. The person who enjoys mountain retreats is the person who loves soccer.\n12. The boba tea drinker is not in the fourth house.\n13. The cat lover is somewhere to the left of the dog owner.\n14. The person who loves beach vacations is Bob.\n15. The coffee drinker is somewhere to the right of Alice.\n16. The tea drinker is the fish enthusiast.\n17. The person who likes milk is Carol.\n18. There is one house between the rabbit owner and the woodworking hobbyist.\n19. The person who loves cooking is not in the third house.\n20. The person who loves tennis is the rabbit owner.\n21. The dog owner is directly left of the person who likes going on cruises.\n22. The woodworking hobbyist is the dog owner.\n23. There are two houses between the person who paints as a hobby and the person who keeps horses.\n24. Arnold is the root beer lover.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Animal",
+        "Hobby",
+        "FavoriteSport",
+        "Vacation",
+        "Drink"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cat",
+          "cooking",
+          "volleyball",
+          "camping",
+          "boba tea"
+        ],
+        [
+          "2",
+          "Carol",
+          "rabbit",
+          "painting",
+          "tennis",
+          "city",
+          "milk"
+        ],
+        [
+          "3",
+          "Bob",
+          "fish",
+          "photography",
+          "baseball",
+          "beach",
+          "tea"
+        ],
+        [
+          "4",
+          "Alice",
+          "dog",
+          "woodworking",
+          "swimming",
+          "cultural",
+          "water"
+        ],
+        [
+          "5",
+          "Eric",
+          "horse",
+          "knitting",
+          "basketball",
+          "cruise",
+          "coffee"
+        ],
+        [
+          "6",
+          "Arnold",
+          "bird",
+          "gardening",
+          "soccer",
+          "mountain",
+          "root beer"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211060"
+  },
+  {
+    "id": "lgp-test-6x6-24",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Bob`, `Carol`, `Peter`, `Eric`, `Alice`\n - People have unique favorite music genres: `classical`, `hip hop`, `jazz`, `pop`, `rock`, `country`\n - Everyone has something unique for lunch: `soup`, `stir fry`, `grilled cheese`, `spaghetti`, `stew`, `pizza`\n - Each person lives in a unique style of house: `craftsman`, `ranch`, `mediterranean`, `modern`, `colonial`, `victorian`\n - Each person has a unique birthday month: `feb`, `sept`, `april`, `may`, `jan`, `mar`\n - People have unique hair colors: `red`, `black`, `blonde`, `brown`, `gray`, `auburn`\n\n## Clues:\n1. The person whose birthday is in April is Bob.\n2. The person residing in a Victorian house is the person who loves stir fry.\n3. There are two houses between the person who loves jazz music and the person who has auburn hair.\n4. The person who loves the stew is in the second house.\n5. The person who loves stir fry is the person whose birthday is in February.\n6. The person who loves classical music is in the fifth house.\n7. The person who loves jazz music is Alice.\n8. The person living in a colonial-style house is in the fifth house.\n9. The person who has gray hair is the person who loves the stew.\n10. The person whose birthday is in March is the person who has red hair.\n11. The person who loves country music is directly left of the person whose birthday is in September.\n12. The person whose birthday is in May is somewhere to the left of the person who loves country music.\n13. The person in a ranch-style home is the person who loves the soup.\n14. The person whose birthday is in January is the person who loves the stew.\n15. The person who has blonde hair is the person in a Mediterranean-style villa.\n16. Arnold is somewhere to the right of the person whose birthday is in April.\n17. The person whose birthday is in February is the person who loves hip-hop music.\n18. The person who has blonde hair is somewhere to the left of Eric.\n19. The person residing in a Victorian house is Carol.\n20. The person who has black hair is the person in a ranch-style home.\n21. The person in a modern-style house is not in the second house.\n22. The person who loves the spaghetti eater is somewhere to the left of the person who loves country music.\n23. The person who is a pizza lover is Bob.\n24. The person who loves pop music is somewhere to the left of the person whose birthday is in September.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre",
+        "Food",
+        "HouseStyle",
+        "Birthday",
+        "HairColor"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "pop",
+          "spaghetti",
+          "mediterranean",
+          "may",
+          "blonde"
+        ],
+        [
+          "2",
+          "Eric",
+          "country",
+          "stew",
+          "craftsman",
+          "jan",
+          "gray"
+        ],
+        [
+          "3",
+          "Alice",
+          "jazz",
+          "soup",
+          "ranch",
+          "sept",
+          "black"
+        ],
+        [
+          "4",
+          "Bob",
+          "rock",
+          "pizza",
+          "modern",
+          "april",
+          "brown"
+        ],
+        [
+          "5",
+          "Arnold",
+          "classical",
+          "grilled cheese",
+          "colonial",
+          "mar",
+          "red"
+        ],
+        [
+          "6",
+          "Carol",
+          "hip hop",
+          "stir fry",
+          "victorian",
+          "feb",
+          "auburn"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211069"
+  },
+  {
+    "id": "lgp-test-6x6-25",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Alice`, `Peter`, `Arnold`, `Carol`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `tulips`, `iris`, `lilies`\n - People have unique heights: `very tall`, `super tall`, `average`, `short`, `very short`, `tall`\n - Each person has a favorite color: `blue`, `yellow`, `purple`, `red`, `green`, `white`\n - Everyone has a unique favorite cigar: `yellow monster`, `pall mall`, `prince`, `blue master`, `blends`, `dunhill`\n - People use unique phone models: `google pixel 6`, `iphone 13`, `xiaomi mi 11`, `samsung galaxy s21`, `huawei p50`, `oneplus 9`\n\n## Clues:\n1. The person who uses an iPhone 13 is the person who loves white.\n2. Peter is the person whose favorite color is red.\n3. The Prince smoker is directly left of the person partial to Pall Mall.\n4. The person who smokes Blue Master and the Dunhill smoker are next to each other.\n5. The person who loves blue is the person who uses a Xiaomi Mi 11.\n6. The person who loves white is Alice.\n7. The person who uses a OnePlus 9 is somewhere to the left of Arnold.\n8. The person who is tall is the person who smokes Blue Master.\n9. The person who uses a Samsung Galaxy S21 is the Dunhill smoker.\n10. Bob is directly left of the person who is very short.\n11. The person who loves a bouquet of daffodils is Eric.\n12. The person who loves the boquet of iris is the person who uses a OnePlus 9.\n13. The person who uses a Huawei P50 is the person who is very short.\n14. The person who smokes many unique blends is directly left of Peter.\n15. The Prince smoker is not in the first house.\n16. The person who is very tall is the person who loves a bouquet of daffodils.\n17. The person who uses a Google Pixel 6 is not in the fifth house.\n18. The person who is tall is not in the third house.\n19. The person who uses a Huawei P50 is somewhere to the left of the person who uses a Samsung Galaxy S21.\n20. Arnold is somewhere to the left of the person who is short.\n21. The person who loves the vase of tulips is not in the first house.\n22. The person who loves the boquet of lilies is directly left of the person who loves yellow.\n23. Arnold is the person who loves purple.\n24. The person who uses a OnePlus 9 and the person who uses a Samsung Galaxy S21 are next to each other.\n25. The person who has an average height is not in the first house.\n26. The person who loves the rose bouquet is Alice.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower",
+        "Height",
+        "Color",
+        "Cigar",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "carnations",
+          "super tall",
+          "blue",
+          "blends",
+          "xiaomi mi 11"
+        ],
+        [
+          "2",
+          "Peter",
+          "lilies",
+          "very short",
+          "red",
+          "prince",
+          "huawei p50"
+        ],
+        [
+          "3",
+          "Eric",
+          "daffodils",
+          "very tall",
+          "yellow",
+          "pall mall",
+          "google pixel 6"
+        ],
+        [
+          "4",
+          "Carol",
+          "iris",
+          "tall",
+          "green",
+          "blue master",
+          "oneplus 9"
+        ],
+        [
+          "5",
+          "Arnold",
+          "tulips",
+          "average",
+          "purple",
+          "dunhill",
+          "samsung galaxy s21"
+        ],
+        [
+          "6",
+          "Alice",
+          "roses",
+          "short",
+          "white",
+          "yellow monster",
+          "iphone 13"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211078"
+  },
+  {
+    "id": "lgp-test-6x6-26",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Carol`, `Eric`, `Alice`, `Bob`, `Arnold`\n - People use unique phone models: `huawei p50`, `google pixel 6`, `xiaomi mi 11`, `iphone 13`, `samsung galaxy s21`, `oneplus 9`\n - Everyone has a unique favorite cigar: `dunhill`, `pall mall`, `blends`, `blue master`, `prince`, `yellow monster`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `tulips`, `lilies`, `iris`\n - Each person has a favorite color: `yellow`, `red`, `green`, `blue`, `white`, `purple`\n - People have unique favorite sports: `soccer`, `tennis`, `basketball`, `volleyball`, `swimming`, `baseball`\n\n## Clues:\n1. The person who uses a OnePlus 9 is in the second house.\n2. The person who uses a Xiaomi Mi 11 is somewhere to the left of the person who uses a Huawei P50.\n3. Carol is the person who loves a carnations arrangement.\n4. The person who loves purple is directly left of the person partial to Pall Mall.\n5. The person whose favorite color is green is the person who smokes Blue Master.\n6. The person who loves yellow and the person who loves blue are next to each other.\n7. Eric is somewhere to the right of the person who uses a Samsung Galaxy S21.\n8. There are two houses between Carol and the person who loves a bouquet of daffodils.\n9. The Prince smoker is the person who loves basketball.\n10. The Dunhill smoker is the person who loves volleyball.\n11. The person who loves swimming is the person who uses a Google Pixel 6.\n12. The person who uses a Huawei P50 is directly left of the person who loves white.\n13. The person who uses a OnePlus 9 and the person who loves the rose bouquet are next to each other.\n14. The person who loves the boquet of iris is somewhere to the left of Eric.\n15. The Dunhill smoker is Peter.\n16. The person who loves blue is Peter.\n17. The person who loves the vase of tulips is Bob.\n18. Alice is in the first house.\n19. The person who loves baseball is directly left of the person who smokes Blue Master.\n20. The person who uses a Google Pixel 6 is somewhere to the right of the person who smokes many unique blends.\n21. The person who loves soccer is Carol.\n22. The person who loves a carnations arrangement is directly left of the person who smokes many unique blends.\n23. Eric is the person who smokes many unique blends.\n24. The person who loves volleyball is the person who uses an iPhone 13.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel",
+        "Cigar",
+        "Flower",
+        "Color",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "samsung galaxy s21",
+          "yellow monster",
+          "iris",
+          "red",
+          "baseball"
+        ],
+        [
+          "2",
+          "Carol",
+          "oneplus 9",
+          "blue master",
+          "carnations",
+          "green",
+          "soccer"
+        ],
+        [
+          "3",
+          "Eric",
+          "xiaomi mi 11",
+          "blends",
+          "roses",
+          "yellow",
+          "tennis"
+        ],
+        [
+          "4",
+          "Peter",
+          "iphone 13",
+          "dunhill",
+          "lilies",
+          "blue",
+          "volleyball"
+        ],
+        [
+          "5",
+          "Arnold",
+          "huawei p50",
+          "prince",
+          "daffodils",
+          "purple",
+          "basketball"
+        ],
+        [
+          "6",
+          "Bob",
+          "google pixel 6",
+          "pall mall",
+          "tulips",
+          "white",
+          "swimming"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211085"
+  },
+  {
+    "id": "lgp-test-6x6-27",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Bob`, `Arnold`, `Carol`, `Alice`\n - Everyone has a favorite smoothie: `cherry`, `blueberry`, `dragonfruit`, `watermelon`, `lime`, `desert`\n - The people keep unique animals: `bird`, `cat`, `dog`, `rabbit`, `horse`, `fish`\n - The mothers' names in different houses are unique: `Sarah`, `Holly`, `Janelle`, `Aniya`, `Kailyn`, `Penny`\n - They all have a unique favorite flower: `lilies`, `iris`, `carnations`, `tulips`, `roses`, `daffodils`\n - Each person has an occupation: `lawyer`, `doctor`, `teacher`, `engineer`, `artist`, `nurse`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is The person whose mother's name is Holly.\n2. The person who likes Cherry smoothies is not in the third house.\n3. The person who is a nurse is directly left of Peter.\n4. The person who is an artist is the person who loves the rose bouquet.\n5. The person who drinks Lime smoothies is not in the fifth house.\n6. The cat lover is The person whose mother's name is Sarah.\n7. Bob is the Desert smoothie lover.\n8. The Dragonfruit smoothie lover is in the sixth house.\n9. The person who loves the boquet of lilies and The person whose mother's name is Penny are next to each other.\n10. Peter is the bird keeper.\n11. The person whose mother's name is Kailyn is the person who loves the boquet of iris.\n12. Carol is somewhere to the left of the person who likes Cherry smoothies.\n13. The person who is a doctor is directly left of The person whose mother's name is Holly.\n14. Bob is The person whose mother's name is Janelle.\n15. Arnold is in the third house.\n16. Alice is the person who is an engineer.\n17. The Dragonfruit smoothie lover is the person who is an artist.\n18. The dog owner is directly left of the person who is a teacher.\n19. The person who keeps horses is The person whose mother's name is Aniya.\n20. The person who loves the boquet of lilies is directly left of the person who loves a carnations arrangement.\n21. There is one house between the Desert smoothie lover and the person who loves a carnations arrangement.\n22. The person who drinks Lime smoothies is somewhere to the right of The person whose mother's name is Aniya.\n23. The person whose mother's name is Kailyn is directly left of the fish enthusiast.\n24. The Watermelon smoothie lover is the rabbit owner.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie",
+        "Animal",
+        "Mother",
+        "Flower",
+        "Occupation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "desert",
+          "dog",
+          "Janelle",
+          "tulips",
+          "lawyer"
+        ],
+        [
+          "2",
+          "Carol",
+          "blueberry",
+          "horse",
+          "Aniya",
+          "lilies",
+          "teacher"
+        ],
+        [
+          "3",
+          "Arnold",
+          "watermelon",
+          "rabbit",
+          "Penny",
+          "carnations",
+          "nurse"
+        ],
+        [
+          "4",
+          "Peter",
+          "lime",
+          "bird",
+          "Kailyn",
+          "iris",
+          "doctor"
+        ],
+        [
+          "5",
+          "Alice",
+          "cherry",
+          "fish",
+          "Holly",
+          "daffodils",
+          "engineer"
+        ],
+        [
+          "6",
+          "Eric",
+          "dragonfruit",
+          "cat",
+          "Sarah",
+          "roses",
+          "artist"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211094"
+  },
+  {
+    "id": "lgp-test-6x6-28",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Arnold`, `Bob`, `Eric`, `Carol`\n - Everyone has something unique for lunch: `stir fry`, `grilled cheese`, `spaghetti`, `pizza`, `soup`, `stew`\n - People use unique phone models: `xiaomi mi 11`, `iphone 13`, `oneplus 9`, `google pixel 6`, `samsung galaxy s21`, `huawei p50`\n - People have unique favorite music genres: `pop`, `country`, `classical`, `jazz`, `rock`, `hip hop`\n - Each person has a unique favorite drink: `water`, `boba tea`, `milk`, `root beer`, `tea`, `coffee`\n - Each person has an occupation: `nurse`, `lawyer`, `artist`, `doctor`, `teacher`, `engineer`\n\n## Clues:\n1. The tea drinker is somewhere to the right of the person who is a teacher.\n2. Eric is the person who uses a Google Pixel 6.\n3. The person who loves the spaghetti eater and the person who loves hip-hop music are next to each other.\n4. The boba tea drinker is somewhere to the left of the person who uses a Google Pixel 6.\n5. The person who uses a Huawei P50 is somewhere to the left of the person who uses a OnePlus 9.\n6. The person who is a pizza lover is the person who loves rock music.\n7. The person who is a pizza lover is somewhere to the right of the person who loves the soup.\n8. The person who likes milk is somewhere to the left of the person who loves hip-hop music.\n9. The person who uses a OnePlus 9 is Arnold.\n10. The person who is a lawyer is the person who loves stir fry.\n11. The person who is an artist is Alice.\n12. Bob is the person who loves classical music.\n13. The person who loves rock music is directly left of the person who loves classical music.\n14. The person who is a doctor is the person who uses a Huawei P50.\n15. Bob is the root beer lover.\n16. There are two houses between the person who is an engineer and the person who uses a OnePlus 9.\n17. Eric is the person who loves jazz music.\n18. The person who uses a Xiaomi Mi 11 is the person who is an artist.\n19. Carol is directly left of the person who uses a Huawei P50.\n20. The person who is a lawyer is the coffee drinker.\n21. The person who loves eating grilled cheese is the person who loves pop music.\n22. The person who loves hip-hop music is the person who uses a Samsung Galaxy S21.\n23. The coffee drinker is somewhere to the left of the person who likes milk.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food",
+        "PhoneModel",
+        "MusicGenre",
+        "Drink",
+        "Occupation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "soup",
+          "xiaomi mi 11",
+          "country",
+          "boba tea",
+          "artist"
+        ],
+        [
+          "2",
+          "Eric",
+          "stir fry",
+          "google pixel 6",
+          "jazz",
+          "coffee",
+          "lawyer"
+        ],
+        [
+          "3",
+          "Carol",
+          "pizza",
+          "iphone 13",
+          "rock",
+          "milk",
+          "engineer"
+        ],
+        [
+          "4",
+          "Bob",
+          "spaghetti",
+          "huawei p50",
+          "classical",
+          "root beer",
+          "doctor"
+        ],
+        [
+          "5",
+          "Peter",
+          "stew",
+          "samsung galaxy s21",
+          "hip hop",
+          "water",
+          "teacher"
+        ],
+        [
+          "6",
+          "Arnold",
+          "grilled cheese",
+          "oneplus 9",
+          "pop",
+          "tea",
+          "nurse"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211101"
+  },
+  {
+    "id": "lgp-test-6x6-29",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Carol`, `Peter`, `Eric`, `Bob`, `Alice`\n - Each person lives in a unique style of house: `ranch`, `colonial`, `modern`, `craftsman`, `mediterranean`, `victorian`\n - Everyone has something unique for lunch: `pizza`, `stew`, `spaghetti`, `grilled cheese`, `stir fry`, `soup`\n - Each person prefers a unique type of vacation: `cultural`, `cruise`, `mountain`, `camping`, `city`, `beach`\n - People have unique heights: `average`, `very tall`, `very short`, `short`, `tall`, `super tall`\n - Everyone has a unique favorite cigar: `yellow monster`, `prince`, `dunhill`, `pall mall`, `blue master`, `blends`\n\n## Clues:\n1. Alice is in the fifth house.\n2. The person who loves stir fry is the person living in a colonial-style house.\n3. Alice is the person who loves the spaghetti eater.\n4. Arnold is the person who loves the stew.\n5. There is one house between the person who has an average height and Peter.\n6. The person in a Craftsman-style house is not in the third house.\n7. The person who has an average height is the person who loves stir fry.\n8. The person who loves beach vacations is the person in a ranch-style home.\n9. Eric is in the fourth house.\n10. There is one house between the person living in a colonial-style house and the person who enjoys camping trips.\n11. The person who enjoys mountain retreats is the person who smokes Yellow Monster.\n12. The person who enjoys mountain retreats is the person who is very tall.\n13. The person who enjoys mountain retreats and the Dunhill smoker are next to each other.\n14. The person who loves the spaghetti eater is the person residing in a Victorian house.\n15. The person who is tall is the person who loves beach vacations.\n16. The person who is tall is somewhere to the left of the person residing in a Victorian house.\n17. The person who loves stir fry is directly left of Bob.\n18. The person in a modern-style house is somewhere to the left of Alice.\n19. The person in a Craftsman-style house is somewhere to the left of the person who is short.\n20. The person who loves stir fry is somewhere to the left of the Prince smoker.\n21. There are two houses between the person who loves eating grilled cheese and the person who is super tall.\n22. The person in a ranch-style home is the person who smokes Blue Master.\n23. The person who smokes many unique blends is directly left of the person who smokes Blue Master.\n24. The person who goes on cultural tours is the person who is a pizza lover.\n25. The person who is a pizza lover is somewhere to the left of the person who likes going on cruises.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle",
+        "Food",
+        "Vacation",
+        "Height",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "colonial",
+          "stir fry",
+          "city",
+          "average",
+          "pall mall"
+        ],
+        [
+          "2",
+          "Bob",
+          "craftsman",
+          "pizza",
+          "cultural",
+          "very short",
+          "prince"
+        ],
+        [
+          "3",
+          "Peter",
+          "modern",
+          "grilled cheese",
+          "camping",
+          "short",
+          "blends"
+        ],
+        [
+          "4",
+          "Eric",
+          "ranch",
+          "soup",
+          "beach",
+          "tall",
+          "blue master"
+        ],
+        [
+          "5",
+          "Alice",
+          "victorian",
+          "spaghetti",
+          "mountain",
+          "very tall",
+          "yellow monster"
+        ],
+        [
+          "6",
+          "Arnold",
+          "mediterranean",
+          "stew",
+          "cruise",
+          "super tall",
+          "dunhill"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211109"
+  },
+  {
+    "id": "lgp-test-6x6-30",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Alice`, `Arnold`, `Carol`, `Peter`\n - The people are of nationalities: `swede`, `norwegian`, `german`, `chinese`, `dane`, `brit`\n - They all have a unique favorite flower: `daffodils`, `roses`, `carnations`, `lilies`, `tulips`, `iris`\n - Each person has a unique favorite drink: `water`, `tea`, `root beer`, `coffee`, `boba tea`, `milk`\n - Each person has a favorite color: `green`, `blue`, `purple`, `red`, `yellow`, `white`\n - Each person has a unique level of education: `high school`, `associate`, `bachelor`, `doctorate`, `trade school`, `master`\n\n## Clues:\n1. Arnold is somewhere to the left of the person who loves a carnations arrangement.\n2. The coffee drinker is the person who loves the vase of tulips.\n3. The German is directly left of the one who only drinks water.\n4. The person whose favorite color is green is Alice.\n5. The person who loves white is the coffee drinker.\n6. The coffee drinker is the person with a bachelor's degree.\n7. The one who only drinks water is the person who loves purple.\n8. The person who loves a bouquet of daffodils is the person who loves blue.\n9. The tea drinker is directly left of the person who loves a carnations arrangement.\n10. The person with a high school diploma is Carol.\n11. There is one house between the person who loves the boquet of iris and Peter.\n12. The person with an associate's degree is the person whose favorite color is green.\n13. Arnold is the Chinese.\n14. The person whose favorite color is red is in the third house.\n15. The boba tea drinker and the person who loves the vase of tulips are next to each other.\n16. Alice is directly left of the Swedish person.\n17. There is one house between the British person and the Chinese.\n18. The person who loves the rose bouquet is somewhere to the left of the person with a bachelor's degree.\n19. The person who loves yellow is not in the first house.\n20. There are two houses between the person who likes milk and Peter.\n21. Bob is the person with a master's degree.\n22. The Swedish person is the person with a master's degree.\n23. The person who attended trade school is somewhere to the left of the Chinese.\n24. The German is in the fifth house.\n25. The Norwegian is the one who only drinks water.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Nationality",
+        "Flower",
+        "Drink",
+        "Color",
+        "Education"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "dane",
+          "daffodils",
+          "root beer",
+          "blue",
+          "trade school"
+        ],
+        [
+          "2",
+          "Alice",
+          "brit",
+          "roses",
+          "milk",
+          "green",
+          "associate"
+        ],
+        [
+          "3",
+          "Bob",
+          "swede",
+          "iris",
+          "boba tea",
+          "red",
+          "master"
+        ],
+        [
+          "4",
+          "Arnold",
+          "chinese",
+          "tulips",
+          "coffee",
+          "white",
+          "bachelor"
+        ],
+        [
+          "5",
+          "Peter",
+          "german",
+          "lilies",
+          "tea",
+          "yellow",
+          "doctorate"
+        ],
+        [
+          "6",
+          "Carol",
+          "norwegian",
+          "carnations",
+          "water",
+          "purple",
+          "high school"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211118"
+  },
+  {
+    "id": "lgp-test-6x6-31",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Bob`, `Arnold`, `Carol`, `Eric`, `Peter`\n - People use unique phone models: `xiaomi mi 11`, `google pixel 6`, `samsung galaxy s21`, `oneplus 9`, `huawei p50`, `iphone 13`\n - People have unique favorite book genres: `romance`, `historical fiction`, `fantasy`, `mystery`, `science fiction`, `biography`\n - They all have a unique favorite flower: `tulips`, `roses`, `carnations`, `daffodils`, `iris`, `lilies`\n - The people keep unique animals: `dog`, `cat`, `bird`, `fish`, `rabbit`, `horse`\n - Each person has a unique level of education: `trade school`, `high school`, `master`, `associate`, `bachelor`, `doctorate`\n\n## Clues:\n1. The bird keeper is the person who uses a Google Pixel 6.\n2. The person who loves a bouquet of daffodils is the person with an associate's degree.\n3. The person who uses a OnePlus 9 is not in the fourth house.\n4. There are two houses between the person with a master's degree and the rabbit owner.\n5. The person who loves a carnations arrangement is Arnold.\n6. The person who loves the boquet of lilies is not in the sixth house.\n7. The person who loves the vase of tulips is Carol.\n8. The person with a high school diploma is Bob.\n9. The person who attended trade school is somewhere to the left of the person who keeps horses.\n10. The person who loves mystery books is Eric.\n11. The fish enthusiast is directly left of Carol.\n12. Bob is the fish enthusiast.\n13. Eric is the dog owner.\n14. The person who loves a carnations arrangement is the person who uses a Google Pixel 6.\n15. The person who loves fantasy books is in the second house.\n16. The person who uses a Samsung Galaxy S21 is the person who loves the boquet of iris.\n17. Alice is the person with an associate's degree.\n18. The person who uses a Google Pixel 6 is not in the second house.\n19. The dog owner is the person with a doctorate.\n20. The fish enthusiast is the person who uses a Samsung Galaxy S21.\n21. The person who uses an iPhone 13 is somewhere to the right of the person who loves fantasy books.\n22. The person who loves mystery books is somewhere to the right of the person who loves the boquet of iris.\n23. Alice is the person who uses an iPhone 13.\n24. The person who attended trade school is not in the fourth house.\n25. The person who loves biography books is directly left of Eric.\n26. There is one house between the rabbit owner and the person who loves historical fiction books.\n27. The person who loves the boquet of iris is somewhere to the right of the person who uses a Xiaomi Mi 11.\n28. The person who loves science fiction books is the person who uses a Samsung Galaxy S21.\n29. The person who loves the boquet of lilies is not in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel",
+        "BookGenre",
+        "Flower",
+        "Animal",
+        "Education"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "google pixel 6",
+          "romance",
+          "carnations",
+          "bird",
+          "master"
+        ],
+        [
+          "2",
+          "Peter",
+          "xiaomi mi 11",
+          "fantasy",
+          "roses",
+          "cat",
+          "trade school"
+        ],
+        [
+          "3",
+          "Bob",
+          "samsung galaxy s21",
+          "science fiction",
+          "iris",
+          "fish",
+          "high school"
+        ],
+        [
+          "4",
+          "Carol",
+          "huawei p50",
+          "biography",
+          "tulips",
+          "rabbit",
+          "bachelor"
+        ],
+        [
+          "5",
+          "Eric",
+          "oneplus 9",
+          "mystery",
+          "lilies",
+          "dog",
+          "doctorate"
+        ],
+        [
+          "6",
+          "Alice",
+          "iphone 13",
+          "historical fiction",
+          "daffodils",
+          "horse",
+          "associate"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211125"
+  },
+  {
+    "id": "lgp-test-6x6-32",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Eric`, `Carol`, `Alice`, `Arnold`\n - The people keep unique animals: `rabbit`, `dog`, `horse`, `fish`, `bird`, `cat`\n - People have unique favorite sports: `basketball`, `swimming`, `tennis`, `soccer`, `baseball`, `volleyball`\n - People have unique hair colors: `blonde`, `gray`, `auburn`, `red`, `black`, `brown`\n - People have unique heights: `average`, `very short`, `very tall`, `tall`, `super tall`, `short`\n - Everyone has a unique favorite cigar: `pall mall`, `yellow monster`, `blue master`, `prince`, `dunhill`, `blends`\n\n## Clues:\n1. The person who is very tall and the dog owner are next to each other.\n2. There are two houses between the person who loves tennis and the person who has an average height.\n3. The cat lover is the person who loves baseball.\n4. The person who is very short is not in the fifth house.\n5. There is one house between the fish enthusiast and the person who has red hair.\n6. The cat lover is somewhere to the left of the Dunhill smoker.\n7. The rabbit owner is somewhere to the left of the person who is super tall.\n8. The Dunhill smoker is Alice.\n9. The person who has red hair is the Dunhill smoker.\n10. The person who is super tall is not in the fifth house.\n11. The Prince smoker is somewhere to the left of the person who smokes Yellow Monster.\n12. The person who loves volleyball is somewhere to the right of the person who smokes Yellow Monster.\n13. The person who smokes Blue Master is directly left of the person who has black hair.\n14. There is one house between the person who loves basketball and the person who smokes Blue Master.\n15. The person who smokes Yellow Monster is the person who is tall.\n16. Bob and the fish enthusiast are next to each other.\n17. The Dunhill smoker is the person who loves soccer.\n18. The person who loves tennis is not in the third house.\n19. Arnold is the person who smokes many unique blends.\n20. The Prince smoker is Peter.\n21. There is one house between the person who has blonde hair and the person who is tall.\n22. The person who loves swimming is directly left of Alice.\n23. The person who is super tall is Eric.\n24. The person who is short is the rabbit owner.\n25. The person who keeps horses is not in the fifth house.\n26. The cat lover and the person who has brown hair are next to each other.\n27. The person who is short and the person who has auburn hair are next to each other.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Animal",
+        "FavoriteSport",
+        "HairColor",
+        "Height",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "rabbit",
+          "tennis",
+          "blonde",
+          "short",
+          "prince"
+        ],
+        [
+          "2",
+          "Eric",
+          "horse",
+          "basketball",
+          "auburn",
+          "super tall",
+          "pall mall"
+        ],
+        [
+          "3",
+          "Bob",
+          "cat",
+          "baseball",
+          "gray",
+          "tall",
+          "yellow monster"
+        ],
+        [
+          "4",
+          "Carol",
+          "fish",
+          "volleyball",
+          "brown",
+          "average",
+          "blue master"
+        ],
+        [
+          "5",
+          "Arnold",
+          "bird",
+          "swimming",
+          "black",
+          "very tall",
+          "blends"
+        ],
+        [
+          "6",
+          "Alice",
+          "dog",
+          "soccer",
+          "red",
+          "very short",
+          "dunhill"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211133"
+  },
+  {
+    "id": "lgp-test-6x6-33",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Carol`, `Bob`, `Peter`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `lilies`, `tulips`, `roses`, `daffodils`, `iris`, `carnations`\n - The people are of nationalities: `norwegian`, `dane`, `swede`, `german`, `brit`, `chinese`\n - Everyone has a favorite smoothie: `cherry`, `watermelon`, `desert`, `dragonfruit`, `blueberry`, `lime`\n - Each person has a unique hobby: `photography`, `cooking`, `knitting`, `woodworking`, `painting`, `gardening`\n - Each person has a unique type of pet: `rabbit`, `hamster`, `fish`, `cat`, `bird`, `dog`\n\n## Clues:\n1. The Swedish person is the person who loves cooking.\n2. The person who drinks Blueberry smoothies is Alice.\n3. The person who loves the rose bouquet is not in the sixth house.\n4. The photography enthusiast is somewhere to the right of the Dragonfruit smoothie lover.\n5. The person who loves cooking is the person who loves a bouquet of daffodils.\n6. The person who loves the boquet of lilies and the person who loves the boquet of iris are next to each other.\n7. The person who paints as a hobby is Alice.\n8. Arnold is somewhere to the right of the Watermelon smoothie lover.\n9. The woodworking hobbyist is somewhere to the right of the German.\n10. The woodworking hobbyist is somewhere to the left of the person who loves a bouquet of daffodils.\n11. The Dane is the Watermelon smoothie lover.\n12. The Dragonfruit smoothie lover is Peter.\n13. The person who drinks Lime smoothies is the woodworking hobbyist.\n14. There is one house between the Watermelon smoothie lover and the person who likes Cherry smoothies.\n15. The person who keeps a pet bird is the person who drinks Blueberry smoothies.\n16. The Desert smoothie lover is the person who enjoys gardening.\n17. The person with a pet hamster is in the fifth house.\n18. The person who owns a dog is the Norwegian.\n19. The person who has a cat is somewhere to the right of Bob.\n20. The British person is directly left of Carol.\n21. The person who loves the boquet of iris is Arnold.\n22. The German is somewhere to the right of the person who loves a carnations arrangement.\n23. Bob is the photography enthusiast.\n24. The person with an aquarium of fish is Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower",
+        "Nationality",
+        "Smoothie",
+        "Hobby",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "carnations",
+          "norwegian",
+          "dragonfruit",
+          "knitting",
+          "dog"
+        ],
+        [
+          "2",
+          "Alice",
+          "roses",
+          "german",
+          "blueberry",
+          "painting",
+          "bird"
+        ],
+        [
+          "3",
+          "Bob",
+          "lilies",
+          "dane",
+          "watermelon",
+          "photography",
+          "rabbit"
+        ],
+        [
+          "4",
+          "Arnold",
+          "iris",
+          "brit",
+          "lime",
+          "woodworking",
+          "fish"
+        ],
+        [
+          "5",
+          "Carol",
+          "daffodils",
+          "swede",
+          "cherry",
+          "cooking",
+          "hamster"
+        ],
+        [
+          "6",
+          "Eric",
+          "tulips",
+          "chinese",
+          "desert",
+          "gardening",
+          "cat"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211141"
+  },
+  {
+    "id": "lgp-test-6x6-34",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Peter`, `Carol`, `Alice`, `Eric`\n - Everyone has something unique for lunch: `stir fry`, `stew`, `soup`, `pizza`, `grilled cheese`, `spaghetti`\n - Each person has an occupation: `doctor`, `artist`, `engineer`, `teacher`, `lawyer`, `nurse`\n - Each person has a unique type of pet: `dog`, `bird`, `hamster`, `cat`, `fish`, `rabbit`\n - People have unique favorite music genres: `pop`, `country`, `jazz`, `classical`, `rock`, `hip hop`\n - Everyone has a favorite smoothie: `blueberry`, `desert`, `watermelon`, `cherry`, `lime`, `dragonfruit`\n\n## Clues:\n1. The person who loves the spaghetti eater is the Dragonfruit smoothie lover.\n2. The person who drinks Lime smoothies is in the second house.\n3. Carol is somewhere to the left of the Desert smoothie lover.\n4. The person who is an engineer is not in the second house.\n5. The person who loves the soup is in the second house.\n6. The person who owns a dog is not in the second house.\n7. The person who is a pizza lover is Alice.\n8. Arnold is somewhere to the left of Eric.\n9. The person who loves classical music is the Dragonfruit smoothie lover.\n10. The person who owns a rabbit is somewhere to the left of the Desert smoothie lover.\n11. The person who is a nurse is not in the sixth house.\n12. There are two houses between the person who is a nurse and the person who loves the spaghetti eater.\n13. The person who likes Cherry smoothies is the person with an aquarium of fish.\n14. The person who has a cat is Alice.\n15. The person who likes Cherry smoothies is somewhere to the right of the Desert smoothie lover.\n16. There is one house between the person who drinks Blueberry smoothies and the person who loves eating grilled cheese.\n17. The person who loves classical music is somewhere to the left of the person who loves the stew.\n18. The person who is a lawyer is the person who loves classical music.\n19. The person who loves jazz music is Bob.\n20. Bob is the person who drinks Lime smoothies.\n21. The person who loves pop music is the person who is a teacher.\n22. The person who is an engineer is directly left of the person who loves rock music.\n23. The person who loves hip-hop music is not in the first house.\n24. The person with an aquarium of fish is Peter.\n25. The person who drinks Blueberry smoothies is the person who keeps a pet bird.\n26. The person who has a cat is in the first house.\n27. The person who is a doctor is not in the sixth house.\n28. The person who owns a rabbit is not in the second house.\n29. Carol is not in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food",
+        "Occupation",
+        "Pet",
+        "MusicGenre",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "pizza",
+          "nurse",
+          "cat",
+          "country",
+          "watermelon"
+        ],
+        [
+          "2",
+          "Bob",
+          "soup",
+          "doctor",
+          "hamster",
+          "jazz",
+          "lime"
+        ],
+        [
+          "3",
+          "Carol",
+          "stir fry",
+          "teacher",
+          "bird",
+          "pop",
+          "blueberry"
+        ],
+        [
+          "4",
+          "Arnold",
+          "spaghetti",
+          "lawyer",
+          "rabbit",
+          "classical",
+          "dragonfruit"
+        ],
+        [
+          "5",
+          "Eric",
+          "grilled cheese",
+          "engineer",
+          "dog",
+          "hip hop",
+          "desert"
+        ],
+        [
+          "6",
+          "Peter",
+          "stew",
+          "artist",
+          "fish",
+          "rock",
+          "cherry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211149"
+  },
+  {
+    "id": "lgp-test-6x6-35",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Carol`, `Alice`, `Peter`, `Arnold`, `Eric`\n - People have unique heights: `average`, `super tall`, `very short`, `short`, `very tall`, `tall`\n - Each person has a unique favorite drink: `coffee`, `milk`, `boba tea`, `root beer`, `tea`, `water`\n - Each person has a favorite color: `blue`, `yellow`, `red`, `green`, `purple`, `white`\n - Each person lives in a unique style of house: `mediterranean`, `colonial`, `modern`, `ranch`, `victorian`, `craftsman`\n - They all have a unique favorite flower: `lilies`, `roses`, `iris`, `daffodils`, `carnations`, `tulips`\n\n## Clues:\n1. Eric is not in the second house.\n2. The coffee drinker is somewhere to the right of the person residing in a Victorian house.\n3. The person who is very tall is directly left of the person in a Craftsman-style house.\n4. The person living in a colonial-style house is the person who likes milk.\n5. The root beer lover is directly left of the person whose favorite color is green.\n6. The person who loves yellow is the person who loves the boquet of lilies.\n7. Arnold is the person whose favorite color is red.\n8. The person who loves the rose bouquet is Bob.\n9. The person who is very tall is the root beer lover.\n10. Alice is somewhere to the left of the person who loves a bouquet of daffodils.\n11. The boba tea drinker is Carol.\n12. There is one house between the person in a ranch-style home and the person who loves the boquet of iris.\n13. The person who loves a carnations arrangement is the tea drinker.\n14. The boba tea drinker is the person in a Mediterranean-style villa.\n15. The person who loves a bouquet of daffodils is in the second house.\n16. The person who is tall and the person who loves the vase of tulips are next to each other.\n17. Carol is somewhere to the left of the person who loves the boquet of iris.\n18. The person who has an average height is directly left of Arnold.\n19. The person who is super tall and Eric are next to each other.\n20. The person who loves the vase of tulips is somewhere to the right of the person who loves the boquet of lilies.\n21. The person who is super tall is the tea drinker.\n22. The person who is short is Carol.\n23. The coffee drinker is the person who loves purple.\n24. The person who loves blue is somewhere to the right of the person who loves a carnations arrangement.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height",
+        "Drink",
+        "Color",
+        "HouseStyle",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "very tall",
+          "root beer",
+          "yellow",
+          "victorian",
+          "lilies"
+        ],
+        [
+          "2",
+          "Peter",
+          "tall",
+          "water",
+          "green",
+          "craftsman",
+          "daffodils"
+        ],
+        [
+          "3",
+          "Carol",
+          "short",
+          "boba tea",
+          "white",
+          "mediterranean",
+          "tulips"
+        ],
+        [
+          "4",
+          "Bob",
+          "average",
+          "coffee",
+          "purple",
+          "ranch",
+          "roses"
+        ],
+        [
+          "5",
+          "Arnold",
+          "super tall",
+          "tea",
+          "red",
+          "modern",
+          "carnations"
+        ],
+        [
+          "6",
+          "Eric",
+          "very short",
+          "milk",
+          "blue",
+          "colonial",
+          "iris"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211156"
+  },
+  {
+    "id": "lgp-test-6x6-36",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Bob`, `Peter`, `Alice`, `Carol`\n - People have unique heights: `very tall`, `tall`, `average`, `short`, `super tall`, `very short`\n - Each person has a unique birthday month: `sept`, `may`, `jan`, `april`, `feb`, `mar`\n - People have unique hair colors: `blonde`, `red`, `black`, `auburn`, `gray`, `brown`\n - People have unique favorite book genres: `science fiction`, `romance`, `biography`, `mystery`, `fantasy`, `historical fiction`\n - Each person has a unique type of pet: `bird`, `hamster`, `fish`, `dog`, `cat`, `rabbit`\n\n## Clues:\n1. The person with an aquarium of fish is the person who loves mystery books.\n2. The person who has black hair is the person who owns a dog.\n3. The person who has gray hair is the person who loves science fiction books.\n4. The person who loves historical fiction books is somewhere to the left of the person who has black hair.\n5. The person who loves historical fiction books is directly left of the person who owns a rabbit.\n6. The person whose birthday is in February is the person who owns a dog.\n7. Bob is the person who keeps a pet bird.\n8. The person who keeps a pet bird is the person who loves romance books.\n9. Alice is directly left of the person who loves fantasy books.\n10. The person who owns a rabbit is directly left of the person who is very short.\n11. The person who is short is somewhere to the left of the person who is super tall.\n12. The person who has an average height is in the sixth house.\n13. The person who has red hair is not in the first house.\n14. The person who is very tall is somewhere to the right of the person who is super tall.\n15. There are two houses between the person who loves romance books and Eric.\n16. The person with an aquarium of fish is in the sixth house.\n17. The person who has blonde hair is the person who loves historical fiction books.\n18. The person who is tall is somewhere to the right of the person whose birthday is in February.\n19. The person who has auburn hair is Carol.\n20. The person with an aquarium of fish is the person whose birthday is in March.\n21. The person who loves science fiction books is directly left of the person with an aquarium of fish.\n22. The person whose birthday is in September is not in the first house.\n23. The person who loves biography books is directly left of the person who has a cat.\n24. The person whose birthday is in January is the person who loves science fiction books.\n25. Arnold is the person whose birthday is in May.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height",
+        "Birthday",
+        "HairColor",
+        "BookGenre",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "short",
+          "april",
+          "brown",
+          "romance",
+          "bird"
+        ],
+        [
+          "2",
+          "Alice",
+          "super tall",
+          "sept",
+          "blonde",
+          "historical fiction",
+          "hamster"
+        ],
+        [
+          "3",
+          "Arnold",
+          "very tall",
+          "may",
+          "red",
+          "fantasy",
+          "rabbit"
+        ],
+        [
+          "4",
+          "Eric",
+          "very short",
+          "feb",
+          "black",
+          "biography",
+          "dog"
+        ],
+        [
+          "5",
+          "Peter",
+          "tall",
+          "jan",
+          "gray",
+          "science fiction",
+          "cat"
+        ],
+        [
+          "6",
+          "Carol",
+          "average",
+          "mar",
+          "auburn",
+          "mystery",
+          "fish"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211165"
+  },
+  {
+    "id": "lgp-test-6x6-37",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Eric`, `Arnold`, `Carol`, `Bob`\n - People have unique heights: `very short`, `very tall`, `short`, `super tall`, `tall`, `average`\n - Everyone has something unique for lunch: `grilled cheese`, `stir fry`, `pizza`, `spaghetti`, `soup`, `stew`\n - The mothers' names in different houses are unique: `Holly`, `Janelle`, `Penny`, `Aniya`, `Kailyn`, `Sarah`\n - Each person has a unique favorite drink: `tea`, `water`, `milk`, `coffee`, `boba tea`, `root beer`\n - Each person has a unique type of pet: `rabbit`, `fish`, `bird`, `hamster`, `cat`, `dog`\n\n## Clues:\n1. Arnold is the person who loves the stew.\n2. The person who owns a dog is directly left of the person who has a cat.\n3. The person whose mother's name is Holly is in the sixth house.\n4. The tea drinker is somewhere to the left of the boba tea drinker.\n5. The tea drinker is in the second house.\n6. The person who is very tall is Bob.\n7. The person who has a cat is The person whose mother's name is Penny.\n8. The person who is very short is directly left of Alice.\n9. Carol is the person who is a pizza lover.\n10. The person who has an average height is not in the sixth house.\n11. The person who loves stir fry is Bob.\n12. The person with a pet hamster is not in the third house.\n13. The person whose mother's name is Janelle is somewhere to the left of the person with a pet hamster.\n14. Eric is the person who loves the soup.\n15. The person whose mother's name is Kailyn is directly left of the person who keeps a pet bird.\n16. The one who only drinks water is somewhere to the right of the person who likes milk.\n17. The person who owns a rabbit is the person who loves the stew.\n18. The person who is tall is The person whose mother's name is Aniya.\n19. The person who is very short is somewhere to the left of the person who likes milk.\n20. The person who is tall is not in the fifth house.\n21. The person who is very short is in the second house.\n22. The person who loves the stew is the root beer lover.\n23. The person whose mother's name is Kailyn is the boba tea drinker.\n24. The person who is tall is not in the fourth house.\n25. The person who is super tall is directly left of the person who loves eating grilled cheese.\n26. Carol is directly left of the root beer lover.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height",
+        "Food",
+        "Mother",
+        "Drink",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "super tall",
+          "soup",
+          "Janelle",
+          "coffee",
+          "dog"
+        ],
+        [
+          "2",
+          "Peter",
+          "very short",
+          "grilled cheese",
+          "Penny",
+          "tea",
+          "cat"
+        ],
+        [
+          "3",
+          "Alice",
+          "tall",
+          "spaghetti",
+          "Aniya",
+          "milk",
+          "fish"
+        ],
+        [
+          "4",
+          "Bob",
+          "very tall",
+          "stir fry",
+          "Kailyn",
+          "boba tea",
+          "hamster"
+        ],
+        [
+          "5",
+          "Carol",
+          "average",
+          "pizza",
+          "Sarah",
+          "water",
+          "bird"
+        ],
+        [
+          "6",
+          "Arnold",
+          "short",
+          "stew",
+          "Holly",
+          "root beer",
+          "rabbit"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211173"
+  },
+  {
+    "id": "lgp-test-6x6-38",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Bob`, `Eric`, `Peter`, `Alice`\n - People use unique phone models: `iphone 13`, `huawei p50`, `oneplus 9`, `google pixel 6`, `xiaomi mi 11`, `samsung galaxy s21`\n - Everyone has a unique favorite cigar: `pall mall`, `yellow monster`, `prince`, `blends`, `dunhill`, `blue master`\n - Each person prefers a unique type of vacation: `cultural`, `beach`, `city`, `camping`, `cruise`, `mountain`\n - People have unique hair colors: `brown`, `red`, `gray`, `black`, `blonde`, `auburn`\n - Each person has a unique favorite drink: `coffee`, `boba tea`, `milk`, `water`, `root beer`, `tea`\n\n## Clues:\n1. The person who prefers city breaks is Bob.\n2. The person who has brown hair is the one who only drinks water.\n3. Eric is directly left of the person who uses a Samsung Galaxy S21.\n4. There is one house between the person who loves beach vacations and the person who enjoys camping trips.\n5. The one who only drinks water is somewhere to the left of the person who uses a Xiaomi Mi 11.\n6. The person who has brown hair is the Dunhill smoker.\n7. The person who has red hair is Arnold.\n8. The person who has auburn hair is the person who uses an iPhone 13.\n9. The person who has gray hair is not in the sixth house.\n10. The person who likes milk is the person who has auburn hair.\n11. The person who smokes Blue Master is Alice.\n12. The person who uses a OnePlus 9 is the person who likes going on cruises.\n13. The coffee drinker is the Prince smoker.\n14. The coffee drinker is the person who uses a Huawei P50.\n15. Eric is the tea drinker.\n16. The Prince smoker is in the third house.\n17. The person who smokes Yellow Monster is somewhere to the right of the coffee drinker.\n18. The person who enjoys mountain retreats is Peter.\n19. The person who uses a Huawei P50 is the person who has blonde hair.\n20. There are two houses between the person who loves beach vacations and the person who uses a Google Pixel 6.\n21. The one who only drinks water is in the fourth house.\n22. Eric is the person partial to Pall Mall.\n23. Bob is the boba tea drinker.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel",
+        "Cigar",
+        "Vacation",
+        "HairColor",
+        "Drink"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "iphone 13",
+          "blue master",
+          "beach",
+          "auburn",
+          "milk"
+        ],
+        [
+          "2",
+          "Arnold",
+          "oneplus 9",
+          "blends",
+          "cruise",
+          "red",
+          "root beer"
+        ],
+        [
+          "3",
+          "Carol",
+          "huawei p50",
+          "prince",
+          "camping",
+          "blonde",
+          "coffee"
+        ],
+        [
+          "4",
+          "Peter",
+          "google pixel 6",
+          "dunhill",
+          "mountain",
+          "brown",
+          "water"
+        ],
+        [
+          "5",
+          "Eric",
+          "xiaomi mi 11",
+          "pall mall",
+          "cultural",
+          "gray",
+          "tea"
+        ],
+        [
+          "6",
+          "Bob",
+          "samsung galaxy s21",
+          "yellow monster",
+          "city",
+          "black",
+          "boba tea"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211180"
+  },
+  {
+    "id": "lgp-test-6x6-39",
+    "size": "6*6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Bob`, `Alice`, `Eric`, `Peter`, `Carol`\n - People have unique favorite sports: `volleyball`, `soccer`, `basketball`, `baseball`, `swimming`, `tennis`\n - Each person has a unique hobby: `gardening`, `cooking`, `painting`, `woodworking`, `knitting`, `photography`\n - Each mother is accompanied by their child: `Bella`, `Meredith`, `Alice`, `Samantha`, `Fred`, `Timothy`\n - Each person has a unique birthday month: `feb`, `jan`, `mar`, `may`, `sept`, `april`\n - Everyone has something unique for lunch: `stir fry`, `grilled cheese`, `pizza`, `spaghetti`, `stew`, `soup`\n\n## Clues:\n1. The person who loves soccer is somewhere to the right of Eric.\n2. The person who paints as a hobby is somewhere to the left of the woodworking hobbyist.\n3. The person whose birthday is in February is not in the third house.\n4. The person who is the mother of Timothy is directly left of Arnold.\n5. The person who loves cooking is somewhere to the left of the person's child is named Fred.\n6. Alice is the person who paints as a hobby.\n7. The person's child is named Alice is the person who loves cooking.\n8. The person whose birthday is in March is the person's child is named Samantha.\n9. The person who loves the soup is the person whose birthday is in May.\n10. Carol is somewhere to the right of the person whose birthday is in May.\n11. The person whose birthday is in March and the person who is a pizza lover are next to each other.\n12. The person whose birthday is in February is not in the fourth house.\n13. There are two houses between the person who loves baseball and the person who loves the stew.\n14. The person whose birthday is in May is somewhere to the left of the person who loves volleyball.\n15. The person whose birthday is in January is somewhere to the right of Arnold.\n16. The person who loves cooking is not in the third house.\n17. The person who enjoys knitting is the person whose birthday is in September.\n18. The person who enjoys gardening is the person's child is named Meredith.\n19. The person who is a pizza lover is the person who loves swimming.\n20. There is one house between the person who loves basketball and the person whose birthday is in May.\n21. The person who loves the soup is directly left of the person who loves the spaghetti eater.\n22. The person who loves the stew is the person's child is named Bella.\n23. The person who enjoys knitting is somewhere to the left of the person who loves the soup.\n24. Bob is somewhere to the left of the person who loves the stew.\n25. Arnold is the person who loves stir fry.\n26. The woodworking hobbyist is directly left of the person who loves the soup.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "FavoriteSport",
+        "Hobby",
+        "Children",
+        "Birthday",
+        "Food"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "baseball",
+          "painting",
+          "Samantha",
+          "mar",
+          "grilled cheese"
+        ],
+        [
+          "2",
+          "Bob",
+          "swimming",
+          "knitting",
+          "Timothy",
+          "sept",
+          "pizza"
+        ],
+        [
+          "3",
+          "Arnold",
+          "basketball",
+          "gardening",
+          "Meredith",
+          "april",
+          "stir fry"
+        ],
+        [
+          "4",
+          "Eric",
+          "tennis",
+          "woodworking",
+          "Bella",
+          "jan",
+          "stew"
+        ],
+        [
+          "5",
+          "Peter",
+          "soccer",
+          "cooking",
+          "Alice",
+          "may",
+          "soup"
+        ],
+        [
+          "6",
+          "Carol",
+          "volleyball",
+          "photography",
+          "Fred",
+          "feb",
+          "spaghetti"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.211189"
+  }
+]

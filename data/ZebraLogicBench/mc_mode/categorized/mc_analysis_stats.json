@@ -1,0 +1,238 @@
+{
+  "total_categories": 25,
+  "total_items": 3259,
+  "processing_timestamp": "2025-09-29T16:48:33.099147",
+  "size_distribution": {
+    "2x2": 65,
+    "2x3": 87,
+    "2x4": 125,
+    "2x5": 153,
+    "2x6": 164,
+    "3x2": 60,
+    "3x3": 94,
+    "3x4": 123,
+    "3x5": 155,
+    "3x6": 191,
+    "4x2": 69,
+    "4x3": 101,
+    "4x4": 137,
+    "4x5": 169,
+    "4x6": 213,
+    "5x2": 66,
+    "5x3": 100,
+    "5x4": 145,
+    "5x5": 164,
+    "5x6": 214,
+    "6x2": 61,
+    "6x3": 103,
+    "6x4": 121,
+    "6x5": 167,
+    "6x6": 212
+  },
+  "question_type_distribution": {
+    "Name": 791,
+    "Other": 1641,
+    "PhoneModel": 92,
+    "Education": 82,
+    "Nationality": 159,
+    "Color": 196,
+    "BookGenre": 109,
+    "Pet": 89,
+    "Smoothie": 100
+  },
+  "categories": {
+    "2x2": {
+      "count": 65,
+      "filename": "test_mc_2_2.json",
+      "grid_size": 4,
+      "dimensions": "2×2",
+      "complexity_score": 10
+    },
+    "2x3": {
+      "count": 87,
+      "filename": "test_mc_2_3.json",
+      "grid_size": 6,
+      "dimensions": "2×3",
+      "complexity_score": 14
+    },
+    "2x4": {
+      "count": 125,
+      "filename": "test_mc_2_4.json",
+      "grid_size": 8,
+      "dimensions": "2×4",
+      "complexity_score": 20
+    },
+    "2x5": {
+      "count": 153,
+      "filename": "test_mc_2_5.json",
+      "grid_size": 10,
+      "dimensions": "2×5",
+      "complexity_score": 25
+    },
+    "2x6": {
+      "count": 164,
+      "filename": "test_mc_2_6.json",
+      "grid_size": 12,
+      "dimensions": "2×6",
+      "complexity_score": 28
+    },
+    "3x2": {
+      "count": 60,
+      "filename": "test_mc_3_2.json",
+      "grid_size": 6,
+      "dimensions": "3×2",
+      "complexity_score": 12
+    },
+    "3x3": {
+      "count": 94,
+      "filename": "test_mc_3_3.json",
+      "grid_size": 9,
+      "dimensions": "3×3",
+      "complexity_score": 18
+    },
+    "3x4": {
+      "count": 123,
+      "filename": "test_mc_3_4.json",
+      "grid_size": 12,
+      "dimensions": "3×4",
+      "complexity_score": 24
+    },
+    "3x5": {
+      "count": 155,
+      "filename": "test_mc_3_5.json",
+      "grid_size": 15,
+      "dimensions": "3×5",
+      "complexity_score": 30
+    },
+    "3x6": {
+      "count": 191,
+      "filename": "test_mc_3_6.json",
+      "grid_size": 18,
+      "dimensions": "3×6",
+      "complexity_score": 37
+    },
+    "4x2": {
+      "count": 69,
+      "filename": "test_mc_4_2.json",
+      "grid_size": 8,
+      "dimensions": "4×2",
+      "complexity_score": 14
+    },
+    "4x3": {
+      "count": 101,
+      "filename": "test_mc_4_3.json",
+      "grid_size": 12,
+      "dimensions": "4×3",
+      "complexity_score": 22
+    },
+    "4x4": {
+      "count": 137,
+      "filename": "test_mc_4_4.json",
+      "grid_size": 16,
+      "dimensions": "4×4",
+      "complexity_score": 29
+    },
+    "4x5": {
+      "count": 169,
+      "filename": "test_mc_4_5.json",
+      "grid_size": 20,
+      "dimensions": "4×5",
+      "complexity_score": 36
+    },
+    "4x6": {
+      "count": 213,
+      "filename": "test_mc_4_6.json",
+      "grid_size": 24,
+      "dimensions": "4×6",
+      "complexity_score": 45
+    },
+    "5x2": {
+      "count": 66,
+      "filename": "test_mc_5_2.json",
+      "grid_size": 10,
+      "dimensions": "5×2",
+      "complexity_score": 16
+    },
+    "5x3": {
+      "count": 100,
+      "filename": "test_mc_5_3.json",
+      "grid_size": 15,
+      "dimensions": "5×3",
+      "complexity_score": 25
+    },
+    "5x4": {
+      "count": 145,
+      "filename": "test_mc_5_4.json",
+      "grid_size": 20,
+      "dimensions": "5×4",
+      "complexity_score": 34
+    },
+    "5x5": {
+      "count": 164,
+      "filename": "test_mc_5_5.json",
+      "grid_size": 25,
+      "dimensions": "5×5",
+      "complexity_score": 41
+    },
+    "5x6": {
+      "count": 214,
+      "filename": "test_mc_5_6.json",
+      "grid_size": 30,
+      "dimensions": "5×6",
+      "complexity_score": 51
+    },
+    "6x2": {
+      "count": 61,
+      "filename": "test_mc_6_2.json",
+      "grid_size": 12,
+      "dimensions": "6×2",
+      "complexity_score": 18
+    },
+    "6x3": {
+      "count": 103,
+      "filename": "test_mc_6_3.json",
+      "grid_size": 18,
+      "dimensions": "6×3",
+      "complexity_score": 28
+    },
+    "6x4": {
+      "count": 121,
+      "filename": "test_mc_6_4.json",
+      "grid_size": 24,
+      "dimensions": "6×4",
+      "complexity_score": 36
+    },
+    "6x5": {
+      "count": 167,
+      "filename": "test_mc_6_5.json",
+      "grid_size": 30,
+      "dimensions": "6×5",
+      "complexity_score": 46
+    },
+    "6x6": {
+      "count": 212,
+      "filename": "test_mc_6_6.json",
+      "grid_size": 36,
+      "dimensions": "6×6",
+      "complexity_score": 57
+    }
+  },
+  "complexity_analysis": {
+    "smallest_grid": {
+      "count": 65,
+      "filename": "test_mc_2_2.json",
+      "grid_size": 4,
+      "dimensions": "2×2",
+      "complexity_score": 10
+    },
+    "largest_grid": {
+      "count": 212,
+      "filename": "test_mc_6_6.json",
+      "grid_size": 36,
+      "dimensions": "6×6",
+      "complexity_score": 57
+    },
+    "average_items_per_category": 130.36,
+    "grid_size_range": "4-36"
+  }
+}

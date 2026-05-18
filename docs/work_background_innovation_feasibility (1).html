@@ -1,0 +1,497 @@
+
+<style>
+*{box-sizing:border-box}
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:12px;margin-bottom:18px}
+.tb{font-size:13px;padding:5px 14px;border-radius:99px;border:.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tb.on{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent}
+.panel{display:none}.panel.on{display:block}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;display:inline-block;margin-right:3px}
+.t1{background:#E1F5EE;color:#0F6E56}.t2{background:#EEEDFE;color:#3C3489}
+.t3{background:#FAEEDA;color:#854F0B}.t4{background:#FAECE7;color:#993C1D}
+.t5{background:#E6F1FB;color:#185FA5}.t6{background:#F1EFE8;color:#5F5E5A}
+.t7{background:#EAF3DE;color:#3B6D11}
+@media(prefers-color-scheme:dark){
+.t1{background:#085041;color:#9FE1CB}.t2{background:#26215C;color:#CECBF6}
+.t3{background:#633806;color:#FAC775}.t4{background:#4A1B0C;color:#F5C4B3}
+.t5{background:#042C53;color:#B5D4F4}.t6{background:#2C2C2A;color:#D3D1C7}
+.t7{background:#173404;color:#C0DD97}}
+.box{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:10px}
+.bh{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 6px}
+.bp{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.sec{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px}
+ul.sl{margin:4px 0 0;padding-left:16px}
+ul.sl li{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin-bottom:2px}
+.paper-chain{display:flex;gap:0;margin-bottom:20px;position:relative}
+.pnode{flex:1;background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;position:relative}
+.pnode+.pnode{margin-left:10px}
+.pnode::before{content:'→';position:absolute;left:-14px;top:50%;transform:translateY(-50%);color:var(--color-text-tertiary);font-size:14px}
+.pnode:first-child::before{display:none}
+.pn-num{font-size:11px;font-weight:500;margin:0 0 4px}
+.pn-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px}
+.pn-body{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin:0}
+.asset-tag{font-size:11px;padding:2px 6px;border-radius:4px;background:var(--color-background-info);color:var(--color-text-info);display:inline-block;margin-top:5px;margin-right:3px}
+.comp-table{width:100%;border-collapse:collapse;font-size:12px}
+.comp-table th{padding:7px 8px;text-align:left;border-bottom:.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-weight:500;background:var(--color-background-secondary)}
+.comp-table td{padding:7px 8px;border-bottom:.5px solid var(--color-border-tertiary);vertical-align:top;line-height:1.5;color:var(--color-text-secondary)}
+.comp-table td:first-child{color:var(--color-text-primary);font-weight:500;white-space:nowrap}
+.comp-table tr:last-child td{border-bottom:none}
+.yes{color:#0F6E56;font-weight:500}.no{color:#993C1D}.partial{color:#854F0B}
+@media(prefers-color-scheme:dark){.yes{color:#9FE1CB}.no{color:#F5C4B3}.partial{color:#FAC775}}
+.inno-card{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:13px 15px;margin-bottom:10px}
+.ic-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;cursor:pointer}
+.ic-num{font-size:20px;font-weight:700;line-height:1;margin-top:1px}
+.ic-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 2px}
+.ic-sub{font-size:12px;color:var(--color-text-secondary);margin:0}
+.ic-body{font-size:13px;color:var(--color-text-secondary);line-height:1.65}
+.meter{height:6px;border-radius:3px;background:var(--color-background-tertiary,#eee);margin-bottom:10px;overflow:hidden}
+.meter-fill{height:100%;border-radius:3px}
+.feas-dim{display:grid;grid-template-columns:140px 1fr 56px;gap:5px 10px;align-items:center;margin-bottom:6px}
+.fdlabel{font-size:12px;color:var(--color-text-secondary)}
+.fdbg{height:7px;background:var(--color-background-tertiary,#eee);border-radius:3px;overflow:hidden}
+.fdfill{height:100%;border-radius:3px}
+.fdval{font-size:12px;color:var(--color-text-secondary);text-align:right}
+.risk-row{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.risk-lv{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.risk-hi{background:#FAECE7;color:#993C1D}.risk-md{background:#FAEEDA;color:#854F0B}.risk-lo{background:#EAF3DE;color:#3B6D11}
+@media(prefers-color-scheme:dark){.risk-hi{background:#4A1B0C;color:#F5C4B3}.risk-md{background:#633806;color:#FAC775}.risk-lo{background:#173404;color:#C0DD97}}
+.risk-text{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.ask-btn{font-size:12px;padding:4px 10px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary);margin-top:6px}
+.ask-btn:hover{background:var(--color-background-secondary)}
+.highlight{background:var(--color-background-success);border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-success);margin-bottom:10px}
+.warn{background:var(--color-background-warning);border:.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-warning);margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+code{font-family:var(--font-mono);font-size:11px;background:var(--color-background-secondary);padding:1px 4px;border-radius:3px}
+.tl-row{display:flex;gap:0;margin-bottom:6px}
+.tl-seg{flex:1;padding:6px 8px;font-size:11px;text-align:center;border:.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);line-height:1.4}
+.tl-seg:first-child{border-radius:var(--border-radius-md) 0 0 var(--border-radius-md)}
+.tl-seg:last-child{border-radius:0 var(--border-radius-md) var(--border-radius-md) 0}
+.tl-seg.hi{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent;font-weight:500}
+</style>
+
+<h2 class="sr-only">工作背景、与现有工作差别、创新性与可实施性全面分析</h2>
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="tb on" onclick="sw('bg',this)">工作背景</button>
+  <button class="tb" onclick="sw('diff',this)">与现有工作差别</button>
+  <button class="tb" onclick="sw('inno',this)">创新性分析</button>
+  <button class="tb" onclick="sw('feas',this)">可实施性分析</button>
+</div>
+
+<!-- ===== BACKGROUND ===== -->
+<div id="bg" class="panel on">
+<p class="sec">三篇工作的积累关系</p>
+<div class="paper-chain">
+  <div class="pnode">
+    <p class="pn-num"><span class="tag t2">论文一</span></p>
+    <p class="pn-title">神经符号方法求解 Zebra 谜题</p>
+    <p class="pn-body">LLM 将自然语言谜题翻译为 Z3 约束；Z3 求解；结果回译；在 ZebraLogic 等基准上评估</p>
+    <span class="asset-tag">Z3 Pipeline</span>
+    <span class="asset-tag">错误分析</span>
+    <span class="asset-tag">NL↔符号接口</span>
+  </div>
+  <div class="pnode">
+    <p class="pn-num"><span class="tag t1">论文二</span></p>
+    <p class="pn-title">可控 Zebra 谜题生成</p>
+    <p class="pn-body">设计谜题生成器，控制规模（变量数×属性数）、约束类型分布、难度（Z3 冲突数），批量生成带 ground truth 的实例</p>
+    <span class="asset-tag">谜题生成器</span>
+    <span class="asset-tag">难度控制</span>
+    <span class="asset-tag">可验证GT</span>
+  </div>
+  <div class="pnode" style="border-color:var(--color-border-info)">
+    <p class="pn-num"><span class="tag t5">论文三（本工作）</span></p>
+    <p class="pn-title">PARADIGM：范式记忆 Agent</p>
+    <p class="pn-body">从求解轨迹中提炼 solver 验证的求解范式；修复轨迹记忆防止停滞；推理时范式引导 + 分级策略切换</p>
+    <span class="asset-tag">范式库</span>
+    <span class="asset-tag">修复记忆</span>
+    <span class="asset-tag">元认知</span>
+  </div>
+</div>
+
+<p class="sec">三篇工作形成的独特资产组合</p>
+<div class="grid2">
+  <div class="box">
+    <p class="bh">资产 A：可控训练数据源</p>
+    <p class="bp">论文二的生成器可以按需产出任意规模、难度、约束类型组合的谜题，且每道题都有 Z3 可验证的 ground truth。这是 ExpeL/ReasoningBank 等工作完全不具备的——它们的训练任务是固定的、不可控的。可控数据源让"系统性实验"成为可能：比较不同难度梯度对范式质量的影响，做 curriculum 实验。</p>
+  </div>
+  <div class="box">
+    <p class="bh">资产 B：精确的步骤级验证 Oracle</p>
+    <p class="bp">论文一建立了 NL↔Z3 的翻译-验证 pipeline。每一个推理步骤都有 SAT/UNSAT 的精确标签，不依赖 LLM 自评。这在 Agent 记忆领域是独一无二的：ExpeL 的 insight 对错靠 LLM 猜，你的范式对错靠 Z3 算。</p>
+  </div>
+  <div class="box">
+    <p class="bh">资产 C：错误模式先验知识</p>
+    <p class="bp">论文一在求解过程中积累了 LLM 在 Zebra 谜题翻译中的错误类型分布（over-constraint/under-constraint/semantic flip/scope error 等）。这些先验知识直接指导论文三中修复记忆的错误分类设计，不需要从零标注。</p>
+  </div>
+  <div class="box">
+    <p class="bh">资产 D：完整的实验生态</p>
+    <p class="bp">ZebraLogic benchmark + 自有生成器 + Z3 验证环境，构成一个完整的实验生态，无需依赖外部数据或人工标注。三篇工作在同一实验环境下，结果直接可比，论文三的实验可以精确消融每个模块的贡献。</p>
+  </div>
+</div>
+
+<div class="box" style="border-left:3px solid #534AB7;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0">
+  <p class="bh">三篇工作的叙事逻辑</p>
+  <p class="bp">论文一解决「能不能用神经符号方法求解 CSP」；论文二解决「如何系统性地生成训练/评估数据」；论文三解决「神经符号 Agent 如何从经验中学习，越解越好」。三篇构成一条完整的研究脉络：<strong style="color:var(--color-text-primary)">建立求解能力 → 构建数据基础 → 实现经验积累</strong>，比单篇工作有更强的学术说服力。</p>
+</div>
+</div>
+
+<!-- ===== DIFF ===== -->
+<div id="diff" class="panel">
+<p class="sec">与最相关工作的系统性对比</p>
+
+<div style="overflow-x:auto;margin-bottom:16px">
+<table class="comp-table">
+<thead>
+<tr>
+  <th style="min-width:120px">对比维度</th>
+  <th>Logic-LM<br><span style="font-weight:400;font-size:11px">EMNLP'23</span></th>
+  <th>Logic-LM++<br><span style="font-weight:400;font-size:11px">ACL'24</span></th>
+  <th>VERGE<br><span style="font-weight:400;font-size:11px">Jan'26</span></th>
+  <th>ExpeL<br><span style="font-weight:400;font-size:11px">AAAI'24</span></th>
+  <th>ReasoningBank<br><span style="font-weight:400;font-size:11px">Sep'25</span></th>
+  <th style="background:var(--color-background-info);color:var(--color-text-info)">PARADIGM<br><span style="font-weight:400;font-size:11px">本工作</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>任务域</td>
+  <td>通用逻辑QA</td>
+  <td>通用逻辑QA</td>
+  <td>开放域claims</td>
+  <td>Web/ALF任务</td>
+  <td>Web/SWE</td>
+  <td class="yes">结构化CSP谜题</td>
+</tr>
+<tr>
+  <td>符号求解器</td>
+  <td>Z3/Clingo</td>
+  <td>Z3/Clingo</td>
+  <td>SMT</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="yes">Z3（贯穿全程）</td>
+</tr>
+<tr>
+  <td>跨任务经验积累</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="yes">自由文本insight</td>
+  <td class="yes">结构化知识单元</td>
+  <td class="yes">Solver验证范式</td>
+</tr>
+<tr>
+  <td>记忆单元可验证性</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="no">LLM自评，不可验证</td>
+  <td class="no">LLM自评，不可验证</td>
+  <td class="yes">Z3机械验证</td>
+</tr>
+<tr>
+  <td>修复诊断粒度</td>
+  <td class="no">原始报错字符串</td>
+  <td class="no">原始报错字符串</td>
+  <td class="partial">MCS（claim级）</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="yes">UNSAT core（约束级）</td>
+</tr>
+<tr>
+  <td>停滞/循环检测</td>
+  <td class="no">无，直接plateau</td>
+  <td class="no">无</td>
+  <td class="partial">correlation cliff</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="yes">Jaccard+余弦检测</td>
+</tr>
+<tr>
+  <td>策略切换机制</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="yes">四级分级切换</td>
+</tr>
+<tr>
+  <td>步骤级轨迹记录</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="partial">任务级轨迹</td>
+  <td class="partial">任务级策略</td>
+  <td class="yes">推理操作级轨迹</td>
+</tr>
+<tr>
+  <td>可控数据生成</td>
+  <td class="no">固定benchmark</td>
+  <td class="no">固定benchmark</td>
+  <td class="no">固定benchmark</td>
+  <td class="no">固定任务集</td>
+  <td class="no">固定任务集</td>
+  <td class="yes">可控谜题生成器</td>
+</tr>
+<tr>
+  <td>范式泛化实验</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="no">无</td>
+  <td class="partial">跨任务insight，未系统验证</td>
+  <td class="partial">跨任务策略，未系统验证</td>
+  <td class="yes">L1/L2泛化，量化迁移率</td>
+</tr>
+<tr>
+  <td>需要Fine-tune</td>
+  <td class="no">否（纯prompt）</td>
+  <td class="no">否</td>
+  <td class="no">否</td>
+  <td class="no">否</td>
+  <td class="no">否</td>
+  <td class="yes">否（推理时框架）</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="sec">与最接近工作的关键差异点（文字版）</p>
+<div class="box">
+  <p class="bh">vs. Logic-LM / Logic-LM++ / VERGE（神经符号求解方向）</p>
+  <ul class="sl">
+    <li>它们：每道题独立求解，经验清零，下次仍从零开始</li>
+    <li>你：建立跨题目的范式库，每道题的求解经验写回，越解越好</li>
+    <li>它们：UNSAT 或报错 → 统一修复 prompt，不区分错误类型</li>
+    <li>你：UNSAT core 精确定位冲突约束子集 + 类型化修复记忆，修复策略因错误类型而异</li>
+    <li>VERGE 的 MCS 最接近，但 VERGE 在 open-domain factual claims 上（非结构化），无跨题记忆，无停滞检测</li>
+  </ul>
+</div>
+<div class="box">
+  <p class="bh">vs. ExpeL / ReasoningBank / ProcMEM（Agent 记忆方向）</p>
+  <ul class="sl">
+    <li>它们：自由文本 insight/策略，靠 LLM 自评对错，不可形式验证</li>
+    <li>你：范式有结构化触发条件 + Z3 可验证前后条件，soundness 靠机械验证</li>
+    <li>它们：任务级别的经验（"这个网页任务这样做"），粒度粗</li>
+    <li>你：推理操作级别（"当约束类型 X+Y 共存时，应用传播操作 Z"），粒度匹配 CSP 求解</li>
+    <li>它们：无 CSP/逻辑推理域应用，无 solver oracle，验证成本高</li>
+    <li>你：Z3 天然作 oracle，零额外标注成本，这是你最大的领域优势</li>
+  </ul>
+</div>
+<div class="box">
+  <p class="bh">vs. Reflexion（自修复方向）</p>
+  <ul class="sl">
+    <li>Reflexion：verbal 反思，单任务内有效，不积累，下一任务仍从零</li>
+    <li>你：修复记忆跨题目积累，同类错误在后续任务中被提前预警，且有形式化的停滞检测替代 Reflexion 的"碰运气"反思</li>
+  </ul>
+</div>
+</div>
+
+<!-- ===== INNOVATION ===== -->
+<div id="inno" class="panel">
+<p class="sec">四个维度的创新性分析</p>
+
+<div class="inno-card">
+  <div class="ic-head">
+    <span class="ic-num" style="color:#534AB7">①</span>
+    <div>
+      <p class="ic-title">概念创新：Solver-Verified Solving Paradigm（求解范式）</p>
+      <p class="ic-sub">提出了一种新的记忆单元表示，填补"形式语义 + 可验证"的双重空白</p>
+    </div>
+  </div>
+  <div class="ic-body">
+    <p style="margin:0 0 6px">现有 Agent 记忆工作的记忆单元是自由文本 heuristic（"下次遇到这种情况，建议这样做"）——主观、不可验证、无形式语义。你的<strong style="color:var(--color-text-primary)">范式</strong>是结构化四元组：</p>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px;font-size:12px;color:var(--color-text-secondary);font-family:var(--font-mono);margin-bottom:8px;line-height:1.7">
+      Paradigm = (trigger_condition, inference_operation, Z3_pre/post_condition, applicability_scope)
+    </div>
+    <p style="margin:0;font-size:13px;color:var(--color-text-secondary);line-height:1.65">每个范式在被存入库之前必须通过 Z3 的 soundness 验证——这把记忆单元的质量保证从"LLM 觉得对"升级为"求解器证明对"。这个概念层面的贡献在整个 Agent Memory 文献中是首次提出的。</p>
+    <div style="margin-top:8px;background:var(--color-background-info);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-info)">新颖性：<strong>高</strong>——现有所有记忆工作（ExpeL/ReasoningBank/ProcMEM）的记忆单元均无形式语义，这是根本性的表示层创新</div>
+  </div>
+</div>
+
+<div class="inno-card">
+  <div class="ic-head">
+    <span class="ic-num" style="color:#1D9E75">②</span>
+    <div>
+      <p class="ic-title">方法创新：类型化修复轨迹记忆（Typed Repair Trajectory Memory）</p>
+      <p class="ic-sub">首次在神经符号框架中将修复过程建模为可学习的结构化轨迹</p>
+    </div>
+  </div>
+  <div class="ic-body">
+    <p style="margin:0 0 6px;font-size:13px;color:var(--color-text-secondary);line-height:1.65">Logic-LM 系列发现 stagnation 但没有解决方案；Loop Invariant 工作设硬上限 N=5 直接放弃；Reflexion 的 verbal 反思无法检测循环。你的修复记忆：</p>
+    <ul class="sl" style="margin:0 0 8px">
+      <li>每条修复记录携带 <code>error_type + UNSAT_core + repair_action + outcome</code> 四元组，是有结构的失败信号而非模糊的文字反思</li>
+      <li>停滞检测用 UNSAT core 的 Jaccard 相似度量化——这是从 solver 信息中设计的、与 LLM 无关的客观指标</li>
+      <li>策略切换按四级分级，每级有明确触发条件和响应动作，而非"随机换个 prompt 试试"</li>
+      <li>成功修复的经验通过"写回机制"转化为新范式，实现失败→学习的闭环</li>
+    </ul>
+    <div style="background:var(--color-background-info);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-info)">新颖性：<strong>高</strong>——这是将"修复"本身作为一种可建模、可学习过程的首次尝试；现有工作把修复当黑箱</div>
+  </div>
+</div>
+
+<div class="inno-card">
+  <div class="ic-head">
+    <span class="ic-num" style="color:#378ADD">③</span>
+    <div>
+      <p class="ic-title">系统创新：离线提炼 + 在线推理的双阶段架构</p>
+      <p class="ic-sub">将 CSP 求解的"知识积累"与"任务推理"分离，实现按需检索</p>
+    </div>
+  </div>
+  <div class="ic-body">
+    <p style="margin:0 0 6px;font-size:13px;color:var(--color-text-secondary);line-height:1.65">现有神经符号框架都是"每道题从零开始的单阶段系统"。你的双阶段设计：</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px">
+        <p style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px">离线阶段（一次性）</p>
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.5">N 条轨迹 → K 个范式（K≪N），范式库固化为可复用的推理资产，有 15:1 左右的压缩比</p>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px">
+        <p style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px">在线阶段（每题）</p>
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:0;line-height:1.5">约束结构特征 → 检索匹配范式 → 结构化提示注入 → Z3 逐步验证 → 修复记忆介入</p>
+      </div>
+    </div>
+    <p style="margin:0;font-size:13px;color:var(--color-text-secondary);line-height:1.65">分离设计的好处：离线提炼成本分摊到所有未来任务；在线检索低延迟；范式库可以持续扩充；避免了 ExpeL 的 context 线性膨胀问题。</p>
+    <div style="margin-top:8px;background:var(--color-background-info);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-info)">新颖性：<strong>中高</strong>——双阶段架构在 Procedural Memory 工作（MACLA）中有先例，但与 solver 结合 + CSP 域应用是新的</div>
+  </div>
+</div>
+
+<div class="inno-card">
+  <div class="ic-head">
+    <span class="ic-num" style="color:#BA7517">④</span>
+    <div>
+      <p class="ic-title">实验创新：范式迁移率（Paradigm Transfer Rate）新评估指标</p>
+      <p class="ic-sub">建立量化范式跨实例/跨领域泛化能力的标准化评估体系</p>
+    </div>
+  </div>
+  <div class="ic-body">
+    <p style="margin:0 0 6px;font-size:13px;color:var(--color-text-secondary);line-height:1.65">现有经验积累工作没有系统地量化"学到的经验有多大比例能用到新场景"。你可以定义：</p>
+    <ul class="sl" style="margin:0 0 8px">
+      <li><strong>范式触发率</strong>：在测试集中，有多少比例的求解步骤被范式库中的某个范式成功覆盖</li>
+      <li><strong>范式有效率</strong>：触发了范式的步骤中，有多少比例的推断被 Z3 验证为正确</li>
+      <li><strong>L1 迁移率</strong>：3×5 谜题上学到的范式在 5×6 谜题上的触发率和有效率</li>
+      <li><strong>L2 迁移率</strong>：Zebra 谜题范式在 Knights-Knaves/Hitori 上的迁移率</li>
+    </ul>
+    <p style="margin:0;font-size:13px;color:var(--color-text-secondary);line-height:1.65">这套指标体系可以回答"范式泛化的边界在哪里"这个理论问题，对领域有独立的贡献价值。</p>
+    <div style="margin-top:8px;background:var(--color-background-info);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-info)">新颖性：<strong>中</strong>——指标设计本身较直接，但系统性地量化 CSP 范式迁移是领域空白</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== FEASIBILITY ===== -->
+<div id="feas" class="panel">
+<p class="sec">六个维度的可实施性评估</p>
+
+<div class="feas-dim"><span class="fdlabel">技术依赖成熟度</span><div class="fdbg"><div class="fdfill" style="width:92%;background:#1D9E75"></div></div><span class="fdval">92%</span></div>
+<div class="feas-dim"><span class="fdlabel">基础代码复用度</span><div class="fdbg"><div class="fdfill" style="width:88%;background:#1D9E75"></div></div><span class="fdval">88%</span></div>
+<div class="feas-dim"><span class="fdlabel">实验数据可获得性</span><div class="fdbg"><div class="fdfill" style="width:95%;background:#1D9E75"></div></div><span class="fdval">95%</span></div>
+<div class="feas-dim"><span class="fdlabel">计算资源需求</span><div class="fdbg"><div class="fdfill" style="width:75%;background:#378ADD"></div></div><span class="fdval">低需求</span></div>
+<div class="feas-dim"><span class="fdlabel">模块实现复杂度</span><div class="fdbg"><div class="fdfill" style="width:62%;background:#BA7517"></div></div><span class="fdval">中等</span></div>
+<div class="feas-dim"><span class="fdlabel">实验结果可预期性</span><div class="fdbg"><div class="fdfill" style="width:70%;background:#BA7517"></div></div><span class="fdval">中高</span></div>
+
+<div class="highlight" style="margin-top:14px">核心优势：整个框架不需要 fine-tune 任何模型，纯推理时框架。GPU 成本几乎为零，只需要 LLM API 调用 + Z3 本地运行。</div>
+
+<p class="sec" style="margin-top:4px">模块级实施难度</p>
+<div style="overflow-x:auto;margin-bottom:14px">
+<table class="comp-table">
+<thead><tr>
+  <th>模块</th><th>实施内容</th><th>难度</th><th>依赖</th><th>时间估算</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td>轨迹收集</td>
+  <td>复用论文一 Pipeline，加步骤记录</td>
+  <td class="yes">低</td>
+  <td>论文一代码</td>
+  <td>3-5天</td>
+</tr>
+<tr>
+  <td>KDP 识别</td>
+  <td>规则式分类器 + Z3 前向传播比较</td>
+  <td class="yes">低-中</td>
+  <td>Z3 Python API</td>
+  <td>5-7天</td>
+</tr>
+<tr>
+  <td>聚类抽象</td>
+  <td>约束类型向量化 + agglomerative 聚类</td>
+  <td class="partial">中</td>
+  <td>sklearn/numpy</td>
+  <td>5-7天</td>
+</tr>
+<tr>
+  <td>Z3 范式验证</td>
+  <td>soundness/effect/trigger precision 三检验</td>
+  <td class="partial">中</td>
+  <td>Z3 Python API</td>
+  <td>7-10天</td>
+</tr>
+<tr>
+  <td>范式检索</td>
+  <td>约束类型特征匹配（初期规则式）</td>
+  <td class="yes">低</td>
+  <td>dict/特征提取</td>
+  <td>3-4天</td>
+</tr>
+<tr>
+  <td>修复记忆结构</td>
+  <td>四元组记录 + Jaccard/余弦检测</td>
+  <td class="yes">低</td>
+  <td>numpy, sentence-transformers</td>
+  <td>4-5天</td>
+</tr>
+<tr>
+  <td>策略切换协议</td>
+  <td>四级 if-else 状态机</td>
+  <td class="yes">低</td>
+  <td>无外部依赖</td>
+  <td>3-4天</td>
+</tr>
+<tr>
+  <td>经验写回</td>
+  <td>轨迹回溯 + 候选范式提交验证</td>
+  <td class="partial">中</td>
+  <td>范式验证模块</td>
+  <td>5-7天</td>
+</tr>
+<tr>
+  <td>泛化实验</td>
+  <td>Knights-Knaves/Hitori 适配</td>
+  <td class="partial">中-高</td>
+  <td>新域约束解析器</td>
+  <td>10-14天</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="sec">风险评估与应对</p>
+<div class="risk-row"><span class="risk-lv risk-md">中风险</span><span class="risk-text"><strong style="color:var(--color-text-primary)">范式粒度难定</strong>——太细过拟合，太粗无效。应对：设计对比实验（细/中/粗三种粒度），让实验数据指导粒度选择；初期用三种预定义粒度，不依赖聚类参数。</span></div>
+<div class="risk-row"><span class="risk-lv risk-md">中风险</span><span class="risk-text"><strong style="color:var(--color-text-primary)">范式提炼质量不稳定</strong>——LLM 从轨迹中抽象范式时可能产生过于特化的描述。应对：Z3 验证是强过滤器（通过率低则增大聚类粒度），设置 support_count 最低阈值（≥5 个轨迹支持）。</span></div>
+<div class="risk-row"><span class="risk-lv risk-lo">低风险</span><span class="risk-text"><strong style="color:var(--color-text-primary)">停滞检测阈值调优</strong>——Jaccard 阈值 τ_s 和余弦阈值 τ_l 需要在 dev set 上调。应对：用论文二生成器产出验证集，网格搜索，工作量可控。</span></div>
+<div class="risk-row"><span class="risk-lv risk-hi">较高风险</span><span class="risk-text"><strong style="color:var(--color-text-primary)">L2 泛化实验结果不确定</strong>——Zebra 范式到 Knights-Knaves/Hitori 的迁移率难以预判，若结果很差会弱化贡献。应对：L2 作为 exploratory experiment，明确标注"初步探索"；L1（同域泛化）作为主要贡献，不依赖 L2 成立。</span></div>
+<div class="risk-row"><span class="risk-lv risk-lo">低风险</span><span class="risk-text"><strong style="color:var(--color-text-primary)">基线对比的公平性</strong>——Logic-LM 等基线的实现细节可能与原文略有差异。应对：使用 ZebraLogic 论文中报告的官方数字，自己实现部分基线但与原文对齐。</span></div>
+
+<p class="sec" style="margin-top:4px">建议时间线（12周）</p>
+<div class="tl-row">
+  <div class="tl-seg hi">Week 1-2<br>轨迹收集<br>KDP识别</div>
+  <div class="tl-seg hi">Week 3-5<br>聚类+范式<br>提炼+Z3验证</div>
+  <div class="tl-seg hi">Week 6-7<br>范式检索<br>修复记忆</div>
+  <div class="tl-seg">Week 8-9<br>策略切换<br>写回机制</div>
+  <div class="tl-seg">Week 10<br>L1泛化<br>消融实验</div>
+  <div class="tl-seg">Week 11<br>L2泛化<br>对比基线</div>
+  <div class="tl-seg">Week 12<br>写作<br>整理</div>
+</div>
+<p style="font-size:12px;color:var(--color-text-tertiary);margin:4px 0 0">蓝色 = 关键路径（必须完成）；白色 = 在关键路径完成后推进</p>
+
+<div class="box" style="margin-top:12px">
+  <p class="bh">MVP（最小可发表版本）定义</p>
+  <p class="bp">若第 9 周前能完成：<strong style="color:var(--color-text-primary)">修复记忆 + 范式库（仅 L1）</strong> 的完整实验 + 与 Logic-LM/ExpeL 的对比，已经是一篇 EMNLP/ACL 水准的工作。L2 泛化和写回机制是加分项，不是门槛。最坏情况（L2 结果差）仍然有完整的 L1 贡献。</p>
+</div>
+</div>
+
+</div>
+<script>
+function sw(id,el){
+  document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');document.getElementById(id).classList.add('on');
+}
+</script>

@@ -1,0 +1,415 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+*{box-sizing:border-box}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:12px;margin-bottom:18px}
+.tb{font-size:13px;padding:5px 14px;border-radius:99px;border:.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tb.on{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent}
+.panel{display:none}.panel.on{display:block}
+.sec{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:0 0 14px}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;display:inline-block;margin-right:3px}
+.t1{background:#E1F5EE;color:#0F6E56}.t2{background:#EEEDFE;color:#3C3489}
+.t3{background:#FAEEDA;color:#854F0B}.t4{background:#FAECE7;color:#993C1D}
+.t5{background:#E6F1FB;color:#185FA5}.t6{background:#F1EFE8;color:#5F5E5A}
+.t7{background:#EAF3DE;color:#3B6D11}.t8{background:#FDE8F5;color:#7D1558}
+@media(prefers-color-scheme:dark){
+.t1{background:#085041;color:#9FE1CB}.t2{background:#26215C;color:#CECBF6}
+.t3{background:#633806;color:#FAC775}.t4{background:#4A1B0C;color:#F5C4B3}
+.t5{background:#042C53;color:#B5D4F4}.t6{background:#2C2C2A;color:#D3D1C7}
+.t7{background:#173404;color:#C0DD97}.t8{background:#3A0628;color:#F0A8D8}}
+.cluster{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:12px;overflow:hidden}
+.cl-head{padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none}
+.cl-head:hover{background:var(--color-background-secondary)}
+.cl-arrow{font-size:12px;color:var(--color-text-tertiary);transition:transform .2s;margin-left:auto}
+.cluster.open .cl-arrow{transform:rotate(90deg)}
+.cl-body{display:none;padding:0 14px 14px;border-top:.5px solid var(--color-border-tertiary)}
+.cluster.open .cl-body{display:block}
+.cl-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0}
+.cl-sub{font-size:12px;color:var(--color-text-secondary);margin:2px 0 0}
+.paper-row{display:grid;grid-template-columns:180px 1fr auto;gap:6px 10px;padding:8px 0;border-bottom:.5px solid var(--color-border-tertiary);align-items:start;font-size:13px}
+.paper-row:last-child{border-bottom:none}
+.pr-name{font-weight:500;color:var(--color-text-primary);line-height:1.4}
+.pr-desc{color:var(--color-text-secondary);line-height:1.5}
+.pr-year{color:var(--color-text-tertiary);font-size:11px;white-space:nowrap}
+.gap-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px;margin-top:8px;font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.gap-box strong{color:var(--color-text-primary)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center}
+.stat-num{font-size:22px;font-weight:600;color:var(--color-text-primary)}
+.stat-label{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);width:140px;flex-shrink:0}
+.bar-bg{flex:1;height:6px;background:var(--color-background-tertiary,#eee);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-val{font-size:12px;color:var(--color-text-secondary);width:32px;text-align:right}
+.dir-card{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:13px 15px;margin-bottom:10px}
+.dir-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.dir-num{font-size:13px;font-weight:600;width:24px;flex-shrink:0;margin-top:1px}
+.dir-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 2px}
+.dir-why{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin:0}
+.heat-wrap{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:6px}
+.heat-cell{border-radius:4px;padding:4px 2px;text-align:center;font-size:10px;font-weight:500;cursor:default}
+.h-hi{background:#EEEDFE;color:#3C3489}.h-md{background:#E6F1FB;color:#185FA5}
+.h-lo{background:#F1EFE8;color:#5F5E5A}.h-none{background:var(--color-background-secondary);color:var(--color-text-tertiary)}
+@media(prefers-color-scheme:dark){.h-hi{background:#26215C;color:#CECBF6}.h-md{background:#042C53;color:#B5D4F4}.h-lo{background:#2C2C2A;color:#D3D1C7}}
+.ask-btn{font-size:12px;padding:4px 10px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary);margin-top:8px}
+.ask-btn:hover{background:var(--color-background-secondary)}
+.badge-hot{font-size:10px;padding:1px 6px;border-radius:99px;background:#FAECE7;color:#993C1D;margin-left:6px;font-weight:500}
+@media(prefers-color-scheme:dark){.badge-hot{background:#4A1B0C;color:#F5C4B3}}
+</style>
+
+<h2 class="sr-only">神经符号Agent工作全景调研：八大分类、现状分析与前景方向</h2>
+
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="tb on" onclick="sw('overview',this)">全景概览</button>
+  <button class="tb" onclick="sw('clusters',this)">八大分类</button>
+  <button class="tb" onclick="sw('heatmap',this)">研究热度图</button>
+  <button class="tb" onclick="sw('frontier',this)">前景方向</button>
+</div>
+
+<!-- OVERVIEW -->
+<div id="overview" class="panel on">
+<p class="sec">领域整体数据（来源：ScienceDirect 系统综述，178篇，2020-2025）</p>
+<div class="stat-grid">
+  <div class="stat"><div class="stat-num">178</div><div class="stat-label">综述覆盖论文数</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">主要架构分类</div></div>
+  <div class="stat"><div class="stat-num">5%</div><div class="stat-label">元认知研究占比<br>（严重不足）</div></div>
+  <div class="stat"><div class="stat-num">63%</div><div class="stat-label">聚焦学习+推理</div></div>
+</div>
+
+<p class="sec">五大集成维度研究分布</p>
+<div style="margin-bottom:16px">
+  <div class="bar-row"><span class="bar-label">学习与推理 (Learning+Inference)</span><div class="bar-bg"><div class="bar-fill" style="width:63%;background:#534AB7"></div></div><span class="bar-val">63%</span></div>
+  <div class="bar-row"><span class="bar-label">知识表示 (Knowledge Rep.)</span><div class="bar-bg"><div class="bar-fill" style="width:44%;background:#1D9E75"></div></div><span class="bar-val">44%</span></div>
+  <div class="bar-row"><span class="bar-label">逻辑与推理 (Logic+Reasoning)</span><div class="bar-bg"><div class="bar-fill" style="width:35%;background:#378ADD"></div></div><span class="bar-val">35%</span></div>
+  <div class="bar-row"><span class="bar-label">可解释性与可信度</span><div class="bar-bg"><div class="bar-fill" style="width:28%;background:#BA7517"></div></div><span class="bar-val">28%</span></div>
+  <div class="bar-row"><span class="bar-label">元认知 (Meta-cognition)</span><div class="bar-bg"><div class="bar-fill" style="width:5%;background:#D85A30"></div></div><span class="bar-val">5%</span></div>
+</div>
+
+<p class="sec">两条核心技术脉络</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px">
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px">
+    <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px">脉络一：Neural→Symbolic（翻译-执行）</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">LLM 作翻译器，将问题/任务转化为形式语言，由外部求解器/规划器执行，结果返回 LLM 解释或修复。代表：Logic-LM、LINC、PAL、LLM+PDDL</p>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px">
+    <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px">脉络二：Symbolic→Neural（知识注入）</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">用结构化符号知识（KG、本体、规则）增强 LLM 的推理输入，符号系统作知识库，LLM 作推理引擎。代表：KG-Agent、SymAgent、Graph-CoT</p>
+  </div>
+</div>
+<p style="font-size:12px;color:var(--color-text-tertiary);margin:4px 0 0">最新趋势正在走向第三条脉络：两者深度融合，符号验证实时介入神经推理过程（如 VERGE、FormalJudge、AlphaGeometry）</p>
+</div>
+
+<!-- CLUSTERS -->
+<div id="clusters" class="panel">
+<p class="sec">点击展开每个分类的代表工作和现存缺陷</p>
+
+<div class="cluster open" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t2">C1</span>
+    <div><p class="cl-title">LLM + 形式化求解器（Translation-Execution）</p>
+    <p class="cl-sub">最成熟的路径 · 2023年爆发 · 当前主流</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">Logic-LM</span><span class="pr-desc">NL→Prolog/Z3翻译 + 自修复回路，ProofWriter/AR-LSAT，奠基工作</span><span class="pr-year">EMNLP 2023</span></div>
+    <div class="paper-row"><span class="pr-name">LINC</span><span class="pr-desc">NL→FOL + Prover9/Z3，无修复模块，翻译质量瓶颈分析</span><span class="pr-year">EMNLP 2023</span></div>
+    <div class="paper-row"><span class="pr-name">SAT-LM</span><span class="pr-desc">NL→SAT实例，系统性翻译错误分类（命名/子句/一致性）</span><span class="pr-year">2023</span></div>
+    <div class="paper-row"><span class="pr-name">Logic-LM++</span><span class="pr-desc">Pairwise比较机制筛选修复候选，在Logic-LM上+5%</span><span class="pr-year">ACL 2024</span></div>
+    <div class="paper-row"><span class="pr-name">VERGE</span><span class="pr-desc">MCS定位冲突claims + 语义路由（逻辑→SMT/常识→LLM），+18.7%</span><span class="pr-year">Jan 2026</span></div>
+    <div class="paper-row"><span class="pr-name">ATA</span><span class="pr-desc">LLM+SMT/SAT构建可信自治Agent，命题逻辑+SMT双引擎</span><span class="pr-year">Oct 2025</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>翻译错误类型未区分；UNSAT core 利用不足；迭代修复停滞；形式化壁垒（&lt;20B模型无法做语义修复）；每次求解经验不积累</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t5">C2</span>
+    <div><p class="cl-title">LLM + 知识图谱（Structured Knowledge Retrieval）</p>
+    <p class="cl-sub">多跳推理 · 知识密集型任务 · 持续活跃</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">KG-Agent</span><span class="pr-desc">用编程语言设计KG多跳推理，合成code指令集fine-tune LLM</span><span class="pr-year">2024</span></div>
+    <div class="paper-row"><span class="pr-name">SymAgent</span><span class="pr-desc">KG上的神经符号自学习Agent，自动规则归纳+知识补全</span><span class="pr-year">Feb 2025</span></div>
+    <div class="paper-row"><span class="pr-name">Graph-CoT</span><span class="pr-desc">图结构引导CoT推理，LLM在图上做链式推断</span><span class="pr-year">ACL 2024</span></div>
+    <div class="paper-row"><span class="pr-name">KBQA-o1</span><span class="pr-desc">MCTS在知识库QA上做agentic搜索，符号结构+蒙特卡洛树</span><span class="pr-year">Jan 2025</span></div>
+    <div class="paper-row"><span class="pr-name">ReLMKG</span><span class="pr-desc">LM编码问题 + GNN消息传播，双向增强多跳KG推理</span><span class="pr-year">2023</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>KG本身的不完整性和噪声；LLM与KG的表示对齐问题（实体链接错误）；动态KG更新机制缺乏；推理路径可解释性不足</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t3">C3</span>
+    <div><p class="cl-title">LLM + 任务规划器（Planning + PDDL/Symbolic Planner）</p>
+    <p class="cl-sub">具身AI · 机器人 · 长程规划 · 快速发展</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">LLM+PDDL</span><span class="pr-desc">LLM生成PDDL问题描述，经典规划器（Fast Downward等）求解</span><span class="pr-year">2023</span></div>
+    <div class="paper-row"><span class="pr-name">Metagent-P</span><span class="pr-desc">规划-验证-执行-反思框架，符号验证器实时检查计划可行性</span><span class="pr-year">ACL 2025</span></div>
+    <div class="paper-row"><span class="pr-name">JARVIS</span><span class="pr-desc">具身Agent的常识推理框架，符号场景图+LLM动作选择</span><span class="pr-year">AAAI 2023</span></div>
+    <div class="paper-row"><span class="pr-name">HybridPlanning</span><span class="pr-desc">LLM+SMT解决多约束规划，软约束符号掩码保证策略合规</span><span class="pr-year">2024</span></div>
+    <div class="paper-row"><span class="pr-name">PSALM</span><span class="pr-desc">从执行轨迹和失败trace归纳动作语义，无需专家领域知识</span><span class="pr-year">2024</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>PDDL生成质量不稳定；规划器无法处理不确定性；从高层指令到PDDL的语义鸿沟；长程任务的状态维护困难</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t1">C4</span>
+    <div><p class="cl-title">LLM + 程序合成（Code as Symbolic Layer）</p>
+    <p class="cl-sub">代码即符号 · 解释器作Oracle · 工业最成熟</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">PAL / PoT</span><span class="pr-desc">LLM生成Python代码，解释器执行替代直接数学推理</span><span class="pr-year">ICML 2023</span></div>
+    <div class="paper-row"><span class="pr-name">CodeTree</span><span class="pr-desc">Agent引导树搜索做代码生成，符号执行结果作为reward信号</span><span class="pr-year">2024</span></div>
+    <div class="paper-row"><span class="pr-name">CodeARC</span><span class="pr-desc">归纳程序合成：LLM从输入-输出样例推断隐藏函数，Oracle验证</span><span class="pr-year">2025</span></div>
+    <div class="paper-row"><span class="pr-name">ConstraintLLM</span><span class="pr-desc">Qwen2.5-Coder-32B + ToT分支 + 符号Solver反馈，CSP建模SOTA</span><span class="pr-year">Oct 2025</span></div>
+    <div class="paper-row"><span class="pr-name">DotaMath</span><span class="pr-desc">代码辅助+自校正的数学推理分解，代码执行验证子步骤</span><span class="pr-year">2024</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>代码执行环境限制（安全/沙箱）；LLM对复杂数据结构生成不稳定；代码与自然语言语义对齐的隐式错误；执行报错的自动修复仍然粗糙</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t4">C5</span>
+    <div><p class="cl-title">LLM + 形式化验证（Trustworthy Agent Oversight）<span class="badge-hot">新兴</span></p>
+    <p class="cl-sub">安全可信 · 形式化保证 · 2025年爆发</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">FormalJudge</span><span class="pr-desc">LLM轨迹分解为原子事实→SMT验证正确性，取代LLM-as-Judge</span><span class="pr-year">2026</span></div>
+    <div class="paper-row"><span class="pr-name">Ontology Repair</span><span class="pr-desc">OWL本体+HermiT推理机验证LLM输出的逻辑一致性并修复</span><span class="pr-year">2024</span></div>
+    <div class="paper-row"><span class="pr-name">NL Verification</span><span class="pr-desc">自然语言→正式策略→SMT检验，企业合规和法律推理</span><span class="pr-year">Nov 2025</span></div>
+    <div class="paper-row"><span class="pr-name">Trust (Isabelle)</span><span class="pr-desc">LLM解题→Isabelle/HOL定理证明验证，用证明筛掉不忠实推理</span><span class="pr-year">2024</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>形式化规范本身的撰写成本高；SMT求解的可扩展性（约束数增加指数爆炸）；形式化语言表达能力有限（无法处理模糊性）</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t6">C6</span>
+    <div><p class="cl-title">记忆增强神经符号Agent（Memory + Experience）</p>
+    <p class="cl-sub">跨任务经验积累 · 技能库 · 你的工作所在领域</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">Reflexion</span><span class="pr-desc">语言强化：失败后verbal反思写入episode memory供下次参考</span><span class="pr-year">NeurIPS 2023</span></div>
+    <div class="paper-row"><span class="pr-name">ExpeL</span><span class="pr-desc">跨任务insight提取，成功/失败轨迹对比，ADD/UPVOTE机制</span><span class="pr-year">AAAI 2024</span></div>
+    <div class="paper-row"><span class="pr-name">ReasoningBank</span><span class="pr-desc">蒸馏结构化知识单元，MaTTS提升记忆质量，web/SWE任务</span><span class="pr-year">Sep 2025</span></div>
+    <div class="paper-row"><span class="pr-name">MACLA / ProcMEM</span><span class="pr-desc">2851条轨迹→187个可执行程序（15:1压缩），程序级记忆</span><span class="pr-year">2025-26</span></div>
+    <div class="paper-row"><span class="pr-name">ERL</span><span class="pr-desc">失败轨迹提取Heuristics在搜索任务+14.3%，正负经验价值分析</span><span class="pr-year">2025</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>记忆单元均为自由文本，不可形式验证；没有CSP/逻辑推理域的工作；记忆检索效率随规模下降；技能粒度定义难（<strong>你的工作正在填补这个gap</strong>）</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t7">C7</span>
+    <div><p class="cl-title">多智能体神经符号系统（Multi-Agent + Symbolic Coordination）</p>
+    <p class="cl-sub">角色分工 · 辩论验证 · 快速增长</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">MetaGPT</span><span class="pr-desc">多角色LLM协作（产品/架构/工程师），SOP作符号协调机制</span><span class="pr-year">ICLR 2024</span></div>
+    <div class="paper-row"><span class="pr-name">MACM</span><span class="pr-desc">多Agent条件挖掘解复杂数学，角色:推导者/条件挖掘者/判断者</span><span class="pr-year">2024</span></div>
+    <div class="paper-row"><span class="pr-name">MAD (Knight-Knave)</span><span class="pr-desc">符号验证者作第三方裁判介入LLM辩论，逻辑谜题上受控实验</span><span class="pr-year">2025</span></div>
+    <div class="paper-row"><span class="pr-name">MathVC</span><span class="pr-desc">多角色虚拟课堂，符号计算Agent+推理Agent+验证Agent</span><span class="pr-year">2024</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>多Agent通信协议标准化不足；角色分工最优策略未知；通信成本（token消耗）与收益的权衡；符号协调和语言协调的界面设计</div>
+  </div>
+</div>
+
+<div class="cluster" onclick="tog(this)">
+  <div class="cl-head">
+    <span class="tag t8">C8</span>
+    <div><p class="cl-title">神经符号 + 强化学习/端到端学习<span class="badge-hot">最前沿</span></p>
+    <p class="cl-sub">AlphaGeometry级别 · 符号引导RL · RLVR</p></div>
+    <span class="cl-arrow">▶</span>
+  </div>
+  <div class="cl-body">
+    <div class="paper-row"><span class="pr-name">AlphaGeometry</span><span class="pr-desc">神经+符号双引擎，LLM猜辅助构造，Prolog符号推理证明，IMO级别</span><span class="pr-year">Nature 2024</span></div>
+    <div class="paper-row"><span class="pr-name">AlphaProof</span><span class="pr-desc">LLM+Lean4形式化证明，RL训练，IMO 2024银牌</span><span class="pr-year">2024</span></div>
+    <div class="paper-row"><span class="pr-name">RLVR+Symbolic</span><span class="pr-desc">GRPO训练+符号Oracle作reward，Enigmata/LogicPuzzleRL</span><span class="pr-year">2025</span></div>
+    <div class="paper-row"><span class="pr-name">LoCo</span><span class="pr-desc">逻辑一致性语义损失函数，加权模型计数，端到端可微分约束</span><span class="pr-year">2025</span></div>
+    <div class="paper-row"><span class="pr-name">Sketch-Plan-Generalize</span><span class="pr-desc">神经符号程序表示+归纳空间概念学习，ICML 2025</span><span class="pr-year">ICML 2025</span></div>
+    <div class="gap-box"><strong>核心缺陷：</strong>训练成本极高；符号Oracle的设计（reward shaping）对结果影响大；端到端可微分的符号层表达能力有限；泛化到OOD域困难</div>
+  </div>
+</div>
+</div>
+
+<!-- HEATMAP -->
+<div id="heatmap" class="panel">
+<p class="sec">各分类 × 研究维度热度矩阵（● 热点 ◎ 活跃 ○ 空白）</p>
+<div style="overflow-x:auto">
+<table style="border-collapse:collapse;font-size:12px;width:100%;min-width:620px">
+<thead>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <th style="text-align:left;padding:6px 8px;color:var(--color-text-secondary);font-weight:500;width:160px">分类</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">推理<br>质量</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">可信/<br>验证</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">记忆/<br>经验</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">多智<br>能体</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">泛化<br>能力</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">效率/<br>成本</th>
+  <th style="padding:6px 4px;color:var(--color-text-secondary);font-weight:500;text-align:center;width:68px">元认知</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C1 形式求解器</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+</tr>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C2 知识图谱</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+</tr>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C3 任务规划</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+</tr>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C4 程序合成</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+</tr>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C5 形式验证</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+</tr>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary);font-weight:500">C6 记忆增强 ← 你</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+</tr>
+<tr style="border-bottom:.5px solid var(--color-border-tertiary)">
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C7 多智能体</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+</tr>
+<tr>
+  <td style="padding:6px 8px;font-size:12px;color:var(--color-text-primary)">C8 RL/端到端</td>
+  <td class="h-hi" style="padding:5px 4px;text-align:center;border-radius:4px">●</td>
+  <td class="h-md" style="padding:5px 4px;text-align:center;border-radius:4px">◎</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-lo" style="padding:5px 4px;text-align:center;border-radius:4px">△</td>
+  <td class="h-none" style="padding:5px 4px;text-align:center;border-radius:4px">○</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:12px;color:var(--color-text-tertiary);margin:8px 0 0">● 热点（大量工作）◎ 活跃 △ 少量工作 ○ 几乎空白</p>
+<div style="margin-top:12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px">
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px">关键观察</p>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.65">「元认知」列全线空白，是整个领域最严重的研究盲区（仅5%占比）。「记忆+验证」的交叉（C6×可信）是你的工作填补的精确位置——现有记忆工作没有形式验证，现有验证工作不积累记忆。</p>
+</div>
+</div>
+
+<!-- FRONTIER -->
+<div id="frontier" class="panel">
+<p class="sec">六大前景方向（按热度 × 空白度综合评估）</p>
+
+<div class="dir-card">
+  <div class="dir-head">
+    <span class="dir-num" style="color:#7F77DD">F1</span>
+    <div><p class="dir-title">形式可验证的元认知（Formally-Verified Meta-Cognition）<span class="badge-hot">最空白</span></p>
+    <p class="dir-why">Agent 能知道"我现在处于什么推理状态""我接下来应该用哪种策略""我是否在兜圈子"——并且这种自我感知本身是形式可验证的。这是整个神经符号 Agent 领域研究最少（5%）但影响最大的方向。你的范式记忆框架已经触及这个方向的边缘：停滞检测和策略切换本质上就是一种元认知机制。</p></div>
+  </div>
+  <button class="ask-btn" onclick="sendPrompt('形式可验证的元认知在神经符号Agent中具体怎么实现？和我的范式记忆框架有什么联系？')">与我的框架的关系 ↗</button>
+</div>
+
+<div class="dir-card">
+  <div class="dir-head">
+    <span class="dir-num" style="color:#1D9E75">F2</span>
+    <div><p class="dir-title">神经符号持续学习（Continual Neuro-Symbolic Learning）<span class="badge-hot">新兴</span></p>
+    <p class="dir-why">Agent 在持续解决问题的过程中，动态更新符号知识库（规则、范式、约束）而不遗忘之前学到的内容。对应人类专家越做越快的经验积累过程。现有工作都是静态知识库（训练一次，固定使用）。你的"经验写回机制"是这个方向的一个具体实例。</p></div>
+  </div>
+</div>
+
+<div class="dir-card">
+  <div class="dir-head">
+    <span class="dir-num" style="color:#378ADD">F3</span>
+    <div><p class="dir-title">跨域符号迁移（Cross-Domain Symbolic Transfer）</p>
+    <p class="dir-why">在一个 CSP 域（如 Zebra 谜题）学到的求解范式能否迁移到调度、资源分配、法律推理等其他约束场景？核心问题是：什么是"范式的不变量"，哪些部分是领域特有的，哪些是通用的。这比纯神经 domain adaptation 更有理论深度，因为符号范式有明确的逻辑语义，迁移条件可以被形式化定义。</p></div>
+  </div>
+</div>
+
+<div class="dir-card">
+  <div class="dir-head">
+    <span class="dir-num" style="color:#BA7517">F4</span>
+    <div><p class="dir-title">符号监督的多智能体协作（Symbolic-Coordinated Multi-Agent）</p>
+    <p class="dir-why">用符号规则（而非自然语言协议）定义多 Agent 的角色分工、通信协议和分歧解决机制。例如：在复杂 CSP 中，一个 Agent 负责域分解，一个负责约束传播，一个作为 SMT 验证者，三者通过形式化接口交互。比 MetaGPT 的 SOP 更严格，比纯语言辩论更可靠。</p></div>
+  </div>
+</div>
+
+<div class="dir-card">
+  <div class="dir-head">
+    <span class="dir-num" style="color:#D85A30">F5</span>
+    <div><p class="dir-title">神经符号 Agent 的可扩展监管（Scalable Symbolic Oversight）<span class="badge-hot">工业热点</span></p>
+    <p class="dir-why">随着 Agent 能力越来越强，如何用形式化方法监管其行为？FormalJudge（2026）把 Agent 轨迹分解为原子事实再 SMT 验证，是这个方向的早期尝试。Amazon 在 2025 年 Vulcan 仓储系统中实际应用了神经符号方法做实时行为验证。这是学术界和工业界同时发力的方向。</p></div>
+  </div>
+</div>
+
+<div class="dir-card">
+  <div class="dir-head">
+    <span class="dir-num" style="color:#534AB7">F6</span>
+    <div><p class="dir-title">端到端可微神经符号集成（Differentiable Neuro-Symbolic）</p>
+    <p class="dir-why">把符号操作（约束满足、逻辑推断）做成可微分层，与神经网络联合训练。LoCo（2025）的语义损失函数是一个尝试。最终目标：不需要 LLM 先翻译再 solver 执行，而是神经网络内部直接实现符号推理，且可以端到端反向传播。这是最长期、最困难但也最根本的方向。</p></div>
+  </div>
+</div>
+
+<div style="margin-top:4px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px">
+  <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px">你的位置</p>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.65">你的 PARADIGM 框架处于 <strong style="color:var(--color-text-primary)">C6（记忆）× C1（形式求解）的交叉点</strong>，同时触及 <strong style="color:var(--color-text-primary)">F1（元认知）和 F2（持续学习）</strong>的早期实现。这个定位在整个 Agent+神经符号领域几乎是空白的——热度图上「记忆×可信」格子正在等待被填补。</p>
+</div>
+</div>
+
+</div>
+<script>
+function sw(id,el){document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));el.classList.add('on');document.getElementById(id).classList.add('on')}
+function tog(c){const o=c.classList.contains('open');document.querySelectorAll('.cluster').forEach(x=>x.classList.remove('open'));if(!o)c.classList.add('open')}
+</script>

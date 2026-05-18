@@ -1,0 +1,398 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:12px}
+.tb{font-size:13px;padding:5px 14px;border-radius:99px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tb.on{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent}
+.panel{display:none}.panel.on{display:block}
+.sec{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px}
+code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-secondary);padding:1px 5px;border-radius:4px;color:var(--color-text-primary)}
+.box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:10px}
+.bh{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px}
+.bp{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;margin-right:4px}
+.teal{background:#E1F5EE;color:#0F6E56}.purple{background:#EEEDFE;color:#3C3489}
+.amber{background:#FAEEDA;color:#854F0B}.blue{background:#E6F1FB;color:#185FA5}
+.gray{background:#F1EFE8;color:#5F5E5A}.coral{background:#FAECE7;color:#993C1D}
+.green-t{background:#EAF3DE;color:#3B6D11}
+@media(prefers-color-scheme:dark){
+.teal{background:#085041;color:#9FE1CB}.purple{background:#26215C;color:#CECBF6}
+.amber{background:#633806;color:#FAC775}.blue{background:#042C53;color:#B5D4F4}
+.gray{background:#2C2C2A;color:#D3D1C7}.coral{background:#4A1B0C;color:#F5C4B3}
+.green-t{background:#173404;color:#C0DD97}}
+.step-nav{display:flex;align-items:center;gap:8px;margin-top:12px}
+.snbtn{font-size:12px;padding:4px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.snbtn:hover{background:var(--color-background-secondary)}
+.snbtn:disabled{opacity:.4;cursor:default}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--color-border-secondary);display:inline-block}
+.sdot.on{background:var(--color-text-info)}
+.pcard{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px;margin-bottom:10px;background:var(--color-background-primary)}
+.pl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px}
+.prow{display:grid;grid-template-columns:80px 1fr;gap:6px 10px;font-size:13px;margin-bottom:6px;align-items:start}
+.plabel{color:var(--color-text-secondary);padding-top:1px}
+.pval{color:var(--color-text-primary);line-height:1.6}
+.mono{font-family:var(--font-mono);font-size:12px;background:var(--color-background-secondary);border-radius:4px;padding:6px 8px;color:var(--color-text-primary);line-height:1.7;white-space:pre-wrap;word-break:break-all}
+.verdict{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 8px;border-radius:99px}
+.vsat{background:#EAF3DE;color:#3B6D11}.vunsat{background:#FAECE7;color:#993C1D}
+@media(prefers-color-scheme:dark){.vsat{background:#173404;color:#C0DD97}.vunsat{background:#4A1B0C;color:#F5C4B3}}
+.ask-btn{font-size:12px;padding:4px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary);margin-top:8px}
+.ask-btn:hover{background:var(--color-background-secondary)}
+.pstep{display:none}.pstep.on{display:block}
+.contrib{counter-reset:c;list-style:none;padding:0;margin:0}
+.contrib li{counter-increment:c;display:grid;grid-template-columns:24px 1fr;gap:6px;margin-bottom:10px;align-items:start}
+.contrib li::before{content:counter(c);font-size:11px;font-weight:500;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--color-background-info);color:var(--color-text-info);flex-shrink:0;margin-top:1px}
+.ctext{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.ctitle{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.warn{background:var(--color-background-warning);border:0.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-warning);margin-bottom:10px}
+.succ{background:var(--color-background-success);border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-success);margin-bottom:10px}
+</style>
+
+<h2 class="sr-only">求解范式记忆系统详细设计：系统架构、范式表示示例、论文贡献框架</h2>
+
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="tb on" onclick="sw('arch',this)">系统架构</button>
+  <button class="tb" onclick="sw('paradigm',this)">范式示例（可交互）</button>
+  <button class="tb" onclick="sw('memory',this)">修复记忆设计</button>
+  <button class="tb" onclick="sw('paper',this)">论文框架</button>
+</div>
+
+<!-- ===== ARCH ===== -->
+<div id="arch" class="panel on">
+<p class="sec">整体系统流程</p>
+
+<svg width="100%" viewBox="0 0 680 520" role="img">
+<title>两阶段系统架构：离线范式提炼 + 在线推理</title>
+<desc>左侧为离线训练阶段，右侧为在线推理阶段，中间通过范式库连接</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<g class="c-gray"><rect x="30" y="20" width="270" height="480" rx="12" stroke-width="0.5"/>
+<text class="th" x="165" y="50" text-anchor="middle">离线阶段（一次性）</text></g>
+
+<g class="c-gray"><rect x="380" y="20" width="270" height="480" rx="12" stroke-width="0.5"/>
+<text class="th" x="515" y="50" text-anchor="middle">在线推理（每个谜题）</text></g>
+
+<g class="node c-teal" onclick="sendPrompt('谜题生成器如何控制难度级别？')">
+  <rect x="55" y="70" width="220" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="165" y="91" text-anchor="middle" dominant-baseline="central">谜题生成器</text>
+  <text class="ts" x="165" y="109" text-anchor="middle" dominant-baseline="central">第二篇工作，批量生成</text>
+</g>
+<line x1="165" y1="126" x2="165" y2="148" class="arr" marker-end="url(#ar)" stroke="#1D9E75"/>
+
+<g class="node c-teal" onclick="sendPrompt('成功求解轨迹的数据格式是什么？')">
+  <rect x="55" y="148" width="220" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="165" y="169" text-anchor="middle" dominant-baseline="central">成功求解轨迹收集</text>
+  <text class="ts" x="165" y="187" text-anchor="middle" dominant-baseline="central">LLM+Z3，记录每步状态</text>
+</g>
+<line x1="165" y1="204" x2="165" y2="226" class="arr" marker-end="url(#ar)" stroke="#1D9E75"/>
+
+<g class="node c-purple" onclick="sendPrompt('关键决策点如何自动识别？')">
+  <rect x="55" y="226" width="220" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="165" y="247" text-anchor="middle" dominant-baseline="central">关键决策点识别</text>
+  <text class="ts" x="165" y="265" text-anchor="middle" dominant-baseline="central">LLM 标注非平凡推断步</text>
+</g>
+<line x1="165" y1="282" x2="165" y2="304" class="arr" marker-end="url(#ar)" stroke="#534AB7"/>
+
+<g class="node c-purple" onclick="sendPrompt('跨轨迹聚类如何做？用什么相似度？')">
+  <rect x="55" y="304" width="220" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="165" y="325" text-anchor="middle" dominant-baseline="central">跨轨迹聚类抽象</text>
+  <text class="ts" x="165" y="343" text-anchor="middle" dominant-baseline="central">约束结构特征聚类</text>
+</g>
+<line x1="165" y1="360" x2="165" y2="382" class="arr" marker-end="url(#ar)" stroke="#534AB7"/>
+
+<g class="node c-purple" onclick="sendPrompt('Z3如何验证一个范式的sound性？')">
+  <rect x="55" y="382" width="220" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="165" y="403" text-anchor="middle" dominant-baseline="central">Z3 验证范式</text>
+  <text class="ts" x="165" y="421" text-anchor="middle" dominant-baseline="central">筛掉不可靠范式</text>
+</g>
+<line x1="165" y1="438" x2="165" y2="460" class="arr" marker-end="url(#ar)" stroke="#534AB7"/>
+
+<g class="node c-purple" onclick="sendPrompt('范式库的数据结构和检索方式是什么？')">
+  <rect x="55" y="460" width="220" height="30" rx="8" stroke-width="0.5"/>
+  <text class="th" x="165" y="475" text-anchor="middle" dominant-baseline="central">范式库（Paradigm Library）</text>
+</g>
+
+<path d="M275 475 L330 475 L330 260 L380 260" fill="none" stroke="#534AB7" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+
+<g class="node c-amber" onclick="sendPrompt('新谜题的约束结构特征如何提取？')">
+  <rect x="400" y="70" width="230" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="515" y="91" text-anchor="middle" dominant-baseline="central">新谜题输入</text>
+  <text class="ts" x="515" y="109" text-anchor="middle" dominant-baseline="central">提取约束结构特征</text>
+</g>
+<line x1="515" y1="126" x2="515" y2="148" class="arr" marker-end="url(#ar)" stroke="#BA7517"/>
+
+<g class="node c-amber" onclick="sendPrompt('范式检索的匹配策略是精确匹配还是模糊匹配？')">
+  <rect x="400" y="148" width="230" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="515" y="169" text-anchor="middle" dominant-baseline="central">范式检索</text>
+  <text class="ts" x="515" y="187" text-anchor="middle" dominant-baseline="central">约束类型特征匹配</text>
+</g>
+<line x1="515" y1="204" x2="515" y2="226" class="arr" marker-end="url(#ar)" stroke="#BA7517"/>
+
+<g class="node c-teal" onclick="sendPrompt('范式如何注入LLM prompt？')">
+  <rect x="400" y="226" width="230" height="68" rx="8" stroke-width="0.5"/>
+  <text class="th" x="515" y="249" text-anchor="middle" dominant-baseline="central">范式引导求解</text>
+  <text class="ts" x="515" y="268" text-anchor="middle" dominant-baseline="central">把范式作为结构化提示</text>
+  <text class="ts" x="515" y="284" text-anchor="middle" dominant-baseline="central">注入 LLM context</text>
+</g>
+<line x1="515" y1="294" x2="515" y2="316" class="arr" marker-end="url(#ar)" stroke="#1D9E75"/>
+
+<g class="node c-teal" onclick="sendPrompt('每步Z3验证的粒度是什么？')">
+  <rect x="400" y="316" width="230" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="515" y="337" text-anchor="middle" dominant-baseline="central">逐步 Z3 验证</text>
+  <text class="ts" x="515" y="355" text-anchor="middle" dominant-baseline="central">每次推断都检查 SAT/UNSAT</text>
+</g>
+
+<path d="M630 344 L650 344 L650 420 L630 420" fill="none" stroke="#D85A30" stroke-width="1" marker-end="url(#ar)"/>
+<text class="ts" x="652" y="385" text-anchor="start">UNSAT</text>
+
+<g class="node c-coral" onclick="sendPrompt('修复记忆如何阻止重复修复？')">
+  <rect x="400" y="392" width="230" height="68" rx="8" stroke-width="0.5"/>
+  <text class="th" x="515" y="414" text-anchor="middle" dominant-baseline="central">修复记忆介入</text>
+  <text class="ts" x="515" y="432" text-anchor="middle" dominant-baseline="central">停滞检测 + 循环阻断</text>
+  <text class="ts" x="515" y="449" text-anchor="middle" dominant-baseline="central">策略切换</text>
+</g>
+
+<path d="M515 460 L515 480 L400 480" fill="none" stroke="#993C1D" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+<text class="ts" x="455" y="495" text-anchor="middle">经验写回范式库</text>
+</svg>
+
+<p style="font-size:13px;color:var(--color-text-secondary);margin:6px 0 0;line-height:1.6">虚线 = 经验反馈回路（成功轨迹持续补充范式库）；实线 = 主要执行流程；UNSAT 时触发修复记忆介入。</p>
+</div>
+
+<!-- ===== PARADIGM EXAMPLES ===== -->
+<div id="paradigm" class="panel">
+<p class="sec">三个核心范式的具体表示（点击步骤切换）</p>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px" id="ptabs">
+  <button class="tb on" onclick="showP(0,this)">P1 直接赋值</button>
+  <button class="tb" onclick="showP(1,this)">P2 链式传播</button>
+  <button class="tb" onclick="showP(2,this)">P3 矛盾消去</button>
+</div>
+
+<div class="pstep on" id="p0">
+  <div class="succ">最高频率范式，约 60% 的谜题步骤可用。对应人类解数独的 "naked single" 策略。</div>
+  <div class="pcard">
+    <p class="pl"><span class="tag teal">P1</span>直接赋值范式（Direct Assignment）</p>
+    <div class="prow"><span class="plabel">触发条件</span><span class="pval">某个自然语言约束形如"X 是/在 V"（直接绑定），或经过前序消去后变量域缩为单一值</span></div>
+    <div class="prow"><span class="plabel">推断操作</span><span class="pval">令 <code>domain(X) := {V}</code>，然后对同一属性类的所有其他变量执行 <code>domain(Y) := domain(Y) \ {V}</code></span></div>
+    <div class="prow"><span class="plabel">Z3 验证</span><span class="pval"><code>SAT(C_current ∧ X=V)</code> 必须成立；同时 <code>∀Y≠X: SAT(C_current ∧ Y≠V)</code></span></div>
+    <div class="prow"><span class="plabel">适用范围</span><span class="pval">任意规模谜题，触发频率高；可以串联多次直至无新赋值可得</span></div>
+  </div>
+  <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 6px">具体例子（Zebra 3×3 谜题片段）</p>
+  <div id="p0steps">
+    <div class="pstep on" id="p0s0">
+      <div class="mono">原始约束（自然语言）：
+"挪威人住在第1号房子里"
+"绿色房子紧接在白色房子左边"
+"养马的人住在蓝色房子旁边"</div>
+      <div class="step-nav">
+        <button class="snbtn" onclick="p0step(0)" disabled>← 上一步</button>
+        <span class="sdot on" id="p0d0"></span><span class="sdot" id="p0d1"></span><span class="sdot" id="p0d2"></span>
+        <button class="snbtn" onclick="p0step(1)">下一步 →</button>
+      </div>
+    </div>
+    <div class="pstep" id="p0s1">
+      <div class="mono">P1 触发：检测到直接约束 "挪威人→房子1"
+
+推断操作：
+  domain(nationality[house=1]) := {Norwegian}
+  domain(nationality[house=2]) := {German, English, Swedish, Danish}
+  domain(nationality[house=3]) := {German, English, Swedish, Danish}
+
+Z3 验证：<span class="verdict vsat">SAT</span>  Norwegian ∧ house1 与现有约束一致</div>
+      <div class="step-nav">
+        <button class="snbtn" onclick="p0step(0)">← 上一步</button>
+        <span class="sdot" id="p0d0b"></span><span class="sdot on" id="p0d1b"></span><span class="sdot" id="p0d2b"></span>
+        <button class="snbtn" onclick="p0step(2)">下一步 →</button>
+      </div>
+    </div>
+    <div class="pstep" id="p0s2">
+      <div class="mono">P1 串联触发（域缩减后）：
+  domain(drink[house=2]) = {Milk}（由其他约束推导）
+
+再次应用 P1：
+  domain(drink[house=2]) := {Milk}
+  domain(drink[house=1,3]) := domain \ {Milk}
+
+本步骤通过 P1 两次应用，无需 LLM 重新推理
+节省调用：省略 2 次 LLM token 消耗
+
+Z3 验证：<span class="verdict vsat">SAT</span>  两次赋值均与约束一致</div>
+      <div class="step-nav">
+        <button class="snbtn" onclick="p0step(1)">← 上一步</button>
+        <span class="sdot" id="p0d0c"></span><span class="sdot" id="p0d1c"></span><span class="sdot on" id="p0d2c"></span>
+        <button class="snbtn" disabled>完成 ✓</button>
+      </div>
+    </div>
+  </div>
+  <button class="ask-btn" onclick="sendPrompt('P1直接赋值范式的Z3验证代码怎么写？用Python Z3 API实现')">看 Z3 实现代码 ↗</button>
+</div>
+
+<div class="pstep" id="p1">
+  <div class="box" style="margin-bottom:10px"><p class="bp">P2 是 Zebra 谜题中最"智能"的范式——它能将两个单独看起来不完整的约束组合起来，得出第三个约束。对应约束传播中的"弧一致性"推断。</p></div>
+  <div class="pcard">
+    <p class="pl"><span class="tag purple">P2</span>链式传播范式（Chain Propagation）</p>
+    <div class="prow"><span class="plabel">触发条件</span><span class="pval">两个约束共享同一变量，且可通过传递性导出新绑定。典型形式：<code>pos(A)=k</code> 已知 + <code>pos(B)=pos(A)+1</code> → 可推出 <code>pos(B)=k+1</code></span></div>
+    <div class="prow"><span class="plabel">推断操作</span><span class="pval">沿约束链向前传播，每次用已知值替换约束中的变量，直到链条断开或得到确定赋值</span></div>
+    <div class="prow"><span class="plabel">Z3 验证</span><span class="pval">验证推导出的赋值 <code>SAT(C_current ∧ derived_assignment)</code>；若 UNSAT 说明链条中有翻译错误</span></div>
+    <div class="prow"><span class="plabel">适用范围</span><span class="pval">包含"左边/右边/紧挨"类相对位置约束的谜题，触发频率中等</span></div>
+  </div>
+  <div class="mono">例子：
+约束1（已知）： pos(Norwegian) = 1
+约束2（原始）： pos(BlueHouse) = pos(Norwegian) + 1
+
+P2 触发：检测到"位置已知 + 相对约束"模式
+传播步骤：
+  pos(BlueHouse) = 1 + 1 = 2
+
+Z3 验证：<span class="verdict vsat">SAT</span>
+注意：若翻译错误把约束2写成 pos(B)=pos(A)-1
+则 pos(BlueHouse)=0（超界），Z3返回：<span class="verdict vunsat">UNSAT</span>
+→ 触发修复记忆，标记"相对位置方向可能翻转"</div>
+  <button class="ask-btn" onclick="sendPrompt('P2链式传播范式如何自动检测约束链？算法是什么？')">展开检测算法 ↗</button>
+</div>
+
+<div class="pstep" id="p2">
+  <div class="warn">P3 最难提炼，因为它需要 LLM 做"假设—验证—否定"三步推理。但也是最有价值的：它解决了复杂谜题必须回溯的问题。</div>
+  <div class="pcard">
+    <p class="pl"><span class="tag coral">P3</span>矛盾消去范式（Contradiction Elimination）</p>
+    <div class="prow"><span class="plabel">触发条件</span><span class="pval">当前变量域 <code>|domain(X)|≥2</code> 且 P1/P2 无法进一步推断；选择一个候选值 v 做试探赋值</span></div>
+    <div class="prow"><span class="plabel">推断操作</span><span class="pval">令 <code>X=v</code>（试探），传播后调用 Z3；若 UNSAT 则 <code>domain(X) := domain(X) \ {v}</code>；若域缩为1则触发 P1</span></div>
+    <div class="prow"><span class="plabel">Z3 验证</span><span class="pval">UNSAT core 必须包含试探约束 <code>X=v</code>，否则说明是其他约束翻译有误（区分两种 UNSAT 来源）</span></div>
+    <div class="prow"><span class="plabel">适用范围</span><span class="pval">当 P1/P2 穷尽仍无法确定时激活；UNSAT core 检查提供了翻译错误诊断的副产品</span></div>
+  </div>
+  <div class="mono">例子：domain(color[house=3]) = {Green, White}
+
+P3 触发：试探 color[house=3] = Green
+传播所有相关约束...
+
+Z3 结果：<span class="verdict vunsat">UNSAT</span>
+UNSAT core 包含：
+  { X=Green } ∪ { "绿色在白色左边" }
+  → core 包含试探约束 ✓（是试探导致的，不是翻译错）
+  → 消除：domain(color[house=3]) := {White}
+  → P1 触发：color[house=3] = White
+
+若 core 不含试探约束：
+  → 是其他约束的翻译错误
+  → 修复记忆记录此诊断</div>
+  <button class="ask-btn" onclick="sendPrompt('P3范式中如何判断UNSAT core是否包含试探约束？用Z3 Python API怎么实现？')">看 UNSAT core 判断代码 ↗</button>
+</div>
+</div>
+
+<!-- ===== MEMORY ===== -->
+<div id="memory" class="panel">
+<p class="sec">修复轨迹记忆的数据结构与机制</p>
+
+<div class="box">
+  <p class="bh">单条修复记录（Repair Record）</p>
+  <div class="mono" style="margin-top:8px">{
+  "timestamp": 3,          // 第几次迭代
+  "error_type": "over_constraint",
+  "unsat_core": ["C3", "C7"],      // 哪两条约束矛盾
+  "core_fingerprint": "hash(sorted(['C3','C7']))",
+  "repair_action": {
+    "type": "relax",
+    "target_constraint": "C7",
+    "summary": "将'紧挨'改为'同侧'"
+  },
+  "outcome": "UNSAT",          // 修复后仍失败
+  "new_core": ["C3", "C7", "C9"]   // 修复后的新 core
+}</div>
+</div>
+
+<div class="grid2">
+  <div class="box">
+    <p class="bh">停滞检测算法</p>
+    <p class="bp">连续 K 条记录的 <code>core_fingerprint</code> 集合 Jaccard 相似度 ≥ 0.8 → 触发停滞警报。系统注入提示：<em>"以下修复路径已被尝试过，请换一个方向"</em> + 历史记录摘要。</p>
+  </div>
+  <div class="box">
+    <p class="bh">循环检测算法</p>
+    <p class="bp">若当前 <code>repair_action.summary</code> 的嵌入向量与历史中某条记录的余弦相似度 > 0.92 → 阻断重复，注入：<em>"此修复在第 N 轮已尝试，结果为 UNSAT，请尝试修改不同约束"</em>。</p>
+  </div>
+</div>
+
+<div class="box">
+  <p class="bh">策略切换触发条件</p>
+  <p class="bp" style="margin-bottom:8px">当停滞或循环检测触发时，按优先级依次尝试：</p>
+  <div style="display:grid;grid-template-columns:30px 1fr;gap:4px 8px;font-size:13px">
+    <span class="tag blue" style="text-align:center">1</span><span style="color:var(--color-text-secondary);line-height:1.6">切换目标约束——从修 C7 换成修 UNSAT core 里的另一条约束</span>
+    <span class="tag teal" style="text-align:center">2</span><span style="color:var(--color-text-secondary);line-height:1.6">切换修复类型——从"放松约束"换成"重新翻译约束"</span>
+    <span class="tag purple" style="text-align:center">3</span><span style="color:var(--color-text-secondary);line-height:1.6">回退检查点——回到上一个 SAT 状态，从另一方向重新推导</span>
+    <span class="tag coral" style="text-align:center">4</span><span style="color:var(--color-text-secondary);line-height:1.6">降级回溯——放弃当前形式化，重新从自然语言翻译（最后手段）</span>
+  </div>
+</div>
+
+<div class="box">
+  <p class="bh">经验写回机制</p>
+  <p class="bp">当最终求解成功时，回溯修复历史，提取"有效修复"（最终导致 SAT 的那条记录），将其模式化后加入范式库作为候选。下一次遇到相同 core_fingerprint 时，直接建议已知有效的修复动作。</p>
+</div>
+</div>
+
+<!-- ===== PAPER ===== -->
+<div id="paper" class="panel">
+<p class="sec">论文框架 + 贡献表述</p>
+
+<div class="box" style="border-left:3px solid #7F77DD;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0">
+  <p class="bh">建议标题</p>
+  <p class="bp"><em>Learning Solver-Verified Solving Paradigms from CSP Trajectories for LLM-Based Neuro-Symbolic Reasoning</em></p>
+  <p class="bp" style="margin-top:6px">或更聚焦的版本：<em>From Experience to Paradigm: Memory-Augmented Neuro-Symbolic Agents for Constraint Satisfaction</em></p>
+</div>
+
+<div class="box">
+  <p class="bh">核心论点（一句话）</p>
+  <p class="bp">LLM 在 CSP 上重复失败的根本原因是"每次从零推理，不积累求解经验"；通过从成功轨迹中提炼<strong style="color:var(--color-text-primary)">形式可验证的求解范式</strong>，并以<strong style="color:var(--color-text-primary)">修复记忆</strong>阻止重复失败，可以同时解决"不会"和"学不快"两个问题。</p>
+</div>
+
+<div class="box">
+  <p class="bh" style="margin-bottom:10px">四项核心贡献</p>
+  <ol class="contrib">
+    <li><div><p class="ctitle">范式表示语言（Paradigm Representation）</p><p class="ctext">定义 CSP 求解范式的结构化表示：触发条件（约束类型模式）+ 推断操作 + Z3 可验证前/后条件 + 适用范围标签。这是与 ExpeL/ReasoningBank 的根本区别——记忆单元有形式语义。</p></div></li>
+    <li><div><p class="ctitle">范式提炼 pipeline（Paradigm Distillation）</p><p class="ctext">从 N 条成功轨迹 → 关键决策点标注 → 跨轨迹聚类 → LLM 抽象 → Z3 验证筛选。量化压缩比（N 条轨迹 → K 个范式，K≪N）和范式覆盖率。</p></div></li>
+    <li><div><p class="ctitle">修复轨迹记忆（Repair Memory）</p><p class="ctext">带停滞检测和循环阻断的有结构修复记忆系统，配合四级策略切换。直接解决 Logic-LM 系列工作的 stagnation 问题，有精确的量化指标（平均修复轮数下降 X%）。</p></div></li>
+    <li><div><p class="ctitle">泛化实验（Generalization Study）</p><p class="ctext">Level 1：同域不同规模；Level 2：跨谜题类型（数独、Knights-Knaves 等）。建立"范式迁移率"评估指标——一个范式在多少比例的新谜题上成功触发并有效。</p></div></li>
+  </ol>
+</div>
+
+<div class="grid2">
+  <div class="box">
+    <p class="bh">基线对比</p>
+    <p class="bp" style="line-height:2">Logic-LM（无 memory）<br>Logic-LM + Reflexion<br>ExpeL（通用 insight，非范式）<br>纯 CoT（无符号求解）<br>ZebraLogic 报告的 o1/R1 基线</p>
+  </div>
+  <div class="box">
+    <p class="bh">关键评估指标</p>
+    <p class="bp" style="line-height:2">谜题求解准确率（不同规模）<br>平均 LLM 调用次数<br>平均修复迭代轮数<br>范式检索准确率<br>范式库压缩比 N→K</p>
+  </div>
+</div>
+
+<div class="box">
+  <p class="bh">最有力的 Ablation</p>
+  <p class="bp">去掉范式 → 去掉修复记忆 → 去掉 Z3 验证（只用 LLM 自评）→ 去掉策略切换。每一步都应该有明显的性能下降，证明各模块独立有效。特别是"Z3 验证 vs LLM 自评"这个对比，直接回应 ProcMEM 等工作的局限。</p>
+</div>
+
+<button class="ask-btn" onclick="sendPrompt('帮我起草这篇论文的Introduction部分，包括motivation、gap分析和贡献列表')">起草 Introduction ↗</button>
+<button class="ask-btn" style="margin-left:8px" onclick="sendPrompt('这篇论文的Related Work应该涵盖哪些工作？如何组织分类？')">规划 Related Work ↗</button>
+</div>
+
+</div>
+
+<script>
+function sw(id,el){
+  document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');document.getElementById(id).classList.add('on');
+}
+function showP(idx,el){
+  document.querySelectorAll('#ptabs .tb').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel.on .pstep[id^="p"]').forEach(x=>{if(!x.id.match(/^p\d+s/))x.classList.remove('on')});
+  el.classList.add('on');
+  document.getElementById('p'+idx).classList.add('on');
+}
+var p0cur=0;
+function p0step(n){
+  document.querySelectorAll('[id^="p0s"]').forEach(x=>x.classList.remove('on'));
+  document.getElementById('p0s'+n).classList.add('on');
+  p0cur=n;
+}
+</script>

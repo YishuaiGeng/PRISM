@@ -1,0 +1,285 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:12px}
+.t{font-size:13px;padding:5px 14px;border-radius:99px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.t.on{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:10px}
+.card-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px}
+.card-meta{font-size:12px;color:var(--color-text-secondary);margin:0 0 7px}
+.card-body{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;margin-right:3px;display:inline-block}
+.teal{background:#E1F5EE;color:#0F6E56}.purple{background:#EEEDFE;color:#3C3489}
+.amber{background:#FAEEDA;color:#854F0B}.coral{background:#FAECE7;color:#993C1D}
+.blue{background:#E6F1FB;color:#185FA5}.gray{background:#F1EFE8;color:#5F5E5A}
+.green{background:#EAF3DE;color:#3B6D11}
+@media(prefers-color-scheme:dark){
+.teal{background:#085041;color:#9FE1CB}.purple{background:#26215C;color:#CECBF6}
+.amber{background:#633806;color:#FAC775}.coral{background:#4A1B0C;color:#F5C4B3}
+.blue{background:#042C53;color:#B5D4F4}.gray{background:#2C2C2A;color:#D3D1C7}
+.green{background:#173404;color:#C0DD97}}
+.gap{border-left:3px solid;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:10px;background:var(--color-background-secondary)}
+.sec{font-size:13px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:0 0 10px}
+.prop-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin-bottom:12px;cursor:pointer}
+.prop-card:hover{border-color:var(--color-border-secondary)}
+.prop-card.open{border-color:var(--color-border-info);background:var(--color-background-primary)}
+.prop-head{display:flex;align-items:flex-start;gap:10px}
+.prop-body{display:none;margin-top:12px;padding-top:12px;border-top:0.5px solid var(--color-border-tertiary)}
+.prop-card.open .prop-body{display:block}
+.ph{font-size:15px;font-weight:500;color:var(--color-text-primary);margin:0 0 2px}
+.ps{font-size:13px;color:var(--color-text-secondary);margin:0}
+.prow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.pcell{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px}
+.pclabel{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 3px}
+.pcval{font-size:13px;color:var(--color-text-primary);margin:0;line-height:1.5}
+.sh{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px}
+.sp{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin:0 0 8px}
+ul.sl{margin:0 0 8px;padding-left:16px}
+ul.sl li{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:2px}
+.ask-btn{font-size:12px;padding:4px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary);margin-top:4px}
+.ask-btn:hover{background:var(--color-background-secondary)}
+.banner{background:var(--color-background-success);border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-success);margin-bottom:10px}
+.warn{background:var(--color-background-warning);border:0.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-warning);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0}
+.fbox{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--color-text-primary)}
+.farrow{font-size:14px;color:var(--color-text-tertiary)}
+</style>
+<h2 class="sr-only">Agent Memory与求解轨迹调研：相关工作、核心gap与方向可行性分析</h2>
+
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="t on" onclick="sw('works',this)">相关工作</button>
+  <button class="t" onclick="sw('gaps',this)">核心 Gap</button>
+  <button class="t" onclick="sw('prop',this)">你的方向</button>
+  <button class="t" onclick="sw('feas',this)">可行性评估</button>
+</div>
+
+<!-- ========== WORKS ========== -->
+<div id="works" class="panel on">
+<p class="sec">Agent Memory 三条主线</p>
+
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 12px">现有工作从三个维度演进：<strong style="color:var(--color-text-primary)">情节记忆</strong>（存储历史轨迹）→ <strong style="color:var(--color-text-primary)">语义记忆</strong>（抽象为规则/建议）→ <strong style="color:var(--color-text-primary)">程序记忆</strong>（可执行技能/范式）。你想做的恰好在最前沿的第三层。</p>
+
+<div class="card">
+  <p class="card-title">Reflexion <span class="tag purple">2023 NeurIPS</span><span class="tag gray">基础层</span></p>
+  <p class="card-meta">Shinn et al. — 语言强化学习：用自然语言 self-reflection 作为 "verbal gradient"</p>
+  <p class="card-body">失败后让 LLM 反思"哪里出错、下次怎么做"，把反思写入 episodic memory 供下次参考。在 AlfWorld/HotpotQA 上显著提升。<br><strong style="color:var(--color-text-primary)">局限</strong>：单任务内记忆，不跨任务积累；反思是自由文本，无结构，难以检索；在长期任务中记忆衰减。</p>
+</div>
+
+<div class="card">
+  <p class="card-title">ExpeL <span class="tag teal">2024 AAAI</span><span class="tag gray">语义抽象层</span></p>
+  <p class="card-meta">Zhao et al. — 跨任务 insight 提取：比较成功/失败轨迹对，抽取"经验规则"</p>
+  <p class="card-body">三阶段：(1) 用 Reflexion 收集成功+失败经验池；(2) 让 LLM 从轨迹对中提取 insight（ADD/UPVOTE/DOWNVOTE/EDIT 四种操作维护 insight 列表）；(3) 测试时把 insights 拼入 prompt。首次实现跨任务经验转移。<br><strong style="color:var(--color-text-primary)">局限</strong>：insights 是平铺列表，随积累线性增长，tokens 爆炸；所有 insights 一刀切注入，与当前问题不相关的也进来；在 CSP/推理域未验证。</p>
+</div>
+
+<div class="card">
+  <p class="card-title">ReasoningBank <span class="tag teal">Sep 2025</span><span class="tag green">最新</span></p>
+  <p class="card-meta">Ouyang et al. — 从成功+失败经验蒸馏高层推理策略，结合 test-time scaling</p>
+  <p class="card-body">不存原始轨迹，而是提取"结构化知识单元"（高层策略 + 防错建议），同时学习成功经验和失败教训。引入 MaTTS（memory-aware test-time scaling）：更多计算 → 更丰富对比信号 → 更高质量 memory。在 web browsing/SWE 上 outperform 存储原始轨迹的方法。<br><strong style="color:var(--color-text-primary)">局限</strong>：仍是通用任务域（网页浏览、代码），记忆单元为自然语言，没有形式化结构；不能利用 solver 的精确反馈。</p>
+</div>
+
+<div class="card">
+  <p class="card-title">ProcMEM / MACLA <span class="tag purple">2025-2026</span><span class="tag gray">程序记忆层</span></p>
+  <p class="card-meta">— 从轨迹抽取可执行技能（Skills），替代情节式参考</p>
+  <p class="card-body">MACLA：将 2851 条 ALFWorld 轨迹压缩为 187 个可复用程序（<strong>15:1 压缩比</strong>），通过语义抽象和去重实现。ProcMEM：用非参数化 PPO 门控验证技能质量，维持高质量紧凑的程序记忆库。<br><strong style="color:var(--color-text-primary)">局限</strong>：技能是自然语言 + 代码混合，验证靠 LLM 自评；没有形式化验证机制；应用在具身/GUI 任务，不是推理/CSP 域。</p>
+</div>
+
+<div class="card">
+  <p class="card-title">AgentHER / ERL <span class="tag amber">2025-2026</span><span class="tag gray">失败轨迹利用</span></p>
+  <p class="card-meta">失败经验 hindsight 重标注 + heuristic 提取</p>
+  <p class="card-body">ERL 发现：失败经验提取的 heuristics 在"搜索类"任务上（+14.3%）优于成功经验，因为它提供<em>负约束</em>（"不要走这条路"）。成功经验在"执行类"任务上更好（+9.0%）。原始轨迹直接拼入不仅无效，反而 -1.9%。这支持了"轨迹需要抽象为 heuristics 才有价值"的结论。</p>
+</div>
+
+<div class="card">
+  <p class="card-title">ZebraLogic + GridPuzzle 错误分析 <span class="tag coral">2024-2025</span><span class="tag gray">谜题域基础</span></p>
+  <p class="card-meta">Lin et al. / Tyagi et al. — LLM 在 CSP/谜题上的错误模式分析</p>
+  <p class="card-body">ZebraLogic 发现：精度随 Z3 冲突数增加急剧下降；backtracking-based approach 显著提升。GridPuzzle 分析：最主要错误是"wrong reasoning"和"elimination 错误"。<strong>关键发现</strong>：LLM 在需要反复回溯的 CSP 上表现极差，但这正是"求解范式"最有价值的地方——如果有正确的约束传播策略，可以减少需要回溯的次数。</p>
+</div>
+</div>
+
+<!-- ========== GAPS ========== -->
+<div id="gaps" class="panel">
+<p class="sec">关键 Gap — 你的想法恰好对准了三个未被填补的空白</p>
+
+<div class="gap" style="border-color:#7F77DD">
+  <p class="card-title">Gap 1：没有领域感知（domain-aware）的记忆结构</p>
+  <p class="card-body" style="margin-top:4px">ExpeL/ReasoningBank 的记忆单元是自由文本 heuristics，适合通用任务。但 CSP 求解有<em>结构性知识</em>——约束传播规则、消去策略、回溯条件——这些有明确的形式语义，可以被精确验证。没有工作为 CSP 域设计利用这一结构的记忆表示。你的求解轨迹每一步都能用 solver 验证，这是通用 Agent 任务完全不具备的优势。</p>
+</div>
+
+<div class="gap" style="border-color:#1D9E75">
+  <p class="card-title">Gap 2：修复轨迹从未被建模为学习信号</p>
+  <p class="card-body" style="margin-top:4px">现有神经符号 Agent 工作（Logic-LM 系列）中，每次修复迭代是独立的，不记录"这次修的是什么错误、怎么改的、改成功了没有"。这正是 stagnation 的根本原因。ERL 证明失败轨迹很有价值，但它针对的是任务执行轨迹，不是<em>形式化修复轨迹</em>（修复轨迹有更精确的结构：错误类型 → 修复动作 → solver 验证结果）。</p>
+</div>
+
+<div class="gap" style="border-color:#378ADD">
+  <p class="card-title">Gap 3：求解"范式"从未被形式化提取</p>
+  <p class="card-body" style="margin-top:4px">人类解谜题有范式：先用单约束确定确定的值，再通过消去缩小域，最后在必要时回溯。这些策略在传统 CP 文献中早已被研究（arc consistency, forward checking 等），但从未被用来指导 LLM 生成求解轨迹，也没有工作研究"LLM 能否从过去的成功轨迹中提炼出这类策略，并在新谜题上复用"。这是你的核心创新空间。</p>
+</div>
+
+<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;margin-top:4px">
+  <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px">一句话定位你的工作</p>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">把 ExpeL 的"经验抽象"思想 + Reflexion 的"修复记忆"思想，移植到神经符号 CSP 求解域，并利用 solver 的形式化验证能力，将记忆单元从自由文本 heuristics 升级为<em>可验证的求解范式</em>（solver-verified solving paradigms）。</p>
+</div>
+</div>
+
+<!-- ========== PROPOSAL ========== -->
+<div id="prop" class="panel">
+<p class="sec">方向设计：两层记忆 + 范式蒸馏</p>
+
+<div class="prop-card open" onclick="tog(this)">
+  <div class="prop-head">
+    <span class="tag teal" style="flex-shrink:0;margin-top:2px">模块 1</span>
+    <div>
+      <p class="ph">修复轨迹记忆（Repair Trajectory Memory）</p>
+      <p class="ps">解决 stagnation 问题，记录"尝试了什么、为什么失败"</p>
+    </div>
+  </div>
+  <div class="prop-body">
+    <p class="sh">核心数据结构</p>
+    <p class="sp">每次修复迭代生成一条 <strong>repair record</strong>：</p>
+    <div class="flow">
+      <div class="fbox">错误类型<br><small>over/under/syntax/flip...</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">修复动作<br><small>LLM 生成的改动摘要</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">Solver 结果<br><small>SAT / UNSAT + core</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">改变向量<br><small>哪条约束被修改</small></div>
+    </div>
+    <p class="sh" style="margin-top:6px">三个用途</p>
+    <ul class="sl">
+      <li><strong>停滞检测</strong>：若连续 K 条记录的 UNSAT core 集合相同，触发策略切换</li>
+      <li><strong>循环检测</strong>：若修复动作与之前某条记录高度相似，阻断重复并注入"已尝试 X，无效，请尝试 Y"</li>
+      <li><strong>回溯引导</strong>：若所有局部修复失败，提示 LLM 回退到上一个确定正确的约束集合重新来过</li>
+    </ul>
+    <div class="prow">
+      <div class="pcell"><p class="pclabel">对比 Reflexion</p><p class="pcval">Reflexion：自然语言反思，不可验证<br>你的：每条记录有 solver 验证标签，精确</p></div>
+      <div class="pcell"><p class="pclabel">实现难度</p><p class="pcval">中低。数据结构简单，主要工程在 UNSAT core 解析 + 相似度检测</p></div>
+    </div>
+    <button class="ask-btn" onclick="event.stopPropagation();sendPrompt('修复轨迹记忆的停滞检测和循环检测算法具体如何设计？UNSAT core 相似度如何度量？')">展开算法设计 ↗</button>
+  </div>
+</div>
+
+<div class="prop-card" onclick="tog(this)">
+  <div class="prop-head">
+    <span class="tag purple" style="flex-shrink:0;margin-top:2px">模块 2</span>
+    <div>
+      <p class="ph">求解范式蒸馏（Solving Paradigm Distillation）</p>
+      <p class="ps">从成功求解轨迹中提炼可复用的推理策略，跨谜题实例迁移</p>
+    </div>
+  </div>
+  <div class="prop-body">
+    <p class="sh">核心思想</p>
+    <p class="sp">人类解谜题有固定策略：① 单约束必然推断（naked single）→ ② 消去法缩小域 → ③ 候选集唯一则确认 → ④ 必要时试探+回溯。如果 LLM 能从成功轨迹中提炼类似的策略模板，就能在新谜题上直接用策略引导，而非从头摸索。</p>
+    <p class="sh">蒸馏流程</p>
+    <div class="flow">
+      <div class="fbox">收集成功轨迹<br><small>N 个谜题</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">LLM 分析<br><small>识别关键决策点</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">聚类相似步骤<br><small>跨谜题对齐</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">生成范式<br><small>"若...则...步骤"</small></div>
+      <span class="farrow">→</span>
+      <div class="fbox">Solver 验证<br><small>范式是否产生有效推断</small></div>
+    </div>
+    <p class="sh" style="margin-top:6px">范式形式（初步设想）</p>
+    <ul class="sl">
+      <li><strong>触发条件</strong>：当某类约束组合出现时（如"相邻 + 排除"约束共存）</li>
+      <li><strong>推断步骤</strong>：应用何种消去或传播操作</li>
+      <li><strong>验证条件</strong>：推断结果可用 Z3 验证是否与现有约束相容</li>
+      <li><strong>适用范围标签</strong>：该范式在哪类谜题规模/结构下有效</li>
+    </ul>
+    <div class="prow">
+      <div class="pcell"><p class="pclabel">对比 ExpeL</p><p class="pcval">ExpeL：自由文本 insights，平铺存储<br>你的：结构化范式 + solver 可验证条件</p></div>
+      <div class="pcell"><p class="pclabel">最大创新点</p><p class="pcval">范式有形式语义，可以检查"范式建议的步骤是否与当前约束集 consistent"</p></div>
+    </div>
+    <button class="ask-btn" onclick="event.stopPropagation();sendPrompt('求解范式的具体表示形式是什么？如何用Z3验证一个范式在特定谜题上的适用性？')">展开表示设计 ↗</button>
+  </div>
+</div>
+
+<div class="prop-card" onclick="tog(this)">
+  <div class="prop-head">
+    <span class="tag amber" style="flex-shrink:0;margin-top:2px">模块 3</span>
+    <div>
+      <p class="ph">跨问题类型泛化实验</p>
+      <p class="ps">验证范式是否能从 Zebra 迁移到其他 CSP/逻辑推理场景</p>
+    </div>
+  </div>
+  <div class="prop-body">
+    <p class="sh">泛化层次</p>
+    <ul class="sl">
+      <li><strong>Level 1（同域泛化）</strong>：同类型谜题，不同规模/难度。验证范式在 3×5 谜题上学到的策略能否用于 5×6 谜题</li>
+      <li><strong>Level 2（结构迁移）</strong>：从 Zebra 到其他逻辑网格谜题（数独、Hitori、NQueens 的推理结构），看共享策略</li>
+      <li><strong>Level 3（语义迁移）</strong>：从谜题到真实约束推理（调度、资源分配），看"约束传播范式"能否跨语义域</li>
+    </ul>
+    <p class="sh">评估指标</p>
+    <ul class="sl">
+      <li>使用范式 vs 不使用范式的求解成功率对比</li>
+      <li>平均 LLM 调用次数（效率）</li>
+      <li>修复迭代轮数（收敛速度）</li>
+      <li>范式检索准确率（是否检索到了有效范式）</li>
+    </ul>
+    <button class="ask-btn" onclick="event.stopPropagation();sendPrompt('从Zebra谜题到其他CSP场景的泛化实验应该如何设计，选哪些数据集做Level 2和Level 3的迁移实验？')">展开泛化实验设计 ↗</button>
+  </div>
+</div>
+</div>
+
+<!-- ========== FEASIBILITY ========== -->
+<div id="feas" class="panel">
+<p class="sec">可行性评估</p>
+
+<div class="banner">✓ 核心判断：在 3 个月内，模块 1 + 模块 2（限 Level 1）是高可行性的一篇完整论文</div>
+
+<div class="card">
+  <p class="card-title">有利条件</p>
+  <p class="card-body">
+  <strong style="color:var(--color-text-primary)">① 你有现成基础设施</strong>：第一篇的神经符号求解框架 + 第二篇的谜题生成器，直接用于生成训练轨迹和评估数据集，零冷启动成本。<br><br>
+  <strong style="color:var(--color-text-primary)">② Z3 提供精确的记忆验证机制</strong>：每条修复轨迹记录的 solver 结果是客观标签，不像 ExpeL 那样需要 LLM 自判"这次成功了没有"。<br><br>
+  <strong style="color:var(--color-text-primary)">③ Zebra 谜题是范式提炼的理想场景</strong>：约束类型有限（相邻/排除/绑定/顺序），解空间结构清晰，比代码或网页任务更容易提炼出可验证的范式模板。<br><br>
+  <strong style="color:var(--color-text-primary)">④ 差异化充分</strong>：ExpeL/ReasoningBank/ProcMEM 都在通用任务域，没有一篇工作在 CSP/形式推理域做记忆驱动的范式提炼，竞争稀少。
+  </p>
+</div>
+
+<div class="warn">⚠ 主要风险：模块 2 的范式泛化（Level 2-3）可能在 3 个月内难以充分验证，建议 Level 1 为主，Level 2 为辅</div>
+
+<div class="card">
+  <p class="card-title">风险点及应对</p>
+  <p class="card-body">
+  <strong style="color:var(--color-text-primary)">风险 1：范式提炼质量不稳定</strong>——LLM 从轨迹中提炼的范式可能过于具体（记住了特定谜题）或过于抽象（没有操作性）。<br>应对：用 solver 验证+成功率打分筛选范式；设计对比实验（细粒度 vs 粗粒度范式）。<br><br>
+  <strong style="color:var(--color-text-primary)">风险 2：记忆检索效率</strong>——范式库增大后，如何高效检索与当前谜题相关的范式。<br>应对：初期用简单的约束类型特征匹配，不依赖语义检索，降低实现复杂度。<br><br>
+  <strong style="color:var(--color-text-primary)">风险 3：Level 3 泛化可能结果不好</strong>——跨语义域迁移风险高。<br>应对：这部分作为 discussion/future work，不要作为主要贡献。
+  </p>
+</div>
+
+<div class="card">
+  <p class="card-title">建议时间线（12 周）</p>
+  <p class="card-body" style="line-height:2">
+  <span class="tag blue">第 1-2 周</span> 设计修复轨迹数据结构，实现 stagnation + 循环检测；在前两篇基础上跑基线实验<br>
+  <span class="tag teal">第 3-5 周</span> 生成大量 Zebra 求解轨迹（用第二篇生成器），实现基础范式提炼 pipeline<br>
+  <span class="tag teal">第 6-8 周</span> 迭代优化范式质量，完成 Level 1 同域泛化实验，消融分析<br>
+  <span class="tag amber">第 9-10 周</span> Level 2 跨谜题迁移实验（数独/Knights-Knaves 等）<br>
+  <span class="tag gray">第 11-12 周</span> 写作，整理消融，补实验
+  </p>
+</div>
+
+<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px">
+  <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 4px">投稿目标建议</p>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">主线（模块 1 + 2 Level 1）完成度足够投 <strong style="color:var(--color-text-primary)">ACL/EMNLP 2026</strong>（找 2025 年底截稿）或 <strong style="color:var(--color-text-primary)">IJCAI 2026</strong>；如果 Level 2 泛化结果好，也可以冲 AAAI/NeurIPS。</p>
+</div>
+</div>
+</div>
+
+<script>
+function sw(id,el){
+  document.querySelectorAll('.t').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');document.getElementById(id).classList.add('on');
+}
+function tog(card){
+  const was=card.classList.contains('open');
+  document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('open'));
+  if(!was)card.classList.add('open');
+}
+</script>

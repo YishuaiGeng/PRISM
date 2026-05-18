@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "lgp-test-3x2-0",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a unique type of pet: `fish`, `dog`, `cat`\n\n## Clues:\n1. Arnold is in the third house.\n2. There is one house between Eric and the person who has a cat.\n3. The person with an aquarium of fish is directly left of Peter.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "fish"
+        ],
+        [
+          "2",
+          "Peter",
+          "dog"
+        ],
+        [
+          "3",
+          "Arnold",
+          "cat"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205559"
+  },
+  {
+    "id": "lgp-test-3x2-1",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a unique hobby: `cooking`, `gardening`, `photography`\n\n## Clues:\n1. The person who enjoys gardening is Eric.\n2. Peter is in the first house.\n3. The person who loves cooking is Peter.\n4. Peter is directly left of Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cooking"
+        ],
+        [
+          "2",
+          "Arnold",
+          "photography"
+        ],
+        [
+          "3",
+          "Eric",
+          "gardening"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205564"
+  },
+  {
+    "id": "lgp-test-3x2-2",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`, `Janelle`\n\n## Clues:\n1. The person whose mother's name is Holly is not in the first house.\n2. Eric is The person whose mother's name is Aniya.\n3. The person whose mother's name is Aniya is in the third house.\n4. The person whose mother's name is Janelle is Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Mother"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "Janelle"
+        ],
+        [
+          "2",
+          "Peter",
+          "Holly"
+        ],
+        [
+          "3",
+          "Eric",
+          "Aniya"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205569"
+  },
+  {
+    "id": "lgp-test-3x2-3",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `city`, `mountain`\n\n## Clues:\n1. Peter is directly left of the person who enjoys mountain retreats.\n2. The person who prefers city breaks is Arnold.\n3. Eric is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "city"
+        ],
+        [
+          "2",
+          "Peter",
+          "beach"
+        ],
+        [
+          "3",
+          "Eric",
+          "mountain"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205576"
+  },
+  {
+    "id": "lgp-test-3x2-4",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - People own unique car models: `tesla model 3`, `ford f150`, `toyota camry`\n\n## Clues:\n1. Arnold is not in the third house.\n2. Peter is not in the first house.\n3. The person who owns a Ford F-150 is directly left of the person who owns a Tesla Model 3.\n4. Arnold is not in the first house.\n5. The person who owns a Toyota Camry and the person who owns a Ford F-150 are next to each other.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "toyota camry"
+        ],
+        [
+          "2",
+          "Arnold",
+          "ford f150"
+        ],
+        [
+          "3",
+          "Peter",
+          "tesla model 3"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205580"
+  },
+  {
+    "id": "lgp-test-3x2-5",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique favorite drink: `water`, `tea`, `milk`\n\n## Clues:\n1. Eric is the person who likes milk.\n2. The tea drinker is in the second house.\n3. Peter is not in the second house.\n4. The one who only drinks water is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Drink"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "milk"
+        ],
+        [
+          "2",
+          "Arnold",
+          "tea"
+        ],
+        [
+          "3",
+          "Peter",
+          "water"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205585"
+  },
+  {
+    "id": "lgp-test-3x2-6",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a favorite color: `white`, `red`, `yellow`\n\n## Clues:\n1. Eric is directly left of the person whose favorite color is red.\n2. Peter is not in the second house.\n3. The person who loves white is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "yellow"
+        ],
+        [
+          "2",
+          "Arnold",
+          "red"
+        ],
+        [
+          "3",
+          "Peter",
+          "white"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205591"
+  },
+  {
+    "id": "lgp-test-3x2-7",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has a unique hobby: `gardening`, `cooking`, `photography`\n\n## Clues:\n1. The person who enjoys gardening is in the first house.\n2. The person who loves cooking is somewhere to the left of Eric.\n3. Peter is in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "gardening"
+        ],
+        [
+          "2",
+          "Arnold",
+          "cooking"
+        ],
+        [
+          "3",
+          "Eric",
+          "photography"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205596"
+  },
+  {
+    "id": "lgp-test-3x2-8",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique heights: `very short`, `short`, `average`\n\n## Clues:\n1. There is one house between Arnold and the person who is short.\n2. The person who has an average height is somewhere to the right of Arnold.\n3. Eric is somewhere to the left of Peter.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "very short"
+        ],
+        [
+          "2",
+          "Eric",
+          "average"
+        ],
+        [
+          "3",
+          "Peter",
+          "short"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205601"
+  },
+  {
+    "id": "lgp-test-3x2-9",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `cooking`, `gardening`\n\n## Clues:\n1. Eric is somewhere to the left of the person who enjoys gardening.\n2. Arnold is not in the third house.\n3. Arnold is not in the second house.\n4. Eric is the photography enthusiast.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "cooking"
+        ],
+        [
+          "2",
+          "Eric",
+          "photography"
+        ],
+        [
+          "3",
+          "Peter",
+          "gardening"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205606"
+  },
+  {
+    "id": "lgp-test-3x2-10",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique heights: `short`, `very short`, `average`\n\n## Clues:\n1. Eric is not in the first house.\n2. The person who is very short is somewhere to the left of the person who is short.\n3. The person who is very short is Eric.\n4. Arnold is not in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "average"
+        ],
+        [
+          "2",
+          "Eric",
+          "very short"
+        ],
+        [
+          "3",
+          "Arnold",
+          "short"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205612"
+  },
+  {
+    "id": "lgp-test-3x2-11",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`, `google pixel 6`\n\n## Clues:\n1. The person who uses an iPhone 13 is in the third house.\n2. Eric is not in the first house.\n3. Arnold is somewhere to the right of Eric.\n4. The person who uses a Samsung Galaxy S21 is in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "samsung galaxy s21"
+        ],
+        [
+          "2",
+          "Eric",
+          "google pixel 6"
+        ],
+        [
+          "3",
+          "Arnold",
+          "iphone 13"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205617"
+  },
+  {
+    "id": "lgp-test-3x2-12",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a favorite color: `red`, `white`, `yellow`\n\n## Clues:\n1. The person whose favorite color is red is not in the third house.\n2. Peter is somewhere to the right of Eric.\n3. The person whose favorite color is red is not in the second house.\n4. Eric is the person who loves yellow.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "red"
+        ],
+        [
+          "2",
+          "Eric",
+          "yellow"
+        ],
+        [
+          "3",
+          "Peter",
+          "white"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205622"
+  },
+  {
+    "id": "lgp-test-3x2-13",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Each person has a unique hobby: `cooking`, `photography`, `gardening`\n\n## Clues:\n1. The person who enjoys gardening is Peter.\n2. Peter is in the third house.\n3. The person who loves cooking is not in the first house.\n4. The photography enthusiast is Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "photography"
+        ],
+        [
+          "2",
+          "Arnold",
+          "cooking"
+        ],
+        [
+          "3",
+          "Peter",
+          "gardening"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205627"
+  },
+  {
+    "id": "lgp-test-3x2-14",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Meredith`\n\n## Clues:\n1. Peter is the person's child is named Meredith.\n2. Eric and Arnold are next to each other.\n3. Eric is not in the third house.\n4. The person's child is named Meredith and the person's child is named Bella are next to each other.\n5. The person's child is named Meredith is somewhere to the left of Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "Meredith"
+        ],
+        [
+          "2",
+          "Eric",
+          "Bella"
+        ],
+        [
+          "3",
+          "Arnold",
+          "Fred"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205631"
+  },
+  {
+    "id": "lgp-test-3x2-15",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique heights: `short`, `average`, `very short`\n\n## Clues:\n1. Peter is somewhere to the right of Eric.\n2. The person who is short is in the first house.\n3. There is one house between the person who is short and the person who is very short.\n4. Arnold and the person who is very short are next to each other.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "short"
+        ],
+        [
+          "2",
+          "Arnold",
+          "average"
+        ],
+        [
+          "3",
+          "Peter",
+          "very short"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205638"
+  },
+  {
+    "id": "lgp-test-3x2-16",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each person has a unique level of education: `bachelor`, `high school`, `associate`\n\n## Clues:\n1. The person with an associate's degree is in the second house.\n2. Peter is in the third house.\n3. The person with a high school diploma is somewhere to the left of Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Education"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "high school"
+        ],
+        [
+          "2",
+          "Eric",
+          "associate"
+        ],
+        [
+          "3",
+          "Peter",
+          "bachelor"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205643"
+  },
+  {
+    "id": "lgp-test-3x2-17",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`, `blue master`\n\n## Clues:\n1. The person partial to Pall Mall is not in the third house.\n2. The person partial to Pall Mall and Arnold are next to each other.\n3. The person partial to Pall Mall is somewhere to the right of the person who smokes Blue Master.\n4. Peter is directly left of Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "blue master"
+        ],
+        [
+          "2",
+          "Peter",
+          "pall mall"
+        ],
+        [
+          "3",
+          "Arnold",
+          "prince"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205649"
+  },
+  {
+    "id": "lgp-test-3x2-18",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a favorite color: `red`, `white`, `yellow`\n\n## Clues:\n1. The person whose favorite color is red and Peter are next to each other.\n2. The person who loves yellow is in the third house.\n3. Eric is the person whose favorite color is red.\n4. Eric is not in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "red"
+        ],
+        [
+          "2",
+          "Peter",
+          "white"
+        ],
+        [
+          "3",
+          "Arnold",
+          "yellow"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205654"
+  },
+  {
+    "id": "lgp-test-3x2-19",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `toyota camry`, `tesla model 3`\n\n## Clues:\n1. Arnold is the person who owns a Tesla Model 3.\n2. Arnold and Peter are next to each other.\n3. Arnold is in the first house.\n4. The person who owns a Toyota Camry is somewhere to the right of the person who owns a Ford F-150.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "tesla model 3"
+        ],
+        [
+          "2",
+          "Peter",
+          "ford f150"
+        ],
+        [
+          "3",
+          "Eric",
+          "toyota camry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205659"
+  },
+  {
+    "id": "lgp-test-3x2-20",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - Each person has a unique hobby: `cooking`, `gardening`, `photography`\n\n## Clues:\n1. The person who loves cooking is directly left of Arnold.\n2. The person who enjoys gardening is in the third house.\n3. Eric is the photography enthusiast.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "photography"
+        ],
+        [
+          "2",
+          "Peter",
+          "cooking"
+        ],
+        [
+          "3",
+          "Arnold",
+          "gardening"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205664"
+  },
+  {
+    "id": "lgp-test-3x2-21",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique heights: `short`, `average`, `very short`\n\n## Clues:\n1. The person who is short is in the second house.\n2. The person who has an average height is Eric.\n3. Peter is in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "very short"
+        ],
+        [
+          "2",
+          "Arnold",
+          "short"
+        ],
+        [
+          "3",
+          "Eric",
+          "average"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205669"
+  },
+  {
+    "id": "lgp-test-3x2-22",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n\n## Clues:\n1. The person living in a colonial-style house is somewhere to the left of Eric.\n2. Arnold is the person living in a colonial-style house.\n3. Eric is not in the third house.\n4. The person residing in a Victorian house is in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "colonial"
+        ],
+        [
+          "2",
+          "Eric",
+          "victorian"
+        ],
+        [
+          "3",
+          "Peter",
+          "ranch"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205674"
+  },
+  {
+    "id": "lgp-test-3x2-23",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique favorite sports: `soccer`, `basketball`, `tennis`\n\n## Clues:\n1. The person who loves tennis is in the first house.\n2. The person who loves basketball is not in the second house.\n3. The person who loves basketball is Peter.\n4. The person who loves tennis is Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "tennis"
+        ],
+        [
+          "2",
+          "Arnold",
+          "soccer"
+        ],
+        [
+          "3",
+          "Peter",
+          "basketball"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205679"
+  },
+  {
+    "id": "lgp-test-3x2-24",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each person has a unique birthday month: `sept`, `april`, `jan`\n\n## Clues:\n1. Arnold is in the third house.\n2. The person whose birthday is in January is directly left of Arnold.\n3. Peter is the person whose birthday is in September.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Birthday"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "sept"
+        ],
+        [
+          "2",
+          "Eric",
+          "jan"
+        ],
+        [
+          "3",
+          "Arnold",
+          "april"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205685"
+  },
+  {
+    "id": "lgp-test-3x2-25",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique type of pet: `fish`, `dog`, `cat`\n\n## Clues:\n1. Arnold is not in the third house.\n2. Arnold and Peter are next to each other.\n3. Arnold is the person with an aquarium of fish.\n4. Peter is somewhere to the right of the person who has a cat.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "cat"
+        ],
+        [
+          "2",
+          "Arnold",
+          "fish"
+        ],
+        [
+          "3",
+          "Peter",
+          "dog"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205690"
+  },
+  {
+    "id": "lgp-test-3x2-26",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - People have unique hair colors: `blonde`, `black`, `brown`\n\n## Clues:\n1. Arnold is not in the third house.\n2. The person who has blonde hair is Eric.\n3. Arnold is the person who has black hair.\n4. Peter is in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HairColor"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "brown"
+        ],
+        [
+          "2",
+          "Arnold",
+          "black"
+        ],
+        [
+          "3",
+          "Eric",
+          "blonde"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205695"
+  },
+  {
+    "id": "lgp-test-3x2-27",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `ranch`\n\n## Clues:\n1. Arnold is the person living in a colonial-style house.\n2. The person residing in a Victorian house is not in the first house.\n3. Arnold and Eric are next to each other.\n4. The person living in a colonial-style house is directly left of the person in a ranch-style home.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "colonial"
+        ],
+        [
+          "2",
+          "Eric",
+          "ranch"
+        ],
+        [
+          "3",
+          "Peter",
+          "victorian"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205701"
+  },
+  {
+    "id": "lgp-test-3x2-28",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - The people are of nationalities: `brit`, `dane`, `swede`\n\n## Clues:\n1. Peter is the Swedish person.\n2. Eric is the British person.\n3. Eric is in the first house.\n4. The Swedish person is somewhere to the right of the Dane.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Nationality"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "brit"
+        ],
+        [
+          "2",
+          "Arnold",
+          "dane"
+        ],
+        [
+          "3",
+          "Peter",
+          "swede"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205706"
+  },
+  {
+    "id": "lgp-test-3x2-29",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`, `toyota camry`\n\n## Clues:\n1. The person who owns a Ford F-150 is not in the third house.\n2. The person who owns a Toyota Camry is somewhere to the left of Arnold.\n3. The person who owns a Toyota Camry is Peter.\n4. Peter and the person who owns a Tesla Model 3 are next to each other.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "ford f150"
+        ],
+        [
+          "2",
+          "Peter",
+          "toyota camry"
+        ],
+        [
+          "3",
+          "Arnold",
+          "tesla model 3"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205710"
+  },
+  {
+    "id": "lgp-test-3x2-30",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`\n - Each person has a favorite color: `white`, `red`, `yellow`\n\n## Clues:\n1. The person who loves yellow is directly left of Eric.\n2. The person who loves white is in the first house.\n3. Arnold is in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "white"
+        ],
+        [
+          "2",
+          "Peter",
+          "yellow"
+        ],
+        [
+          "3",
+          "Eric",
+          "red"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205716"
+  },
+  {
+    "id": "lgp-test-3x2-31",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - People have unique favorite music genres: `classical`, `pop`, `rock`\n\n## Clues:\n1. Peter is not in the first house.\n2. Arnold is the person who loves pop music.\n3. Eric is the person who loves rock music.\n4. Eric is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "pop"
+        ],
+        [
+          "2",
+          "Peter",
+          "classical"
+        ],
+        [
+          "3",
+          "Eric",
+          "rock"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205723"
+  },
+  {
+    "id": "lgp-test-3x2-32",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Eric`\n - Everyone has a unique favorite cigar: `prince`, `blue master`, `pall mall`\n\n## Clues:\n1. The person who smokes Blue Master is not in the third house.\n2. Arnold is in the second house.\n3. The person who smokes Blue Master is not in the second house.\n4. Eric is the Prince smoker.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "blue master"
+        ],
+        [
+          "2",
+          "Arnold",
+          "pall mall"
+        ],
+        [
+          "3",
+          "Eric",
+          "prince"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205728"
+  },
+  {
+    "id": "lgp-test-3x2-33",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`\n - Each person has a unique favorite drink: `tea`, `water`, `milk`\n\n## Clues:\n1. Eric is the tea drinker.\n2. Peter is not in the third house.\n3. The person who likes milk is somewhere to the left of Eric.\n4. There is one house between Peter and Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Drink"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "milk"
+        ],
+        [
+          "2",
+          "Eric",
+          "tea"
+        ],
+        [
+          "3",
+          "Arnold",
+          "water"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205733"
+  },
+  {
+    "id": "lgp-test-3x2-34",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - People use unique phone models: `google pixel 6`, `iphone 13`, `samsung galaxy s21`\n\n## Clues:\n1. The person who uses an iPhone 13 is in the third house.\n2. Peter and Eric are next to each other.\n3. Peter is somewhere to the left of Eric.\n4. The person who uses a Samsung Galaxy S21 is not in the second house.\n5. Peter is not in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "samsung galaxy s21"
+        ],
+        [
+          "2",
+          "Eric",
+          "google pixel 6"
+        ],
+        [
+          "3",
+          "Arnold",
+          "iphone 13"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205739"
+  },
+  {
+    "id": "lgp-test-3x2-35",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People have unique hair colors: `brown`, `black`, `blonde`\n\n## Clues:\n1. Peter is somewhere to the right of Eric.\n2. The person who has black hair is in the third house.\n3. The person who has brown hair is in the first house.\n4. Arnold is directly left of the person who has black hair.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HairColor"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "brown"
+        ],
+        [
+          "2",
+          "Arnold",
+          "blonde"
+        ],
+        [
+          "3",
+          "Peter",
+          "black"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205744"
+  },
+  {
+    "id": "lgp-test-3x2-36",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Peter`\n - Each person has an occupation: `teacher`, `doctor`, `engineer`\n\n## Clues:\n1. The person who is an engineer and the person who is a doctor are next to each other.\n2. Arnold is not in the first house.\n3. Peter is not in the first house.\n4. Peter is directly left of the person who is a doctor.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Occupation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "teacher"
+        ],
+        [
+          "2",
+          "Peter",
+          "engineer"
+        ],
+        [
+          "3",
+          "Arnold",
+          "doctor"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205748"
+  },
+  {
+    "id": "lgp-test-3x2-37",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Everyone has a unique favorite cigar: `blue master`, `pall mall`, `prince`\n\n## Clues:\n1. The person partial to Pall Mall is in the first house.\n2. The Prince smoker is Peter.\n3. Peter is in the second house.\n4. Arnold is in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "pall mall"
+        ],
+        [
+          "2",
+          "Peter",
+          "prince"
+        ],
+        [
+          "3",
+          "Eric",
+          "blue master"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205753"
+  },
+  {
+    "id": "lgp-test-3x2-38",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. Eric is not in the first house.\n2. Eric is the person who uses a Google Pixel 6.\n3. Eric is somewhere to the left of Peter.\n4. Peter is the person who uses an iPhone 13.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "samsung galaxy s21"
+        ],
+        [
+          "2",
+          "Eric",
+          "google pixel 6"
+        ],
+        [
+          "3",
+          "Peter",
+          "iphone 13"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205761"
+  },
+  {
+    "id": "lgp-test-3x2-39",
+    "size": "3*2",
+    "puzzle": "There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Eric`\n - Everyone has a unique favorite cigar: `prince`, `blue master`, `pall mall`\n\n## Clues:\n1. Arnold is not in the third house.\n2. Arnold is somewhere to the right of the person partial to Pall Mall.\n3. There is one house between Eric and the person who smokes Blue Master.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "pall mall"
+        ],
+        [
+          "2",
+          "Arnold",
+          "prince"
+        ],
+        [
+          "3",
+          "Peter",
+          "blue master"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.205766"
+  }
+]

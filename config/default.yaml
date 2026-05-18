@@ -1,0 +1,13 @@
+llm_backend: anthropic  # anthropic or openai
+model_name: claude-opus-4-7
+
+thresholds:
+  stagnation_jaccard: 0.75
+  loop_cosine: 0.90
+  paradigm_soundness: 0.90
+  min_support: 5
+
+paths:
+  data_dir: data/
+  paradigm_store: paradigm_store/
+  trajectory_dir: data/trajectories/

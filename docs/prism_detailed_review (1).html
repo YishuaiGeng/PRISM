@@ -1,0 +1,442 @@
+
+<style>
+*{box-sizing:border-box}
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:12px;margin-bottom:18px}
+.tb{font-size:13px;padding:5px 14px;border-radius:99px;border:.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tb.on{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent}
+.panel{display:none}.panel.on{display:block}
+.sec{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;display:inline-block;margin-right:3px}
+.t1{background:#E1F5EE;color:#0F6E56}.t2{background:#EEEDFE;color:#3C3489}
+.t3{background:#FAEEDA;color:#854F0B}.t4{background:#FAECE7;color:#993C1D}
+.t5{background:#E6F1FB;color:#185FA5}.t6{background:#F1EFE8;color:#5F5E5A}
+.t7{background:#EAF3DE;color:#3B6D11}
+@media(prefers-color-scheme:dark){
+.t1{background:#085041;color:#9FE1CB}.t2{background:#26215C;color:#CECBF6}
+.t3{background:#633806;color:#FAC775}.t4{background:#4A1B0C;color:#F5C4B3}
+.t5{background:#042C53;color:#B5D4F4}.t6{background:#2C2C2A;color:#D3D1C7}
+.t7{background:#173404;color:#C0DD97}}
+.issue{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:10px;overflow:hidden}
+.issue-head{padding:10px 14px;cursor:pointer;display:flex;align-items:flex-start;gap:10px}
+.issue-head:hover{background:var(--color-background-secondary)}
+.issue.open .issue-body{display:block}
+.issue-body{display:none;padding:0 14px 12px;border-top:.5px solid var(--color-border-tertiary)}
+.issue-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 2px}
+.issue-sub{font-size:12px;color:var(--color-text-secondary);margin:0}
+.arrow{margin-left:auto;font-size:12px;color:var(--color-text-tertiary);transition:transform .2s;flex-shrink:0;margin-top:2px}
+.issue.open .arrow{transform:rotate(90deg)}
+.prob{background:var(--color-background-warning);border-left:3px solid #EF9F27;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:8px 10px;margin:10px 0 6px;font-size:13px;color:var(--color-text-warning);line-height:1.6}
+.sol{background:var(--color-background-success);border-left:3px solid #1D9E75;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:8px 10px;margin-bottom:6px;font-size:13px;color:var(--color-text-success);line-height:1.6}
+.note{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px;font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:6px}
+code{font-family:var(--font-mono);font-size:12px;background:var(--color-background-secondary);padding:1px 5px;border-radius:3px;color:var(--color-text-primary)}
+.mono-block{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);line-height:1.75;white-space:pre-wrap;margin:6px 0}
+ul.sl{margin:4px 0;padding-left:16px}
+ul.sl li{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:2px}
+strong.hi{color:var(--color-text-primary)}
+.box{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:10px}
+.bh{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 5px}
+.bp{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.section-block{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:10px;overflow:hidden}
+.sb-head{padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.sb-head:hover{background:var(--color-background-secondary)}
+.sb-body{display:none;padding:0 14px 12px;border-top:.5px solid var(--color-border-tertiary)}
+.section-block.open .sb-body{display:block}
+.section-block.open .arrow{transform:rotate(90deg)}
+.pages{font-size:11px;padding:2px 7px;border-radius:99px;background:var(--color-background-secondary);color:var(--color-text-secondary);white-space:nowrap;margin-left:auto;margin-right:8px}
+.rev-card{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;margin-bottom:8px}
+.rev-q{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 5px}
+.rev-a{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.risk-row{display:flex;gap:8px;margin-bottom:7px;align-items:flex-start}
+.rl{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.r-hi{background:#FAECE7;color:#993C1D}.r-md{background:#FAEEDA;color:#854F0B}.r-lo{background:#EAF3DE;color:#3B6D11}
+@media(prefers-color-scheme:dark){.r-hi{background:#4A1B0C;color:#F5C4B3}.r-md{background:#633806;color:#FAC775}.r-lo{background:#173404;color:#C0DD97}}
+.rt{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+.verdict-box{background:var(--color-background-info);border:.5px solid var(--color-border-info);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-info);margin-bottom:10px}
+.warn{background:var(--color-background-warning);border:.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-warning);margin-bottom:10px}
+.succ{background:var(--color-background-success);border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-success);margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px}
+th{padding:6px 8px;text-align:left;border-bottom:.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-weight:500;background:var(--color-background-secondary)}
+td{padding:6px 8px;border-bottom:.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:top;line-height:1.5}
+td:first-child{color:var(--color-text-primary)}
+tr:last-child td{border-bottom:none}
+</style>
+
+<h2 class="sr-only">PRISM实现细节深度审查与论文可行性分析</h2>
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="tb on" onclick="sw('impl',this)">实现细节审查</button>
+  <button class="tb" onclick="sw('paper',this)">论文组织</button>
+  <button class="tb" onclick="sw('review',this)">审稿人问题</button>
+  <button class="tb" onclick="sw('scope',this)">范围重新定标</button>
+</div>
+
+<!-- ===== IMPL ===== -->
+<div id="impl" class="panel on">
+<p class="sec">逐模块深度审查——当前方案中需要修订的 8 个技术问题</p>
+
+<div class="issue open" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t4">问题 1</span>
+    <div><p class="issue-title">轨迹收集的多样性不足</p>
+    <p class="issue-sub">单次 LLM 求解同一谜题路径固定，500条轨迹可能大量重复</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 当前方案：对 500 道谜题各跑一次，收集一条轨迹。但同一道谜题 LLM 第一次解法往往固定，所有轨迹可能覆盖相同的推断模式，聚类结果会严重偏向某几种常见策略。</div>
+    <div class="sol">✓ 修订方案：同一道谜题跑 3-5 次（temperature=0.7 增加多样性），收集不同推断顺序的轨迹。同时使用生成器生成「难度梯度课程」：20% easy + 50% medium + 30% hard，确保范式覆盖不同复杂度的推断场景。</div>
+    <div class="note">实现细节：LLM 调用时设置 <code>temperature=0.7</code>，每道谜题收集 3 条轨迹去重后入库。最终轨迹池约 500×3=1500 条，KDP 提取后约 6000 个决策点。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t4">问题 2</span>
+    <div><p class="issue-title">KDP 识别的条件 3（级联效应）实现代价过高</p>
+    <p class="issue-sub">每个步骤都要跑两次 Z3 前向传播，6000 个 KDP 要跑 12000 次 Z3</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 当前方案的条件 3：「推断 t 使得 t+1 出现了从 t-1 出发不可能的新推断」——需要从 S_{t-1} 和 S_{t+1} 分别跑最大约束传播并比较。计算代价 O(N × K²)，对大谜题（6×6）Z3 传播可能超时。</div>
+    <div class="sol">✓ 修订方案：简化为两个充分条件（满足任一即视为 KDP）：
+    (A) 「域大小突变」：∆t 中至少一个变量的域从 ≥3 缩减到 ≤1（非平凡赋值）
+    (B) 「步骤类型非直接」：step_type ≠ DIRECT_ASSIGNMENT（即不是显式约束直接决定的赋值）
+    这两个条件用规则分类器判断，无需额外 Z3 调用。条件 3 降级为可选的 post-hoc 分析。</div>
+    <div class="note">这样 KDP 识别从 O(N×K²) 降为 O(1) per step，整个离线阶段的 Z3 调用集中在范式验证模块，总量可控。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t4">问题 3</span>
+    <div><p class="issue-title">范式抽象的「循环性」问题</p>
+    <p class="issue-sub">用 LLM 提炼范式来帮助 LLM 推理——审稿人会质疑「为什么不直接用 few-shot」</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 最严重的概念问题：离线阶段用 LLM 从轨迹中抽象范式，在线阶段再把范式注入给 LLM——这和「把成功轨迹作 few-shot 直接注入」有什么本质区别？审稿人必然会问这个问题。</div>
+    <div class="sol">✓ 核心区分点（必须在论文中明确说清）：
+    <strong style="color:var(--color-text-primary)">① 验证性</strong>：few-shot 样例可能包含错误步骤，范式经过 Z3 机械验证（soundness ≥90%），是有质量保证的
+    <strong style="color:var(--color-text-primary)">② 压缩性</strong>：1500 条轨迹 → 35 个范式，压缩了 40:1；few-shot 放不下 1500 条轨迹，范式是跨轨迹提炼的通用抽象
+    <strong style="color:var(--color-text-primary)">③ 选择性</strong>：范式按约束结构特征检索，只注入与当前状态相关的 top-3；few-shot 所有样例一刀切注入，造成 context 污染
+    <strong style="color:var(--color-text-primary)④ 持续性</strong>：范式库可在线扩充（写回机制），few-shot 是静态的
+    实验中专门设一组 baseline：「verified few-shot」（把经过 Z3 验证的成功轨迹步骤直接注入），对比 PRISM，证明结构化范式 > 验证过的 few-shot 样例。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t4">问题 4</span>
+    <div><p class="issue-title">UNSAT Core 到自然语言的回译机制缺失</p>
+    <p class="issue-sub">Z3 返回的是 z3.ExprRef 对象，不是原始 NL 约束文本</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ Z3 的 <code>unsat_core()</code> 返回的是被追踪的表达式对象（tracked assertions），不携带原始自然语言信息。如果不提前建立「约束 ID → NL 文本」的映射注册表，LLM 收到的修复提示就是一堆 Z3 表达式，无法理解。</div>
+    <div class="sol">✓ 必须在翻译阶段同步建立约束注册表（ConstraintRegistry）：</div>
+    <div class="mono-block">class ConstraintRegistry:
+    # 在 NL→Z3 翻译时同步注册
+    def register(self, nl_text: str, z3_expr, constraint_id: str):
+        self.id2nl[constraint_id] = nl_text
+        self.id2z3[constraint_id] = z3_expr
+        # 用 assert_and_track(z3_expr, Bool(constraint_id)) 追踪
+
+    def core_to_nl(self, core: List[str]) -> List[str]:
+        # 把 UNSAT core 中的 constraint_id 映射回 NL 文本
+        return [self.id2nl[cid] for cid in core if cid in self.id2nl]</div>
+    <div class="note">这是整个 UNSAT core 诊断机制的基础设施，必须在 solver.py 的第一版就设计好，否则后续所有依赖 UNSAT core 的模块都要重构。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t3">问题 5</span>
+    <div><p class="issue-title">范式触发的运行时匹配机制不精确</p>
+    <p class="issue-sub">触发条件是半结构化 dict，如何在运行时程序化地判断一个 SolverState 是否满足触发条件？</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 当前方案的触发条件是 dict（如 <code>{"constraint_types": ["adjacent","direct_position"], "min_domain_size": 2}</code>），但「当前 SolverState 是否满足这个触发条件」需要程序化判断。如果用 LLM 判断，既慢又不准；如果用规则，需要预定义一套特征提取-匹配语言。</div>
+    <div class="sol">✓ 分两层触发：
+    <strong style="color:var(--color-text-primary)">Layer 1（硬匹配，O(1)）</strong>：约束类型签名集合匹配。每个 SolverState 提取 <code>constraint_type_set</code>（当前激活的约束类型的集合），范式触发要求 <code>paradigm.required_types ⊆ state.constraint_type_set</code>。这是纯集合操作，极快。
+    <strong style="color:var(--color-text-primary)">Layer 2（软匹配，LLM 判断）</strong>：Layer 1 通过后，对候选范式列表（通常 ≤5 个）做 LLM 判断：「给定当前约束状态，以下哪个范式的触发条件被满足？」这把 LLM 调用次数控制在每步 ≤1 次额外调用。</div>
+    <div class="note">Layer 1 作为粗筛，Layer 2 作为精筛。实践中绝大多数步骤 Layer 1 就能排除无关范式，Layer 2 仅在有 2+ 个候选时触发。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t3">问题 6</span>
+    <div><p class="issue-title">停滞检测的 Jaccard 计算逻辑有误</p>
+    <p class="issue-sub">「core_fingerprint 的 Jaccard」语义不对，fingerprint 是 hash 不是集合</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 当前设计：对最近 K 条记录的 <code>core_fingerprint</code>（hash 值）计算 Jaccard——但 Jaccard 是集合相似度，hash 值不是集合，无法计算 Jaccard。应该对 <code>unsat_core</code>（约束 ID 的列表）计算集合 Jaccard。</div>
+    <div class="sol">✓ 修正实现：</div>
+    <div class="mono-block">def detect_stagnation(self, k: int = 3) -> bool:
+    if len(self.records) < k:
+        return False
+    recent = self.records[-k:]
+    cores = [set(r.unsat_core) for r in recent]
+    # 计算所有 pair 的 Jaccard，取最小值（最保守的停滞判断）
+    pairs = [(cores[i], cores[j])
+             for i in range(len(cores))
+             for j in range(i+1, len(cores))]
+    min_jaccard = min(
+        len(a & b) / len(a | b) if a | b else 0.0
+        for a, b in pairs
+    )
+    return min_jaccard >= self.tau_stagnation</div>
+    <div class="note"><code>core_fingerprint</code> 仍然保留作为 cache key（快速判断「是否与某历史记录完全相同的 core」），但停滞检测使用真实集合的 Jaccard。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t3">问题 7</span>
+    <div><p class="issue-title">检查点（Checkpoint）的定义和保存时机不明确</p>
+    <p class="issue-sub">L3 策略切换「回退到检查点」需要明确什么是检查点以及何时保存</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 当前方案说「回退到上一个确定正确的约束集合」——但在困难谜题中，可能从未有过完全确定正确的中间状态（每步都是猜测性推断），导致 L3 永远无法触发，或回退到初始状态（相当于放弃所有推断）。</div>
+    <div class="sol">✓ 重新定义检查点：
+    <strong style="color:var(--color-text-primary)">「Z3 强一致性检查点」</strong>：当某一步推断后，Z3 对当前完整约束集（包含所有已推断的赋值）返回 SAT，且所有已赋值变量的赋值均能从 ground truth 的某个可行解中推导出来（用生成器的 GT 验证），则保存此状态为检查点。
+    实际实现：每步推断后，检查 <code>Z3-SAT(C_current)</code>；若 SAT，把当前 <code>(constraint_set, domain_assignment)</code> 快照存为检查点。L3 触发时回退到最近检查点，并记录「从检查点出发，禁止走 {已失败的分支}」。</div>
+    <div class="note">如果检查点列表为空（从未有过 SAT 中间状态），L3 退化为「重置到初始翻译状态并补充停滞提示」，此时与 L4 的区别在于：L3 保留原始翻译，L4 重新翻译。</div>
+  </div>
+</div>
+
+<div class="issue" onclick="tog(this)">
+  <div class="issue-head">
+    <span class="tag t3">问题 8</span>
+    <div><p class="issue-title">范式冲突处理机制缺失</p>
+    <p class="issue-sub">两个范式同时触发但建议不同的推断时，如何决策？</p></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="issue-body">
+    <div class="prob">⚠ 当前方案检索 top-3 范式注入给 LLM，但没有处理「两个范式建议了相互矛盾的赋值」的情况。如果范式 P1 说「X=2」，P2 说「X=3」，LLM 不知道听谁的，可能随机选择或产生幻觉。</div>
+    <div class="sol">✓ 注入前增加一致性预检：</div>
+    <div class="mono-block">def filter_consistent_paradigms(
+    paradigms: List[Paradigm],
+    current_state: SolverState,
+    solver: Z3SolverWrapper
+) -> List[Paradigm]:
+    consistent = []
+    for p in paradigms:
+        # 用 solver clone 检查范式的 operation 是否与当前约束 SAT
+        test_solver = solver.clone()
+        test_solver.add_constraint(p.operation_as_z3)
+        if test_solver.check() == "SAT":
+            consistent.append(p)
+    # 如果 consistent 为空，不注入任何范式（让 LLM 自由推断）
+    return consistent[:3]</div>
+    <div class="note">这个预检本身就是一次 Z3 调用，但对每个候选范式只需 O(1) 时间，总代价可接受。这也确保了「注入的范式绝对不会误导 LLM 去推断一个与当前约束矛盾的结论」。</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== PAPER ===== -->
+<div id="paper" class="panel">
+<p class="sec">论文各节内容与可行性逐一分析（目标：ACL/EMNLP Long Paper，8+2页）</p>
+
+<div class="section-block open" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§1</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Introduction</span><span class="pages">~1.0页</span><span class="tag t1">可行 ✓</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <ul class="sl">
+      <li><strong class="hi">Para 1</strong>：LLM 在 CSP 上的系统性失败 + 神经符号方法的局限（翻译错误 + 停滞）</li>
+      <li><strong class="hi">Para 2</strong>：Agent 记忆工作的局限（无形式验证）</li>
+      <li><strong class="hi">Para 3</strong>：核心 insight：CSP 轨迹每步可 Z3 验证，这是两条线融合的关键</li>
+      <li><strong class="hi">Para 4</strong>：PRISM 概述（两句话描述离线+在线）</li>
+      <li><strong class="hi">Para 5</strong>：实验结果一句话摘要 + 四条贡献</li>
+    </ul>
+    <div class="note">⚠ 注意：Introduction 必须明确回答「为什么不直接用 few-shot」——在贡献点列出时说清「verified + compressed + selective」三点。</div>
+  </div>
+</div>
+
+<div class="section-block" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§2</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Background & Related Work</span><span class="pages">~1.5页</span><span class="tag t1">可行 ✓</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <ul class="sl">
+      <li><strong class="hi">§2.1 Neuro-Symbolic Reasoning</strong>：Logic-LM/LINC/VERGE，重点说明 stagnation 问题和 UNSAT 利用不足，引出你的动机</li>
+      <li><strong class="hi">§2.2 Agent Memory</strong>：Reflexion/ExpeL/ReasoningBank，重点对比「自由文本 vs 形式可验证」的记忆单元</li>
+      <li><strong class="hi">§2.3 CSP Benchmarks</strong>：ZebraLogic/GridPuzzle 的错误分析，作为你研究 CSP 特定策略的实证基础</li>
+    </ul>
+    <div class="note">篇幅建议：每个子节 0.5 页，重在明确「与本工作的差异」，不要泛泛介绍背景知识。</div>
+  </div>
+</div>
+
+<div class="section-block" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§3</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Preliminaries</span><span class="pages">~0.5页</span><span class="tag t1">可行 ✓</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <ul class="sl">
+      <li>正式定义 CSP（变量域、约束集、可行解）</li>
+      <li>定义 Zebra puzzle 的形式化表示（作为 CSP 实例）</li>
+      <li>定义 Solving Trajectory（§3.1.1 的符号体系）</li>
+      <li>一句话说明 Z3 的角色（SAT/UNSAT oracle + UNSAT core 提取）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-block" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§4</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">PRISM Framework</span><span class="pages">~3.0页</span><span class="tag t3">较复杂</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <ul class="sl">
+      <li><strong class="hi">§4.1 Overview</strong>（0.3页）：一张系统图 + 两句话描述离线/在线分工</li>
+      <li><strong class="hi">§4.2 Solving Paradigm Representation</strong>（0.4页）：四元组定义 + 一个具体范式示例（P2 链式传播）</li>
+      <li><strong class="hi">§4.3 Offline: Paradigm Distillation</strong>（0.8页）：轨迹收集 → KDP 识别（简化版判定条件）→ 聚类 → LLM 抽象 → Z3 三重验证。重点：不要平铺所有步骤，用流程图 + 关键算法伪代码</li>
+      <li><strong class="hi">§4.4 Online: Paradigm-Guided Inference</strong>（0.8页）：特征提取 → 两层检索 → 一致性预检 → 注入格式 → 步骤级 Z3 验证 → UNSAT 归因</li>
+      <li><strong class="hi">§4.5 Repair Trajectory Memory</strong>（0.7页）：数据结构 → Jaccard 停滞检测（修正版） → 余弦循环检测 → 四级策略切换表</li>
+    </ul>
+    <div class="warn">⚠ 可行性风险：这一节在 3 页内要讲清楚两个主要模块的所有细节，篇幅偏紧。建议：(1) 把 KDP 详细算法放附录；(2) Repair Memory 的策略切换表做成 Table 1，节省文字描述空间；(3) 系统图要精心设计，尽量让读者通过图就能理解主体流程。</div>
+  </div>
+</div>
+
+<div class="section-block" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§5</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Experiments</span><span class="pages">~2.5页</span><span class="tag t3">最关键</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 8px">实验设计必须回答五个研究问题（RQ）：</p>
+    <table>
+      <tr><td style="width:32px"><strong>RQ1</strong></td><td>PRISM 整体性能是否优于所有基线？</td><td style="white-space:nowrap">→ 主结果表</td></tr>
+      <tr><td><strong>RQ2</strong></td><td>修复记忆是否减少停滞，提高修复效率？</td><td>→ 修复指标表</td></tr>
+      <tr><td><strong>RQ3</strong></td><td>范式库的质量如何（覆盖率、置信度分布）？</td><td>→ 范式分析</td></tr>
+      <tr><td><strong>RQ4</strong></td><td>各模块的独立贡献如何（消融）？</td><td>→ 消融表</td></tr>
+      <tr><td><strong>RQ5</strong></td><td>范式能迁移到更大规模或不同类型的谜题吗？</td><td>→ 泛化实验</td></tr>
+    </table>
+    <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0 5px">基线设置（必须包含）：</p>
+    <ul class="sl">
+      <li><code>Plain LLM</code>：纯 CoT，无符号求解器</li>
+      <li><code>Paper-1</code>：你的论文一（LLM+Z3，无记忆）——必须是这条 baseline，才能证明论文三的增量</li>
+      <li><code>Logic-LM</code>：官方报告数字（ZebraLogic 上有数据）</li>
+      <li><code>ExpeL-CSP</code>：把 ExpeL 适配到 CSP 域（用相同轨迹，提取自由文本 insight，无 Z3 验证）——回应「为什么不直接用 ExpeL」</li>
+      <li><code>Verified Few-Shot</code>：把 Z3 验证过的成功步骤直接注入——回应「为什么不直接用 few-shot」</li>
+      <li><code>PRISM w/o Memory</code>：只用范式库，无修复记忆</li>
+      <li><code>PRISM w/o Paradigm</code>：只用修复记忆，无范式库</li>
+      <li><code>PRISM Full</code>：完整系统</li>
+    </ul>
+    <div class="note">ExpeL-CSP 的实现是额外工作量（约 1 周），但对于审稿人来说是「必要的公平对比」。如果时间紧，可以降优先级，在 Limitations 中说明。</div>
+  </div>
+</div>
+
+<div class="section-block" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§6</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Analysis</span><span class="pages">~1.0页</span><span class="tag t1">可行 ✓</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <ul class="sl">
+      <li><strong class="hi">§6.1 案例研究</strong>：一道谜题的完整求解过程，展示范式被触发的时刻 + 修复记忆阻断循环的时刻（最有说服力的定性证据）</li>
+      <li><strong class="hi">§6.2 范式质量分析</strong>：范式置信度分布图（直方图）、范式被触发的频率 top-10 列表</li>
+      <li><strong class="hi">§6.3 Error 类型分析</strong>：修复记忆里各 ErrorType 的分布，说明「over-constraint 是最常见的错误类型，且最容易在停滞检测后被修复」</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-block" onclick="stog(this)">
+  <div class="sb-head"><span class="tag t5">§7</span><span style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Conclusion + Limitations</span><span class="pages">~0.5页</span><span class="tag t1">可行 ✓</span><span class="arrow">▶</span></div>
+  <div class="sb-body">
+    <ul class="sl">
+      <li>Limitations 必须诚实写出：(1) 范式库与 CSP 域强耦合；(2) 聚类阈值需人工调优；(3) L2 跨域迁移初步探索，尚无结论性结果</li>
+      <li>Future Work 指向：范式的端到端微调（结合 RLVR）；PRM 数据集构建</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box" style="margin-top:4px">
+  <p class="bh">总页数预算检查（ACL/EMNLP Long Paper = 8页正文 + 无限附录）</p>
+  <p class="bp">§1(1.0) + §2(1.5) + §3(0.5) + §4(3.0) + §5(2.5) + §6(1.0) + §7(0.5) = <strong style="color:var(--color-text-primary)">10页</strong>。超出 8 页限制 2 页——需要压缩。建议：§2 压到 1.2 页；§4 系统图+伪代码替代文字说明，压到 2.5 页；将 KDP 算法细节和 Z3 验证三重检验放附录。压缩后 ≈ 8.2 页，可通过格式微调达标。</p>
+</div>
+</div>
+
+<!-- ===== REVIEW ===== -->
+<div id="review" class="panel">
+<p class="sec">预测审稿人的 6 个核心质疑（及建议回应）</p>
+
+<div class="rev-card">
+  <p class="rev-q">Q1：「为什么不直接把成功轨迹的步骤作 few-shot？范式提炼增加了额外的 LLM 调用和验证成本，收益是否值得？」</p>
+  <p class="rev-a">回应策略：设计 <strong>Verified Few-Shot baseline</strong>——把经过 Z3 验证的成功步骤直接注入（相同的验证成本，不做压缩和抽象）。预期结果：few-shot 因 context 过长和步骤特化导致性能低于 PRISM；且随问题规模增大，few-shot 的 context 增长是 O(N) 而 PRISM 保持 O(K) 常数。这是最强的实验证据。</p>
+</div>
+
+<div class="rev-card">
+  <p class="rev-q">Q2：「范式的 Z3 验证只在 20 个随机样本上检验，soundness ≥90% 意味着 10% 的情况下范式会给出错误建议——这会不会比没有范式更差？」</p>
+  <p class="rev-a">回应策略：两点回应。(1) 有「注入前一致性预检」（问题 8 的修订）：在线时每个范式建议都经过实时 Z3 检验，如果建议的推断与当前约束矛盾就不注入——90% 的 soundness 是离线训练时的质量保证，在线时有第二道防线。(2) 在实验中加入「unverified paradigm」消融（去掉离线验证步骤直接存入所有提炼的范式），证明 Z3 验证的必要性。</p>
+</div>
+
+<div class="rev-card">
+  <p class="rev-q">Q3：「聚类阈值 θ=0.25 和停滞检测阈值 τ=0.75 如何确定？是否对这些超参数敏感？」</p>
+  <p class="rev-a">回应策略：用 10% 的 ZebraLogic dev set 做超参数搜索（grid search over θ ∈ {0.15, 0.20, 0.25, 0.30} × τ ∈ {0.65, 0.70, 0.75, 0.80}），报告性能对超参数的敏感性曲线。预期结果：系统在合理范围内对超参数不敏感，证明其鲁棒性。在论文中用一个小图或表格呈现。</p>
+</div>
+
+<div class="rev-card">
+  <p class="rev-q">Q4：「实验只在 Zebra 谜题上进行。离线范式提炼需要大量轨迹，对新的 CSP 场景是否需要从零重新训练？如果是，泛化性太弱。」</p>
+  <p class="rev-a">回应策略：这是最难回答的问题。诚实的回应是：(1) 范式库确实是域相关的，对新域需要离线阶段，但离线阶段是一次性的，成本可分摊；(2) L2 实验测试 Zebra 范式在 Knights-Knaves 上的迁移率（即使部分迁移也是证据）；(3) 在 Limitations 中诚实说明这是当前局限，未来工作方向是「跨域范式泛化」。不要过度主张泛化性。</p>
+</div>
+
+<div class="rev-card">
+  <p class="rev-q">Q5：「论文一已经做了 LLM+Z3 求解 Zebra，论文三的增量贡献是否足够大？会不会被认为是论文一的工程扩展？」</p>
+  <p class="rev-a">回应策略：这是最需要在 Introduction 中明确回答的问题。核心区分：论文一解决「能否」（static capability），论文三解决「如何积累」（dynamic learning）——这是从工具到 Agent 的本质跨越。在实验中确保 Paper-1 作为基线，PRISM 有 ≥10% 的显著提升，且在困难谜题（5×5, 6×6）上提升更大（说明经验积累在困难场景收益最明显）。</p>
+</div>
+
+<div class="rev-card">
+  <p class="rev-q">Q6：「范式抽象步骤本身使用 LLM，引入了不确定性。如果 LLM 在离线阶段抽象出错误的范式，Z3 验证真的能拦截所有错误案例吗？」</p>
+  <p class="rev-a">回应策略：Z3 验证是 soundness 的充分（不是充要）条件。一个错误的范式可能恰好在 20 个测试样本上都通过验证（如果测试样本的分布覆盖不够），但仍在更多情况下出错。回应方式：(1) 增大验证样本量（20 → 50，成本可接受）；(2) 在线时的一致性预检作为第二道防线；(3) 写回机制中只有「经过完整谜题验证」的修复经验才转化为新范式，进一步过滤。</p>
+</div>
+</div>
+
+<!-- ===== SCOPE ===== -->
+<div id="scope" class="panel">
+<p class="sec">重新校准论文范围与核心主张</p>
+
+<div class="warn">⚠ 当前方案的风险：两个主要模块（范式库 + 修复记忆）+ 泛化实验 + 完整消融，对于 3 个月来说略显雄心过大，且每个模块单独提出的主张都需要独立的实验验证。</div>
+
+<div class="succ">✓ 建议：明确一个「必须成立的核心主张」+ 两个「支撑性发现」</div>
+
+<div class="box" style="border-left:3px solid #534AB7;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0;margin-bottom:10px">
+  <p class="bh">核心主张（必须成立，实验设计围绕它）</p>
+  <p class="bp">「从 CSP 求解轨迹中提炼的 solver-verified 范式，结合类型化修复记忆，能够显著提升 LLM 在复杂 CSP 上的求解准确率并减少修复停滞——这种改进在同域不同规模的谜题上可以迁移。」</p>
+</div>
+
+<div class="grid2" style="margin-bottom:10px">
+  <div class="box">
+    <p class="bh">支撑性发现 1（3周内可验证）</p>
+    <p class="bp">修复记忆单独就能减少平均修复轮数 X%，且停滞检测准确率 ≥ Y%。这个结论不依赖范式库，可以很快用 Paper-1 的 pipeline 加上修复记忆模块跑出来。</p>
+  </div>
+  <div class="box">
+    <p class="bh">支撑性发现 2（6周内可验证）</p>
+    <p class="bp">范式库的内容分析：提炼出的范式的类型分布（多少是 P1/P2/P3 类型），置信度分布，以及「有范式覆盖的步骤」vs「无范式覆盖的步骤」的准确率对比。</p>
+  </div>
+</div>
+
+<div class="box">
+  <p class="bh">降低风险的实验顺序建议</p>
+  <ul class="sl" style="margin-top:6px">
+    <li><strong class="hi">第 1-2 周</strong>：先跑「修复记忆单独的消融实验」（基于 Paper-1 pipeline 直接扩展），确保有一个强 baseline 结果。这是最快的实验，也是最容易成功的部分。</li>
+    <li><strong class="hi">第 3-5 周</strong>：收集轨迹 + 跑离线提炼 pipeline（即使范式质量不完美，也要有初步结果）。第 5 周末应该有第一版范式库（哪怕只有 10-15 个范式）。</li>
+    <li><strong class="hi">第 6-8 周</strong>：端到端运行完整 PRISM，在 ZebraLogic dev set 上迭代调参。如果 Full PRISM 比 Paper-1 显著提升（≥5%），论文核心主张成立。</li>
+    <li><strong class="hi">第 9-10 周</strong>：跑所有基线（ExpeL-CSP 如果来不及做可以降优先级），L1 泛化实验，消融实验。</li>
+    <li><strong class="hi">第 11-12 周</strong>：L2 实验（如果 L1 结果好才投入精力），写作，整理。</li>
+  </ul>
+</div>
+
+<div class="box">
+  <p class="bh">MVP（最小可发表版本）的精确定义</p>
+  <p class="bp">在 ZebraLogic 4×5 和 5×5 上，PRISM Full 比 Paper-1 基线提升 ≥8%；修复停滞率下降 ≥20%；消融实验证明两个模块各有独立贡献；范式库质量分析展示合理的触发率和置信度分布。这 4 项条件全部满足 → ACL/EMNLP long paper 投稿充分。L2 泛化实验是加分项，不是门槛。</p>
+</div>
+
+<div class="grid2">
+  <div class="box">
+    <p class="bh" style="color:#993C1D">如果核心主张不成立怎么办</p>
+    <p class="bp">如果 PRISM 比 Paper-1 提升不显著（&lt;3%），则 pivot 到「分析型论文」：系统性地分析为什么现有神经符号 Agent 在 CSP 上的修复会停滞，用修复记忆追踪数据定量分析停滞的规律，提出若干改进建议。这仍然是有价值的分析工作，但主张更保守。</p>
+  </div>
+  <div class="box">
+    <p class="bh" style="color:#0F6E56">最乐观情形</p>
+    <p class="bp">PRISM 在 6×6 困难谜题上提升 ≥15%，且 L2 实验也有正向迁移结果。此时论文主张可以扩展到「范式迁移」，贡献级别可以支撑冲击 AAAI/NeurIPS workshop。</p>
+  </div>
+</div>
+</div>
+
+</div>
+<script>
+function sw(id,el){document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));el.classList.add('on');document.getElementById(id).classList.add('on')}
+function tog(c){const o=c.classList.contains('open');document.querySelectorAll('.issue').forEach(x=>x.classList.remove('open'));if(!o)c.classList.add('open')}
+function stog(c){const o=c.classList.contains('open');document.querySelectorAll('.section-block').forEach(x=>x.classList.remove('open'));if(!o)c.classList.add('open')}
+</script>

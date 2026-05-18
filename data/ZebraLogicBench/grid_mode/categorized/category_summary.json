@@ -1,0 +1,138 @@
+{
+  "total_categories": 25,
+  "total_puzzles": 1000,
+  "difficulty_distribution": {
+    "Easy": 10,
+    "Medium": 5,
+    "Hard": 10
+  },
+  "categories": {
+    "2*2": {
+      "count": 40,
+      "filename": "test_grid_2_2.json",
+      "difficulty": "Easy"
+    },
+    "2*3": {
+      "count": 40,
+      "filename": "test_grid_2_3.json",
+      "difficulty": "Easy"
+    },
+    "3*2": {
+      "count": 40,
+      "filename": "test_grid_3_2.json",
+      "difficulty": "Easy"
+    },
+    "2*4": {
+      "count": 40,
+      "filename": "test_grid_2_4.json",
+      "difficulty": "Easy"
+    },
+    "4*2": {
+      "count": 40,
+      "filename": "test_grid_4_2.json",
+      "difficulty": "Easy"
+    },
+    "3*3": {
+      "count": 40,
+      "filename": "test_grid_3_3.json",
+      "difficulty": "Easy"
+    },
+    "2*5": {
+      "count": 40,
+      "filename": "test_grid_2_5.json",
+      "difficulty": "Easy"
+    },
+    "5*2": {
+      "count": 40,
+      "filename": "test_grid_5_2.json",
+      "difficulty": "Medium"
+    },
+    "2*6": {
+      "count": 40,
+      "filename": "test_grid_2_6.json",
+      "difficulty": "Easy"
+    },
+    "3*4": {
+      "count": 40,
+      "filename": "test_grid_3_4.json",
+      "difficulty": "Easy"
+    },
+    "4*3": {
+      "count": 40,
+      "filename": "test_grid_4_3.json",
+      "difficulty": "Medium"
+    },
+    "6*2": {
+      "count": 40,
+      "filename": "test_grid_6_2.json",
+      "difficulty": "Medium"
+    },
+    "3*5": {
+      "count": 40,
+      "filename": "test_grid_3_5.json",
+      "difficulty": "Easy"
+    },
+    "5*3": {
+      "count": 40,
+      "filename": "test_grid_5_3.json",
+      "difficulty": "Hard"
+    },
+    "4*4": {
+      "count": 40,
+      "filename": "test_grid_4_4.json",
+      "difficulty": "Medium"
+    },
+    "3*6": {
+      "count": 40,
+      "filename": "test_grid_3_6.json",
+      "difficulty": "Medium"
+    },
+    "6*3": {
+      "count": 40,
+      "filename": "test_grid_6_3.json",
+      "difficulty": "Hard"
+    },
+    "4*5": {
+      "count": 40,
+      "filename": "test_grid_4_5.json",
+      "difficulty": "Hard"
+    },
+    "5*4": {
+      "count": 40,
+      "filename": "test_grid_5_4.json",
+      "difficulty": "Hard"
+    },
+    "4*6": {
+      "count": 40,
+      "filename": "test_grid_4_6.json",
+      "difficulty": "Hard"
+    },
+    "6*4": {
+      "count": 40,
+      "filename": "test_grid_6_4.json",
+      "difficulty": "Hard"
+    },
+    "5*5": {
+      "count": 40,
+      "filename": "test_grid_5_5.json",
+      "difficulty": "Hard"
+    },
+    "5*6": {
+      "count": 40,
+      "filename": "test_grid_5_6.json",
+      "difficulty": "Hard"
+    },
+    "6*5": {
+      "count": 40,
+      "filename": "test_grid_6_5.json",
+      "difficulty": "Hard"
+    },
+    "6*6": {
+      "count": 40,
+      "filename": "test_grid_6_6.json",
+      "difficulty": "Hard"
+    }
+  },
+  "last_updated": "2025-01-01T18:45:00.000000",
+  "update_notes": "Added difficulty labels (Easy/Medium/Hard) based on grid complexity"
+}

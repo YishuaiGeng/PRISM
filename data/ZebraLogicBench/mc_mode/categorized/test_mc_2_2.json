@@ -1,0 +1,717 @@
+[
+  {
+    "id": "lgp-test-2x2-0#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. Eric is not in the first house.\n2. Eric is the person who loves rock music.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298504"
+  },
+  {
+    "id": "lgp-test-2x2-0#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. Eric is not in the first house.\n2. Eric is the person who loves rock music.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "pop",
+      "rock"
+    ],
+    "answer": "pop",
+    "created_at": "2024-07-03T21:21:31.298520"
+  },
+  {
+    "id": "lgp-test-2x2-1#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has an occupation: `engineer`, `doctor`\n\n## Clues:\n1. Eric is directly left of Arnold.\n2. The person who is a doctor is not in the first house.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "engineer",
+      "doctor"
+    ],
+    "answer": "engineer",
+    "created_at": "2024-07-03T21:21:31.298539"
+  },
+  {
+    "id": "lgp-test-2x2-2#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `cat`, `horse`\n\n## Clues:\n1. Arnold is the person who keeps horses.\n2. Arnold is in the second house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298554"
+  },
+  {
+    "id": "lgp-test-2x2-2#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `cat`, `horse`\n\n## Clues:\n1. Arnold is the person who keeps horses.\n2. Arnold is in the second house.\n",
+    "question": "What is Animal of the person who lives in House 1?",
+    "choices": [
+      "cat",
+      "horse"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.298558"
+  },
+  {
+    "id": "lgp-test-2x2-3#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person lives in a unique style of house: `colonial`, `victorian`\n\n## Clues:\n1. Eric is somewhere to the left of Arnold.\n2. Eric is the person residing in a Victorian house.\n",
+    "question": "What is HouseStyle of the person who lives in House 2?",
+    "choices": [
+      "victorian",
+      "colonial"
+    ],
+    "answer": "colonial",
+    "created_at": "2024-07-03T21:21:31.298585"
+  },
+  {
+    "id": "lgp-test-2x2-4#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `tesla model 3`, `ford f150`\n\n## Clues:\n1. The person who owns a Ford F-150 is in the second house.\n2. Arnold is somewhere to the right of Eric.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.298594"
+  },
+  {
+    "id": "lgp-test-2x2-5#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The person residing in a Victorian house is somewhere to the left of the person living in a colonial-style house.\n2. Eric is in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298618"
+  },
+  {
+    "id": "lgp-test-2x2-6#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is somewhere to the right of Eric.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "iphone 13",
+      "samsung galaxy s21"
+    ],
+    "answer": "iphone 13",
+    "created_at": "2024-07-03T21:21:31.298631"
+  },
+  {
+    "id": "lgp-test-2x2-6#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is somewhere to the right of Eric.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298635"
+  },
+  {
+    "id": "lgp-test-2x2-7#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `gardening`\n\n## Clues:\n1. The person who enjoys gardening is Arnold.\n2. Arnold is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298645"
+  },
+  {
+    "id": "lgp-test-2x2-7#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `gardening`\n\n## Clues:\n1. The person who enjoys gardening is Arnold.\n2. Arnold is not in the first house.\n",
+    "question": "What is Hobby of the person who lives in House 1?",
+    "choices": [
+      "gardening",
+      "photography"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.298649"
+  },
+  {
+    "id": "lgp-test-2x2-8#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `short`, `very short`\n\n## Clues:\n1. Arnold is in the first house.\n2. The person who is short is Arnold.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298670"
+  },
+  {
+    "id": "lgp-test-2x2-9#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. Eric is the person who loves pop music.\n2. The person who loves rock music is in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298679"
+  },
+  {
+    "id": "lgp-test-2x2-10#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. The person who owns a Ford F-150 is Arnold.\n2. Arnold is in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298705"
+  },
+  {
+    "id": "lgp-test-2x2-10#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. The person who owns a Ford F-150 is Arnold.\n2. Arnold is in the first house.\n",
+    "question": "What is CarModel of the person who lives in House 2?",
+    "choices": [
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.298709"
+  },
+  {
+    "id": "lgp-test-2x2-11#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has an occupation: `engineer`, `doctor`\n\n## Clues:\n1. Arnold is the person who is an engineer.\n2. The person who is an engineer is in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298722"
+  },
+  {
+    "id": "lgp-test-2x2-11#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has an occupation: `engineer`, `doctor`\n\n## Clues:\n1. Arnold is the person who is an engineer.\n2. The person who is an engineer is in the first house.\n",
+    "question": "What is Occupation of the person who lives in House 2?",
+    "choices": [
+      "engineer",
+      "doctor"
+    ],
+    "answer": "doctor",
+    "created_at": "2024-07-03T21:21:31.298726"
+  },
+  {
+    "id": "lgp-test-2x2-12#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The people are of nationalities: `brit`, `dane`\n\n## Clues:\n1. The British person is somewhere to the left of the Dane.\n2. Eric is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298739"
+  },
+  {
+    "id": "lgp-test-2x2-13#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n\n## Clues:\n1. The person with a high school diploma is in the second house.\n2. Eric is not in the second house.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "high school",
+      "associate"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.298752"
+  },
+  {
+    "id": "lgp-test-2x2-13#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n\n## Clues:\n1. The person with a high school diploma is in the second house.\n2. Eric is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298756"
+  },
+  {
+    "id": "lgp-test-2x2-14#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n\n## Clues:\n1. The person who is a pizza lover is in the second house.\n2. Arnold is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298769"
+  },
+  {
+    "id": "lgp-test-2x2-14#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n\n## Clues:\n1. The person who is a pizza lover is in the second house.\n2. Arnold is not in the first house.\n",
+    "question": "What is Food of the person who lives in House 1?",
+    "choices": [
+      "grilled cheese",
+      "pizza"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.298773"
+  },
+  {
+    "id": "lgp-test-2x2-15#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. The person who owns a Ford F-150 is not in the second house.\n2. Arnold is directly left of Eric.\n",
+    "question": "What is CarModel of the person who lives in House 2?",
+    "choices": [
+      "tesla model 3",
+      "ford f150"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.298800"
+  },
+  {
+    "id": "lgp-test-2x2-16#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite sports: `soccer`, `basketball`\n\n## Clues:\n1. Arnold is in the second house.\n2. The person who loves soccer is in the second house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298805"
+  },
+  {
+    "id": "lgp-test-2x2-16#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite sports: `soccer`, `basketball`\n\n## Clues:\n1. Arnold is in the second house.\n2. The person who loves soccer is in the second house.\n",
+    "question": "What is FavoriteSport of the person who lives in House 1?",
+    "choices": [
+      "basketball",
+      "soccer"
+    ],
+    "answer": "basketball",
+    "created_at": "2024-07-03T21:21:31.298810"
+  },
+  {
+    "id": "lgp-test-2x2-17#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. The person partial to Pall Mall is Arnold.\n2. Arnold is in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298831"
+  },
+  {
+    "id": "lgp-test-2x2-17#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. The person partial to Pall Mall is Arnold.\n2. Arnold is in the first house.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "prince",
+      "pall mall"
+    ],
+    "answer": "prince",
+    "created_at": "2024-07-03T21:21:31.298835"
+  },
+  {
+    "id": "lgp-test-2x2-19#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n\n## Clues:\n1. Eric is directly left of the person's child is named Bella.\n",
+    "question": "What is Children of the person who lives in House 1?",
+    "choices": [
+      "Fred",
+      "Bella"
+    ],
+    "answer": "Fred",
+    "created_at": "2024-07-03T21:21:31.298861"
+  },
+  {
+    "id": "lgp-test-2x2-19#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n\n## Clues:\n1. Eric is directly left of the person's child is named Bella.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298865"
+  },
+  {
+    "id": "lgp-test-2x2-20#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n\n## Clues:\n1. The person's child is named Fred is Arnold.\n2. Eric is in the second house.\n",
+    "question": "What is Children of the person who lives in House 2?",
+    "choices": [
+      "Fred",
+      "Bella"
+    ],
+    "answer": "Bella",
+    "created_at": "2024-07-03T21:21:31.298885"
+  },
+  {
+    "id": "lgp-test-2x2-21#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people are of nationalities: `dane`, `brit`\n\n## Clues:\n1. The Dane is Eric.\n2. The British person is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298898"
+  },
+  {
+    "id": "lgp-test-2x2-22#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is somewhere to the right of the person who owns a Tesla Model 3.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298906"
+  },
+  {
+    "id": "lgp-test-2x2-22#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is somewhere to the right of the person who owns a Tesla Model 3.\n",
+    "question": "What is CarModel of the person who lives in House 2?",
+    "choices": [
+      "tesla model 3",
+      "ford f150"
+    ],
+    "answer": "ford f150",
+    "created_at": "2024-07-03T21:21:31.298919"
+  },
+  {
+    "id": "lgp-test-2x2-23#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. Eric is the person whose birthday is in April.\n2. Eric is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.298932"
+  },
+  {
+    "id": "lgp-test-2x2-23#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. Eric is the person whose birthday is in April.\n2. Eric is not in the second house.\n",
+    "question": "What is Birthday of the person who lives in House 2?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "sept",
+    "created_at": "2024-07-03T21:21:31.298936"
+  },
+  {
+    "id": "lgp-test-2x2-24#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people are of nationalities: `dane`, `brit`\n\n## Clues:\n1. The British person is not in the first house.\n2. Arnold is not in the second house.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "brit",
+      "dane"
+    ],
+    "answer": "dane",
+    "created_at": "2024-07-03T21:21:31.298949"
+  },
+  {
+    "id": "lgp-test-2x2-24#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people are of nationalities: `dane`, `brit`\n\n## Clues:\n1. The British person is not in the first house.\n2. Arnold is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298954"
+  },
+  {
+    "id": "lgp-test-2x2-25#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. Arnold is somewhere to the right of the person who loves beach vacations.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298964"
+  },
+  {
+    "id": "lgp-test-2x2-25#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. Arnold is somewhere to the right of the person who loves beach vacations.\n",
+    "question": "What is Vacation of the person who lives in House 2?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.298976"
+  },
+  {
+    "id": "lgp-test-2x2-26#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. Arnold is in the first house.\n2. The person who has brown hair is not in the first house.\n",
+    "question": "What is HairColor of the person who lives in House 1?",
+    "choices": [
+      "brown",
+      "black"
+    ],
+    "answer": "black",
+    "created_at": "2024-07-03T21:21:31.298986"
+  },
+  {
+    "id": "lgp-test-2x2-26#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. Arnold is in the first house.\n2. The person who has brown hair is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.298991"
+  },
+  {
+    "id": "lgp-test-2x2-27#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves pop music is Arnold.\n2. Arnold is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.299009"
+  },
+  {
+    "id": "lgp-test-2x2-27#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves pop music is Arnold.\n2. Arnold is not in the second house.\n",
+    "question": "What is MusicGenre of the person who lives in House 2?",
+    "choices": [
+      "rock",
+      "pop"
+    ],
+    "answer": "rock",
+    "created_at": "2024-07-03T21:21:31.299013"
+  },
+  {
+    "id": "lgp-test-2x2-28#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n\n## Clues:\n1. Arnold is the Prince smoker.\n2. Eric is not in the first house.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "prince",
+      "pall mall"
+    ],
+    "answer": "pall mall",
+    "created_at": "2024-07-03T21:21:31.299032"
+  },
+  {
+    "id": "lgp-test-2x2-29#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The tea drinker is Eric.\n2. The tea drinker is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.299046"
+  },
+  {
+    "id": "lgp-test-2x2-29#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The tea drinker is Eric.\n2. The tea drinker is not in the second house.\n",
+    "question": "What is Drink of the person who lives in House 2?",
+    "choices": [
+      "water",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.299050"
+  },
+  {
+    "id": "lgp-test-2x2-30#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n\n## Clues:\n1. Arnold is the person who loves mystery books.\n2. The person who loves mystery books is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.299064"
+  },
+  {
+    "id": "lgp-test-2x2-30#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n\n## Clues:\n1. Arnold is the person who loves mystery books.\n2. The person who loves mystery books is not in the second house.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.299069"
+  },
+  {
+    "id": "lgp-test-2x2-31#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. Arnold is the person who loves beach vacations.\n2. The person who loves beach vacations is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.299075"
+  },
+  {
+    "id": "lgp-test-2x2-31#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. Arnold is the person who loves beach vacations.\n2. The person who loves beach vacations is not in the first house.\n",
+    "question": "What is Vacation of the person who lives in House 1?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.299080"
+  },
+  {
+    "id": "lgp-test-2x2-32#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `science fiction`, `mystery`\n\n## Clues:\n1. Eric is directly left of the person who loves mystery books.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.299099"
+  },
+  {
+    "id": "lgp-test-2x2-32#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `science fiction`, `mystery`\n\n## Clues:\n1. Eric is directly left of the person who loves mystery books.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.299103"
+  },
+  {
+    "id": "lgp-test-2x2-33#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique type of pet: `dog`, `cat`\n\n## Clues:\n1. Eric is somewhere to the left of Arnold.\n2. The person who owns a dog is not in the first house.\n",
+    "question": "What is Pet of the person who lives in House 1?",
+    "choices": [
+      "cat",
+      "dog"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.299117"
+  },
+  {
+    "id": "lgp-test-2x2-34#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The people keep unique animals: `horse`, `cat`\n\n## Clues:\n1. Eric is not in the first house.\n2. The cat lover is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.299131"
+  },
+  {
+    "id": "lgp-test-2x2-34#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The people keep unique animals: `horse`, `cat`\n\n## Clues:\n1. Eric is not in the first house.\n2. The cat lover is not in the first house.\n",
+    "question": "What is Animal of the person who lives in House 1?",
+    "choices": [
+      "horse",
+      "cat"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.299135"
+  },
+  {
+    "id": "lgp-test-2x2-35#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n\n## Clues:\n1. Arnold is the person who is a pizza lover.\n2. The person who loves eating grilled cheese is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.299149"
+  },
+  {
+    "id": "lgp-test-2x2-36#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n\n## Clues:\n1. The person's child is named Bella is in the second house.\n2. Eric is the person's child is named Bella.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.299167"
+  },
+  {
+    "id": "lgp-test-2x2-36#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n\n## Clues:\n1. The person's child is named Bella is in the second house.\n2. Eric is the person's child is named Bella.\n",
+    "question": "What is Children of the person who lives in House 1?",
+    "choices": [
+      "Bella",
+      "Fred"
+    ],
+    "answer": "Fred",
+    "created_at": "2024-07-03T21:21:31.299172"
+  },
+  {
+    "id": "lgp-test-2x2-37#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. The person who loves beach vacations is somewhere to the right of Eric.\n",
+    "question": "What is Vacation of the person who lives in House 1?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.299192"
+  },
+  {
+    "id": "lgp-test-2x2-37#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. The person who loves beach vacations is somewhere to the right of Eric.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.299196"
+  },
+  {
+    "id": "lgp-test-2x2-38#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n\n## Clues:\n1. Eric is not in the second house.\n2. The person whose mother's name is Aniya is not in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.299216"
+  },
+  {
+    "id": "lgp-test-2x2-38#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n\n## Clues:\n1. Eric is not in the second house.\n2. The person whose mother's name is Aniya is not in the second house.\n",
+    "question": "What is Mother of the person who lives in House 2?",
+    "choices": [
+      "Aniya",
+      "Holly"
+    ],
+    "answer": "Holly",
+    "created_at": "2024-07-03T21:21:31.299221"
+  },
+  {
+    "id": "lgp-test-2x2-39#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. Arnold is the person who enjoys mountain retreats.\n2. Arnold is in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.299236"
+  },
+  {
+    "id": "lgp-test-2x2-39#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. Arnold is the person who enjoys mountain retreats.\n2. Arnold is in the first house.\n",
+    "question": "What is Vacation of the person who lives in House 2?",
+    "choices": [
+      "mountain",
+      "beach"
+    ],
+    "answer": "beach",
+    "created_at": "2024-07-03T21:21:31.299240"
+  }
+]

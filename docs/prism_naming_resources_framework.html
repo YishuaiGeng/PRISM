@@ -1,0 +1,443 @@
+
+<style>
+*{box-sizing:border-box}
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:12px;margin-bottom:18px}
+.tb{font-size:13px;padding:5px 14px;border-radius:99px;border:.5px solid var(--color-border-tertiary);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tb.on{background:var(--color-background-info);color:var(--color-text-info);border-color:transparent}
+.panel{display:none}.panel.on{display:block}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;font-weight:500;display:inline-block;margin-right:3px}
+.t1{background:#E1F5EE;color:#0F6E56}.t2{background:#EEEDFE;color:#3C3489}
+.t3{background:#FAEEDA;color:#854F0B}.t4{background:#FAECE7;color:#993C1D}
+.t5{background:#E6F1FB;color:#185FA5}.t6{background:#F1EFE8;color:#5F5E5A}
+@media(prefers-color-scheme:dark){
+.t1{background:#085041;color:#9FE1CB}.t2{background:#26215C;color:#CECBF6}
+.t3{background:#633806;color:#FAC775}.t4{background:#4A1B0C;color:#F5C4B3}
+.t5{background:#042C53;color:#B5D4F4}.t6{background:#2C2C2A;color:#D3D1C7}}
+.box{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;margin-bottom:10px}
+.bh{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 5px}
+.bp{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin:0}
+.sec{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px}
+ul.sl{margin:4px 0;padding-left:16px}
+ul.sl li{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:1px}
+code,pre{font-family:var(--font-mono)}
+code{font-size:12px;background:var(--color-background-secondary);padding:1px 5px;border-radius:3px;color:var(--color-text-primary)}
+.mono-block{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);line-height:1.75;white-space:pre;overflow-x:auto;margin-bottom:10px}
+.name-card{border:1.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .2s}
+.name-card:hover{border-color:var(--color-border-primary)}
+.name-card.sel{border-color:#534AB7;background:var(--color-background-primary)}
+.acronym{font-size:32px;font-weight:700;letter-spacing:2px;margin:0 0 4px}
+.nc-title{font-size:14px;color:var(--color-text-secondary);margin:0 0 8px;line-height:1.5}
+.nc-breakdown{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.letter-box{font-size:12px;padding:3px 8px;border-radius:4px;background:var(--color-background-secondary)}
+.letter-box span{font-weight:700;color:var(--color-text-primary)}
+.letter-box small{color:var(--color-text-secondary)}
+.nc-meta{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin:0}
+.res-row{display:grid;grid-template-columns:140px 1fr 80px;gap:6px 10px;padding:8px 0;border-bottom:.5px solid var(--color-border-tertiary);align-items:start;font-size:13px}
+.res-row:last-child{border-bottom:none}
+.res-name{font-weight:500;color:var(--color-text-primary);line-height:1.4}
+.res-desc{color:var(--color-text-secondary);line-height:1.5}
+.status-yes{color:#0F6E56;font-size:12px;font-weight:500}.status-get{color:#854F0B;font-size:12px;font-weight:500}
+@media(prefers-color-scheme:dark){.status-yes{color:#9FE1CB}.status-get{color:#FAC775}}
+.dir-tree{line-height:1.9;font-size:12.5px;color:var(--color-text-secondary)}
+.dir-tree .d{color:var(--color-text-primary);font-weight:500}
+.dir-tree .c{color:var(--color-text-tertiary);font-size:11px;margin-left:6px}
+.module-card{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;margin-bottom:8px}
+.mc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.mc-name{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.mc-phase{font-size:11px;padding:1px 6px;border-radius:99px}
+.mc-p1{background:#E1F5EE;color:#0F6E56}.mc-p2{background:#E6F1FB;color:#185FA5}.mc-p3{background:#F1EFE8;color:#5F5E5A}
+@media(prefers-color-scheme:dark){.mc-p1{background:#085041;color:#9FE1CB}.mc-p2{background:#042C53;color:#B5D4F4}.mc-p3{background:#2C2C2A;color:#D3D1C7}}
+.mc-body{font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin:0}
+.prompt-box{background:var(--color-background-secondary);border-left:3px solid #534AB7;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:10px 12px;font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin-bottom:10px}
+.copy-btn{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:.5px solid var(--color-border-secondary);cursor:pointer;background:transparent;color:var(--color-text-secondary);float:right;margin-top:-2px}
+.copy-btn:hover{background:var(--color-background-primary)}
+.highlight{background:var(--color-background-success);border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:8px 12px;font-size:13px;color:var(--color-text-success);margin-bottom:10px}
+</style>
+
+<h2 class="sr-only">PRISM方法命名、资源清单与代码框架设计</h2>
+<div style="padding:1rem 0 0">
+<div class="tabs">
+  <button class="tb on" onclick="sw('name',this)">命名设计</button>
+  <button class="tb" onclick="sw('res',this)">资源清单</button>
+  <button class="tb" onclick="sw('arch',this)">代码框架</button>
+  <button class="tb" onclick="sw('prompt',this)">Claude Code 指令</button>
+</div>
+
+<!-- ===== NAMING ===== -->
+<div id="name" class="panel on">
+<p class="sec">方法命名方案（推荐 PRISM）</p>
+
+<div class="name-card sel" onclick="sel(this)">
+  <p class="acronym" style="color:#534AB7">PRISM</p>
+  <p class="nc-title"><strong>P</strong>aradigm-guided <strong>R</strong>easoning with <strong>I</strong>terative <strong>S</strong>olver <strong>M</strong>emory</p>
+  <div class="nc-breakdown">
+    <div class="letter-box"><span>P</span><small>aradigm</small></div>
+    <div class="letter-box"><span>R</span><small>easoning</small></div>
+    <div class="letter-box"><span>I</span><small>terative</small></div>
+    <div class="letter-box"><span>S</span><small>olver</small></div>
+    <div class="letter-box"><span>M</span><small>emory</small></div>
+  </div>
+  <p class="nc-meta">棱镜将白光分解为有序光谱，PRISM 将求解经验分解为结构化范式——隐喻精准。单词本身强调"精确性""分析性"，与你的 solver-verified 主题高度一致。在 NLP 领域未被占用，Google Scholar 搜索"PRISM reasoning memory"无直接冲突。</p>
+</div>
+
+<div class="name-card" onclick="sel(this)">
+  <p class="acronym" style="color:#1D9E75">CARVE</p>
+  <p class="nc-title"><strong>C</strong>onstraint-<strong>A</strong>ware <strong>R</strong>easoning with <strong>V</strong>erified <strong>E</strong>xperience</p>
+  <div class="nc-breakdown">
+    <div class="letter-box"><span>C</span><small>onstraint-Aware</small></div>
+    <div class="letter-box"><span>R</span><small>easoning</small></div>
+    <div class="letter-box"><span>V</span><small>erified</small></div>
+    <div class="letter-box"><span>E</span><small>xperience</small></div>
+  </div>
+  <p class="nc-meta">雕刻——从约束空间中精确凿出解的隐喻。强调"verified experience"，贡献点更直接。5个字母简洁，但与 constraint 领域相关工作名字有些重叠。</p>
+</div>
+
+<div class="name-card" onclick="sel(this)">
+  <p class="acronym" style="color:#BA7517">TRACE</p>
+  <p class="nc-title"><strong>T</strong>rajectory-based <strong>R</strong>ule <strong>A</strong>bstraction for <strong>C</strong>onstraint-solving <strong>E</strong>xperience</p>
+  <div class="nc-breakdown">
+    <div class="letter-box"><span>T</span><small>rajectory</small></div>
+    <div class="letter-box"><span>R</span><small>ule Abstraction</small></div>
+    <div class="letter-box"><span>A</span><small>bstraction</small></div>
+    <div class="letter-box"><span>C</span><small>onstraint</small></div>
+    <div class="letter-box"><span>E</span><small>xperience</small></div>
+  </div>
+  <p class="nc-meta">轨迹追踪——最直白描述了工作内容（轨迹→规则→经验）。但"TRACE"在 AI 安全/调试领域已有同名工作，需要进一步确认冲突。</p>
+</div>
+
+<div style="margin-top:16px;border-top:.5px solid var(--color-border-tertiary);padding-top:14px">
+<p class="sec">推荐标题方案（基于 PRISM）</p>
+
+<div class="box" style="border-left:3px solid #534AB7;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0">
+  <p class="bh">主推标题（ACL/EMNLP 风格）</p>
+  <p class="bp" style="font-style:italic;font-size:14px;color:var(--color-text-primary)">PRISM: Learning Solver-Verified Solving Paradigms from CSP Trajectories for Memory-Augmented Neuro-Symbolic Reasoning</p>
+</div>
+<div class="box">
+  <p class="bh">备选——更聚焦贡献点</p>
+  <p class="bp" style="font-style:italic">From Trajectories to Paradigms: Solver-Verified Experience Accumulation for Neuro-Symbolic Constraint Solving</p>
+</div>
+<div class="box">
+  <p class="bh">备选——更强调 Agent 视角</p>
+  <p class="bp" style="font-style:italic">PRISM: A Memory-Augmented Neuro-Symbolic Agent That Learns Constraint-Solving Strategies from Experience</p>
+</div>
+</div>
+</div>
+
+<!-- ===== RESOURCES ===== -->
+<div id="res" class="panel">
+<p class="sec">直接可用资源（来自前两篇工作）</p>
+<div class="box" style="margin-bottom:14px">
+<div class="res-row"><span class="res-name">NL→Z3 翻译器</span><span class="res-desc">论文一核心模块，将 Zebra 谜题自然语言约束翻译为 Z3 Python 代码，已在 ZebraLogic 上测试</span><span class="status-yes">✓ 直接用</span></div>
+<div class="res-row"><span class="res-name">Z3 求解器接口</span><span class="res-desc">论文一的 solver wrapper，SAT/UNSAT 判断 + 解提取，已封装 Python 接口</span><span class="status-yes">✓ 直接用</span></div>
+<div class="res-row"><span class="res-name">谜题生成器</span><span class="res-desc">论文二产出，可控制规模(N×M)、约束类型分布、难度（Z3 冲突数），支持批量生成</span><span class="status-yes">✓ 直接用</span></div>
+<div class="res-row"><span class="res-name">ZebraLogic 数据集</span><span class="res-desc">标准评估 benchmark，2×4 到 6×6 共 1000 条，含 ground truth，论文一已有加载脚本</span><span class="status-yes">✓ 直接用</span></div>
+<div class="res-row"><span class="res-name">错误类型标注</span><span class="res-desc">论文一积累的翻译错误样本（over/under/flip/scope），可直接用于修复记忆的错误分类初始化</span><span class="status-yes">✓ 直接用</span></div>
+</div>
+
+<p class="sec">需要新增的依赖包</p>
+<div class="box" style="margin-bottom:14px">
+<div class="res-row"><span class="res-name">z3-solver</span><span class="res-desc">Z3 Python API，支持 <code>unsat_core()</code>，论文一已用，确认版本即可</span><span class="status-yes">✓ 已有</span></div>
+<div class="res-row"><span class="res-name">sentence-transformers</span><span class="res-desc">修复记忆的循环检测需要 repair action 的语义相似度，用 <code>all-MiniLM-L6-v2</code> 即可（轻量）</span><span class="status-get">pip install</span></div>
+<div class="res-row"><span class="res-name">scikit-learn</span><span class="res-desc">KDP 聚类（agglomerative clustering）+ 评估指标计算</span><span class="status-get">pip install</span></div>
+<div class="res-row"><span class="res-name">anthropic / openai SDK</span><span class="res-desc">范式抽象和引导求解的 LLM 调用，支持多 backend 切换</span><span class="status-get">pip install</span></div>
+<div class="res-row"><span class="res-name">wandb</span><span class="res-desc">实验追踪，记录每次 run 的范式命中率、修复轮数、准确率等关键指标</span><span class="status-get">pip install</span></div>
+<div class="res-row"><span class="res-name">diskcache / sqlite3</span><span class="res-desc">范式库持久化存储，避免每次重新提炼，内置标准库 sqlite3 即可</span><span class="status-yes">✓ 内置</span></div>
+<div class="res-row"><span class="res-name">pytest + pytest-cov</span><span class="res-desc">各模块单元测试，Z3 验证流程的自动化测试</span><span class="status-get">pip install</span></div>
+</div>
+
+<p class="sec">计算资源需求</p>
+<div class="box">
+<div class="res-row"><span class="res-name">GPU</span><span class="res-desc">不需要——整个框架是纯推理时 prompting，无训练步骤。Z3 是 CPU 本地运行。</span><span class="status-yes">✓ 不需要</span></div>
+<div class="res-row"><span class="res-name">LLM API</span><span class="res-desc">轨迹收集（一次性，500 谜题 × 平均 8 步 × ~500 tokens = ~2M tokens）；在线推理每谜题 ~1500 tokens</span><span class="status-get">预算 ~$30</span></div>
+<div class="res-row"><span class="res-name">本地 CPU</span><span class="res-desc">Z3 求解 Zebra 6×6 谜题平均 &lt;0.5s；聚类 500 轨迹 &lt;1min；无特殊要求</span><span class="status-yes">✓ 普通机器</span></div>
+<div class="res-row"><span class="res-name">磁盘空间</span><span class="res-desc">轨迹存储（JSON，500条 × 约 5KB = ~2.5MB）；范式库（&lt;1MB）；几乎可忽略</span><span class="status-yes">✓ &lt;100MB</span></div>
+</div>
+</div>
+
+<!-- ===== ARCH ===== -->
+<div id="arch" class="panel">
+<p class="sec">PRISM 代码框架目录结构</p>
+
+<div class="mono-block">prism/
+├── README.md
+├── requirements.txt
+├── setup.py
+├── config/
+│   ├── default.yaml          <span style="color:var(--color-text-tertiary)"># LLM backend, thresholds, paths</span>
+│   └── experiments/
+│       ├── ablation.yaml
+│       └── generalization.yaml
+│
+├── prism/                    <span style="color:var(--color-text-tertiary)"># 主包</span>
+│   ├── __init__.py
+│   │
+│   ├── core/                 <span style="color:var(--color-text-tertiary)"># 复用论文一&二的基础组件</span>
+│   │   ├── solver.py         <span style="color:var(--color-text-tertiary)"># Z3 wrapper (from paper 1)</span>
+│   │   ├── translator.py     <span style="color:var(--color-text-tertiary)"># NL→Z3 translation (from paper 1)</span>
+│   │   ├── generator.py      <span style="color:var(--color-text-tertiary)"># puzzle generator (from paper 2)</span>
+│   │   └── llm_client.py     <span style="color:var(--color-text-tertiary)"># unified LLM API wrapper</span>
+│   │
+│   ├── offline/              <span style="color:var(--color-text-tertiary)"># Phase 1: 离线范式提炼</span>
+│   │   ├── trajectory_collector.py
+│   │   ├── kdp_identifier.py
+│   │   ├── trajectory_clusterer.py
+│   │   ├── paradigm_abstractor.py
+│   │   └── paradigm_verifier.py
+│   │
+│   ├── paradigm_library/     <span style="color:var(--color-text-tertiary)"># 范式库管理</span>
+│   │   ├── library.py        <span style="color:var(--color-text-tertiary)"># CRUD + retrieval</span>
+│   │   ├── retriever.py      <span style="color:var(--color-text-tertiary)"># constraint-type matching</span>
+│   │   └── schema.py         <span style="color:var(--color-text-tertiary)"># Paradigm dataclass</span>
+│   │
+│   ├── online/               <span style="color:var(--color-text-tertiary)"># Phase 2: 在线推理</span>
+│   │   ├── feature_extractor.py
+│   │   ├── guided_solver.py
+│   │   ├── repair_memory.py
+│   │   └── strategy_switcher.py
+│   │
+│   └── evaluation/
+│       ├── metrics.py        <span style="color:var(--color-text-tertiary)"># accuracy, LLM calls, repair rounds</span>
+│       ├── transfer_rate.py  <span style="color:var(--color-text-tertiary)"># paradigm transfer metrics</span>
+│       └── benchmarks/
+│           ├── zebralogic.py
+│           └── knights_knaves.py
+│
+├── scripts/
+│   ├── run_offline.py        <span style="color:var(--color-text-tertiary)"># 一键运行离线提炼</span>
+│   ├── run_online.py         <span style="color:var(--color-text-tertiary)"># 在线推理入口</span>
+│   └── run_experiments.py    <span style="color:var(--color-text-tertiary)"># 消融 / 泛化实验</span>
+│
+├── data/
+│   ├── zebralogic/           <span style="color:var(--color-text-tertiary)"># ZebraLogic benchmark</span>
+│   ├── generated/            <span style="color:var(--color-text-tertiary)"># 生成器产出的训练谜题</span>
+│   └── trajectories/         <span style="color:var(--color-text-tertiary)"># 收集的求解轨迹 (JSON)</span>
+│
+├── paradigm_store/           <span style="color:var(--color-text-tertiary)"># 持久化范式库 (SQLite)</span>
+│   └── prism.db
+│
+└── tests/
+    ├── test_solver.py
+    ├── test_kdp.py
+    ├── test_repair_memory.py
+    └── test_paradigm_verifier.py</div>
+
+<p class="sec">关键模块接口设计</p>
+<div class="module-card">
+  <div class="mc-head"><span class="mc-name">Paradigm（核心数据类）</span><span class="mc-phase mc-p1">schema.py</span></div>
+  <div class="mono-block" style="margin:0">@dataclass
+class Paradigm:
+    id: str                      # "P-001"
+    name: str                    # "Chain Position Propagation"
+    trigger: dict                # constraint_types, domain_pattern
+    operation: str               # natural language + formal description
+    pre_condition: str           # Z3 assertion string
+    post_condition: str          # expected domain reduction
+    scope: List[str]             # ["grid_puzzle", "relative_position"]
+    confidence: float            # verified soundness rate
+    support_count: int           # num trajectories that support this
+    source_cluster: int</div>
+</div>
+
+<div class="module-card">
+  <div class="mc-head"><span class="mc-name">RepairRecord（修复记忆单元）</span><span class="mc-phase mc-p2">repair_memory.py</span></div>
+  <div class="mono-block" style="margin:0">@dataclass
+class RepairRecord:
+    iteration: int
+    error_type: ErrorType        # Enum: SYNTAX|OVER|UNDER|FLIP|SCOPE|LEGACY
+    unsat_core: List[str]        # constraint IDs
+    core_fingerprint: str        # hash for stagnation detection
+    repair_action: RepairAction  # type + target + summary + embedding
+    outcome: Outcome             # SAT | UNSAT
+    new_core: Optional[List[str]]</div>
+</div>
+
+<div class="module-card">
+  <div class="mc-head"><span class="mc-name">ParadigmLibrary（检索接口）</span><span class="mc-phase mc-p1">library.py</span></div>
+  <div class="mono-block" style="margin:0">class ParadigmLibrary:
+    def retrieve(self, state: SolverState) -> List[Paradigm]: ...
+    def add(self, paradigm: Paradigm) -> bool: ...         # with Z3 verify
+    def verify(self, paradigm: Paradigm) -> float: ...     # soundness score
+    def save(self, path: str) -> None: ...
+    def load(self, path: str) -> None: ...</div>
+</div>
+
+<div class="module-card">
+  <div class="mc-head"><span class="mc-name">RepairMemory（检测机制）</span><span class="mc-phase mc-p2">repair_memory.py</span></div>
+  <div class="mono-block" style="margin:0">class RepairMemory:
+    def append(self, record: RepairRecord) -> None: ...
+    def detect_stagnation(self, k=3, tau=0.75) -> bool: ...  # Jaccard
+    def detect_loop(self, action: RepairAction, tau=0.90) -> bool: ...
+    def get_history_summary(self) -> str: ...  # for LLM prompt injection
+    def get_successful_repairs(self) -> List[RepairRecord]: ...</div>
+</div>
+</div>
+
+<!-- ===== PROMPT ===== -->
+<div id="prompt" class="panel">
+<p class="sec">交给 Claude Code 的执行指令（按顺序运行）</p>
+
+<div class="highlight">建议使用 Claude Code（命令行工具）按以下顺序执行，每条指令完成后检查结果再执行下一条。</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 8px">Step 1 · 初始化项目结构</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请帮我初始化一个名为 prism 的 Python 研究项目。
+
+项目结构如下：
+- 根目录：prism/
+- 子目录：prism/core/, prism/offline/, prism/paradigm_library/, prism/online/, prism/evaluation/, scripts/, data/, tests/, config/, paradigm_store/
+- 在每个 Python 包目录创建 __init__.py
+- 创建 requirements.txt，包含：z3-solver, sentence-transformers, scikit-learn, anthropic, openai, wandb, pydantic, pytest, pytest-cov, pyyaml, numpy, pandas
+- 创建 setup.py，package name 为 prism，python_requires=">=3.10"
+- 创建 config/default.yaml，包含 llm_backend(anthropic/openai), model_name, thresholds(stagnation_jaccard:0.75, loop_cosine:0.90, paradigm_soundness:0.90, min_support:5), paths(data_dir, paradigm_store, trajectory_dir)
+- 创建 README.md，标题为 "PRISM: Paradigm-guided Reasoning with Iterative Solver Memory"
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 2 · 生成核心数据类和接口</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请在 prism/paradigm_library/schema.py 中创建以下 Pydantic dataclass：
+
+1. ErrorType(Enum): SYNTAX, OVER_CONSTRAINT, UNDER_CONSTRAINT, SEMANTIC_FLIP, SCOPE_ERROR, LEGACY
+2. Outcome(Enum): SAT, UNSAT
+3. RepairAction: fields = type(str), target_constraint(str), summary(str), embedding(Optional[List[float]])
+4. RepairRecord: fields = iteration(int), error_type(ErrorType), unsat_core(List[str]), core_fingerprint(str), repair_action(RepairAction), outcome(Outcome), new_core(Optional[List[str]])
+5. Paradigm: fields = id(str), name(str), trigger(dict), operation(str), pre_condition(str), post_condition(str), scope(List[str]), confidence(float), support_count(int), source_cluster(int), created_at(datetime)
+
+每个类都加 docstring 说明用途。在 __init__.py 中统一导出。
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 3 · 创建 Z3 Solver 接口</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请在 prism/core/solver.py 中创建 Z3SolverWrapper 类，要求：
+
+1. __init__(self): 初始化 z3.Solver()
+2. add_constraint(self, constraint_str: str) -> bool: 将字符串形式的 Z3 约束添加到 solver，返回是否语法合法
+3. check(self) -> str: 返回 "SAT" / "UNSAT" / "UNKNOWN"
+4. get_unsat_core(self) -> List[str]: 当结果为 UNSAT 时，返回最小不满足约束子集（使用 z3 unsat_core 接口）；需要先用 assert_and_track 追踪约束
+5. get_model(self) -> dict: 当 SAT 时返回变量赋值字典
+6. reset(self): 清空所有约束
+7. clone(self) -> Z3SolverWrapper: 复制当前 solver 状态用于试探性验证
+8. verify_paradigm_soundness(self, current_constraints: List[str], paradigm_assertion: str, n_trials: int = 20) -> float: 在 n_trials 个随机约束子集上测试范式的 soundness，返回通过率
+
+加完整的类型注解和 docstring，import z3，异常用自定义 SolverError。
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 4 · 创建修复记忆模块</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请在 prism/online/repair_memory.py 中创建 RepairMemory 类：
+
+1. __init__(self, config: dict): 读取 stagnation_jaccard 和 loop_cosine 阈值
+2. append(self, record: RepairRecord) -> None: 追加记录，自动计算 core_fingerprint（sorted unsat_core 的 hash），如果 repair_action 有 summary，用 sentence-transformers 计算 embedding 并存入
+3. detect_stagnation(self, k: int = 3) -> bool: 取最近 k 条记录，计算 core_fingerprint 集合的 Jaccard 相似度，超过阈值返回 True
+4. detect_loop(self, action: RepairAction) -> bool: 计算新 action 的 embedding 与历史所有 embedding 的余弦相似度最大值，超阈值返回 True
+5. get_history_summary(self) -> str: 生成给 LLM 的历史提示，格式："已尝试修复 N 次，包括：[第1次: 修改C3，结果UNSAT; 第2次: ...]，请尝试不同策略"
+6. get_successful_repairs(self) -> List[RepairRecord]: 返回 outcome==SAT 的记录
+7. clear(self) -> None: 重置（每道新谜题前调用）
+8. to_dict(self) -> dict / from_dict(cls, d: dict): 序列化支持
+
+用 lazy import sentence-transformers（避免无 GPU 时慢初始化）。
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 5 · 创建策略切换状态机</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请在 prism/online/strategy_switcher.py 中创建 StrategySwitcher 类：
+
+策略级别枚举 SwitchLevel(Enum): L1_SWITCH_TARGET, L2_SWITCH_TYPE, L3_REVERT_CHECKPOINT, L4_FULL_RETRANSLATE
+
+类方法：
+1. __init__(self, memory: RepairMemory)
+2. should_switch(self) -> Optional[SwitchLevel]: 检查 memory 的停滞/循环状态，返回应触发的级别（None 表示继续正常修复）
+3. get_switch_prompt(self, level: SwitchLevel, current_state: dict) -> str: 根据级别生成注入给 LLM 的策略切换提示文本
+   - L1: "请换一个约束作为修复目标，已尝试修改 {已修改约束}，请尝试 {UNSAT core 中其他约束}"
+   - L2: "请换一种修复方式，已尝试 {已用修复类型}，请尝试 {候选修复类型}"  
+   - L3: "回退到检查点 {checkpoint}，从另一个推断方向重新开始"
+   - L4: "重新从自然语言翻译所有约束，忽略之前的形式化"
+4. save_checkpoint(self, state: dict) -> None: 保存当前 SAT 状态作为回退点
+5. get_checkpoint(self) -> Optional[dict]: 获取最近检查点
+
+加完整注解和单元测试用例注释。
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 6 · 创建范式库</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请在 prism/paradigm_library/library.py 中创建 ParadigmLibrary 类，使用 SQLite 持久化：
+
+1. __init__(self, db_path: str, solver: Z3SolverWrapper): 初始化 SQLite 连接，建表（若不存在）
+2. add(self, paradigm: Paradigm, verify: bool = True) -> bool: 添加范式；若 verify=True，先调用 Z3SolverWrapper.verify_paradigm_soundness，低于阈值拒绝添加
+3. retrieve(self, constraint_types: List[str], top_k: int = 3) -> List[Paradigm]: 基于约束类型特征检索最匹配的 top_k 个范式，按 confidence 排序
+4. update_confidence(self, paradigm_id: str, new_score: float) -> None: 更新验证置信度
+5. get_all(self) -> List[Paradigm]: 返回全部范式
+6. delete(self, paradigm_id: str) -> None
+7. save_json(self, path: str) / load_json(self, path: str): JSON 导入导出
+8. stats(self) -> dict: 返回 {total, avg_confidence, avg_support, scope_distribution}
+
+建表 SQL：paradigms(id TEXT PRIMARY KEY, name, trigger_json, operation, pre_condition, post_condition, scope_json, confidence REAL, support_count INT, source_cluster INT, created_at TEXT)
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 7 · 创建实验评估指标</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请在 prism/evaluation/metrics.py 中实现以下评估函数：
+
+1. solve_accuracy(results: List[dict]) -> float: 正确求解率（ground truth 匹配）
+2. avg_llm_calls(results: List[dict]) -> float: 平均 LLM 调用次数
+3. avg_repair_rounds(results: List[dict]) -> float: 平均修复迭代轮数
+4. paradigm_trigger_rate(results: List[dict]) -> float: 有范式被触发的步骤占总步骤比例
+5. paradigm_hit_rate(results: List[dict]) -> float: 触发范式后推断正确的比例
+6. paradigm_transfer_rate(source_results: List[dict], target_results: List[dict]) -> dict: 计算 L1/L2 迁移率，返回 {trigger_rate, hit_rate, delta_accuracy}
+7. stagnation_reduction(baseline_results: List[dict], prism_results: List[dict]) -> float: 修复停滞率下降比例
+8. generate_report(results: List[dict], library_stats: dict) -> str: 生成 markdown 格式的实验报告
+
+每个函数都有详细 docstring 说明 results dict 的预期格式。
+</div>
+
+<p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:8px 0">Step 8 · 写单元测试</p>
+<div class="prompt-box">
+<button class="copy-btn" onclick="cp(this)">复制</button>
+请创建以下测试文件：
+
+tests/test_solver.py：
+- test_sat_simple: 给一个简单 SAT 约束集，验证返回 "SAT"
+- test_unsat_core: 给一个手工构造的 UNSAT 约束集（如 x>5 和 x<3），验证 get_unsat_core 返回包含两条约束
+- test_clone_independence: clone 后修改原 solver 不影响 clone
+
+tests/test_repair_memory.py：
+- test_stagnation_detection: 手动 append 3 条 core_fingerprint 相同的记录，验证 detect_stagnation 返回 True
+- test_loop_detection: append 两条 summary 相同的 repair_action，验证 detect_loop 返回 True
+- test_no_false_positive: 不同 core 的记录不触发停滞
+
+tests/test_paradigm_library.py：
+- test_add_and_retrieve: 添加一个 Paradigm，retrieve 时能找到
+- test_confidence_filter: confidence 低于阈值的范式不被检索
+- test_persistence: save/load 后范式库内容一致
+
+每个 test 都用 pytest fixtures 而不是直接实例化，加 conftest.py 统一管理 fixture。
+</div>
+
+</div>
+</div>
+
+<script>
+function sw(id,el){
+  document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');document.getElementById(id).classList.add('on');
+}
+function sel(card){
+  document.querySelectorAll('.name-card').forEach(x=>x.classList.remove('sel'));
+  card.classList.add('sel');
+}
+function cp(btn){
+  const text=btn.parentElement.innerText.replace('复制','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='已复制 ✓';
+    setTimeout(()=>btn.textContent='复制',2000);
+  });
+}
+</script>

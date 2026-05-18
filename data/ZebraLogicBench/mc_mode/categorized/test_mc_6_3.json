@@ -1,0 +1,1547 @@
+[
+  {
+    "id": "lgp-test-6x3-0#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Alice`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `iris`, `tulips`, `lilies`\n - The people are of nationalities: `norwegian`, `dane`, `chinese`, `brit`, `german`, `swede`\n\n## Clues:\n1. The Dane is the person who loves a carnations arrangement.\n2. The Swedish person is Arnold.\n3. The Chinese is the person who loves the rose bouquet.\n4. The Norwegian and the person who loves the rose bouquet are next to each other.\n5. The person who loves the vase of tulips is Arnold.\n6. There are two houses between Bob and the person who loves the boquet of iris.\n7. The person who loves a carnations arrangement is directly left of the person who loves a bouquet of daffodils.\n8. The Dane is in the second house.\n9. The person who loves a carnations arrangement is directly left of Alice.\n10. The person who loves a bouquet of daffodils and the Swedish person are next to each other.\n11. The German is somewhere to the right of the person who loves a carnations arrangement.\n12. The Norwegian is somewhere to the right of Peter.\n13. The Norwegian is Eric.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "carnations",
+      "tulips",
+      "iris",
+      "roses",
+      "daffodils",
+      "lilies"
+    ],
+    "answer": "lilies",
+    "created_at": "2024-07-03T21:21:31.365032"
+  },
+  {
+    "id": "lgp-test-6x3-0#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Alice`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `iris`, `tulips`, `lilies`\n - The people are of nationalities: `norwegian`, `dane`, `chinese`, `brit`, `german`, `swede`\n\n## Clues:\n1. The Dane is the person who loves a carnations arrangement.\n2. The Swedish person is Arnold.\n3. The Chinese is the person who loves the rose bouquet.\n4. The Norwegian and the person who loves the rose bouquet are next to each other.\n5. The person who loves the vase of tulips is Arnold.\n6. There are two houses between Bob and the person who loves the boquet of iris.\n7. The person who loves a carnations arrangement is directly left of the person who loves a bouquet of daffodils.\n8. The Dane is in the second house.\n9. The person who loves a carnations arrangement is directly left of Alice.\n10. The person who loves a bouquet of daffodils and the Swedish person are next to each other.\n11. The German is somewhere to the right of the person who loves a carnations arrangement.\n12. The Norwegian is somewhere to the right of Peter.\n13. The Norwegian is Eric.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "norwegian",
+      "swede",
+      "german",
+      "brit",
+      "dane",
+      "chinese"
+    ],
+    "answer": "brit",
+    "created_at": "2024-07-03T21:21:31.365038"
+  },
+  {
+    "id": "lgp-test-6x3-0#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Alice`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `iris`, `tulips`, `lilies`\n - The people are of nationalities: `norwegian`, `dane`, `chinese`, `brit`, `german`, `swede`\n\n## Clues:\n1. The Dane is the person who loves a carnations arrangement.\n2. The Swedish person is Arnold.\n3. The Chinese is the person who loves the rose bouquet.\n4. The Norwegian and the person who loves the rose bouquet are next to each other.\n5. The person who loves the vase of tulips is Arnold.\n6. There are two houses between Bob and the person who loves the boquet of iris.\n7. The person who loves a carnations arrangement is directly left of the person who loves a bouquet of daffodils.\n8. The Dane is in the second house.\n9. The person who loves a carnations arrangement is directly left of Alice.\n10. The person who loves a bouquet of daffodils and the Swedish person are next to each other.\n11. The German is somewhere to the right of the person who loves a carnations arrangement.\n12. The Norwegian is somewhere to the right of Peter.\n13. The Norwegian is Eric.\n",
+    "question": "What is Nationality of the person who lives in House 4?",
+    "choices": [
+      "dane",
+      "chinese",
+      "norwegian",
+      "german",
+      "brit",
+      "swede"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.365090"
+  },
+  {
+    "id": "lgp-test-6x3-0#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Alice`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `iris`, `tulips`, `lilies`\n - The people are of nationalities: `norwegian`, `dane`, `chinese`, `brit`, `german`, `swede`\n\n## Clues:\n1. The Dane is the person who loves a carnations arrangement.\n2. The Swedish person is Arnold.\n3. The Chinese is the person who loves the rose bouquet.\n4. The Norwegian and the person who loves the rose bouquet are next to each other.\n5. The person who loves the vase of tulips is Arnold.\n6. There are two houses between Bob and the person who loves the boquet of iris.\n7. The person who loves a carnations arrangement is directly left of the person who loves a bouquet of daffodils.\n8. The Dane is in the second house.\n9. The person who loves a carnations arrangement is directly left of Alice.\n10. The person who loves a bouquet of daffodils and the Swedish person are next to each other.\n11. The German is somewhere to the right of the person who loves a carnations arrangement.\n12. The Norwegian is somewhere to the right of Peter.\n13. The Norwegian is Eric.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Arnold",
+      "Eric",
+      "Carol",
+      "Peter",
+      "Alice",
+      "Bob"
+    ],
+    "answer": "Carol",
+    "created_at": "2024-07-03T21:21:31.365112"
+  },
+  {
+    "id": "lgp-test-6x3-0#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Alice`, `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`, `roses`, `iris`, `tulips`, `lilies`\n - The people are of nationalities: `norwegian`, `dane`, `chinese`, `brit`, `german`, `swede`\n\n## Clues:\n1. The Dane is the person who loves a carnations arrangement.\n2. The Swedish person is Arnold.\n3. The Chinese is the person who loves the rose bouquet.\n4. The Norwegian and the person who loves the rose bouquet are next to each other.\n5. The person who loves the vase of tulips is Arnold.\n6. There are two houses between Bob and the person who loves the boquet of iris.\n7. The person who loves a carnations arrangement is directly left of the person who loves a bouquet of daffodils.\n8. The Dane is in the second house.\n9. The person who loves a carnations arrangement is directly left of Alice.\n10. The person who loves a bouquet of daffodils and the Swedish person are next to each other.\n11. The German is somewhere to the right of the person who loves a carnations arrangement.\n12. The Norwegian is somewhere to the right of Peter.\n13. The Norwegian is Eric.\n",
+    "question": "What is Flower of the person who lives in House 6?",
+    "choices": [
+      "lilies",
+      "tulips",
+      "iris",
+      "daffodils",
+      "carnations",
+      "roses"
+    ],
+    "answer": "roses",
+    "created_at": "2024-07-03T21:21:31.365118"
+  },
+  {
+    "id": "lgp-test-6x3-1#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Alice`, `Bob`, `Eric`, `Peter`\n - Each person has an occupation: `artist`, `doctor`, `engineer`, `teacher`, `nurse`, `lawyer`\n - People have unique favorite book genres: `biography`, `mystery`, `romance`, `fantasy`, `science fiction`, `historical fiction`\n\n## Clues:\n1. The person who is an artist is somewhere to the left of the person who loves science fiction books.\n2. The person who is an artist is somewhere to the left of Eric.\n3. The person who is an artist is in the fourth house.\n4. Eric is not in the sixth house.\n5. Bob is the person who is a doctor.\n6. The person who is an engineer is the person who loves biography books.\n7. Peter is somewhere to the right of the person who is a nurse.\n8. The person who loves science fiction books is Bob.\n9. Arnold is not in the second house.\n10. The person who is a teacher is Carol.\n11. The person who is an artist is somewhere to the right of the person who loves fantasy books.\n12. There are two houses between the person who loves romance books and Eric.\n13. Eric is the person who loves historical fiction books.\n14. There is one house between the person who is a teacher and Alice.\n",
+    "question": "What is BookGenre of the person who lives in House 4?",
+    "choices": [
+      "romance",
+      "science fiction",
+      "mystery",
+      "biography",
+      "fantasy",
+      "historical fiction"
+    ],
+    "answer": "mystery",
+    "created_at": "2024-07-03T21:21:31.365193"
+  },
+  {
+    "id": "lgp-test-6x3-1#mc-13",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Alice`, `Bob`, `Eric`, `Peter`\n - Each person has an occupation: `artist`, `doctor`, `engineer`, `teacher`, `nurse`, `lawyer`\n - People have unique favorite book genres: `biography`, `mystery`, `romance`, `fantasy`, `science fiction`, `historical fiction`\n\n## Clues:\n1. The person who is an artist is somewhere to the left of the person who loves science fiction books.\n2. The person who is an artist is somewhere to the left of Eric.\n3. The person who is an artist is in the fourth house.\n4. Eric is not in the sixth house.\n5. Bob is the person who is a doctor.\n6. The person who is an engineer is the person who loves biography books.\n7. Peter is somewhere to the right of the person who is a nurse.\n8. The person who loves science fiction books is Bob.\n9. Arnold is not in the second house.\n10. The person who is a teacher is Carol.\n11. The person who is an artist is somewhere to the right of the person who loves fantasy books.\n12. There are two houses between the person who loves romance books and Eric.\n13. Eric is the person who loves historical fiction books.\n14. There is one house between the person who is a teacher and Alice.\n",
+    "question": "What is Occupation of the person who lives in House 5?",
+    "choices": [
+      "teacher",
+      "lawyer",
+      "doctor",
+      "engineer",
+      "artist",
+      "nurse"
+    ],
+    "answer": "lawyer",
+    "created_at": "2024-07-03T21:21:31.365204"
+  },
+  {
+    "id": "lgp-test-6x3-2#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Eric`, `Bob`, `Carol`, `Arnold`\n - Everyone has a unique favorite cigar: `dunhill`, `blends`, `blue master`, `yellow monster`, `pall mall`, `prince`\n - People have unique favorite book genres: `fantasy`, `romance`, `science fiction`, `mystery`, `historical fiction`, `biography`\n\n## Clues:\n1. The person partial to Pall Mall is Alice.\n2. The Prince smoker is not in the sixth house.\n3. Carol is directly left of the person who loves fantasy books.\n4. The Prince smoker is not in the fifth house.\n5. Peter is in the first house.\n6. The person partial to Pall Mall is directly left of the Dunhill smoker.\n7. The person partial to Pall Mall is in the second house.\n8. Carol is the person who loves mystery books.\n9. Bob is not in the fourth house.\n10. The person who smokes Yellow Monster is not in the sixth house.\n11. The person who loves biography books is not in the third house.\n12. The person who loves historical fiction books is in the first house.\n13. The person who smokes many unique blends is not in the fifth house.\n14. The person who loves romance books is somewhere to the right of Eric.\n15. There is one house between Arnold and the person who smokes Yellow Monster.\n16. There is one house between the person who smokes many unique blends and Bob.\n",
+    "question": "What is Cigar of the person who lives in House 6?",
+    "choices": [
+      "yellow monster",
+      "blue master",
+      "blends",
+      "pall mall",
+      "dunhill",
+      "prince"
+    ],
+    "answer": "blue master",
+    "created_at": "2024-07-03T21:21:31.365330"
+  },
+  {
+    "id": "lgp-test-6x3-3#mc-12",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Alice`, `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `camping`, `cultural`, `beach`, `city`, `mountain`, `cruise`\n - People have unique favorite sports: `swimming`, `volleyball`, `baseball`, `basketball`, `tennis`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the left of Peter.\n2. Arnold is not in the fifth house.\n3. The person who prefers city breaks and Peter are next to each other.\n4. The person who enjoys camping trips is the person who loves basketball.\n5. The person who likes going on cruises is Carol.\n6. The person who enjoys mountain retreats is the person who loves swimming.\n7. The person who loves baseball is the person who loves beach vacations.\n8. Bob is the person who loves swimming.\n9. The person who goes on cultural tours is the person who loves soccer.\n10. The person who loves tennis is directly left of the person who enjoys mountain retreats.\n11. The person who enjoys camping trips is Alice.\n12. There are two houses between the person who loves tennis and Alice.\n13. The person who goes on cultural tours is not in the fifth house.\n14. The person who loves beach vacations is in the third house.\n",
+    "question": "What is Name of the person who lives in House 5?",
+    "choices": [
+      "Alice",
+      "Bob",
+      "Peter",
+      "Eric",
+      "Arnold",
+      "Carol"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.365413"
+  },
+  {
+    "id": "lgp-test-6x3-3#mc-14",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Alice`, `Arnold`, `Eric`, `Peter`\n - Each person prefers a unique type of vacation: `camping`, `cultural`, `beach`, `city`, `mountain`, `cruise`\n - People have unique favorite sports: `swimming`, `volleyball`, `baseball`, `basketball`, `tennis`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the left of Peter.\n2. Arnold is not in the fifth house.\n3. The person who prefers city breaks and Peter are next to each other.\n4. The person who enjoys camping trips is the person who loves basketball.\n5. The person who likes going on cruises is Carol.\n6. The person who enjoys mountain retreats is the person who loves swimming.\n7. The person who loves baseball is the person who loves beach vacations.\n8. Bob is the person who loves swimming.\n9. The person who goes on cultural tours is the person who loves soccer.\n10. The person who loves tennis is directly left of the person who enjoys mountain retreats.\n11. The person who enjoys camping trips is Alice.\n12. There are two houses between the person who loves tennis and Alice.\n13. The person who goes on cultural tours is not in the fifth house.\n14. The person who loves beach vacations is in the third house.\n",
+    "question": "What is FavoriteSport of the person who lives in House 5?",
+    "choices": [
+      "tennis",
+      "basketball",
+      "volleyball",
+      "swimming",
+      "soccer",
+      "baseball"
+    ],
+    "answer": "volleyball",
+    "created_at": "2024-07-03T21:21:31.365424"
+  },
+  {
+    "id": "lgp-test-6x3-4#mc-6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Arnold`, `Bob`, `Carol`, `Eric`\n - People have unique hair colors: `red`, `brown`, `blonde`, `black`, `gray`, `auburn`\n - Each person has an occupation: `engineer`, `lawyer`, `nurse`, `doctor`, `artist`, `teacher`\n\n## Clues:\n1. The person who has brown hair is not in the second house.\n2. Alice is not in the fourth house.\n3. The person who is an artist is Bob.\n4. The person who has gray hair is the person who is a doctor.\n5. Bob is the person who has auburn hair.\n6. The person who is a doctor and Bob are next to each other.\n7. The person who is an engineer is directly left of Alice.\n8. Arnold is directly left of the person who is a lawyer.\n9. Bob is directly left of the person who is a teacher.\n10. Peter is somewhere to the right of the person who has brown hair.\n11. Arnold is not in the second house.\n12. The person who has black hair is Arnold.\n13. The person who is a doctor is somewhere to the right of the person who has red hair.\n14. The person who has brown hair and Carol are next to each other.\n15. Arnold is somewhere to the left of the person who is a doctor.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Arnold",
+      "Bob",
+      "Alice",
+      "Carol",
+      "Eric",
+      "Peter"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.365482"
+  },
+  {
+    "id": "lgp-test-6x3-4#mc-8",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Arnold`, `Bob`, `Carol`, `Eric`\n - People have unique hair colors: `red`, `brown`, `blonde`, `black`, `gray`, `auburn`\n - Each person has an occupation: `engineer`, `lawyer`, `nurse`, `doctor`, `artist`, `teacher`\n\n## Clues:\n1. The person who has brown hair is not in the second house.\n2. Alice is not in the fourth house.\n3. The person who is an artist is Bob.\n4. The person who has gray hair is the person who is a doctor.\n5. Bob is the person who has auburn hair.\n6. The person who is a doctor and Bob are next to each other.\n7. The person who is an engineer is directly left of Alice.\n8. Arnold is directly left of the person who is a lawyer.\n9. Bob is directly left of the person who is a teacher.\n10. Peter is somewhere to the right of the person who has brown hair.\n11. Arnold is not in the second house.\n12. The person who has black hair is Arnold.\n13. The person who is a doctor is somewhere to the right of the person who has red hair.\n14. The person who has brown hair and Carol are next to each other.\n15. Arnold is somewhere to the left of the person who is a doctor.\n",
+    "question": "What is Occupation of the person who lives in House 3?",
+    "choices": [
+      "doctor",
+      "engineer",
+      "teacher",
+      "lawyer",
+      "nurse",
+      "artist"
+    ],
+    "answer": "nurse",
+    "created_at": "2024-07-03T21:21:31.365494"
+  },
+  {
+    "id": "lgp-test-6x3-4#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Arnold`, `Bob`, `Carol`, `Eric`\n - People have unique hair colors: `red`, `brown`, `blonde`, `black`, `gray`, `auburn`\n - Each person has an occupation: `engineer`, `lawyer`, `nurse`, `doctor`, `artist`, `teacher`\n\n## Clues:\n1. The person who has brown hair is not in the second house.\n2. Alice is not in the fourth house.\n3. The person who is an artist is Bob.\n4. The person who has gray hair is the person who is a doctor.\n5. Bob is the person who has auburn hair.\n6. The person who is a doctor and Bob are next to each other.\n7. The person who is an engineer is directly left of Alice.\n8. Arnold is directly left of the person who is a lawyer.\n9. Bob is directly left of the person who is a teacher.\n10. Peter is somewhere to the right of the person who has brown hair.\n11. Arnold is not in the second house.\n12. The person who has black hair is Arnold.\n13. The person who is a doctor is somewhere to the right of the person who has red hair.\n14. The person who has brown hair and Carol are next to each other.\n15. Arnold is somewhere to the left of the person who is a doctor.\n",
+    "question": "What is HairColor of the person who lives in House 6?",
+    "choices": [
+      "brown",
+      "auburn",
+      "red",
+      "gray",
+      "blonde",
+      "black"
+    ],
+    "answer": "blonde",
+    "created_at": "2024-07-03T21:21:31.365540"
+  },
+  {
+    "id": "lgp-test-6x3-5#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Peter`, `Alice`, `Eric`, `Carol`\n - The people are of nationalities: `swede`, `dane`, `german`, `norwegian`, `chinese`, `brit`\n - Each person has a favorite color: `red`, `green`, `purple`, `blue`, `white`, `yellow`\n\n## Clues:\n1. Alice is directly left of Bob.\n2. The person whose favorite color is green is the British person.\n3. Alice is somewhere to the left of the German.\n4. The person who loves blue is the Dane.\n5. Eric is the person who loves purple.\n6. Carol is in the second house.\n7. The Swedish person is not in the second house.\n8. The Swedish person is not in the first house.\n9. The person who loves white is directly left of the Norwegian.\n10. There are two houses between Alice and the person who loves yellow.\n11. The Dane is in the fifth house.\n12. The person who loves blue is Peter.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "dane",
+      "swede",
+      "chinese",
+      "brit",
+      "german",
+      "norwegian"
+    ],
+    "answer": "chinese",
+    "created_at": "2024-07-03T21:21:31.365559"
+  },
+  {
+    "id": "lgp-test-6x3-5#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Peter`, `Alice`, `Eric`, `Carol`\n - The people are of nationalities: `swede`, `dane`, `german`, `norwegian`, `chinese`, `brit`\n - Each person has a favorite color: `red`, `green`, `purple`, `blue`, `white`, `yellow`\n\n## Clues:\n1. Alice is directly left of Bob.\n2. The person whose favorite color is green is the British person.\n3. Alice is somewhere to the left of the German.\n4. The person who loves blue is the Dane.\n5. Eric is the person who loves purple.\n6. Carol is in the second house.\n7. The Swedish person is not in the second house.\n8. The Swedish person is not in the first house.\n9. The person who loves white is directly left of the Norwegian.\n10. There are two houses between Alice and the person who loves yellow.\n11. The Dane is in the fifth house.\n12. The person who loves blue is Peter.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "brit",
+      "german",
+      "dane",
+      "swede",
+      "norwegian",
+      "chinese"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.365590"
+  },
+  {
+    "id": "lgp-test-6x3-5#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Peter`, `Alice`, `Eric`, `Carol`\n - The people are of nationalities: `swede`, `dane`, `german`, `norwegian`, `chinese`, `brit`\n - Each person has a favorite color: `red`, `green`, `purple`, `blue`, `white`, `yellow`\n\n## Clues:\n1. Alice is directly left of Bob.\n2. The person whose favorite color is green is the British person.\n3. Alice is somewhere to the left of the German.\n4. The person who loves blue is the Dane.\n5. Eric is the person who loves purple.\n6. Carol is in the second house.\n7. The Swedish person is not in the second house.\n8. The Swedish person is not in the first house.\n9. The person who loves white is directly left of the Norwegian.\n10. There are two houses between Alice and the person who loves yellow.\n11. The Dane is in the fifth house.\n12. The person who loves blue is Peter.\n",
+    "question": "What is Color of the person who lives in House 4?",
+    "choices": [
+      "blue",
+      "red",
+      "green",
+      "white",
+      "yellow",
+      "purple"
+    ],
+    "answer": "red",
+    "created_at": "2024-07-03T21:21:31.365613"
+  },
+  {
+    "id": "lgp-test-6x3-5#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Peter`, `Alice`, `Eric`, `Carol`\n - The people are of nationalities: `swede`, `dane`, `german`, `norwegian`, `chinese`, `brit`\n - Each person has a favorite color: `red`, `green`, `purple`, `blue`, `white`, `yellow`\n\n## Clues:\n1. Alice is directly left of Bob.\n2. The person whose favorite color is green is the British person.\n3. Alice is somewhere to the left of the German.\n4. The person who loves blue is the Dane.\n5. Eric is the person who loves purple.\n6. Carol is in the second house.\n7. The Swedish person is not in the second house.\n8. The Swedish person is not in the first house.\n9. The person who loves white is directly left of the Norwegian.\n10. There are two houses between Alice and the person who loves yellow.\n11. The Dane is in the fifth house.\n12. The person who loves blue is Peter.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Bob",
+      "Eric",
+      "Carol",
+      "Alice"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.365634"
+  },
+  {
+    "id": "lgp-test-6x3-6#mc-6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Arnold`, `Peter`, `Alice`, `Bob`\n - The people are of nationalities: `chinese`, `german`, `dane`, `norwegian`, `swede`, `brit`\n - Each person lives in a unique style of house: `craftsman`, `colonial`, `modern`, `victorian`, `mediterranean`, `ranch`\n\n## Clues:\n1. The Chinese and the Swedish person are next to each other.\n2. The German is Bob.\n3. Peter is somewhere to the left of the Swedish person.\n4. The person in a Mediterranean-style villa is not in the fourth house.\n5. The Chinese is not in the third house.\n6. The person residing in a Victorian house is not in the third house.\n7. The person in a modern-style house is not in the third house.\n8. The person in a Mediterranean-style villa is directly left of the person residing in a Victorian house.\n9. Arnold is the person living in a colonial-style house.\n10. Bob is directly left of Carol.\n11. Carol is somewhere to the right of the Chinese.\n12. The person in a Mediterranean-style villa is the Dane.\n13. There is one house between Arnold and the Swedish person.\n14. The person in a Craftsman-style house is somewhere to the right of the British person.\n15. There is one house between the person in a Craftsman-style house and Eric.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Arnold",
+      "Carol",
+      "Alice",
+      "Peter",
+      "Eric",
+      "Bob"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.365687"
+  },
+  {
+    "id": "lgp-test-6x3-6#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Arnold`, `Peter`, `Alice`, `Bob`\n - The people are of nationalities: `chinese`, `german`, `dane`, `norwegian`, `swede`, `brit`\n - Each person lives in a unique style of house: `craftsman`, `colonial`, `modern`, `victorian`, `mediterranean`, `ranch`\n\n## Clues:\n1. The Chinese and the Swedish person are next to each other.\n2. The German is Bob.\n3. Peter is somewhere to the left of the Swedish person.\n4. The person in a Mediterranean-style villa is not in the fourth house.\n5. The Chinese is not in the third house.\n6. The person residing in a Victorian house is not in the third house.\n7. The person in a modern-style house is not in the third house.\n8. The person in a Mediterranean-style villa is directly left of the person residing in a Victorian house.\n9. Arnold is the person living in a colonial-style house.\n10. Bob is directly left of Carol.\n11. Carol is somewhere to the right of the Chinese.\n12. The person in a Mediterranean-style villa is the Dane.\n13. There is one house between Arnold and the Swedish person.\n14. The person in a Craftsman-style house is somewhere to the right of the British person.\n15. There is one house between the person in a Craftsman-style house and Eric.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "dane",
+      "brit",
+      "chinese",
+      "german",
+      "swede",
+      "norwegian"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.365693"
+  },
+  {
+    "id": "lgp-test-6x3-6#mc-8",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Arnold`, `Peter`, `Alice`, `Bob`\n - The people are of nationalities: `chinese`, `german`, `dane`, `norwegian`, `swede`, `brit`\n - Each person lives in a unique style of house: `craftsman`, `colonial`, `modern`, `victorian`, `mediterranean`, `ranch`\n\n## Clues:\n1. The Chinese and the Swedish person are next to each other.\n2. The German is Bob.\n3. Peter is somewhere to the left of the Swedish person.\n4. The person in a Mediterranean-style villa is not in the fourth house.\n5. The Chinese is not in the third house.\n6. The person residing in a Victorian house is not in the third house.\n7. The person in a modern-style house is not in the third house.\n8. The person in a Mediterranean-style villa is directly left of the person residing in a Victorian house.\n9. Arnold is the person living in a colonial-style house.\n10. Bob is directly left of Carol.\n11. Carol is somewhere to the right of the Chinese.\n12. The person in a Mediterranean-style villa is the Dane.\n13. There is one house between Arnold and the Swedish person.\n14. The person in a Craftsman-style house is somewhere to the right of the British person.\n15. There is one house between the person in a Craftsman-style house and Eric.\n",
+    "question": "What is HouseStyle of the person who lives in House 3?",
+    "choices": [
+      "ranch",
+      "victorian",
+      "modern",
+      "craftsman",
+      "mediterranean",
+      "colonial"
+    ],
+    "answer": "ranch",
+    "created_at": "2024-07-03T21:21:31.365699"
+  },
+  {
+    "id": "lgp-test-6x3-6#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Arnold`, `Peter`, `Alice`, `Bob`\n - The people are of nationalities: `chinese`, `german`, `dane`, `norwegian`, `swede`, `brit`\n - Each person lives in a unique style of house: `craftsman`, `colonial`, `modern`, `victorian`, `mediterranean`, `ranch`\n\n## Clues:\n1. The Chinese and the Swedish person are next to each other.\n2. The German is Bob.\n3. Peter is somewhere to the left of the Swedish person.\n4. The person in a Mediterranean-style villa is not in the fourth house.\n5. The Chinese is not in the third house.\n6. The person residing in a Victorian house is not in the third house.\n7. The person in a modern-style house is not in the third house.\n8. The person in a Mediterranean-style villa is directly left of the person residing in a Victorian house.\n9. Arnold is the person living in a colonial-style house.\n10. Bob is directly left of Carol.\n11. Carol is somewhere to the right of the Chinese.\n12. The person in a Mediterranean-style villa is the Dane.\n13. There is one house between Arnold and the Swedish person.\n14. The person in a Craftsman-style house is somewhere to the right of the British person.\n15. There is one house between the person in a Craftsman-style house and Eric.\n",
+    "question": "What is Nationality of the person who lives in House 6?",
+    "choices": [
+      "brit",
+      "swede",
+      "chinese",
+      "dane",
+      "norwegian",
+      "german"
+    ],
+    "answer": "norwegian",
+    "created_at": "2024-07-03T21:21:31.365747"
+  },
+  {
+    "id": "lgp-test-6x3-7#mc-14",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Carol`, `Eric`, `Alice`, `Peter`, `Bob`\n - Each person has a favorite color: `red`, `yellow`, `blue`, `white`, `green`, `purple`\n - Each person has a unique birthday month: `sept`, `jan`, `april`, `feb`, `may`, `mar`\n\n## Clues:\n1. The person whose favorite color is green is the person whose birthday is in May.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person who loves blue is Carol.\n4. The person whose birthday is in January is somewhere to the left of Arnold.\n5. Eric is not in the sixth house.\n6. Eric is not in the first house.\n7. The person who loves yellow is not in the third house.\n8. The person whose birthday is in May and the person whose favorite color is red are next to each other.\n9. Alice is the person whose favorite color is red.\n10. Alice is directly left of the person who loves white.\n11. The person who loves blue is not in the sixth house.\n12. The person who loves purple is the person whose birthday is in April.\n13. Arnold is directly left of the person whose birthday is in March.\n14. Peter is in the third house.\n",
+    "question": "What is Birthday of the person who lives in House 5?",
+    "choices": [
+      "jan",
+      "feb",
+      "april",
+      "sept",
+      "mar",
+      "may"
+    ],
+    "answer": "feb",
+    "created_at": "2024-07-03T21:21:31.365840"
+  },
+  {
+    "id": "lgp-test-6x3-7#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Carol`, `Eric`, `Alice`, `Peter`, `Bob`\n - Each person has a favorite color: `red`, `yellow`, `blue`, `white`, `green`, `purple`\n - Each person has a unique birthday month: `sept`, `jan`, `april`, `feb`, `may`, `mar`\n\n## Clues:\n1. The person whose favorite color is green is the person whose birthday is in May.\n2. The person whose birthday is in September is directly left of Arnold.\n3. The person who loves blue is Carol.\n4. The person whose birthday is in January is somewhere to the left of Arnold.\n5. Eric is not in the sixth house.\n6. Eric is not in the first house.\n7. The person who loves yellow is not in the third house.\n8. The person whose birthday is in May and the person whose favorite color is red are next to each other.\n9. Alice is the person whose favorite color is red.\n10. Alice is directly left of the person who loves white.\n11. The person who loves blue is not in the sixth house.\n12. The person who loves purple is the person whose birthday is in April.\n13. Arnold is directly left of the person whose birthday is in March.\n14. Peter is in the third house.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Arnold",
+      "Carol",
+      "Bob",
+      "Alice",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Bob",
+    "created_at": "2024-07-03T21:21:31.365846"
+  },
+  {
+    "id": "lgp-test-6x3-8#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Carol`, `Eric`, `Peter`, `Arnold`, `Bob`\n - Everyone has a unique favorite cigar: `pall mall`, `yellow monster`, `dunhill`, `blends`, `blue master`, `prince`\n - Everyone has a favorite smoothie: `watermelon`, `dragonfruit`, `lime`, `desert`, `blueberry`, `cherry`\n\n## Clues:\n1. The person who drinks Lime smoothies is in the third house.\n2. The person partial to Pall Mall is the Watermelon smoothie lover.\n3. The Desert smoothie lover is Arnold.\n4. The Watermelon smoothie lover is somewhere to the left of Eric.\n5. There is one house between Peter and Carol.\n6. The person who drinks Blueberry smoothies is somewhere to the left of the person who drinks Lime smoothies.\n7. The Watermelon smoothie lover is somewhere to the left of the person who smokes many unique blends.\n8. The Dragonfruit smoothie lover and Carol are next to each other.\n9. Bob is directly left of Carol.\n10. The person who likes Cherry smoothies is the Dunhill smoker.\n11. The Dragonfruit smoothie lover is the Prince smoker.\n12. The person who smokes Blue Master is Peter.\n13. The Watermelon smoothie lover and the Desert smoothie lover are next to each other.\n",
+    "question": "What is Cigar of the person who lives in House 3?",
+    "choices": [
+      "yellow monster",
+      "pall mall",
+      "dunhill",
+      "blends",
+      "prince",
+      "blue master"
+    ],
+    "answer": "yellow monster",
+    "created_at": "2024-07-03T21:21:31.365906"
+  },
+  {
+    "id": "lgp-test-6x3-8#mc-9",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Carol`, `Eric`, `Peter`, `Arnold`, `Bob`\n - Everyone has a unique favorite cigar: `pall mall`, `yellow monster`, `dunhill`, `blends`, `blue master`, `prince`\n - Everyone has a favorite smoothie: `watermelon`, `dragonfruit`, `lime`, `desert`, `blueberry`, `cherry`\n\n## Clues:\n1. The person who drinks Lime smoothies is in the third house.\n2. The person partial to Pall Mall is the Watermelon smoothie lover.\n3. The Desert smoothie lover is Arnold.\n4. The Watermelon smoothie lover is somewhere to the left of Eric.\n5. There is one house between Peter and Carol.\n6. The person who drinks Blueberry smoothies is somewhere to the left of the person who drinks Lime smoothies.\n7. The Watermelon smoothie lover is somewhere to the left of the person who smokes many unique blends.\n8. The Dragonfruit smoothie lover and Carol are next to each other.\n9. Bob is directly left of Carol.\n10. The person who likes Cherry smoothies is the Dunhill smoker.\n11. The Dragonfruit smoothie lover is the Prince smoker.\n12. The person who smokes Blue Master is Peter.\n13. The Watermelon smoothie lover and the Desert smoothie lover are next to each other.\n",
+    "question": "What is Name of the person who lives in House 4?",
+    "choices": [
+      "Alice",
+      "Eric",
+      "Arnold",
+      "Peter",
+      "Bob",
+      "Carol"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.365919"
+  },
+  {
+    "id": "lgp-test-6x3-9#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Bob`, `Alice`, `Peter`, `Arnold`\n - The people keep unique animals: `dog`, `horse`, `rabbit`, `bird`, `fish`, `cat`\n - People have unique hair colors: `brown`, `black`, `blonde`, `auburn`, `red`, `gray`\n\n## Clues:\n1. Arnold is not in the fifth house.\n2. The person who has blonde hair is not in the second house.\n3. The person who has black hair is the dog owner.\n4. The bird keeper and Peter are next to each other.\n5. The person who has auburn hair is Eric.\n6. There are two houses between the cat lover and Eric.\n7. The person who has brown hair is Bob.\n8. The bird keeper is in the first house.\n9. The person who has gray hair is somewhere to the right of the fish enthusiast.\n10. The cat lover is directly left of the person who has black hair.\n11. Arnold is directly left of Eric.\n12. Carol is somewhere to the left of the person who has auburn hair.\n13. The rabbit owner is Arnold.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "brown",
+      "red",
+      "black",
+      "auburn",
+      "gray",
+      "blonde"
+    ],
+    "answer": "red",
+    "created_at": "2024-07-03T21:21:31.365998"
+  },
+  {
+    "id": "lgp-test-6x3-9#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Bob`, `Alice`, `Peter`, `Arnold`\n - The people keep unique animals: `dog`, `horse`, `rabbit`, `bird`, `fish`, `cat`\n - People have unique hair colors: `brown`, `black`, `blonde`, `auburn`, `red`, `gray`\n\n## Clues:\n1. Arnold is not in the fifth house.\n2. The person who has blonde hair is not in the second house.\n3. The person who has black hair is the dog owner.\n4. The bird keeper and Peter are next to each other.\n5. The person who has auburn hair is Eric.\n6. There are two houses between the cat lover and Eric.\n7. The person who has brown hair is Bob.\n8. The bird keeper is in the first house.\n9. The person who has gray hair is somewhere to the right of the fish enthusiast.\n10. The cat lover is directly left of the person who has black hair.\n11. Arnold is directly left of Eric.\n12. Carol is somewhere to the left of the person who has auburn hair.\n13. The rabbit owner is Arnold.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Bob",
+      "Carol",
+      "Arnold",
+      "Eric",
+      "Peter",
+      "Alice"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.366051"
+  },
+  {
+    "id": "lgp-test-6x3-9#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Bob`, `Alice`, `Peter`, `Arnold`\n - The people keep unique animals: `dog`, `horse`, `rabbit`, `bird`, `fish`, `cat`\n - People have unique hair colors: `brown`, `black`, `blonde`, `auburn`, `red`, `gray`\n\n## Clues:\n1. Arnold is not in the fifth house.\n2. The person who has blonde hair is not in the second house.\n3. The person who has black hair is the dog owner.\n4. The bird keeper and Peter are next to each other.\n5. The person who has auburn hair is Eric.\n6. There are two houses between the cat lover and Eric.\n7. The person who has brown hair is Bob.\n8. The bird keeper is in the first house.\n9. The person who has gray hair is somewhere to the right of the fish enthusiast.\n10. The cat lover is directly left of the person who has black hair.\n11. Arnold is directly left of Eric.\n12. Carol is somewhere to the left of the person who has auburn hair.\n13. The rabbit owner is Arnold.\n",
+    "question": "What is Animal of the person who lives in House 6?",
+    "choices": [
+      "cat",
+      "horse",
+      "fish",
+      "bird",
+      "rabbit",
+      "dog"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.366057"
+  },
+  {
+    "id": "lgp-test-6x3-10#mc-0",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Alice`, `Eric`, `Arnold`, `Peter`\n - Each person has a unique type of pet: `hamster`, `cat`, `fish`, `rabbit`, `dog`, `bird`\n - Each person has a favorite color: `blue`, `purple`, `yellow`, `white`, `red`, `green`\n\n## Clues:\n1. The person who has a cat is not in the third house.\n2. Arnold is not in the first house.\n3. The person who owns a dog is the person whose favorite color is green.\n4. The person who loves yellow is somewhere to the left of Bob.\n5. The person who loves blue is the person who has a cat.\n6. There are two houses between the person with an aquarium of fish and Eric.\n7. The person who owns a dog is Carol.\n8. The person who loves yellow is the person with a pet hamster.\n9. The person who loves white and the person who keeps a pet bird are next to each other.\n10. The person who owns a rabbit is somewhere to the left of the person who loves white.\n11. The person who owns a dog is directly left of the person who loves blue.\n12. The person who loves purple is directly left of Carol.\n13. Bob is not in the third house.\n14. Alice is the person who loves purple.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Carol",
+      "Peter",
+      "Arnold",
+      "Bob",
+      "Alice"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.366069"
+  },
+  {
+    "id": "lgp-test-6x3-10#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Alice`, `Eric`, `Arnold`, `Peter`\n - Each person has a unique type of pet: `hamster`, `cat`, `fish`, `rabbit`, `dog`, `bird`\n - Each person has a favorite color: `blue`, `purple`, `yellow`, `white`, `red`, `green`\n\n## Clues:\n1. The person who has a cat is not in the third house.\n2. Arnold is not in the first house.\n3. The person who owns a dog is the person whose favorite color is green.\n4. The person who loves yellow is somewhere to the left of Bob.\n5. The person who loves blue is the person who has a cat.\n6. There are two houses between the person with an aquarium of fish and Eric.\n7. The person who owns a dog is Carol.\n8. The person who loves yellow is the person with a pet hamster.\n9. The person who loves white and the person who keeps a pet bird are next to each other.\n10. The person who owns a rabbit is somewhere to the left of the person who loves white.\n11. The person who owns a dog is directly left of the person who loves blue.\n12. The person who loves purple is directly left of Carol.\n13. Bob is not in the third house.\n14. Alice is the person who loves purple.\n",
+    "question": "What is Color of the person who lives in House 2?",
+    "choices": [
+      "white",
+      "red",
+      "purple",
+      "yellow",
+      "green",
+      "blue"
+    ],
+    "answer": "red",
+    "created_at": "2024-07-03T21:21:31.366100"
+  },
+  {
+    "id": "lgp-test-6x3-11#mc-10",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Arnold`, `Carol`\n - People have unique hair colors: `auburn`, `blonde`, `brown`, `black`, `red`, `gray`\n - People have unique heights: `very tall`, `average`, `very short`, `tall`, `super tall`, `short`\n\n## Clues:\n1. The person who has blonde hair is directly left of Bob.\n2. Alice is in the fourth house.\n3. The person who is short is Arnold.\n4. The person who is tall is in the sixth house.\n5. The person who has black hair is not in the fourth house.\n6. The person who has red hair is Eric.\n7. The person who is super tall is somewhere to the right of the person who has an average height.\n8. The person who has blonde hair is Carol.\n9. There is one house between the person who has gray hair and the person who has red hair.\n10. The person who is very short is in the fifth house.\n11. Bob is the person who has brown hair.\n12. The person who has gray hair is in the third house.\n13. The person who has blonde hair is the person who is very tall.\n",
+    "question": "What is HairColor of the person who lives in House 4?",
+    "choices": [
+      "brown",
+      "auburn",
+      "blonde",
+      "black",
+      "gray",
+      "red"
+    ],
+    "answer": "auburn",
+    "created_at": "2024-07-03T21:21:31.366228"
+  },
+  {
+    "id": "lgp-test-6x3-11#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Arnold`, `Carol`\n - People have unique hair colors: `auburn`, `blonde`, `brown`, `black`, `red`, `gray`\n - People have unique heights: `very tall`, `average`, `very short`, `tall`, `super tall`, `short`\n\n## Clues:\n1. The person who has blonde hair is directly left of Bob.\n2. Alice is in the fourth house.\n3. The person who is short is Arnold.\n4. The person who is tall is in the sixth house.\n5. The person who has black hair is not in the fourth house.\n6. The person who has red hair is Eric.\n7. The person who is super tall is somewhere to the right of the person who has an average height.\n8. The person who has blonde hair is Carol.\n9. There is one house between the person who has gray hair and the person who has red hair.\n10. The person who is very short is in the fifth house.\n11. Bob is the person who has brown hair.\n12. The person who has gray hair is in the third house.\n13. The person who has blonde hair is the person who is very tall.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Bob",
+      "Eric",
+      "Arnold",
+      "Alice",
+      "Carol",
+      "Peter"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.366256"
+  },
+  {
+    "id": "lgp-test-6x3-12#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Arnold`, `Eric`, `Carol`, `Bob`\n - Each person has a unique favorite drink: `water`, `milk`, `root beer`, `tea`, `coffee`, `boba tea`\n - Each person has an occupation: `artist`, `doctor`, `teacher`, `engineer`, `nurse`, `lawyer`\n\n## Clues:\n1. The person who is a lawyer is somewhere to the left of the one who only drinks water.\n2. The boba tea drinker is Alice.\n3. Arnold is directly left of the coffee drinker.\n4. Peter and the person who is an artist are next to each other.\n5. Arnold is the person who is a nurse.\n6. Carol is not in the first house.\n7. The person who is a teacher is somewhere to the right of the person who is a doctor.\n8. The root beer lover is somewhere to the left of the tea drinker.\n9. The person who is a lawyer is Carol.\n10. Bob is the one who only drinks water.\n11. Eric is not in the fourth house.\n12. The tea drinker is not in the sixth house.\n13. The person who is a teacher is the root beer lover.\n14. The one who only drinks water is somewhere to the left of Alice.\n",
+    "question": "What is Drink of the person who lives in House 1?",
+    "choices": [
+      "water",
+      "boba tea",
+      "coffee",
+      "tea",
+      "root beer",
+      "milk"
+    ],
+    "answer": "milk",
+    "created_at": "2024-07-03T21:21:31.366279"
+  },
+  {
+    "id": "lgp-test-6x3-12#mc-17",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Arnold`, `Eric`, `Carol`, `Bob`\n - Each person has a unique favorite drink: `water`, `milk`, `root beer`, `tea`, `coffee`, `boba tea`\n - Each person has an occupation: `artist`, `doctor`, `teacher`, `engineer`, `nurse`, `lawyer`\n\n## Clues:\n1. The person who is a lawyer is somewhere to the left of the one who only drinks water.\n2. The boba tea drinker is Alice.\n3. Arnold is directly left of the coffee drinker.\n4. Peter and the person who is an artist are next to each other.\n5. Arnold is the person who is a nurse.\n6. Carol is not in the first house.\n7. The person who is a teacher is somewhere to the right of the person who is a doctor.\n8. The root beer lover is somewhere to the left of the tea drinker.\n9. The person who is a lawyer is Carol.\n10. Bob is the one who only drinks water.\n11. Eric is not in the fourth house.\n12. The tea drinker is not in the sixth house.\n13. The person who is a teacher is the root beer lover.\n14. The one who only drinks water is somewhere to the left of Alice.\n",
+    "question": "What is Occupation of the person who lives in House 6?",
+    "choices": [
+      "teacher",
+      "engineer",
+      "lawyer",
+      "artist",
+      "nurse",
+      "doctor"
+    ],
+    "answer": "engineer",
+    "created_at": "2024-07-03T21:21:31.366367"
+  },
+  {
+    "id": "lgp-test-6x3-13#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Carol`, `Alice`, `Peter`, `Eric`\n - People have unique favorite book genres: `romance`, `historical fiction`, `biography`, `mystery`, `fantasy`, `science fiction`\n - Each person has an occupation: `artist`, `doctor`, `nurse`, `engineer`, `teacher`, `lawyer`\n\n## Clues:\n1. Alice is the person who loves fantasy books.\n2. The person who loves mystery books and Bob are next to each other.\n3. Carol is the person who loves mystery books.\n4. The person who is a lawyer is the person who loves fantasy books.\n5. Bob is not in the fifth house.\n6. Arnold is somewhere to the left of the person who is an engineer.\n7. The person who is a nurse is directly left of Alice.\n8. The person who loves biography books is the person who is a teacher.\n9. The person who loves historical fiction books is somewhere to the left of the person who is a teacher.\n10. The person who is a doctor is in the first house.\n11. The person who loves science fiction books is the person who is an artist.\n12. Eric is in the third house.\n13. The person who loves mystery books is not in the fifth house.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Carol",
+      "Bob",
+      "Peter",
+      "Eric",
+      "Arnold",
+      "Alice"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.366456"
+  },
+  {
+    "id": "lgp-test-6x3-13#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Carol`, `Alice`, `Peter`, `Eric`\n - People have unique favorite book genres: `romance`, `historical fiction`, `biography`, `mystery`, `fantasy`, `science fiction`\n - Each person has an occupation: `artist`, `doctor`, `nurse`, `engineer`, `teacher`, `lawyer`\n\n## Clues:\n1. Alice is the person who loves fantasy books.\n2. The person who loves mystery books and Bob are next to each other.\n3. Carol is the person who loves mystery books.\n4. The person who is a lawyer is the person who loves fantasy books.\n5. Bob is not in the fifth house.\n6. Arnold is somewhere to the left of the person who is an engineer.\n7. The person who is a nurse is directly left of Alice.\n8. The person who loves biography books is the person who is a teacher.\n9. The person who loves historical fiction books is somewhere to the left of the person who is a teacher.\n10. The person who is a doctor is in the first house.\n11. The person who loves science fiction books is the person who is an artist.\n12. Eric is in the third house.\n13. The person who loves mystery books is not in the fifth house.\n",
+    "question": "What is BookGenre of the person who lives in House 6?",
+    "choices": [
+      "mystery",
+      "fantasy",
+      "historical fiction",
+      "romance",
+      "science fiction",
+      "biography"
+    ],
+    "answer": "romance",
+    "created_at": "2024-07-03T21:21:31.366462"
+  },
+  {
+    "id": "lgp-test-6x3-14#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Carol`, `Arnold`, `Peter`, `Eric`, `Alice`\n - Each person has a unique favorite drink: `coffee`, `boba tea`, `root beer`, `water`, `tea`, `milk`\n - Each person has an occupation: `engineer`, `doctor`, `teacher`, `nurse`, `lawyer`, `artist`\n\n## Clues:\n1. Alice is in the fourth house.\n2. The person who is a lawyer is not in the sixth house.\n3. Eric is the person who is a nurse.\n4. The person who is a teacher is in the second house.\n5. The person who is a lawyer and the person who is an engineer are next to each other.\n6. The person who is a nurse is the coffee drinker.\n7. The root beer lover is directly left of Arnold.\n8. The one who only drinks water is somewhere to the left of the root beer lover.\n9. Carol is somewhere to the right of the person who is a teacher.\n10. The tea drinker is directly left of the person who is a nurse.\n11. The person who is a doctor is directly left of the boba tea drinker.\n12. The tea drinker is Peter.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "lawyer",
+      "nurse",
+      "artist",
+      "doctor",
+      "engineer",
+      "teacher"
+    ],
+    "answer": "artist",
+    "created_at": "2024-07-03T21:21:31.366486"
+  },
+  {
+    "id": "lgp-test-6x3-14#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Carol`, `Arnold`, `Peter`, `Eric`, `Alice`\n - Each person has a unique favorite drink: `coffee`, `boba tea`, `root beer`, `water`, `tea`, `milk`\n - Each person has an occupation: `engineer`, `doctor`, `teacher`, `nurse`, `lawyer`, `artist`\n\n## Clues:\n1. Alice is in the fourth house.\n2. The person who is a lawyer is not in the sixth house.\n3. Eric is the person who is a nurse.\n4. The person who is a teacher is in the second house.\n5. The person who is a lawyer and the person who is an engineer are next to each other.\n6. The person who is a nurse is the coffee drinker.\n7. The root beer lover is directly left of Arnold.\n8. The one who only drinks water is somewhere to the left of the root beer lover.\n9. Carol is somewhere to the right of the person who is a teacher.\n10. The tea drinker is directly left of the person who is a nurse.\n11. The person who is a doctor is directly left of the boba tea drinker.\n12. The tea drinker is Peter.\n",
+    "question": "What is Drink of the person who lives in House 6?",
+    "choices": [
+      "coffee",
+      "root beer",
+      "water",
+      "tea",
+      "milk",
+      "boba tea"
+    ],
+    "answer": "milk",
+    "created_at": "2024-07-03T21:21:31.366559"
+  },
+  {
+    "id": "lgp-test-6x3-15#mc-10",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Peter`, `Arnold`, `Alice`, `Bob`, `Eric`\n - Each person has an occupation: `lawyer`, `teacher`, `artist`, `engineer`, `nurse`, `doctor`\n - Each person has a unique type of pet: `dog`, `hamster`, `rabbit`, `cat`, `fish`, `bird`\n\n## Clues:\n1. Carol is in the third house.\n2. Carol is the person who owns a rabbit.\n3. Arnold is in the fifth house.\n4. The person with a pet hamster is not in the fourth house.\n5. The person with an aquarium of fish is not in the fourth house.\n6. The person who owns a dog is Peter.\n7. Eric is the person who is a nurse.\n8. The person who is a teacher is in the second house.\n9. Alice is somewhere to the left of the person who has a cat.\n10. The person with a pet hamster is somewhere to the left of Eric.\n11. The person with an aquarium of fish is not in the second house.\n12. The person who owns a dog is directly left of the person who is an artist.\n13. The person who is a doctor and the person who is a teacher are next to each other.\n14. Bob is the person with an aquarium of fish.\n15. The person who is a lawyer is the person with a pet hamster.\n",
+    "question": "What is Occupation of the person who lives in House 4?",
+    "choices": [
+      "lawyer",
+      "nurse",
+      "artist",
+      "doctor",
+      "teacher",
+      "engineer"
+    ],
+    "answer": "engineer",
+    "created_at": "2024-07-03T21:21:31.366629"
+  },
+  {
+    "id": "lgp-test-6x3-15#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Peter`, `Arnold`, `Alice`, `Bob`, `Eric`\n - Each person has an occupation: `lawyer`, `teacher`, `artist`, `engineer`, `nurse`, `doctor`\n - Each person has a unique type of pet: `dog`, `hamster`, `rabbit`, `cat`, `fish`, `bird`\n\n## Clues:\n1. Carol is in the third house.\n2. Carol is the person who owns a rabbit.\n3. Arnold is in the fifth house.\n4. The person with a pet hamster is not in the fourth house.\n5. The person with an aquarium of fish is not in the fourth house.\n6. The person who owns a dog is Peter.\n7. Eric is the person who is a nurse.\n8. The person who is a teacher is in the second house.\n9. Alice is somewhere to the left of the person who has a cat.\n10. The person with a pet hamster is somewhere to the left of Eric.\n11. The person with an aquarium of fish is not in the second house.\n12. The person who owns a dog is directly left of the person who is an artist.\n13. The person who is a doctor and the person who is a teacher are next to each other.\n14. Bob is the person with an aquarium of fish.\n15. The person who is a lawyer is the person with a pet hamster.\n",
+    "question": "What is Pet of the person who lives in House 4?",
+    "choices": [
+      "bird",
+      "cat",
+      "fish",
+      "hamster",
+      "dog",
+      "rabbit"
+    ],
+    "answer": "bird",
+    "created_at": "2024-07-03T21:21:31.366635"
+  },
+  {
+    "id": "lgp-test-6x3-16#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Arnold`, `Peter`, `Carol`, `Alice`\n - They all have a unique favorite flower: `carnations`, `iris`, `lilies`, `daffodils`, `roses`, `tulips`\n - Each person has a unique type of pet: `dog`, `bird`, `fish`, `rabbit`, `hamster`, `cat`\n\n## Clues:\n1. Eric is the person who keeps a pet bird.\n2. Peter is the person who owns a dog.\n3. The person who loves a carnations arrangement is somewhere to the right of Bob.\n4. The person who keeps a pet bird and the person who loves the rose bouquet are next to each other.\n5. The person who loves a bouquet of daffodils is Bob.\n6. The person who has a cat is somewhere to the right of the person with an aquarium of fish.\n7. The person who has a cat is the person who loves the boquet of lilies.\n8. The person who loves a carnations arrangement is directly left of the person who loves the vase of tulips.\n9. The person who owns a rabbit is Arnold.\n10. The person who keeps a pet bird is the person who loves the vase of tulips.\n11. The person who owns a dog is in the fourth house.\n12. Carol is somewhere to the left of the person with an aquarium of fish.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "roses",
+      "carnations",
+      "daffodils",
+      "iris",
+      "tulips",
+      "lilies"
+    ],
+    "answer": "iris",
+    "created_at": "2024-07-03T21:21:31.366682"
+  },
+  {
+    "id": "lgp-test-6x3-16#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Arnold`, `Peter`, `Carol`, `Alice`\n - They all have a unique favorite flower: `carnations`, `iris`, `lilies`, `daffodils`, `roses`, `tulips`\n - Each person has a unique type of pet: `dog`, `bird`, `fish`, `rabbit`, `hamster`, `cat`\n\n## Clues:\n1. Eric is the person who keeps a pet bird.\n2. Peter is the person who owns a dog.\n3. The person who loves a carnations arrangement is somewhere to the right of Bob.\n4. The person who keeps a pet bird and the person who loves the rose bouquet are next to each other.\n5. The person who loves a bouquet of daffodils is Bob.\n6. The person who has a cat is somewhere to the right of the person with an aquarium of fish.\n7. The person who has a cat is the person who loves the boquet of lilies.\n8. The person who loves a carnations arrangement is directly left of the person who loves the vase of tulips.\n9. The person who owns a rabbit is Arnold.\n10. The person who keeps a pet bird is the person who loves the vase of tulips.\n11. The person who owns a dog is in the fourth house.\n12. Carol is somewhere to the left of the person with an aquarium of fish.\n",
+    "question": "What is Pet of the person who lives in House 1?",
+    "choices": [
+      "hamster",
+      "cat",
+      "dog",
+      "rabbit",
+      "bird",
+      "fish"
+    ],
+    "answer": "hamster",
+    "created_at": "2024-07-03T21:21:31.366688"
+  },
+  {
+    "id": "lgp-test-6x3-16#mc-6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Arnold`, `Peter`, `Carol`, `Alice`\n - They all have a unique favorite flower: `carnations`, `iris`, `lilies`, `daffodils`, `roses`, `tulips`\n - Each person has a unique type of pet: `dog`, `bird`, `fish`, `rabbit`, `hamster`, `cat`\n\n## Clues:\n1. Eric is the person who keeps a pet bird.\n2. Peter is the person who owns a dog.\n3. The person who loves a carnations arrangement is somewhere to the right of Bob.\n4. The person who keeps a pet bird and the person who loves the rose bouquet are next to each other.\n5. The person who loves a bouquet of daffodils is Bob.\n6. The person who has a cat is somewhere to the right of the person with an aquarium of fish.\n7. The person who has a cat is the person who loves the boquet of lilies.\n8. The person who loves a carnations arrangement is directly left of the person who loves the vase of tulips.\n9. The person who owns a rabbit is Arnold.\n10. The person who keeps a pet bird is the person who loves the vase of tulips.\n11. The person who owns a dog is in the fourth house.\n12. Carol is somewhere to the left of the person with an aquarium of fish.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Bob",
+      "Arnold",
+      "Alice",
+      "Peter",
+      "Eric",
+      "Carol"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.366713"
+  },
+  {
+    "id": "lgp-test-6x3-16#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Arnold`, `Peter`, `Carol`, `Alice`\n - They all have a unique favorite flower: `carnations`, `iris`, `lilies`, `daffodils`, `roses`, `tulips`\n - Each person has a unique type of pet: `dog`, `bird`, `fish`, `rabbit`, `hamster`, `cat`\n\n## Clues:\n1. Eric is the person who keeps a pet bird.\n2. Peter is the person who owns a dog.\n3. The person who loves a carnations arrangement is somewhere to the right of Bob.\n4. The person who keeps a pet bird and the person who loves the rose bouquet are next to each other.\n5. The person who loves a bouquet of daffodils is Bob.\n6. The person who has a cat is somewhere to the right of the person with an aquarium of fish.\n7. The person who has a cat is the person who loves the boquet of lilies.\n8. The person who loves a carnations arrangement is directly left of the person who loves the vase of tulips.\n9. The person who owns a rabbit is Arnold.\n10. The person who keeps a pet bird is the person who loves the vase of tulips.\n11. The person who owns a dog is in the fourth house.\n12. Carol is somewhere to the left of the person with an aquarium of fish.\n",
+    "question": "What is Flower of the person who lives in House 6?",
+    "choices": [
+      "daffodils",
+      "tulips",
+      "iris",
+      "lilies",
+      "carnations",
+      "roses"
+    ],
+    "answer": "roses",
+    "created_at": "2024-07-03T21:21:31.366766"
+  },
+  {
+    "id": "lgp-test-6x3-17#mc-14",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Alice`, `Carol`, `Eric`, `Arnold`, `Peter`\n - People have unique heights: `very short`, `tall`, `super tall`, `short`, `very tall`, `average`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`, `xiaomi mi 11`, `google pixel 6`, `oneplus 9`, `huawei p50`\n\n## Clues:\n1. The person who has an average height is somewhere to the right of the person who uses a Xiaomi Mi 11.\n2. The person who uses an iPhone 13 is Arnold.\n3. There is one house between the person who is very tall and the person who uses an iPhone 13.\n4. The person who uses a Google Pixel 6 is not in the fifth house.\n5. The person who is short is in the fourth house.\n6. Alice is not in the third house.\n7. Eric is directly left of Bob.\n8. The person who is tall is the person who uses a Huawei P50.\n9. The person who is super tall is somewhere to the left of Arnold.\n10. The person who is very short is in the sixth house.\n11. The person who uses a Xiaomi Mi 11 is somewhere to the right of the person who uses a Samsung Galaxy S21.\n12. The person who is super tall is in the third house.\n13. There are two houses between Eric and Carol.\n14. Peter is not in the third house.\n15. Peter is somewhere to the left of Eric.\n",
+    "question": "What is PhoneModel of the person who lives in House 5?",
+    "choices": [
+      "huawei p50",
+      "iphone 13",
+      "xiaomi mi 11",
+      "google pixel 6",
+      "oneplus 9",
+      "samsung galaxy s21"
+    ],
+    "answer": "oneplus 9",
+    "created_at": "2024-07-03T21:21:31.366864"
+  },
+  {
+    "id": "lgp-test-6x3-18#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Alice`, `Carol`, `Peter`\n - The mothers' names in different houses are unique: `Sarah`, `Holly`, `Janelle`, `Aniya`, `Penny`, `Kailyn`\n - Each person has a unique type of pet: `hamster`, `dog`, `bird`, `cat`, `fish`, `rabbit`\n\n## Clues:\n1. Bob is not in the second house.\n2. There are two houses between the person who has a cat and the person who owns a rabbit.\n3. The person who has a cat is directly left of The person whose mother's name is Holly.\n4. The person with a pet hamster is directly left of the person who owns a rabbit.\n5. The person who owns a rabbit is Eric.\n6. There is one house between the person who owns a dog and the person who has a cat.\n7. The person who has a cat is The person whose mother's name is Janelle.\n8. Alice is directly left of Carol.\n9. Carol is The person whose mother's name is Aniya.\n10. Arnold is the person who has a cat.\n11. The person whose mother's name is Kailyn is the person who owns a rabbit.\n12. The person with an aquarium of fish is The person whose mother's name is Sarah.\n",
+    "question": "What is Mother of the person who lives in House 1?",
+    "choices": [
+      "Holly",
+      "Sarah",
+      "Aniya",
+      "Penny",
+      "Janelle",
+      "Kailyn"
+    ],
+    "answer": "Penny",
+    "created_at": "2024-07-03T21:21:31.366898"
+  },
+  {
+    "id": "lgp-test-6x3-18#mc-3",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Alice`, `Carol`, `Peter`\n - The mothers' names in different houses are unique: `Sarah`, `Holly`, `Janelle`, `Aniya`, `Penny`, `Kailyn`\n - Each person has a unique type of pet: `hamster`, `dog`, `bird`, `cat`, `fish`, `rabbit`\n\n## Clues:\n1. Bob is not in the second house.\n2. There are two houses between the person who has a cat and the person who owns a rabbit.\n3. The person who has a cat is directly left of The person whose mother's name is Holly.\n4. The person with a pet hamster is directly left of the person who owns a rabbit.\n5. The person who owns a rabbit is Eric.\n6. There is one house between the person who owns a dog and the person who has a cat.\n7. The person who has a cat is The person whose mother's name is Janelle.\n8. Alice is directly left of Carol.\n9. Carol is The person whose mother's name is Aniya.\n10. Arnold is the person who has a cat.\n11. The person whose mother's name is Kailyn is the person who owns a rabbit.\n12. The person with an aquarium of fish is The person whose mother's name is Sarah.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Alice",
+      "Peter",
+      "Eric",
+      "Arnold",
+      "Carol",
+      "Bob"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.366910"
+  },
+  {
+    "id": "lgp-test-6x3-18#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Alice`, `Carol`, `Peter`\n - The mothers' names in different houses are unique: `Sarah`, `Holly`, `Janelle`, `Aniya`, `Penny`, `Kailyn`\n - Each person has a unique type of pet: `hamster`, `dog`, `bird`, `cat`, `fish`, `rabbit`\n\n## Clues:\n1. Bob is not in the second house.\n2. There are two houses between the person who has a cat and the person who owns a rabbit.\n3. The person who has a cat is directly left of The person whose mother's name is Holly.\n4. The person with a pet hamster is directly left of the person who owns a rabbit.\n5. The person who owns a rabbit is Eric.\n6. There is one house between the person who owns a dog and the person who has a cat.\n7. The person who has a cat is The person whose mother's name is Janelle.\n8. Alice is directly left of Carol.\n9. Carol is The person whose mother's name is Aniya.\n10. Arnold is the person who has a cat.\n11. The person whose mother's name is Kailyn is the person who owns a rabbit.\n12. The person with an aquarium of fish is The person whose mother's name is Sarah.\n",
+    "question": "What is Pet of the person who lives in House 4?",
+    "choices": [
+      "dog",
+      "fish",
+      "bird",
+      "rabbit",
+      "hamster",
+      "cat"
+    ],
+    "answer": "bird",
+    "created_at": "2024-07-03T21:21:31.366953"
+  },
+  {
+    "id": "lgp-test-6x3-19#mc-13",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Bob`, `Alice`, `Arnold`, `Peter`\n - People have unique favorite music genres: `country`, `classical`, `rock`, `pop`, `hip hop`, `jazz`\n - Each person has a unique favorite drink: `boba tea`, `coffee`, `water`, `milk`, `root beer`, `tea`\n\n## Clues:\n1. The person who loves rock music is not in the fifth house.\n2. The person who loves pop music is directly left of Eric.\n3. The person who likes milk is Bob.\n4. The boba tea drinker is Alice.\n5. The person who likes milk is the person who loves pop music.\n6. The person who loves jazz music is not in the first house.\n7. The person who loves jazz music is the root beer lover.\n8. The tea drinker and the coffee drinker are next to each other.\n9. Bob is somewhere to the right of Carol.\n10. The person who loves jazz music is not in the fifth house.\n11. There is one house between the one who only drinks water and the tea drinker.\n12. Carol is the person who loves country music.\n13. The person who loves jazz music is Peter.\n14. The coffee drinker is somewhere to the right of the one who only drinks water.\n15. The person who loves classical music is in the sixth house.\n",
+    "question": "What is MusicGenre of the person who lives in House 5?",
+    "choices": [
+      "pop",
+      "jazz",
+      "rock",
+      "classical",
+      "hip hop",
+      "country"
+    ],
+    "answer": "hip hop",
+    "created_at": "2024-07-03T21:21:31.367067"
+  },
+  {
+    "id": "lgp-test-6x3-19#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Bob`, `Alice`, `Arnold`, `Peter`\n - People have unique favorite music genres: `country`, `classical`, `rock`, `pop`, `hip hop`, `jazz`\n - Each person has a unique favorite drink: `boba tea`, `coffee`, `water`, `milk`, `root beer`, `tea`\n\n## Clues:\n1. The person who loves rock music is not in the fifth house.\n2. The person who loves pop music is directly left of Eric.\n3. The person who likes milk is Bob.\n4. The boba tea drinker is Alice.\n5. The person who likes milk is the person who loves pop music.\n6. The person who loves jazz music is not in the first house.\n7. The person who loves jazz music is the root beer lover.\n8. The tea drinker and the coffee drinker are next to each other.\n9. Bob is somewhere to the right of Carol.\n10. The person who loves jazz music is not in the fifth house.\n11. There is one house between the one who only drinks water and the tea drinker.\n12. Carol is the person who loves country music.\n13. The person who loves jazz music is Peter.\n14. The coffee drinker is somewhere to the right of the one who only drinks water.\n15. The person who loves classical music is in the sixth house.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Eric",
+      "Carol",
+      "Bob",
+      "Alice"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.367079"
+  },
+  {
+    "id": "lgp-test-6x3-20#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Bob`, `Alice`, `Eric`, `Peter`\n - People use unique phone models: `xiaomi mi 11`, `iphone 13`, `huawei p50`, `google pixel 6`, `oneplus 9`, `samsung galaxy s21`\n - People have unique favorite book genres: `science fiction`, `fantasy`, `mystery`, `historical fiction`, `romance`, `biography`\n\n## Clues:\n1. Bob is somewhere to the left of the person who uses a Samsung Galaxy S21.\n2. The person who uses a OnePlus 9 is Alice.\n3. The person who loves romance books is Alice.\n4. The person who loves biography books is Bob.\n5. The person who loves science fiction books is Arnold.\n6. Eric is somewhere to the left of the person who uses a Google Pixel 6.\n7. There is one house between Eric and Peter.\n8. The person who loves fantasy books is Carol.\n9. The person who loves science fiction books and the person who uses a Huawei P50 are next to each other.\n10. The person who uses a Huawei P50 and the person who loves fantasy books are next to each other.\n11. The person who loves romance books is directly left of the person who loves science fiction books.\n12. The person who uses a Xiaomi Mi 11 is in the sixth house.\n13. The person who loves historical fiction books is not in the fourth house.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "google pixel 6",
+      "huawei p50",
+      "xiaomi mi 11",
+      "oneplus 9",
+      "samsung galaxy s21",
+      "iphone 13"
+    ],
+    "answer": "iphone 13",
+    "created_at": "2024-07-03T21:21:31.367104"
+  },
+  {
+    "id": "lgp-test-6x3-20#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Bob`, `Alice`, `Eric`, `Peter`\n - People use unique phone models: `xiaomi mi 11`, `iphone 13`, `huawei p50`, `google pixel 6`, `oneplus 9`, `samsung galaxy s21`\n - People have unique favorite book genres: `science fiction`, `fantasy`, `mystery`, `historical fiction`, `romance`, `biography`\n\n## Clues:\n1. Bob is somewhere to the left of the person who uses a Samsung Galaxy S21.\n2. The person who uses a OnePlus 9 is Alice.\n3. The person who loves romance books is Alice.\n4. The person who loves biography books is Bob.\n5. The person who loves science fiction books is Arnold.\n6. Eric is somewhere to the left of the person who uses a Google Pixel 6.\n7. There is one house between Eric and Peter.\n8. The person who loves fantasy books is Carol.\n9. The person who loves science fiction books and the person who uses a Huawei P50 are next to each other.\n10. The person who uses a Huawei P50 and the person who loves fantasy books are next to each other.\n11. The person who loves romance books is directly left of the person who loves science fiction books.\n12. The person who uses a Xiaomi Mi 11 is in the sixth house.\n13. The person who loves historical fiction books is not in the fourth house.\n",
+    "question": "What is BookGenre of the person who lives in House 4?",
+    "choices": [
+      "historical fiction",
+      "romance",
+      "science fiction",
+      "mystery",
+      "biography",
+      "fantasy"
+    ],
+    "answer": "mystery",
+    "created_at": "2024-07-03T21:21:31.367162"
+  },
+  {
+    "id": "lgp-test-6x3-21#mc-9",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Alice`, `Eric`, `Peter`, `Bob`, `Carol`\n - People own unique car models: `chevrolet silverado`, `honda civic`, `ford f150`, `bmw 3 series`, `toyota camry`, `tesla model 3`\n - Each mother is accompanied by their child: `Samantha`, `Timothy`, `Fred`, `Bella`, `Meredith`, `Alice`\n\n## Clues:\n1. Arnold is in the first house.\n2. The person's child is named Meredith is the person who owns a Ford F-150.\n3. The person who owns a Ford F-150 is in the fifth house.\n4. Peter is the person's child is named Bella.\n5. The person's child is named Fred is Bob.\n6. Carol is in the sixth house.\n7. There is one house between the person who owns a Toyota Camry and the person's child is named Samantha.\n8. There is one house between Bob and Alice.\n9. The person's child is named Fred is somewhere to the left of the person's child is named Alice.\n10. Arnold is the person who owns a Honda Civic.\n11. There are two houses between the person who owns a Tesla Model 3 and the person's child is named Samantha.\n12. The person who is the mother of Timothy is in the first house.\n13. The person's child is named Fred is in the third house.\n14. The person who owns a BMW 3 Series is somewhere to the left of Carol.\n",
+    "question": "What is Name of the person who lives in House 4?",
+    "choices": [
+      "Alice",
+      "Arnold",
+      "Bob",
+      "Carol",
+      "Eric",
+      "Peter"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.367257"
+  },
+  {
+    "id": "lgp-test-6x3-21#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Alice`, `Eric`, `Peter`, `Bob`, `Carol`\n - People own unique car models: `chevrolet silverado`, `honda civic`, `ford f150`, `bmw 3 series`, `toyota camry`, `tesla model 3`\n - Each mother is accompanied by their child: `Samantha`, `Timothy`, `Fred`, `Bella`, `Meredith`, `Alice`\n\n## Clues:\n1. Arnold is in the first house.\n2. The person's child is named Meredith is the person who owns a Ford F-150.\n3. The person who owns a Ford F-150 is in the fifth house.\n4. Peter is the person's child is named Bella.\n5. The person's child is named Fred is Bob.\n6. Carol is in the sixth house.\n7. There is one house between the person who owns a Toyota Camry and the person's child is named Samantha.\n8. There is one house between Bob and Alice.\n9. The person's child is named Fred is somewhere to the left of the person's child is named Alice.\n10. Arnold is the person who owns a Honda Civic.\n11. There are two houses between the person who owns a Tesla Model 3 and the person's child is named Samantha.\n12. The person who is the mother of Timothy is in the first house.\n13. The person's child is named Fred is in the third house.\n14. The person who owns a BMW 3 Series is somewhere to the left of Carol.\n",
+    "question": "What is CarModel of the person who lives in House 6?",
+    "choices": [
+      "honda civic",
+      "toyota camry",
+      "chevrolet silverado",
+      "bmw 3 series",
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "chevrolet silverado",
+    "created_at": "2024-07-03T21:21:31.367297"
+  },
+  {
+    "id": "lgp-test-6x3-22#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Arnold`, `Alice`, `Eric`, `Carol`\n - The people keep unique animals: `rabbit`, `bird`, `dog`, `horse`, `cat`, `fish`\n - Each person has an occupation: `doctor`, `teacher`, `lawyer`, `artist`, `engineer`, `nurse`\n\n## Clues:\n1. Arnold is not in the sixth house.\n2. The person who is an engineer is directly left of Eric.\n3. Carol and the rabbit owner are next to each other.\n4. The person who is an artist is Peter.\n5. The person who keeps horses is in the second house.\n6. Eric is directly left of the person who is a lawyer.\n7. The person who is an artist is somewhere to the left of the person who is a doctor.\n8. The cat lover is not in the sixth house.\n9. Peter is in the fifth house.\n10. The dog owner is the person who is an artist.\n11. The person who keeps horses is directly left of the rabbit owner.\n12. The bird keeper is Alice.\n13. The person who is a teacher and Alice are next to each other.\n14. Alice is not in the first house.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "engineer",
+      "teacher",
+      "artist",
+      "nurse",
+      "doctor",
+      "lawyer"
+    ],
+    "answer": "nurse",
+    "created_at": "2024-07-03T21:21:31.367322"
+  },
+  {
+    "id": "lgp-test-6x3-22#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Arnold`, `Alice`, `Eric`, `Carol`\n - The people keep unique animals: `rabbit`, `bird`, `dog`, `horse`, `cat`, `fish`\n - Each person has an occupation: `doctor`, `teacher`, `lawyer`, `artist`, `engineer`, `nurse`\n\n## Clues:\n1. Arnold is not in the sixth house.\n2. The person who is an engineer is directly left of Eric.\n3. Carol and the rabbit owner are next to each other.\n4. The person who is an artist is Peter.\n5. The person who keeps horses is in the second house.\n6. Eric is directly left of the person who is a lawyer.\n7. The person who is an artist is somewhere to the left of the person who is a doctor.\n8. The cat lover is not in the sixth house.\n9. Peter is in the fifth house.\n10. The dog owner is the person who is an artist.\n11. The person who keeps horses is directly left of the rabbit owner.\n12. The bird keeper is Alice.\n13. The person who is a teacher and Alice are next to each other.\n14. Alice is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Carol",
+      "Alice",
+      "Peter",
+      "Eric",
+      "Arnold",
+      "Bob"
+    ],
+    "answer": "Bob",
+    "created_at": "2024-07-03T21:21:31.367394"
+  },
+  {
+    "id": "lgp-test-6x3-22#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Arnold`, `Alice`, `Eric`, `Carol`\n - The people keep unique animals: `rabbit`, `bird`, `dog`, `horse`, `cat`, `fish`\n - Each person has an occupation: `doctor`, `teacher`, `lawyer`, `artist`, `engineer`, `nurse`\n\n## Clues:\n1. Arnold is not in the sixth house.\n2. The person who is an engineer is directly left of Eric.\n3. Carol and the rabbit owner are next to each other.\n4. The person who is an artist is Peter.\n5. The person who keeps horses is in the second house.\n6. Eric is directly left of the person who is a lawyer.\n7. The person who is an artist is somewhere to the left of the person who is a doctor.\n8. The cat lover is not in the sixth house.\n9. Peter is in the fifth house.\n10. The dog owner is the person who is an artist.\n11. The person who keeps horses is directly left of the rabbit owner.\n12. The bird keeper is Alice.\n13. The person who is a teacher and Alice are next to each other.\n14. Alice is not in the first house.\n",
+    "question": "What is Animal of the person who lives in House 6?",
+    "choices": [
+      "fish",
+      "rabbit",
+      "horse",
+      "cat",
+      "bird",
+      "dog"
+    ],
+    "answer": "fish",
+    "created_at": "2024-07-03T21:21:31.367400"
+  },
+  {
+    "id": "lgp-test-6x3-23#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Alice`, `Bob`, `Arnold`\n - The people are of nationalities: `brit`, `norwegian`, `swede`, `chinese`, `german`, `dane`\n - Everyone has a favorite smoothie: `dragonfruit`, `cherry`, `lime`, `desert`, `watermelon`, `blueberry`\n\n## Clues:\n1. The Chinese is somewhere to the right of the Swedish person.\n2. The Desert smoothie lover is the German.\n3. The person who drinks Blueberry smoothies is Bob.\n4. The person who drinks Blueberry smoothies is somewhere to the right of Eric.\n5. Peter and Carol are next to each other.\n6. The Swedish person is the Dragonfruit smoothie lover.\n7. Arnold is the Norwegian.\n8. The Dane is the person who likes Cherry smoothies.\n9. Peter is directly left of the Watermelon smoothie lover.\n10. Arnold is not in the third house.\n11. The Norwegian is somewhere to the left of the Chinese.\n12. The Dane is in the first house.\n13. The German is in the sixth house.\n14. The Chinese is not in the fifth house.\n",
+    "question": "What is Smoothie of the person who lives in House 2?",
+    "choices": [
+      "desert",
+      "blueberry",
+      "lime",
+      "watermelon",
+      "cherry",
+      "dragonfruit"
+    ],
+    "answer": "lime",
+    "created_at": "2024-07-03T21:21:31.367440"
+  },
+  {
+    "id": "lgp-test-6x3-23#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Alice`, `Bob`, `Arnold`\n - The people are of nationalities: `brit`, `norwegian`, `swede`, `chinese`, `german`, `dane`\n - Everyone has a favorite smoothie: `dragonfruit`, `cherry`, `lime`, `desert`, `watermelon`, `blueberry`\n\n## Clues:\n1. The Chinese is somewhere to the right of the Swedish person.\n2. The Desert smoothie lover is the German.\n3. The person who drinks Blueberry smoothies is Bob.\n4. The person who drinks Blueberry smoothies is somewhere to the right of Eric.\n5. Peter and Carol are next to each other.\n6. The Swedish person is the Dragonfruit smoothie lover.\n7. Arnold is the Norwegian.\n8. The Dane is the person who likes Cherry smoothies.\n9. Peter is directly left of the Watermelon smoothie lover.\n10. Arnold is not in the third house.\n11. The Norwegian is somewhere to the left of the Chinese.\n12. The Dane is in the first house.\n13. The German is in the sixth house.\n14. The Chinese is not in the fifth house.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "swede",
+      "norwegian",
+      "brit",
+      "dane",
+      "german",
+      "chinese"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.367452"
+  },
+  {
+    "id": "lgp-test-6x3-23#mc-13",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Alice`, `Bob`, `Arnold`\n - The people are of nationalities: `brit`, `norwegian`, `swede`, `chinese`, `german`, `dane`\n - Everyone has a favorite smoothie: `dragonfruit`, `cherry`, `lime`, `desert`, `watermelon`, `blueberry`\n\n## Clues:\n1. The Chinese is somewhere to the right of the Swedish person.\n2. The Desert smoothie lover is the German.\n3. The person who drinks Blueberry smoothies is Bob.\n4. The person who drinks Blueberry smoothies is somewhere to the right of Eric.\n5. Peter and Carol are next to each other.\n6. The Swedish person is the Dragonfruit smoothie lover.\n7. Arnold is the Norwegian.\n8. The Dane is the person who likes Cherry smoothies.\n9. Peter is directly left of the Watermelon smoothie lover.\n10. Arnold is not in the third house.\n11. The Norwegian is somewhere to the left of the Chinese.\n12. The Dane is in the first house.\n13. The German is in the sixth house.\n14. The Chinese is not in the fifth house.\n",
+    "question": "What is Nationality of the person who lives in House 5?",
+    "choices": [
+      "brit",
+      "dane",
+      "german",
+      "swede",
+      "chinese",
+      "norwegian"
+    ],
+    "answer": "brit",
+    "created_at": "2024-07-03T21:21:31.367485"
+  },
+  {
+    "id": "lgp-test-6x3-23#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Alice`, `Bob`, `Arnold`\n - The people are of nationalities: `brit`, `norwegian`, `swede`, `chinese`, `german`, `dane`\n - Everyone has a favorite smoothie: `dragonfruit`, `cherry`, `lime`, `desert`, `watermelon`, `blueberry`\n\n## Clues:\n1. The Chinese is somewhere to the right of the Swedish person.\n2. The Desert smoothie lover is the German.\n3. The person who drinks Blueberry smoothies is Bob.\n4. The person who drinks Blueberry smoothies is somewhere to the right of Eric.\n5. Peter and Carol are next to each other.\n6. The Swedish person is the Dragonfruit smoothie lover.\n7. Arnold is the Norwegian.\n8. The Dane is the person who likes Cherry smoothies.\n9. Peter is directly left of the Watermelon smoothie lover.\n10. Arnold is not in the third house.\n11. The Norwegian is somewhere to the left of the Chinese.\n12. The Dane is in the first house.\n13. The German is in the sixth house.\n14. The Chinese is not in the fifth house.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Carol",
+      "Arnold",
+      "Eric",
+      "Alice",
+      "Bob",
+      "Peter"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.367496"
+  },
+  {
+    "id": "lgp-test-6x3-24#mc-0",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Carol`, `Arnold`\n - Each person prefers a unique type of vacation: `cruise`, `mountain`, `beach`, `camping`, `city`, `cultural`\n - The people are of nationalities: `german`, `swede`, `brit`, `chinese`, `dane`, `norwegian`\n\n## Clues:\n1. The person who goes on cultural tours is Arnold.\n2. The person who loves beach vacations is the British person.\n3. The person who prefers city breaks is Carol.\n4. The Dane is directly left of the person who prefers city breaks.\n5. The person who prefers city breaks is the Swedish person.\n6. The person who likes going on cruises is not in the sixth house.\n7. The person who loves beach vacations is directly left of the person who likes going on cruises.\n8. Carol is directly left of Eric.\n9. The person who prefers city breaks is in the second house.\n10. Bob is not in the first house.\n11. Bob is not in the fifth house.\n12. Eric is somewhere to the left of Peter.\n13. The British person is somewhere to the left of the Chinese.\n14. The Norwegian and Arnold are next to each other.\n15. The Dane is the person who enjoys camping trips.\n16. The British person is not in the third house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Alice",
+      "Carol",
+      "Peter",
+      "Eric",
+      "Bob"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.367513"
+  },
+  {
+    "id": "lgp-test-6x3-24#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Carol`, `Arnold`\n - Each person prefers a unique type of vacation: `cruise`, `mountain`, `beach`, `camping`, `city`, `cultural`\n - The people are of nationalities: `german`, `swede`, `brit`, `chinese`, `dane`, `norwegian`\n\n## Clues:\n1. The person who goes on cultural tours is Arnold.\n2. The person who loves beach vacations is the British person.\n3. The person who prefers city breaks is Carol.\n4. The Dane is directly left of the person who prefers city breaks.\n5. The person who prefers city breaks is the Swedish person.\n6. The person who likes going on cruises is not in the sixth house.\n7. The person who loves beach vacations is directly left of the person who likes going on cruises.\n8. Carol is directly left of Eric.\n9. The person who prefers city breaks is in the second house.\n10. Bob is not in the first house.\n11. Bob is not in the fifth house.\n12. Eric is somewhere to the left of Peter.\n13. The British person is somewhere to the left of the Chinese.\n14. The Norwegian and Arnold are next to each other.\n15. The Dane is the person who enjoys camping trips.\n16. The British person is not in the third house.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "chinese",
+      "dane",
+      "swede",
+      "norwegian",
+      "brit",
+      "german"
+    ],
+    "answer": "swede",
+    "created_at": "2024-07-03T21:21:31.367546"
+  },
+  {
+    "id": "lgp-test-6x3-24#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Carol`, `Arnold`\n - Each person prefers a unique type of vacation: `cruise`, `mountain`, `beach`, `camping`, `city`, `cultural`\n - The people are of nationalities: `german`, `swede`, `brit`, `chinese`, `dane`, `norwegian`\n\n## Clues:\n1. The person who goes on cultural tours is Arnold.\n2. The person who loves beach vacations is the British person.\n3. The person who prefers city breaks is Carol.\n4. The Dane is directly left of the person who prefers city breaks.\n5. The person who prefers city breaks is the Swedish person.\n6. The person who likes going on cruises is not in the sixth house.\n7. The person who loves beach vacations is directly left of the person who likes going on cruises.\n8. Carol is directly left of Eric.\n9. The person who prefers city breaks is in the second house.\n10. Bob is not in the first house.\n11. Bob is not in the fifth house.\n12. Eric is somewhere to the left of Peter.\n13. The British person is somewhere to the left of the Chinese.\n14. The Norwegian and Arnold are next to each other.\n15. The Dane is the person who enjoys camping trips.\n16. The British person is not in the third house.\n",
+    "question": "What is Vacation of the person who lives in House 3?",
+    "choices": [
+      "cruise",
+      "city",
+      "mountain",
+      "cultural",
+      "beach",
+      "camping"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.367558"
+  },
+  {
+    "id": "lgp-test-6x3-24#mc-8",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Carol`, `Arnold`\n - Each person prefers a unique type of vacation: `cruise`, `mountain`, `beach`, `camping`, `city`, `cultural`\n - The people are of nationalities: `german`, `swede`, `brit`, `chinese`, `dane`, `norwegian`\n\n## Clues:\n1. The person who goes on cultural tours is Arnold.\n2. The person who loves beach vacations is the British person.\n3. The person who prefers city breaks is Carol.\n4. The Dane is directly left of the person who prefers city breaks.\n5. The person who prefers city breaks is the Swedish person.\n6. The person who likes going on cruises is not in the sixth house.\n7. The person who loves beach vacations is directly left of the person who likes going on cruises.\n8. Carol is directly left of Eric.\n9. The person who prefers city breaks is in the second house.\n10. Bob is not in the first house.\n11. Bob is not in the fifth house.\n12. Eric is somewhere to the left of Peter.\n13. The British person is somewhere to the left of the Chinese.\n14. The Norwegian and Arnold are next to each other.\n15. The Dane is the person who enjoys camping trips.\n16. The British person is not in the third house.\n",
+    "question": "What is Nationality of the person who lives in House 3?",
+    "choices": [
+      "chinese",
+      "german",
+      "brit",
+      "swede",
+      "norwegian",
+      "dane"
+    ],
+    "answer": "german",
+    "created_at": "2024-07-03T21:21:31.367564"
+  },
+  {
+    "id": "lgp-test-6x3-25#mc-0",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Eric`, `Carol`, `Alice`\n - People own unique car models: `bmw 3 series`, `ford f150`, `tesla model 3`, `toyota camry`, `honda civic`, `chevrolet silverado`\n - Each person has a unique hobby: `woodworking`, `painting`, `knitting`, `photography`, `gardening`, `cooking`\n\n## Clues:\n1. The person who loves cooking is not in the first house.\n2. The person who owns a Tesla Model 3 is in the fifth house.\n3. The person who owns a Honda Civic is in the third house.\n4. Alice and the person who owns a Honda Civic are next to each other.\n5. There is one house between the person who owns a Chevrolet Silverado and Carol.\n6. The photography enthusiast is directly left of the person who paints as a hobby.\n7. Peter is somewhere to the right of the person who owns a Tesla Model 3.\n8. The person who owns a Honda Civic is directly left of Bob.\n9. The person who enjoys knitting is somewhere to the right of the person who owns a Toyota Camry.\n10. The person who enjoys knitting is somewhere to the left of Eric.\n11. The woodworking hobbyist is directly left of the person who owns a BMW 3 Series.\n12. The person who paints as a hobby is in the third house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Carol",
+      "Eric",
+      "Peter",
+      "Bob",
+      "Arnold",
+      "Alice"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.367623"
+  },
+  {
+    "id": "lgp-test-6x3-25#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Eric`, `Carol`, `Alice`\n - People own unique car models: `bmw 3 series`, `ford f150`, `tesla model 3`, `toyota camry`, `honda civic`, `chevrolet silverado`\n - Each person has a unique hobby: `woodworking`, `painting`, `knitting`, `photography`, `gardening`, `cooking`\n\n## Clues:\n1. The person who loves cooking is not in the first house.\n2. The person who owns a Tesla Model 3 is in the fifth house.\n3. The person who owns a Honda Civic is in the third house.\n4. Alice and the person who owns a Honda Civic are next to each other.\n5. There is one house between the person who owns a Chevrolet Silverado and Carol.\n6. The photography enthusiast is directly left of the person who paints as a hobby.\n7. Peter is somewhere to the right of the person who owns a Tesla Model 3.\n8. The person who owns a Honda Civic is directly left of Bob.\n9. The person who enjoys knitting is somewhere to the right of the person who owns a Toyota Camry.\n10. The person who enjoys knitting is somewhere to the left of Eric.\n11. The woodworking hobbyist is directly left of the person who owns a BMW 3 Series.\n12. The person who paints as a hobby is in the third house.\n",
+    "question": "What is Hobby of the person who lives in House 1?",
+    "choices": [
+      "knitting",
+      "painting",
+      "cooking",
+      "gardening",
+      "woodworking",
+      "photography"
+    ],
+    "answer": "gardening",
+    "created_at": "2024-07-03T21:21:31.367636"
+  },
+  {
+    "id": "lgp-test-6x3-25#mc-8",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Eric`, `Carol`, `Alice`\n - People own unique car models: `bmw 3 series`, `ford f150`, `tesla model 3`, `toyota camry`, `honda civic`, `chevrolet silverado`\n - Each person has a unique hobby: `woodworking`, `painting`, `knitting`, `photography`, `gardening`, `cooking`\n\n## Clues:\n1. The person who loves cooking is not in the first house.\n2. The person who owns a Tesla Model 3 is in the fifth house.\n3. The person who owns a Honda Civic is in the third house.\n4. Alice and the person who owns a Honda Civic are next to each other.\n5. There is one house between the person who owns a Chevrolet Silverado and Carol.\n6. The photography enthusiast is directly left of the person who paints as a hobby.\n7. Peter is somewhere to the right of the person who owns a Tesla Model 3.\n8. The person who owns a Honda Civic is directly left of Bob.\n9. The person who enjoys knitting is somewhere to the right of the person who owns a Toyota Camry.\n10. The person who enjoys knitting is somewhere to the left of Eric.\n11. The woodworking hobbyist is directly left of the person who owns a BMW 3 Series.\n12. The person who paints as a hobby is in the third house.\n",
+    "question": "What is Hobby of the person who lives in House 3?",
+    "choices": [
+      "cooking",
+      "gardening",
+      "knitting",
+      "painting",
+      "woodworking",
+      "photography"
+    ],
+    "answer": "painting",
+    "created_at": "2024-07-03T21:21:31.367670"
+  },
+  {
+    "id": "lgp-test-6x3-25#mc-10",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Eric`, `Carol`, `Alice`\n - People own unique car models: `bmw 3 series`, `ford f150`, `tesla model 3`, `toyota camry`, `honda civic`, `chevrolet silverado`\n - Each person has a unique hobby: `woodworking`, `painting`, `knitting`, `photography`, `gardening`, `cooking`\n\n## Clues:\n1. The person who loves cooking is not in the first house.\n2. The person who owns a Tesla Model 3 is in the fifth house.\n3. The person who owns a Honda Civic is in the third house.\n4. Alice and the person who owns a Honda Civic are next to each other.\n5. There is one house between the person who owns a Chevrolet Silverado and Carol.\n6. The photography enthusiast is directly left of the person who paints as a hobby.\n7. Peter is somewhere to the right of the person who owns a Tesla Model 3.\n8. The person who owns a Honda Civic is directly left of Bob.\n9. The person who enjoys knitting is somewhere to the right of the person who owns a Toyota Camry.\n10. The person who enjoys knitting is somewhere to the left of Eric.\n11. The woodworking hobbyist is directly left of the person who owns a BMW 3 Series.\n12. The person who paints as a hobby is in the third house.\n",
+    "question": "What is CarModel of the person who lives in House 4?",
+    "choices": [
+      "bmw 3 series",
+      "ford f150",
+      "honda civic",
+      "tesla model 3",
+      "toyota camry",
+      "chevrolet silverado"
+    ],
+    "answer": "ford f150",
+    "created_at": "2024-07-03T21:21:31.367683"
+  },
+  {
+    "id": "lgp-test-6x3-26#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Eric`, `Bob`, `Peter`, `Arnold`, `Carol`\n - People have unique heights: `very tall`, `tall`, `super tall`, `average`, `very short`, `short`\n - People use unique phone models: `oneplus 9`, `google pixel 6`, `samsung galaxy s21`, `iphone 13`, `huawei p50`, `xiaomi mi 11`\n\n## Clues:\n1. Bob is directly left of the person who is tall.\n2. Peter is somewhere to the left of the person who uses an iPhone 13.\n3. The person who is very short is somewhere to the right of the person who uses a Google Pixel 6.\n4. Carol is the person who is very tall.\n5. There is one house between the person who uses a Google Pixel 6 and the person who is short.\n6. The person who uses a Samsung Galaxy S21 is not in the first house.\n7. The person who uses a OnePlus 9 is directly left of the person who is short.\n8. The person who is tall is Arnold.\n9. The person who is super tall is in the first house.\n10. The person who uses a Xiaomi Mi 11 is Carol.\n11. The person who uses a Google Pixel 6 is somewhere to the right of Eric.\n12. The person who is short is in the sixth house.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "iphone 13",
+      "xiaomi mi 11",
+      "huawei p50",
+      "oneplus 9",
+      "samsung galaxy s21",
+      "google pixel 6"
+    ],
+    "answer": "huawei p50",
+    "created_at": "2024-07-03T21:21:31.367741"
+  },
+  {
+    "id": "lgp-test-6x3-26#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Eric`, `Bob`, `Peter`, `Arnold`, `Carol`\n - People have unique heights: `very tall`, `tall`, `super tall`, `average`, `very short`, `short`\n - People use unique phone models: `oneplus 9`, `google pixel 6`, `samsung galaxy s21`, `iphone 13`, `huawei p50`, `xiaomi mi 11`\n\n## Clues:\n1. Bob is directly left of the person who is tall.\n2. Peter is somewhere to the left of the person who uses an iPhone 13.\n3. The person who is very short is somewhere to the right of the person who uses a Google Pixel 6.\n4. Carol is the person who is very tall.\n5. There is one house between the person who uses a Google Pixel 6 and the person who is short.\n6. The person who uses a Samsung Galaxy S21 is not in the first house.\n7. The person who uses a OnePlus 9 is directly left of the person who is short.\n8. The person who is tall is Arnold.\n9. The person who is super tall is in the first house.\n10. The person who uses a Xiaomi Mi 11 is Carol.\n11. The person who uses a Google Pixel 6 is somewhere to the right of Eric.\n12. The person who is short is in the sixth house.\n",
+    "question": "What is Height of the person who lives in House 3?",
+    "choices": [
+      "super tall",
+      "short",
+      "tall",
+      "very short",
+      "average",
+      "very tall"
+    ],
+    "answer": "average",
+    "created_at": "2024-07-03T21:21:31.367771"
+  },
+  {
+    "id": "lgp-test-6x3-26#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Eric`, `Bob`, `Peter`, `Arnold`, `Carol`\n - People have unique heights: `very tall`, `tall`, `super tall`, `average`, `very short`, `short`\n - People use unique phone models: `oneplus 9`, `google pixel 6`, `samsung galaxy s21`, `iphone 13`, `huawei p50`, `xiaomi mi 11`\n\n## Clues:\n1. Bob is directly left of the person who is tall.\n2. Peter is somewhere to the left of the person who uses an iPhone 13.\n3. The person who is very short is somewhere to the right of the person who uses a Google Pixel 6.\n4. Carol is the person who is very tall.\n5. There is one house between the person who uses a Google Pixel 6 and the person who is short.\n6. The person who uses a Samsung Galaxy S21 is not in the first house.\n7. The person who uses a OnePlus 9 is directly left of the person who is short.\n8. The person who is tall is Arnold.\n9. The person who is super tall is in the first house.\n10. The person who uses a Xiaomi Mi 11 is Carol.\n11. The person who uses a Google Pixel 6 is somewhere to the right of Eric.\n12. The person who is short is in the sixth house.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Arnold",
+      "Bob",
+      "Eric",
+      "Peter",
+      "Carol",
+      "Alice"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.367817"
+  },
+  {
+    "id": "lgp-test-6x3-27#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Eric`, `Peter`, `Bob`, `Carol`\n - Each person has an occupation: `engineer`, `artist`, `doctor`, `teacher`, `nurse`, `lawyer`\n - People own unique car models: `chevrolet silverado`, `ford f150`, `honda civic`, `toyota camry`, `bmw 3 series`, `tesla model 3`\n\n## Clues:\n1. The person who owns a Ford F-150 is in the fifth house.\n2. The person who owns a Chevrolet Silverado is not in the second house.\n3. The person who owns a Honda Civic and Peter are next to each other.\n4. The person who is a lawyer is not in the fifth house.\n5. The person who is a nurse is directly left of the person who is an artist.\n6. Carol is somewhere to the right of Eric.\n7. The person who is a doctor is Eric.\n8. The person who is a teacher is somewhere to the left of the person who is a nurse.\n9. Carol is not in the sixth house.\n10. The person who is an engineer is Bob.\n11. The person who owns a Toyota Camry is the person who is a nurse.\n12. There is one house between Peter and the person who is a lawyer.\n13. There is one house between the person who owns a Tesla Model 3 and Bob.\n14. Arnold is the person who is an artist.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Peter",
+      "Bob",
+      "Carol",
+      "Arnold",
+      "Eric",
+      "Alice"
+    ],
+    "answer": "Alice",
+    "created_at": "2024-07-03T21:21:31.367922"
+  },
+  {
+    "id": "lgp-test-6x3-28#mc-7",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Peter`, `Bob`, `Eric`, `Arnold`, `Alice`\n - Each person prefers a unique type of vacation: `camping`, `cruise`, `beach`, `city`, `cultural`, `mountain`\n - People have unique favorite sports: `volleyball`, `baseball`, `basketball`, `swimming`, `soccer`, `tennis`\n\n## Clues:\n1. The person who loves tennis and Peter are next to each other.\n2. Bob is in the second house.\n3. There is one house between the person who prefers city breaks and the person who loves tennis.\n4. Peter is somewhere to the left of Alice.\n5. Carol is the person who loves basketball.\n6. The person who loves swimming is the person who likes going on cruises.\n7. The person who loves tennis and the person who loves beach vacations are next to each other.\n8. The person who loves swimming is Bob.\n9. The person who loves volleyball is the person who enjoys camping trips.\n10. Eric is in the first house.\n11. Arnold is somewhere to the left of the person who enjoys mountain retreats.\n12. Eric is the person who loves soccer.\n13. The person who prefers city breaks is in the first house.\n14. The person who enjoys camping trips is not in the sixth house.\n",
+    "question": "What is Vacation of the person who lives in House 3?",
+    "choices": [
+      "cultural",
+      "mountain",
+      "cruise",
+      "camping",
+      "beach",
+      "city"
+    ],
+    "answer": "cultural",
+    "created_at": "2024-07-03T21:21:31.367980"
+  },
+  {
+    "id": "lgp-test-6x3-28#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Peter`, `Bob`, `Eric`, `Arnold`, `Alice`\n - Each person prefers a unique type of vacation: `camping`, `cruise`, `beach`, `city`, `cultural`, `mountain`\n - People have unique favorite sports: `volleyball`, `baseball`, `basketball`, `swimming`, `soccer`, `tennis`\n\n## Clues:\n1. The person who loves tennis and Peter are next to each other.\n2. Bob is in the second house.\n3. There is one house between the person who prefers city breaks and the person who loves tennis.\n4. Peter is somewhere to the left of Alice.\n5. Carol is the person who loves basketball.\n6. The person who loves swimming is the person who likes going on cruises.\n7. The person who loves tennis and the person who loves beach vacations are next to each other.\n8. The person who loves swimming is Bob.\n9. The person who loves volleyball is the person who enjoys camping trips.\n10. Eric is in the first house.\n11. Arnold is somewhere to the left of the person who enjoys mountain retreats.\n12. Eric is the person who loves soccer.\n13. The person who prefers city breaks is in the first house.\n14. The person who enjoys camping trips is not in the sixth house.\n",
+    "question": "What is FavoriteSport of the person who lives in House 4?",
+    "choices": [
+      "soccer",
+      "baseball",
+      "basketball",
+      "volleyball",
+      "swimming",
+      "tennis"
+    ],
+    "answer": "baseball",
+    "created_at": "2024-07-03T21:21:31.368002"
+  },
+  {
+    "id": "lgp-test-6x3-29#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Carol`, `Eric`, `Peter`, `Alice`, `Arnold`\n - Each person lives in a unique style of house: `victorian`, `ranch`, `modern`, `craftsman`, `mediterranean`, `colonial`\n - Everyone has a unique favorite cigar: `yellow monster`, `blue master`, `blends`, `pall mall`, `dunhill`, `prince`\n\n## Clues:\n1. The person living in a colonial-style house is not in the second house.\n2. The person partial to Pall Mall is somewhere to the left of the person in a ranch-style home.\n3. The person in a ranch-style home is not in the fourth house.\n4. The Prince smoker is not in the fourth house.\n5. The person in a Mediterranean-style villa is not in the fourth house.\n6. The person who smokes many unique blends is in the third house.\n7. The person in a modern-style house is directly left of Carol.\n8. The person residing in a Victorian house is somewhere to the left of the person in a ranch-style home.\n9. Eric is not in the sixth house.\n10. Alice and the person in a Craftsman-style house are next to each other.\n11. There are two houses between the person partial to Pall Mall and Bob.\n12. The person in a ranch-style home is not in the third house.\n13. The Prince smoker is somewhere to the right of the person in a Craftsman-style house.\n14. The person who smokes Yellow Monster is not in the second house.\n15. There are two houses between Arnold and Bob.\n16. The person living in a colonial-style house is directly left of the person in a Mediterranean-style villa.\n17. The person in a Mediterranean-style villa is not in the second house.\n18. The person who smokes Blue Master is somewhere to the right of the person living in a colonial-style house.\n19. The person living in a colonial-style house is directly left of Peter.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "blends",
+      "prince",
+      "yellow monster",
+      "pall mall",
+      "blue master",
+      "dunhill"
+    ],
+    "answer": "dunhill",
+    "created_at": "2024-07-03T21:21:31.368077"
+  },
+  {
+    "id": "lgp-test-6x3-30#mc-9",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Carol`, `Arnold`, `Alice`, `Peter`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `iphone 13`, `huawei p50`, `oneplus 9`, `xiaomi mi 11`\n - Each person has a favorite color: `white`, `yellow`, `blue`, `green`, `red`, `purple`\n\n## Clues:\n1. The person whose favorite color is green is the person who uses a Google Pixel 6.\n2. The person who uses a Xiaomi Mi 11 is somewhere to the right of the person who uses a Huawei P50.\n3. There are two houses between Peter and the person whose favorite color is red.\n4. Eric is somewhere to the right of the person whose favorite color is green.\n5. Carol is the person who uses an iPhone 13.\n6. The person who loves blue is not in the second house.\n7. The person who uses a Samsung Galaxy S21 is somewhere to the left of the person who loves yellow.\n8. The person who loves blue is somewhere to the left of the person who loves white.\n9. Carol and the person whose favorite color is red are next to each other.\n10. The person who uses a Google Pixel 6 is Bob.\n11. Alice is the person who uses a Xiaomi Mi 11.\n12. The person whose favorite color is green is not in the second house.\n13. The person who loves purple is directly left of Carol.\n14. Alice is the person who loves purple.\n",
+    "question": "What is Name of the person who lives in House 4?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Bob",
+      "Arnold",
+      "Carol",
+      "Alice"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.368220"
+  },
+  {
+    "id": "lgp-test-6x3-30#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Carol`, `Arnold`, `Alice`, `Peter`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `iphone 13`, `huawei p50`, `oneplus 9`, `xiaomi mi 11`\n - Each person has a favorite color: `white`, `yellow`, `blue`, `green`, `red`, `purple`\n\n## Clues:\n1. The person whose favorite color is green is the person who uses a Google Pixel 6.\n2. The person who uses a Xiaomi Mi 11 is somewhere to the right of the person who uses a Huawei P50.\n3. There are two houses between Peter and the person whose favorite color is red.\n4. Eric is somewhere to the right of the person whose favorite color is green.\n5. Carol is the person who uses an iPhone 13.\n6. The person who loves blue is not in the second house.\n7. The person who uses a Samsung Galaxy S21 is somewhere to the left of the person who loves yellow.\n8. The person who loves blue is somewhere to the left of the person who loves white.\n9. Carol and the person whose favorite color is red are next to each other.\n10. The person who uses a Google Pixel 6 is Bob.\n11. Alice is the person who uses a Xiaomi Mi 11.\n12. The person whose favorite color is green is not in the second house.\n13. The person who loves purple is directly left of Carol.\n14. Alice is the person who loves purple.\n",
+    "question": "What is PhoneModel of the person who lives in House 6?",
+    "choices": [
+      "xiaomi mi 11",
+      "iphone 13",
+      "oneplus 9",
+      "samsung galaxy s21",
+      "huawei p50",
+      "google pixel 6"
+    ],
+    "answer": "oneplus 9",
+    "created_at": "2024-07-03T21:21:31.368260"
+  },
+  {
+    "id": "lgp-test-6x3-31#mc-9",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Eric`, `Alice`, `Arnold`\n - Everyone has something unique for lunch: `stir fry`, `grilled cheese`, `soup`, `spaghetti`, `stew`, `pizza`\n - Each person lives in a unique style of house: `colonial`, `victorian`, `craftsman`, `mediterranean`, `ranch`, `modern`\n\n## Clues:\n1. The person in a ranch-style home is in the fifth house.\n2. The person in a modern-style house is not in the first house.\n3. The person who loves stir fry is directly left of Peter.\n4. There is one house between the person in a Craftsman-style house and Arnold.\n5. The person who loves eating grilled cheese is the person residing in a Victorian house.\n6. The person who loves the stew is the person living in a colonial-style house.\n7. The person who loves the soup is directly left of the person who is a pizza lover.\n8. Alice is the person who loves the stew.\n9. There are two houses between the person in a modern-style house and Arnold.\n10. The person who loves the stew is not in the sixth house.\n11. The person who loves the spaghetti eater is Bob.\n12. The person who loves eating grilled cheese is in the second house.\n13. Carol is not in the fourth house.\n",
+    "question": "What is Name of the person who lives in House 4?",
+    "choices": [
+      "Carol",
+      "Peter",
+      "Bob",
+      "Alice",
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.368323"
+  },
+  {
+    "id": "lgp-test-6x3-31#mc-17",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Peter`, `Eric`, `Alice`, `Arnold`\n - Everyone has something unique for lunch: `stir fry`, `grilled cheese`, `soup`, `spaghetti`, `stew`, `pizza`\n - Each person lives in a unique style of house: `colonial`, `victorian`, `craftsman`, `mediterranean`, `ranch`, `modern`\n\n## Clues:\n1. The person in a ranch-style home is in the fifth house.\n2. The person in a modern-style house is not in the first house.\n3. The person who loves stir fry is directly left of Peter.\n4. There is one house between the person in a Craftsman-style house and Arnold.\n5. The person who loves eating grilled cheese is the person residing in a Victorian house.\n6. The person who loves the stew is the person living in a colonial-style house.\n7. The person who loves the soup is directly left of the person who is a pizza lover.\n8. Alice is the person who loves the stew.\n9. There are two houses between the person in a modern-style house and Arnold.\n10. The person who loves the stew is not in the sixth house.\n11. The person who loves the spaghetti eater is Bob.\n12. The person who loves eating grilled cheese is in the second house.\n13. Carol is not in the fourth house.\n",
+    "question": "What is HouseStyle of the person who lives in House 6?",
+    "choices": [
+      "ranch",
+      "victorian",
+      "colonial",
+      "modern",
+      "mediterranean",
+      "craftsman"
+    ],
+    "answer": "mediterranean",
+    "created_at": "2024-07-03T21:21:31.368368"
+  },
+  {
+    "id": "lgp-test-6x3-32#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Carol`, `Peter`, `Bob`, `Eric`\n - People use unique phone models: `huawei p50`, `samsung galaxy s21`, `iphone 13`, `xiaomi mi 11`, `google pixel 6`, `oneplus 9`\n - Each person has a unique hobby: `photography`, `painting`, `gardening`, `woodworking`, `cooking`, `knitting`\n\n## Clues:\n1. The woodworking hobbyist is somewhere to the left of Bob.\n2. The person who paints as a hobby is in the fifth house.\n3. Arnold is directly left of the person who uses a Google Pixel 6.\n4. The person who uses a Samsung Galaxy S21 is Arnold.\n5. Carol is somewhere to the right of the person who uses a Samsung Galaxy S21.\n6. The person who uses a Google Pixel 6 is directly left of the person who uses a OnePlus 9.\n7. The person who uses a OnePlus 9 is somewhere to the right of Eric.\n8. There are two houses between the person who loves cooking and Peter.\n9. The person who enjoys knitting is Eric.\n10. Peter is the person who paints as a hobby.\n11. The person who enjoys gardening is somewhere to the right of Bob.\n12. There is one house between Bob and the person who uses a Huawei P50.\n13. The person who uses a Xiaomi Mi 11 is not in the first house.\n14. Alice is in the sixth house.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "iphone 13",
+      "oneplus 9",
+      "google pixel 6",
+      "huawei p50",
+      "xiaomi mi 11",
+      "samsung galaxy s21"
+    ],
+    "answer": "iphone 13",
+    "created_at": "2024-07-03T21:21:31.368380"
+  },
+  {
+    "id": "lgp-test-6x3-32#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Carol`, `Peter`, `Bob`, `Eric`\n - People use unique phone models: `huawei p50`, `samsung galaxy s21`, `iphone 13`, `xiaomi mi 11`, `google pixel 6`, `oneplus 9`\n - Each person has a unique hobby: `photography`, `painting`, `gardening`, `woodworking`, `cooking`, `knitting`\n\n## Clues:\n1. The woodworking hobbyist is somewhere to the left of Bob.\n2. The person who paints as a hobby is in the fifth house.\n3. Arnold is directly left of the person who uses a Google Pixel 6.\n4. The person who uses a Samsung Galaxy S21 is Arnold.\n5. Carol is somewhere to the right of the person who uses a Samsung Galaxy S21.\n6. The person who uses a Google Pixel 6 is directly left of the person who uses a OnePlus 9.\n7. The person who uses a OnePlus 9 is somewhere to the right of Eric.\n8. There are two houses between the person who loves cooking and Peter.\n9. The person who enjoys knitting is Eric.\n10. Peter is the person who paints as a hobby.\n11. The person who enjoys gardening is somewhere to the right of Bob.\n12. There is one house between Bob and the person who uses a Huawei P50.\n13. The person who uses a Xiaomi Mi 11 is not in the first house.\n14. Alice is in the sixth house.\n",
+    "question": "What is Hobby of the person who lives in House 4?",
+    "choices": [
+      "gardening",
+      "knitting",
+      "painting",
+      "cooking",
+      "photography",
+      "woodworking"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.368441"
+  },
+  {
+    "id": "lgp-test-6x3-32#mc-14",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Carol`, `Peter`, `Bob`, `Eric`\n - People use unique phone models: `huawei p50`, `samsung galaxy s21`, `iphone 13`, `xiaomi mi 11`, `google pixel 6`, `oneplus 9`\n - Each person has a unique hobby: `photography`, `painting`, `gardening`, `woodworking`, `cooking`, `knitting`\n\n## Clues:\n1. The woodworking hobbyist is somewhere to the left of Bob.\n2. The person who paints as a hobby is in the fifth house.\n3. Arnold is directly left of the person who uses a Google Pixel 6.\n4. The person who uses a Samsung Galaxy S21 is Arnold.\n5. Carol is somewhere to the right of the person who uses a Samsung Galaxy S21.\n6. The person who uses a Google Pixel 6 is directly left of the person who uses a OnePlus 9.\n7. The person who uses a OnePlus 9 is somewhere to the right of Eric.\n8. There are two houses between the person who loves cooking and Peter.\n9. The person who enjoys knitting is Eric.\n10. Peter is the person who paints as a hobby.\n11. The person who enjoys gardening is somewhere to the right of Bob.\n12. There is one house between Bob and the person who uses a Huawei P50.\n13. The person who uses a Xiaomi Mi 11 is not in the first house.\n14. Alice is in the sixth house.\n",
+    "question": "What is Hobby of the person who lives in House 5?",
+    "choices": [
+      "painting",
+      "cooking",
+      "woodworking",
+      "photography",
+      "gardening",
+      "knitting"
+    ],
+    "answer": "painting",
+    "created_at": "2024-07-03T21:21:31.368463"
+  },
+  {
+    "id": "lgp-test-6x3-33#mc-2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Bob`, `Alice`, `Arnold`\n - People have unique favorite music genres: `country`, `classical`, `jazz`, `hip hop`, `rock`, `pop`\n - Each person has a unique birthday month: `jan`, `feb`, `april`, `mar`, `sept`, `may`\n\n## Clues:\n1. Peter is in the first house.\n2. The person who loves rock music is the person whose birthday is in January.\n3. Arnold is in the fourth house.\n4. The person whose birthday is in January is somewhere to the right of the person who loves classical music.\n5. Eric is not in the sixth house.\n6. The person whose birthday is in February is somewhere to the left of Eric.\n7. Bob is the person whose birthday is in March.\n8. There is one house between Bob and the person who loves jazz music.\n9. The person who loves rock music and Carol are next to each other.\n10. The person who loves country music is not in the sixth house.\n11. Alice is directly left of the person whose birthday is in February.\n12. The person who loves pop music is somewhere to the left of the person who loves country music.\n13. The person whose birthday is in April is not in the first house.\n14. The person who loves rock music and the person whose birthday is in September are next to each other.\n15. The person who loves classical music is the person whose birthday is in March.\n",
+    "question": "What is Birthday of the person who lives in House 1?",
+    "choices": [
+      "may",
+      "mar",
+      "april",
+      "jan",
+      "feb",
+      "sept"
+    ],
+    "answer": "may",
+    "created_at": "2024-07-03T21:21:31.368502"
+  },
+  {
+    "id": "lgp-test-6x3-33#mc-16",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Bob`, `Alice`, `Arnold`\n - People have unique favorite music genres: `country`, `classical`, `jazz`, `hip hop`, `rock`, `pop`\n - Each person has a unique birthday month: `jan`, `feb`, `april`, `mar`, `sept`, `may`\n\n## Clues:\n1. Peter is in the first house.\n2. The person who loves rock music is the person whose birthday is in January.\n3. Arnold is in the fourth house.\n4. The person whose birthday is in January is somewhere to the right of the person who loves classical music.\n5. Eric is not in the sixth house.\n6. The person whose birthday is in February is somewhere to the left of Eric.\n7. Bob is the person whose birthday is in March.\n8. There is one house between Bob and the person who loves jazz music.\n9. The person who loves rock music and Carol are next to each other.\n10. The person who loves country music is not in the sixth house.\n11. Alice is directly left of the person whose birthday is in February.\n12. The person who loves pop music is somewhere to the left of the person who loves country music.\n13. The person whose birthday is in April is not in the first house.\n14. The person who loves rock music and the person whose birthday is in September are next to each other.\n15. The person who loves classical music is the person whose birthday is in March.\n",
+    "question": "What is MusicGenre of the person who lives in House 6?",
+    "choices": [
+      "pop",
+      "classical",
+      "country",
+      "rock",
+      "hip hop",
+      "jazz"
+    ],
+    "answer": "hip hop",
+    "created_at": "2024-07-03T21:21:31.368585"
+  },
+  {
+    "id": "lgp-test-6x3-34#mc-4",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Carol`, `Eric`, `Arnold`, `Bob`\n - Each person has a unique birthday month: `mar`, `feb`, `jan`, `sept`, `may`, `april`\n - Each person has a unique hobby: `knitting`, `gardening`, `woodworking`, `painting`, `cooking`, `photography`\n\n## Clues:\n1. There is one house between Carol and the woodworking hobbyist.\n2. The woodworking hobbyist is somewhere to the right of Bob.\n3. The person whose birthday is in March is directly left of the person who loves cooking.\n4. Carol is in the third house.\n5. The person whose birthday is in March is somewhere to the left of the person who paints as a hobby.\n6. Arnold is not in the fifth house.\n7. The photography enthusiast is somewhere to the right of the person whose birthday is in May.\n8. The person whose birthday is in September is the woodworking hobbyist.\n9. There is one house between the person who loves cooking and Eric.\n10. The person whose birthday is in May is directly left of the person whose birthday is in September.\n11. Bob is somewhere to the right of the person who enjoys knitting.\n12. The person whose birthday is in February is the photography enthusiast.\n13. The person whose birthday is in April is the person who paints as a hobby.\n14. Alice is in the first house.\n",
+    "question": "What is Birthday of the person who lives in House 2?",
+    "choices": [
+      "sept",
+      "april",
+      "jan",
+      "may",
+      "mar",
+      "feb"
+    ],
+    "answer": "jan",
+    "created_at": "2024-07-03T21:21:31.368625"
+  },
+  {
+    "id": "lgp-test-6x3-34#mc-8",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Carol`, `Eric`, `Arnold`, `Bob`\n - Each person has a unique birthday month: `mar`, `feb`, `jan`, `sept`, `may`, `april`\n - Each person has a unique hobby: `knitting`, `gardening`, `woodworking`, `painting`, `cooking`, `photography`\n\n## Clues:\n1. There is one house between Carol and the woodworking hobbyist.\n2. The woodworking hobbyist is somewhere to the right of Bob.\n3. The person whose birthday is in March is directly left of the person who loves cooking.\n4. Carol is in the third house.\n5. The person whose birthday is in March is somewhere to the left of the person who paints as a hobby.\n6. Arnold is not in the fifth house.\n7. The photography enthusiast is somewhere to the right of the person whose birthday is in May.\n8. The person whose birthday is in September is the woodworking hobbyist.\n9. There is one house between the person who loves cooking and Eric.\n10. The person whose birthday is in May is directly left of the person whose birthday is in September.\n11. Bob is somewhere to the right of the person who enjoys knitting.\n12. The person whose birthday is in February is the photography enthusiast.\n13. The person whose birthday is in April is the person who paints as a hobby.\n14. Alice is in the first house.\n",
+    "question": "What is Hobby of the person who lives in House 3?",
+    "choices": [
+      "gardening",
+      "photography",
+      "woodworking",
+      "knitting",
+      "cooking",
+      "painting"
+    ],
+    "answer": "painting",
+    "created_at": "2024-07-03T21:21:31.368684"
+  },
+  {
+    "id": "lgp-test-6x3-34#mc-11",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Carol`, `Eric`, `Arnold`, `Bob`\n - Each person has a unique birthday month: `mar`, `feb`, `jan`, `sept`, `may`, `april`\n - Each person has a unique hobby: `knitting`, `gardening`, `woodworking`, `painting`, `cooking`, `photography`\n\n## Clues:\n1. There is one house between Carol and the woodworking hobbyist.\n2. The woodworking hobbyist is somewhere to the right of Bob.\n3. The person whose birthday is in March is directly left of the person who loves cooking.\n4. Carol is in the third house.\n5. The person whose birthday is in March is somewhere to the left of the person who paints as a hobby.\n6. Arnold is not in the fifth house.\n7. The photography enthusiast is somewhere to the right of the person whose birthday is in May.\n8. The person whose birthday is in September is the woodworking hobbyist.\n9. There is one house between the person who loves cooking and Eric.\n10. The person whose birthday is in May is directly left of the person whose birthday is in September.\n11. Bob is somewhere to the right of the person who enjoys knitting.\n12. The person whose birthday is in February is the photography enthusiast.\n13. The person whose birthday is in April is the person who paints as a hobby.\n14. Alice is in the first house.\n",
+    "question": "What is Hobby of the person who lives in House 4?",
+    "choices": [
+      "woodworking",
+      "photography",
+      "cooking",
+      "gardening",
+      "knitting",
+      "painting"
+    ],
+    "answer": "gardening",
+    "created_at": "2024-07-03T21:21:31.368701"
+  },
+  {
+    "id": "lgp-test-6x3-34#mc-12",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Carol`, `Eric`, `Arnold`, `Bob`\n - Each person has a unique birthday month: `mar`, `feb`, `jan`, `sept`, `may`, `april`\n - Each person has a unique hobby: `knitting`, `gardening`, `woodworking`, `painting`, `cooking`, `photography`\n\n## Clues:\n1. There is one house between Carol and the woodworking hobbyist.\n2. The woodworking hobbyist is somewhere to the right of Bob.\n3. The person whose birthday is in March is directly left of the person who loves cooking.\n4. Carol is in the third house.\n5. The person whose birthday is in March is somewhere to the left of the person who paints as a hobby.\n6. Arnold is not in the fifth house.\n7. The photography enthusiast is somewhere to the right of the person whose birthday is in May.\n8. The person whose birthday is in September is the woodworking hobbyist.\n9. There is one house between the person who loves cooking and Eric.\n10. The person whose birthday is in May is directly left of the person whose birthday is in September.\n11. Bob is somewhere to the right of the person who enjoys knitting.\n12. The person whose birthday is in February is the photography enthusiast.\n13. The person whose birthday is in April is the person who paints as a hobby.\n14. Alice is in the first house.\n",
+    "question": "What is Name of the person who lives in House 5?",
+    "choices": [
+      "Peter",
+      "Arnold",
+      "Bob",
+      "Eric",
+      "Carol",
+      "Alice"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.368707"
+  },
+  {
+    "id": "lgp-test-6x3-35#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Arnold`, `Carol`, `Bob`, `Peter`\n - Each person has a unique level of education: `master`, `bachelor`, `high school`, `doctorate`, `associate`, `trade school`\n - People use unique phone models: `huawei p50`, `google pixel 6`, `oneplus 9`, `xiaomi mi 11`, `iphone 13`, `samsung galaxy s21`\n\n## Clues:\n1. The person with a bachelor's degree is somewhere to the left of the person with a master's degree.\n2. The person with an associate's degree is the person who uses a Samsung Galaxy S21.\n3. The person who uses a Google Pixel 6 is Alice.\n4. The person who uses a Xiaomi Mi 11 is the person with a bachelor's degree.\n5. The person who uses a Huawei P50 is in the third house.\n6. There is one house between Arnold and Bob.\n7. Arnold is in the second house.\n8. Peter is somewhere to the left of the person who uses a Huawei P50.\n9. There is one house between the person who uses an iPhone 13 and Eric.\n10. The person with a doctorate is directly left of the person with an associate's degree.\n11. The person with a master's degree is the person who uses a Huawei P50.\n12. The person with a high school diploma is Arnold.\n",
+    "question": "What is PhoneModel of the person who lives in House 2?",
+    "choices": [
+      "xiaomi mi 11",
+      "huawei p50",
+      "oneplus 9",
+      "iphone 13",
+      "google pixel 6",
+      "samsung galaxy s21"
+    ],
+    "answer": "oneplus 9",
+    "created_at": "2024-07-03T21:21:31.368774"
+  },
+  {
+    "id": "lgp-test-6x3-35#mc-6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Arnold`, `Carol`, `Bob`, `Peter`\n - Each person has a unique level of education: `master`, `bachelor`, `high school`, `doctorate`, `associate`, `trade school`\n - People use unique phone models: `huawei p50`, `google pixel 6`, `oneplus 9`, `xiaomi mi 11`, `iphone 13`, `samsung galaxy s21`\n\n## Clues:\n1. The person with a bachelor's degree is somewhere to the left of the person with a master's degree.\n2. The person with an associate's degree is the person who uses a Samsung Galaxy S21.\n3. The person who uses a Google Pixel 6 is Alice.\n4. The person who uses a Xiaomi Mi 11 is the person with a bachelor's degree.\n5. The person who uses a Huawei P50 is in the third house.\n6. There is one house between Arnold and Bob.\n7. Arnold is in the second house.\n8. Peter is somewhere to the left of the person who uses a Huawei P50.\n9. There is one house between the person who uses an iPhone 13 and Eric.\n10. The person with a doctorate is directly left of the person with an associate's degree.\n11. The person with a master's degree is the person who uses a Huawei P50.\n12. The person with a high school diploma is Arnold.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Bob",
+      "Peter",
+      "Alice",
+      "Eric",
+      "Arnold",
+      "Carol"
+    ],
+    "answer": "Carol",
+    "created_at": "2024-07-03T21:21:31.368780"
+  },
+  {
+    "id": "lgp-test-6x3-36#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`, `Carol`, `Bob`, `Alice`\n - Everyone has a favorite smoothie: `blueberry`, `watermelon`, `cherry`, `lime`, `dragonfruit`, `desert`\n - The people keep unique animals: `bird`, `cat`, `fish`, `horse`, `dog`, `rabbit`\n\n## Clues:\n1. The Desert smoothie lover is directly left of Arnold.\n2. Carol is the rabbit owner.\n3. The Watermelon smoothie lover is the cat lover.\n4. The dog owner is somewhere to the right of Peter.\n5. The person who keeps horses is directly left of Carol.\n6. Eric is not in the fifth house.\n7. The person who drinks Lime smoothies is in the sixth house.\n8. Carol is in the sixth house.\n9. The bird keeper and the person who keeps horses are next to each other.\n10. Alice is in the second house.\n11. Arnold is in the third house.\n12. The Dragonfruit smoothie lover is the dog owner.\n13. The person who drinks Blueberry smoothies is not in the fifth house.\n",
+    "question": "What is Animal of the person who lives in House 2?",
+    "choices": [
+      "dog",
+      "bird",
+      "fish",
+      "rabbit",
+      "horse",
+      "cat"
+    ],
+    "answer": "fish",
+    "created_at": "2024-07-03T21:21:31.368877"
+  },
+  {
+    "id": "lgp-test-6x3-36#mc-12",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`, `Carol`, `Bob`, `Alice`\n - Everyone has a favorite smoothie: `blueberry`, `watermelon`, `cherry`, `lime`, `dragonfruit`, `desert`\n - The people keep unique animals: `bird`, `cat`, `fish`, `horse`, `dog`, `rabbit`\n\n## Clues:\n1. The Desert smoothie lover is directly left of Arnold.\n2. Carol is the rabbit owner.\n3. The Watermelon smoothie lover is the cat lover.\n4. The dog owner is somewhere to the right of Peter.\n5. The person who keeps horses is directly left of Carol.\n6. Eric is not in the fifth house.\n7. The person who drinks Lime smoothies is in the sixth house.\n8. Carol is in the sixth house.\n9. The bird keeper and the person who keeps horses are next to each other.\n10. Alice is in the second house.\n11. Arnold is in the third house.\n12. The Dragonfruit smoothie lover is the dog owner.\n13. The person who drinks Blueberry smoothies is not in the fifth house.\n",
+    "question": "What is Name of the person who lives in House 5?",
+    "choices": [
+      "Peter",
+      "Eric",
+      "Arnold",
+      "Carol",
+      "Bob",
+      "Alice"
+    ],
+    "answer": "Bob",
+    "created_at": "2024-07-03T21:21:31.368915"
+  },
+  {
+    "id": "lgp-test-6x3-36#mc-13",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`, `Carol`, `Bob`, `Alice`\n - Everyone has a favorite smoothie: `blueberry`, `watermelon`, `cherry`, `lime`, `dragonfruit`, `desert`\n - The people keep unique animals: `bird`, `cat`, `fish`, `horse`, `dog`, `rabbit`\n\n## Clues:\n1. The Desert smoothie lover is directly left of Arnold.\n2. Carol is the rabbit owner.\n3. The Watermelon smoothie lover is the cat lover.\n4. The dog owner is somewhere to the right of Peter.\n5. The person who keeps horses is directly left of Carol.\n6. Eric is not in the fifth house.\n7. The person who drinks Lime smoothies is in the sixth house.\n8. Carol is in the sixth house.\n9. The bird keeper and the person who keeps horses are next to each other.\n10. Alice is in the second house.\n11. Arnold is in the third house.\n12. The Dragonfruit smoothie lover is the dog owner.\n13. The person who drinks Blueberry smoothies is not in the fifth house.\n",
+    "question": "What is Smoothie of the person who lives in House 5?",
+    "choices": [
+      "dragonfruit",
+      "lime",
+      "watermelon",
+      "blueberry",
+      "desert",
+      "cherry"
+    ],
+    "answer": "cherry",
+    "created_at": "2024-07-03T21:21:31.368921"
+  },
+  {
+    "id": "lgp-test-6x3-37#mc-13",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Arnold`, `Bob`, `Peter`, `Carol`\n - Each person has a unique hobby: `woodworking`, `knitting`, `cooking`, `gardening`, `painting`, `photography`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `blends`, `prince`, `dunhill`, `yellow monster`\n\n## Clues:\n1. Alice is the person who loves cooking.\n2. Bob is not in the second house.\n3. The person who enjoys gardening is the person who smokes Blue Master.\n4. The person partial to Pall Mall is the person who enjoys knitting.\n5. The person who enjoys gardening is directly left of the Dunhill smoker.\n6. The person who smokes many unique blends is directly left of Carol.\n7. The person partial to Pall Mall is directly left of Bob.\n8. The Dunhill smoker is the person who paints as a hobby.\n9. The person who smokes Yellow Monster is in the second house.\n10. The woodworking hobbyist is somewhere to the right of the Dunhill smoker.\n11. Eric is somewhere to the left of the person who enjoys gardening.\n12. There are two houses between the photography enthusiast and Peter.\n",
+    "question": "What is Hobby of the person who lives in House 5?",
+    "choices": [
+      "woodworking",
+      "painting",
+      "knitting",
+      "gardening",
+      "cooking",
+      "photography"
+    ],
+    "answer": "painting",
+    "created_at": "2024-07-03T21:21:31.369023"
+  },
+  {
+    "id": "lgp-test-6x3-37#mc-15",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Arnold`, `Bob`, `Peter`, `Carol`\n - Each person has a unique hobby: `woodworking`, `knitting`, `cooking`, `gardening`, `painting`, `photography`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `blends`, `prince`, `dunhill`, `yellow monster`\n\n## Clues:\n1. Alice is the person who loves cooking.\n2. Bob is not in the second house.\n3. The person who enjoys gardening is the person who smokes Blue Master.\n4. The person partial to Pall Mall is the person who enjoys knitting.\n5. The person who enjoys gardening is directly left of the Dunhill smoker.\n6. The person who smokes many unique blends is directly left of Carol.\n7. The person partial to Pall Mall is directly left of Bob.\n8. The Dunhill smoker is the person who paints as a hobby.\n9. The person who smokes Yellow Monster is in the second house.\n10. The woodworking hobbyist is somewhere to the right of the Dunhill smoker.\n11. Eric is somewhere to the left of the person who enjoys gardening.\n12. There are two houses between the photography enthusiast and Peter.\n",
+    "question": "What is Name of the person who lives in House 6?",
+    "choices": [
+      "Eric",
+      "Alice",
+      "Peter",
+      "Arnold",
+      "Carol",
+      "Bob"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.369035"
+  },
+  {
+    "id": "lgp-test-6x3-37#mc-17",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Arnold`, `Bob`, `Peter`, `Carol`\n - Each person has a unique hobby: `woodworking`, `knitting`, `cooking`, `gardening`, `painting`, `photography`\n - Everyone has a unique favorite cigar: `pall mall`, `blue master`, `blends`, `prince`, `dunhill`, `yellow monster`\n\n## Clues:\n1. Alice is the person who loves cooking.\n2. Bob is not in the second house.\n3. The person who enjoys gardening is the person who smokes Blue Master.\n4. The person partial to Pall Mall is the person who enjoys knitting.\n5. The person who enjoys gardening is directly left of the Dunhill smoker.\n6. The person who smokes many unique blends is directly left of Carol.\n7. The person partial to Pall Mall is directly left of Bob.\n8. The Dunhill smoker is the person who paints as a hobby.\n9. The person who smokes Yellow Monster is in the second house.\n10. The woodworking hobbyist is somewhere to the right of the Dunhill smoker.\n11. Eric is somewhere to the left of the person who enjoys gardening.\n12. There are two houses between the photography enthusiast and Peter.\n",
+    "question": "What is Cigar of the person who lives in House 6?",
+    "choices": [
+      "blue master",
+      "prince",
+      "yellow monster",
+      "dunhill",
+      "pall mall",
+      "blends"
+    ],
+    "answer": "prince",
+    "created_at": "2024-07-03T21:21:31.369046"
+  },
+  {
+    "id": "lgp-test-6x3-38#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Eric`, `Arnold`, `Alice`, `Peter`\n - People have unique hair colors: `black`, `gray`, `red`, `blonde`, `auburn`, `brown`\n - The people keep unique animals: `dog`, `cat`, `horse`, `rabbit`, `fish`, `bird`\n\n## Clues:\n1. The person who has red hair is in the third house.\n2. The person who has black hair is somewhere to the right of Eric.\n3. The bird keeper is Bob.\n4. The person who has brown hair is directly left of the rabbit owner.\n5. Eric is in the first house.\n6. Alice is the cat lover.\n7. Arnold is somewhere to the left of the rabbit owner.\n8. The fish enthusiast is the person who has auburn hair.\n9. Eric is the person who keeps horses.\n10. Carol is not in the sixth house.\n11. The person who has blonde hair is in the fourth house.\n12. The fish enthusiast is not in the second house.\n13. Alice is not in the sixth house.\n14. Carol is the fish enthusiast.\n",
+    "question": "What is HairColor of the person who lives in House 1?",
+    "choices": [
+      "blonde",
+      "auburn",
+      "brown",
+      "red",
+      "gray",
+      "black"
+    ],
+    "answer": "gray",
+    "created_at": "2024-07-03T21:21:31.369060"
+  },
+  {
+    "id": "lgp-test-6x3-38#mc-5",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Eric`, `Arnold`, `Alice`, `Peter`\n - People have unique hair colors: `black`, `gray`, `red`, `blonde`, `auburn`, `brown`\n - The people keep unique animals: `dog`, `cat`, `horse`, `rabbit`, `fish`, `bird`\n\n## Clues:\n1. The person who has red hair is in the third house.\n2. The person who has black hair is somewhere to the right of Eric.\n3. The bird keeper is Bob.\n4. The person who has brown hair is directly left of the rabbit owner.\n5. Eric is in the first house.\n6. Alice is the cat lover.\n7. Arnold is somewhere to the left of the rabbit owner.\n8. The fish enthusiast is the person who has auburn hair.\n9. Eric is the person who keeps horses.\n10. Carol is not in the sixth house.\n11. The person who has blonde hair is in the fourth house.\n12. The fish enthusiast is not in the second house.\n13. Alice is not in the sixth house.\n14. Carol is the fish enthusiast.\n",
+    "question": "What is Animal of the person who lives in House 2?",
+    "choices": [
+      "cat",
+      "dog",
+      "rabbit",
+      "fish",
+      "bird",
+      "horse"
+    ],
+    "answer": "dog",
+    "created_at": "2024-07-03T21:21:31.369082"
+  },
+  {
+    "id": "lgp-test-6x3-38#mc-6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Eric`, `Arnold`, `Alice`, `Peter`\n - People have unique hair colors: `black`, `gray`, `red`, `blonde`, `auburn`, `brown`\n - The people keep unique animals: `dog`, `cat`, `horse`, `rabbit`, `fish`, `bird`\n\n## Clues:\n1. The person who has red hair is in the third house.\n2. The person who has black hair is somewhere to the right of Eric.\n3. The bird keeper is Bob.\n4. The person who has brown hair is directly left of the rabbit owner.\n5. Eric is in the first house.\n6. Alice is the cat lover.\n7. Arnold is somewhere to the left of the rabbit owner.\n8. The fish enthusiast is the person who has auburn hair.\n9. Eric is the person who keeps horses.\n10. Carol is not in the sixth house.\n11. The person who has blonde hair is in the fourth house.\n12. The fish enthusiast is not in the second house.\n13. Alice is not in the sixth house.\n14. Carol is the fish enthusiast.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Bob",
+      "Alice",
+      "Carol",
+      "Arnold",
+      "Peter",
+      "Eric"
+    ],
+    "answer": "Peter",
+    "created_at": "2024-07-03T21:21:31.369087"
+  },
+  {
+    "id": "lgp-test-6x3-39#mc-1",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Carol`, `Alice`, `Bob`, `Eric`\n - Each mother is accompanied by their child: `Alice`, `Timothy`, `Bella`, `Meredith`, `Fred`, `Samantha`\n - Everyone has a favorite smoothie: `desert`, `cherry`, `watermelon`, `blueberry`, `lime`, `dragonfruit`\n\n## Clues:\n1. The person's child is named Fred and the Desert smoothie lover are next to each other.\n2. The person who drinks Blueberry smoothies is somewhere to the left of the person's child is named Fred.\n3. Alice is not in the fifth house.\n4. The person's child is named Samantha is not in the second house.\n5. The Watermelon smoothie lover is somewhere to the right of the person who likes Cherry smoothies.\n6. Alice is the person's child is named Alice.\n7. Alice is the Watermelon smoothie lover.\n8. Peter is somewhere to the right of the person's child is named Samantha.\n9. Arnold is not in the second house.\n10. Bob is the person who is the mother of Timothy.\n11. Arnold is directly left of Carol.\n12. The person who likes Cherry smoothies is directly left of the person's child is named Samantha.\n13. The person's child is named Meredith is in the sixth house.\n14. The Dragonfruit smoothie lover is the person's child is named Meredith.\n",
+    "question": "What is Children of the person who lives in House 1?",
+    "choices": [
+      "Alice",
+      "Fred",
+      "Timothy",
+      "Samantha",
+      "Bella",
+      "Meredith"
+    ],
+    "answer": "Bella",
+    "created_at": "2024-07-03T21:21:31.369160"
+  },
+  {
+    "id": "lgp-test-6x3-39#mc-6",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Carol`, `Alice`, `Bob`, `Eric`\n - Each mother is accompanied by their child: `Alice`, `Timothy`, `Bella`, `Meredith`, `Fred`, `Samantha`\n - Everyone has a favorite smoothie: `desert`, `cherry`, `watermelon`, `blueberry`, `lime`, `dragonfruit`\n\n## Clues:\n1. The person's child is named Fred and the Desert smoothie lover are next to each other.\n2. The person who drinks Blueberry smoothies is somewhere to the left of the person's child is named Fred.\n3. Alice is not in the fifth house.\n4. The person's child is named Samantha is not in the second house.\n5. The Watermelon smoothie lover is somewhere to the right of the person who likes Cherry smoothies.\n6. Alice is the person's child is named Alice.\n7. Alice is the Watermelon smoothie lover.\n8. Peter is somewhere to the right of the person's child is named Samantha.\n9. Arnold is not in the second house.\n10. Bob is the person who is the mother of Timothy.\n11. Arnold is directly left of Carol.\n12. The person who likes Cherry smoothies is directly left of the person's child is named Samantha.\n13. The person's child is named Meredith is in the sixth house.\n14. The Dragonfruit smoothie lover is the person's child is named Meredith.\n",
+    "question": "What is Name of the person who lives in House 3?",
+    "choices": [
+      "Eric",
+      "Bob",
+      "Peter",
+      "Alice",
+      "Carol",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.369189"
+  },
+  {
+    "id": "lgp-test-6x3-39#mc-14",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Carol`, `Alice`, `Bob`, `Eric`\n - Each mother is accompanied by their child: `Alice`, `Timothy`, `Bella`, `Meredith`, `Fred`, `Samantha`\n - Everyone has a favorite smoothie: `desert`, `cherry`, `watermelon`, `blueberry`, `lime`, `dragonfruit`\n\n## Clues:\n1. The person's child is named Fred and the Desert smoothie lover are next to each other.\n2. The person who drinks Blueberry smoothies is somewhere to the left of the person's child is named Fred.\n3. Alice is not in the fifth house.\n4. The person's child is named Samantha is not in the second house.\n5. The Watermelon smoothie lover is somewhere to the right of the person who likes Cherry smoothies.\n6. Alice is the person's child is named Alice.\n7. Alice is the Watermelon smoothie lover.\n8. Peter is somewhere to the right of the person's child is named Samantha.\n9. Arnold is not in the second house.\n10. Bob is the person who is the mother of Timothy.\n11. Arnold is directly left of Carol.\n12. The person who likes Cherry smoothies is directly left of the person's child is named Samantha.\n13. The person's child is named Meredith is in the sixth house.\n14. The Dragonfruit smoothie lover is the person's child is named Meredith.\n",
+    "question": "What is Smoothie of the person who lives in House 5?",
+    "choices": [
+      "watermelon",
+      "blueberry",
+      "dragonfruit",
+      "lime",
+      "cherry",
+      "desert"
+    ],
+    "answer": "lime",
+    "created_at": "2024-07-03T21:21:31.369233"
+  }
+]

@@ -1,0 +1,1685 @@
+[
+  {
+    "id": "lgp-test-2x5-0#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique heights: `very short`, `short`\n\n## Clues:\n1. The person who is short is somewhere to the right of the person who loves yellow.\n2. The person who loves science fiction books is in the second house.\n3. The person whose birthday is in April is the person who loves yellow.\n4. Arnold is the person who loves science fiction books.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302004"
+  },
+  {
+    "id": "lgp-test-2x5-0#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique heights: `very short`, `short`\n\n## Clues:\n1. The person who is short is somewhere to the right of the person who loves yellow.\n2. The person who loves science fiction books is in the second house.\n3. The person whose birthday is in April is the person who loves yellow.\n4. Arnold is the person who loves science fiction books.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "mystery",
+    "created_at": "2024-07-03T21:21:31.302010"
+  },
+  {
+    "id": "lgp-test-2x5-0#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique heights: `very short`, `short`\n\n## Clues:\n1. The person who is short is somewhere to the right of the person who loves yellow.\n2. The person who loves science fiction books is in the second house.\n3. The person whose birthday is in April is the person who loves yellow.\n4. Arnold is the person who loves science fiction books.\n",
+    "question": "What is Birthday of the person who lives in House 2?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "sept",
+    "created_at": "2024-07-03T21:21:31.302039"
+  },
+  {
+    "id": "lgp-test-2x5-0#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique heights: `very short`, `short`\n\n## Clues:\n1. The person who is short is somewhere to the right of the person who loves yellow.\n2. The person who loves science fiction books is in the second house.\n3. The person whose birthday is in April is the person who loves yellow.\n4. Arnold is the person who loves science fiction books.\n",
+    "question": "What is Color of the person who lives in House 2?",
+    "choices": [
+      "red",
+      "yellow"
+    ],
+    "answer": "red",
+    "created_at": "2024-07-03T21:21:31.302044"
+  },
+  {
+    "id": "lgp-test-2x5-1#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The people keep unique animals: `cat`, `horse`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - Each person has a unique type of pet: `cat`, `dog`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold and the person who uses a Samsung Galaxy S21 are next to each other.\n2. The person partial to Pall Mall and Eric are next to each other.\n3. The person who owns a dog is directly left of Eric.\n4. The cat lover and the person who uses a Samsung Galaxy S21 are next to each other.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "samsung galaxy s21",
+      "iphone 13"
+    ],
+    "answer": "iphone 13",
+    "created_at": "2024-07-03T21:21:31.302064"
+  },
+  {
+    "id": "lgp-test-2x5-1#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The people keep unique animals: `cat`, `horse`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - Each person has a unique type of pet: `cat`, `dog`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold and the person who uses a Samsung Galaxy S21 are next to each other.\n2. The person partial to Pall Mall and Eric are next to each other.\n3. The person who owns a dog is directly left of Eric.\n4. The cat lover and the person who uses a Samsung Galaxy S21 are next to each other.\n",
+    "question": "What is Animal of the person who lives in House 2?",
+    "choices": [
+      "horse",
+      "cat"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.302083"
+  },
+  {
+    "id": "lgp-test-2x5-1#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The people keep unique animals: `cat`, `horse`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - Each person has a unique type of pet: `cat`, `dog`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold and the person who uses a Samsung Galaxy S21 are next to each other.\n2. The person partial to Pall Mall and Eric are next to each other.\n3. The person who owns a dog is directly left of Eric.\n4. The cat lover and the person who uses a Samsung Galaxy S21 are next to each other.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "prince",
+      "pall mall"
+    ],
+    "answer": "prince",
+    "created_at": "2024-07-03T21:21:31.302099"
+  },
+  {
+    "id": "lgp-test-2x5-2#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People own unique car models: `ford f150`, `tesla model 3`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a unique type of pet: `dog`, `cat`\n\n## Clues:\n1. The person who enjoys gardening is in the second house.\n2. The person who has a cat is the person who owns a Tesla Model 3.\n3. The photography enthusiast is Arnold.\n4. The person who owns a Ford F-150 is the person who enjoys gardening.\n5. The person who loves pop music is in the second house.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "pop",
+      "rock"
+    ],
+    "answer": "rock",
+    "created_at": "2024-07-03T21:21:31.302121"
+  },
+  {
+    "id": "lgp-test-2x5-2#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People own unique car models: `ford f150`, `tesla model 3`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a unique type of pet: `dog`, `cat`\n\n## Clues:\n1. The person who enjoys gardening is in the second house.\n2. The person who has a cat is the person who owns a Tesla Model 3.\n3. The photography enthusiast is Arnold.\n4. The person who owns a Ford F-150 is the person who enjoys gardening.\n5. The person who loves pop music is in the second house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302130"
+  },
+  {
+    "id": "lgp-test-2x5-2#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People own unique car models: `ford f150`, `tesla model 3`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a unique type of pet: `dog`, `cat`\n\n## Clues:\n1. The person who enjoys gardening is in the second house.\n2. The person who has a cat is the person who owns a Tesla Model 3.\n3. The photography enthusiast is Arnold.\n4. The person who owns a Ford F-150 is the person who enjoys gardening.\n5. The person who loves pop music is in the second house.\n",
+    "question": "What is Pet of the person who lives in House 2?",
+    "choices": [
+      "dog",
+      "cat"
+    ],
+    "answer": "dog",
+    "created_at": "2024-07-03T21:21:31.302151"
+  },
+  {
+    "id": "lgp-test-2x5-3#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - People have unique favorite music genres: `rock`, `pop`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves mystery books is the person who loves rock music.\n2. Arnold is not in the first house.\n3. The person who loves mystery books is the person who enjoys gardening.\n4. The person whose birthday is in April is Arnold.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302158"
+  },
+  {
+    "id": "lgp-test-2x5-3#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - People have unique favorite music genres: `rock`, `pop`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves mystery books is the person who loves rock music.\n2. Arnold is not in the first house.\n3. The person who loves mystery books is the person who enjoys gardening.\n4. The person whose birthday is in April is Arnold.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is Birthday of the person who lives in House 1?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "sept",
+    "created_at": "2024-07-03T21:21:31.302178"
+  },
+  {
+    "id": "lgp-test-2x5-3#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - People have unique favorite music genres: `rock`, `pop`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves mystery books is the person who loves rock music.\n2. Arnold is not in the first house.\n3. The person who loves mystery books is the person who enjoys gardening.\n4. The person whose birthday is in April is Arnold.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is Hobby of the person who lives in House 2?",
+    "choices": [
+      "gardening",
+      "photography"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.302188"
+  },
+  {
+    "id": "lgp-test-2x5-3#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - People have unique favorite music genres: `rock`, `pop`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves mystery books is the person who loves rock music.\n2. Arnold is not in the first house.\n3. The person who loves mystery books is the person who enjoys gardening.\n4. The person whose birthday is in April is Arnold.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.302192"
+  },
+  {
+    "id": "lgp-test-2x5-3#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `gardening`, `photography`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - People have unique favorite music genres: `rock`, `pop`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves mystery books is the person who loves rock music.\n2. Arnold is not in the first house.\n3. The person who loves mystery books is the person who enjoys gardening.\n4. The person whose birthday is in April is Arnold.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is MusicGenre of the person who lives in House 2?",
+    "choices": [
+      "rock",
+      "pop"
+    ],
+    "answer": "pop",
+    "created_at": "2024-07-03T21:21:31.302198"
+  },
+  {
+    "id": "lgp-test-2x5-4#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - The people are of nationalities: `dane`, `brit`\n - Each person has a unique level of education: `associate`, `high school`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is not in the first house.\n2. The British person is in the second house.\n3. Eric is the person with a high school diploma.\n4. The person partial to Pall Mall is the British person.\n5. The person who owns a Tesla Model 3 is the person partial to Pall Mall.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302209"
+  },
+  {
+    "id": "lgp-test-2x5-4#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - The people are of nationalities: `dane`, `brit`\n - Each person has a unique level of education: `associate`, `high school`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is not in the first house.\n2. The British person is in the second house.\n3. Eric is the person with a high school diploma.\n4. The person partial to Pall Mall is the British person.\n5. The person who owns a Tesla Model 3 is the person partial to Pall Mall.\n",
+    "question": "What is Cigar of the person who lives in House 1?",
+    "choices": [
+      "prince",
+      "pall mall"
+    ],
+    "answer": "prince",
+    "created_at": "2024-07-03T21:21:31.302215"
+  },
+  {
+    "id": "lgp-test-2x5-4#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - The people are of nationalities: `dane`, `brit`\n - Each person has a unique level of education: `associate`, `high school`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is not in the first house.\n2. The British person is in the second house.\n3. Eric is the person with a high school diploma.\n4. The person partial to Pall Mall is the British person.\n5. The person who owns a Tesla Model 3 is the person partial to Pall Mall.\n",
+    "question": "What is Nationality of the person who lives in House 1?",
+    "choices": [
+      "brit",
+      "dane"
+    ],
+    "answer": "dane",
+    "created_at": "2024-07-03T21:21:31.302220"
+  },
+  {
+    "id": "lgp-test-2x5-4#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - The people are of nationalities: `dane`, `brit`\n - Each person has a unique level of education: `associate`, `high school`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is not in the first house.\n2. The British person is in the second house.\n3. Eric is the person with a high school diploma.\n4. The person partial to Pall Mall is the British person.\n5. The person who owns a Tesla Model 3 is the person partial to Pall Mall.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "associate",
+      "high school"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.302225"
+  },
+  {
+    "id": "lgp-test-2x5-4#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - The people are of nationalities: `dane`, `brit`\n - Each person has a unique level of education: `associate`, `high school`\n - People own unique car models: `ford f150`, `tesla model 3`\n\n## Clues:\n1. Eric is not in the first house.\n2. The British person is in the second house.\n3. Eric is the person with a high school diploma.\n4. The person partial to Pall Mall is the British person.\n5. The person who owns a Tesla Model 3 is the person partial to Pall Mall.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "ford f150",
+    "created_at": "2024-07-03T21:21:31.302230"
+  },
+  {
+    "id": "lgp-test-2x5-5#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n - The people keep unique animals: `horse`, `cat`\n - Each person has a unique birthday month: `sept`, `april`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n\n## Clues:\n1. The person whose birthday is in September is directly left of the person who keeps horses.\n2. Arnold is The person whose mother's name is Aniya.\n3. The cat lover is the person who loves a carnations arrangement.\n4. The person whose birthday is in April is The person whose mother's name is Holly.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302285"
+  },
+  {
+    "id": "lgp-test-2x5-5#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n - The people keep unique animals: `horse`, `cat`\n - Each person has a unique birthday month: `sept`, `april`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n\n## Clues:\n1. The person whose birthday is in September is directly left of the person who keeps horses.\n2. Arnold is The person whose mother's name is Aniya.\n3. The cat lover is the person who loves a carnations arrangement.\n4. The person whose birthday is in April is The person whose mother's name is Holly.\n",
+    "question": "What is Flower of the person who lives in House 2?",
+    "choices": [
+      "daffodils",
+      "carnations"
+    ],
+    "answer": "daffodils",
+    "created_at": "2024-07-03T21:21:31.302303"
+  },
+  {
+    "id": "lgp-test-2x5-6#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n\n## Clues:\n1. The person who loves mystery books is the person who loves a bouquet of daffodils.\n2. The person who loves a carnations arrangement is somewhere to the left of the Desert smoothie lover.\n3. The person who loves eating grilled cheese is directly left of Arnold.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302308"
+  },
+  {
+    "id": "lgp-test-2x5-6#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n\n## Clues:\n1. The person who loves mystery books is the person who loves a bouquet of daffodils.\n2. The person who loves a carnations arrangement is somewhere to the left of the Desert smoothie lover.\n3. The person who loves eating grilled cheese is directly left of Arnold.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.302320"
+  },
+  {
+    "id": "lgp-test-2x5-6#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n\n## Clues:\n1. The person who loves mystery books is the person who loves a bouquet of daffodils.\n2. The person who loves a carnations arrangement is somewhere to the left of the Desert smoothie lover.\n3. The person who loves eating grilled cheese is directly left of Arnold.\n",
+    "question": "What is Smoothie of the person who lives in House 1?",
+    "choices": [
+      "desert",
+      "cherry"
+    ],
+    "answer": "cherry",
+    "created_at": "2024-07-03T21:21:31.302325"
+  },
+  {
+    "id": "lgp-test-2x5-6#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n\n## Clues:\n1. The person who loves mystery books is the person who loves a bouquet of daffodils.\n2. The person who loves a carnations arrangement is somewhere to the left of the Desert smoothie lover.\n3. The person who loves eating grilled cheese is directly left of Arnold.\n",
+    "question": "What is Food of the person who lives in House 2?",
+    "choices": [
+      "grilled cheese",
+      "pizza"
+    ],
+    "answer": "pizza",
+    "created_at": "2024-07-03T21:21:31.302339"
+  },
+  {
+    "id": "lgp-test-2x5-7#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - The people are of nationalities: `brit`, `dane`\n - Each person has a unique hobby: `photography`, `gardening`\n\n## Clues:\n1. Eric is the Dane.\n2. The person who uses an iPhone 13 is somewhere to the left of the person who enjoys gardening.\n3. The Dane is somewhere to the left of the person who enjoys gardening.\n4. Arnold is the person who is an engineer.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "doctor",
+      "engineer"
+    ],
+    "answer": "doctor",
+    "created_at": "2024-07-03T21:21:31.302364"
+  },
+  {
+    "id": "lgp-test-2x5-7#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - The people are of nationalities: `brit`, `dane`\n - Each person has a unique hobby: `photography`, `gardening`\n\n## Clues:\n1. Eric is the Dane.\n2. The person who uses an iPhone 13 is somewhere to the left of the person who enjoys gardening.\n3. The Dane is somewhere to the left of the person who enjoys gardening.\n4. Arnold is the person who is an engineer.\n",
+    "question": "What is Hobby of the person who lives in House 1?",
+    "choices": [
+      "gardening",
+      "photography"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.302380"
+  },
+  {
+    "id": "lgp-test-2x5-7#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - The people are of nationalities: `brit`, `dane`\n - Each person has a unique hobby: `photography`, `gardening`\n\n## Clues:\n1. Eric is the Dane.\n2. The person who uses an iPhone 13 is somewhere to the left of the person who enjoys gardening.\n3. The Dane is somewhere to the left of the person who enjoys gardening.\n4. Arnold is the person who is an engineer.\n",
+    "question": "What is PhoneModel of the person who lives in House 2?",
+    "choices": [
+      "iphone 13",
+      "samsung galaxy s21"
+    ],
+    "answer": "samsung galaxy s21",
+    "created_at": "2024-07-03T21:21:31.302394"
+  },
+  {
+    "id": "lgp-test-2x5-7#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - People use unique phone models: `samsung galaxy s21`, `iphone 13`\n - The people are of nationalities: `brit`, `dane`\n - Each person has a unique hobby: `photography`, `gardening`\n\n## Clues:\n1. Eric is the Dane.\n2. The person who uses an iPhone 13 is somewhere to the left of the person who enjoys gardening.\n3. The Dane is somewhere to the left of the person who enjoys gardening.\n4. Arnold is the person who is an engineer.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "dane",
+      "brit"
+    ],
+    "answer": "brit",
+    "created_at": "2024-07-03T21:21:31.302399"
+  },
+  {
+    "id": "lgp-test-2x5-8#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `yellow`, `red`\n\n## Clues:\n1. The person who is a doctor and the person whose birthday is in September are next to each other.\n2. The person who is a doctor is the person whose favorite color is red.\n3. The person who loves yellow is the person with a high school diploma.\n4. The person whose birthday is in September is not in the first house.\n5. Eric is the person with an associate's degree.\n",
+    "question": "What is Birthday of the person who lives in House 1?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "april",
+    "created_at": "2024-07-03T21:21:31.302426"
+  },
+  {
+    "id": "lgp-test-2x5-8#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `yellow`, `red`\n\n## Clues:\n1. The person who is a doctor and the person whose birthday is in September are next to each other.\n2. The person who is a doctor is the person whose favorite color is red.\n3. The person who loves yellow is the person with a high school diploma.\n4. The person whose birthday is in September is not in the first house.\n5. Eric is the person with an associate's degree.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302435"
+  },
+  {
+    "id": "lgp-test-2x5-8#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a favorite color: `yellow`, `red`\n\n## Clues:\n1. The person who is a doctor and the person whose birthday is in September are next to each other.\n2. The person who is a doctor is the person whose favorite color is red.\n3. The person who loves yellow is the person with a high school diploma.\n4. The person whose birthday is in September is not in the first house.\n5. Eric is the person with an associate's degree.\n",
+    "question": "What is Occupation of the person who lives in House 2?",
+    "choices": [
+      "doctor",
+      "engineer"
+    ],
+    "answer": "engineer",
+    "created_at": "2024-07-03T21:21:31.302446"
+  },
+  {
+    "id": "lgp-test-2x5-9#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves beach vacations is Eric.\n2. The person who loves pop music is the person who loves beach vacations.\n3. The person who loves rock music is the person who loves mystery books.\n4. The cat lover is not in the second house.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302461"
+  },
+  {
+    "id": "lgp-test-2x5-9#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves beach vacations is Eric.\n2. The person who loves pop music is the person who loves beach vacations.\n3. The person who loves rock music is the person who loves mystery books.\n4. The cat lover is not in the second house.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is Vacation of the person who lives in House 1?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.302472"
+  },
+  {
+    "id": "lgp-test-2x5-9#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves beach vacations is Eric.\n2. The person who loves pop music is the person who loves beach vacations.\n3. The person who loves rock music is the person who loves mystery books.\n4. The cat lover is not in the second house.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.302490"
+  },
+  {
+    "id": "lgp-test-2x5-9#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves beach vacations is Eric.\n2. The person who loves pop music is the person who loves beach vacations.\n3. The person who loves rock music is the person who loves mystery books.\n4. The cat lover is not in the second house.\n5. The person who loves mystery books is in the first house.\n",
+    "question": "What is Animal of the person who lives in House 2?",
+    "choices": [
+      "horse",
+      "cat"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.302502"
+  },
+  {
+    "id": "lgp-test-2x5-10#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a favorite color: `red`, `yellow`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The person living in a colonial-style house is directly left of Arnold.\n2. The person whose favorite color is red is Arnold.\n3. Arnold is the person who is a doctor.\n4. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302513"
+  },
+  {
+    "id": "lgp-test-2x5-10#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a favorite color: `red`, `yellow`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The person living in a colonial-style house is directly left of Arnold.\n2. The person whose favorite color is red is Arnold.\n3. Arnold is the person who is a doctor.\n4. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is Color of the person who lives in House 1?",
+    "choices": [
+      "yellow",
+      "red"
+    ],
+    "answer": "yellow",
+    "created_at": "2024-07-03T21:21:31.302523"
+  },
+  {
+    "id": "lgp-test-2x5-10#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a favorite color: `red`, `yellow`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The person living in a colonial-style house is directly left of Arnold.\n2. The person whose favorite color is red is Arnold.\n3. Arnold is the person who is a doctor.\n4. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is Vacation of the person who lives in House 2?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "beach",
+    "created_at": "2024-07-03T21:21:31.302551"
+  },
+  {
+    "id": "lgp-test-2x5-10#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a favorite color: `red`, `yellow`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The person living in a colonial-style house is directly left of Arnold.\n2. The person whose favorite color is red is Arnold.\n3. Arnold is the person who is a doctor.\n4. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is HouseStyle of the person who lives in House 2?",
+    "choices": [
+      "colonial",
+      "victorian"
+    ],
+    "answer": "victorian",
+    "created_at": "2024-07-03T21:21:31.302556"
+  },
+  {
+    "id": "lgp-test-2x5-11#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - Each person has a unique hobby: `gardening`, `photography`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has an occupation: `doctor`, `engineer`\n\n## Clues:\n1. The person who enjoys gardening is directly left of the person who loves eating grilled cheese.\n2. Eric is directly left of the person who is a doctor.\n3. The person who is very short is not in the first house.\n",
+    "question": "What is Food of the person who lives in House 1?",
+    "choices": [
+      "pizza",
+      "grilled cheese"
+    ],
+    "answer": "pizza",
+    "created_at": "2024-07-03T21:21:31.302577"
+  },
+  {
+    "id": "lgp-test-2x5-11#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - Each person has a unique hobby: `gardening`, `photography`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has an occupation: `doctor`, `engineer`\n\n## Clues:\n1. The person who enjoys gardening is directly left of the person who loves eating grilled cheese.\n2. Eric is directly left of the person who is a doctor.\n3. The person who is very short is not in the first house.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "engineer",
+      "doctor"
+    ],
+    "answer": "engineer",
+    "created_at": "2024-07-03T21:21:31.302581"
+  },
+  {
+    "id": "lgp-test-2x5-11#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - Each person has a unique hobby: `gardening`, `photography`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has an occupation: `doctor`, `engineer`\n\n## Clues:\n1. The person who enjoys gardening is directly left of the person who loves eating grilled cheese.\n2. Eric is directly left of the person who is a doctor.\n3. The person who is very short is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302586"
+  },
+  {
+    "id": "lgp-test-2x5-11#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - Each person has a unique hobby: `gardening`, `photography`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has an occupation: `doctor`, `engineer`\n\n## Clues:\n1. The person who enjoys gardening is directly left of the person who loves eating grilled cheese.\n2. Eric is directly left of the person who is a doctor.\n3. The person who is very short is not in the first house.\n",
+    "question": "What is Hobby of the person who lives in House 2?",
+    "choices": [
+      "photography",
+      "gardening"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.302595"
+  },
+  {
+    "id": "lgp-test-2x5-12#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person has an occupation: `engineer`, `doctor`\n\n## Clues:\n1. Arnold is the person who loves basketball.\n2. The person who is an engineer is the person who loves soccer.\n3. The person who is a doctor is not in the second house.\n4. The person who is a doctor is the person's child is named Bella.\n5. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is Vacation of the person who lives in House 1?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "beach",
+    "created_at": "2024-07-03T21:21:31.302616"
+  },
+  {
+    "id": "lgp-test-2x5-12#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person has an occupation: `engineer`, `doctor`\n\n## Clues:\n1. Arnold is the person who loves basketball.\n2. The person who is an engineer is the person who loves soccer.\n3. The person who is a doctor is not in the second house.\n4. The person who is a doctor is the person's child is named Bella.\n5. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302636"
+  },
+  {
+    "id": "lgp-test-2x5-12#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person has an occupation: `engineer`, `doctor`\n\n## Clues:\n1. Arnold is the person who loves basketball.\n2. The person who is an engineer is the person who loves soccer.\n3. The person who is a doctor is not in the second house.\n4. The person who is a doctor is the person's child is named Bella.\n5. The person who is an engineer is the person who enjoys mountain retreats.\n",
+    "question": "What is Children of the person who lives in House 2?",
+    "choices": [
+      "Fred",
+      "Bella"
+    ],
+    "answer": "Fred",
+    "created_at": "2024-07-03T21:21:31.302645"
+  },
+  {
+    "id": "lgp-test-2x5-13#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. Eric is the person who is an engineer.\n2. The person who has brown hair is the person who is a doctor.\n3. The person who is an engineer is directly left of the tea drinker.\n4. The one who only drinks water is the person who enjoys mountain retreats.\n",
+    "question": "What is HairColor of the person who lives in House 1?",
+    "choices": [
+      "black",
+      "brown"
+    ],
+    "answer": "black",
+    "created_at": "2024-07-03T21:21:31.302667"
+  },
+  {
+    "id": "lgp-test-2x5-13#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. Eric is the person who is an engineer.\n2. The person who has brown hair is the person who is a doctor.\n3. The person who is an engineer is directly left of the tea drinker.\n4. The one who only drinks water is the person who enjoys mountain retreats.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302686"
+  },
+  {
+    "id": "lgp-test-2x5-13#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - Each person has an occupation: `engineer`, `doctor`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. Eric is the person who is an engineer.\n2. The person who has brown hair is the person who is a doctor.\n3. The person who is an engineer is directly left of the tea drinker.\n4. The one who only drinks water is the person who enjoys mountain retreats.\n",
+    "question": "What is Vacation of the person who lives in House 2?",
+    "choices": [
+      "beach",
+      "mountain"
+    ],
+    "answer": "beach",
+    "created_at": "2024-07-03T21:21:31.302705"
+  },
+  {
+    "id": "lgp-test-2x5-14#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite music genres: `rock`, `pop`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite book genres: `science fiction`, `mystery`\n\n## Clues:\n1. Eric is somewhere to the right of the person who loves rock music.\n2. The person who loves a carnations arrangement is not in the second house.\n3. Eric is the person who loves eating grilled cheese.\n4. The person who loves a bouquet of daffodils is the person who loves science fiction books.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302710"
+  },
+  {
+    "id": "lgp-test-2x5-14#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite music genres: `rock`, `pop`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite book genres: `science fiction`, `mystery`\n\n## Clues:\n1. Eric is somewhere to the right of the person who loves rock music.\n2. The person who loves a carnations arrangement is not in the second house.\n3. Eric is the person who loves eating grilled cheese.\n4. The person who loves a bouquet of daffodils is the person who loves science fiction books.\n",
+    "question": "What is Food of the person who lives in House 1?",
+    "choices": [
+      "pizza",
+      "grilled cheese"
+    ],
+    "answer": "pizza",
+    "created_at": "2024-07-03T21:21:31.302716"
+  },
+  {
+    "id": "lgp-test-2x5-14#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite music genres: `rock`, `pop`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite book genres: `science fiction`, `mystery`\n\n## Clues:\n1. Eric is somewhere to the right of the person who loves rock music.\n2. The person who loves a carnations arrangement is not in the second house.\n3. Eric is the person who loves eating grilled cheese.\n4. The person who loves a bouquet of daffodils is the person who loves science fiction books.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "mystery",
+    "created_at": "2024-07-03T21:21:31.302733"
+  },
+  {
+    "id": "lgp-test-2x5-14#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - People have unique favorite music genres: `rock`, `pop`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite book genres: `science fiction`, `mystery`\n\n## Clues:\n1. Eric is somewhere to the right of the person who loves rock music.\n2. The person who loves a carnations arrangement is not in the second house.\n3. Eric is the person who loves eating grilled cheese.\n4. The person who loves a bouquet of daffodils is the person who loves science fiction books.\n",
+    "question": "What is MusicGenre of the person who lives in House 2?",
+    "choices": [
+      "pop",
+      "rock"
+    ],
+    "answer": "pop",
+    "created_at": "2024-07-03T21:21:31.302747"
+  },
+  {
+    "id": "lgp-test-2x5-15#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a unique hobby: `gardening`, `photography`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a favorite color: `yellow`, `red`\n\n## Clues:\n1. Eric is the person whose favorite color is red.\n2. The person who loves pop music is the person whose favorite color is red.\n3. The person who is an engineer is the person who enjoys gardening.\n4. The person who is a doctor is not in the second house.\n5. The person who loves rock music is in the first house.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302762"
+  },
+  {
+    "id": "lgp-test-2x5-15#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a unique hobby: `gardening`, `photography`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a favorite color: `yellow`, `red`\n\n## Clues:\n1. Eric is the person whose favorite color is red.\n2. The person who loves pop music is the person whose favorite color is red.\n3. The person who is an engineer is the person who enjoys gardening.\n4. The person who is a doctor is not in the second house.\n5. The person who loves rock music is in the first house.\n",
+    "question": "What is Hobby of the person who lives in House 1?",
+    "choices": [
+      "photography",
+      "gardening"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.302773"
+  },
+  {
+    "id": "lgp-test-2x5-15#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a unique hobby: `gardening`, `photography`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a favorite color: `yellow`, `red`\n\n## Clues:\n1. Eric is the person whose favorite color is red.\n2. The person who loves pop music is the person whose favorite color is red.\n3. The person who is an engineer is the person who enjoys gardening.\n4. The person who is a doctor is not in the second house.\n5. The person who loves rock music is in the first house.\n",
+    "question": "What is Color of the person who lives in House 1?",
+    "choices": [
+      "red",
+      "yellow"
+    ],
+    "answer": "yellow",
+    "created_at": "2024-07-03T21:21:31.302782"
+  },
+  {
+    "id": "lgp-test-2x5-16#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is not in the first house.\n2. The person who is a pizza lover is the person who loves a bouquet of daffodils.\n3. The person who loves a bouquet of daffodils is Eric.\n4. The person with a high school diploma is the person who loves a bouquet of daffodils.\n5. The person who loves pop music is the person who loves a bouquet of daffodils.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302811"
+  },
+  {
+    "id": "lgp-test-2x5-16#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is not in the first house.\n2. The person who is a pizza lover is the person who loves a bouquet of daffodils.\n3. The person who loves a bouquet of daffodils is Eric.\n4. The person with a high school diploma is the person who loves a bouquet of daffodils.\n5. The person who loves pop music is the person who loves a bouquet of daffodils.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "associate",
+      "high school"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.302817"
+  },
+  {
+    "id": "lgp-test-2x5-16#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is not in the first house.\n2. The person who is a pizza lover is the person who loves a bouquet of daffodils.\n3. The person who loves a bouquet of daffodils is Eric.\n4. The person with a high school diploma is the person who loves a bouquet of daffodils.\n5. The person who loves pop music is the person who loves a bouquet of daffodils.\n",
+    "question": "What is Food of the person who lives in House 1?",
+    "choices": [
+      "pizza",
+      "grilled cheese"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.302823"
+  },
+  {
+    "id": "lgp-test-2x5-16#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is not in the first house.\n2. The person who is a pizza lover is the person who loves a bouquet of daffodils.\n3. The person who loves a bouquet of daffodils is Eric.\n4. The person with a high school diploma is the person who loves a bouquet of daffodils.\n5. The person who loves pop music is the person who loves a bouquet of daffodils.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "carnations",
+      "daffodils"
+    ],
+    "answer": "carnations",
+    "created_at": "2024-07-03T21:21:31.302828"
+  },
+  {
+    "id": "lgp-test-2x5-16#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `rock`, `pop`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is not in the first house.\n2. The person who is a pizza lover is the person who loves a bouquet of daffodils.\n3. The person who loves a bouquet of daffodils is Eric.\n4. The person with a high school diploma is the person who loves a bouquet of daffodils.\n5. The person who loves pop music is the person who loves a bouquet of daffodils.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "pop",
+      "rock"
+    ],
+    "answer": "rock",
+    "created_at": "2024-07-03T21:21:31.302833"
+  },
+  {
+    "id": "lgp-test-2x5-17#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `horse`, `cat`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - Each person has a unique level of education: `high school`, `associate`\n\n## Clues:\n1. The cat lover is somewhere to the right of the person with an associate's degree.\n2. The Prince smoker is the person who loves basketball.\n3. The person who keeps horses is somewhere to the left of the person who loves soccer.\n4. The person who loves basketball is Eric.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.302888"
+  },
+  {
+    "id": "lgp-test-2x5-17#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `horse`, `cat`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - Each person has a unique level of education: `high school`, `associate`\n\n## Clues:\n1. The cat lover is somewhere to the right of the person with an associate's degree.\n2. The Prince smoker is the person who loves basketball.\n3. The person who keeps horses is somewhere to the left of the person who loves soccer.\n4. The person who loves basketball is Eric.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "pall mall",
+      "prince"
+    ],
+    "answer": "pall mall",
+    "created_at": "2024-07-03T21:21:31.302901"
+  },
+  {
+    "id": "lgp-test-2x5-17#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `horse`, `cat`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n - Each person has a unique level of education: `high school`, `associate`\n\n## Clues:\n1. The cat lover is somewhere to the right of the person with an associate's degree.\n2. The Prince smoker is the person who loves basketball.\n3. The person who keeps horses is somewhere to the left of the person who loves soccer.\n4. The person who loves basketball is Eric.\n",
+    "question": "What is Education of the person who lives in House 2?",
+    "choices": [
+      "associate",
+      "high school"
+    ],
+    "answer": "high school",
+    "created_at": "2024-07-03T21:21:31.302906"
+  },
+  {
+    "id": "lgp-test-2x5-18#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is in the first house.\n2. The photography enthusiast is Arnold.\n3. The one who only drinks water is the photography enthusiast.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves science fiction books is Arnold.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302938"
+  },
+  {
+    "id": "lgp-test-2x5-18#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is in the first house.\n2. The photography enthusiast is Arnold.\n3. The one who only drinks water is the photography enthusiast.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves science fiction books is Arnold.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "mystery",
+    "created_at": "2024-07-03T21:21:31.302942"
+  },
+  {
+    "id": "lgp-test-2x5-18#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is in the first house.\n2. The photography enthusiast is Arnold.\n3. The one who only drinks water is the photography enthusiast.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves science fiction books is Arnold.\n",
+    "question": "What is CarModel of the person who lives in House 2?",
+    "choices": [
+      "tesla model 3",
+      "ford f150"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.302947"
+  },
+  {
+    "id": "lgp-test-2x5-18#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is in the first house.\n2. The photography enthusiast is Arnold.\n3. The one who only drinks water is the photography enthusiast.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves science fiction books is Arnold.\n",
+    "question": "What is Hobby of the person who lives in House 2?",
+    "choices": [
+      "gardening",
+      "photography"
+    ],
+    "answer": "gardening",
+    "created_at": "2024-07-03T21:21:31.302952"
+  },
+  {
+    "id": "lgp-test-2x5-18#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is in the first house.\n2. The photography enthusiast is Arnold.\n3. The one who only drinks water is the photography enthusiast.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves science fiction books is Arnold.\n",
+    "question": "What is Drink of the person who lives in House 2?",
+    "choices": [
+      "water",
+      "tea"
+    ],
+    "answer": "tea",
+    "created_at": "2024-07-03T21:21:31.302957"
+  },
+  {
+    "id": "lgp-test-2x5-19#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n - People own unique car models: `tesla model 3`, `ford f150`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is not in the first house.\n2. The person's child is named Fred is in the second house.\n3. The person who loves rock music is in the second house.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves rock music is Arnold.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.302963"
+  },
+  {
+    "id": "lgp-test-2x5-19#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n - People own unique car models: `tesla model 3`, `ford f150`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is not in the first house.\n2. The person's child is named Fred is in the second house.\n3. The person who loves rock music is in the second house.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves rock music is Arnold.\n",
+    "question": "What is Children of the person who lives in House 1?",
+    "choices": [
+      "Fred",
+      "Bella"
+    ],
+    "answer": "Bella",
+    "created_at": "2024-07-03T21:21:31.302969"
+  },
+  {
+    "id": "lgp-test-2x5-19#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n - People own unique car models: `tesla model 3`, `ford f150`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is not in the first house.\n2. The person's child is named Fred is in the second house.\n3. The person who loves rock music is in the second house.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves rock music is Arnold.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.302974"
+  },
+  {
+    "id": "lgp-test-2x5-19#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n - People own unique car models: `tesla model 3`, `ford f150`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is not in the first house.\n2. The person's child is named Fred is in the second house.\n3. The person who loves rock music is in the second house.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves rock music is Arnold.\n",
+    "question": "What is PhoneModel of the person who lives in House 1?",
+    "choices": [
+      "iphone 13",
+      "samsung galaxy s21"
+    ],
+    "answer": "iphone 13",
+    "created_at": "2024-07-03T21:21:31.302979"
+  },
+  {
+    "id": "lgp-test-2x5-19#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each mother is accompanied by their child: `Bella`, `Fred`\n - People own unique car models: `tesla model 3`, `ford f150`\n - People use unique phone models: `iphone 13`, `samsung galaxy s21`\n - People have unique favorite music genres: `pop`, `rock`\n\n## Clues:\n1. The person who uses a Samsung Galaxy S21 is not in the first house.\n2. The person's child is named Fred is in the second house.\n3. The person who loves rock music is in the second house.\n4. Arnold is the person who owns a Ford F-150.\n5. The person who loves rock music is Arnold.\n",
+    "question": "What is MusicGenre of the person who lives in House 1?",
+    "choices": [
+      "rock",
+      "pop"
+    ],
+    "answer": "pop",
+    "created_at": "2024-07-03T21:21:31.302984"
+  },
+  {
+    "id": "lgp-test-2x5-20#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves basketball is not in the first house.\n2. The person who is an engineer is the person whose birthday is in September.\n3. Arnold is the person who is an engineer.\n4. The person who has brown hair is somewhere to the left of the person whose birthday is in September.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303016"
+  },
+  {
+    "id": "lgp-test-2x5-20#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves basketball is not in the first house.\n2. The person who is an engineer is the person whose birthday is in September.\n3. Arnold is the person who is an engineer.\n4. The person who has brown hair is somewhere to the left of the person whose birthday is in September.\n",
+    "question": "What is FavoriteSport of the person who lives in House 1?",
+    "choices": [
+      "soccer",
+      "basketball"
+    ],
+    "answer": "soccer",
+    "created_at": "2024-07-03T21:21:31.303026"
+  },
+  {
+    "id": "lgp-test-2x5-20#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves basketball is not in the first house.\n2. The person who is an engineer is the person whose birthday is in September.\n3. Arnold is the person who is an engineer.\n4. The person who has brown hair is somewhere to the left of the person whose birthday is in September.\n",
+    "question": "What is Occupation of the person who lives in House 1?",
+    "choices": [
+      "doctor",
+      "engineer"
+    ],
+    "answer": "doctor",
+    "created_at": "2024-07-03T21:21:31.303031"
+  },
+  {
+    "id": "lgp-test-2x5-20#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves basketball is not in the first house.\n2. The person who is an engineer is the person whose birthday is in September.\n3. Arnold is the person who is an engineer.\n4. The person who has brown hair is somewhere to the left of the person whose birthday is in September.\n",
+    "question": "What is Birthday of the person who lives in House 1?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "april",
+    "created_at": "2024-07-03T21:21:31.303037"
+  },
+  {
+    "id": "lgp-test-2x5-20#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has an occupation: `doctor`, `engineer`\n - Each person has a unique birthday month: `april`, `sept`\n\n## Clues:\n1. The person who loves basketball is not in the first house.\n2. The person who is an engineer is the person whose birthday is in September.\n3. Arnold is the person who is an engineer.\n4. The person who has brown hair is somewhere to the left of the person whose birthday is in September.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "black",
+      "brown"
+    ],
+    "answer": "black",
+    "created_at": "2024-07-03T21:21:31.303047"
+  },
+  {
+    "id": "lgp-test-2x5-21#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - Each person has a unique favorite drink: `tea`, `water`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n\n## Clues:\n1. Arnold is the person who loves basketball.\n2. Eric is the one who only drinks water.\n3. The tea drinker is directly left of the person's child is named Bella.\n4. The person's child is named Fred is the person who loves eating grilled cheese.\n",
+    "question": "What is FavoriteSport of the person who lives in House 2?",
+    "choices": [
+      "soccer",
+      "basketball"
+    ],
+    "answer": "soccer",
+    "created_at": "2024-07-03T21:21:31.303096"
+  },
+  {
+    "id": "lgp-test-2x5-21#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - Each person has a unique favorite drink: `tea`, `water`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n\n## Clues:\n1. Arnold is the person who loves basketball.\n2. Eric is the one who only drinks water.\n3. The tea drinker is directly left of the person's child is named Bella.\n4. The person's child is named Fred is the person who loves eating grilled cheese.\n",
+    "question": "What is Food of the person who lives in House 2?",
+    "choices": [
+      "pizza",
+      "grilled cheese"
+    ],
+    "answer": "pizza",
+    "created_at": "2024-07-03T21:21:31.303110"
+  },
+  {
+    "id": "lgp-test-2x5-22#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `soccer`, `basketball`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. Eric is the person who loves rock music.\n2. Arnold is in the first house.\n3. The person who loves pop music is the person who has black hair.\n4. The person whose favorite color is red is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is Color of the person who lives in House 1?",
+    "choices": [
+      "red",
+      "yellow"
+    ],
+    "answer": "yellow",
+    "created_at": "2024-07-03T21:21:31.303126"
+  },
+  {
+    "id": "lgp-test-2x5-22#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `soccer`, `basketball`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. Eric is the person who loves rock music.\n2. Arnold is in the first house.\n3. The person who loves pop music is the person who has black hair.\n4. The person whose favorite color is red is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is FavoriteSport of the person who lives in House 1?",
+    "choices": [
+      "basketball",
+      "soccer"
+    ],
+    "answer": "soccer",
+    "created_at": "2024-07-03T21:21:31.303131"
+  },
+  {
+    "id": "lgp-test-2x5-22#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite music genres: `pop`, `rock`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `soccer`, `basketball`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. Eric is the person who loves rock music.\n2. Arnold is in the first house.\n3. The person who loves pop music is the person who has black hair.\n4. The person whose favorite color is red is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "brown",
+      "black"
+    ],
+    "answer": "brown",
+    "created_at": "2024-07-03T21:21:31.303159"
+  },
+  {
+    "id": "lgp-test-2x5-23#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - People have unique heights: `short`, `very short`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has a unique favorite drink: `tea`, `water`\n\n## Clues:\n1. The person who is very short is the person who is a pizza lover.\n2. The person who loves eating grilled cheese is in the second house.\n3. The person with a high school diploma is the person who is a pizza lover.\n4. The tea drinker is the person who loves eating grilled cheese.\n5. Arnold is the person who is a pizza lover.\n",
+    "question": "What is Drink of the person who lives in House 1?",
+    "choices": [
+      "water",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.303186"
+  },
+  {
+    "id": "lgp-test-2x5-23#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - People have unique heights: `short`, `very short`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has a unique favorite drink: `tea`, `water`\n\n## Clues:\n1. The person who is very short is the person who is a pizza lover.\n2. The person who loves eating grilled cheese is in the second house.\n3. The person with a high school diploma is the person who is a pizza lover.\n4. The tea drinker is the person who loves eating grilled cheese.\n5. Arnold is the person who is a pizza lover.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303191"
+  },
+  {
+    "id": "lgp-test-2x5-23#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - People have unique heights: `short`, `very short`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - Each person has a unique favorite drink: `tea`, `water`\n\n## Clues:\n1. The person who is very short is the person who is a pizza lover.\n2. The person who loves eating grilled cheese is in the second house.\n3. The person with a high school diploma is the person who is a pizza lover.\n4. The tea drinker is the person who loves eating grilled cheese.\n5. Arnold is the person who is a pizza lover.\n",
+    "question": "What is Education of the person who lives in House 2?",
+    "choices": [
+      "associate",
+      "high school"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.303196"
+  },
+  {
+    "id": "lgp-test-2x5-24#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n\n## Clues:\n1. The person's child is named Fred is directly left of Arnold.\n2. The person who loves mystery books is not in the second house.\n3. The person with a high school diploma is the person's child is named Bella.\n4. Eric and the Desert smoothie lover are next to each other.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "associate",
+      "high school"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.303224"
+  },
+  {
+    "id": "lgp-test-2x5-24#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n\n## Clues:\n1. The person's child is named Fred is directly left of Arnold.\n2. The person who loves mystery books is not in the second house.\n3. The person with a high school diploma is the person's child is named Bella.\n4. Eric and the Desert smoothie lover are next to each other.\n",
+    "question": "What is Smoothie of the person who lives in House 1?",
+    "choices": [
+      "cherry",
+      "desert"
+    ],
+    "answer": "cherry",
+    "created_at": "2024-07-03T21:21:31.303238"
+  },
+  {
+    "id": "lgp-test-2x5-24#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Each person has a unique level of education: `associate`, `high school`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n\n## Clues:\n1. The person's child is named Fred is directly left of Arnold.\n2. The person who loves mystery books is not in the second house.\n3. The person with a high school diploma is the person's child is named Bella.\n4. Eric and the Desert smoothie lover are next to each other.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.303257"
+  },
+  {
+    "id": "lgp-test-2x5-25#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person has a unique type of pet: `dog`, `cat`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The one who only drinks water is somewhere to the left of the person who owns a dog.\n2. The person who has brown hair is somewhere to the left of Eric.\n3. The one who only drinks water is the person whose birthday is in April.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.303267"
+  },
+  {
+    "id": "lgp-test-2x5-25#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person has a unique type of pet: `dog`, `cat`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The one who only drinks water is somewhere to the left of the person who owns a dog.\n2. The person who has brown hair is somewhere to the left of Eric.\n3. The one who only drinks water is the person whose birthday is in April.\n",
+    "question": "What is Pet of the person who lives in House 1?",
+    "choices": [
+      "cat",
+      "dog"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.303281"
+  },
+  {
+    "id": "lgp-test-2x5-25#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person has a unique type of pet: `dog`, `cat`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The one who only drinks water is somewhere to the left of the person who owns a dog.\n2. The person who has brown hair is somewhere to the left of Eric.\n3. The one who only drinks water is the person whose birthday is in April.\n",
+    "question": "What is Birthday of the person who lives in House 2?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "sept",
+    "created_at": "2024-07-03T21:21:31.303295"
+  },
+  {
+    "id": "lgp-test-2x5-25#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person has a unique type of pet: `dog`, `cat`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The one who only drinks water is somewhere to the left of the person who owns a dog.\n2. The person who has brown hair is somewhere to the left of Eric.\n3. The one who only drinks water is the person whose birthday is in April.\n",
+    "question": "What is Drink of the person who lives in House 2?",
+    "choices": [
+      "tea",
+      "water"
+    ],
+    "answer": "tea",
+    "created_at": "2024-07-03T21:21:31.303300"
+  },
+  {
+    "id": "lgp-test-2x5-25#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique birthday month: `sept`, `april`\n - Each person has a unique favorite drink: `tea`, `water`\n - Each person has a unique type of pet: `dog`, `cat`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The one who only drinks water is somewhere to the left of the person who owns a dog.\n2. The person who has brown hair is somewhere to the left of Eric.\n3. The one who only drinks water is the person whose birthday is in April.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "brown",
+      "black"
+    ],
+    "answer": "black",
+    "created_at": "2024-07-03T21:21:31.303309"
+  },
+  {
+    "id": "lgp-test-2x5-26#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique type of pet: `cat`, `dog`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n - Each person has a favorite color: `red`, `yellow`\n\n## Clues:\n1. The person who has a cat is Arnold.\n2. Eric is directly left of Arnold.\n3. The person who enjoys gardening is the person who loves yellow.\n4. The person who enjoys gardening is in the first house.\n5. The person whose mother's name is Aniya is not in the second house.\n",
+    "question": "What is Pet of the person who lives in House 1?",
+    "choices": [
+      "dog",
+      "cat"
+    ],
+    "answer": "dog",
+    "created_at": "2024-07-03T21:21:31.303325"
+  },
+  {
+    "id": "lgp-test-2x5-26#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique type of pet: `cat`, `dog`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n - Each person has a favorite color: `red`, `yellow`\n\n## Clues:\n1. The person who has a cat is Arnold.\n2. Eric is directly left of Arnold.\n3. The person who enjoys gardening is the person who loves yellow.\n4. The person who enjoys gardening is in the first house.\n5. The person whose mother's name is Aniya is not in the second house.\n",
+    "question": "What is Hobby of the person who lives in House 2?",
+    "choices": [
+      "gardening",
+      "photography"
+    ],
+    "answer": "photography",
+    "created_at": "2024-07-03T21:21:31.303343"
+  },
+  {
+    "id": "lgp-test-2x5-26#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique type of pet: `cat`, `dog`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n - Each person has a favorite color: `red`, `yellow`\n\n## Clues:\n1. The person who has a cat is Arnold.\n2. Eric is directly left of Arnold.\n3. The person who enjoys gardening is the person who loves yellow.\n4. The person who enjoys gardening is in the first house.\n5. The person whose mother's name is Aniya is not in the second house.\n",
+    "question": "What is Mother of the person who lives in House 2?",
+    "choices": [
+      "Holly",
+      "Aniya"
+    ],
+    "answer": "Holly",
+    "created_at": "2024-07-03T21:21:31.303352"
+  },
+  {
+    "id": "lgp-test-2x5-26#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a unique hobby: `photography`, `gardening`\n - Each person has a unique type of pet: `cat`, `dog`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n - Each person has a favorite color: `red`, `yellow`\n\n## Clues:\n1. The person who has a cat is Arnold.\n2. Eric is directly left of Arnold.\n3. The person who enjoys gardening is the person who loves yellow.\n4. The person who enjoys gardening is in the first house.\n5. The person whose mother's name is Aniya is not in the second house.\n",
+    "question": "What is Color of the person who lives in House 2?",
+    "choices": [
+      "yellow",
+      "red"
+    ],
+    "answer": "red",
+    "created_at": "2024-07-03T21:21:31.303357"
+  },
+  {
+    "id": "lgp-test-2x5-27#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique hair colors: `brown`, `black`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n\n## Clues:\n1. The Prince smoker is directly left of the person with a high school diploma.\n2. The Prince smoker and Arnold are next to each other.\n3. The person whose favorite color is red is Arnold.\n4. The person who has black hair is the Prince smoker.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303365"
+  },
+  {
+    "id": "lgp-test-2x5-27#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique hair colors: `brown`, `black`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n\n## Clues:\n1. The Prince smoker is directly left of the person with a high school diploma.\n2. The Prince smoker and Arnold are next to each other.\n3. The person whose favorite color is red is Arnold.\n4. The person who has black hair is the Prince smoker.\n",
+    "question": "What is Color of the person who lives in House 1?",
+    "choices": [
+      "red",
+      "yellow"
+    ],
+    "answer": "yellow",
+    "created_at": "2024-07-03T21:21:31.303371"
+  },
+  {
+    "id": "lgp-test-2x5-27#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique hair colors: `brown`, `black`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n\n## Clues:\n1. The Prince smoker is directly left of the person with a high school diploma.\n2. The Prince smoker and Arnold are next to each other.\n3. The person whose favorite color is red is Arnold.\n4. The person who has black hair is the Prince smoker.\n",
+    "question": "What is Education of the person who lives in House 1?",
+    "choices": [
+      "high school",
+      "associate"
+    ],
+    "answer": "associate",
+    "created_at": "2024-07-03T21:21:31.303381"
+  },
+  {
+    "id": "lgp-test-2x5-27#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique hair colors: `brown`, `black`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n\n## Clues:\n1. The Prince smoker is directly left of the person with a high school diploma.\n2. The Prince smoker and Arnold are next to each other.\n3. The person whose favorite color is red is Arnold.\n4. The person who has black hair is the Prince smoker.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "brown",
+      "black"
+    ],
+    "answer": "brown",
+    "created_at": "2024-07-03T21:21:31.303401"
+  },
+  {
+    "id": "lgp-test-2x5-27#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique hair colors: `brown`, `black`\n - Each person has a unique level of education: `associate`, `high school`\n - Everyone has a unique favorite cigar: `prince`, `pall mall`\n\n## Clues:\n1. The Prince smoker is directly left of the person with a high school diploma.\n2. The Prince smoker and Arnold are next to each other.\n3. The person whose favorite color is red is Arnold.\n4. The person who has black hair is the Prince smoker.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "prince",
+      "pall mall"
+    ],
+    "answer": "pall mall",
+    "created_at": "2024-07-03T21:21:31.303411"
+  },
+  {
+    "id": "lgp-test-2x5-28#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `tesla model 3`, `ford f150`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n\n## Clues:\n1. The person who keeps horses is in the second house.\n2. The person who loves basketball is somewhere to the left of the person who loves eating grilled cheese.\n3. Arnold is directly left of the person who owns a Ford F-150.\n",
+    "question": "What is CarModel of the person who lives in House 1?",
+    "choices": [
+      "ford f150",
+      "tesla model 3"
+    ],
+    "answer": "tesla model 3",
+    "created_at": "2024-07-03T21:21:31.303422"
+  },
+  {
+    "id": "lgp-test-2x5-28#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `tesla model 3`, `ford f150`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n\n## Clues:\n1. The person who keeps horses is in the second house.\n2. The person who loves basketball is somewhere to the left of the person who loves eating grilled cheese.\n3. Arnold is directly left of the person who owns a Ford F-150.\n",
+    "question": "What is Animal of the person who lives in House 1?",
+    "choices": [
+      "horse",
+      "cat"
+    ],
+    "answer": "cat",
+    "created_at": "2024-07-03T21:21:31.303427"
+  },
+  {
+    "id": "lgp-test-2x5-28#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `tesla model 3`, `ford f150`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n\n## Clues:\n1. The person who keeps horses is in the second house.\n2. The person who loves basketball is somewhere to the left of the person who loves eating grilled cheese.\n3. Arnold is directly left of the person who owns a Ford F-150.\n",
+    "question": "What is Food of the person who lives in House 1?",
+    "choices": [
+      "grilled cheese",
+      "pizza"
+    ],
+    "answer": "pizza",
+    "created_at": "2024-07-03T21:21:31.303436"
+  },
+  {
+    "id": "lgp-test-2x5-28#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `tesla model 3`, `ford f150`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n\n## Clues:\n1. The person who keeps horses is in the second house.\n2. The person who loves basketball is somewhere to the left of the person who loves eating grilled cheese.\n3. Arnold is directly left of the person who owns a Ford F-150.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303441"
+  },
+  {
+    "id": "lgp-test-2x5-28#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `tesla model 3`, `ford f150`\n - The people keep unique animals: `cat`, `horse`\n - People have unique favorite sports: `soccer`, `basketball`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n\n## Clues:\n1. The person who keeps horses is in the second house.\n2. The person who loves basketball is somewhere to the left of the person who loves eating grilled cheese.\n3. Arnold is directly left of the person who owns a Ford F-150.\n",
+    "question": "What is FavoriteSport of the person who lives in House 2?",
+    "choices": [
+      "soccer",
+      "basketball"
+    ],
+    "answer": "soccer",
+    "created_at": "2024-07-03T21:21:31.303454"
+  },
+  {
+    "id": "lgp-test-2x5-29#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n - The people are of nationalities: `brit`, `dane`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - People have unique favorite sports: `basketball`, `soccer`\n\n## Clues:\n1. Arnold is the Desert smoothie lover.\n2. The person who loves a carnations arrangement is somewhere to the right of the Desert smoothie lover.\n3. The Dane is the person who loves soccer.\n4. The British person is not in the first house.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "daffodils",
+      "carnations"
+    ],
+    "answer": "daffodils",
+    "created_at": "2024-07-03T21:21:31.303470"
+  },
+  {
+    "id": "lgp-test-2x5-29#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n - The people are of nationalities: `brit`, `dane`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - People have unique favorite sports: `basketball`, `soccer`\n\n## Clues:\n1. Arnold is the Desert smoothie lover.\n2. The person who loves a carnations arrangement is somewhere to the right of the Desert smoothie lover.\n3. The Dane is the person who loves soccer.\n4. The British person is not in the first house.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Arnold",
+      "Eric"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303488"
+  },
+  {
+    "id": "lgp-test-2x5-29#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n - The people are of nationalities: `brit`, `dane`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - People have unique favorite sports: `basketball`, `soccer`\n\n## Clues:\n1. Arnold is the Desert smoothie lover.\n2. The person who loves a carnations arrangement is somewhere to the right of the Desert smoothie lover.\n3. The Dane is the person who loves soccer.\n4. The British person is not in the first house.\n",
+    "question": "What is Smoothie of the person who lives in House 2?",
+    "choices": [
+      "desert",
+      "cherry"
+    ],
+    "answer": "cherry",
+    "created_at": "2024-07-03T21:21:31.303502"
+  },
+  {
+    "id": "lgp-test-2x5-29#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `carnations`, `daffodils`\n - The people are of nationalities: `brit`, `dane`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - People have unique favorite sports: `basketball`, `soccer`\n\n## Clues:\n1. Arnold is the Desert smoothie lover.\n2. The person who loves a carnations arrangement is somewhere to the right of the Desert smoothie lover.\n3. The Dane is the person who loves soccer.\n4. The British person is not in the first house.\n",
+    "question": "What is FavoriteSport of the person who lives in House 2?",
+    "choices": [
+      "soccer",
+      "basketball"
+    ],
+    "answer": "basketball",
+    "created_at": "2024-07-03T21:21:31.303506"
+  },
+  {
+    "id": "lgp-test-2x5-30#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique hair colors: `black`, `brown`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is in the first house.\n2. Arnold is the person who is short.\n3. Arnold is not in the second house.\n4. The person who has brown hair is directly left of the person partial to Pall Mall.\n",
+    "question": "What is Cigar of the person who lives in House 1?",
+    "choices": [
+      "pall mall",
+      "prince"
+    ],
+    "answer": "prince",
+    "created_at": "2024-07-03T21:21:31.303539"
+  },
+  {
+    "id": "lgp-test-2x5-30#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique hair colors: `black`, `brown`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is in the first house.\n2. Arnold is the person who is short.\n3. Arnold is not in the second house.\n4. The person who has brown hair is directly left of the person partial to Pall Mall.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303543"
+  },
+  {
+    "id": "lgp-test-2x5-30#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique hair colors: `black`, `brown`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is in the first house.\n2. Arnold is the person who is short.\n3. Arnold is not in the second house.\n4. The person who has brown hair is directly left of the person partial to Pall Mall.\n",
+    "question": "What is Flower of the person who lives in House 2?",
+    "choices": [
+      "carnations",
+      "daffodils"
+    ],
+    "answer": "carnations",
+    "created_at": "2024-07-03T21:21:31.303553"
+  },
+  {
+    "id": "lgp-test-2x5-30#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique heights: `very short`, `short`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique hair colors: `black`, `brown`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. The person who loves a bouquet of daffodils is in the first house.\n2. Arnold is the person who is short.\n3. Arnold is not in the second house.\n4. The person who has brown hair is directly left of the person partial to Pall Mall.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "brown",
+      "black"
+    ],
+    "answer": "black",
+    "created_at": "2024-07-03T21:21:31.303557"
+  },
+  {
+    "id": "lgp-test-2x5-31#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - The people are of nationalities: `dane`, `brit`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n\n## Clues:\n1. The Desert smoothie lover is not in the second house.\n2. The Desert smoothie lover is Eric.\n3. The Dane is The person whose mother's name is Holly.\n4. Eric is The person whose mother's name is Holly.\n5. Eric is the person who loves mystery books.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.303592"
+  },
+  {
+    "id": "lgp-test-2x5-31#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - The people are of nationalities: `dane`, `brit`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n\n## Clues:\n1. The Desert smoothie lover is not in the second house.\n2. The Desert smoothie lover is Eric.\n3. The Dane is The person whose mother's name is Holly.\n4. Eric is The person whose mother's name is Holly.\n5. Eric is the person who loves mystery books.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.303596"
+  },
+  {
+    "id": "lgp-test-2x5-31#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - The people are of nationalities: `dane`, `brit`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n\n## Clues:\n1. The Desert smoothie lover is not in the second house.\n2. The Desert smoothie lover is Eric.\n3. The Dane is The person whose mother's name is Holly.\n4. Eric is The person whose mother's name is Holly.\n5. Eric is the person who loves mystery books.\n",
+    "question": "What is Nationality of the person who lives in House 2?",
+    "choices": [
+      "brit",
+      "dane"
+    ],
+    "answer": "brit",
+    "created_at": "2024-07-03T21:21:31.303602"
+  },
+  {
+    "id": "lgp-test-2x5-31#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - The people are of nationalities: `dane`, `brit`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n\n## Clues:\n1. The Desert smoothie lover is not in the second house.\n2. The Desert smoothie lover is Eric.\n3. The Dane is The person whose mother's name is Holly.\n4. Eric is The person whose mother's name is Holly.\n5. Eric is the person who loves mystery books.\n",
+    "question": "What is Smoothie of the person who lives in House 2?",
+    "choices": [
+      "cherry",
+      "desert"
+    ],
+    "answer": "cherry",
+    "created_at": "2024-07-03T21:21:31.303606"
+  },
+  {
+    "id": "lgp-test-2x5-31#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique favorite book genres: `mystery`, `science fiction`\n - The people are of nationalities: `dane`, `brit`\n - Everyone has a favorite smoothie: `desert`, `cherry`\n - The mothers' names in different houses are unique: `Aniya`, `Holly`\n\n## Clues:\n1. The Desert smoothie lover is not in the second house.\n2. The Desert smoothie lover is Eric.\n3. The Dane is The person whose mother's name is Holly.\n4. Eric is The person whose mother's name is Holly.\n5. Eric is the person who loves mystery books.\n",
+    "question": "What is Mother of the person who lives in House 2?",
+    "choices": [
+      "Holly",
+      "Aniya"
+    ],
+    "answer": "Aniya",
+    "created_at": "2024-07-03T21:21:31.303611"
+  },
+  {
+    "id": "lgp-test-2x5-32#mc-2",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - Each person lives in a unique style of house: `colonial`, `victorian`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n\n## Clues:\n1. The person's child is named Bella is Eric.\n2. The person's child is named Fred is the person who is a pizza lover.\n3. Arnold is in the first house.\n4. The person who has black hair is directly left of the person living in a colonial-style house.\n",
+    "question": "What is HouseStyle of the person who lives in House 1?",
+    "choices": [
+      "victorian",
+      "colonial"
+    ],
+    "answer": "victorian",
+    "created_at": "2024-07-03T21:21:31.303627"
+  },
+  {
+    "id": "lgp-test-2x5-32#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - Each person lives in a unique style of house: `colonial`, `victorian`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n\n## Clues:\n1. The person's child is named Bella is Eric.\n2. The person's child is named Fred is the person who is a pizza lover.\n3. Arnold is in the first house.\n4. The person who has black hair is directly left of the person living in a colonial-style house.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "black",
+      "brown"
+    ],
+    "answer": "brown",
+    "created_at": "2024-07-03T21:21:31.303645"
+  },
+  {
+    "id": "lgp-test-2x5-32#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People have unique hair colors: `black`, `brown`\n - Each person lives in a unique style of house: `colonial`, `victorian`\n - Everyone has something unique for lunch: `pizza`, `grilled cheese`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n\n## Clues:\n1. The person's child is named Bella is Eric.\n2. The person's child is named Fred is the person who is a pizza lover.\n3. Arnold is in the first house.\n4. The person who has black hair is directly left of the person living in a colonial-style house.\n",
+    "question": "What is Food of the person who lives in House 2?",
+    "choices": [
+      "pizza",
+      "grilled cheese"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.303654"
+  },
+  {
+    "id": "lgp-test-2x5-33#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `cat`, `horse`\n - People have unique heights: `short`, `very short`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. The person who loves beach vacations is directly left of Eric.\n2. The person who loves beach vacations and the person who is very short are next to each other.\n3. The cat lover is the person who is short.\n4. The person who is short is the person who loves mystery books.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.303665"
+  },
+  {
+    "id": "lgp-test-2x5-33#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `cat`, `horse`\n - People have unique heights: `short`, `very short`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. The person who loves beach vacations is directly left of Eric.\n2. The person who loves beach vacations and the person who is very short are next to each other.\n3. The cat lover is the person who is short.\n4. The person who is short is the person who loves mystery books.\n",
+    "question": "What is Animal of the person who lives in House 2?",
+    "choices": [
+      "cat",
+      "horse"
+    ],
+    "answer": "horse",
+    "created_at": "2024-07-03T21:21:31.303694"
+  },
+  {
+    "id": "lgp-test-2x5-33#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `cat`, `horse`\n - People have unique heights: `short`, `very short`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. The person who loves beach vacations is directly left of Eric.\n2. The person who loves beach vacations and the person who is very short are next to each other.\n3. The cat lover is the person who is short.\n4. The person who is short is the person who loves mystery books.\n",
+    "question": "What is BookGenre of the person who lives in House 2?",
+    "choices": [
+      "mystery",
+      "science fiction"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.303707"
+  },
+  {
+    "id": "lgp-test-2x5-33#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - The people keep unique animals: `cat`, `horse`\n - People have unique heights: `short`, `very short`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person prefers a unique type of vacation: `mountain`, `beach`\n\n## Clues:\n1. The person who loves beach vacations is directly left of Eric.\n2. The person who loves beach vacations and the person who is very short are next to each other.\n3. The cat lover is the person who is short.\n4. The person who is short is the person who loves mystery books.\n",
+    "question": "What is Vacation of the person who lives in House 2?",
+    "choices": [
+      "mountain",
+      "beach"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.303712"
+  },
+  {
+    "id": "lgp-test-2x5-34#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The Desert smoothie lover is somewhere to the right of the person living in a colonial-style house.\n2. The person who likes Cherry smoothies is the person who loves basketball.\n3. Arnold is in the second house.\n4. The person who loves basketball is the tea drinker.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Eric",
+    "created_at": "2024-07-03T21:21:31.303718"
+  },
+  {
+    "id": "lgp-test-2x5-34#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The Desert smoothie lover is somewhere to the right of the person living in a colonial-style house.\n2. The person who likes Cherry smoothies is the person who loves basketball.\n3. Arnold is in the second house.\n4. The person who loves basketball is the tea drinker.\n",
+    "question": "What is FavoriteSport of the person who lives in House 2?",
+    "choices": [
+      "basketball",
+      "soccer"
+    ],
+    "answer": "soccer",
+    "created_at": "2024-07-03T21:21:31.303752"
+  },
+  {
+    "id": "lgp-test-2x5-34#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The Desert smoothie lover is somewhere to the right of the person living in a colonial-style house.\n2. The person who likes Cherry smoothies is the person who loves basketball.\n3. Arnold is in the second house.\n4. The person who loves basketball is the tea drinker.\n",
+    "question": "What is Drink of the person who lives in House 2?",
+    "choices": [
+      "water",
+      "tea"
+    ],
+    "answer": "water",
+    "created_at": "2024-07-03T21:21:31.303757"
+  },
+  {
+    "id": "lgp-test-2x5-34#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - Everyone has a favorite smoothie: `cherry`, `desert`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n - Each person lives in a unique style of house: `victorian`, `colonial`\n\n## Clues:\n1. The Desert smoothie lover is somewhere to the right of the person living in a colonial-style house.\n2. The person who likes Cherry smoothies is the person who loves basketball.\n3. Arnold is in the second house.\n4. The person who loves basketball is the tea drinker.\n",
+    "question": "What is HouseStyle of the person who lives in House 2?",
+    "choices": [
+      "victorian",
+      "colonial"
+    ],
+    "answer": "victorian",
+    "created_at": "2024-07-03T21:21:31.303761"
+  },
+  {
+    "id": "lgp-test-2x5-35#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. The person whose favorite color is red is not in the second house.\n2. The person who loves soccer is Eric.\n3. The person who loves beach vacations is not in the first house.\n4. The person who loves mystery books is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.303767"
+  },
+  {
+    "id": "lgp-test-2x5-35#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. The person whose favorite color is red is not in the second house.\n2. The person who loves soccer is Eric.\n3. The person who loves beach vacations is not in the first house.\n4. The person who loves mystery books is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "science fiction",
+    "created_at": "2024-07-03T21:21:31.303773"
+  },
+  {
+    "id": "lgp-test-2x5-35#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. The person whose favorite color is red is not in the second house.\n2. The person who loves soccer is Eric.\n3. The person who loves beach vacations is not in the first house.\n4. The person who loves mystery books is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is Vacation of the person who lives in House 1?",
+    "choices": [
+      "mountain",
+      "beach"
+    ],
+    "answer": "mountain",
+    "created_at": "2024-07-03T21:21:31.303788"
+  },
+  {
+    "id": "lgp-test-2x5-35#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People have unique favorite book genres: `science fiction`, `mystery`\n - Each person has a favorite color: `red`, `yellow`\n - People have unique favorite sports: `basketball`, `soccer`\n - Each person prefers a unique type of vacation: `beach`, `mountain`\n\n## Clues:\n1. The person whose favorite color is red is not in the second house.\n2. The person who loves soccer is Eric.\n3. The person who loves beach vacations is not in the first house.\n4. The person who loves mystery books is not in the first house.\n5. The person whose favorite color is red is the person who loves basketball.\n",
+    "question": "What is Color of the person who lives in House 2?",
+    "choices": [
+      "yellow",
+      "red"
+    ],
+    "answer": "yellow",
+    "created_at": "2024-07-03T21:21:31.303802"
+  },
+  {
+    "id": "lgp-test-2x5-36#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold is the Prince smoker.\n2. The person who loves a carnations arrangement is the Prince smoker.\n3. The person's child is named Bella is Eric.\n4. The person who loves pop music is Eric.\n5. The person's child is named Bella is in the first house.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "carnations",
+      "daffodils"
+    ],
+    "answer": "daffodils",
+    "created_at": "2024-07-03T21:21:31.303823"
+  },
+  {
+    "id": "lgp-test-2x5-36#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold is the Prince smoker.\n2. The person who loves a carnations arrangement is the Prince smoker.\n3. The person's child is named Bella is Eric.\n4. The person who loves pop music is Eric.\n5. The person's child is named Bella is in the first house.\n",
+    "question": "What is Cigar of the person who lives in House 1?",
+    "choices": [
+      "prince",
+      "pall mall"
+    ],
+    "answer": "pall mall",
+    "created_at": "2024-07-03T21:21:31.303837"
+  },
+  {
+    "id": "lgp-test-2x5-36#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold is the Prince smoker.\n2. The person who loves a carnations arrangement is the Prince smoker.\n3. The person's child is named Bella is Eric.\n4. The person who loves pop music is Eric.\n5. The person's child is named Bella is in the first house.\n",
+    "question": "What is MusicGenre of the person who lives in House 2?",
+    "choices": [
+      "rock",
+      "pop"
+    ],
+    "answer": "rock",
+    "created_at": "2024-07-03T21:21:31.303852"
+  },
+  {
+    "id": "lgp-test-2x5-36#mc-8",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - People have unique favorite music genres: `pop`, `rock`\n - Each mother is accompanied by their child: `Fred`, `Bella`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n\n## Clues:\n1. Arnold is the Prince smoker.\n2. The person who loves a carnations arrangement is the Prince smoker.\n3. The person's child is named Bella is Eric.\n4. The person who loves pop music is Eric.\n5. The person's child is named Bella is in the first house.\n",
+    "question": "What is Children of the person who lives in House 2?",
+    "choices": [
+      "Fred",
+      "Bella"
+    ],
+    "answer": "Fred",
+    "created_at": "2024-07-03T21:21:31.303856"
+  },
+  {
+    "id": "lgp-test-2x5-37#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is the person who loves soccer.\n2. The person who owns a Tesla Model 3 is somewhere to the left of the person who loves soccer.\n3. The person who loves basketball is the person who is a pizza lover.\n4. The person who is a pizza lover is Eric.\n",
+    "question": "What is Drink of the person who lives in House 1?",
+    "choices": [
+      "tea",
+      "water"
+    ],
+    "answer": "tea",
+    "created_at": "2024-07-03T21:21:31.303891"
+  },
+  {
+    "id": "lgp-test-2x5-37#mc-5",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is the person who loves soccer.\n2. The person who owns a Tesla Model 3 is somewhere to the left of the person who loves soccer.\n3. The person who loves basketball is the person who is a pizza lover.\n4. The person who is a pizza lover is Eric.\n",
+    "question": "What is Name of the person who lives in House 2?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.303895"
+  },
+  {
+    "id": "lgp-test-2x5-37#mc-6",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is the person who loves soccer.\n2. The person who owns a Tesla Model 3 is somewhere to the left of the person who loves soccer.\n3. The person who loves basketball is the person who is a pizza lover.\n4. The person who is a pizza lover is Eric.\n",
+    "question": "What is CarModel of the person who lives in House 2?",
+    "choices": [
+      "tesla model 3",
+      "ford f150"
+    ],
+    "answer": "ford f150",
+    "created_at": "2024-07-03T21:21:31.303900"
+  },
+  {
+    "id": "lgp-test-2x5-37#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - People own unique car models: `ford f150`, `tesla model 3`\n - Everyone has something unique for lunch: `grilled cheese`, `pizza`\n - People have unique favorite sports: `soccer`, `basketball`\n - Each person has a unique favorite drink: `water`, `tea`\n\n## Clues:\n1. The one who only drinks water is the person who loves soccer.\n2. The person who owns a Tesla Model 3 is somewhere to the left of the person who loves soccer.\n3. The person who loves basketball is the person who is a pizza lover.\n4. The person who is a pizza lover is Eric.\n",
+    "question": "What is Food of the person who lives in House 2?",
+    "choices": [
+      "grilled cheese",
+      "pizza"
+    ],
+    "answer": "grilled cheese",
+    "created_at": "2024-07-03T21:21:31.303905"
+  },
+  {
+    "id": "lgp-test-2x5-38#mc-1",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n - Each person has a unique birthday month: `april`, `sept`\n - People have unique favorite book genres: `mystery`, `science fiction`\n\n## Clues:\n1. Eric is in the second house.\n2. Arnold is The person whose mother's name is Holly.\n3. The person who loves science fiction books is the person who loves a bouquet of daffodils.\n4. The person who loves science fiction books is The person whose mother's name is Aniya.\n5. The person whose birthday is in September is the person who loves science fiction books.\n",
+    "question": "What is Flower of the person who lives in House 1?",
+    "choices": [
+      "carnations",
+      "daffodils"
+    ],
+    "answer": "carnations",
+    "created_at": "2024-07-03T21:21:31.303927"
+  },
+  {
+    "id": "lgp-test-2x5-38#mc-3",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n - Each person has a unique birthday month: `april`, `sept`\n - People have unique favorite book genres: `mystery`, `science fiction`\n\n## Clues:\n1. Eric is in the second house.\n2. Arnold is The person whose mother's name is Holly.\n3. The person who loves science fiction books is the person who loves a bouquet of daffodils.\n4. The person who loves science fiction books is The person whose mother's name is Aniya.\n5. The person whose birthday is in September is the person who loves science fiction books.\n",
+    "question": "What is Birthday of the person who lives in House 1?",
+    "choices": [
+      "sept",
+      "april"
+    ],
+    "answer": "april",
+    "created_at": "2024-07-03T21:21:31.303938"
+  },
+  {
+    "id": "lgp-test-2x5-38#mc-4",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`\n - They all have a unique favorite flower: `daffodils`, `carnations`\n - The mothers' names in different houses are unique: `Holly`, `Aniya`\n - Each person has a unique birthday month: `april`, `sept`\n - People have unique favorite book genres: `mystery`, `science fiction`\n\n## Clues:\n1. Eric is in the second house.\n2. Arnold is The person whose mother's name is Holly.\n3. The person who loves science fiction books is the person who loves a bouquet of daffodils.\n4. The person who loves science fiction books is The person whose mother's name is Aniya.\n5. The person whose birthday is in September is the person who loves science fiction books.\n",
+    "question": "What is BookGenre of the person who lives in House 1?",
+    "choices": [
+      "science fiction",
+      "mystery"
+    ],
+    "answer": "mystery",
+    "created_at": "2024-07-03T21:21:31.303942"
+  },
+  {
+    "id": "lgp-test-2x5-39#mc-0",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n - The people are of nationalities: `brit`, `dane`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The person who owns a Tesla Model 3 is the Prince smoker.\n2. The Dane and the person who owns a Ford F-150 are next to each other.\n3. The British person is somewhere to the right of the Dane.\n4. The person who has black hair is the Dane.\n5. Eric is the British person.\n",
+    "question": "What is Name of the person who lives in House 1?",
+    "choices": [
+      "Eric",
+      "Arnold"
+    ],
+    "answer": "Arnold",
+    "created_at": "2024-07-03T21:21:31.303972"
+  },
+  {
+    "id": "lgp-test-2x5-39#mc-7",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n - The people are of nationalities: `brit`, `dane`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The person who owns a Tesla Model 3 is the Prince smoker.\n2. The Dane and the person who owns a Ford F-150 are next to each other.\n3. The British person is somewhere to the right of the Dane.\n4. The person who has black hair is the Dane.\n5. Eric is the British person.\n",
+    "question": "What is Cigar of the person who lives in House 2?",
+    "choices": [
+      "pall mall",
+      "prince"
+    ],
+    "answer": "pall mall",
+    "created_at": "2024-07-03T21:21:31.304007"
+  },
+  {
+    "id": "lgp-test-2x5-39#mc-9",
+    "puzzle": "There are 2 houses, numbered 1 to 2 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`\n - People own unique car models: `tesla model 3`, `ford f150`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`\n - The people are of nationalities: `brit`, `dane`\n - People have unique hair colors: `brown`, `black`\n\n## Clues:\n1. The person who owns a Tesla Model 3 is the Prince smoker.\n2. The Dane and the person who owns a Ford F-150 are next to each other.\n3. The British person is somewhere to the right of the Dane.\n4. The person who has black hair is the Dane.\n5. Eric is the British person.\n",
+    "question": "What is HairColor of the person who lives in House 2?",
+    "choices": [
+      "black",
+      "brown"
+    ],
+    "answer": "brown",
+    "created_at": "2024-07-03T21:21:31.304017"
+  }
+]

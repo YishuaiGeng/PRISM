@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "lgp-test-6x2-0",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Alice`, `Bob`, `Eric`, `Carol`\n - Each person lives in a unique style of house: `ranch`, `mediterranean`, `victorian`, `craftsman`, `colonial`, `modern`\n\n## Clues:\n1. Alice is somewhere to the left of Peter.\n2. The person living in a colonial-style house is Arnold.\n3. Alice is in the fourth house.\n4. Arnold is not in the fifth house.\n5. Arnold is somewhere to the right of the person in a modern-style house.\n6. The person residing in a Victorian house is somewhere to the left of Eric.\n7. Arnold is somewhere to the right of Eric.\n8. The person living in a colonial-style house is directly left of the person in a Mediterranean-style villa.\n9. There is one house between Alice and Carol.\n10. The person in a Craftsman-style house is not in the sixth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "victorian"
+        ],
+        [
+          "2",
+          "Eric",
+          "modern"
+        ],
+        [
+          "3",
+          "Arnold",
+          "colonial"
+        ],
+        [
+          "4",
+          "Alice",
+          "mediterranean"
+        ],
+        [
+          "5",
+          "Peter",
+          "craftsman"
+        ],
+        [
+          "6",
+          "Carol",
+          "ranch"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209681"
+  },
+  {
+    "id": "lgp-test-6x2-1",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Alice`, `Carol`, `Arnold`, `Eric`, `Peter`\n - Everyone has a favorite smoothie: `blueberry`, `dragonfruit`, `desert`, `lime`, `watermelon`, `cherry`\n\n## Clues:\n1. The person who likes Cherry smoothies is Alice.\n2. Peter is in the second house.\n3. The Watermelon smoothie lover is in the second house.\n4. The person who likes Cherry smoothies is not in the sixth house.\n5. The person who drinks Blueberry smoothies is somewhere to the left of the person who drinks Lime smoothies.\n6. The Desert smoothie lover is in the first house.\n7. Arnold is not in the fourth house.\n8. The person who drinks Lime smoothies is directly left of Eric.\n9. Carol is the person who drinks Lime smoothies.\n10. Bob is directly left of Peter.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "desert"
+        ],
+        [
+          "2",
+          "Peter",
+          "watermelon"
+        ],
+        [
+          "3",
+          "Arnold",
+          "blueberry"
+        ],
+        [
+          "4",
+          "Alice",
+          "cherry"
+        ],
+        [
+          "5",
+          "Carol",
+          "lime"
+        ],
+        [
+          "6",
+          "Eric",
+          "dragonfruit"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209688"
+  },
+  {
+    "id": "lgp-test-6x2-2",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Bob`, `Carol`, `Peter`, `Eric`, `Arnold`\n - The mothers' names in different houses are unique: `Holly`, `Sarah`, `Penny`, `Kailyn`, `Aniya`, `Janelle`\n\n## Clues:\n1. Carol is somewhere to the right of Bob.\n2. The person whose mother's name is Aniya is in the first house.\n3. Eric is in the second house.\n4. Peter is The person whose mother's name is Penny.\n5. There is one house between Peter and Carol.\n6. The person whose mother's name is Holly is somewhere to the left of Arnold.\n7. The person whose mother's name is Sarah and The person whose mother's name is Penny are next to each other.\n8. The person whose mother's name is Sarah is not in the fifth house.\n9. The person whose mother's name is Janelle is Bob.\n10. The person whose mother's name is Sarah is not in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Mother"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "Aniya"
+        ],
+        [
+          "2",
+          "Eric",
+          "Holly"
+        ],
+        [
+          "3",
+          "Arnold",
+          "Sarah"
+        ],
+        [
+          "4",
+          "Peter",
+          "Penny"
+        ],
+        [
+          "5",
+          "Bob",
+          "Janelle"
+        ],
+        [
+          "6",
+          "Carol",
+          "Kailyn"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209695"
+  },
+  {
+    "id": "lgp-test-6x2-3",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Alice`, `Arnold`, `Bob`, `Carol`\n - People have unique hair colors: `brown`, `red`, `gray`, `black`, `blonde`, `auburn`\n\n## Clues:\n1. Arnold is not in the sixth house.\n2. The person who has blonde hair and the person who has brown hair are next to each other.\n3. Bob is the person who has blonde hair.\n4. The person who has black hair is in the fourth house.\n5. Eric is the person who has black hair.\n6. Carol is somewhere to the left of Eric.\n7. Peter is in the first house.\n8. The person who has auburn hair is not in the third house.\n9. Bob is not in the sixth house.\n10. Carol is somewhere to the right of the person who has red hair.\n11. The person who has blonde hair is not in the third house.\n12. There are two houses between the person who has brown hair and the person who has auburn hair.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HairColor"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "red"
+        ],
+        [
+          "2",
+          "Bob",
+          "blonde"
+        ],
+        [
+          "3",
+          "Carol",
+          "brown"
+        ],
+        [
+          "4",
+          "Eric",
+          "black"
+        ],
+        [
+          "5",
+          "Arnold",
+          "gray"
+        ],
+        [
+          "6",
+          "Alice",
+          "auburn"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209701"
+  },
+  {
+    "id": "lgp-test-6x2-4",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Carol`, `Peter`, `Bob`, `Eric`\n - People use unique phone models: `huawei p50`, `iphone 13`, `xiaomi mi 11`, `oneplus 9`, `samsung galaxy s21`, `google pixel 6`\n\n## Clues:\n1. The person who uses an iPhone 13 is Alice.\n2. The person who uses a Huawei P50 is in the first house.\n3. The person who uses a OnePlus 9 is in the sixth house.\n4. The person who uses a Google Pixel 6 is not in the second house.\n5. The person who uses an iPhone 13 is not in the second house.\n6. There is one house between Bob and Carol.\n7. The person who uses a Huawei P50 is Eric.\n8. The person who uses a Xiaomi Mi 11 is in the third house.\n9. Alice is somewhere to the left of Carol.\n10. Arnold is the person who uses a OnePlus 9.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "huawei p50"
+        ],
+        [
+          "2",
+          "Peter",
+          "samsung galaxy s21"
+        ],
+        [
+          "3",
+          "Bob",
+          "xiaomi mi 11"
+        ],
+        [
+          "4",
+          "Alice",
+          "iphone 13"
+        ],
+        [
+          "5",
+          "Carol",
+          "google pixel 6"
+        ],
+        [
+          "6",
+          "Arnold",
+          "oneplus 9"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209708"
+  },
+  {
+    "id": "lgp-test-6x2-5",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Alice`, `Eric`, `Carol`, `Arnold`\n - Each person prefers a unique type of vacation: `mountain`, `camping`, `cruise`, `city`, `cultural`, `beach`\n\n## Clues:\n1. The person who goes on cultural tours is somewhere to the left of the person who loves beach vacations.\n2. Eric is somewhere to the right of Alice.\n3. Eric is in the second house.\n4. The person who goes on cultural tours is in the third house.\n5. Bob is directly left of Arnold.\n6. The person who enjoys camping trips is not in the first house.\n7. The person who goes on cultural tours is Peter.\n8. The person who likes going on cruises is Bob.\n9. The person who prefers city breaks is in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "mountain"
+        ],
+        [
+          "2",
+          "Eric",
+          "camping"
+        ],
+        [
+          "3",
+          "Peter",
+          "cultural"
+        ],
+        [
+          "4",
+          "Carol",
+          "city"
+        ],
+        [
+          "5",
+          "Bob",
+          "cruise"
+        ],
+        [
+          "6",
+          "Arnold",
+          "beach"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209714"
+  },
+  {
+    "id": "lgp-test-6x2-6",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Peter`, `Eric`, `Bob`, `Carol`\n - People have unique favorite sports: `baseball`, `tennis`, `swimming`, `basketball`, `soccer`, `volleyball`\n\n## Clues:\n1. The person who loves tennis is Eric.\n2. The person who loves volleyball is in the fifth house.\n3. Arnold is somewhere to the right of Carol.\n4. Carol is not in the first house.\n5. The person who loves baseball is Bob.\n6. There is one house between the person who loves swimming and the person who loves basketball.\n7. Alice is in the fourth house.\n8. The person who loves swimming is Peter.\n9. Alice and Arnold are next to each other.\n10. Peter is somewhere to the right of Eric.\n11. The person who loves swimming is not in the sixth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "tennis"
+        ],
+        [
+          "2",
+          "Peter",
+          "swimming"
+        ],
+        [
+          "3",
+          "Carol",
+          "soccer"
+        ],
+        [
+          "4",
+          "Alice",
+          "basketball"
+        ],
+        [
+          "5",
+          "Arnold",
+          "volleyball"
+        ],
+        [
+          "6",
+          "Bob",
+          "baseball"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209720"
+  },
+  {
+    "id": "lgp-test-6x2-7",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Eric`, `Peter`, `Bob`, `Carol`\n - People use unique phone models: `huawei p50`, `iphone 13`, `xiaomi mi 11`, `samsung galaxy s21`, `google pixel 6`, `oneplus 9`\n\n## Clues:\n1. The person who uses an iPhone 13 is not in the third house.\n2. There are two houses between Eric and Peter.\n3. Bob is somewhere to the left of the person who uses a Samsung Galaxy S21.\n4. There is one house between Eric and Alice.\n5. The person who uses a OnePlus 9 is in the second house.\n6. The person who uses a Samsung Galaxy S21 is not in the third house.\n7. The person who uses a Xiaomi Mi 11 is in the sixth house.\n8. The person who uses a Huawei P50 is not in the fifth house.\n9. The person who uses an iPhone 13 and Bob are next to each other.\n10. The person who uses a Samsung Galaxy S21 is not in the fifth house.\n11. The person who uses a Google Pixel 6 is Carol.\n12. Arnold is somewhere to the right of Eric.\n13. Arnold is not in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "iphone 13"
+        ],
+        [
+          "2",
+          "Bob",
+          "oneplus 9"
+        ],
+        [
+          "3",
+          "Alice",
+          "huawei p50"
+        ],
+        [
+          "4",
+          "Peter",
+          "samsung galaxy s21"
+        ],
+        [
+          "5",
+          "Carol",
+          "google pixel 6"
+        ],
+        [
+          "6",
+          "Arnold",
+          "xiaomi mi 11"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209726"
+  },
+  {
+    "id": "lgp-test-6x2-8",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Alice`, `Bob`, `Peter`, `Eric`, `Arnold`\n - Each person has a favorite color: `purple`, `green`, `red`, `white`, `yellow`, `blue`\n\n## Clues:\n1. Bob is the person who loves white.\n2. There is one house between Alice and Bob.\n3. The person who loves yellow is somewhere to the right of Alice.\n4. The person who loves yellow is not in the fourth house.\n5. Arnold is the person who loves purple.\n6. The person whose favorite color is green is not in the second house.\n7. Bob is somewhere to the right of Carol.\n8. The person whose favorite color is red is not in the third house.\n9. The person whose favorite color is green is Eric.\n10. Carol is in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "green"
+        ],
+        [
+          "2",
+          "Arnold",
+          "purple"
+        ],
+        [
+          "3",
+          "Alice",
+          "blue"
+        ],
+        [
+          "4",
+          "Carol",
+          "red"
+        ],
+        [
+          "5",
+          "Bob",
+          "white"
+        ],
+        [
+          "6",
+          "Peter",
+          "yellow"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209734"
+  },
+  {
+    "id": "lgp-test-6x2-9",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Peter`, `Eric`, `Carol`, `Alice`\n - They all have a unique favorite flower: `lilies`, `daffodils`, `carnations`, `tulips`, `iris`, `roses`\n\n## Clues:\n1. Alice and Bob are next to each other.\n2. Carol is not in the first house.\n3. There are two houses between Peter and the person who loves the rose bouquet.\n4. The person who loves a bouquet of daffodils is somewhere to the left of the person who loves the vase of tulips.\n5. The person who loves the boquet of iris is not in the second house.\n6. The person who loves the rose bouquet is somewhere to the right of Arnold.\n7. The person who loves a bouquet of daffodils is somewhere to the right of the person who loves a carnations arrangement.\n8. Arnold is somewhere to the left of Eric.\n9. Carol and the person who loves a carnations arrangement are next to each other.\n10. Arnold is somewhere to the right of the person who loves the boquet of iris.\n11. The person who loves a carnations arrangement is directly left of Alice.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "iris"
+        ],
+        [
+          "2",
+          "Carol",
+          "lilies"
+        ],
+        [
+          "3",
+          "Arnold",
+          "carnations"
+        ],
+        [
+          "4",
+          "Alice",
+          "roses"
+        ],
+        [
+          "5",
+          "Bob",
+          "daffodils"
+        ],
+        [
+          "6",
+          "Eric",
+          "tulips"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209740"
+  },
+  {
+    "id": "lgp-test-6x2-10",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Peter`, `Alice`, `Carol`, `Bob`\n - People have unique favorite music genres: `jazz`, `pop`, `classical`, `rock`, `hip hop`, `country`\n\n## Clues:\n1. Bob is directly left of the person who loves jazz music.\n2. Eric is somewhere to the left of the person who loves hip-hop music.\n3. Carol is in the sixth house.\n4. Eric and the person who loves hip-hop music are next to each other.\n5. The person who loves country music is Carol.\n6. Arnold is not in the fifth house.\n7. Arnold is somewhere to the right of the person who loves pop music.\n8. The person who loves pop music is Peter.\n9. The person who loves hip-hop music is in the third house.\n10. There is one house between Peter and Bob.\n11. The person who loves rock music is not in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "pop"
+        ],
+        [
+          "2",
+          "Eric",
+          "rock"
+        ],
+        [
+          "3",
+          "Bob",
+          "hip hop"
+        ],
+        [
+          "4",
+          "Arnold",
+          "jazz"
+        ],
+        [
+          "5",
+          "Alice",
+          "classical"
+        ],
+        [
+          "6",
+          "Carol",
+          "country"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209746"
+  },
+  {
+    "id": "lgp-test-6x2-11",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Carol`, `Eric`, `Bob`, `Alice`\n - Everyone has something unique for lunch: `stir fry`, `stew`, `grilled cheese`, `soup`, `pizza`, `spaghetti`\n\n## Clues:\n1. The person who loves the soup is somewhere to the left of Carol.\n2. The person who loves stir fry is in the fifth house.\n3. Peter is not in the sixth house.\n4. The person who loves the stew is somewhere to the left of Peter.\n5. Bob is the person who loves the soup.\n6. The person who loves eating grilled cheese is somewhere to the right of the person who loves the spaghetti eater.\n7. The person who loves the spaghetti eater is directly left of the person who loves the soup.\n8. Arnold is in the second house.\n9. The person who loves the stew is directly left of Arnold.\n10. Alice is directly left of the person who loves the soup.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "stew"
+        ],
+        [
+          "2",
+          "Arnold",
+          "pizza"
+        ],
+        [
+          "3",
+          "Alice",
+          "spaghetti"
+        ],
+        [
+          "4",
+          "Bob",
+          "soup"
+        ],
+        [
+          "5",
+          "Peter",
+          "stir fry"
+        ],
+        [
+          "6",
+          "Carol",
+          "grilled cheese"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209754"
+  },
+  {
+    "id": "lgp-test-6x2-12",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Alice`, `Carol`, `Peter`\n - Each person has a unique birthday month: `may`, `april`, `sept`, `mar`, `feb`, `jan`\n\n## Clues:\n1. Arnold is in the first house.\n2. There is one house between Carol and Alice.\n3. The person whose birthday is in September is in the fourth house.\n4. Carol is the person whose birthday is in September.\n5. The person whose birthday is in March and the person whose birthday is in September are next to each other.\n6. The person whose birthday is in February is in the fifth house.\n7. The person whose birthday is in January is Eric.\n8. Bob is not in the fifth house.\n9. The person whose birthday is in May is somewhere to the right of the person whose birthday is in February.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Birthday"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "april"
+        ],
+        [
+          "2",
+          "Eric",
+          "jan"
+        ],
+        [
+          "3",
+          "Bob",
+          "mar"
+        ],
+        [
+          "4",
+          "Carol",
+          "sept"
+        ],
+        [
+          "5",
+          "Peter",
+          "feb"
+        ],
+        [
+          "6",
+          "Alice",
+          "may"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209761"
+  },
+  {
+    "id": "lgp-test-6x2-13",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Bob`, `Eric`, `Arnold`, `Carol`\n - Each person lives in a unique style of house: `mediterranean`, `modern`, `ranch`, `craftsman`, `victorian`, `colonial`\n\n## Clues:\n1. Alice is not in the fifth house.\n2. The person in a Mediterranean-style villa is directly left of the person in a Craftsman-style house.\n3. The person in a Craftsman-style house is in the fifth house.\n4. Carol is directly left of Alice.\n5. The person in a modern-style house is Eric.\n6. The person residing in a Victorian house is not in the third house.\n7. Bob is in the first house.\n8. Bob and Eric are next to each other.\n9. Peter is not in the third house.\n10. The person in a ranch-style home is somewhere to the right of the person residing in a Victorian house.\n11. The person living in a colonial-style house is somewhere to the left of Carol.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "victorian"
+        ],
+        [
+          "2",
+          "Eric",
+          "modern"
+        ],
+        [
+          "3",
+          "Arnold",
+          "colonial"
+        ],
+        [
+          "4",
+          "Peter",
+          "mediterranean"
+        ],
+        [
+          "5",
+          "Carol",
+          "craftsman"
+        ],
+        [
+          "6",
+          "Alice",
+          "ranch"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209768"
+  },
+  {
+    "id": "lgp-test-6x2-14",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Peter`, `Eric`, `Arnold`, `Alice`, `Bob`\n - Everyone has a unique favorite cigar: `blends`, `yellow monster`, `pall mall`, `blue master`, `dunhill`, `prince`\n\n## Clues:\n1. Arnold is somewhere to the left of the person who smokes many unique blends.\n2. The person who smokes Blue Master is in the fifth house.\n3. Arnold is somewhere to the left of the Prince smoker.\n4. There is one house between the person who smokes Yellow Monster and the person who smokes many unique blends.\n5. The person partial to Pall Mall is in the third house.\n6. Eric is in the sixth house.\n7. Carol and Eric are next to each other.\n8. Peter is in the first house.\n9. Bob is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "dunhill"
+        ],
+        [
+          "2",
+          "Arnold",
+          "yellow monster"
+        ],
+        [
+          "3",
+          "Bob",
+          "pall mall"
+        ],
+        [
+          "4",
+          "Alice",
+          "blends"
+        ],
+        [
+          "5",
+          "Carol",
+          "blue master"
+        ],
+        [
+          "6",
+          "Eric",
+          "prince"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209775"
+  },
+  {
+    "id": "lgp-test-6x2-15",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Carol`, `Alice`, `Peter`, `Arnold`\n - Each person lives in a unique style of house: `victorian`, `colonial`, `craftsman`, `ranch`, `mediterranean`, `modern`\n\n## Clues:\n1. There is one house between the person in a modern-style house and the person in a Craftsman-style house.\n2. The person living in a colonial-style house is Arnold.\n3. Peter is somewhere to the left of the person in a Craftsman-style house.\n4. The person in a ranch-style home is not in the fourth house.\n5. Alice is in the sixth house.\n6. There are two houses between the person in a modern-style house and Alice.\n7. There is one house between the person residing in a Victorian house and Eric.\n8. The person residing in a Victorian house is somewhere to the left of Eric.\n9. There is one house between Peter and Bob.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "colonial"
+        ],
+        [
+          "2",
+          "Carol",
+          "victorian"
+        ],
+        [
+          "3",
+          "Peter",
+          "modern"
+        ],
+        [
+          "4",
+          "Eric",
+          "mediterranean"
+        ],
+        [
+          "5",
+          "Bob",
+          "craftsman"
+        ],
+        [
+          "6",
+          "Alice",
+          "ranch"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209781"
+  },
+  {
+    "id": "lgp-test-6x2-16",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Alice`, `Arnold`, `Peter`, `Eric`, `Carol`\n - Each mother is accompanied by their child: `Meredith`, `Fred`, `Timothy`, `Samantha`, `Bella`, `Alice`\n\n## Clues:\n1. Arnold is in the fifth house.\n2. The person's child is named Samantha is in the first house.\n3. There is one house between the person's child is named Alice and the person's child is named Bella.\n4. Bob is not in the sixth house.\n5. There is one house between the person's child is named Meredith and Arnold.\n6. The person's child is named Meredith is somewhere to the right of Peter.\n7. The person's child is named Alice is not in the sixth house.\n8. The person who is the mother of Timothy is Eric.\n9. The person who is the mother of Timothy and the person's child is named Meredith are next to each other.\n10. Carol is in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "Samantha"
+        ],
+        [
+          "2",
+          "Eric",
+          "Timothy"
+        ],
+        [
+          "3",
+          "Bob",
+          "Meredith"
+        ],
+        [
+          "4",
+          "Carol",
+          "Alice"
+        ],
+        [
+          "5",
+          "Arnold",
+          "Fred"
+        ],
+        [
+          "6",
+          "Alice",
+          "Bella"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209788"
+  },
+  {
+    "id": "lgp-test-6x2-17",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Carol`, `Bob`, `Peter`, `Eric`, `Alice`\n - People own unique car models: `bmw 3 series`, `honda civic`, `toyota camry`, `chevrolet silverado`, `ford f150`, `tesla model 3`\n\n## Clues:\n1. Carol is not in the third house.\n2. Arnold is not in the third house.\n3. Arnold is not in the fifth house.\n4. The person who owns a Toyota Camry is somewhere to the right of the person who owns a Honda Civic.\n5. Bob is somewhere to the right of Arnold.\n6. Arnold is not in the second house.\n7. The person who owns a Tesla Model 3 is not in the second house.\n8. Alice is the person who owns a Chevrolet Silverado.\n9. The person who owns a Chevrolet Silverado is not in the third house.\n10. Alice is not in the sixth house.\n11. The person who owns a Chevrolet Silverado is not in the fifth house.\n12. Peter is somewhere to the left of Carol.\n13. Bob is the person who owns a Tesla Model 3.\n14. The person who owns a Chevrolet Silverado is not in the second house.\n15. The person who owns a Ford F-150 is Arnold.\n16. Carol is the person who owns a Honda Civic.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "ford f150"
+        ],
+        [
+          "2",
+          "Peter",
+          "bmw 3 series"
+        ],
+        [
+          "3",
+          "Bob",
+          "tesla model 3"
+        ],
+        [
+          "4",
+          "Alice",
+          "chevrolet silverado"
+        ],
+        [
+          "5",
+          "Carol",
+          "honda civic"
+        ],
+        [
+          "6",
+          "Eric",
+          "toyota camry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209794"
+  },
+  {
+    "id": "lgp-test-6x2-18",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Alice`, `Carol`, `Peter`, `Arnold`\n - Each person prefers a unique type of vacation: `city`, `cultural`, `beach`, `camping`, `mountain`, `cruise`\n\n## Clues:\n1. The person who prefers city breaks is Arnold.\n2. The person who enjoys camping trips is Carol.\n3. Bob is not in the sixth house.\n4. Eric is the person who enjoys mountain retreats.\n5. Alice and Carol are next to each other.\n6. Peter is not in the third house.\n7. Alice is the person who likes going on cruises.\n8. The person who goes on cultural tours is Peter.\n9. The person who prefers city breaks is in the fourth house.\n10. Peter and Alice are next to each other.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cultural"
+        ],
+        [
+          "2",
+          "Alice",
+          "cruise"
+        ],
+        [
+          "3",
+          "Carol",
+          "camping"
+        ],
+        [
+          "4",
+          "Arnold",
+          "city"
+        ],
+        [
+          "5",
+          "Bob",
+          "beach"
+        ],
+        [
+          "6",
+          "Eric",
+          "mountain"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209800"
+  },
+  {
+    "id": "lgp-test-6x2-19",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Carol`, `Peter`, `Alice`, `Arnold`\n - Everyone has something unique for lunch: `spaghetti`, `stew`, `grilled cheese`, `soup`, `stir fry`, `pizza`\n\n## Clues:\n1. The person who loves stir fry is somewhere to the left of the person who is a pizza lover.\n2. There is one house between Bob and the person who loves the soup.\n3. The person who loves stir fry is Carol.\n4. Arnold is in the fourth house.\n5. Bob is in the first house.\n6. The person who loves the spaghetti eater is in the fifth house.\n7. Alice is in the third house.\n8. Peter is the person who loves eating grilled cheese.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "stew"
+        ],
+        [
+          "2",
+          "Carol",
+          "stir fry"
+        ],
+        [
+          "3",
+          "Alice",
+          "soup"
+        ],
+        [
+          "4",
+          "Arnold",
+          "pizza"
+        ],
+        [
+          "5",
+          "Eric",
+          "spaghetti"
+        ],
+        [
+          "6",
+          "Peter",
+          "grilled cheese"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209806"
+  },
+  {
+    "id": "lgp-test-6x2-20",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Bob`, `Peter`, `Eric`, `Arnold`, `Carol`\n - They all have a unique favorite flower: `roses`, `lilies`, `iris`, `tulips`, `daffodils`, `carnations`\n\n## Clues:\n1. Bob is somewhere to the right of the person who loves a carnations arrangement.\n2. The person who loves the boquet of iris is in the fifth house.\n3. Peter is directly left of the person who loves the boquet of lilies.\n4. There is one house between the person who loves the rose bouquet and Bob.\n5. Alice is in the fourth house.\n6. The person who loves the vase of tulips is Peter.\n7. Arnold is in the second house.\n8. Alice is directly left of Carol.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "tulips"
+        ],
+        [
+          "2",
+          "Arnold",
+          "lilies"
+        ],
+        [
+          "3",
+          "Eric",
+          "carnations"
+        ],
+        [
+          "4",
+          "Alice",
+          "roses"
+        ],
+        [
+          "5",
+          "Carol",
+          "iris"
+        ],
+        [
+          "6",
+          "Bob",
+          "daffodils"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209813"
+  },
+  {
+    "id": "lgp-test-6x2-21",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Arnold`, `Eric`, `Peter`, `Carol`, `Alice`\n - Each person has a unique hobby: `cooking`, `woodworking`, `gardening`, `knitting`, `photography`, `painting`\n\n## Clues:\n1. Alice is directly left of Bob.\n2. The photography enthusiast is not in the fourth house.\n3. The person who paints as a hobby and the woodworking hobbyist are next to each other.\n4. The person who loves cooking is somewhere to the left of the person who enjoys knitting.\n5. The woodworking hobbyist is not in the fourth house.\n6. Arnold is in the fifth house.\n7. There are two houses between Peter and the person who enjoys knitting.\n8. The person who loves cooking is in the third house.\n9. Bob is not in the third house.\n10. There is one house between the woodworking hobbyist and Carol.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "painting"
+        ],
+        [
+          "2",
+          "Bob",
+          "woodworking"
+        ],
+        [
+          "3",
+          "Peter",
+          "cooking"
+        ],
+        [
+          "4",
+          "Carol",
+          "gardening"
+        ],
+        [
+          "5",
+          "Arnold",
+          "photography"
+        ],
+        [
+          "6",
+          "Eric",
+          "knitting"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209818"
+  },
+  {
+    "id": "lgp-test-6x2-22",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Bob`, `Carol`, `Peter`, `Alice`, `Eric`\n - Each person has a favorite color: `yellow`, `purple`, `green`, `red`, `white`, `blue`\n\n## Clues:\n1. The person whose favorite color is green is in the third house.\n2. Carol is the person who loves yellow.\n3. Alice is not in the fourth house.\n4. There are two houses between the person whose favorite color is red and Bob.\n5. Alice is directly left of the person who loves yellow.\n6. Arnold is directly left of Bob.\n7. Bob is somewhere to the left of Carol.\n8. Bob is directly left of the person who loves purple.\n9. Eric is the person who loves blue.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Color"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "red"
+        ],
+        [
+          "2",
+          "Eric",
+          "blue"
+        ],
+        [
+          "3",
+          "Arnold",
+          "green"
+        ],
+        [
+          "4",
+          "Bob",
+          "white"
+        ],
+        [
+          "5",
+          "Alice",
+          "purple"
+        ],
+        [
+          "6",
+          "Carol",
+          "yellow"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209824"
+  },
+  {
+    "id": "lgp-test-6x2-23",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Peter`, `Carol`, `Alice`, `Arnold`\n - People have unique favorite music genres: `rock`, `classical`, `pop`, `hip hop`, `jazz`, `country`\n\n## Clues:\n1. Alice is somewhere to the right of the person who loves classical music.\n2. The person who loves pop music is directly left of the person who loves classical music.\n3. Bob is in the fourth house.\n4. The person who loves country music is Bob.\n5. The person who loves hip-hop music is Peter.\n6. Carol is somewhere to the right of the person who loves jazz music.\n7. Peter is directly left of Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "hip hop"
+        ],
+        [
+          "2",
+          "Eric",
+          "pop"
+        ],
+        [
+          "3",
+          "Arnold",
+          "classical"
+        ],
+        [
+          "4",
+          "Bob",
+          "country"
+        ],
+        [
+          "5",
+          "Alice",
+          "jazz"
+        ],
+        [
+          "6",
+          "Carol",
+          "rock"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209830"
+  },
+  {
+    "id": "lgp-test-6x2-24",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Carol`, `Alice`, `Peter`\n - Each person prefers a unique type of vacation: `city`, `beach`, `cruise`, `mountain`, `cultural`, `camping`\n\n## Clues:\n1. The person who likes going on cruises is somewhere to the left of Alice.\n2. The person who goes on cultural tours is somewhere to the left of the person who prefers city breaks.\n3. Alice is in the fourth house.\n4. The person who enjoys mountain retreats is not in the second house.\n5. The person who prefers city breaks and Alice are next to each other.\n6. There are two houses between Bob and Carol.\n7. The person who enjoys mountain retreats is directly left of Carol.\n8. Peter is directly left of Eric.\n9. There is one house between the person who likes going on cruises and the person who enjoys camping trips.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cultural"
+        ],
+        [
+          "2",
+          "Eric",
+          "cruise"
+        ],
+        [
+          "3",
+          "Bob",
+          "city"
+        ],
+        [
+          "4",
+          "Alice",
+          "camping"
+        ],
+        [
+          "5",
+          "Arnold",
+          "mountain"
+        ],
+        [
+          "6",
+          "Carol",
+          "beach"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209837"
+  },
+  {
+    "id": "lgp-test-6x2-25",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Carol`, `Alice`, `Arnold`, `Eric`\n - Everyone has something unique for lunch: `pizza`, `stew`, `stir fry`, `soup`, `grilled cheese`, `spaghetti`\n\n## Clues:\n1. The person who loves eating grilled cheese is Carol.\n2. Peter is in the sixth house.\n3. Eric is the person who loves the stew.\n4. The person who loves the soup is in the third house.\n5. Arnold is in the fourth house.\n6. Bob is in the first house.\n7. The person who is a pizza lover is not in the sixth house.\n8. There is one house between the person who loves the stew and Arnold.\n9. The person who loves the spaghetti eater is somewhere to the left of Alice.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "spaghetti"
+        ],
+        [
+          "2",
+          "Eric",
+          "stew"
+        ],
+        [
+          "3",
+          "Alice",
+          "soup"
+        ],
+        [
+          "4",
+          "Arnold",
+          "pizza"
+        ],
+        [
+          "5",
+          "Carol",
+          "grilled cheese"
+        ],
+        [
+          "6",
+          "Peter",
+          "stir fry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209844"
+  },
+  {
+    "id": "lgp-test-6x2-26",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Peter`, `Carol`, `Alice`\n - Everyone has a favorite smoothie: `lime`, `desert`, `blueberry`, `cherry`, `watermelon`, `dragonfruit`\n\n## Clues:\n1. Alice is in the fifth house.\n2. Bob is somewhere to the left of the Watermelon smoothie lover.\n3. The person who drinks Lime smoothies is in the fifth house.\n4. Eric is the Desert smoothie lover.\n5. The person who drinks Blueberry smoothies is somewhere to the right of the Desert smoothie lover.\n6. Bob is somewhere to the right of Arnold.\n7. There are two houses between the Dragonfruit smoothie lover and the person who likes Cherry smoothies.\n8. The person who likes Cherry smoothies is somewhere to the right of the person who drinks Lime smoothies.\n9. Peter is somewhere to the right of Carol.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "desert"
+        ],
+        [
+          "2",
+          "Arnold",
+          "blueberry"
+        ],
+        [
+          "3",
+          "Bob",
+          "dragonfruit"
+        ],
+        [
+          "4",
+          "Carol",
+          "watermelon"
+        ],
+        [
+          "5",
+          "Alice",
+          "lime"
+        ],
+        [
+          "6",
+          "Peter",
+          "cherry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209850"
+  },
+  {
+    "id": "lgp-test-6x2-27",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Alice`, `Bob`, `Peter`, `Eric`, `Carol`\n - People have unique favorite sports: `baseball`, `soccer`, `swimming`, `basketball`, `volleyball`, `tennis`\n\n## Clues:\n1. Carol is in the first house.\n2. Alice is not in the second house.\n3. There are two houses between the person who loves baseball and Eric.\n4. The person who loves tennis is not in the fourth house.\n5. The person who loves baseball is not in the fifth house.\n6. The person who loves swimming is not in the third house.\n7. The person who loves volleyball is not in the sixth house.\n8. Bob is in the sixth house.\n9. Eric is the person who loves swimming.\n10. Alice is not in the fourth house.\n11. The person who loves tennis is Arnold.\n12. Peter is somewhere to the right of the person who loves soccer.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "baseball"
+        ],
+        [
+          "2",
+          "Arnold",
+          "tennis"
+        ],
+        [
+          "3",
+          "Alice",
+          "soccer"
+        ],
+        [
+          "4",
+          "Eric",
+          "swimming"
+        ],
+        [
+          "5",
+          "Peter",
+          "volleyball"
+        ],
+        [
+          "6",
+          "Bob",
+          "basketball"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209857"
+  },
+  {
+    "id": "lgp-test-6x2-28",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Carol`, `Alice`, `Bob`, `Peter`\n - Each mother is accompanied by their child: `Bella`, `Fred`, `Timothy`, `Alice`, `Meredith`, `Samantha`\n\n## Clues:\n1. The person's child is named Bella and Peter are next to each other.\n2. Bob and the person's child is named Alice are next to each other.\n3. The person who is the mother of Timothy is in the fourth house.\n4. The person's child is named Alice is somewhere to the right of the person's child is named Fred.\n5. Carol is not in the first house.\n6. The person's child is named Meredith is in the sixth house.\n7. The person's child is named Bella is not in the third house.\n8. The person's child is named Samantha is not in the third house.\n9. The person's child is named Alice is Arnold.\n10. The person's child is named Fred is Peter.\n11. The person's child is named Alice is not in the third house.\n12. The person's child is named Meredith is Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "Samantha"
+        ],
+        [
+          "2",
+          "Carol",
+          "Bella"
+        ],
+        [
+          "3",
+          "Peter",
+          "Fred"
+        ],
+        [
+          "4",
+          "Bob",
+          "Timothy"
+        ],
+        [
+          "5",
+          "Arnold",
+          "Alice"
+        ],
+        [
+          "6",
+          "Eric",
+          "Meredith"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209864"
+  },
+  {
+    "id": "lgp-test-6x2-29",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Bob`, `Carol`, `Eric`, `Alice`, `Peter`\n - Each person lives in a unique style of house: `craftsman`, `modern`, `ranch`, `mediterranean`, `victorian`, `colonial`\n\n## Clues:\n1. The person in a ranch-style home is directly left of Carol.\n2. The person in a Mediterranean-style villa is in the fifth house.\n3. The person in a ranch-style home is Arnold.\n4. The person living in a colonial-style house is not in the fourth house.\n5. Alice is somewhere to the left of the person residing in a Victorian house.\n6. The person residing in a Victorian house is in the third house.\n7. Bob is the person in a Mediterranean-style villa.\n8. Eric is somewhere to the left of the person in a modern-style house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "colonial"
+        ],
+        [
+          "2",
+          "Arnold",
+          "ranch"
+        ],
+        [
+          "3",
+          "Carol",
+          "victorian"
+        ],
+        [
+          "4",
+          "Eric",
+          "craftsman"
+        ],
+        [
+          "5",
+          "Bob",
+          "mediterranean"
+        ],
+        [
+          "6",
+          "Peter",
+          "modern"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209870"
+  },
+  {
+    "id": "lgp-test-6x2-30",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Arnold`, `Peter`, `Alice`, `Bob`, `Eric`\n - Each person has a unique level of education: `associate`, `bachelor`, `high school`, `trade school`, `doctorate`, `master`\n\n## Clues:\n1. The person with a doctorate is Bob.\n2. The person who attended trade school is not in the third house.\n3. Eric is somewhere to the right of the person who attended trade school.\n4. Alice is not in the first house.\n5. Alice is somewhere to the left of the person with an associate's degree.\n6. The person with a master's degree is Carol.\n7. The person with a doctorate is not in the first house.\n8. Bob is somewhere to the left of the person who attended trade school.\n9. Arnold is in the fifth house.\n10. There is one house between Bob and the person with a bachelor's degree.\n11. The person with a bachelor's degree is Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Education"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "master"
+        ],
+        [
+          "2",
+          "Alice",
+          "high school"
+        ],
+        [
+          "3",
+          "Peter",
+          "associate"
+        ],
+        [
+          "4",
+          "Bob",
+          "doctorate"
+        ],
+        [
+          "5",
+          "Arnold",
+          "trade school"
+        ],
+        [
+          "6",
+          "Eric",
+          "bachelor"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209875"
+  },
+  {
+    "id": "lgp-test-6x2-31",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Carol`, `Eric`, `Arnold`, `Bob`\n - People have unique heights: `very tall`, `very short`, `average`, `tall`, `short`, `super tall`\n\n## Clues:\n1. Eric is in the second house.\n2. Arnold is the person who is short.\n3. Alice is somewhere to the left of the person who has an average height.\n4. The person who is tall is somewhere to the right of Peter.\n5. Arnold is not in the fourth house.\n6. The person who is short is somewhere to the right of Eric.\n7. There is one house between Peter and Bob.\n8. Arnold is somewhere to the left of the person who is very tall.\n9. The person who has an average height is Carol.\n10. The person who is very short is Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "super tall"
+        ],
+        [
+          "2",
+          "Eric",
+          "very short"
+        ],
+        [
+          "3",
+          "Arnold",
+          "short"
+        ],
+        [
+          "4",
+          "Peter",
+          "very tall"
+        ],
+        [
+          "5",
+          "Carol",
+          "average"
+        ],
+        [
+          "6",
+          "Bob",
+          "tall"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209881"
+  },
+  {
+    "id": "lgp-test-6x2-32",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Peter`, `Carol`, `Arnold`, `Alice`\n - Each person lives in a unique style of house: `victorian`, `mediterranean`, `modern`, `craftsman`, `ranch`, `colonial`\n\n## Clues:\n1. The person in a ranch-style home is in the third house.\n2. Alice is in the fifth house.\n3. Arnold is the person in a Craftsman-style house.\n4. Bob is somewhere to the right of the person residing in a Victorian house.\n5. Eric is not in the second house.\n6. Eric is not in the fourth house.\n7. The person in a modern-style house is directly left of Bob.\n8. Alice is somewhere to the left of the person in a Craftsman-style house.\n9. The person in a Mediterranean-style villa is Alice.\n10. Carol is not in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "victorian"
+        ],
+        [
+          "2",
+          "Carol",
+          "modern"
+        ],
+        [
+          "3",
+          "Bob",
+          "ranch"
+        ],
+        [
+          "4",
+          "Peter",
+          "colonial"
+        ],
+        [
+          "5",
+          "Alice",
+          "mediterranean"
+        ],
+        [
+          "6",
+          "Arnold",
+          "craftsman"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209889"
+  },
+  {
+    "id": "lgp-test-6x2-33",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Carol`, `Peter`, `Bob`, `Arnold`, `Alice`\n - They all have a unique favorite flower: `tulips`, `lilies`, `iris`, `roses`, `carnations`, `daffodils`\n\n## Clues:\n1. The person who loves the vase of tulips is directly left of the person who loves a bouquet of daffodils.\n2. Alice is somewhere to the right of Peter.\n3. There are two houses between Carol and Peter.\n4. The person who loves the boquet of lilies is Bob.\n5. The person who loves the boquet of iris is not in the second house.\n6. The person who loves the boquet of iris and the person who loves a carnations arrangement are next to each other.\n7. Arnold is not in the second house.\n8. The person who loves a bouquet of daffodils is Peter.\n9. Bob is in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Flower"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "iris"
+        ],
+        [
+          "2",
+          "Eric",
+          "carnations"
+        ],
+        [
+          "3",
+          "Arnold",
+          "tulips"
+        ],
+        [
+          "4",
+          "Peter",
+          "daffodils"
+        ],
+        [
+          "5",
+          "Bob",
+          "lilies"
+        ],
+        [
+          "6",
+          "Alice",
+          "roses"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209895"
+  },
+  {
+    "id": "lgp-test-6x2-34",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`, `Carol`, `Bob`, `Alice`\n - People have unique heights: `super tall`, `very tall`, `tall`, `very short`, `short`, `average`\n\n## Clues:\n1. Carol is not in the sixth house.\n2. There is one house between Bob and the person who is very tall.\n3. The person who is super tall is not in the sixth house.\n4. Eric is the person who is very tall.\n5. Peter is not in the sixth house.\n6. The person who is short is not in the first house.\n7. The person who is short is not in the third house.\n8. The person who is short is directly left of Eric.\n9. The person who is very short is somewhere to the right of the person who is very tall.\n10. The person who is tall is Alice.\n11. Carol is not in the second house.\n12. There are two houses between the person who is super tall and Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "tall"
+        ],
+        [
+          "2",
+          "Peter",
+          "super tall"
+        ],
+        [
+          "3",
+          "Bob",
+          "average"
+        ],
+        [
+          "4",
+          "Carol",
+          "short"
+        ],
+        [
+          "5",
+          "Eric",
+          "very tall"
+        ],
+        [
+          "6",
+          "Arnold",
+          "very short"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209901"
+  },
+  {
+    "id": "lgp-test-6x2-35",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Peter`, `Alice`, `Arnold`, `Bob`\n - Each person has a unique level of education: `high school`, `master`, `trade school`, `associate`, `bachelor`, `doctorate`\n\n## Clues:\n1. Carol is not in the sixth house.\n2. The person with a master's degree is directly left of the person who attended trade school.\n3. The person with an associate's degree is in the second house.\n4. The person with a doctorate is somewhere to the left of Alice.\n5. There is one house between Carol and the person with a master's degree.\n6. Arnold is directly left of Bob.\n7. The person who attended trade school and the person with a bachelor's degree are next to each other.\n8. Arnold is somewhere to the right of Peter.\n9. Arnold is not in the fourth house.\n10. Eric is somewhere to the left of the person with a doctorate.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Education"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "high school"
+        ],
+        [
+          "2",
+          "Carol",
+          "associate"
+        ],
+        [
+          "3",
+          "Peter",
+          "doctorate"
+        ],
+        [
+          "4",
+          "Alice",
+          "master"
+        ],
+        [
+          "5",
+          "Arnold",
+          "trade school"
+        ],
+        [
+          "6",
+          "Bob",
+          "bachelor"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209907"
+  },
+  {
+    "id": "lgp-test-6x2-36",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Bob`, `Arnold`, `Peter`, `Alice`, `Eric`\n - People have unique favorite book genres: `mystery`, `fantasy`, `science fiction`, `romance`, `historical fiction`, `biography`\n\n## Clues:\n1. Carol is directly left of Arnold.\n2. Eric is the person who loves mystery books.\n3. The person who loves romance books and the person who loves science fiction books are next to each other.\n4. Peter is somewhere to the right of the person who loves historical fiction books.\n5. Arnold is somewhere to the right of the person who loves fantasy books.\n6. There is one house between the person who loves biography books and Arnold.\n7. The person who loves romance books is not in the sixth house.\n8. The person who loves mystery books is not in the sixth house.\n9. Alice is the person who loves science fiction books.\n10. Carol is in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "BookGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "biography"
+        ],
+        [
+          "2",
+          "Carol",
+          "fantasy"
+        ],
+        [
+          "3",
+          "Arnold",
+          "historical fiction"
+        ],
+        [
+          "4",
+          "Eric",
+          "mystery"
+        ],
+        [
+          "5",
+          "Peter",
+          "romance"
+        ],
+        [
+          "6",
+          "Alice",
+          "science fiction"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209916"
+  },
+  {
+    "id": "lgp-test-6x2-37",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Bob`, `Arnold`, `Eric`, `Carol`\n - People own unique car models: `tesla model 3`, `honda civic`, `toyota camry`, `chevrolet silverado`, `bmw 3 series`, `ford f150`\n\n## Clues:\n1. Alice is not in the fifth house.\n2. Carol is somewhere to the left of the person who owns a Chevrolet Silverado.\n3. The person who owns a Toyota Camry is Bob.\n4. The person who owns a BMW 3 Series is not in the second house.\n5. The person who owns a Honda Civic is somewhere to the right of Arnold.\n6. There is one house between the person who owns a BMW 3 Series and the person who owns a Chevrolet Silverado.\n7. There is one house between Arnold and Bob.\n8. The person who owns a Tesla Model 3 is not in the sixth house.\n9. The person who owns a Toyota Camry is not in the third house.\n10. The person who owns a Tesla Model 3 is Peter.\n11. The person who owns a Honda Civic and the person who owns a Toyota Camry are next to each other.\n12. The person who owns a Toyota Camry is not in the fifth house.\n13. The person who owns a Chevrolet Silverado is not in the second house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Carol",
+          "bmw 3 series"
+        ],
+        [
+          "2",
+          "Peter",
+          "tesla model 3"
+        ],
+        [
+          "3",
+          "Alice",
+          "chevrolet silverado"
+        ],
+        [
+          "4",
+          "Arnold",
+          "ford f150"
+        ],
+        [
+          "5",
+          "Eric",
+          "honda civic"
+        ],
+        [
+          "6",
+          "Bob",
+          "toyota camry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209922"
+  },
+  {
+    "id": "lgp-test-6x2-38",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Carol`, `Alice`, `Arnold`, `Bob`\n - Each mother is accompanied by their child: `Samantha`, `Alice`, `Timothy`, `Fred`, `Bella`, `Meredith`\n\n## Clues:\n1. Arnold is not in the sixth house.\n2. The person's child is named Alice is somewhere to the left of Peter.\n3. The person's child is named Bella is in the fourth house.\n4. Carol is in the third house.\n5. The person's child is named Meredith is not in the sixth house.\n6. The person's child is named Alice is somewhere to the left of Arnold.\n7. Bob and Carol are next to each other.\n8. Eric is the person's child is named Bella.\n9. The person's child is named Meredith is somewhere to the right of the person's child is named Alice.\n10. The person's child is named Fred is in the fifth house.\n11. The person who is the mother of Timothy is Carol.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "Alice"
+        ],
+        [
+          "2",
+          "Bob",
+          "Meredith"
+        ],
+        [
+          "3",
+          "Carol",
+          "Timothy"
+        ],
+        [
+          "4",
+          "Eric",
+          "Bella"
+        ],
+        [
+          "5",
+          "Arnold",
+          "Fred"
+        ],
+        [
+          "6",
+          "Peter",
+          "Samantha"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209928"
+  },
+  {
+    "id": "lgp-test-6x2-39",
+    "size": "6*2",
+    "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Carol`, `Eric`, `Peter`, `Arnold`, `Alice`, `Bob`\n - Everyone has a favorite smoothie: `watermelon`, `lime`, `dragonfruit`, `desert`, `blueberry`, `cherry`\n\n## Clues:\n1. Peter is somewhere to the right of the person who drinks Lime smoothies.\n2. The person who likes Cherry smoothies is not in the fourth house.\n3. Eric is not in the sixth house.\n4. The Watermelon smoothie lover is somewhere to the left of Eric.\n5. The Desert smoothie lover is somewhere to the right of Peter.\n6. The person who drinks Blueberry smoothies is directly left of the person who drinks Lime smoothies.\n7. The Desert smoothie lover is somewhere to the right of Alice.\n8. Eric is not in the fifth house.\n9. The person who drinks Lime smoothies is Arnold.\n10. Bob is directly left of Peter.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "watermelon"
+        ],
+        [
+          "2",
+          "Eric",
+          "blueberry"
+        ],
+        [
+          "3",
+          "Arnold",
+          "lime"
+        ],
+        [
+          "4",
+          "Bob",
+          "dragonfruit"
+        ],
+        [
+          "5",
+          "Peter",
+          "cherry"
+        ],
+        [
+          "6",
+          "Carol",
+          "desert"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.209933"
+  }
+]

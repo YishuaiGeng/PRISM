@@ -1,0 +1,45 @@
+# Exp-4: Ablation Study Configuration
+# Tests the independent contribution of each PRISM component.
+# Run with: python scripts/run_experiments.py --experiment ablation
+
+# Puzzle sizes to include in ablation (medium to hard for meaningful distinction)
+sizes:
+  - "4x5"
+  - "5x5"
+  - "6x6"
+
+# Each variant removes one or more components from PRISM Full.
+# no_paradigm: disable ParadigmLibrary (Layer-1 + Layer-2 retrieval)
+# no_memory:   disable RepairMemory (stagnation + loop detection)
+variants:
+  PRISM_Full:
+    no_paradigm: false
+    no_memory: false
+    max_repair: 5
+
+  PRISM_wo_Paradigm:
+    no_paradigm: true
+    no_memory: false
+    max_repair: 5
+
+  PRISM_wo_Memory:
+    no_paradigm: false
+    no_memory: true
+    max_repair: 5
+
+  Paper1_Baseline:
+    no_paradigm: true
+    no_memory: true
+    max_repair: 5
+
+# Fine-grained ablations (remove individual sub-components of PRISM Full):
+# These correspond to the A1-A8 variants in the experiment design doc.
+# Uncomment when PRISM Full results confirm baseline improvement.
+
+# fine_grained:
+#   A3_wo_stagnation:
+#     stagnation_jaccard: 1.1    # effectively disabled (threshold > 1.0)
+#   A4_wo_loop:
+#     loop_cosine: 1.1
+#   A6_wo_writeback:
+#     writeback: false

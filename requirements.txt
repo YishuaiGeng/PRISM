@@ -1,0 +1,14 @@
+z3-solver
+sentence-transformers
+scikit-learn
+anthropic
+openai
+wandb
+pydantic>=2.0
+pytest
+pytest-cov
+pyyaml
+numpy
+pandas
+requests
+scipy

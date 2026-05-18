@@ -1,0 +1,87 @@
+"""Layer-1 constraint-type matching for paradigm retrieval.
+
+``ParadigmRetriever`` provides a fast, LLM-free first-pass filter over the
+paradigm library.  The retriever ranks candidates by a weighted combination of
+scope-Jaccard similarity and paradigm confidence, then returns the top-k results
+to the caller.  Semantic (Layer-2) filtering is intentionally left to the caller
+(``GuidedSolver``) so that the retriever stays stateless and testable without
+an LLM dependency.
+"""
+
+from __future__ import annotations
+
+from typing import List
+
+from prism.paradigm_library.schema import Paradigm
+
+_W_SCOPE_JACCARD: float = 0.60
+_W_CONFIDENCE: float = 0.40
+
+_MIN_JACCARD_THRESHOLD: float = 0.01
+
+
+def _jaccard(a: set, b: set) -> float:
+    union = a | b
+    return len(a & b) / len(union) if union else 0.0
+
+
+class ParadigmRetriever:
+    """Stateless Layer-1 paradigm retriever based on constraint-type set matching.
+
+    Ranking formula::
+
+        score(p) = 0.60 × Jaccard(p.scope, query_types) + 0.40 × p.confidence
+
+    When no paradigm has any scope overlap with the query (all Jaccard scores
+    are zero), the retriever falls back to ranking by confidence alone so that
+    the caller always receives *k* candidates to pass to Layer-2 filtering.
+
+    This class has no external dependencies beyond ``schema.Paradigm`` and is
+    therefore suitable for use in unit tests without a running LLM or solver.
+    """
+
+    def retrieve(
+        self,
+        paradigms: List[Paradigm],
+        constraint_types: List[str],
+        top_k: int = 3,
+    ) -> List[Paradigm]:
+        """Return the top-k paradigms ranked by scope relevance and confidence.
+
+        Args:
+            paradigms: Full list of paradigms to rank.
+            constraint_types: Tags describing the types of constraints in the
+                current UNSAT core (e.g. ``["adjacent", "direct_position"]``).
+            top_k: Maximum number of results to return.
+
+        Returns:
+            List of up to *top_k* :class:`~prism.paradigm_library.schema.Paradigm`
+            objects sorted by relevance descending.
+        """
+        if not paradigms:
+            return []
+
+        query_set = set(constraint_types)
+        scored = [
+            (self._score(p, query_set), p)
+            for p in paradigms
+        ]
+        scored.sort(key=lambda t: t[0], reverse=True)
+
+        if scored[0][0] < _MIN_JACCARD_THRESHOLD:
+            by_conf = sorted(paradigms, key=lambda p: p.confidence, reverse=True)
+            return by_conf[:top_k]
+
+        return [p for _, p in scored[:top_k]]
+
+    # ------------------------------------------------------------------
+    # Helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _scope_jaccard(paradigm_scope: List[str], query_types: set) -> float:
+        return _jaccard(set(paradigm_scope), query_types)
+
+    def _score(self, paradigm: Paradigm, query_set: set) -> float:
+        jaccard = self._scope_jaccard(paradigm.scope, query_set)
+        return _W_SCOPE_JACCARD * jaccard + _W_CONFIDENCE * paradigm.confidence

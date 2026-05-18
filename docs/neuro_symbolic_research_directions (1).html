@@ -1,0 +1,196 @@
+
+<style>
+  h2.sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0); }
+  .dir-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem 1.25rem; margin-bottom:12px; cursor:pointer; transition:border-color .2s; }
+  .dir-card:hover { border-color:var(--color-border-primary); }
+  .dir-card.active { border-color:var(--color-border-info); }
+  .dir-header { display:flex; align-items:flex-start; gap:10px; }
+  .dir-num { font-size:11px; font-weight:500; padding:2px 8px; border-radius:99px; white-space:nowrap; margin-top:2px; }
+  .dir-title { font-size:15px; font-weight:500; color:var(--color-text-primary); margin:0 0 2px; }
+  .dir-sub { font-size:13px; color:var(--color-text-secondary); margin:0; }
+  .dir-body { display:none; margin-top:12px; padding-top:12px; border-top:0.5px solid var(--color-border-tertiary); }
+  .dir-card.active .dir-body { display:block; }
+  .meta-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+  .badge { font-size:11px; padding:2px 8px; border-radius:99px; font-weight:500; }
+  .b-teal { background:#E1F5EE; color:#0F6E56; }
+  .b-amber { background:#FAEEDA; color:#854F0B; }
+  .b-purple { background:#EEEDFE; color:#3C3489; }
+  .b-coral { background:#FAECE7; color:#993C1D; }
+  .b-blue { background:#E6F1FB; color:#185FA5; }
+  .b-gray { background:#F1EFE8; color:#5F5E5A; }
+  @media (prefers-color-scheme:dark) {
+    .b-teal { background:#085041; color:#9FE1CB; }
+    .b-amber { background:#633806; color:#FAC775; }
+    .b-purple { background:#26215C; color:#CECBF6; }
+    .b-coral { background:#4A1B0C; color:#F5C4B3; }
+    .b-blue { background:#042C53; color:#B5D4F4; }
+    .b-gray { background:#2C2C2A; color:#D3D1C7; }
+  }
+  .bar-wrap { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+  .bar-label { font-size:12px; color:var(--color-text-secondary); width:64px; flex-shrink:0; }
+  .bar-bg { flex:1; height:6px; background:var(--color-background-secondary); border-radius:3px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:3px; }
+  .bar-val { font-size:12px; color:var(--color-text-secondary); width:28px; text-align:right; }
+  .detail-sec { margin-bottom:10px; }
+  .detail-sec strong { font-size:13px; font-weight:500; color:var(--color-text-primary); display:block; margin-bottom:4px; }
+  .detail-sec p, .detail-sec li { font-size:13px; color:var(--color-text-secondary); margin:0 0 3px; line-height:1.6; }
+  ul.detail-list { margin:0; padding-left:16px; }
+  .link-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .ask-btn { font-size:12px; padding:4px 10px; border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-secondary); cursor:pointer; background:transparent; color:var(--color-text-secondary); }
+  .ask-btn:hover { background:var(--color-background-secondary); }
+  .tab-row { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+  .tab { font-size:13px; padding:5px 14px; border-radius:99px; border:0.5px solid var(--color-border-tertiary); cursor:pointer; background:transparent; color:var(--color-text-secondary); }
+  .tab.on { background:var(--color-background-info); color:var(--color-text-info); border-color:transparent; }
+  .timeline { display:flex; gap:0; margin-bottom:16px; }
+  .t-seg { flex:1; padding:6px 10px; font-size:12px; text-align:center; border:0.5px solid var(--color-border-tertiary); color:var(--color-text-secondary); }
+  .t-seg:first-child { border-radius:var(--border-radius-md) 0 0 var(--border-radius-md); }
+  .t-seg:last-child { border-radius:0 var(--border-radius-md) var(--border-radius-md) 0; }
+  .t-seg.hi { background:var(--color-background-info); color:var(--color-text-info); border-color:transparent; font-weight:500; }
+  .section-h { font-size:14px; font-weight:500; color:var(--color-text-primary); margin:0 0 10px; }
+</style>
+<h2 class="sr-only">神经符号推理研究方向调研，包含五个可在三个月内完成的方向及其可行性评估</h2>
+
+<div style="padding:1rem 0 0">
+  <div style="margin-bottom:16px">
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 12px">点击每个方向查看详细分析。基于你的两篇工作（求解 + 生成 Zebra 谜题）推荐。</p>
+    <div class="tab-row">
+      <button class="tab on" onclick="filter('all',this)">全部方向</button>
+      <button class="tab" onclick="filter('agent',this)">Agent 相关</button>
+      <button class="tab" onclick="filter('train',this)">训练/RL</button>
+      <button class="tab" onclick="filter('eval',this)">评估/分析</button>
+    </div>
+  </div>
+
+  <div id="cards"></div>
+</div>
+
+<script>
+const dirs = [
+  {
+    id:1, tags:['agent'],
+    color:'b-purple', label:'方向一',
+    title:'神经符号 Agent + Solver 反馈回路',
+    sub:'LLM 与 SAT/SMT 求解器的交互式迭代协作',
+    novelty:82, feasibility:90, impact:80, effort:2,
+    timeline:['1-2周：搭建LLM↔Z3接口','3-5周：设计反馈格式+错误诊断','6-9周：系统实验','10-12周：写作'],
+    desc:'在你第一篇工作（神经符号求解）基础上，构建一个完整的 Agent 框架：LLM 将谜题翻译为约束，Z3/MiniSAT 求解，如不可满足则将 UNSAT 原因反馈给 LLM，LLM 诊断并修订约束，循环迭代直到求解成功。',
+    points:['直接复用第一篇的神经符号框架','与 ATA、"LLMs + Formal Verification" 等2025年工作区分点在于：专注约束诊断而非规划','可以在 Zebra 数据集上直接评估，benchmark 现成','关键创新：设计 UNSAT 原因 → 自然语言诊断 的 prompt 结构'],
+    risks:'LLM 在多轮修订中可能出现 degeneration；需设计终止条件',
+    papers:['ATA: Neuro-Symbolic Autonomous Agents (2025)', 'LLMs Can Solve Planning with Formal Verification (MIT/Harvard 2024)', 'Constraints-of-Thought (2024)'],
+    ask:'解释一下神经符号 Agent 和 SAT solver 结合的技术细节'
+  },
+  {
+    id:2, tags:['train'],
+    color:'b-teal', label:'方向二',
+    title:'基于 RLVR 的谜题推理训练',
+    sub:'用生成的 Zebra 谜题做 GRPO/RLVR 训练数据，提升推理泛化',
+    novelty:75, feasibility:78, effort:3,impact:90,
+    timeline:['1-2周：复用第二篇生成器建数据集','3-6周：基于 Qwen/LLaMA 跑 GRPO 实验','7-10周：泛化性测试（跨谜题类型）','11-12周：分析+写作'],
+    desc:'你第二篇工作已经可以生成 Zebra 谜题并控制难度。以此为训练数据源，用 RLVR（GRPO）框架训练一个小模型（7B-14B），reward = 求解正确性。关键问题：puzzle 训练能否泛化到数学/逻辑等 OOD 任务？',
+    points:['直接利用第二篇生成器，数据完全可控','与 LogicPuzzleRL、Enigmata（2025）形成对比，但你有可控生成器是独特优势','可以做课程学习（先易后难）实验','Zebra 谜题的验证 oracle 天然存在（Z3），reward 信号干净'],
+    risks:'需要 GPU 资源（至少 2×A100）；泛化实验结果可能不够显著',
+    papers:['LogicPuzzleRL (2025)', 'Enigmata: Scaling Logical Reasoning via Synthetic Verifiable Puzzles (2025)', 'ZebraLogic: Scaling Limits of LLMs (2025)'],
+    ask:'RLVR 训练 Zebra 谜题时如何设计 reward 函数和课程学习？'
+  },
+  {
+    id:3, tags:['eval'],
+    color:'b-amber', label:'方向三',
+    title:'多智能体辩论求解约束满足问题',
+    sub:'不同角色 Agent 协作/争辩推理，分析 MAD 对约束推理的提升机制',
+    novelty:70, feasibility:92, effort:1, impact:72,
+    timeline:['1-2周：搭建 MAD 框架（基于 Zebra）','3-5周：设计角色分工（提出者/批评者/验证者）','6-9周：系统实验，消融角色/轮次等','10-12周：写作'],
+    desc:'在 Zebra 谜题（可验证 ground truth）上构建受控多智能体辩论实验。设计"提出者 + 批评者 + 符号验证者"三角结构，与现有 MAD 研究（只有语言辩论）对比，研究符号验证者角色的作用。',
+    points:['可复用 Knight-Knave-Spy MAD 研究的框架思路（2025年11月发表）','Zebra 有 ground truth，可做精确的 step-level 评估','创新点：神经符号辩论 vs. 纯语言辩论','不需要 fine-tune，纯 prompting 实验，计算成本低'],
+    risks:'现有研究表明 MAD 不总是优于单 agent；论文贡献需要深挖机制分析，而非简单"MAD 有效"',
+    papers:['Can LLM Agents Really Debate? (2025)', 'Multi-LLM-Agents Debate Challenges (ICLR 2025)', 'Self-Debate Reinforcement Learning (2025)'],
+    ask:'神经符号多智能体辩论的具体框架设计是什么？'
+  },
+  {
+    id:4, tags:['train','eval'],
+    color:'b-blue', label:'方向四',
+    title:'约束推理过程奖励模型（PRM）',
+    sub:'以符号求解器作 oracle，自动标注 CoT 步骤，训练 step-level 验证器',
+    novelty:85, feasibility:72, effort:3, impact:85,
+    timeline:['1-3周：用Z3自动生成step-level标注','4-7周：训练PRM（可用 QwQ/DeepSeek-R1 蒸馏）','8-10周：PRM 引导 beam search 实验','11-12周：写作'],
+    desc:'Zebra 谜题的关键优势：中间推理步骤可被符号求解器自动验证。利用这一特性，无需人工标注即可构建 step-level 训练数据，训练 PRM（过程奖励模型）用于推理监督。与 PRoSFI、ThinkPRM 等相比，创新在于 puzzle 域的自动化标注流程。',
+    points:['符号求解器可以自动判断每个推理步骤的合法性，天然适合 PRM', '无需人工标注，全自动流程是核心贡献', '可与第一/二篇工作形成完整的"生成-求解-验证"三篇体系', 'PRM 可进一步用于 best-of-N 或 tree search'],
+    risks:'step boundary 定义需要仔细设计；训练 PRM 需要中等 GPU 资源',
+    papers:['PRoSFI: Formally Verifiable Reasoning Steps (2025)', 'ThinkPRM: Process Reward Models That Think (ICLR 2026)', 'Process Reward Models Meet Planning (2025)'],
+    ask:'如何用 Z3 自动标注 Zebra 谜题的推理步骤来训练 PRM？'
+  },
+  {
+    id:5, tags:['eval'],
+    color:'b-coral', label:'方向五',
+    title:'从 Zebra 谜题到真实约束推理的迁移',
+    sub:'研究神经符号方法在更复杂/更真实 CSP 场景下的泛化能力',
+    novelty:72, feasibility:85, effort:2, impact:78,
+    timeline:['1-2周：选定目标域（调度/资源分配/逻辑网格）','3-5周：适配第一篇框架到新域','6-9周：对比实验（纯LLM vs 神经符号）','10-12周：写作'],
+    desc:'将第一篇的神经符号求解框架迁移到更通用的 CSP（如数独变体、Einstein Riddle 扩展、PDDL 规划问题），系统研究：哪些类型的约束对 LLM 难？符号辅助在哪些场景下增益最大？建立难度分类学。',
+    points:['Pencil Puzzle Bench（2025年3月发表）已提供94种 puzzle benchmark，可直接对比', '与第一篇形成扩展关系，工作量相对可控', '可以建立"LLM 约束推理能力图谱"这一独立贡献', '无需训练，主要是评估实验，风险低'],
+    risks:'与 ZebraLogic、Pencil Puzzle Bench 等工作重叠度需仔细区分；需要找到独特角度',
+    papers:['Pencil Puzzle Bench: 300 puzzles 20 varieties (2025)', 'ZebraLogic: Scaling Limits (2025)', 'Explaining Hitori Puzzles: Neurosymbolic Proof Staging (2025)'],
+    ask:'如何设计约束推理泛化实验，从 Zebra 迁移到其他 CSP 场景？'
+  }
+];
+
+let current = null;
+let activeFilter = 'all';
+
+function filter(tag, el) {
+  activeFilter = tag;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+  renderCards();
+}
+
+function renderCards() {
+  const c = document.getElementById('cards');
+  c.innerHTML = '';
+  const filtered = activeFilter === 'all' ? dirs : dirs.filter(d => d.tags.includes(activeFilter));
+  filtered.forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'dir-card' + (current === d.id ? ' active' : '');
+    div.innerHTML = `
+      <div class="dir-header">
+        <span class="dir-num badge ${d.color}">${d.label}</span>
+        <div>
+          <p class="dir-title">${d.title}</p>
+          <p class="dir-sub">${d.sub}</p>
+        </div>
+      </div>
+      <div class="dir-body">
+        <div class="meta-row">
+          ${d.tags.map(t=>({agent:'<span class="badge b-purple">Agent</span>',train:'<span class="badge b-teal">训练/RL</span>',eval:'<span class="badge b-gray">评估</span>'})[t]).join('')}
+          <span class="badge ${d.effort<=1?'b-teal':d.effort<=2?'b-amber':'b-coral'}">工作量 ${['','★','★★','★★★'][d.effort]}</span>
+        </div>
+        <div style="margin-bottom:12px">
+          ${bar('新颖性',d.novelty,'#7F77DD')}
+          ${bar('可行性',d.feasibility,'#1D9E75')}
+          ${bar('影响力',d.impact,'#378ADD')}
+        </div>
+        <div class="detail-sec"><strong>研究思路</strong><p>${d.desc}</p></div>
+        <div class="detail-sec"><strong>核心亮点</strong><ul class="detail-list">${d.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+        <div class="detail-sec"><strong>主要风险</strong><p>${d.risks}</p></div>
+        <div class="detail-sec"><strong>时间线（12周）</strong>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px">
+            ${d.timeline.map((t,i)=>`<div style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:50%;background:${'#7F77DD #1D9E75 #378ADD #BA7517'.split(' ')[i]};flex-shrink:0"></span><span style="font-size:12px;color:var(--color-text-secondary)">${t}</span></div>`).join('')}
+          </div>
+        </div>
+        <div class="detail-sec"><strong>参考论文</strong><ul class="detail-list">${d.papers.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+        <div class="link-row"><button class="ask-btn" onclick="event.stopPropagation();sendPrompt('${d.ask}')">深入探讨 ↗</button></div>
+      </div>`;
+    div.addEventListener('click', () => { current = current === d.id ? null : d.id; renderCards(); });
+    c.appendChild(div);
+  });
+}
+
+function bar(label, val, color) {
+  return `<div class="bar-wrap">
+    <span class="bar-label">${label}</span>
+    <div class="bar-bg"><div class="bar-fill" style="width:${val}%;background:${color}"></div></div>
+    <span class="bar-val">${val}%</span>
+  </div>`;
+}
+
+renderCards();
+</script>

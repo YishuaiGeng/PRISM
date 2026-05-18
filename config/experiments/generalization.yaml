@@ -1,0 +1,38 @@
+# Exp-5: Generalization Experiment Configuration
+# Tests L1 (cross-scale) and L2 (cross-domain) paradigm transfer.
+# Run with: python scripts/run_experiments.py --experiment generalization
+
+# L1: Cross-scale generalization
+# Three training configurations × full test size range.
+l1_configs:
+  "Config-A (3x5 only)":
+    train_sizes: ["3x5"]
+    library_path: "paradigm_store/prism_3x5.db"
+
+  "Config-B (4x5 only)":
+    train_sizes: ["4x5"]
+    library_path: "paradigm_store/prism_4x5.db"
+
+  "Config-C (mixed, default)":
+    train_sizes: ["3x5", "4x5", "5x5"]
+    library_path: "paradigm_store/prism.db"
+
+# Test sizes for L1 evaluation
+test_sizes:
+  - "3x5"
+  - "4x5"
+  - "5x5"
+  - "5x6"
+  - "6x6"
+
+# L2: Cross-domain generalization (Knights-and-Knaves)
+# Set to true when L1 results confirm paradigm effectiveness.
+l2_enabled: false
+
+# Reported metrics per experiment
+metrics:
+  - solve_accuracy
+  - avg_llm_calls
+  - avg_repair_rounds
+  - paradigm_trigger_rate
+  - paradigm_hit_rate

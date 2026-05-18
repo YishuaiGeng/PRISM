@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "lgp-test-5x2-0",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Arnold`, `Eric`, `Alice`\n - Each person has a unique type of pet: `hamster`, `dog`, `bird`, `cat`, `fish`\n\n## Clues:\n1. The person who owns a dog is in the third house.\n2. The person with a pet hamster is in the second house.\n3. Peter is the person who owns a dog.\n4. The person with a pet hamster is somewhere to the right of the person with an aquarium of fish.\n5. Peter is directly left of the person who has a cat.\n6. Bob is in the first house.\n7. Peter is directly left of Arnold.\n8. Eric is directly left of the person who owns a dog.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "fish"
+        ],
+        [
+          "2",
+          "Eric",
+          "hamster"
+        ],
+        [
+          "3",
+          "Peter",
+          "dog"
+        ],
+        [
+          "4",
+          "Arnold",
+          "cat"
+        ],
+        [
+          "5",
+          "Alice",
+          "bird"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208195"
+  },
+  {
+    "id": "lgp-test-5x2-1",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Bob`, `Peter`, `Arnold`\n - Each person prefers a unique type of vacation: `cruise`, `city`, `mountain`, `camping`, `beach`\n\n## Clues:\n1. Bob is in the fourth house.\n2. The person who enjoys mountain retreats is Arnold.\n3. The person who likes going on cruises is Peter.\n4. The person who likes going on cruises is in the fifth house.\n5. Eric is directly left of the person who loves beach vacations.\n6. There is one house between the person who prefers city breaks and Peter.\n7. Alice is not in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "mountain"
+        ],
+        [
+          "2",
+          "Alice",
+          "camping"
+        ],
+        [
+          "3",
+          "Eric",
+          "city"
+        ],
+        [
+          "4",
+          "Bob",
+          "beach"
+        ],
+        [
+          "5",
+          "Peter",
+          "cruise"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208200"
+  },
+  {
+    "id": "lgp-test-5x2-2",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Alice`, `Bob`, `Peter`\n - Each person has an occupation: `lawyer`, `doctor`, `artist`, `engineer`, `teacher`\n\n## Clues:\n1. Bob is the person who is an engineer.\n2. The person who is a doctor and the person who is an artist are next to each other.\n3. There are two houses between Arnold and the person who is a lawyer.\n4. Peter is the person who is an artist.\n5. The person who is a lawyer is directly left of Eric.\n6. Alice is somewhere to the right of the person who is an artist.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Occupation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "doctor"
+        ],
+        [
+          "2",
+          "Peter",
+          "artist"
+        ],
+        [
+          "3",
+          "Bob",
+          "engineer"
+        ],
+        [
+          "4",
+          "Alice",
+          "lawyer"
+        ],
+        [
+          "5",
+          "Eric",
+          "teacher"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208207"
+  },
+  {
+    "id": "lgp-test-5x2-3",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Alice`, `Peter`\n - Everyone has a unique favorite cigar: `dunhill`, `blue master`, `prince`, `blends`, `pall mall`\n\n## Clues:\n1. Alice is not in the fifth house.\n2. Eric is somewhere to the right of Arnold.\n3. Eric is not in the second house.\n4. The person partial to Pall Mall is in the third house.\n5. The person partial to Pall Mall is somewhere to the left of Alice.\n6. There are two houses between the person who smokes many unique blends and the Prince smoker.\n7. The Dunhill smoker and Bob are next to each other.\n8. Eric is not in the fifth house.\n9. The Prince smoker is somewhere to the right of the person who smokes Blue Master.\n10. Bob is not in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "dunhill"
+        ],
+        [
+          "2",
+          "Bob",
+          "blends"
+        ],
+        [
+          "3",
+          "Eric",
+          "pall mall"
+        ],
+        [
+          "4",
+          "Alice",
+          "blue master"
+        ],
+        [
+          "5",
+          "Peter",
+          "prince"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208214"
+  },
+  {
+    "id": "lgp-test-5x2-4",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`, `Bob`, `Alice`\n - The people are of nationalities: `german`, `swede`, `brit`, `dane`, `norwegian`\n\n## Clues:\n1. The British person is in the fifth house.\n2. The Swedish person is somewhere to the left of Eric.\n3. Alice is somewhere to the left of Bob.\n4. Eric is somewhere to the left of the Norwegian.\n5. Arnold is the Swedish person.\n6. The Dane is in the first house.\n7. Peter is in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Nationality"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "dane"
+        ],
+        [
+          "2",
+          "Arnold",
+          "swede"
+        ],
+        [
+          "3",
+          "Eric",
+          "german"
+        ],
+        [
+          "4",
+          "Bob",
+          "norwegian"
+        ],
+        [
+          "5",
+          "Peter",
+          "brit"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208220"
+  },
+  {
+    "id": "lgp-test-5x2-5",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Bob`, `Arnold`, `Alice`\n - Each person prefers a unique type of vacation: `mountain`, `camping`, `cruise`, `beach`, `city`\n\n## Clues:\n1. Eric is directly left of Arnold.\n2. Eric is the person who likes going on cruises.\n3. Bob is not in the second house.\n4. Peter is not in the second house.\n5. Arnold is in the fifth house.\n6. Peter is not in the first house.\n7. Alice is the person who prefers city breaks.\n8. The person who loves beach vacations is directly left of Eric.\n9. Arnold is the person who enjoys camping trips.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "mountain"
+        ],
+        [
+          "2",
+          "Alice",
+          "city"
+        ],
+        [
+          "3",
+          "Peter",
+          "beach"
+        ],
+        [
+          "4",
+          "Eric",
+          "cruise"
+        ],
+        [
+          "5",
+          "Arnold",
+          "camping"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208225"
+  },
+  {
+    "id": "lgp-test-5x2-6",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Arnold`, `Alice`, `Bob`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `huawei p50`, `oneplus 9`, `iphone 13`\n\n## Clues:\n1. Eric is the person who uses a Samsung Galaxy S21.\n2. Alice is in the fifth house.\n3. The person who uses a Samsung Galaxy S21 is somewhere to the left of the person who uses a Google Pixel 6.\n4. Arnold is directly left of the person who uses a OnePlus 9.\n5. The person who uses a Huawei P50 is Bob.\n6. The person who uses an iPhone 13 is directly left of the person who uses a OnePlus 9.\n7. The person who uses a Huawei P50 is in the first house.\n8. The person who uses a Google Pixel 6 is somewhere to the left of the person who uses a OnePlus 9.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "huawei p50"
+        ],
+        [
+          "2",
+          "Eric",
+          "samsung galaxy s21"
+        ],
+        [
+          "3",
+          "Peter",
+          "google pixel 6"
+        ],
+        [
+          "4",
+          "Arnold",
+          "iphone 13"
+        ],
+        [
+          "5",
+          "Alice",
+          "oneplus 9"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208232"
+  },
+  {
+    "id": "lgp-test-5x2-7",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Alice`, `Eric`, `Peter`, `Bob`\n - Everyone has a unique favorite cigar: `blends`, `prince`, `dunhill`, `pall mall`, `blue master`\n\n## Clues:\n1. Alice is not in the fifth house.\n2. The person who smokes Blue Master is not in the fifth house.\n3. There is one house between Eric and the Dunhill smoker.\n4. Bob is somewhere to the left of the person partial to Pall Mall.\n5. Arnold is the Dunhill smoker.\n6. Bob is somewhere to the right of the person who smokes many unique blends.\n7. Alice is not in the first house.\n8. There are two houses between Eric and the person partial to Pall Mall.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "blends"
+        ],
+        [
+          "2",
+          "Bob",
+          "blue master"
+        ],
+        [
+          "3",
+          "Arnold",
+          "dunhill"
+        ],
+        [
+          "4",
+          "Alice",
+          "pall mall"
+        ],
+        [
+          "5",
+          "Peter",
+          "prince"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208240"
+  },
+  {
+    "id": "lgp-test-5x2-8",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Peter`, `Arnold`, `Eric`, `Bob`\n - Each person has a unique hobby: `painting`, `cooking`, `knitting`, `gardening`, `photography`\n\n## Clues:\n1. Alice is directly left of the person who enjoys gardening.\n2. Eric and the photography enthusiast are next to each other.\n3. The person who loves cooking is directly left of the person who enjoys knitting.\n4. Peter is somewhere to the left of Alice.\n5. Eric is in the third house.\n6. Arnold is directly left of the person who paints as a hobby.\n7. The person who enjoys gardening is in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cooking"
+        ],
+        [
+          "2",
+          "Arnold",
+          "knitting"
+        ],
+        [
+          "3",
+          "Eric",
+          "painting"
+        ],
+        [
+          "4",
+          "Alice",
+          "photography"
+        ],
+        [
+          "5",
+          "Bob",
+          "gardening"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208246"
+  },
+  {
+    "id": "lgp-test-5x2-9",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Bob`, `Peter`, `Alice`\n - Each person has a unique birthday month: `feb`, `sept`, `april`, `mar`, `jan`\n\n## Clues:\n1. The person whose birthday is in March is somewhere to the left of the person whose birthday is in January.\n2. Arnold is the person whose birthday is in January.\n3. The person whose birthday is in March is directly left of Alice.\n4. The person whose birthday is in September and the person whose birthday is in January are next to each other.\n5. Eric is not in the fourth house.\n6. The person whose birthday is in January is not in the fourth house.\n7. Peter is in the first house.\n8. Alice is directly left of the person whose birthday is in April.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Birthday"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "mar"
+        ],
+        [
+          "2",
+          "Alice",
+          "feb"
+        ],
+        [
+          "3",
+          "Eric",
+          "april"
+        ],
+        [
+          "4",
+          "Bob",
+          "sept"
+        ],
+        [
+          "5",
+          "Arnold",
+          "jan"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208252"
+  },
+  {
+    "id": "lgp-test-5x2-10",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Alice`, `Bob`, `Arnold`\n - People have unique favorite music genres: `rock`, `pop`, `hip hop`, `jazz`, `classical`\n\n## Clues:\n1. Peter is the person who loves hip-hop music.\n2. The person who loves pop music is in the first house.\n3. The person who loves rock music is somewhere to the left of the person who loves classical music.\n4. Arnold is not in the fifth house.\n5. Eric is directly left of Alice.\n6. The person who loves rock music is directly left of Alice.\n7. Alice is the person who loves jazz music.\n8. The person who loves jazz music is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "pop"
+        ],
+        [
+          "2",
+          "Peter",
+          "hip hop"
+        ],
+        [
+          "3",
+          "Eric",
+          "rock"
+        ],
+        [
+          "4",
+          "Alice",
+          "jazz"
+        ],
+        [
+          "5",
+          "Bob",
+          "classical"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208258"
+  },
+  {
+    "id": "lgp-test-5x2-11",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Eric`, `Alice`\n - People have unique favorite sports: `tennis`, `baseball`, `swimming`, `basketball`, `soccer`\n\n## Clues:\n1. The person who loves tennis is somewhere to the right of Arnold.\n2. Alice is the person who loves baseball.\n3. Eric is somewhere to the left of the person who loves basketball.\n4. The person who loves baseball is somewhere to the left of the person who loves swimming.\n5. Eric is directly left of the person who loves baseball.\n6. The person who loves basketball is somewhere to the left of Arnold.\n7. Bob is not in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "soccer"
+        ],
+        [
+          "2",
+          "Alice",
+          "baseball"
+        ],
+        [
+          "3",
+          "Bob",
+          "basketball"
+        ],
+        [
+          "4",
+          "Arnold",
+          "swimming"
+        ],
+        [
+          "5",
+          "Peter",
+          "tennis"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208265"
+  },
+  {
+    "id": "lgp-test-5x2-12",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Bob`, `Arnold`, `Alice`\n - Everyone has a favorite smoothie: `cherry`, `dragonfruit`, `watermelon`, `lime`, `desert`\n\n## Clues:\n1. The person who drinks Lime smoothies is somewhere to the right of the Dragonfruit smoothie lover.\n2. There is one house between the person who likes Cherry smoothies and the person who drinks Lime smoothies.\n3. Bob is not in the fourth house.\n4. Bob is somewhere to the left of the Desert smoothie lover.\n5. Arnold is in the third house.\n6. Alice is not in the second house.\n7. Eric is somewhere to the left of the Desert smoothie lover.\n8. Alice is somewhere to the left of the person who drinks Lime smoothies.\n9. The person who drinks Lime smoothies is Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "cherry"
+        ],
+        [
+          "2",
+          "Bob",
+          "dragonfruit"
+        ],
+        [
+          "3",
+          "Arnold",
+          "lime"
+        ],
+        [
+          "4",
+          "Eric",
+          "watermelon"
+        ],
+        [
+          "5",
+          "Peter",
+          "desert"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208271"
+  },
+  {
+    "id": "lgp-test-5x2-13",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Eric`, `Alice`, `Arnold`\n - Each mother is accompanied by their child: `Timothy`, `Meredith`, `Fred`, `Bella`, `Samantha`\n\n## Clues:\n1. The person who is the mother of Timothy is directly left of the person's child is named Meredith.\n2. Eric is the person who is the mother of Timothy.\n3. The person's child is named Samantha is somewhere to the right of the person's child is named Meredith.\n4. Bob is directly left of Arnold.\n5. The person's child is named Meredith is somewhere to the right of the person's child is named Fred.\n6. Bob is the person's child is named Fred.\n7. Peter is the person's child is named Meredith.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "Fred"
+        ],
+        [
+          "2",
+          "Arnold",
+          "Bella"
+        ],
+        [
+          "3",
+          "Eric",
+          "Timothy"
+        ],
+        [
+          "4",
+          "Peter",
+          "Meredith"
+        ],
+        [
+          "5",
+          "Alice",
+          "Samantha"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208276"
+  },
+  {
+    "id": "lgp-test-5x2-14",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Bob`, `Alice`, `Eric`\n - Everyone has something unique for lunch: `spaghetti`, `pizza`, `stew`, `grilled cheese`, `stir fry`\n\n## Clues:\n1. Peter is in the fourth house.\n2. The person who loves the stew is not in the second house.\n3. The person who loves the stew is not in the fourth house.\n4. Eric is not in the fifth house.\n5. The person who loves eating grilled cheese is Bob.\n6. The person who loves the spaghetti eater is in the third house.\n7. The person who loves stir fry is in the first house.\n8. Alice is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Food"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "stir fry"
+        ],
+        [
+          "2",
+          "Bob",
+          "grilled cheese"
+        ],
+        [
+          "3",
+          "Alice",
+          "spaghetti"
+        ],
+        [
+          "4",
+          "Peter",
+          "pizza"
+        ],
+        [
+          "5",
+          "Arnold",
+          "stew"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208282"
+  },
+  {
+    "id": "lgp-test-5x2-15",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Bob`, `Arnold`, `Peter`, `Eric`\n - People have unique favorite sports: `tennis`, `baseball`, `soccer`, `basketball`, `swimming`\n\n## Clues:\n1. The person who loves tennis is not in the fifth house.\n2. The person who loves swimming and Alice are next to each other.\n3. The person who loves swimming is directly left of the person who loves tennis.\n4. Eric is the person who loves soccer.\n5. Eric is in the first house.\n6. Arnold is in the second house.\n7. Peter is the person who loves baseball.\n8. Alice is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "FavoriteSport"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "soccer"
+        ],
+        [
+          "2",
+          "Arnold",
+          "basketball"
+        ],
+        [
+          "3",
+          "Bob",
+          "swimming"
+        ],
+        [
+          "4",
+          "Alice",
+          "tennis"
+        ],
+        [
+          "5",
+          "Peter",
+          "baseball"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208288"
+  },
+  {
+    "id": "lgp-test-5x2-16",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`, `Alice`, `Bob`\n - Each person has an occupation: `engineer`, `teacher`, `doctor`, `lawyer`, `artist`\n\n## Clues:\n1. The person who is an artist is Peter.\n2. The person who is an engineer is in the first house.\n3. Arnold is the person who is a teacher.\n4. Alice is in the fourth house.\n5. The person who is a teacher is not in the second house.\n6. The person who is a lawyer is somewhere to the left of Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Occupation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "engineer"
+        ],
+        [
+          "2",
+          "Peter",
+          "artist"
+        ],
+        [
+          "3",
+          "Arnold",
+          "teacher"
+        ],
+        [
+          "4",
+          "Alice",
+          "lawyer"
+        ],
+        [
+          "5",
+          "Eric",
+          "doctor"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208296"
+  },
+  {
+    "id": "lgp-test-5x2-17",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Eric`, `Peter`, `Bob`, `Arnold`\n - Each person lives in a unique style of house: `colonial`, `victorian`, `craftsman`, `ranch`, `modern`\n\n## Clues:\n1. The person residing in a Victorian house is in the fourth house.\n2. The person in a ranch-style home is not in the fifth house.\n3. The person in a modern-style house is Eric.\n4. The person in a modern-style house is not in the third house.\n5. Arnold is the person in a Craftsman-style house.\n6. Peter is somewhere to the left of Alice.\n7. The person in a Craftsman-style house is not in the second house.\n8. The person residing in a Victorian house is somewhere to the left of Bob.\n9. Arnold is somewhere to the left of Peter.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "HouseStyle"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "craftsman"
+        ],
+        [
+          "2",
+          "Eric",
+          "modern"
+        ],
+        [
+          "3",
+          "Peter",
+          "ranch"
+        ],
+        [
+          "4",
+          "Alice",
+          "victorian"
+        ],
+        [
+          "5",
+          "Bob",
+          "colonial"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208304"
+  },
+  {
+    "id": "lgp-test-5x2-18",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Alice`, `Peter`, `Bob`, `Arnold`\n - Each mother is accompanied by their child: `Timothy`, `Meredith`, `Samantha`, `Fred`, `Bella`\n\n## Clues:\n1. Bob is somewhere to the left of the person's child is named Samantha.\n2. The person who is the mother of Timothy is somewhere to the left of the person's child is named Samantha.\n3. The person's child is named Fred is in the second house.\n4. There is one house between Alice and the person's child is named Samantha.\n5. Eric is not in the third house.\n6. Bob is not in the third house.\n7. The person's child is named Fred is directly left of the person's child is named Bella.\n8. The person's child is named Samantha is somewhere to the left of Peter.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "Timothy"
+        ],
+        [
+          "2",
+          "Alice",
+          "Fred"
+        ],
+        [
+          "3",
+          "Arnold",
+          "Bella"
+        ],
+        [
+          "4",
+          "Eric",
+          "Samantha"
+        ],
+        [
+          "5",
+          "Peter",
+          "Meredith"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208309"
+  },
+  {
+    "id": "lgp-test-5x2-19",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Peter`, `Arnold`, `Alice`, `Bob`\n - People use unique phone models: `huawei p50`, `oneplus 9`, `google pixel 6`, `samsung galaxy s21`, `iphone 13`\n\n## Clues:\n1. There are two houses between the person who uses a OnePlus 9 and the person who uses an iPhone 13.\n2. Eric and Peter are next to each other.\n3. The person who uses an iPhone 13 is not in the second house.\n4. Arnold is in the second house.\n5. The person who uses a Samsung Galaxy S21 is in the fourth house.\n6. Peter is in the fifth house.\n7. Alice is not in the third house.\n8. The person who uses a Google Pixel 6 is in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "huawei p50"
+        ],
+        [
+          "2",
+          "Arnold",
+          "oneplus 9"
+        ],
+        [
+          "3",
+          "Bob",
+          "google pixel 6"
+        ],
+        [
+          "4",
+          "Eric",
+          "samsung galaxy s21"
+        ],
+        [
+          "5",
+          "Peter",
+          "iphone 13"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208316"
+  },
+  {
+    "id": "lgp-test-5x2-20",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Arnold`, `Bob`, `Alice`, `Peter`\n - Each person has a unique hobby: `gardening`, `cooking`, `photography`, `knitting`, `painting`\n\n## Clues:\n1. The photography enthusiast is not in the fourth house.\n2. Arnold is directly left of the person who enjoys gardening.\n3. The person who paints as a hobby and Arnold are next to each other.\n4. Peter is somewhere to the right of Eric.\n5. There are two houses between Alice and Peter.\n6. Peter is directly left of the person who enjoys knitting.\n7. The person who loves cooking is Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "photography"
+        ],
+        [
+          "2",
+          "Eric",
+          "painting"
+        ],
+        [
+          "3",
+          "Arnold",
+          "cooking"
+        ],
+        [
+          "4",
+          "Peter",
+          "gardening"
+        ],
+        [
+          "5",
+          "Bob",
+          "knitting"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208322"
+  },
+  {
+    "id": "lgp-test-5x2-21",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Bob`, `Eric`, `Arnold`\n - People have unique favorite book genres: `biography`, `romance`, `science fiction`, `fantasy`, `mystery`\n\n## Clues:\n1. Bob is in the second house.\n2. The person who loves biography books is in the first house.\n3. Bob and Peter are next to each other.\n4. Alice is not in the fourth house.\n5. The person who loves romance books is in the fourth house.\n6. Peter is not in the first house.\n7. Eric is the person who loves mystery books.\n8. Bob is the person who loves science fiction books.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "BookGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "biography"
+        ],
+        [
+          "2",
+          "Bob",
+          "science fiction"
+        ],
+        [
+          "3",
+          "Peter",
+          "fantasy"
+        ],
+        [
+          "4",
+          "Arnold",
+          "romance"
+        ],
+        [
+          "5",
+          "Eric",
+          "mystery"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208328"
+  },
+  {
+    "id": "lgp-test-5x2-22",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Peter`, `Bob`, `Alice`, `Eric`\n - People use unique phone models: `iphone 13`, `oneplus 9`, `samsung galaxy s21`, `google pixel 6`, `huawei p50`\n\n## Clues:\n1. Peter is in the fourth house.\n2. The person who uses a OnePlus 9 is in the second house.\n3. The person who uses a Huawei P50 and the person who uses a OnePlus 9 are next to each other.\n4. There is one house between Alice and Eric.\n5. Eric is in the third house.\n6. Arnold is somewhere to the left of the person who uses a Samsung Galaxy S21.\n7. Alice is somewhere to the left of the person who uses a Google Pixel 6.\n8. There is one house between Alice and the person who uses a Google Pixel 6.\n9. The person who uses a Samsung Galaxy S21 is not in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "huawei p50"
+        ],
+        [
+          "2",
+          "Arnold",
+          "oneplus 9"
+        ],
+        [
+          "3",
+          "Eric",
+          "google pixel 6"
+        ],
+        [
+          "4",
+          "Peter",
+          "iphone 13"
+        ],
+        [
+          "5",
+          "Bob",
+          "samsung galaxy s21"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208334"
+  },
+  {
+    "id": "lgp-test-5x2-23",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Arnold`, `Peter`, `Alice`\n - Each person has a unique hobby: `painting`, `knitting`, `cooking`, `photography`, `gardening`\n\n## Clues:\n1. Alice is in the fifth house.\n2. Bob is directly left of the person who enjoys gardening.\n3. The person who loves cooking and the person who paints as a hobby are next to each other.\n4. The person who paints as a hobby is not in the third house.\n5. The photography enthusiast is not in the third house.\n6. Arnold is in the fourth house.\n7. Bob is in the first house.\n8. The person who enjoys knitting is directly left of Eric.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "knitting"
+        ],
+        [
+          "2",
+          "Eric",
+          "gardening"
+        ],
+        [
+          "3",
+          "Peter",
+          "cooking"
+        ],
+        [
+          "4",
+          "Arnold",
+          "painting"
+        ],
+        [
+          "5",
+          "Alice",
+          "photography"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208341"
+  },
+  {
+    "id": "lgp-test-5x2-24",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Arnold`, `Eric`, `Alice`\n - Everyone has a favorite smoothie: `desert`, `dragonfruit`, `cherry`, `lime`, `watermelon`\n\n## Clues:\n1. The Watermelon smoothie lover is somewhere to the right of the Dragonfruit smoothie lover.\n2. The Dragonfruit smoothie lover is somewhere to the right of Eric.\n3. The Desert smoothie lover is somewhere to the right of the Dragonfruit smoothie lover.\n4. The Watermelon smoothie lover is not in the fourth house.\n5. Alice is the Dragonfruit smoothie lover.\n6. Peter is in the first house.\n7. Arnold is the Desert smoothie lover.\n8. The person who drinks Lime smoothies is not in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "cherry"
+        ],
+        [
+          "2",
+          "Eric",
+          "lime"
+        ],
+        [
+          "3",
+          "Alice",
+          "dragonfruit"
+        ],
+        [
+          "4",
+          "Arnold",
+          "desert"
+        ],
+        [
+          "5",
+          "Bob",
+          "watermelon"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208347"
+  },
+  {
+    "id": "lgp-test-5x2-25",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Arnold`, `Bob`, `Alice`, `Eric`\n - Everyone has a favorite smoothie: `cherry`, `lime`, `desert`, `dragonfruit`, `watermelon`\n\n## Clues:\n1. The person who drinks Lime smoothies is in the third house.\n2. Arnold is somewhere to the right of the Dragonfruit smoothie lover.\n3. Eric is in the fourth house.\n4. Bob is somewhere to the left of Alice.\n5. Bob is in the third house.\n6. The Watermelon smoothie lover is somewhere to the left of the Desert smoothie lover.\n7. Arnold is the person who likes Cherry smoothies.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Smoothie"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "dragonfruit"
+        ],
+        [
+          "2",
+          "Arnold",
+          "cherry"
+        ],
+        [
+          "3",
+          "Bob",
+          "lime"
+        ],
+        [
+          "4",
+          "Eric",
+          "watermelon"
+        ],
+        [
+          "5",
+          "Alice",
+          "desert"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208355"
+  },
+  {
+    "id": "lgp-test-5x2-26",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Bob`, `Arnold`, `Alice`, `Eric`\n - Each person prefers a unique type of vacation: `cruise`, `city`, `beach`, `mountain`, `camping`\n\n## Clues:\n1. There is one house between the person who enjoys mountain retreats and Arnold.\n2. Peter is the person who enjoys camping trips.\n3. Bob is directly left of the person who loves beach vacations.\n4. The person who prefers city breaks is Arnold.\n5. The person who enjoys camping trips is in the fifth house.\n6. The person who loves beach vacations is in the third house.\n7. Alice is not in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Vacation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "cruise"
+        ],
+        [
+          "2",
+          "Bob",
+          "mountain"
+        ],
+        [
+          "3",
+          "Alice",
+          "beach"
+        ],
+        [
+          "4",
+          "Arnold",
+          "city"
+        ],
+        [
+          "5",
+          "Peter",
+          "camping"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208362"
+  },
+  {
+    "id": "lgp-test-5x2-27",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Alice`, `Bob`, `Eric`, `Arnold`\n - People have unique heights: `very tall`, `average`, `tall`, `very short`, `short`\n\n## Clues:\n1. The person who is short is in the second house.\n2. Peter is directly left of Bob.\n3. Eric is somewhere to the left of Peter.\n4. The person who is very tall is directly left of Peter.\n5. Alice is directly left of the person who has an average height.\n6. The person who is short and the person who is very short are next to each other.\n7. The person who has an average height is in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "very tall"
+        ],
+        [
+          "2",
+          "Peter",
+          "short"
+        ],
+        [
+          "3",
+          "Bob",
+          "very short"
+        ],
+        [
+          "4",
+          "Alice",
+          "tall"
+        ],
+        [
+          "5",
+          "Arnold",
+          "average"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208368"
+  },
+  {
+    "id": "lgp-test-5x2-28",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Arnold`, `Eric`, `Bob`, `Alice`, `Peter`\n - People have unique heights: `very short`, `short`, `very tall`, `average`, `tall`\n\n## Clues:\n1. The person who is short is in the second house.\n2. The person who is tall is Alice.\n3. Eric is not in the first house.\n4. The person who has an average height is not in the fourth house.\n5. The person who is very tall is in the first house.\n6. Arnold is in the fourth house.\n7. The person who is short is Peter.\n8. The person who is tall is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Height"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "very tall"
+        ],
+        [
+          "2",
+          "Peter",
+          "short"
+        ],
+        [
+          "3",
+          "Eric",
+          "average"
+        ],
+        [
+          "4",
+          "Arnold",
+          "very short"
+        ],
+        [
+          "5",
+          "Alice",
+          "tall"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208374"
+  },
+  {
+    "id": "lgp-test-5x2-29",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Bob`, `Arnold`, `Alice`\n - Each mother is accompanied by their child: `Timothy`, `Bella`, `Meredith`, `Samantha`, `Fred`\n\n## Clues:\n1. Arnold is not in the first house.\n2. Alice is directly left of the person's child is named Samantha.\n3. Peter is directly left of Alice.\n4. Arnold is the person's child is named Bella.\n5. Eric is not in the third house.\n6. The person's child is named Meredith is in the fifth house.\n7. The person who is the mother of Timothy is not in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Children"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "Fred"
+        ],
+        [
+          "2",
+          "Alice",
+          "Timothy"
+        ],
+        [
+          "3",
+          "Bob",
+          "Samantha"
+        ],
+        [
+          "4",
+          "Arnold",
+          "Bella"
+        ],
+        [
+          "5",
+          "Eric",
+          "Meredith"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208381"
+  },
+  {
+    "id": "lgp-test-5x2-30",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Peter`, `Eric`, `Bob`, `Arnold`, `Alice`\n - The people keep unique animals: `dog`, `cat`, `fish`, `horse`, `bird`\n\n## Clues:\n1. The person who keeps horses is in the second house.\n2. Bob is directly left of the bird keeper.\n3. The dog owner is in the fifth house.\n4. The person who keeps horses is somewhere to the left of Arnold.\n5. Eric and the cat lover are next to each other.\n6. The cat lover is directly left of the dog owner.\n7. Peter is in the fifth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Animal"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "fish"
+        ],
+        [
+          "2",
+          "Bob",
+          "horse"
+        ],
+        [
+          "3",
+          "Eric",
+          "bird"
+        ],
+        [
+          "4",
+          "Arnold",
+          "cat"
+        ],
+        [
+          "5",
+          "Peter",
+          "dog"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208387"
+  },
+  {
+    "id": "lgp-test-5x2-31",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Alice`, `Eric`, `Arnold`\n - People have unique favorite book genres: `science fiction`, `romance`, `fantasy`, `mystery`, `biography`\n\n## Clues:\n1. Alice is the person who loves science fiction books.\n2. Arnold is not in the first house.\n3. Arnold is not in the third house.\n4. The person who loves biography books is directly left of the person who loves romance books.\n5. Peter is the person who loves mystery books.\n6. Peter is directly left of Alice.\n7. Eric is the person who loves romance books.\n8. Eric is not in the third house.\n9. The person who loves science fiction books is somewhere to the right of the person who loves fantasy books.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "BookGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Bob",
+          "fantasy"
+        ],
+        [
+          "2",
+          "Peter",
+          "mystery"
+        ],
+        [
+          "3",
+          "Alice",
+          "science fiction"
+        ],
+        [
+          "4",
+          "Arnold",
+          "biography"
+        ],
+        [
+          "5",
+          "Eric",
+          "romance"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208393"
+  },
+  {
+    "id": "lgp-test-5x2-32",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Alice`, `Arnold`, `Peter`, `Eric`\n - Each person has an occupation: `engineer`, `artist`, `doctor`, `teacher`, `lawyer`\n\n## Clues:\n1. The person who is an artist is in the third house.\n2. Arnold is somewhere to the left of Peter.\n3. Bob is the person who is an engineer.\n4. Peter and the person who is an engineer are next to each other.\n5. The person who is a teacher is not in the second house.\n6. The person who is a lawyer is Arnold.\n7. Eric is not in the third house.\n8. Alice is somewhere to the left of the person who is an engineer.\n9. Alice is not in the first house.\n10. Alice is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Occupation"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "lawyer"
+        ],
+        [
+          "2",
+          "Alice",
+          "doctor"
+        ],
+        [
+          "3",
+          "Peter",
+          "artist"
+        ],
+        [
+          "4",
+          "Bob",
+          "engineer"
+        ],
+        [
+          "5",
+          "Eric",
+          "teacher"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208399"
+  },
+  {
+    "id": "lgp-test-5x2-33",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Bob`, `Peter`, `Eric`, `Arnold`\n - Everyone has a unique favorite cigar: `pall mall`, `prince`, `blends`, `dunhill`, `blue master`\n\n## Clues:\n1. Alice is somewhere to the right of Arnold.\n2. The person who smokes Blue Master is in the fifth house.\n3. The Prince smoker is in the first house.\n4. The Prince smoker is directly left of Alice.\n5. Bob is the person who smokes many unique blends.\n6. The Dunhill smoker is Eric.\n7. The person who smokes many unique blends is not in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Cigar"
+      ],
+      "rows": [
+        [
+          "1",
+          "Arnold",
+          "prince"
+        ],
+        [
+          "2",
+          "Alice",
+          "pall mall"
+        ],
+        [
+          "3",
+          "Bob",
+          "blends"
+        ],
+        [
+          "4",
+          "Eric",
+          "dunhill"
+        ],
+        [
+          "5",
+          "Peter",
+          "blue master"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208405"
+  },
+  {
+    "id": "lgp-test-5x2-34",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Arnold`, `Eric`, `Peter`, `Bob`\n - People own unique car models: `toyota camry`, `tesla model 3`, `honda civic`, `ford f150`, `bmw 3 series`\n\n## Clues:\n1. There are two houses between the person who owns a Tesla Model 3 and the person who owns a Toyota Camry.\n2. There are two houses between the person who owns a Honda Civic and Bob.\n3. Arnold is somewhere to the right of the person who owns a Tesla Model 3.\n4. Eric is in the first house.\n5. Peter is directly left of the person who owns a Ford F-150.\n6. The person who owns a Ford F-150 is in the fourth house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "honda civic"
+        ],
+        [
+          "2",
+          "Alice",
+          "tesla model 3"
+        ],
+        [
+          "3",
+          "Peter",
+          "bmw 3 series"
+        ],
+        [
+          "4",
+          "Bob",
+          "ford f150"
+        ],
+        [
+          "5",
+          "Arnold",
+          "toyota camry"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208412"
+  },
+  {
+    "id": "lgp-test-5x2-35",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Eric`, `Bob`, `Arnold`, `Peter`, `Alice`\n - People own unique car models: `ford f150`, `honda civic`, `toyota camry`, `bmw 3 series`, `tesla model 3`\n\n## Clues:\n1. The person who owns a BMW 3 Series is Arnold.\n2. The person who owns a BMW 3 Series is not in the fifth house.\n3. Eric is directly left of Peter.\n4. Bob is directly left of Alice.\n5. Eric is the person who owns a Tesla Model 3.\n6. Peter and Arnold are next to each other.\n7. Bob and the person who owns a Honda Civic are next to each other.\n8. The person who owns a BMW 3 Series is somewhere to the right of the person who owns a Ford F-150.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "CarModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "tesla model 3"
+        ],
+        [
+          "2",
+          "Peter",
+          "ford f150"
+        ],
+        [
+          "3",
+          "Arnold",
+          "bmw 3 series"
+        ],
+        [
+          "4",
+          "Bob",
+          "toyota camry"
+        ],
+        [
+          "5",
+          "Alice",
+          "honda civic"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208417"
+  },
+  {
+    "id": "lgp-test-5x2-36",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Eric`, `Alice`, `Peter`, `Arnold`\n - People have unique favorite music genres: `classical`, `jazz`, `rock`, `pop`, `hip hop`\n\n## Clues:\n1. The person who loves hip-hop music is directly left of Arnold.\n2. Bob is directly left of the person who loves jazz music.\n3. Eric is directly left of Alice.\n4. The person who loves classical music is Eric.\n5. Arnold is the person who loves pop music.\n6. The person who loves rock music is not in the first house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "classical"
+        ],
+        [
+          "2",
+          "Alice",
+          "hip hop"
+        ],
+        [
+          "3",
+          "Arnold",
+          "pop"
+        ],
+        [
+          "4",
+          "Bob",
+          "rock"
+        ],
+        [
+          "5",
+          "Peter",
+          "jazz"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208423"
+  },
+  {
+    "id": "lgp-test-5x2-37",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Peter`, `Arnold`, `Eric`, `Alice`\n - Each person has a unique hobby: `gardening`, `painting`, `knitting`, `cooking`, `photography`\n\n## Clues:\n1. The person who enjoys gardening is somewhere to the left of Bob.\n2. Peter is in the second house.\n3. Alice is not in the fourth house.\n4. The person who loves cooking is directly left of the person who enjoys knitting.\n5. The person who enjoys knitting is directly left of Bob.\n6. The person who paints as a hobby is Eric.\n7. Alice is not in the third house.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Hobby"
+      ],
+      "rows": [
+        [
+          "1",
+          "Alice",
+          "gardening"
+        ],
+        [
+          "2",
+          "Peter",
+          "cooking"
+        ],
+        [
+          "3",
+          "Arnold",
+          "knitting"
+        ],
+        [
+          "4",
+          "Bob",
+          "photography"
+        ],
+        [
+          "5",
+          "Eric",
+          "painting"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208429"
+  },
+  {
+    "id": "lgp-test-5x2-38",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Bob`, `Alice`, `Eric`, `Peter`, `Arnold`\n - People use unique phone models: `google pixel 6`, `samsung galaxy s21`, `huawei p50`, `iphone 13`, `oneplus 9`\n\n## Clues:\n1. The person who uses a Google Pixel 6 is in the fifth house.\n2. Peter and the person who uses a Huawei P50 are next to each other.\n3. The person who uses a Huawei P50 is directly left of Bob.\n4. Arnold is not in the second house.\n5. Bob is somewhere to the left of the person who uses a Samsung Galaxy S21.\n6. The person who uses a OnePlus 9 is in the first house.\n7. The person who uses a Samsung Galaxy S21 and Eric are next to each other.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "1",
+          "Peter",
+          "oneplus 9"
+        ],
+        [
+          "2",
+          "Alice",
+          "huawei p50"
+        ],
+        [
+          "3",
+          "Bob",
+          "iphone 13"
+        ],
+        [
+          "4",
+          "Arnold",
+          "samsung galaxy s21"
+        ],
+        [
+          "5",
+          "Eric",
+          "google pixel 6"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208435"
+  },
+  {
+    "id": "lgp-test-5x2-39",
+    "size": "5*2",
+    "puzzle": "There are 5 houses, numbered 1 to 5 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Bob`, `Peter`, `Eric`, `Arnold`\n - Each person has a unique level of education: `associate`, `doctorate`, `bachelor`, `master`, `high school`\n\n## Clues:\n1. The person with a master's degree is Alice.\n2. There are two houses between Eric and the person with a doctorate.\n3. Peter is the person with an associate's degree.\n4. The person with a doctorate is not in the first house.\n5. The person with an associate's degree is not in the fourth house.\n6. The person with a master's degree is in the third house.\n7. The person with a bachelor's degree is Arnold.\n8. There is one house between the person with a master's degree and Arnold.\n",
+    "solution": {
+      "header": [
+        "House",
+        "Name",
+        "Education"
+      ],
+      "rows": [
+        [
+          "1",
+          "Eric",
+          "high school"
+        ],
+        [
+          "2",
+          "Peter",
+          "associate"
+        ],
+        [
+          "3",
+          "Alice",
+          "master"
+        ],
+        [
+          "4",
+          "Bob",
+          "doctorate"
+        ],
+        [
+          "5",
+          "Arnold",
+          "bachelor"
+        ]
+      ]
+    },
+    "created_at": "2024-07-03T21:21:29.208442"
+  }
+]
