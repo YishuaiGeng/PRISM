@@ -94,7 +94,7 @@ class TrajectoryClusterer:
         clusterer = AgglomerativeClustering(
             n_clusters=None,
             metric="cosine",
-            linkage="average",
+            linkage="complete",
             distance_threshold=self._theta,
         )
         return clusterer.fit_predict(matrix)
