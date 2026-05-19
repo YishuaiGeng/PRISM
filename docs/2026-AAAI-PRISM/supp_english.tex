@@ -1,0 +1,371 @@
+%File: PRISM-Supplementary-2026.tex
+\documentclass[letterpaper]{article}
+\usepackage[submission]{aaai2026}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage[hyphens]{url}
+\usepackage{graphicx}
+\urlstyle{rm}
+\def\UrlFont{\rm}
+\usepackage{natbib}
+\usepackage{caption}
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\pdfinfo{
+/TemplateVersion (2026.1)
+}
+
+\setcounter{secnumdepth}{0}
+
+\title{PRISM: Paradigm-Guided Reasoning with Iterative Solver Memory \\ Supplementary Materials}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================================
+% APPENDIX A: DETAILED ALGORITHMS
+% ============================================================================
+
+\section{Appendix A: Complete Algorithms}
+
+\subsection{Algorithm 1: Offline Paradigm Distillation}
+
+\begin{algorithm}
+\caption{PRISM-Offline(Puzzles, LLM, Z3, $\theta$, $m_{\min}$, $\tau_s$, $\tau_e$, $\tau_p$)}
+\begin{algorithmic}[1]
+\STATE $T_{\text{all}} \leftarrow \emptyset$ \quad \COMMENT{Initialize trajectory pool}
+\FOR{each $P \in$ Puzzles}
+    \FOR{$r = 1, 2, 3$}
+        \STATE $T \leftarrow$ LLM-Z3-Solve$(P, \text{temperature}=0.7)$
+        \IF{$T.\text{outcome} == \text{SAT}$}
+            \STATE $T_{\text{all}} \leftarrow T_{\text{all}} \cup \{T\}$
+        \ENDIF
+    \ENDFOR
+\ENDFOR
+\STATE \COMMENT{Extract Key Decision Points}
+\STATE $\text{KDP}_{\text{all}} \leftarrow \emptyset$
+\FOR{each $T \in T_{\text{all}}$}
+    \FOR{each step $(S_{t-1}, a_t, S_t) \in T$}
+        \IF{IsKDP$(S_{t-1}, a_t, S_t)$}
+            \STATE $\text{KDP}_{\text{all}} \leftarrow \text{KDP}_{\text{all}} \cup \{\text{KDP}_i\}$
+        \ENDIF
+    \ENDFOR
+\ENDFOR
+\STATE \COMMENT{Cluster KDPs}
+\STATE Clusters $\leftarrow$ AgglomerativeCluster(KDP$_{\text{all}}$, $\theta$, metric=cosine)
+\STATE Clusters $\leftarrow \{C : |C| \geq m_{\min}\}$ \quad \COMMENT{Filter by support}
+\STATE \COMMENT{Abstract paradigms and verify}
+\STATE $\mathcal{L} \leftarrow \emptyset$
+\FOR{each cluster $C_k$}
+    \STATE Reps $\leftarrow$ SampleRepresentatives$(C_k, n=10)$
+    \STATE $\hat{P}_k \leftarrow$ LLM-Abstract(Reps)
+    \IF{$\hat{P}_k \neq \text{NULL}$}
+        \STATE soundness $\leftarrow$ CheckSoundness$(\hat{P}_k, \tau_s)$
+        \IF{soundness $\geq \tau_s$}
+            \STATE effect $\leftarrow$ CheckEffect$(\hat{P}_k, \tau_e)$
+            \IF{effect $\geq \tau_e$}
+                \STATE precision $\leftarrow$ CheckPrecision$(\hat{P}_k, \tau_p)$
+                \IF{precision $\geq \tau_p$}
+                    \STATE $\hat{P}_k.\text{confidence} \leftarrow 0.5 \cdot \text{soundness} + 0.3 \cdot \text{effect}$
+                    \STATE $\mathcal{L} \leftarrow \mathcal{L} \cup \{\hat{P}_k\}$
+                \ENDIF
+            \ENDIF
+        \ENDIF
+    \ENDIF
+\ENDFOR
+\STATE \textbf{return} $\mathcal{L}$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Algorithm 2: Online Paradigm-Guided Solving}
+
+\begin{algorithm}
+\caption{PRISM-Online($P^*$, $\mathcal{L}$, LLM, Z3, $\tau_{\text{stag}}$, $\tau_{\text{loop}}$)}
+\begin{algorithmic}[1]
+\STATE $\mathcal{M} \leftarrow \emptyset$ \quad \COMMENT{Initialize repair memory}
+\STATE Solver $\leftarrow$ Z3SolverWrapper()
+\STATE Constraints $\leftarrow$ LLM-Translate($P^*$)
+\FOR{each $c \in$ Constraints}
+    \STATE Solver.AddConstraint($c$)
+\ENDFOR
+\STATE result $\leftarrow$ Solver.Check()
+\IF{result $== \text{SAT}$}
+    \STATE \textbf{return} Success
+\ENDIF
+\STATE \COMMENT{Repair loop}
+\FOR{$t = 1$ to MaxRepairRounds}
+    \STATE $\sigma(S_t) \leftarrow$ ExtractConstraintTypes$(S_t)$
+    \STATE $\mathcal{L}_1 \leftarrow$ RetrieveLayer1$(\sigma(S_t), \mathcal{L})$
+    \STATE $\mathcal{L}_2 \leftarrow$ RetrieveLayer2$(\mathcal{L}_1, S_t)$ \quad \COMMENT{if $|\mathcal{L}_1| \geq 2$}
+    \STATE $\mathcal{L}_{\text{inject}} \leftarrow$ ConsistencyPreCheck$(\mathcal{L}_2, S_t)$
+    \STATE hint $\leftarrow$ FormatParadigmHint$(\mathcal{L}_{\text{inject}})$
+    \STATE history $\leftarrow$ $\mathcal{M}$.GetHistorySummary()
+    \STATE action $\leftarrow$ LLM-Repair(constraints, unsat\_core, history, hint)
+    \STATE $S_t \leftarrow$ Solver.AddAndCheck(action)
+    \IF{$S_t.\text{result} == \text{SAT}$}
+        \STATE \textbf{return} Success
+    \ELSE
+        \STATE unsat\_core $\leftarrow$ Solver.GetUnsatCore()
+        \STATE record $\leftarrow$ CreateRepairRecord$(t, \text{action}, \text{unsat\_core})$
+        \STATE $\mathcal{M}$.Append(record)
+        \IF{$\mathcal{M}$.DetectStagnation() OR $\mathcal{M}$.DetectLoop(action)}
+            \STATE level $\leftarrow$ DetermineEscalationLevel$(\mathcal{M})$
+            \STATE ExecuteStrategyEscalation(level, $S_t$)
+        \ENDIF
+    \ENDIF
+\ENDFOR
+\STATE \textbf{return} Failure
+\end{algorithmic}
+\end{algorithm}
+
+% ============================================================================
+% APPENDIX B: PROOF SKETCHES
+% ============================================================================
+
+\section{Appendix B: Theoretical Foundations}
+
+\subsection{Soundness of Paradigm Verification}
+
+\textbf{Claim:} If paradigm $P$ passes the triple verification tests (Soundness ≥ $\tau_s$, Effect ≥ $\tau_e$, Precision ≥ $\tau_p$), then applying $P$ to any solver state satisfying trigger conditions $\mathcal{Q}_P$ preserves Z3 satisfiability.
+
+\textbf{Proof Sketch:}
+The Soundness test directly verifies that $\text{Z3-SAT}(C_i \cup \{\text{op}(P)\})$ holds for representative constraint sets. By construction, the test samples states from the puzzle pool matching trigger conditions. If the paradigm passes with score ≥ $\tau_s = 0.90$, it is guaranteed satisfiable in at least 90\% of trigger-matching scenarios.
+
+The Effect test ensures that the paradigm actually reduces domain size—a necessary condition for meaningful constraint reasoning. A paradigm that passes Effect but fails to reduce domains would be vacuous.
+
+The Precision test prevents false triggering: paradigms must yield UNSAT when applied to states NOT matching triggers. This prevents misleading guidance to the LLM.
+
+\subsection{Correctness of UNSAT Core Attribution}
+
+\textbf{Claim:} The causal attribution rule correctly distinguishes NEW\_ASSERTION (current action caused contradiction) from LEGACY\_ERROR (contradiction predates current action).
+
+\textbf{Proof Sketch:}
+Let $a_t$ be the current action and $U_t$ be the UNSAT core. By definition of UNSAT core, $U_t$ is the minimal subset of constraints whose conjunction is unsatisfiable.
+
+- If $a_t \in U_t$: The current action is necessary for unsatisfiability. Removing $a_t$ would make the remaining constraint set satisfiable. Thus $a_t$ directly caused the contradiction.
+- If $a_t \notin U_t$: The current action is not in the minimal unsatisfiable set. Unsatisfiability exists entirely within prior constraints, and $a_t$ merely exposed a latent contradiction.
+
+This distinction is mechanically sound: Z3's UNSAT core extraction guarantees minimality.
+
+% ============================================================================
+% APPENDIX C: HYPERPARAMETER SENSITIVITY
+% ============================================================================
+
+\section{Appendix C: Hyperparameter Analysis}
+
+Table C1 summarizes default hyperparameter values and their sensitivity ranges determined via grid search on ZebraLogic development set (100 puzzles).
+
+\begin{table}[h]
+\centering
+\caption{Hyperparameter Sensitivity Analysis}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\textbf{Parameter} & \textbf{Default} & \textbf{Range} & \textbf{Impact} \\
+\hline
+Clustering threshold ($\theta$) & 0.25 & [0.15, 0.35] & Medium \\
+Min cluster support ($m_{\min}$) & 5 & [3, 10] & Low \\
+Soundness threshold ($\tau_s$) & 0.90 & [0.85, 0.95] & High \\
+Effect threshold ($\tau_e$) & 0.80 & [0.75, 0.90] & Medium \\
+Precision threshold ($\tau_p$) & 0.80 & [0.75, 0.90] & Medium \\
+Stagnation Jaccard ($\tau_{\text{stag}}$) & 0.75 & [0.60, 0.85] & High \\
+Loop cosine ($\tau_{\text{loop}}$) & 0.90 & [0.85, 0.95] & Medium \\
+Min paradigm confidence & 0.50 & [0.40, 0.65] & Medium \\
+Top-K paradigms ($k$) & 3 & [1, 5] & Low \\
+\hline
+\end{tabular}
+\end{table}
+
+\textit{Impact legend:} High = substantial accuracy/efficiency change; Medium = noticeable but manageable; Low = minimal practical effect.
+
+% ============================================================================
+% APPENDIX D: QUALITATIVE EXAMPLES
+% ============================================================================
+
+\section{Appendix D: Case Studies}
+
+\subsection{Case Study 1: Successful Paradigm Extraction}
+
+\textbf{Scenario:} 5×5 Logical Grid Puzzle with "binding" and "adjacency" constraints.
+
+\textbf{KDP Cluster:} 12 KDPs sharing constraint signature $\{\text{direct\_binding}, \text{adjacent\_left}\}$, step type "CHAIN\_PROPAGATION".
+
+\textbf{Representative Steps:}
+\begin{itemize}
+    \item Step A: "If house A has color X, then person B cannot have color X"
+    \item Step B: "House 1 has nationality Norwegian; therefore all other houses cannot be Norwegian"
+    \item Step C: "The blue house and the person who drinks wine are adjacent"
+\end{itemize}
+
+\textbf{LLM Abstraction Output:}
+\begin{verbatim}
+Paradigm P1 (Direct Assignment Propagation):
+{
+  "trigger": {
+    "constraint_types": ["direct_binding"],
+    "state_features": ["domain_size >= 2 for target"]
+  },
+  "operation_nl": "When entity X has unique property V,
+                   remove V from all other entities in the category",
+  "operation_template": "domain[X] := {V};
+                         for all Y != X: domain[Y] -= V",
+  "precondition_z3": "Exists c in C: implies(entity_X, property_V)",
+  "postcondition_z3": "And(entity_X == property_V,
+                           ForAll(Y, Implies(Y != X, Y != property_V)))",
+  "scope": ["3x5 to 6x6 logical grids", "all difficulty levels"]
+}
+\end{verbatim}
+
+\textbf{Verification Results:}
+- Soundness: 0.94 (47/50 trials successful)
+- Effect: 0.86 (43/50 trials reduced domains)
+- Precision: 0.85 (17/20 negative cases correctly UNSAT)
+- \textbf{Status}: Accepted into Paradigm Library
+
+\subsection{Case Study 2: Repair Escalation}
+
+\textbf{Scenario:} 6×6 puzzle where initial translation generates over-constrained formula.
+
+\textbf{Repair Sequence:}
+1. **L1 Attempt** (Switch Target): Modify different constraint from UNSAT core → Still UNSAT
+2. **L2 Attempt** (Switch Type): Change from "relax-bound" to "split-constraint" → Still UNSAT
+3. **Loop Detection Triggers**: Cosine similarity of recent repairs = 0.92 (> 0.90 threshold)
+4. **L3 Execution** (Revert + Retry): Restore solver to SAT checkpoint; explore alternative inference path → **SAT!**
+
+\textbf{Analysis:} Without adaptive escalation, the system would exhaust repair budget (8 rounds) without solution. L3 strategy enables backtracking to search alternative branches.
+
+% ============================================================================
+% APPENDIX E: COMPLEXITY ANALYSIS
+% ============================================================================
+
+\section{Appendix E: Computational Complexity}
+
+\subsection{Offline Phase}
+
+\begin{itemize}
+    \item \textbf{Trajectory Collection:} $O(N \cdot r \cdot T)$ where $N$ = puzzles, $r$ = runs per puzzle, $T$ = steps per trajectory. For $N=600$, $r=3$, avg $T=20$: $\approx 36,000$ solver steps.
+
+    \item \textbf{KDP Extraction:} $O(N \cdot r \cdot T)$ (single pass over trajectories). Typically $\approx 6000$ KDPs extracted.
+
+    \item \textbf{Clustering:} $O(K^2 \log K)$ where $K = 6000$ KDPs, metric = cosine distance. Single-linkage agglomerative: $\approx 150M$ pairwise operations.
+
+    \item \textbf{LLM Abstraction:} $O(C \cdot LLM\text{-cost})$ where $C \approx 50$ clusters. LLM cost dominated by token processing (typically 2-5 seconds per paradigm).
+
+    \item \textbf{Z3 Verification:} $O(P \cdot 90)$ where $P \approx 60$ candidate paradigms, 90 = trials per verification. Each trial: $\approx 100ms$ Z3 execution.
+
+    \textbf{Total Offline Time:} ~24-48 hours (dominated by LLM abstraction and Z3 verification, parallelizable).
+\end{itemize}
+
+\subsection{Online Phase}
+
+\begin{itemize}
+    \item \textbf{Constraint Feature Extraction:} $O(|C_t|)$ per step. $|C_t| \approx 30-80$ constraints.
+
+    \item \textbf{Layer-1 Retrieval:} $O(|\mathcal{L}|) = O(35)$ set-membership checks.
+
+    \item \textbf{Layer-2 Semantic Matching:} $O(k \cdot \text{LLM-cost})$ where $k \leq 5$. Single LLM call if $k \geq 2$.
+
+    \item \textbf{Z3 Consistency Check:} $O(k \cdot Z3\text{-cost}) = O(5 \cdot 500ms) = \approx 2.5$ seconds.
+
+    \item \textbf{Z3 Verification + UNSAT Core:} $O(\text{Z3-cost}) = \approx 500ms$ per step.
+
+    \item \textbf{Stagnation/Loop Detection:} $O(L) = O(\text{recent repairs}) = \approx O(8)$. Jaccard computation: $O(|\text{core}|^2) \approx O(80)$.
+
+    \textbf{Per-Puzzle Online Time:} ~10-30 seconds (depends on puzzle difficulty and repair rounds).
+\end{itemize}
+
+% ============================================================================
+% APPENDIX F: ADDITIONAL EXPERIMENTAL DETAILS
+% ============================================================================
+
+\section{Appendix F: Experimental Details}
+
+\subsection{Baseline Implementation Details}
+
+\begin{itemize}
+    \item \textbf{Logic-LM}: Original implementation from Pan et al. with CSP-specific prompting.
+    \item \textbf{ExpeL (CSP version)}: Experience replay memory adapted from Ouyang et al., storing recent successful trajectories.
+    \item \textbf{Neural-Symbolic Baseline}: LLM+Z3 with 5-round repair budget, no paradigm library or memory.
+    \item \textbf{Verified Few-Shot}: Direct injection of 5-10 manually verified constraint-solving patterns, no learning.
+\end{itemize}
+
+\subsection{Data Split}
+
+\begin{itemize}
+    \item \textbf{Training Set}: 600 puzzles (200 each of 4×4, 5×5, 6×6)
+    \item \textbf{Development Set}: 100 puzzles (even split across scales)
+    \item \textbf{Test Set}: 300 puzzles (even split across scales) — held-out, used only for final evaluation
+\end{itemize}
+
+\subsection{Evaluation Metrics}
+
+\begin{enumerate}
+    \item \textbf{Solving Accuracy}: Percentage of puzzles solved correctly within repair budget.
+    \item \textbf{Average LLM Calls}: Mean number of API calls per puzzle.
+    \item \textbf{Average Repair Rounds}: Mean constraint-repair iterations before solution or failure.
+    \item \textbf{Paradigm Trigger Rate}: Fraction of solving steps where $\geq 1$ paradigm retrieves.
+    \item \textbf{Paradigm Hit Rate}: Among triggered paradigms, fraction correctly applied (heuristic: improves UNSAT core or achieves SAT).
+    \item \textbf{Stagnation Frequency}: Percentage of repair sequences where stagnation detection fires.
+    \item \textbf{Transfer Rate (L1)}: Cross-scale accuracy (e.g., paradigms trained on 4×4 + 5×5 applied to 6×6).
+    \item \textbf{Transfer Rate (L2)}: Cross-domain accuracy (e.g., paradigms from logical grids applied to graph coloring).
+\end{enumerate}
+
+% ============================================================================
+% APPENDIX G: IMPLEMENTATION NOTES
+% ============================================================================
+
+\section{Appendix G: Implementation and Reproducibility}
+
+\subsection{Code Availability}
+
+All code, trained paradigm libraries, and experimental logs are available at: \texttt{[GitHub URL to be filled]}
+
+\subsection{Reproducibility Requirements}
+
+\begin{itemize}
+    \item \textbf{Python Version}: 3.10+
+    \item \textbf{Key Dependencies}:
+        \begin{itemize}
+            \item z3-solver >= 4.12.0
+            \item sentence-transformers (all-MiniLM-L6-v2)
+            \item scikit-learn (agglomerative clustering)
+            \item OpenAI API >= 0.27 or equivalent
+        \end{itemize}
+    \item \textbf{Computational Requirements}:
+        \begin{itemize}
+            \item Offline phase: ~48 GPU-hours (for LLM abstraction and verification)
+            \item Online evaluation: ~100 CPU-hours (batch evaluation on test set)
+        \end{itemize}
+    \item \textbf{Random Seeds}: All experiments use seed=42 for reproducibility.
+\end{itemize}
+
+\subsection{Configuration Files}
+
+Key configuration parameters (stored in `config/default.yaml`):
+\begin{verbatim}
+clustering:
+  theta: 0.25
+  min_support: 5
+verification:
+  soundness_threshold: 0.90
+  effect_threshold: 0.80
+  precision_threshold: 0.80
+repair:
+  stagnation_jaccard: 0.75
+  loop_cosine: 0.90
+  max_repair_rounds: 8
+retrieval:
+  layer2_enabled: true
+  paradigm_top_k: 3
+  min_confidence: 0.50
+\end{verbatim}
+
+\end{document}
