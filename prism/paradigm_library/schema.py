@@ -46,6 +46,7 @@ class RepairAction(BaseModel):
     type: str
     target_constraint: str
     summary: str
+    parameter_signature: Optional[str] = None
     embedding: Optional[List[float]] = None
 
 
@@ -84,6 +85,28 @@ class Paradigm(BaseModel):
     operation: str
     pre_condition: str
     post_condition: str
+    scope: List[str]
+    confidence: float
+    support_count: int
+    source_cluster: int
+    created_at: datetime
+
+
+class ErrorParadigm(BaseModel):
+    """A verified negative pattern mined from failed solver trajectories.
+
+    Error paradigms are anti-patterns: they describe a constraint or repair
+    operation that led to an UNSAT state, plus a short instruction that should
+    be injected later as "avoid this" guidance.
+    """
+
+    id: str
+    name: str
+    trigger: dict
+    bad_operation: str
+    unsat_signature: str
+    avoid_instruction: str
+    repair_hint: str
     scope: List[str]
     confidence: float
     support_count: int

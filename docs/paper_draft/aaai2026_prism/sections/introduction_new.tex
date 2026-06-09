@@ -1,0 +1,88 @@
+% ============================================================================
+% INTRODUCTION - REVISED
+% ============================================================================
+
+\section{Introduction}
+
+Constraint Satisfaction Problems (CSPs)—the task of finding variable assignments that simultaneously satisfy multiple constraints—form the computational backbone of planning, scheduling, and resource allocation. Formally, a CSP is a tuple $\mathcal{P} = (\mathbf{X}, \mathbf{D}, \mathbf{C})$ where $\mathbf{X}$ is a set of variables with finite domains $\mathbf{D}$, and $\mathbf{C}$ is a set of constraints. A solution is a complete assignment satisfying all constraints. Classical solvers employ systematic search and constraint propagation, yet have limited scalability for highly constrained problem instances. Recent advances in Large Language Models offer a complementary capability: natural language understanding and flexible inference. This raises a natural question: can LLMs serve as a foundation for constraint reasoning?
+
+\subsection{The Motivation: Why CSP Solving is Hard for LLMs}
+
+Recent work has documented a fundamental limitation of LLMs on CSP tasks. The ZebraLogic benchmark~\citep{lin2025zebralogic} provides systematic evidence: as logical grid puzzles scale from 3×5 to 6×6 configurations, all evaluated LLM-based systems exhibit sharp accuracy degradation. When the underlying Z3 constraint solver encounters more than 20 conflicts, LLM performance approaches random guessing (8--15\% accuracy), despite achieving 48--60\% on simpler scales. This is not merely a scaling phenomenon—it reflects a fundamental architectural gap.
+
+Existing neural-symbolic approaches attempt to bridge this gap via a three-stage translate-execute-repair pipeline:
+\begin{enumerate}
+    \item \textbf{Translate:} LLM converts natural language constraints to formal representations (Z3 assertions).
+    \item \textbf{Execute:} Formal solver (Z3) applies constraint propagation and checks satisfiability.
+    \item \textbf{Repair:} When the solver returns UNSAT, the LLM attempts to fix translation errors.
+\end{enumerate}
+
+This paradigm has achieved improvements over pure language model reasoning. However, it exhibits two critical deficiencies that compound as problem difficulty increases:
+
+\textbf{(1) Repair Inefficiency:} When Z3 returns UNSAT, repair mechanisms receive only coarse feedback—a raw error string or generic unsatisfiability statement—that lacks semantic information about which constraints cause the contradiction. The LLM is thus forced to make repair attempts nearly blindly, leading to a well-documented phenomenon called \textit{stagnation}: iterative repairs cycle through similar errors without progress. The system cannot distinguish whether contradictions arise from unsolvable problem formulations or over-constrained translations, nor can it detect when it has entered a repair loop.
+
+\textbf{(2) Absence of Cross-Problem Experience Accumulation:} Each puzzle is solved independently. Successful translation patterns, error diagnoses, and repair strategies accumulated on one problem are completely discarded when solving the next. Identical constraint translation errors and repair patterns recur across different problem instances, necessitating redundant exploration.
+
+\subsection{Existing Approaches and Their Limitations}
+
+Agent memory methods~\citep{shinn2023language, zhao2024expel, ouyang2025language} explore cross-task experience accumulation through trajectory analysis and heuristic extraction. These methods achieve effective transfer in web navigation, embodied reasoning, and software engineering.
+
+However, existing memory frameworks face inherent limitations when applied to CSP reasoning:
+\begin{enumerate}
+    \item \textbf{Unverified Heuristics:} Memory units are natural-language prose (e.g., "when constraints X and Y coexist, apply operation Z"). There is no formal verification mechanism—an incorrect strategy is indistinguishable from a correct one at storage time, relying entirely on LLM self-evaluation.
+    \item \textbf{Granularity Mismatch:} Existing frameworks operate at task-level granularity (store high-level insights about entire problem instances), but CSP reasoning requires operation-level patterns (e.g., "when constraint type X and Y coexist with domain property P, this inference step is sound").
+\end{enumerate}
+
+\subsection{Our Key Insight and Solution}
+
+We observe that CSP solving exhibits a unique property absent in general reasoning tasks: \textit{every reasoning step is mechanically verifiable via SMT solvers}. This property fundamentally transforms experience accumulation.
+
+Consider a repair attempt on a failed constraint translation. In general agent settings, the system cannot objectively judge whether the repair is correct without human intervention. In CSP solving, Z3 can mechanically verify whether any proposed inference step is sound: if we formalize the step's assumed preconditions and claimed postconditions as Z3 assertions, the solver can verify their logical relationship. This enables two critical capabilities:
+
+\begin{enumerate}
+    \item \textbf{Automatic Paradigm Certification:} Solving strategies can be formally verified before storage, ensuring knowledge quality without human annotation.
+    \item \textbf{Precise Repair Guidance:} When repairs fail, Z3 returns not just "UNSAT" but a \textit{UNSAT core}—the minimal set of constraints responsible for the contradiction. This provides precise semantic localization, enabling targeted repair strategies.
+\end{enumerate}
+
+\subsection{PRISM: Paradigm-Guided Reasoning with Iterative Solver Memory}
+
+We introduce PRISM, a memory-augmented neuro-symbolic framework designed specifically for CSP solving. PRISM operates via two decoupled stages:
+
+\textbf{Offline Phase (one-time execution):} Given a corpus of training puzzles, the system:
+\begin{enumerate}
+    \item Collects successful solving trajectories from LLM+Z3 interaction.
+    \item Identifies Key Decision Points (KDPs)—steps where significant domain reductions occur or non-trivial inferences are made.
+    \item Clusters KDPs via cross-trajectory similarity on constraint-type features.
+    \item Abstracts reusable solving paradigms via LLM synthesis (each paradigm specifies trigger conditions, inference operations, and Z3-verifiable pre/post-conditions).
+    \item Filters candidates through triple Z3 verification: soundness, effect (non-vacuousness), and trigger precision.
+    \item Persists verified paradigms in a Paradigm Library.
+\end{enumerate}
+
+\textbf{Online Phase (per-puzzle execution):} For each new puzzle:
+\begin{enumerate}
+    \item Extracts constraint-type signatures from current solver state.
+    \item Retrieves relevant paradigms via two-layer filtering (type matching + semantic verification).
+    \item Performs Z3 consistency pre-check before injecting paradigms as structured hints.
+    \item Generates and verifies each LLM inference step via Z3.
+    \item Upon UNSAT, extracts the UNSAT core for causal analysis.
+    \item Records typed repair attempts in a Repair Trajectory Memory.
+    \item Detects stagnation (Jaccard similarity of UNSAT cores) and loops (cosine similarity of repair actions).
+    \item Triggers four-level strategy escalation: (L1)~switch repair target constraint, (L2)~switch repair type, (L3)~revert to recent SAT checkpoint, (L4)~full retranslation.
+    \item Writes successful repairs back to the Paradigm Library, augmenting future solving.
+\end{enumerate}
+
+\subsection{Main Contributions}
+
+\begin{enumerate}
+    \item \textbf{Formally Verifiable Paradigm Representation:} We introduce the first paradigm formalism for CSP reasoning where trigger conditions, inference operations, and outcomes are mechanically verified via Z3 pre/post-conditions. This enables automated correctness certification before paradigm storage—a fundamental departure from prior natural-language heuristic methods.
+
+    \item \textbf{Automated Paradigm Distillation Pipeline:} We design a fully unsupervised offline pipeline that compresses 1500+ training trajectories into ~35 high-confidence paradigms (40:1 compression ratio) via KDP identification, clustering, LLM abstraction, and formal verification—requiring no human annotation.
+
+    \item \textbf{Typed Repair Trajectory Memory with Adaptive Escalation:} We propose a structured memory system that models constraint repair as learnable trajectories, incorporating Jaccard-based stagnation detection, cosine-based loop detection, and a four-level strategy escalation protocol that mechanically breaks repair cycles.
+
+    \item \textbf{Empirical Validation on ZebraLogic:} Comprehensive evaluation across 900 test puzzles (3×5 to 6×6 scales) demonstrates 14.4 percentage-point improvements over prior neuro-symbolic methods, with the largest gains on the hardest instances—validating that experience accumulation provides exponentially increasing value for difficult CSPs.
+\end{enumerate}
+
+\subsection{Paper Organization}
+
+The remainder is organized as follows. Section~2 reviews related work in neural-symbolic reasoning and agent memory. Section~3 presents the PRISM methodology in detail, covering both offline distillation and online inference. Section~4 describes experimental setup and baselines. Section~5 reports results, ablation studies, and analysis. Section~6 concludes with implications and future directions.

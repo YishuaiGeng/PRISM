@@ -1,0 +1,69 @@
+# Quick test configuration for rapid verification
+# Used by: scripts/quick_verify.py and test runs
+
+llm_backend: anthropic
+model_name: Claude-Opus-4-7
+
+# Thresholds (from paper §3.8)
+thresholds:
+  # Offline phase
+  clustering_theta: 0.25          # Distance threshold for agglomerative clustering
+  min_support: 5                  # Minimum KDP support per cluster
+  paradigm_soundness: 0.90        # Soundness verification threshold
+  paradigm_effect: 0.80           # Effect verification threshold
+  paradigm_precision: 0.80        # Trigger precision threshold
+
+  # Online phase
+  stagnation_jaccard: 0.75        # Stagnation detection Jaccard threshold
+  loop_cosine: 0.90               # Loop detection cosine threshold
+  paradigm_min_confidence: 0.50   # Minimum paradigm retrieval confidence
+
+paths:
+  data_dir: data/
+  paradigm_store: paradigm_store/
+  trajectory_dir: data/trajectories/
+  results_dir: results/
+
+# Quick test parameters (reduced for speed)
+quick_test:
+  n_puzzles: 10          # Minimal puzzles for quick offline test
+  n_runs: 2              # Fewer trajectory collection runs
+  max_kdp: 100           # Limit KDP extraction for demo
+  max_repair_rounds: 3   # Fewer repair iterations
+  llm_temperature: 0.0   # Deterministic for reproducibility
+  seed: 42
+
+# Offline stage config
+offline:
+  n_samples_soundness: 20        # Reduce from 50 for speed
+  n_samples_effect: 15           # Reduce from 50 for speed
+  n_samples_precision: 10        # Reduce from 20 for speed
+  max_paradigm_retries: 1        # No retries for speed
+  resume_from_trajectories: false
+
+# Online stage config
+online:
+  layer2_semantic_match: true    # Enable Layer-2 retrieval
+  consistency_precheck: true     # Enable pre-check
+  paradigm_top_k: 3
+  max_repair_rounds: 3
+  enable_paradigm: true
+  enable_memory: true
+
+# Data sources
+data_sources:
+  zebralogic:
+    enabled: true
+    path: data/hf/zebralogic/grid_mode_test.jsonl
+    subset: grid_mode
+    sizes: ["3x5", "4x5"]  # Minimal for testing
+
+  knights_knaves:
+    enabled: false
+    path: data/hf/knights-and-knaves/
+    subset: test_people2
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s %(levelname)s %(name)s: %(message)s"

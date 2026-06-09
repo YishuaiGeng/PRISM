@@ -80,12 +80,21 @@ class PuzzleGenerator:
             List of :class:`~prism.core.types.PuzzleInstance` objects.
         """
         puzzles: List[PuzzleInstance] = []
-        while len(puzzles) < n:
+        attempts = 0
+        max_attempts = max(self._max_attempts, 1) * max(n, 1)
+        while len(puzzles) < n and attempts < max_attempts:
+            attempts += 1
             self._counter += 1
             rng = random.Random(self._base_seed + self._counter)
             puzzle = self._try_generate(n_entities, n_attrs, difficulty, rng)
             if puzzle is not None:
                 puzzles.append(puzzle)
+        if len(puzzles) < n:
+            raise RuntimeError(
+                f"Generated {len(puzzles)}/{n} puzzles for "
+                f"{n_entities}x{n_attrs} difficulty={difficulty!r} "
+                f"after {attempts} attempts"
+            )
         return puzzles
 
     # ------------------------------------------------------------------
@@ -119,7 +128,7 @@ class PuzzleGenerator:
         if not minimal_clues:
             return None
 
-        conflicts = self._count_conflicts(minimal_clues, n_entities)
+        conflicts = self._count_conflicts(minimal_clues, n_entities, solution)
         actual_difficulty = self._classify_difficulty(conflicts)
         if not self._difficulty_matches(actual_difficulty, difficulty):
             return None
@@ -236,20 +245,16 @@ class PuzzleGenerator:
         solver2.add(z3.Not(sol_constraints))
         return solver2.check() == z3.unsat
 
-    def _count_conflicts(self, clues: List[str], n: int) -> int:
+    def _count_conflicts(self, clues: List[str], n: int, solution: Dict[str, int]) -> int:
         """Count Z3 solver conflicts (proxy for difficulty) for the given clue set."""
         solver = z3.Solver()
-        solver.set("smt.restart_max", 1000)
-        vars_: Dict[str, z3.ArithRef] = {}
-
-        for clue in clues:
-            for word in clue.split():
-                candidate = word.strip(".,!?")
-                if "_" in candidate:
-                    vars_[candidate] = z3.Int(candidate)
+        solver.set("restart.max", 1000)
+        vars_: Dict[str, z3.ArithRef] = {k: z3.Int(k) for k in solution}
 
         for v in vars_.values():
             solver.add(v >= 1, v <= n)
+        for key_group in self._group_by_attr(list(vars_.keys())):
+            solver.add(z3.Distinct(*[vars_[k] for k in key_group]))
 
         for clue in clues:
             for expr in self._clue_to_z3(clue, vars_, n):

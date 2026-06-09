@@ -1,0 +1,15 @@
+% ============================================================================
+% ABSTRACT — PRISM AAAI 2026 (Final Rewrite)
+% ============================================================================
+
+\begin{abstract}
+Constraint Satisfaction Problems (CSPs) underpin diverse real-world applications—task planning, scheduling, and combinatorial optimization—yet Large Language Models exhibit a sharp accuracy cliff as problem difficulty grows: on the ZebraLogic benchmark, LLM accuracy approaches random performance once the underlying SMT solver encounters more than 20 conflicts. We trace this failure to two architectural gaps in existing neuro-symbolic approaches: \textit{(i)}~repair mechanisms receive only coarse UNSAT signals, leading to documented stagnation cycles; \textit{(ii)}~each problem is solved in isolation, discarding all accumulated solving experience.
+
+We present \textbf{PRISM} (\textbf{P}aradigm-guided \textbf{R}easoning with \textbf{I}terative \textbf{S}olver \textbf{M}emory), a memory-augmented neuro-symbolic framework built on a single unifying observation: in CSP solving, every inference step is mechanically certifiable by an SMT solver. This enables formally grounded experience accumulation at two complementary granularities.
+
+\textit{Offline}, PRISM distills verified solving paradigms from successful trajectories. Each paradigm is a five-tuple encoding trigger conditions, an inference operation, and Z3-formalizable pre/post-conditions. Candidates undergo triple Z3 screening—soundness via random-state sampling, effect via non-contradiction and non-vacuousness checks, and trigger selectivity via set-intersection matching against a canonical constraint pool—before admission to the Paradigm Library. This produces a compact verified Paradigm Library from training trajectories (40:1 compression ratio).
+
+\textit{Online}, retrieved paradigms guide LLM inference while a Typed Repair Trajectory Memory records canonicalized UNSAT cores and structured repair signatures. Jaccard-based stagnation detection and cosine-based loop detection trigger a four-level adaptive escalation protocol (switch target $\to$ switch type $\to$ revert from a bounded checkpoint stack $\to$ full retranslation), with a worst-case bounded LLM-call budget of $R+2$ per puzzle.
+
+To our knowledge, PRISM is the first framework to apply SMT-based mechanical screening to LLM-induced reasoning rules at the paradigm level. Evaluation on ZebraLogic (3$\times$5 to 6$\times$6 scales, seven baselines) demonstrates consistent improvements over prior neuro-symbolic approaches across all difficulty levels, with gains increasing monotonically with problem difficulty—validating that formally-grounded experience accumulation provides compounding value for harder instances. \textbf{[Note to authors: update with real performance figures before submission.]}
+\end{abstract}

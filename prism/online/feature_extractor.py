@@ -11,38 +11,13 @@ used inside the hot path of ``GuidedSolver`` without adding latency.
 
 from __future__ import annotations
 
-from typing import Dict, List, Set
+from typing import List
 
 from prism.core.types import SolverState
-
-_KEYWORD_TO_TYPE: Dict[str, str] = {
-    "distinct(":       "all_different",
-    "Distinct(":       "all_different",
-    "immediately":     "adjacent",
-    "adjacent":        "adjacent",
-    "next to":         "adjacent",
-    "left of":         "relative_position",
-    "right of":        "relative_position",
-    "== 1":            "direct_position",
-    "== 2":            "direct_position",
-    "== 3":            "direct_position",
-    "== 4":            "direct_position",
-    "== 5":            "direct_position",
-    "!= ":             "exclusion",
-    "also has":        "inclusion",
-    "< ":              "ordering",
-    "> ":              "ordering",
-    "and(":            "logical_implication",
-    "And(":            "logical_implication",
-    "or(":             "logical_implication",
-    "Or(":             "logical_implication",
-    "not(":            "logical_implication",
-    "Not(":            "logical_implication",
-    "if ":             "binding",
-    "implies":         "binding",
-}
-
-_POSITION_EQUALITY = frozenset({"== 1", "== 2", "== 3", "== 4", "== 5", "== 6", "== 7"})
+from prism.core.constraint_tags import (
+    classify_constraint_set_tags,
+    classify_constraint_tags,
+)
 
 
 class FeatureExtractor:
@@ -69,10 +44,36 @@ class FeatureExtractor:
             set, sorted for deterministic output.
         """
         focus = state.unsat_core if state.unsat_core else state.constraints
-        tags: Set[str] = set()
+        return classify_constraint_set_tags(
+            focus,
+            is_unsat_core=bool(state.unsat_core),
+        )
+
+    def extract_bag(self, state: SolverState) -> List[str]:
+        """Extract constraint-type tags **with multiplicity** from *state*.
+
+        Unlike :meth:`extract`, this preserves repetitions so that a state with
+        three ``adjacent`` constraints produces three ``"adjacent"`` entries.
+        The returned bag is consumed by :meth:`ParadigmRetriever.retrieve` to
+        evaluate relational predicates such as ``count_atleast`` and
+        ``cooccur`` declared on paradigm triggers.
+
+        Args:
+            state: Current solver state with populated ``constraints`` field.
+
+        Returns:
+            List of constraint-type tags (with repetitions) appearing in the
+            constraint set, in source order. Empty constraint set returns
+            ``["unknown"]`` to mirror :meth:`extract`.
+        """
+        focus = state.unsat_core if state.unsat_core else state.constraints
+        bag: List[str] = []
         for constraint in focus:
-            tags.update(self._classify(constraint))
-        return sorted(tags) if tags else ["unknown"]
+            bag.extend(self._classify(constraint))
+        if state.unsat_core:
+            contextual = classify_constraint_set_tags(focus, is_unsat_core=True)
+            bag.extend(tag for tag in contextual if tag not in bag)
+        return bag if bag else ["unknown"]
 
     # ------------------------------------------------------------------
     # Private
@@ -81,11 +82,7 @@ class FeatureExtractor:
     @staticmethod
     def _classify(constraint: str) -> List[str]:
         """Map a single Z3 constraint string to zero or more type tags."""
-        types: List[str] = []
-        for keyword, ctype in _KEYWORD_TO_TYPE.items():
-            if keyword in constraint:
-                types.append(ctype)
-        return types or ["unknown"]
+        return classify_constraint_tags(constraint)
 
     def classify_constraint_type(self, constraint: str) -> str:
         """Return the most specific type tag for a single constraint.

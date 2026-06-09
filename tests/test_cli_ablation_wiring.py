@@ -26,3 +26,24 @@ def test_experiment_builder_keeps_full_prism_by_default():
     assert solver._enable_paradigm is True
     assert solver._enable_memory is True
     assert solver._layer2 is True
+
+
+def test_experiment_builder_sets_schema_hint_mode():
+    solver = _build_solver(
+        model_name="GPT-4o",
+        library_path=":memory:",
+        schema_hint_mode="solution_keys",
+    )
+
+    assert solver._schema_hint_mode == "solution_keys"
+    assert solver._translator._schema_hint_mode == "solution_keys"
+
+
+def test_guided_solver_stores_translation_normalize_mode():
+    solver = _build_solver(
+        model_name="GPT-4o",
+        library_path=":memory:",
+        schema_hint_mode="puzzle",
+    )
+
+    assert solver._translation_normalize == "none"

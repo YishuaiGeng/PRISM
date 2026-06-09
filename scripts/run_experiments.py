@@ -56,6 +56,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--knk-data-dir", default="K-and-K/knights-and-knaves")
     p.add_argument("--knk-data-source", default="auto", choices=["auto", "hf", "local"])
     p.add_argument("--knk-subset", default="test")
+    p.add_argument(
+        "--schema-hint-mode",
+        default="puzzle",
+        choices=["puzzle", "none", "solution_keys"],
+        help=(
+            "Variable schema guidance source. 'solution_keys' is an oracle "
+            "upper-bound diagnostic, not a main benchmark setting."
+        ),
+    )
     return p.parse_args(argv)
 
 
@@ -109,6 +118,7 @@ def run_ablation(args, config, exp_config, model_name, output_dir):
             no_paradigm=variant_cfg.get("no_paradigm", False),
             no_memory=variant_cfg.get("no_memory", False),
             max_repair=variant_cfg.get("max_repair", 5),
+            schema_hint_mode=getattr(args, "schema_hint_mode", "puzzle"),
         )
         results = evaluate_zebralogic(solver, puzzles)
         all_results[variant_name] = results
@@ -143,7 +153,11 @@ def run_generalization(args, config, exp_config, model_name, output_dir):
             source=args.data_source,
             subset=args.data_subset,
         )
-        solver = _build_solver(model_name=model_name, library_path=lib_path)
+        solver = _build_solver(
+            model_name=model_name,
+            library_path=lib_path,
+            schema_hint_mode=getattr(args, "schema_hint_mode", "puzzle"),
+        )
         results = evaluate_zebralogic(solver, puzzles)
         for r in results:
             r["config"] = config_label
@@ -162,7 +176,11 @@ def run_generalization(args, config, exp_config, model_name, output_dir):
             source=args.knk_data_source,
             subset=args.knk_subset,
         )
-        solver = _build_solver(model_name=model_name, library_path=args.library)
+        solver = _build_solver(
+            model_name=model_name,
+            library_path=args.library,
+            schema_hint_mode=getattr(args, "schema_hint_mode", "puzzle"),
+        )
         zebra_results = load_zebralogic(
             args.data_dir,
             sizes=["4x5"],
@@ -192,6 +210,7 @@ def _build_solver(
     no_paradigm: bool = False,
     no_memory: bool = False,
     max_repair: int = 5,
+    schema_hint_mode: str = "puzzle",
 ) -> GuidedSolver:
     llm = LLMClient(model_name=model_name, temperature=0.0)
     lib_path = ":memory:" if no_paradigm else library_path
@@ -206,6 +225,7 @@ def _build_solver(
         layer2_enabled=not no_paradigm,
         enable_paradigm=not no_paradigm,
         enable_memory=not no_memory,
+        schema_hint_mode=schema_hint_mode,
     )
 
 

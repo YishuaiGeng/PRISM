@@ -1,0 +1,25 @@
+% ============================================================================
+% EXPERIMENTS
+% ============================================================================
+
+\section{Experiments}
+
+\subsection{Experimental Setup}
+
+\textbf{Benchmark:} ZebraLogic (Lin et al., 2025) contains logical grid puzzles ranging from 3$\times$5 to 6$\times$6 (30 to 180 variables, 15-80 constraints). We evaluate on three representative sizes: 4$\times$4 (easy), 5$\times$5 (medium), 6$\times$6 (hard).
+
+\textbf{Baselines:}
+\begin{enumerate}
+    \item Chain-of-Thought (CoT) prompting
+    \item Logic-LM (Pan et al., 2023)
+    \item ExpeL with CSP adaptation
+    \item Neural-Symbolic baseline (LLM+Z3, no memory)
+    \item Verified Few-Shot (direct paradigm injection without library)
+    \item PRISM ablations: (a) memory only, (b) paradigm library only
+\end{enumerate}
+
+\textbf{Metrics:} Solving accuracy, average LLM calls per puzzle, average repair rounds, paradigm trigger rate, paradigm hit rate.
+
+\subsection{Results}
+
+[This section will contain: (1) Accuracy improvements, (2) Cost analysis (LLM calls), (3) Repair efficiency (stagnation reduction), (4) Paradigm transfer analysis, (5) Ablation studies]

@@ -1,0 +1,196 @@
+% ============================================================================
+% METHODOLOGY — PRISM AAAI 2026 (Final Rewrite)
+% Ground-truth values verified against prism/ source and config/default.yaml
+% ============================================================================
+
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Problem Definition and Core Formalisms}
+
+A Constraint Satisfaction Problem is a triple $\mathcal{P} = (\mathbf{X}, \mathbf{D}, \mathbf{C})$ where $\mathbf{X} = \{x_1, \ldots, x_n\}$ is a set of variables, $\mathbf{D} = \{D_1, \ldots, D_n\}$ specifies finite domains ($x_i \in D_i$), and $\mathbf{C} = \{c_1, \ldots, c_m\}$ is a set of constraints. A solution is a complete assignment $\theta: \mathbf{X} \to \bigcup_i D_i$ with $\theta(x_i) \in D_i$ and $c_j(\theta)$ holding for all $j$.
+
+\textbf{Solving trajectory.} For puzzle $\mathcal{P}$, a solving trajectory is a sequence
+\[
+\mathcal{T} = \langle (S_0, a_1, S_1),\; (S_1, a_2, S_2),\; \ldots,\; (S_{T-1}, a_T, S_T) \rangle
+\]
+where $S_t = (C_t, \delta_t)$ is the solver state at step $t$ (formalized constraints $C_t$ and domain assignments $\delta_t: \mathbf{X} \to 2^{\bigcup_i D_i}$), and $a_t$ is an LLM-generated inference: a natural-language statement paired with its Z3 formalization. $\mathcal{T}$ is \textit{successful} if Z3 returns SAT at $S_T$ and the assignment matches ground truth.
+
+\textbf{Solving paradigm.} A paradigm is a formally-structured five-tuple:
+\[
+P = (\mathcal{Q},\; \mathcal{O},\; \phi_{\text{pre}},\; \phi_{\text{post}},\; \mathcal{S})
+\]
+where $\mathcal{Q}$ specifies trigger conditions (constraint types and solver-state features that activate the paradigm); $\mathcal{O}$ is the inference operation, given as a parameterized template (e.g., $\texttt{pos}(X) = k + d$); $\phi_{\text{pre}}$ and $\phi_{\text{post}}$ are Z3-formalizable pre/post-condition assertions; and $\mathcal{S}$ documents applicable scope. Because $\phi_{\text{pre}}$ and $\phi_{\text{post}}$ are SMT-LIB expressions, each paradigm carries a mechanically checkable interface absent from prior natural-language memory formats. Screening is sample-based (Section~\ref{ssec:verification}), providing probabilistic—not formal—correctness certificates.
+
+\textbf{Position in the inference-rule spectrum.} PRISM paradigms occupy the gap between (i) EBL macro-operators~\citep{MitchellKellerKedarCabelli1986}, which carry provable soundness but require a hand-built domain theory, and (ii) unverified LLM-memory heuristics, which need no domain theory but offer no mechanical quality control. Paradigms are cross-instance reusable (unlike single-invocation SMT lemmas), LLM-induced from clustered traces (unlike hand-crafted EBL schemas), and empirically Z3-screened before storage (unlike prior LLM-memory units).
+
+\subsection{PRISM: Architecture Overview}
+\label{ssec:overview}
+
+PRISM operates via two decoupled stages.
+
+\textbf{Offline stage (run once per task distribution).} Given $N$ training puzzles with ground-truth solutions:
+\begin{enumerate}
+    \item \textbf{Trajectory collection:} Run LLM+Z3 on training puzzles; retain only successful trajectories.
+    \item \textbf{KDP identification:} Extract Key Decision Points from each trajectory (Section~\ref{ssec:kdp}).
+    \item \textbf{Clustering:} Group similar KDPs by constraint-type feature vectors via agglomerative clustering.
+    \item \textbf{Paradigm abstraction:} Synthesize one paradigm per cluster via LLM.
+    \item \textbf{Triple Z3 verification:} Screen candidates along three axes (Section~\ref{ssec:verification}).
+    \item \textbf{Library ingestion:} Persist verified paradigms in Paradigm Library $\mathcal{L}$.
+\end{enumerate}
+Result: $\approx$35 verified paradigms extracted from $\approx$1,500 trajectories (40:1 compression ratio).
+
+\textbf{Online stage (per puzzle).} For each new puzzle $\mathcal{P}^*$:
+\begin{enumerate}
+    \item \textbf{Initial translation:} LLM formalizes natural-language constraints to Z3 assertions.
+    \item \textbf{Paradigm retrieval:} Extract constraint-type signature; retrieve via two-layer filter (Section~\ref{ssec:retrieval}).
+    \item \textbf{Consistency pre-check and hint injection:} Verify paradigm operations against current solver state before injection.
+    \item \textbf{Step verification:} Z3 verifies each LLM inference step.
+    \item \textbf{Repair loop:} On UNSAT, extract UNSAT core, record typed repair in $\mathcal{M}$, detect stagnation/loops.
+    \item \textbf{Strategy escalation:} Trigger four-level protocol (Section~\ref{ssec:escalation}).
+    \item \textbf{Write-back:} Stage successful repairs for batch re-verification and promotion to $\mathcal{L}$ (Section~\ref{ssec:writeback}).
+\end{enumerate}
+
+\subsection{Offline Stage: Paradigm Distillation}
+
+\subsubsection{Trajectory Collection}
+
+We execute LLM+Z3 solving on $N = 600$ training puzzles with generation temperature $T = 0.7$, running $r = 3$ independent generations per puzzle. Only successful trajectories (Z3 returns SAT; assignment matches ground truth) are retained, yielding $\approx$1,500 successful trajectories. Each step $a_t$ records: Z3 verification outcome (SAT/UNSAT/ERROR), domain change record $\Delta_t$, constraint-type signature, and step-type classification.
+
+\subsubsection{Key Decision Point Identification}
+\label{ssec:kdp}
+
+A step $(S_{t-1}, a_t, S_t)$ qualifies as a Key Decision Point if it satisfies at least one of four conditions:
+
+\textbf{Condition A (Domain reduction):} $\exists x \in \mathbf{X}: |\delta_{t-1}(x)| - |\delta_t(x)| \geq 2$. At least one variable's domain shrinks by two or more in a single step—a decisive, non-trivial inference.
+
+\textbf{Condition B (Non-trivial step type):} The step is classified as \textsc{Chain} (transitive propagation) or \textsc{Contradiction} (explicit elimination of infeasible assignments). Classification uses lightweight rule-based parsing of the natural-language action text.
+
+\textbf{Condition C (Aggregate information gain):} The aggregate log-ratio of domain reductions across all variables exceeds a soft bit-threshold $\tau_{\text{ig}} = 1.0$:
+\[
+G(t) = \sum_{\substack{x:\; |\delta_t(x)| < |\delta_{t-1}(x)|}} \log_2 \frac{|\delta_{t-1}(x)|}{|\delta_t(x)|} \;\geq\; \tau_{\text{ig}}.
+\]
+Condition C complements the hard per-variable cutoff of A by capturing \textit{gradual tightening} steps—reducing several domains from $5\!\to\!3$ or $4\!\to\!2$—that are individually below the A threshold but collectively constitute a meaningful inference. This pattern dominates harder puzzles (e.g., 6$\times$6 ZebraLogic) and substantially broadens paradigm coverage for those scales.
+
+\textbf{Condition D (Successful repair):} A repair step $a_t$ (action type = \textsc{repair}) that causes the solver to return SAT in a trajectory ultimately marked successful. This ensures that effective repair patterns—which differ structurally from forward inference—are captured as KDPs and enter the distillation pipeline.
+
+Across $\approx$1,500 trajectories, these four conditions extract $\approx$6,000 KDPs.
+
+\subsubsection{Cross-Trajectory Clustering and Paradigm Abstraction}
+
+\textbf{Feature representation.} Each KDP is represented as a fixed-dimensional vector $\mathbf{f}(\text{kdp}) = [\mathbf{h}_{\text{ct}}, \mathbf{b}_{\text{dom}}, \mathbf{e}_\tau, n_{\text{var}}, n_{\text{con}}]$, where $\mathbf{h}_{\text{ct}}$ is a normalized histogram over 9 constraint types (direct/relative position, adjacency, exclusion, inclusion, ordering, binding, all-different, logical-implication); $\mathbf{b}_{\text{dom}}$ is a 4-bin domain-size distribution; $\mathbf{e}_\tau$ is a step-type one-hot encoding; and $n_{\text{var}}, n_{\text{con}}$ are normalized problem-scale metrics.
+
+\textbf{Clustering.} We apply complete-linkage agglomerative clustering with cosine distance and threshold $\theta = 0.25$ (selected via grid search on a held-out development set). Clusters with fewer than $m_{\min} = 5$ members are discarded.
+
+\textbf{Paradigm abstraction.} For each qualifying cluster, we uniformly sample up to 10 representative KDPs (solver state, reasoning text, domain-change indicators) and prompt an LLM to synthesize a structured paradigm: \textit{trigger conditions, operation template, Z3 pre/post-conditions, and scope}. Up to 2 retries per cluster accommodate LLM variability.
+
+\subsubsection{Z3 Triple Verification}
+\label{ssec:verification}
+
+Each candidate paradigm $\hat{P}$ undergoes three independent checks; failure in any one results in rejection.
+
+\textbf{(1) Soundness.} The paradigm's operation must be consistent with random partial views of its precondition. We sample $N_p = 50$ random puzzle states satisfying $\hat{P}$'s trigger conditions, instantiate the operation, and test $\text{Z3-SAT}(C_i \cup \{\text{op}(\hat{P})\})$ for each. Acceptance requires $\text{soundness}(\hat{P}) \geq \tau_{\text{snd}} = 0.90$.
+
+\textbf{(2) Effect.} The operation must genuinely constrain the solution space—it must be neither contradictory nor vacuously implied by the precondition. Two sub-checks must both hold:
+\begin{itemize}
+    \item \textbf{Non-contradiction:} $\text{Z3-SAT}(\phi_{\text{pre}} \wedge \text{op}(\hat{P}))$ — the operation is consistent with the precondition.
+    \item \textbf{Non-vacuousness:} $\text{Z3-SAT}(\phi_{\text{pre}} \wedge \neg\,\text{op}(\hat{P}))$ — there exists a state where the precondition holds but the operation does not. Equivalently, the precondition does not already entail the operation. If this check fails ($\phi_{\text{pre}} \wedge \neg\,\text{op}$ is UNSAT), the paradigm is tautological under its trigger and adds no information.
+\end{itemize}
+
+\textbf{(3) Trigger precision.} The trigger conditions must be selective. We sample $N_p = 50$ random subsets of size 2--5 from a representative constraint pool of 18 annotated entries spanning ZebraLogic-domain and generic integer-arithmetic patterns. Each entry is tagged with canonical constraint kinds from a fixed taxonomy $\mathcal{K}$ (10 kinds, including \texttt{position\_arithmetic}, \texttt{attribute\_binding}, \texttt{distinct}, etc.). A paradigm's trigger fires on sample $s$ iff $\mathcal{K}_{\hat{P}} \cap \mathcal{K}_s \neq \emptyset$ (set-intersection, not substring matching—preventing spurious lexical co-occurrences). Acceptance requires a minimum non-firing rate $\tau_p = 0.20$: the trigger must \textit{not} fire on at least 20\% of random samples, ensuring the paradigm is not pathologically over-general. Paradigms accepted on all three checks receive a confidence score (equal to their soundness rate) and are persisted in Paradigm Library $\mathcal{L}$.
+
+\subsection{Online Stage: Paradigm-Guided Inference and Adaptive Repair}
+
+\subsubsection{Two-Layer Paradigm Retrieval}
+\label{ssec:retrieval}
+
+At each step $t$, we extract the constraint-type signature $\sigma(S_t) = \text{sorted}(\{type(c) \mid c \in C_t\})$ and apply:
+
+\textbf{Layer 1 (Type matching).} Retrieve paradigms $P \in \mathcal{L}$ whose declared constraint kinds $\mathcal{K}_P$ intersect with $\sigma(S_t)$, filtered by confidence floor $\tau_{\text{conf}} = 0.50$. To address multiplicity (two puzzles with the same \textit{set} of constraint types may differ in \textit{count}), each paradigm's trigger may declare optional relational predicates from a small vocabulary: \texttt{count\_atleast}($t, n$), \texttt{count\_atmost}($t, n$), \texttt{cooccur}($t_1, t_2$). Predicates are evaluated against the actual type bag (a multiset); paradigms failing their predicates are pruned before ranking. Layer 1 typically reduces candidates from $\approx$35 to $<$5 in $O(|\mathcal{L}|)$ time.
+
+\textbf{Layer 2 (LLM semantic judgment, cost-aware).} When $|\mathcal{L}_1(S_t)| \geq 2$, an additional LLM call judges which retrieved paradigms have trigger conditions genuinely satisfied by the current state. Under the default \texttt{complexity\_gated} policy, Layer 2 activates only when (i) at least 2 candidates survive Layer 1 \textit{and} (ii) either the puzzle has $\geq$25 constraints or at least one UNSAT has been observed. This bounds Layer-2 cost to high-complexity or repair-phase steps.
+
+\subsubsection{Consistency Pre-Check and Hint Injection}
+
+Before injection, each surviving paradigm $P$ undergoes a Z3 consistency pre-check:
+\[
+\text{consistent}(P, S_t) = \text{Z3-SAT}(C_t \cup \{\text{op}(P)\}).
+\]
+Only paradigms passing this check are injected as soft (advisory) hints; they are not added as hard constraints. This second safety barrier filters paradigms whose operations conflict with constraints added since the paradigm was trained.
+
+\subsubsection{Step Verification and UNSAT Attribution}
+
+After the LLM generates inference $a_t$, Z3 verifies it:
+
+\textbf{SAT:} Update domain assignments; save the resulting state as a potential revert checkpoint. Continue solving.
+
+\textbf{UNSAT:} Extract UNSAT core $U_t$ (the minimal unsatisfiable constraint subset) and perform two-level causal attribution. \textit{Primary attribution} is coarse: if $a_t \in U_t$, the new assertion is responsible (\textsc{New\_Assertion}); if $a_t \notin U_t$, the contradiction predates $a_t$ (\textsc{Legacy\_Error}). \textit{Secondary classification} refines \textsc{New\_Assertion} into one of four structured \textit{ErrorTypes} via AST parsing rather than substring matching, making the classifier robust to Z3's equivalent surface forms: \textbf{SyntaxError}, \textbf{ScopeError} (undefined identifier), \textbf{SemanticFlip} (contradictory comparison operators on identical operands, detected via polarity-tracking AST walk), or \textbf{OverConstraint} (default: the new assertion legally tightens the formula beyond satisfiability). The ErrorType is stored in the repair record and used by the escalation logic to select the most appropriate repair class.
+
+\subsection{Repair Trajectory Memory}
+\label{ssec:memory}
+
+\subsubsection{Data Structure}
+
+Repair Trajectory Memory $\mathcal{M}$ maintains ordered records $\{R_1, \ldots, R_L\}$, each a six-tuple:
+\[
+R_t = (e_t,\; U_t,\; \hat{U}_t,\; \alpha_t,\; o_t,\; U'_t)
+\]
+where $e_t$ is the error-type label; $U_t$ is the UNSAT core (constraint IDs); $\hat{U}_t = \text{SHA-256}(\text{sorted}(\tilde{U}_t))$ is a canonicalized core fingerprint enabling rapid cross-iteration comparison; $\alpha_t$ is a structured repair action triple $(\tau, c, \pi)$ (type, target constraint, parameter signature) plus a sentence-transformer embedding (all-MiniLM-L6-v2, 384-dim); $o_t \in \{\text{SAT}, \text{UNSAT}\}$ is the repair outcome; and $U'_t$ is the new UNSAT core post-repair if $o_t = \text{UNSAT}$.
+
+\textbf{Core canonicalization.} Z3's \texttt{unsat\_core()} is not unique—different invocations on the same logically unsatisfiable set may return different cores depending on assumption ordering. Naive comparison can therefore both under-detect stagnation (same underlying contradiction surfaces as different core sets) and over-detect it (two unrelated contradictions share a high-frequency constraint such as \texttt{Distinct(...)}). PRISM canonicalizes each core via (i) operator aliasing (e.g., $\texttt{Not}(x > 0) \leftrightarrow x \leq 0$) and (ii) variable renaming to first-occurrence order. The fingerprint $\hat{U}_t$ is the SHA-256 of the normalized, sorted canonical core.
+
+\subsubsection{Stagnation Detection}
+
+Stagnation is detected when the last $k = 3$ repair records show high UNSAT core overlap:
+\[
+\text{stagnate}(\mathcal{M}, k{=}3) = \mathbf{1}\!\left[\,\max_{i \neq j \in \text{last-}k}\; J(\tilde{U}_i, \tilde{U}_j) \geq \tau_{\text{stag}}\right]
+\]
+where Jaccard similarity $J(A, B) = |A \cap B| / |A \cup B|$ is computed over canonicalized cores and $\tau_{\text{stag}} = 0.75$. The \textit{maximum} (any-pair) rather than minimum (all-pairs) is used as the trigger criterion: early-warning detection preserves more of the repair budget for recovery.
+
+\subsubsection{Loop Detection}
+
+Loop detection identifies when a proposed repair duplicates a historical attempt, combining two complementary signals:
+
+\textbf{(i) Structured signal (primary).} Each repair action carries a triple $(\tau, c, \pi)$: repair type (drawn from a closed vocabulary of 8 classes, e.g., \texttt{relax\_bound}, \texttt{split\_constraint}), target constraint ID, and parameter signature. A loop is flagged when this triple exactly matches any prior record, regardless of natural-language phrasing.
+
+\textbf{(ii) Semantic signal (fallback).} When the structured triple is absent or yields no match, cosine similarity between sentence-transformer embeddings of action summaries is used:
+\[
+\text{loop}(\alpha_{\text{new}}) = \mathbf{1}\!\bigl[\bigl((\tau, c, \pi)_{\text{new}} = (\tau, c, \pi)_t \text{ for some }t\bigr)\;\vee\;\bigl(\max_t \cos(\mathbf{e}_{\text{new}}, \mathbf{e}_t) \geq \tau_\ell\bigr)\bigr]
+\]
+with $\tau_\ell = 0.90$. The structured-signal-first design detects loops even when the LLM paraphrases the same action (which routinely produces cosines in the $0.78$--$0.85$ range, below the safe semantic threshold).
+
+\subsubsection{Four-Level Strategy Escalation}
+\label{ssec:escalation}
+
+Upon stagnation or loop detection, PRISM escalates through four levels in order of increasing disruption:
+
+\begin{enumerate}
+    \item \textbf{L1 — Switch target.} Preserve the current repair type but target a different constraint from the UNSAT core. Triggered when the same constraint has been targeted in consecutive repair rounds.
+    \item \textbf{L2 — Switch type.} Change the repair strategy class (e.g., \texttt{relax\_bound} $\to$ \texttt{split\_constraint}). Triggered when the same repair type dominates the recent history window.
+    \item \textbf{L3 — Revert checkpoint.} Pop the most recent SAT-adjacent state from a bounded LIFO stack (depth $\leq 5$) and roll back the solver. Successive L3 escalations pop progressively older checkpoints; a depleted stack falls through to L4. Triggered when stagnation is detected and a checkpoint is available.
+    \item \textbf{L4 — Full retranslation.} Discard the current formalization; re-translate all constraints from the original natural-language description, using the accumulated repair history as guidance.
+\end{enumerate}
+
+\textbf{Termination guarantee.} The online phase terminates within a bounded LLM-call budget. The repair loop is capped at $R = 5$ rounds; L4 is triggered at most once per puzzle (a second L4 condition is suppressed, marking the puzzle unsolved); and the L3 checkpoint stack has depth $\leq 5$. The worst-case per-puzzle budget is $1\;(\text{translate}) + R\;(\text{repair rounds}) + 1\;(\text{L4 retranslate}) = R + 2 = 7$ LLM calls. A formal proof sketch is given in Appendix~B.
+
+\subsection{Paradigm Write-Back and Library Maintenance}
+\label{ssec:writeback}
+
+When a repair or forward inference step succeeds, PRISM does not immediately admit the corresponding pattern to $\mathcal{L}$. A \textit{staged write-back} policy is used:
+
+\begin{enumerate}
+    \item \textbf{Candidate staging (online, $O(1)$).} The responsible (trigger features, operation, inferred pre/post-condition) tuple is appended to a candidate pool $\mathcal{L}^{\dagger}$. No verification is performed online, preserving low latency.
+    \item \textbf{Batched re-verification (offline, every $K = 50$ solved puzzles).} Candidates in $\mathcal{L}^{\dagger}$ are de-duplicated against $\mathcal{L}$ (by trigger-kind signature and operation-template hash) and re-run through the same triple verification protocol (Section~\ref{ssec:verification}).
+    \item \textbf{Promotion.} Candidates passing all three checks are admitted to $\mathcal{L}$; failures are discarded with provenance retained. When an online step matches an existing $P \in \mathcal{L}$ and succeeds, only its $\langle\text{support\_count}, \text{confidence}\rangle$ counters are updated atomically—no re-verification required.
+\end{enumerate}
+
+The candidate pool $\mathcal{L}^{\dagger}$ is not used for retrieval during online inference, so $\mathcal{L}$ always maintains the same SMT-screened quality guarantee.
+
+\subsection{Computational Cost}
+\label{ssec:cost}
+
+PRISM's cost has two components that amortize differently.
+
+\textbf{Offline (one-time, amortized over the test set).} LLM calls arise in three places: trajectory collection ($N_{\text{train}} \cdot r \cdot \bar{T}$, where $\bar{T}$ is mean trajectory length); paradigm abstraction ($\leq 2|\mathcal{C}|$ calls for $|\mathcal{C}|$ clusters with up to 2 retries); and batched write-back re-verification. Z3 work scales as $N_p \cdot |\mathcal{P}_{\text{candidate}}|$ verification trials. The amortized offline cost per test puzzle is $C_{\text{offline}} / N_{\text{test}}$, which becomes negligible for large test sets.
+
+\textbf{Online (per puzzle, worst case).} Per the termination guarantee, the online phase invokes the LLM at most $R + 2 = 7$ times per puzzle: one translation, at most $R = 5$ repair-round inferences, and at most one L4 retranslation. Layer-2 semantic matching adds at most one additional LLM call per step (gated by the \texttt{complexity\_gated} policy, contributing $\leq R$ additional calls on complex instances, zero on easy ones). Z3 work per step is bounded to one consistency pre-check, one solver call, and one UNSAT-core extraction.

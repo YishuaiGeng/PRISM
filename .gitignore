@@ -10,6 +10,8 @@ htmlcov/
 .claude/
 .env
 .env.*
+api/api_configs.json
+config/api/api_configs.json
 
 paradigm_store/
 results/

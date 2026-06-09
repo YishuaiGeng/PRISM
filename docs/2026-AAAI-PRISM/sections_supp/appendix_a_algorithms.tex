@@ -1,0 +1,95 @@
+% ============================================================================
+% APPENDIX A: DETAILED ALGORITHMS
+% ============================================================================
+
+\section{Appendix A: Complete Algorithms}
+
+\subsection{Algorithm 1: Offline Paradigm Distillation}
+
+\begin{algorithm}
+\caption{PRISM-Offline(Puzzles, LLM, Z3, $\theta$, $m_{\min}$, $\tau_s$, $\tau_e$, $\tau_p$)}
+\begin{algorithmic}[1]
+\STATE $T_{\text{all}} \leftarrow \emptyset$ \quad \COMMENT{Initialize trajectory pool}
+\FOR{each $P \in$ Puzzles}
+    \FOR{$r = 1, 2, 3$}
+        \STATE $T \leftarrow$ LLM-Z3-Solve$(P, \text{temperature}=0.7)$
+        \IF{$T.\text{outcome} == \text{SAT}$}
+            \STATE $T_{\text{all}} \leftarrow T_{\text{all}} \cup \{T\}$
+        \ENDIF
+    \ENDFOR
+\ENDFOR
+\STATE \COMMENT{Extract Key Decision Points}
+\STATE $\text{KDP}_{\text{all}} \leftarrow \emptyset$
+\FOR{each $T \in T_{\text{all}}$}
+    \FOR{each step $(S_{t-1}, a_t, S_t) \in T$}
+        \IF{IsKDP$(S_{t-1}, a_t, S_t)$}
+            \STATE $\text{KDP}_{\text{all}} \leftarrow \text{KDP}_{\text{all}} \cup \{\text{KDP}_i\}$
+        \ENDIF
+    \ENDFOR
+\ENDFOR
+\STATE \COMMENT{Cluster KDPs}
+\STATE Clusters $\leftarrow$ AgglomerativeCluster(KDP$_{\text{all}}$, $\theta$, metric=cosine)
+\STATE Clusters $\leftarrow \{C : |C| \geq m_{\min}\}$ \quad \COMMENT{Filter by support}
+\STATE \COMMENT{Abstract paradigms and verify}
+\STATE $\mathcal{L} \leftarrow \emptyset$
+\FOR{each cluster $C_k$}
+    \STATE Reps $\leftarrow$ SampleRepresentatives$(C_k, n=10)$
+    \STATE $\hat{P}_k \leftarrow$ LLM-Abstract(Reps)
+    \IF{$\hat{P}_k \neq \text{NULL}$}
+        \STATE soundness $\leftarrow$ CheckSoundness$(\hat{P}_k, \tau_s)$
+        \IF{soundness $\geq \tau_s$}
+            \STATE effect $\leftarrow$ CheckEffect$(\hat{P}_k, \tau_e)$
+            \IF{effect $\geq \tau_e$}
+                \STATE precision $\leftarrow$ CheckPrecision$(\hat{P}_k, \tau_p)$
+                \IF{precision $\geq \tau_p$}
+                    \STATE $\hat{P}_k.\text{confidence} \leftarrow 0.5 \cdot \text{soundness} + 0.3 \cdot \text{effect}$
+                    \STATE $\mathcal{L} \leftarrow \mathcal{L} \cup \{\hat{P}_k\}$
+                \ENDIF
+            \ENDIF
+        \ENDIF
+    \ENDIF
+\ENDFOR
+\STATE \textbf{return} $\mathcal{L}$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Algorithm 2: Online Paradigm-Guided Solving}
+
+\begin{algorithm}
+\caption{PRISM-Online($P^*$, $\mathcal{L}$, LLM, Z3, $\tau_{\text{stag}}$, $\tau_{\text{loop}}$)}
+\begin{algorithmic}[1]
+\STATE $\mathcal{M} \leftarrow \emptyset$ \quad \COMMENT{Initialize repair memory}
+\STATE Solver $\leftarrow$ Z3SolverWrapper()
+\STATE Constraints $\leftarrow$ LLM-Translate($P^*$)
+\FOR{each $c \in$ Constraints}
+    \STATE Solver.AddConstraint($c$)
+\ENDFOR
+\STATE result $\leftarrow$ Solver.Check()
+\IF{result $== \text{SAT}$}
+    \STATE \textbf{return} Success
+\ENDIF
+\STATE \COMMENT{Repair loop}
+\FOR{$t = 1$ to MaxRepairRounds}
+    \STATE $\sigma(S_t) \leftarrow$ ExtractConstraintTypes$(S_t)$
+    \STATE $\mathcal{L}_1 \leftarrow$ RetrieveLayer1$(\sigma(S_t), \mathcal{L})$
+    \STATE $\mathcal{L}_2 \leftarrow$ RetrieveLayer2$(\mathcal{L}_1, S_t)$ \quad \COMMENT{if $|\mathcal{L}_1| \geq 2$}
+    \STATE $\mathcal{L}_{\text{inject}} \leftarrow$ ConsistencyPreCheck$(\mathcal{L}_2, S_t)$
+    \STATE hint $\leftarrow$ FormatParadigmHint$(\mathcal{L}_{\text{inject}})$
+    \STATE history $\leftarrow$ $\mathcal{M}$.GetHistorySummary()
+    \STATE action $\leftarrow$ LLM-Repair(constraints, unsat\_core, history, hint)
+    \STATE $S_t \leftarrow$ Solver.AddAndCheck(action)
+    \IF{$S_t.\text{result} == \text{SAT}$}
+        \STATE \textbf{return} Success
+    \ELSE
+        \STATE unsat\_core $\leftarrow$ Solver.GetUnsatCore()
+        \STATE record $\leftarrow$ CreateRepairRecord$(t, \text{action}, \text{unsat\_core})$
+        \STATE $\mathcal{M}$.Append(record)
+        \IF{$\mathcal{M}$.DetectStagnation() OR $\mathcal{M}$.DetectLoop(action)}
+            \STATE level $\leftarrow$ DetermineEscalationLevel$(\mathcal{M})$
+            \STATE ExecuteStrategyEscalation(level, $S_t$)
+        \ENDIF
+    \ENDIF
+\ENDFOR
+\STATE \textbf{return} Failure
+\end{algorithmic}
+\end{algorithm}

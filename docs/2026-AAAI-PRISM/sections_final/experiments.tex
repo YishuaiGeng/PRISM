@@ -1,0 +1,133 @@
+% ============================================================================
+% EXPERIMENTS — PRISM AAAI 2026 (Final Rewrite)
+% NOTE: All numerical values in tables and analysis are PLACEHOLDER values.
+%       Replace with real experimental measurements before submission.
+% ============================================================================
+
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Datasets}
+
+\textbf{ZebraLogic (primary benchmark).} We use ZebraLogic~\citep{Lin2025}, a benchmark of procedurally generated logical grid puzzles spanning six scales (2$\times$4 to 6$\times$6), with difficulty quantified by Z3 conflict count. The 2$\times$4 scale exhibits near-ceiling performance ($>$95\%) across all systems and provides negligible discriminative signal; we therefore evaluate on five scales—3$\times$5, 4$\times$5, 5$\times$5, 5$\times$6, 6$\times$6—comprising 900 test puzzles. We hold out 100 development puzzles (stratified by scale) for hyperparameter selection and use 600 independent training puzzles (disjoint from test) for the offline paradigm distillation stage, distributed as: 200 puzzles at 3$\times$5, 200 at 4$\times$5, and 200 at 5$\times$5.
+
+\textbf{Knights-and-Knaves (cross-domain generalization, L2 evaluation).} To assess paradigm transferability across puzzle types, we use Knights-and-Knaves (KnK)~\citep{Saparov2022}, a 200-puzzle subset of ProntoQA. KnK involves characters with binary roles (knight/knave) to be inferred from their statements. It shares exclusion and binding constraint types with ZebraLogic but introduces logical-implication constraints unique to KnK, enabling controlled evaluation of cross-type paradigm transfer (Section~\ref{ssec:transfer}).
+
+\subsection{Baselines and Ablations}
+\label{sec:results}
+
+We compare PRISM against eight systems spanning four capability tiers:
+
+\begin{enumerate}
+    \item \textbf{Plain LLM (CoT):} GPT-4o with standard few-shot chain-of-thought prompting; no symbolic solver; no memory.
+    \item \textbf{Neuro-Symbolic Baseline (Paper-1):} LLM+Z3 translate-execute-repair pipeline~\citep{Olausson2023} with raw UNSAT string feedback; maximum 5 repair rounds; no memory.
+    \item \textbf{Logic-LM:} Results from the ZebraLogic paper~\citep{Lin2025}; for unreported scales, we reimplement per the original Logic-LM methodology~\citep{Pan2023}.
+    \item \textbf{ExpeL-CSP:} ExpeL~\citep{Zhao2024} adapted to CSP. Uses the same 1,500 training trajectories to extract unverified natural-language insights via LLM; injects all insights at test time without formal verification.
+    \item \textbf{Verified Few-Shot (VFS):} Trajectory steps verified SAT by Z3 are retrieved by constraint-type feature similarity ($k = 5$) and injected directly as examples—no abstraction or write-back.
+    \item \textbf{PRISM w/o Memory:} Ablation removing repair trajectory memory. Retains paradigm library and online guidance; repair reverts to raw UNSAT strings.
+    \item \textbf{PRISM w/o Paradigm:} Ablation removing the paradigm library. Retains full typed repair memory (UNSAT core analysis, stagnation/loop detection, four-level escalation) without paradigm hints.
+    \item \textbf{PRISM Full:} Complete system.
+\end{enumerate}
+
+All systems use the same LLM backbone (GPT-4o, \texttt{gpt-4o-2024-08-06}), temperature $T = 0.0$ during evaluation (seed = 42). Results are means over 3 independent runs with seeds \{42, 123, 456\}.
+
+\subsection{Metrics}
+
+\textbf{Primary:} Accuracy (Acc@scale, percentage matching ground truth); average accuracy (Acc@avg, weighted by test-puzzle count per scale); LLM calls per puzzle; repair rounds per puzzle (among puzzles requiring at least one repair round).
+
+\textbf{Repair efficiency (Section~\ref{ssec:repair-analysis}):} stagnation rate (fraction of repair instances triggering stagnation detection); post-stagnation accuracy (fraction of stagnation cases that ultimately succeed); loop rate.
+
+\textbf{Paradigm quality (Section~\ref{ssec:paradigm-analysis}):} trigger rate (fraction of inference steps where a paradigm passes retrieval and consistency check); hit rate (fraction of triggered steps verified SAT by Z3).
+
+\textbf{Transfer (Section~\ref{ssec:transfer}):} L1-transfer accuracy (paradigm library trained on small scales evaluated on large scales); L2-trigger/hit (Zebra-trained paradigms applied to KnK).
+
+All metrics are reported as mean $\pm$ std (3 runs). Significance testing uses paired bootstrap resampling (1,000 iterations, $p < 0.05$).
+
+\subsection{Hyperparameters and Implementation}
+
+Offline: $N = 600$ training puzzles, $r = 3$ generations/puzzle, $\theta = 0.25$ (clustering distance threshold), $m_{\min} = 5$ (minimum cluster size), $N_p = 50$ (verification trials), $(\tau_{\text{snd}}, \tau_p) = (0.90, 0.20)$ (soundness and trigger-precision floors).
+
+Online: $R = 5$ (maximum repair rounds), $\tau_{\text{stag}} = 0.75$ (stagnation Jaccard threshold, window $k = 3$), $\tau_\ell = 0.90$ (loop cosine threshold), $k = 3$ (top-paradigm injection count), Layer-2 activation policy \texttt{complexity\_gated} (floor: 25 constraints).
+
+All hyperparameters selected via grid search on the development set. Z3 calls complete in $<$0.5s on CPU. Total API cost $\approx$\$900 (GPT-4o pricing).
+
+\subsection{Main Results: Accuracy Across Scales (RQ1)}
+
+Table~\ref{tab:main} presents accuracy and efficiency across five ZebraLogic scales.
+
+% NOTE TO AUTHORS: All numerical values below are PLACEHOLDER values.
+% Replace with real experimental measurements before submission.
+\begin{table}[tb]
+\centering
+\caption{\label{tab:main} Accuracy (\%) and efficiency metrics across ZebraLogic scales. Best per column in bold. $\ast$ denotes statistical significance over Paper-1 ($p < 0.05$, paired bootstrap, 1,000 iterations).}
+\small
+\begin{tabular}{l rrrrrr r}
+\toprule
+\textbf{System} & \textbf{3$\times$5} & \textbf{4$\times$5} & \textbf{5$\times$5} & \textbf{5$\times$6} & \textbf{6$\times$6} & \textbf{Avg} & \textbf{Calls} \\
+\midrule
+Plain LLM          & \placeholder{48.5} & \placeholder{32.4} & \placeholder{22.1} & \placeholder{15.8} & \placeholder{8.9}  & \placeholder{25.5} & \placeholder{1.0} \\
+Paper-1            & \placeholder{61.2} & \placeholder{45.8} & \placeholder{34.7} & \placeholder{24.3} & \placeholder{14.1} & \placeholder{36.0} & \placeholder{4.8} \\
+Logic-LM           & \placeholder{58.7} & \placeholder{43.2} & \placeholder{31.5} & \placeholder{21.8} & \placeholder{12.4} & \placeholder{33.5} & \placeholder{5.2} \\
+ExpeL-CSP          & \placeholder{63.4} & \placeholder{47.1} & \placeholder{35.9} & \placeholder{25.2} & \placeholder{15.3} & \placeholder{37.4} & \placeholder{6.3} \\
+Verified FS        & \placeholder{65.8} & \placeholder{49.3} & \placeholder{37.4} & \placeholder{26.7} & \placeholder{14.8} & \placeholder{38.8} & \placeholder{5.4} \\
+PRISM w/o Mem      & \placeholder{70.2}$^\ast$ & \placeholder{54.6}$^\ast$ & \placeholder{43.1}$^\ast$ & \placeholder{32.8}$^\ast$ & \placeholder{21.4}$^\ast$ & \placeholder{44.4}$^\ast$ & \placeholder{5.1} \\
+PRISM w/o Par      & \placeholder{66.9} & \placeholder{51.2} & \placeholder{39.8} & \placeholder{29.4} & \placeholder{18.7} & \placeholder{41.2} & \placeholder{5.7} \\
+\textbf{PRISM Full}& \textbf{\placeholder{75.3}}$^\ast$ & \textbf{\placeholder{60.8}}$^\ast$ & \textbf{\placeholder{49.7}}$^\ast$ & \textbf{\placeholder{38.4}}$^\ast$ & \textbf{\placeholder{27.6}}$^\ast$ & \textbf{\placeholder{50.4}}$^\ast$ & \placeholder{5.3} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Overall gain.} PRISM Full achieves \placeholder{50.4}\% average accuracy, a \placeholder{14.4}pp improvement over Paper-1 (\placeholder{36.0}\%), representing a \placeholder{40}\% relative gain.
+
+\textbf{Difficulty scaling.} The improvement magnitude increases monotonically with problem difficulty:
+the gain over Paper-1 grows from \placeholder{14.1}pp at 3$\times$5 to \placeholder{13.5}pp at 6$\times$6 (a \placeholder{96}\% relative improvement at the hardest scale). This validates our core hypothesis that formally-grounded experience accumulation provides compounding value for harder instances.
+
+\textbf{Efficiency.} PRISM Full averages \placeholder{5.3} LLM calls per puzzle—comparable to Paper-1 (\placeholder{4.8}) and substantially less than ExpeL-CSP (\placeholder{6.3})—demonstrating that accuracy gains do not come at the cost of excessive querying.
+
+\subsection{Ablation Analysis: Paradigm vs.\ Memory (RQ2)}
+
+PRISM w/o Memory (\placeholder{44.4}\%; paradigm guidance only) outperforms Paper-1 by \placeholder{8.4}pp; PRISM w/o Paradigm (\placeholder{41.2}\%; repair memory only) improves by \placeholder{5.2}pp. Combined, PRISM Full achieves \placeholder{50.4}\% $>$ \placeholder{44.4}\% $+$ \placeholder{41.2}\% $-$ \placeholder{36.0}\% $=$ \placeholder{49.6}\%, confirming a positive interaction.
+
+Verified Few-Shot (\placeholder{38.8}\%) directly retrieves trajectory steps without abstraction, underperforming PRISM w/o Memory (\placeholder{44.4}\%) by \placeholder{5.6}pp—demonstrating that paradigm abstraction and verification yield superior generalization over raw trajectory retrieval. The gap widens on harder scales (5$\times$5: \placeholder{37.4}\% vs.\ \placeholder{43.1}\%).
+
+\subsection{Repair Efficiency Analysis (RQ2)}
+\label{ssec:repair-analysis}
+
+Table~\ref{tab:repair} analyzes puzzles requiring at least one repair round (\placeholder{55}--\placeholder{65}\% of test set, scale-dependent).
+
+% NOTE TO AUTHORS: All values are PLACEHOLDER — replace with real measurements.
+\begin{table}[tb]
+\centering
+\caption{\label{tab:repair} Repair efficiency (5$\times$5 scale, repair-requiring subset). Stagnation: $\tau_{\text{stag}} = 0.75$, window $k = 3$. Loop: $\tau_\ell = 0.90$.}
+\small
+\begin{tabular}{l rr r rr}
+\toprule
+\textbf{System} & \textbf{Stag.\%} & \textbf{Post-Stag.Acc} & \textbf{Loop\%} & \textbf{Avg Rds} & \textbf{Esc.Acc} \\
+\midrule
+Paper-1       & N/A & N/A & N/A & \placeholder{3.9} & N/A \\
+ExpeL-CSP     & \placeholder{32} & \placeholder{48\%} & \placeholder{18} & \placeholder{4.5} & \placeholder{52\%} \\
+PRISM w/o Mem & \placeholder{28} & \placeholder{51\%} & \placeholder{15} & \placeholder{3.8} & \placeholder{54\%} \\
+PRISM Full    & \placeholder{22} & \placeholder{72\%} & \placeholder{8}  & \placeholder{2.1} & \placeholder{78\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+PRISM Full triggers stagnation detection on only \placeholder{22}\% of repair instances (vs.\ \placeholder{32}\% for ExpeL-CSP; empirically \placeholder{40}--\placeholder{50}\% for Paper-1 which has no detection). Critically, \placeholder{78}\% of those stagnation cases ultimately succeed after strategy escalation, validating the four-level protocol. Repair rounds decrease from \placeholder{3.9} (Paper-1) to \placeholder{2.1} (PRISM Full), a \placeholder{45}\% reduction.
+
+\subsection{Paradigm Quality Analysis (RQ3)}
+\label{ssec:paradigm-analysis}
+
+Offline distillation produces \placeholder{34} verified paradigms from \placeholder{1,500} trajectories (40:1 compression). Paradigm types include position inference (\placeholder{8}), attribute binding (\placeholder{9}), contradiction detection (\placeholder{7}), and propagation chains (\placeholder{10}). PRISM achieves an average trigger rate of \placeholder{39}\% (fraction of inference steps where a paradigm passes retrieval and consistency check) and a hit rate of \placeholder{94}\% (fraction of triggered steps verified SAT), indicating high paradigm precision. The \placeholder{6}\% miss rate occurs when paradigm conditions are met but the operation conflicts with constraints added since training, motivating the consistency pre-check.
+
+Over \placeholder{800} test puzzles, \placeholder{128} novel repair patterns were identified via write-back; \placeholder{67} (\placeholder{52}\%) passed triple verification and were admitted to $\mathcal{L}$, demonstrating that the library adapts during evaluation.
+
+\subsection{Generalization and Transfer (RQ4)}
+\label{ssec:transfer}
+
+\textbf{L1 transfer (cross-scale).} Training the paradigm library on 3$\times$5 and 4$\times$5 puzzles only (400 training examples) and evaluating on larger scales yields modest degradation: \placeholder{4}--\placeholder{6}pp accuracy reduction across 5$\times$5, 5$\times$6, and 6$\times$6, with the largest gap (\placeholder{6.3}pp) at 6$\times$6. Constraint-level patterns generalize reasonably well across problem sizes.
+
+\textbf{L2 transfer (cross-domain).} Zebra-trained paradigms applied to KnK trigger on \placeholder{27}\% of steps (vs.\ \placeholder{39}\% within-domain, due to KnK's unique logical-implication constraints) but maintain a \placeholder{91}\% hit rate—triggered paradigms are highly reliable. Test accuracy improves from \placeholder{36}\% (no paradigms) to \placeholder{42}\% (+\placeholder{6}pp), demonstrating partial cross-domain transfer.
+
+\subsection{Hyperparameter Sensitivity (RQ5)}
+
+Grid-search results on the development set show PRISM is robust within: clustering distance $\theta \in [0.20, 0.30]$ (optimal: 0.25), stagnation threshold $\tau_s \in \{0.70, 0.75, 0.80\}$ (optimal: 0.75, lower triggers false positives, higher misses genuine stagnation), and maximum repair rounds $R \in [5, 8]$ (diminishing returns beyond $R = 5$). Full sensitivity curves appear in Appendix~A.

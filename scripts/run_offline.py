@@ -54,8 +54,16 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PRISM offline paradigm distillation")
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--model", default=None)
-    p.add_argument("--n-puzzles", type=int, default=600)
-    p.add_argument("--n-runs", type=int, default=3)
+    p.add_argument("--n-puzzles", type=int, default=None)
+    p.add_argument("--n-runs", type=int, default=None)
+    p.add_argument(
+        "--puzzle-specs",
+        default=None,
+        help=(
+            "Comma-separated generation specs: count:NxM:difficulty, "
+            "e.g. '6:3x3:easy,6:3x4:easy'. Overrides --n-puzzles distribution."
+        ),
+    )
     p.add_argument("--output", default="paradigm_store/prism.db")
     p.add_argument("--trajectories", default="data/trajectories")
     p.add_argument("--resume", action="store_true", help="Load existing trajectories from --trajectories dir")
@@ -72,19 +80,29 @@ def main() -> None:
     args = parse_args()
     config = load_config(args.config)
     thresholds = config.get("thresholds", {})
+    quick_test = config.get("quick_test", {})
 
     model_name = args.model or config.get("model_name", "GPT-4o")
     logger.info("Model: %s", model_name)
+    n_puzzles = args.n_puzzles if args.n_puzzles is not None else quick_test.get("n_puzzles", 600)
+    n_runs = args.n_runs if args.n_runs is not None else quick_test.get("n_runs", 3)
+    max_repair_rounds = quick_test.get("max_repair_rounds", 5)
 
     # ── 1. Generate training puzzles ──────────────────────────────────
-    logger.info("Generating %d training puzzles...", args.n_puzzles)
+    logger.info("Generating %d training puzzles...", n_puzzles)
     gen = PuzzleGenerator(seed=args.seed)
-    puzzles_per_size = args.n_puzzles // 3
-    puzzles = (
-        gen.generate(puzzles_per_size, n_entities=3, n_attrs=5, difficulty="medium")
-        + gen.generate(puzzles_per_size, n_entities=4, n_attrs=5, difficulty="medium")
-        + gen.generate(puzzles_per_size, n_entities=5, n_attrs=5, difficulty="hard")
-    )
+    specs = _parse_puzzle_specs(args.puzzle_specs, n_puzzles)
+    puzzles = []
+    for count, n_entities, n_attrs, difficulty in specs:
+        if count <= 0:
+            continue
+        try:
+            puzzles.extend(gen.generate(count, n_entities=n_entities, n_attrs=n_attrs, difficulty=difficulty))
+        except RuntimeError as exc:
+            if difficulty != "hard":
+                raise
+            logger.warning("%s; falling back to medium %dx%d puzzles.", exc, n_entities, n_attrs)
+            puzzles.extend(gen.generate(count, n_entities=n_entities, n_attrs=n_attrs, difficulty="medium"))
     logger.info("Generated %d puzzles.", len(puzzles))
 
     # ── 2. Collect trajectories ────────────────────────────────────────
@@ -97,22 +115,25 @@ def main() -> None:
         llm = LLMClient(model_name=model_name, temperature=0.7)
         collector = TrajectoryCollector(
             llm_client=llm,
-            max_repair_rounds=5,
+            max_repair_rounds=max_repair_rounds,
             output_dir=str(traj_dir),
         )
-        logger.info("Collecting trajectories (%d runs/puzzle)...", args.n_runs)
-        trajectories = collector.collect(puzzles, n_runs=args.n_runs, temperature=0.7)
+        logger.info("Collecting trajectories (%d runs/puzzle)...", n_runs)
+        trajectories = collector.collect(puzzles, n_runs=n_runs, temperature=0.7)
         logger.info("Collected %d trajectories. Total LLM calls: %d", len(trajectories), llm.call_count)
 
     # ── 3. KDP extraction ─────────────────────────────────────────────
     logger.info("Extracting KDPs...")
-    identifier = KDPIdentifier(domain_drop_threshold=thresholds.get("kdp_drop", 2))
+    identifier = KDPIdentifier(
+        domain_drop_threshold=thresholds.get("kdp_domain_drop", 2),
+        info_gain_bits_threshold=thresholds.get("kdp_info_gain_bits", 1.0),
+    )
     kdps = [kdp for traj in trajectories for kdp in identifier.identify(traj)]
     logger.info("Extracted %d KDPs from %d trajectories.", len(kdps), len(trajectories))
 
     # ── 4. Clustering ─────────────────────────────────────────────────
-    theta = thresholds.get("cluster_theta", 0.25)
-    min_support = thresholds.get("min_support", 5)
+    theta = thresholds.get("cluster_distance", 0.25)
+    min_support = thresholds.get("cluster_min_size", thresholds.get("min_support", 5))
     logger.info("Clustering KDPs (theta=%.2f, min_support=%d)...", theta, min_support)
     clusterer = TrajectoryClusterer(theta=theta, min_support=min_support)
     clusters = clusterer.cluster(kdps)
@@ -127,15 +148,36 @@ def main() -> None:
 
     # ── 6. Verification and ingestion ─────────────────────────────────
     verifier = ParadigmVerifier(
-        n_samples=thresholds.get("verify_samples", 50),
+        n_samples=thresholds.get("verification_trials", thresholds.get("verify_samples", 50)),
         soundness_threshold=thresholds.get("paradigm_soundness", 0.90),
+        trigger_precision_floor=thresholds.get("paradigm_precision_floor", 0.20),
     )
     solver = Z3SolverWrapper()
     library = ParadigmLibrary(args.output, solver, soundness_threshold=thresholds.get("paradigm_soundness", 0.90))
 
     accepted = 0
+    candidate_diagnostics = []
     for paradigm in candidates:
+        soundness = verifier.verify_soundness(paradigm, solver)
+        effect = verifier.verify_effect(paradigm)
+        precision = verifier.verify_trigger_precision(paradigm)
         confidence = verifier.verify(paradigm, solver)
+        candidate_diagnostics.append({
+            "id": paradigm.id,
+            "name": paradigm.name,
+            "operation": paradigm.operation,
+            "pre_condition": paradigm.pre_condition,
+            "scope": paradigm.scope,
+            "trigger": paradigm.trigger,
+            "support_count": paradigm.support_count,
+            "source_cluster": paradigm.source_cluster,
+            "scores": {
+                "soundness": soundness,
+                "effect": effect,
+                "precision": precision,
+                "verify": confidence,
+            },
+        })
         if confidence >= thresholds.get("paradigm_soundness", 0.90):
             paradigm = paradigm.model_copy(update={"confidence": confidence})
             if library.add(paradigm, verify=False):
@@ -147,6 +189,10 @@ def main() -> None:
         accepted, len(candidates), stats,
     )
     library.save_json(args.output.replace(".db", ".json"))
+    diagnostics_path = args.output.replace(".db", "_candidates.json")
+    with open(diagnostics_path, "w", encoding="utf-8") as fh:
+        json.dump(candidate_diagnostics, fh, ensure_ascii=False, indent=2)
+    logger.info("Candidate diagnostics saved to %s", diagnostics_path)
 
 
 def _load_trajectories(traj_dir: Path) -> list[Trajectory]:
@@ -156,6 +202,40 @@ def _load_trajectories(traj_dir: Path) -> list[Trajectory]:
             data = json.load(fh)
         trajectories.append(Trajectory.model_validate(data))
     return trajectories
+
+
+def _parse_puzzle_specs(spec_text: str | None, n_puzzles: int) -> list[tuple[int, int, int, str]]:
+    if not spec_text:
+        counts = [n_puzzles // 3] * 3
+        for i in range(n_puzzles % 3):
+            counts[i] += 1
+        return [
+            (counts[0], 3, 5, "medium"),
+            (counts[1], 4, 5, "medium"),
+            (counts[2], 5, 5, "hard"),
+        ]
+
+    specs: list[tuple[int, int, int, str]] = []
+    for item in spec_text.split(","):
+        item = item.strip()
+        if not item:
+            continue
+        try:
+            count_text, size_text, difficulty = item.split(":")
+            n_entities_text, n_attrs_text = size_text.lower().split("x")
+            specs.append((
+                int(count_text),
+                int(n_entities_text),
+                int(n_attrs_text),
+                difficulty.strip().lower(),
+            ))
+        except ValueError as exc:
+            raise ValueError(
+                f"Invalid --puzzle-specs item {item!r}; expected count:NxM:difficulty"
+            ) from exc
+    if not specs:
+        raise ValueError("--puzzle-specs did not contain any valid specs")
+    return specs
 
 
 if __name__ == "__main__":

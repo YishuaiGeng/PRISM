@@ -1,0 +1,39 @@
+% ============================================================================
+% APPENDIX E: COMPLEXITY ANALYSIS
+% ============================================================================
+
+\section{Appendix E: Computational Complexity}
+
+\subsection{Offline Phase}
+
+\begin{itemize}
+    \item \textbf{Trajectory Collection:} $O(N \cdot r \cdot T)$ where $N$ = puzzles, $r$ = runs per puzzle, $T$ = steps per trajectory. For $N=600$, $r=3$, avg $T=20$: $\approx 36,000$ solver steps.
+
+    \item \textbf{KDP Extraction:} $O(N \cdot r \cdot T)$ (single pass over trajectories). Typically $\approx 6000$ KDPs extracted.
+
+    \item \textbf{Clustering:} $O(K^2 \log K)$ where $K = 6000$ KDPs, metric = cosine distance. Single-linkage agglomerative: $\approx 150M$ pairwise operations.
+
+    \item \textbf{LLM Abstraction:} $O(C \cdot LLM\text{-cost})$ where $C \approx 50$ clusters. LLM cost dominated by token processing (typically 2-5 seconds per paradigm).
+
+    \item \textbf{Z3 Verification:} $O(P \cdot 90)$ where $P \approx 60$ candidate paradigms, 90 = trials per verification. Each trial: $\approx 100ms$ Z3 execution.
+
+    \textbf{Total Offline Time:} ~24-48 hours (dominated by LLM abstraction and Z3 verification, parallelizable).
+\end{itemize}
+
+\subsection{Online Phase}
+
+\begin{itemize}
+    \item \textbf{Constraint Feature Extraction:} $O(|C_t|)$ per step. $|C_t| \approx 30-80$ constraints.
+
+    \item \textbf{Layer-1 Retrieval:} $O(|\mathcal{L}|) = O(35)$ set-membership checks.
+
+    \item \textbf{Layer-2 Semantic Matching:} $O(k \cdot \text{LLM-cost})$ where $k \leq 5$. Single LLM call if $k \geq 2$.
+
+    \item \textbf{Z3 Consistency Check:} $O(k \cdot Z3\text{-cost})$, approximately 2.5 seconds for $k=5$ and 500ms per check.
+
+    \item \textbf{Z3 Verification + UNSAT Core:} $O(\text{Z3-cost})$, approximately 500ms per step.
+
+    \item \textbf{Stagnation/Loop Detection:} $O(L)$ for recent repairs, typically $L \leq 8$. Jaccard computation is $O(|\text{core}|^2)$, approximately $O(80)$.
+
+    \textbf{Per-Puzzle Online Time:} ~10-30 seconds (depends on puzzle difficulty and repair rounds).
+\end{itemize}

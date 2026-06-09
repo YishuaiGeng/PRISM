@@ -1,0 +1,24 @@
+{
+  "_comment": "Template for config/api/api_configs.json. Copy to api_configs.json (gitignored) and fill in real keys, OR leave the ${ENV_VAR} placeholders and export the env vars in your shell. The runtime loader substitutes ${VAR} from os.environ.",
+  "priority_order": ["primary", "secondary"],
+  "providers": {
+    "primary": {
+      "api_key": "${PRISM_PRIMARY_API_KEY}",
+      "base_url": "https://api.openai.com/v1",
+      "timeout": 1200,
+      "max_retries": 3
+    },
+    "secondary": {
+      "api_key": "${PRISM_SECONDARY_API_KEY}",
+      "base_url": "https://api.anthropic.com",
+      "timeout": 1200,
+      "max_retries": 3
+    },
+    "openrouter": {
+      "api_key": "${OPENROUTER_API_KEY}",
+      "base_url": "https://openrouter.ai/api/v1",
+      "timeout": 1200,
+      "max_retries": 3
+    }
+  }
+}

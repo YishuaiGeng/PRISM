@@ -32,7 +32,11 @@ def _make_switcher(memory):
 def _append_n_unsat(memory, n: int, vary_core: bool = True):
     """Append n UNSAT records; vary_core uses distinct cores to avoid stagnation."""
     for i in range(n):
-        core = [f"Int('x_{i}') > 0"] if vary_core else ["Int('x') > 5"]
+        # Under canonical renaming, varying only the variable name does not
+        # actually produce distinct cores ("Int('x_0')>0" and "Int('x_1')>0"
+        # both reduce to "Int('v1')>0"). Vary the constant instead so the
+        # canonicalised forms differ.
+        core = [f"Int('a') > {i + 1}"] if vary_core else ["Int('x') > 5"]
         memory.append(make_repair_record(
             iteration=i,
             unsat_core=core,
@@ -74,13 +78,19 @@ class TestShouldSwitchBaseline:
 class TestL1:
 
     def test_l1_triggered_on_repeated_target(self, memory):
-        # Use DIFFERENT repair types so L2 does not trigger first
-        for i, rtype in enumerate(["relax_bound", "tighten_bound"]):
+        # Use DIFFERENT repair types so L2 does not trigger first; also use
+        # cores whose canonical forms differ (varying constants, not just
+        # variable names) so the stagnation detector does not pre-empt L1.
+        cores = [
+            ["Int('a') < 10"],
+            ["Int('a') > 100"],
+        ]
+        for i, (rtype, core) in enumerate(zip(["relax_bound", "tighten_bound"], cores)):
             memory.append(make_repair_record(
                 iteration=i,
                 target_constraint="Int('x') > 5",
                 repair_type=rtype,
-                unsat_core=[f"Int('y_{i}') < 0"],
+                unsat_core=core,
                 embedding=[float(i), 0.0],
             ))
         sw = _make_switcher(memory)
@@ -106,12 +116,15 @@ class TestL1:
 class TestL2:
 
     def test_l2_triggered_on_repeated_type(self, memory):
-        for i in range(3):
+        # Cores must be canonically distinct (different right-hand-side
+        # constants), otherwise stagnation pre-empts the L2 check.
+        cores = [["Int('a') > 1"], ["Int('a') > 100"], ["Int('a') > 9999"]]
+        for i, core in enumerate(cores):
             memory.append(make_repair_record(
                 iteration=i,
                 target_constraint=f"Int('x_{i}') > 0",
                 repair_type="relax_bound",
-                unsat_core=[f"Int('z_{i}') > 0"],
+                unsat_core=core,
                 embedding=[float(i), 0.0],
             ))
         sw = _make_switcher(memory)
@@ -129,13 +142,17 @@ class TestL2:
         assert sw.should_switch() != SwitchLevel.L2_SWITCH_TYPE
 
     def test_l2_takes_priority_over_l1(self, memory):
-        """When both L1 (same target) and L2 (same type) conditions hold, L2 is returned."""
-        for i in range(3):
+        """When both L1 (same target) and L2 (same type) conditions hold, L2 is returned.
+
+        Use canonically distinct cores so stagnation does not pre-empt L2.
+        """
+        cores = [["Int('a') < 1"], ["Int('a') < 10"], ["Int('a') < 100"]]
+        for i, core in enumerate(cores):
             memory.append(make_repair_record(
                 iteration=i,
                 target_constraint="Int('x') > 5",
                 repair_type="relax_bound",
-                unsat_core=[f"Int('y_{i}') < 0"],
+                unsat_core=core,
                 embedding=[float(i), 0.0],
             ))
         sw = _make_switcher(memory)

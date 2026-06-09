@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from prism.core.types import KDP, SolverState
 
 _MAX_TOKENS_TRANSLATION: int = 2048
+_MAX_TOKENS_NORMALIZE: int = 3072
 _MAX_TOKENS_REPAIR: int = 1024
 _MAX_TOKENS_ABSTRACTION: int = 2048
 _MAX_TOKENS_JUDGE: int = 64
@@ -76,7 +77,7 @@ class LLMClient:
     # Translation
     # ------------------------------------------------------------------
 
-    def translate(self, puzzle_nl: str) -> str:
+    def translate(self, puzzle_nl: str, schema_hint: str = "") -> str:
         """Request initial NL→Z3 translation for a puzzle.
 
         Args:
@@ -85,14 +86,31 @@ class LLMClient:
         Returns:
             Raw LLM response containing a Python code block with Z3 constraints.
         """
-        prompt = _build_translation_prompt(puzzle_nl)
+        prompt = _build_translation_prompt_v2(puzzle_nl, schema_hint)
         return self._call(prompt, max_tokens=_MAX_TOKENS_TRANSLATION)
+
+    def normalize_translation(
+        self,
+        puzzle_nl: str,
+        draft_constraints: List[str],
+        schema_hint: str = "",
+        error_ctx: str = "",
+    ) -> str:
+        """Request a second-pass cleanup of translated Z3 constraints."""
+        prompt = _build_translation_normalization_prompt_v2(
+            puzzle_nl,
+            draft_constraints,
+            schema_hint,
+            error_ctx,
+        )
+        return self._call(prompt, max_tokens=_MAX_TOKENS_NORMALIZE)
 
     def retranslate(
         self,
         puzzle_nl: str,
         failed_constraints: List[str],
         error_ctx: str,
+        schema_hint: str = "",
     ) -> str:
         """Request a full re-translation after L4 strategy escalation.
 
@@ -104,7 +122,12 @@ class LLMClient:
         Returns:
             Raw LLM response with fresh Z3 constraints.
         """
-        prompt = _build_retranslation_prompt(puzzle_nl, failed_constraints, error_ctx)
+        prompt = _build_retranslation_prompt_v2(
+            puzzle_nl,
+            failed_constraints,
+            error_ctx,
+            schema_hint,
+        )
         return self._call(prompt, max_tokens=_MAX_TOKENS_TRANSLATION)
 
     # ------------------------------------------------------------------
@@ -131,7 +154,7 @@ class LLMClient:
         Returns:
             Raw LLM response containing a corrected constraint expression.
         """
-        prompt = _build_repair_prompt(
+        prompt = _build_repair_prompt_v2(
             constraints, unsat_core, history_summary, paradigm_hint, switch_prompt
         )
         return self._call(prompt, max_tokens=_MAX_TOKENS_REPAIR)
@@ -166,7 +189,7 @@ class LLMClient:
         Returns:
             True if the model responds with ``yes`` (case-insensitive prefix match).
         """
-        prompt = _build_semantic_match_prompt(paradigm_summary, state_summary)
+        prompt = _build_semantic_match_prompt_v2(paradigm_summary, state_summary)
         response = self._call(prompt, max_tokens=_MAX_TOKENS_JUDGE)
         return response.strip().lower().startswith("yes")
 
@@ -334,37 +357,284 @@ def _build_abstraction_prompt(kdps: list) -> str:
         step = kdp.step
         kdp_strs.append(
             f"KDP {i}:\n"
-            f"  约束类型: {kdp.constraint_types}\n"
-            f"  步骤类型: {step.step_type}\n"
-            f"  添加的约束: {step.constraint_added}\n"
-            f"  域大小变化: {step.domain_sizes_before} → {step.domain_sizes_after}\n"
-            f"  Z3 结果: {step.z3_result}"
+            f"  constraint_types: {kdp.constraint_types}\n"
+            f"  kdp_type: {kdp.kdp_type}\n"
+            f"  step_type: {step.step_type}\n"
+            f"  constraint_added: {step.constraint_added}\n"
+            f"  constraint_removed: {step.constraint_removed}\n"
+            f"  z3_result: {step.z3_result}\n"
+            f"  unsat_core: {step.unsat_core}\n"
+            f"  domain_sizes_before: {step.domain_sizes_before}\n"
+            f"  domain_sizes_after: {step.domain_sizes_after}"
         )
 
-    return f"""你是一个推理模式提取专家。请从以下关键决策点（KDP）中抽象出一个通用的求解范式。
+    return f"""You extract reusable CSP solving paradigms from solver trajectories.
 
-## 关键决策点
-{chr(10).join(kdp_strs)}
+Return exactly one JSON object and nothing else. Do not use Markdown, comments,
+code fences, trailing commas, or explanatory prose.
 
-## 任务
-分析这些 KDP 的共同模式，提炼出一个可复用的求解策略。
-
-## 输出格式（严格 JSON）
+The JSON object must conform to this schema:
 {{
-  "name": "范式名称（3-5 个英文词或中文词）",
-  "operation": "什么情况下做什么推断，以及为什么这个推断是有效的",
-  "pre_condition": "触发该范式需要满足的 Z3 前置条件字符串",
-  "post_condition": "预期的域缩减或推断结果描述",
-  "scope": ["适用的约束类型列表"],
+  "name": "short_snake_case_name",
+  "operation": "one single-line Z3 Python boolean expression",
+  "pre_condition": "one single-line Z3 Python boolean expression, or empty string",
+  "post_condition": "brief natural-language effect description",
+  "scope": ["one_or_more_constraint_type_tags"],
   "trigger": {{
-    "constraint_types": ["触发所需的约束类型"],
-    "domain_pattern": "触发所需的域模式描述"
+    "constraint_types": ["one_or_more_constraint_type_tags"],
+    "domain_pattern": "brief trigger description"
   }}
 }}
 
-请只输出 JSON 对象，不要包含其他文字。
+Field rules:
+- operation must be parseable by Python Z3 eval, for example: Int('x') > 0
+- pre_condition must also be parseable if non-empty.
+- Use only constraint type tags observed in the KDPs when possible.
+- Extract a size-invariant Zebra reasoning or repair pattern. Prefer relation
+  templates such as Int('a') == Int('b'), Int('a') != Int('b'),
+  Int('a') == Int('b') + 1, Abs(Int('a') - Int('b')) == 1, Int('a') < Int('b'),
+  Int('a') > Int('b'), Or(...), Not(...), or Implies(...).
+- If the KDP is a successful repair, make operation the reusable repaired
+  relation pattern, not a copy of a puzzle-specific variable assignment.
+- Do not output schema invariants as positive paradigms: no pure domain bounds
+  such as And(Int('x') >= 1, Int('x') <= n), no all-different/Distinct(...)
+  constraints, and no puzzle-size-specific constants used only as bounds.
+- If the only visible pattern is a schema invariant, still return the best
+  non-schema relation/check visible in the KDP; otherwise return a conservative
+  relation repair that avoids the same contradiction.
+- Do not invent variable names unless the KDP evidence contains no reusable name;
+  in that case use Int('a') and Int('b') style placeholders.
+- Keep every string value on one line.
+
+KDP evidence:
+{chr(10).join(kdp_strs)}
 """
 
+
+def _build_translation_prompt_v2(puzzle_nl: str, schema_hint: str = "") -> str:
+    schema_section = _format_schema_hint(schema_hint)
+    return f"""You are translating a logic-grid CSP puzzle into Z3 Python constraints.
+
+Return only one fenced python code block. Do not include prose, comments,
+solver.add calls, imports, model extraction code, or markdown outside the code
+block.
+
+Use only single-line Z3 boolean expressions, one expression per line. Valid
+constructs include Int('var'), And(...), Or(...), Not(...), Implies(...),
+Distinct(...), Abs(...), ==, !=, <, <=, >, >=.
+
+Encoding rules:
+- Represent every puzzle attribute value as an integer position/domain value.
+- Use one integer variable per semantic attribute value, for example
+  Int('color_Blue'), Int('drink_Wine'), or Int('nationality_Norwegian').
+- Do not encode answers as house-slot variables such as Int('house1_color') or
+  Int('house2_pet'); those variables do not match the benchmark answer schema.
+- If an expected variable-key schema is provided below, use exactly those key
+  names as Int('...') variables. The schema lists variable names only, not
+  answer values.
+- Add domain constraints when useful, for example:
+  And(Int('color_Blue') >= 1, Int('color_Blue') <= 5)
+- Use Distinct(...) for all-different groups.
+- Adjacent means Abs(a - b) == 1.
+- Immediately right of means a - b == 1 when a is to the right of b.
+- Immediately left of means b - a == 1 when a is to the left of b.
+- Somewhere left of means a < b.
+- Somewhere right of means a > b.
+
+If a clue cannot be represented confidently, omit that clue rather than writing
+invalid Python. Still return every valid constraint you can infer.
+{schema_section}
+
+Puzzle:
+{puzzle_nl}
+
+Output format:
+```python
+And(Int('color_Blue') >= 1, Int('color_Blue') <= 5)
+Distinct(Int('color_Blue'), Int('color_Green'))
+Int('drink_Wine') == Int('drink_Water') - 1
+```
+"""
+
+
+def _build_repair_prompt_v2(
+    constraints: List[str],
+    unsat_core: List[str],
+    history_summary: str,
+    paradigm_hint: str,
+    switch_prompt: str,
+) -> str:
+    constraints_str = "\n".join(f"  {c}" for c in constraints)
+    core_str = "\n".join(f"  {c}" for c in unsat_core)
+    hint_section = f"\nGuidance:\n{paradigm_hint}\n" if paradigm_hint else ""
+    switch_section = f"\nStrategy instruction:\n{switch_prompt}\n" if switch_prompt else ""
+
+    return f"""You are repairing a Z3 constraint set for a CSP puzzle.
+
+Return exactly one corrected Z3 Python boolean expression. Do not include
+Markdown, comments, explanations, solver.add calls, or multiple alternatives.
+
+Repair objective:
+- Inspect the UNSAT core and identify the most likely mistranslated constraint.
+- Preserve the intended clue when possible.
+- Prefer a weaker or corrected relation over adding a new unrelated constraint.
+- The returned expression will replace one constraint from the current UNSAT
+  core, so it must be parseable by Z3 Python eval.
+- If Guidance contains "Avoid these verified UNSAT-producing patterns", treat
+  those as solver-verified negative examples. Do not repeat their bad_operation.
+  Use their repair_hint as the preferred relation template when it matches the
+  current UNSAT core.
+- Prefer size-invariant Zebra relation repairs: equality for same-house binding,
+  != for exclusion, Abs(a - b) == 1 for next-to, a == b - 1 for directly-left,
+  a == b + 1 for directly-right, a < b or a > b for somewhere-left/right.
+- Do not repair by adding pure domain bounds or Distinct(...) constraints unless
+  the UNSAT core itself is a schema constraint.
+
+Repair history:
+{history_summary}
+
+Current UNSAT core:
+{core_str}
+
+All current constraints:
+{constraints_str}
+{hint_section}{switch_section}
+Corrected expression only:
+"""
+
+
+def _build_retranslation_prompt_v2(
+    puzzle_nl: str,
+    failed_constraints: List[str],
+    error_ctx: str,
+    schema_hint: str = "",
+) -> str:
+    failed_str = "\n".join(f"  {c}" for c in failed_constraints)
+    schema_section = _format_schema_hint(schema_hint)
+    return f"""The previous Z3 formalization could not be repaired. Translate the
+entire CSP puzzle again from scratch.
+
+Return only one fenced python code block. Do not include prose, comments,
+solver.add calls, imports, or markdown outside the code block. Each non-empty
+line inside the block must be one parseable Z3 Python boolean expression.
+
+Ignore the failed constraints except as examples of what may be wrong.
+
+Schema requirements:
+- Include domain bounds for every declared integer variable, for example
+  And(Int('x') >= 1, Int('x') <= N) where N is the number of houses.
+- Include all-different constraints for each attribute category using
+  Distinct(...).
+- Do not create placeholder "other" variables unless the puzzle text explicitly
+  contains such a value.
+- Keep variable names consistent across all constraints for the same entity or
+  attribute value.
+- Use semantic attribute-value variables such as Int('color_Blue') and
+  Int('drink_Wine'), not house-slot variables such as Int('house1_color').
+- If an expected variable-key schema is provided below, use exactly those key
+  names as Int('...') variables. The schema lists variable names only, not
+  answer values.
+{schema_section}
+
+Original puzzle:
+{puzzle_nl}
+
+Failed constraints:
+{failed_str}
+
+Error context:
+{error_ctx}
+
+Output format:
+```python
+And(Int('color_Blue') >= 1, Int('color_Blue') <= 5)
+Distinct(Int('color_Blue'), Int('color_Green'))
+Int('drink_Wine') == Int('drink_Water') - 1
+```
+"""
+
+
+def _build_translation_normalization_prompt_v2(
+    puzzle_nl: str,
+    draft_constraints: List[str],
+    schema_hint: str = "",
+    error_ctx: str = "",
+) -> str:
+    draft_str = "\n".join(f"  {constraint}" for constraint in draft_constraints)
+    schema_section = _format_schema_hint(schema_hint)
+    error_section = f"\nCleanup context:\n{error_ctx}\n" if error_ctx else ""
+    return f"""You are cleaning up a draft Z3 translation of a logic-grid CSP puzzle.
+
+Return only one fenced python code block. Do not include prose, comments,
+solver.add calls, imports, model extraction code, or markdown outside the code
+block.
+
+Cleanup objective:
+- Preserve the intended clue constraints from the draft whenever they are
+  compatible with the puzzle text.
+- Treat this as normalization, not a new translation: do not reverse, weaken,
+  strengthen, or replace a clue relation that is already present in the draft.
+  You may only drop a relation when it is clearly unsupported by the puzzle text.
+- Normalize variable names to semantic attribute-value keys such as
+  Int('color_Blue'), Int('drink_Wine'), or Int('Name_Alice').
+- Do not use house-slot variables such as Int('house1_color').
+- If a variable-key schema is provided, use exactly those Int('...') names for
+  semantic variables and remove variables outside that schema.
+- Add domain bounds for every semantic variable, using the number of houses in
+  the puzzle, for example And(Int('x') >= 1, Int('x') <= N).
+- Add one Distinct(...) constraint for every attribute category whose variables
+  are present.
+- Remove duplicate constraints and invalid Python/Z3 expressions.
+- Do not invent answer assignments. Only keep direct house assignments that are
+  explicitly stated by a clue in the puzzle text.
+- Do not turn uncertainty into guessed constraints. If a draft clue mapping is
+  not supported by the puzzle text, omit it.
+- Keep every expression on a single line.
+
+Valid constructs include Int('var'), And(...), Or(...), Not(...), Implies(...),
+Distinct(...), Abs(...), ==, !=, <, <=, >, >=.
+{schema_section}{error_section}
+
+Puzzle:
+{puzzle_nl}
+
+Draft constraints:
+{draft_str}
+
+Output format:
+```python
+And(Int('color_Blue') >= 1, Int('color_Blue') <= 5)
+Distinct(Int('color_Blue'), Int('color_Green'))
+Int('drink_Wine') == Int('drink_Water') - 1
+```
+"""
+
+
+def _build_semantic_match_prompt_v2(paradigm_summary: str, state_summary: str) -> str:
+    return f"""Decide whether the reusable CSP paradigm applies to the current
+solver state.
+
+Paradigm:
+{paradigm_summary}
+
+Current state:
+{state_summary}
+
+Answer exactly one token: yes or no.
+"""
+
+
+def _format_schema_hint(schema_hint: str) -> str:
+    if not schema_hint:
+        return ""
+    return f"""
+
+Expected variable-key schema:
+{schema_hint}
+Use only these visible schema keys for semantic variables. If a category has
+fewer keys than the number of houses, do not invent missing candidate values;
+translate only constraints supported by visible clues.
+"""
 
 def _build_semantic_match_prompt(paradigm_summary: str, state_summary: str) -> str:
     return f"""请判断以下求解范式是否适用于当前求解状态。

@@ -212,22 +212,35 @@ class ParadigmLibrary:
     # Read operations
     # ------------------------------------------------------------------
 
-    def retrieve(self, constraint_types: List[str], top_k: int = 3) -> List[Paradigm]:
+    def retrieve(
+        self,
+        constraint_types: List[str],
+        top_k: int = 3,
+        type_bag: Optional[List[str]] = None,
+    ) -> List[Paradigm]:
         """Return the top-k most relevant paradigms for the given constraint types.
 
         Delegates ranking to :class:`~prism.paradigm_library.retriever.ParadigmRetriever`
-        (Layer-1 scope-Jaccard + confidence weighting).  Semantic Layer-2 filtering
-        is the caller's responsibility (see ``GuidedSolver``).
+        (Layer-1 scope-Jaccard + confidence weighting + relational-predicate
+        pruning).  Semantic Layer-2 filtering is the caller's responsibility
+        (see ``GuidedSolver``).
 
         Args:
-            constraint_types: Tags describing the types of constraints currently
-                in the UNSAT core (e.g. ``["scheduling", "resource_limit"]``).
+            constraint_types: Distinct tags describing constraint types
+                currently present (de-duplicated form).
             top_k: Maximum number of paradigms to return (default 3).
+            type_bag: Optional repetition-preserving list of constraint types
+                used to evaluate paradigm relational predicates such as
+                ``count_atleast`` / ``cooccur``. When omitted the retriever
+                falls back to ``constraint_types``, which preserves the
+                pre-relational-predicate behaviour.
 
         Returns:
             List of up to *top_k* Paradigm objects sorted by relevance descending.
         """
-        return ParadigmRetriever().retrieve(self.get_all(), constraint_types, top_k)
+        return ParadigmRetriever().retrieve(
+            self.get_all(), constraint_types, top_k, type_bag=type_bag
+        )
 
     def get_all(self) -> List[Paradigm]:
         """Return every paradigm in the database, ordered by confidence descending.

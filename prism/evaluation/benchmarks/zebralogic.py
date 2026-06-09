@@ -72,10 +72,13 @@ def load_zebralogic(
     puzzles: List[PuzzleInstance] = []
 
     for record in _iter_records(root):
-        size = record.get("size", "")
-        if size not in size_filter:
+        # Auto-detect HF vs legacy format and normalise size
+        if "puzzle" in record:
+            puzzle = zebralogic_record_to_puzzle(record)
+        else:
+            puzzle = _record_to_puzzle(record)
+        if puzzle.size not in size_filter:
             continue
-        puzzle = _record_to_puzzle(record)
         puzzles.append(puzzle)
 
     if max_per_size:
@@ -143,15 +146,54 @@ def evaluate_zebralogic(
         result: SolveResult = solver.solve(puzzle)
         ground_truth = _solution_to_str(puzzle.solution)
         predicted = _solution_to_str(result.solution)
+        model_schema_aligned = _model_schema_aligned_from_steps(result)
+        model_key_set_aligned = _model_key_set_aligned_from_steps(result)
+        initial_z3_result = _initial_z3_result_from_steps(result)
+        initial_solver_result = _initial_solver_result_from_steps(result)
+        memory_eligible = _memory_eligible_from_steps(result)
+        repair_success = _repair_success_from_steps(result)
+        solved = _is_correct(result, ground_truth, predicted)
         result_dict = {
             "puzzle_id": puzzle.puzzle_id,
             "domain": puzzle.size,
-            "solved": _is_correct(result, ground_truth, predicted),
+            "solved": solved,
             "ground_truth": ground_truth,
             "predicted": predicted,
             "llm_calls": result.total_llm_calls,
             "repair_rounds": result.repair_rounds,
             "steps": result.steps,
+            "initial_solver_result": initial_solver_result,
+            "initial_z3_result": initial_z3_result,
+            "final_z3_result": result.final_z3_result,
+            "memory_eligible": memory_eligible,
+            "positive_guidance_triggered": any(
+                bool(step.get("positive_guidance_triggered") or step.get("paradigm_triggered"))
+                for step in result.steps
+            ),
+            "error_guidance_triggered": any(
+                bool(step.get("error_guidance_triggered"))
+                for step in result.steps
+            ),
+            "translation_failed": result.final_z3_result == "TRANSLATION_FAILED",
+            "repair_success": repair_success,
+            "validated_repair_success": repair_success and solved,
+            "repair_rejected": any(
+                step.get("action") == "repair_rejected"
+                for step in result.steps
+            ),
+            "invalid_model_retranslate": any(
+                step.get("action") == "invalid_model_retranslate"
+                for step in result.steps
+            ),
+            "misaligned_model_retranslate": any(
+                step.get("action") == "misaligned_model_retranslate"
+                for step in result.steps
+            ),
+            "model_schema_aligned": model_schema_aligned,
+            "model_key_set_aligned": model_key_set_aligned,
+            "misaligned_model": result.final_z3_result == "MISALIGNED_MODEL",
+            "key_mismatch": result.final_z3_result == "KEY_MISMATCH",
+            "invalid_model": result.final_z3_result == "INVALID_MODEL",
         }
         results.append(result_dict)
         if (i + 1) % 50 == 0:
@@ -166,20 +208,30 @@ def evaluate_zebralogic(
 # --------------------------------------------------------------------------- #
 
 def _iter_records(root: Path) -> Iterator[dict]:
-    """Yield raw puzzle dicts from all JSON files under *root*."""
-    json_files = sorted(root.rglob("*.json"))
-    if not json_files:
-        logger.warning("No JSON files found under %s", root)
+    """Yield raw puzzle dicts from all JSON/JSONL files under *root*."""
+    # Support both .json and .jsonl; also treat the path itself as a file
+    if root.is_file():
+        files = [root]
+    else:
+        files = sorted(root.rglob("*.json")) + sorted(root.rglob("*.jsonl"))
+    if not files:
+        logger.warning("No JSON/JSONL files found under %s", root)
         return
 
-    for json_file in json_files:
+    for json_file in files:
         try:
             with open(json_file, encoding="utf-8") as fh:
-                data = json.load(fh)
-            if isinstance(data, list):
-                yield from data
-            elif isinstance(data, dict):
-                yield data
+                if json_file.suffix == ".jsonl":
+                    for line in fh:
+                        line = line.strip()
+                        if line:
+                            yield json.loads(line)
+                else:
+                    data = json.load(fh)
+                    if isinstance(data, list):
+                        yield from data
+                    elif isinstance(data, dict):
+                        yield data
         except (json.JSONDecodeError, OSError) as exc:
             logger.warning("Skipping %s: %s", json_file, exc)
 
@@ -275,6 +327,51 @@ def _solution_to_str(sol: Optional[Dict[str, str]]) -> Optional[str]:
     if sol is None:
         return None
     return "|".join(f"{k}={v}" for k, v in sorted(sol.items()))
+
+
+def _model_schema_aligned_from_steps(result: SolveResult) -> bool:
+    for step in reversed(result.steps):
+        if "model_schema_aligned" in step:
+            return bool(step["model_schema_aligned"])
+    return result.final_z3_result != "MISALIGNED_MODEL"
+
+
+def _model_key_set_aligned_from_steps(result: SolveResult) -> bool:
+    for step in reversed(result.steps):
+        if "model_key_set_aligned" in step:
+            return bool(step["model_key_set_aligned"])
+    return result.final_z3_result != "KEY_MISMATCH"
+
+
+def _initial_z3_result_from_steps(result: SolveResult) -> str:
+    if not result.steps:
+        return result.final_z3_result
+    return str(result.steps[0].get("z3_result", result.final_z3_result))
+
+
+def _initial_solver_result_from_steps(result: SolveResult) -> str:
+    if not result.steps:
+        return result.final_z3_result
+    first = result.steps[0]
+    return str(first.get("raw_z3_result", first.get("z3_result", result.final_z3_result)))
+
+
+def _memory_eligible_from_steps(result: SolveResult) -> bool:
+    repair_loop_actions = {
+        "repair",
+        "repair_rejected",
+        "loop_skipped",
+        "retranslate",
+        "validate_clue_coverage",
+    }
+    return any(step.get("action") in repair_loop_actions for step in result.steps)
+
+
+def _repair_success_from_steps(result: SolveResult) -> bool:
+    return any(
+        step.get("action") == "repair" and step.get("z3_result") == "SAT"
+        for step in result.steps
+    )
 
 
 def _is_correct(

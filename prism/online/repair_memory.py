@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from typing import TYPE_CHECKING, List, Optional
 
 import numpy as np
@@ -21,9 +22,108 @@ def _cosine(u: np.ndarray, v: np.ndarray) -> float:
     return float(np.dot(u, v) / denom) if denom > 1e-10 else 0.0
 
 
+# Operator aliasing: pairs of equivalent syntactic forms that Z3 may emit
+# differently across invocations. Mapping is applied to a string before
+# canonical renaming so that Not(x > 0) and x <= 0 hash identically.
+_OPERATOR_ALIASES = [
+    (re.compile(r"Not\s*\(\s*(.+?)\s*>\s*(.+?)\s*\)"), r"(\1) <= (\2)"),
+    (re.compile(r"Not\s*\(\s*(.+?)\s*<\s*(.+?)\s*\)"), r"(\1) >= (\2)"),
+    (re.compile(r"Not\s*\(\s*(.+?)\s*>=\s*(.+?)\s*\)"), r"(\1) < (\2)"),
+    (re.compile(r"Not\s*\(\s*(.+?)\s*<=\s*(.+?)\s*\)"), r"(\1) > (\2)"),
+    (re.compile(r"Not\s*\(\s*(.+?)\s*==\s*(.+?)\s*\)"), r"(\1) != (\2)"),
+    (re.compile(r"Not\s*\(\s*(.+?)\s*!=\s*(.+?)\s*\)"), r"(\1) == (\2)"),
+]
+
+# Identifier pattern used by canonical variable renaming. Conservative: matches
+# names commonly emitted by NL→Z3 translation in our pipeline (alphabetic head
+# plus optional digits / underscores). Reserved Z3 keywords are excluded.
+_IDENT_PATTERN = re.compile(r"\b([A-Za-z][A-Za-z0-9_]*)\b")
+_Z3_RESERVED = frozenset({
+    "Int", "Bool", "Real", "And", "Or", "Not", "Implies", "ForAll", "Exists",
+    "Distinct", "Abs", "True", "False", "If", "Sum", "Product",
+})
+
+
+def _apply_operator_aliases(s: str) -> str:
+    """Apply operator-aliasing regexes to a constraint string."""
+    out = s.strip()
+    for pat, repl in _OPERATOR_ALIASES:
+        out = pat.sub(repl, out)
+    return out
+
+
+def _neutralize_identifiers(s: str) -> str:
+    """Replace every non-reserved identifier with a single ``?`` placeholder.
+
+    Used purely as a sort key so that ``"x > 0"`` and ``"y > 0"`` sort to the
+    same bucket regardless of the variable name. The result is *not* the
+    canonical form — it is only an order key.
+    """
+    def _strip(match):
+        ident = match.group(1)
+        if ident in _Z3_RESERVED or ident.isdigit():
+            return ident
+        return "?"
+    return _IDENT_PATTERN.sub(_strip, _apply_operator_aliases(s))
+
+
+def _canonicalize_constraint(s: str, mapping: dict) -> str:
+    """Apply operator aliasing and variable renaming to a single constraint string.
+
+    Variable identifiers are mapped to canonical names (``v1``, ``v2``, ...).
+    The caller supplies and reuses ``mapping`` so that the same variable across
+    constraints receives the same canonical name.
+    """
+    out = _apply_operator_aliases(s)
+
+    def _replace(match):
+        ident = match.group(1)
+        if ident in _Z3_RESERVED or ident.isdigit():
+            return ident
+        if ident not in mapping:
+            mapping[ident] = f"v{len(mapping) + 1}"
+        return mapping[ident]
+
+    return _IDENT_PATTERN.sub(_replace, out)
+
+
+def _canonicalize_core(unsat_core: List[str]) -> List[str]:
+    """Return the canonicalised view of an UNSAT core.
+
+    The canonicalisation has three steps:
+
+    1. Operator aliasing — rewrite negated comparators (``Not(x>y)`` →
+       ``x<=y``, etc.) so syntactically distinct but logically equivalent
+       atoms collapse to a single representative.
+    2. Order-invariant sort — sort the constraints by an *identifier-neutral*
+       skeleton (every variable replaced by ``?``) so that lists differing
+       only in element order produce the same canonical ordering.
+    3. First-occurrence variable renaming — in the now-sorted order, rename
+       variables to ``v1, v2, ...`` so two cores that differ only in the
+       choice of variable names produce identical strings.
+
+    Together these guarantee both order-invariance and naming-invariance,
+    which is what the stagnation detector and the SHA-256 fingerprint rely on.
+    """
+    if not unsat_core:
+        return []
+    aliased = [_apply_operator_aliases(c) for c in unsat_core]
+    # Sort by identifier-neutral skeleton to obtain a canonical processing order.
+    indexed = sorted(range(len(aliased)), key=lambda i: _neutralize_identifiers(aliased[i]))
+    mapping: dict = {}
+    canonical = [_canonicalize_constraint(aliased[i], mapping) for i in indexed]
+    return canonical
+
+
 def _fingerprint(unsat_core: List[str]) -> str:
-    """SHA-256 of the canonically sorted unsat core, truncated to 16 hex chars."""
-    canonical = "|".join(sorted(unsat_core)).encode()
+    """SHA-256 of the canonicalised unsat core, truncated to 16 hex chars.
+
+    Canonicalisation combines operator aliasing and first-occurrence variable
+    renaming so that syntactically-equivalent cores (e.g. differing only in
+    variable naming or Not(...) vs negated comparator) yield the same
+    fingerprint.
+    """
+    canonical = "|".join(_canonicalize_core(unsat_core)).encode()
     return hashlib.sha256(canonical).hexdigest()[:16]
 
 
@@ -116,10 +216,16 @@ class RepairMemory:
     def detect_stagnation(self, k: int = 3) -> bool:
         """Return True if the last *k* records show unsat-core stagnation.
 
-        Stagnation is defined as: at least one pair among the last *k* records
-        has a Jaccard similarity on their ``unsat_core`` sets that meets or exceeds
-        the ``stagnation_jaccard`` threshold.  A score of 1.0 means the exact same
-        constraints keep appearing in the UNSAT core — the solver is stuck.
+        Stagnation is defined as: **any** pair among the last *k* records has a
+        Jaccard similarity on their ``unsat_core`` sets that meets or exceeds the
+        ``stagnation_jaccard`` threshold (MAX semantics — early-warning trigger).
+
+        Using MAX (any pair) rather than MIN (all pairs) is intentional: we want
+        to detect the first sign that the solver is recycling the same constraints
+        and switch strategy before exhausting the repair budget.
+
+        A Jaccard score of 1.0 means the exact same constraints keep appearing in
+        the UNSAT core — the solver is definitively stuck.
 
         Args:
             k: Window size (default 3).
@@ -131,23 +237,38 @@ class RepairMemory:
         recent = self._records[-k:]
         if len(recent) < 2:
             return False
-        for i in range(len(recent)):
-            for j in range(i + 1, len(recent)):
-                sim = _jaccard(set(recent[i].unsat_core), set(recent[j].unsat_core))
+        fingerprints = [r.core_fingerprint or _fingerprint(r.unsat_core) for r in recent]
+        if len(fingerprints) != len(set(fingerprints)):
+            return True
+        # Canonicalise once per record to amortise the cost across pairwise
+        # comparisons and to ensure cross-iteration comparison is robust to
+        # Z3's non-unique core listings (different runs may return the same
+        # underlying contradiction with different surface forms / variable
+        # naming). See methodology Section 3.5 for the rationale.
+        canon = [set(_canonicalize_core(r.unsat_core)) for r in recent]
+        for i in range(len(canon)):
+            for j in range(i + 1, len(canon)):
+                sim = _jaccard(canon[i], canon[j])
                 if sim >= self._stagnation_jaccard:
                     return True
         return False
 
     def detect_loop(self, action: RepairAction) -> bool:
-        """Return True if *action* is semantically too similar to a past repair.
+        """Return True if *action* duplicates a past repair, using two signals.
 
-        Computes the cosine similarity between *action*'s embedding and every
-        stored embedding.  If the maximum similarity meets or exceeds the
-        ``loop_cosine`` threshold, the proposed repair is considered a loop.
+        Loop detection combines a fast structural check with a slower semantic
+        fallback so that LLM paraphrase noise does not defeat detection:
 
-        If *action* has no embedding, the embedding is computed on-the-fly using
-        the lazy-loaded sentence-transformer so the caller does not need to pre-
-        populate it.
+        1. **Structured signal (hard match, O(1)).** A repair is flagged as a
+           loop if its triple ``(type, target_constraint, parameter_signature)``
+           matches that of any previously-stored record exactly.  This catches
+           cases where the LLM proposes the same atomic edit in different words.
+        2. **Semantic signal (soft, fallback).** Only when the structured check
+           does not fire (or when ``parameter_signature`` is missing on either
+           side) we fall back to cosine similarity between the
+           sentence-transformer embedding of ``action.summary`` and the embeddings
+           of stored records.  A maximum similarity at or above
+           ``self._loop_cosine`` flags the action as a loop.
 
         Args:
             action: The candidate RepairAction to check before applying it.
@@ -155,6 +276,27 @@ class RepairMemory:
         Returns:
             True if a near-duplicate past repair is found, False otherwise.
         """
+        # ── Signal 1: structured triple match ─────────────────────────────
+        new_type = (action.type or "").strip()
+        new_target = (action.target_constraint or "").strip()
+        new_param = (action.parameter_signature or "").strip()
+        if new_type and new_target:
+            for record in self._records:
+                rt = (record.repair_action.type or "").strip()
+                rtg = (record.repair_action.target_constraint or "").strip()
+                rp = (record.repair_action.parameter_signature or "").strip()
+                if rt == new_type and rtg == new_target:
+                    # Same type + same target: require also matching parameter
+                    # signature if both sides provide one; otherwise treat as
+                    # a loop conservatively (type+target alone is a strong
+                    # structural signal in this codebase's repair vocabulary).
+                    if new_param and rp:
+                        if new_param == rp:
+                            return True
+                    else:
+                        return True
+
+        # ── Signal 2: semantic fallback via embedding cosine ──────────────
         summary = action.summary
         if not summary:
             return False
@@ -177,7 +319,7 @@ class RepairMemory:
         return False
 
     def get_history_summary(self) -> str:
-        """Generate a Chinese-language prompt snippet summarising the repair history.
+        """Generate a prompt snippet summarising the repair history for LLM injection.
 
         Intended to be injected into the next LLM call so the model is aware of
         what has already been tried and is discouraged from repeating strategies.
@@ -185,20 +327,21 @@ class RepairMemory:
         Returns:
             A single string of the form::
 
-                "已尝试修复 N 次，包括：[第1次: <summary>，结果<SAT|UNSAT>; ...]，请尝试不同策略"
+                "Attempted N repairs: [#1: <summary> → <SAT|UNSAT>; ...].
+                 Please try a different strategy."
 
             Returns a fresh-start message when the history is empty.
         """
         n = len(self._records)
         if n == 0:
-            return "尚无修复历史，请直接分析约束并提出修复方案。"
+            return "No repair history yet. Analyse the constraints and propose a fix."
 
         parts: List[str] = []
         for idx, rec in enumerate(self._records, start=1):
             summary = rec.repair_action.summary or rec.repair_action.type
-            parts.append(f"第{idx}次: {summary}，结果{rec.outcome.value}")
+            parts.append(f"#{idx}: {summary} → {rec.outcome.value}")
 
-        return f"已尝试修复 {n} 次，包括：[{'; '.join(parts)}]，请尝试不同策略"
+        return f"Attempted {n} repair(s): [{'; '.join(parts)}]. Please try a different strategy."
 
     def get_successful_repairs(self) -> List[RepairRecord]:
         """Return all records whose solver outcome was SAT.

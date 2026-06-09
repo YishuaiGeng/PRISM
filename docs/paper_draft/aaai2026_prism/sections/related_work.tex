@@ -1,0 +1,30 @@
+% ============================================================================
+% RELATED WORK
+% ============================================================================
+
+\section{Related Work}
+
+\subsection{Neural-Symbolic Constraint Reasoning}
+
+Early neural-symbolic approaches (Mao et al., 2019; Yi et al., 2019) combined perception networks with symbolic programs. Recent work focuses on LLM-based constraint reasoning. Pan et al.~(2023) propose Logic-LM, combining language models with symbolic executors for mathematical reasoning. Their translate-execute-repair pipeline forms the foundation for subsequent neuro-symbolic CSP work. Olausson et al.~(2023) employ Z3 for explicit constraint verification, while Ye et al.~(2023) integrate formal methods into language model reasoning pipelines.
+
+However, existing approaches exhibit two critical limitations: (1) repair mechanisms receive only coarse error signals, leading to stagnation; (2) each problem is solved independently without cross-problem experience transfer. PRISM addresses both through formally-grounded paradigm libraries and typed repair memory.
+
+\subsection{Agent Memory and Experience Accumulation}
+
+Memory-augmented agents (Shinn et al., 2023; Zhao et al., 2024; Ouyang et al., 2025) accumulate experiences across tasks through trajectory comparison and heuristic extraction. These methods demonstrate effective cross-task transfer in web navigation, embodied tasks, and software engineering.
+
+Critically, existing memory frameworks have two limitations when applied to CSP reasoning: (a) memory units are unverified natural-language heuristics, and (b) task-level granularity mismatches the operation-level semantic patterns required. PRISM overcomes these through Z3-verified paradigms and operation-level repair records.
+
+\subsection{Formal Methods and Constraint Solving}
+
+Classical CSP solvers (Dechter, 2003; Russell \& Norvig, 2021) employ systematic search and constraint propagation. SMT solvers like Z3 (de Moura \& Bjørner, 2008) provide mechanical verification of logical formulas. Recent work increasingly leverages formal methods: Talmor et al.~(2019) use automated theorem provers for reasoning, while Sinha et al.~(2021) combine neural networks with formal verification.
+
+PRISM's distinctive use of Z3 is as a \textit{quality-screening oracle} for candidate experience, not merely as a back-end solver. The oracle role enables empirical certification of experience without human annotation, complementing—rather than replacing—the solver role exploited by prior neuro-symbolic CSP work.
+
+\subsection{Learning Reusable Inference Rules}
+\label{ssec:related-ebl}
+
+PRISM is closest in spirit to a long line of work on \emph{learning reusable inference rules}. Explanation-Based Learning (EBL) generalizes successful problem-solving traces into reusable schemas with provable correctness derived from a domain theory (Mitchell, Keller, \& Kedar-Cabelli, 1986; DeJong \& Mooney, 1986). Macro-operator learning compresses sequences of primitive operators into reusable macros (Korf, 1985), and Minton (1990) studies the utility tradeoff between macro coverage and matching cost. In the symbolic-solver tradition, conflict-driven clause learning (Marques-Silva \& Sakallah, 1996) and lemma generation in SMT/model-checking (Bradley, 2011) accumulate experience from \emph{failed} search branches and feed it back as new constraints. Minimal unsatisfiable subset enumeration (Liffiton \& Sakallah, 2008) provides the algorithmic underpinning that PRISM's UNSAT-core analysis builds on.
+
+PRISM occupies a specific position in this spectrum. Compared to EBL macros, our paradigms are induced from LLM-generated traces (which are \emph{noisy} rather than provably sound) and are certified by Z3 \emph{empirically} via sampling-based screening rather than by first-principles proof from a hand-built domain theory. Compared to clause / lemma learning in classical SMT, PRISM operates at the level of \emph{reusable inference patterns across problem instances} rather than learning conflict clauses scoped to a single solver invocation. To our knowledge, PRISM is the first to combine LLM-induced inference rules with SMT-based empirical screening, occupying the gap between provably-sound EBL macros (limited by a hand-built domain theory) and unverified LLM-memory heuristics (limited by lack of mechanical quality control).

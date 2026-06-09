@@ -1,0 +1,53 @@
+% ============================================================================
+% APPENDIX C: HYPERPARAMETER SENSITIVITY
+% ============================================================================
+
+\section{Appendix C: Hyperparameter Analysis}
+
+\paragraph{Single source of truth.} All hyperparameters used by PRISM are declared in \texttt{config/default.yaml}. Table~C1 lists each parameter together with the methodology section that defines it, its default value, the range explored during development, and a qualitative impact tier. The methodology text and Appendix B refer to the symbols in the first column; code reads numerical values from the YAML rather than redefining them as module-level constants, so this table is the canonical reference whenever a quantitative claim about thresholds appears in the paper.
+
+\begin{table}[h]
+\centering
+\caption{Hyperparameter Reference and Sensitivity}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|l|l|c|c|c|}
+\hline
+\textbf{Symbol} & \textbf{Defined in} & \textbf{Default} & \textbf{Range} & \textbf{Impact} \\
+\hline
+\multicolumn{5}{|l|}{\textit{Offline distillation}} \\
+\hline
+KDP domain drop & §3.3.2 (A)  & 2     & [1, 3]      & Med. \\
+KDP info-gain $\tau_{\text{ig}}$ & §3.3.2 (C) & 1.0 bit & [0.5, 2.0] & Med. \\
+Cluster threshold $\theta$ & §3.3.3 & 0.25  & [0.15, 0.35]& Med. \\
+Min cluster size $m_{\min}$ & §3.3.3 & 5 & [3, 10] & Low \\
+Soundness $\tau_s$ & §3.3.4 & 0.90 & [0.85, 0.95] & High \\
+Precision floor $\tau_p$ & §3.3.4 & 0.20 & [0.10, 0.40] & Med. \\
+Verification trials $N_p$ & §3.3.4 & 50 & [20, 100] & Low \\
+\hline
+\multicolumn{5}{|l|}{\textit{Online retrieval}} \\
+\hline
+Layer-1 top-K & §3.4.1 & 3 & [1, 5] & Low \\
+Min retrieval confidence & §3.4.1 & 0.50 & [0.40, 0.65] & Med. \\
+Layer-2 policy & §3.4.1 & complexity\_gated & — & High \\
+Layer-2 complexity floor & §3.4.1 & 25 vars & [10, 50] & Med. \\
+\hline
+\multicolumn{5}{|l|}{\textit{Repair memory \& escalation}} \\
+\hline
+Stagnation Jaccard $\tau_{\text{stag}}$ & §3.5.2 & 0.75 & [0.60, 0.85] & High \\
+Stagnation window $k$ & §3.5.2 & 3 & [2, 5] & Low \\
+Loop cosine $\tau_\ell$ & §3.5.3 & 0.90 & [0.85, 0.95] & Med. \\
+Checkpoint stack depth & §3.5.4 & 5 & [1, 10] & Med. \\
+L4 attempt threshold & §3.5.4 & 10 & [5, 15] & Low \\
+Max repair rounds $R$ & §3.5 & 5 & [3, 8] & High \\
+\hline
+\multicolumn{5}{|l|}{\textit{Online write-back}} \\
+\hline
+Re-verification batch $K$ & §3.6 & 50 & [10, 200] & Low \\
+\hline
+\end{tabular}
+\end{table}
+
+\textit{Impact legend:} \textbf{High} = a change within the listed range materially shifts accuracy or amortised cost on the development set; \textbf{Medium} = noticeable but recoverable shift; \textbf{Low} = minimal practical effect across the explored range. The two parameters carrying the most leverage are the soundness threshold $\tau_s$ (controls how aggressively candidate paradigms are admitted) and the stagnation Jaccard $\tau_{\text{stag}}$ (controls how early adaptive escalation fires).
+
+\paragraph{Note on $\tau_p$ sign convention.} $\tau_p$ is a \emph{non-firing-rate floor}, not a firing-rate ceiling: a paradigm is admitted iff its trigger fails to fire on at least $\tau_p \cdot N_p$ random pool subsets. The default of $0.20$ requires that the trigger be selective enough to remain silent on $\geq 20\%$ of unrelated samples. Earlier drafts mis-stated this as $\tau_p \geq 0.80$ (the equivalent firing-rate ceiling); the canonical convention used throughout the paper and in \texttt{config/default.yaml} is the non-firing-rate floor.

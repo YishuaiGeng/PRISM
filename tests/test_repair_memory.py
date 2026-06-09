@@ -49,7 +49,10 @@ class TestInternalHelpers:
         assert _fingerprint(core) == _fingerprint(list(reversed(core)))
 
     def test_fingerprint_differs_for_different_cores(self) -> None:
-        assert _fingerprint(["a"]) != _fingerprint(["b"])
+        # Cores must be structurally different — single bare identifiers like
+        # "a" and "b" canonicalise to the same v1, which is the intended
+        # canonical-renaming behaviour.
+        assert _fingerprint(["Int('x') > 5"]) != _fingerprint(["Int('x') > 3"])
 
     def test_cosine_identical_vectors(self) -> None:
         v = np.array([1.0, 2.0, 3.0], dtype=np.float32)
@@ -141,16 +144,23 @@ class TestStagnationDetection:
         assert memory.detect_stagnation(k=3) is False
 
     def test_stagnation_respects_window_k(self, memory: RepairMemory) -> None:
-        """Stagnation in records outside the k-window must not fire the detector."""
+        """Stagnation in records outside the k-window must not fire the detector.
+
+        Under canonical renaming, distinct variable names alone do not make
+        constraints distinct — ``Int('v3') > 0`` and ``Int('v4') > 0`` both
+        canonicalise to ``Int('v1') > 0``. To produce genuinely *different*
+        cores we vary the constants (right-hand side).
+        """
         same_core = ["Int('x') > 5", "Int('x') < 3"]
         # Append 3 stagnating records first …
         for i in range(3):
             memory.append(make_repair_record(iteration=i, unsat_core=same_core))
-        # … then 3 fresh records that escape the stagnation.
+        # … then 3 fresh records that escape the stagnation under canonical
+        # renaming (different right-hand sides, no shared structure).
         for j in range(3, 6):
             memory.append(
                 make_repair_record(
-                    iteration=j, unsat_core=[f"Int('v{j}') > 0"]
+                    iteration=j, unsat_core=[f"Int('a') > {10 * j}"]
                 )
             )
 
@@ -248,15 +258,17 @@ class TestLoopDetection:
 class TestHistorySummary:
 
     def test_summary_empty_history(self, memory: RepairMemory) -> None:
+        # ``get_history_summary`` was Englishised in the paper-revision pass;
+        # the test previously looked for Chinese strings.
         summary = memory.get_history_summary()
-        assert "尚无" in summary
+        assert "No repair history" in summary
 
     def test_summary_contains_attempt_count(self, memory: RepairMemory) -> None:
         for i in range(3):
             memory.append(make_repair_record(iteration=i, summary=f"step {i}"))
         summary = memory.get_history_summary()
         assert "3" in summary
-        assert "请尝试不同策略" in summary
+        assert "different strategy" in summary
 
     def test_summary_contains_each_repair_summary(
         self, memory: RepairMemory

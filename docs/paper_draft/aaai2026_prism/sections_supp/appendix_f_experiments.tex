@@ -1,0 +1,35 @@
+% ============================================================================
+% APPENDIX F: ADDITIONAL EXPERIMENTAL DETAILS
+% ============================================================================
+
+\section{Appendix F: Experimental Details}
+
+\subsection{Baseline Implementation Details}
+
+\begin{itemize}
+    \item \textbf{Logic-LM}: Original implementation from Pan et al. with CSP-specific prompting.
+    \item \textbf{ExpeL (CSP version)}: Experience replay memory adapted from Ouyang et al., storing recent successful trajectories.
+    \item \textbf{Neural-Symbolic Baseline}: LLM+Z3 with 5-round repair budget, no paradigm library or memory.
+    \item \textbf{Verified Few-Shot}: Direct injection of 5-10 manually verified constraint-solving patterns, no learning.
+\end{itemize}
+
+\subsection{Data Split}
+
+\begin{itemize}
+    \item \textbf{Training Set}: 600 puzzles (200 each of 4$\times$4, 5$\times$5, 6$\times$6)
+    \item \textbf{Development Set}: 100 puzzles (even split across scales)
+    \item \textbf{Test Set}: 300 puzzles (even split across scales) — held-out, used only for final evaluation
+\end{itemize}
+
+\subsection{Evaluation Metrics}
+
+\begin{enumerate}
+    \item \textbf{Solving Accuracy}: Percentage of puzzles solved correctly within repair budget.
+    \item \textbf{Average LLM Calls}: Mean number of API calls per puzzle.
+    \item \textbf{Average Repair Rounds}: Mean constraint-repair iterations before solution or failure.
+    \item \textbf{Paradigm Trigger Rate}: Fraction of solving steps where $\geq 1$ paradigm retrieves.
+    \item \textbf{Paradigm Hit Rate}: Among triggered paradigms, fraction correctly applied (heuristic: improves UNSAT core or achieves SAT).
+    \item \textbf{Stagnation Frequency}: Percentage of repair sequences where stagnation detection fires.
+    \item \textbf{Transfer Rate (L1)}: Cross-scale accuracy (e.g., paradigms trained on 4$\times$4 + 5$\times$5 applied to 6$\times$6).
+    \item \textbf{Transfer Rate (L2)}: Cross-domain accuracy (e.g., paradigms from logical grids applied to graph coloring).
+\end{enumerate}

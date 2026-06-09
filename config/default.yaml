@@ -1,11 +1,39 @@
 llm_backend: anthropic  # anthropic or openai
 model_name: Claude-Opus-4-7
 
+# Single source of truth for every threshold used by PRISM. Each entry below
+# is also listed (with rationale and sensitivity tier) in Appendix C of the
+# paper. Do not duplicate any of these numbers in code as module-level
+# constants — read them from this file instead.
 thresholds:
-  stagnation_jaccard: 0.75
-  loop_cosine: 0.90
-  paradigm_soundness: 0.90
-  min_support: 5
+  # ── Offline distillation ─────────────────────────────────────────────
+  kdp_domain_drop: 2              # Condition A in §3.3.2
+  kdp_info_gain_bits: 1.0         # Condition C in §3.3.2
+  cluster_distance: 0.25          # agglomerative clustering threshold (§3.3.3)
+  cluster_min_size: 5             # minimum members per cluster (§3.3.3)
+  paradigm_soundness: 0.90        # τ_s in §3.3.4
+  paradigm_precision_floor: 0.20  # τ_p: minimum non-firing rate; higher = more selective (§3.3.4)
+  verification_trials: 50         # N_p in §3.3.4 (soundness + precision sampling)
+
+  # ── Online retrieval & repair ────────────────────────────────────────
+  paradigm_top_k: 3               # Layer-1 candidate pool size (§3.4.1)
+  paradigm_confidence_floor: 0.50 # only retrieve paradigms ≥ this confidence
+  layer2_policy: complexity_gated # always | complexity_gated | stagnation_only (§3.4.1)
+  layer2_complexity_floor: 25     # constraint count gating Layer-2 (§3.4.1)
+
+  # ── Repair memory & escalation ──────────────────────────────────────
+  stagnation_jaccard: 0.75        # τ_s (stagnation) in §3.5.2
+  stagnation_window: 3            # k in §3.5.2
+  loop_cosine: 0.90               # τ_ℓ (semantic loop fallback) in §3.5.3
+  checkpoint_stack_limit: 5       # multi-level L3 stack depth (§3.5.4)
+  l4_attempt_threshold: 10        # L4 fallback after this many SAT-free attempts
+  max_repair_rounds: 5            # R: hard cap on repair iterations (§3.5)
+
+  # ── Online write-back ───────────────────────────────────────────────
+  writeback_batch_K: 50           # re-verify candidate pool every K solved puzzles (§3.6)
+
+  # ── Legacy / convenience ────────────────────────────────────────────
+  min_support: 5                  # alias for cluster_min_size (kept for backward compat)
 
 paths:
   data_dir: data/

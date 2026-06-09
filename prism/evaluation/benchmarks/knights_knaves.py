@@ -171,14 +171,24 @@ def evaluate_knights_knaves(
 # --------------------------------------------------------------------------- #
 
 def _iter_records(root: Path) -> Iterator[dict]:
-    for json_file in sorted(root.rglob("*.json")):
+    if root.is_file():
+        files = [root]
+    else:
+        files = sorted(root.rglob("*.json")) + sorted(root.rglob("*.jsonl"))
+    for json_file in files:
         try:
             with open(json_file, encoding="utf-8") as fh:
-                data = json.load(fh)
-            if isinstance(data, list):
-                yield from data
-            elif isinstance(data, dict):
-                yield data
+                if json_file.suffix == ".jsonl":
+                    for line in fh:
+                        line = line.strip()
+                        if line:
+                            yield json.loads(line)
+                else:
+                    data = json.load(fh)
+                    if isinstance(data, list):
+                        yield from data
+                    elif isinstance(data, dict):
+                        yield data
         except (json.JSONDecodeError, OSError) as exc:
             logger.warning("Skipping %s: %s", json_file, exc)
 

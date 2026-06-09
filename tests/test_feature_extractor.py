@@ -111,6 +111,39 @@ class TestExtract:
         types = extractor.extract(state)
         assert "all_different" in types
 
+    def test_relation_specific_tags_from_z3_expression(self, extractor):
+        state = _make_state(["Int('color_Red') == Int('color_Blue') - 1"])
+        types = extractor.extract(state)
+
+        assert "directly_left" in types
+
+    def test_unsat_core_adds_domain_candidate_mismatch(self, extractor):
+        state = _make_state(
+            constraints=[],
+            unsat_core=[
+                "And(Int('color_Green') >= 1, Int('color_Green') <= 3)",
+                "Int('color_Green') == 4",
+            ],
+        )
+        types = extractor.extract(state)
+
+        assert "domain_candidate_mismatch" in types
+
+    def test_unsat_core_adds_distinct_group_mismatch(self, extractor):
+        state = _make_state(
+            constraints=[],
+            unsat_core=[
+                "And(Int('color_A') >= 1, Int('color_A') <= 3)",
+                "And(Int('color_B') >= 1, Int('color_B') <= 3)",
+                "And(Int('color_C') >= 1, Int('color_C') <= 3)",
+                "And(Int('color_D') >= 1, Int('color_D') <= 3)",
+                "Distinct(Int('color_A'), Int('color_B'), Int('color_C'), Int('color_D'))",
+            ],
+        )
+        types = extractor.extract(state)
+
+        assert "distinct_group_mismatch" in types
+
 
 # --------------------------------------------------------------------------- #
 # classify_constraint_type() — single constraint                                 #

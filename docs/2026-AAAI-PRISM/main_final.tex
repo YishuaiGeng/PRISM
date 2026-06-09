@@ -1,0 +1,74 @@
+%File: PRISM-Main-Final-2026.tex
+% Final rewrite — sections_final/ — AAAI 2026
+\documentclass[letterpaper]{article}
+\usepackage[submission]{aaai2026}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage[hyphens]{url}
+\usepackage{graphicx}
+\urlstyle{rm}
+\def\UrlFont{\rm}
+\usepackage{natbib}
+\usepackage{caption}
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}   % for \toprule / \midrule / \bottomrule
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\usepackage{newfloat}
+\usepackage{listings}
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off}
+\lstset{%
+    basicstyle={\footnotesize\ttfamily},
+    numbers=left,numberstyle=\footnotesize,xleftmargin=2em,
+    aboveskip=0pt,belowskip=0pt,
+    showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+
+% Placeholder command — marks values that need real experimental data.
+% To find all placeholders: grep -n '\\placeholder' sections_final/*.tex
+\newcommand{\placeholder}[1]{\textbf{[#1]}}
+
+\pdfinfo{
+/TemplateVersion (2026.1)
+}
+
+\setcounter{secnumdepth}{1}
+
+% ============================================================================
+% TITLE AND AUTHORS
+% ============================================================================
+
+\title{PRISM: Paradigm-Guided Reasoning with Iterative Solver Memory for Constraint Satisfaction}
+
+\author{
+Anonymous AAAI Submission
+}
+
+% ============================================================================
+% DOCUMENT
+% ============================================================================
+
+\begin{document}
+
+\maketitle
+
+\input{sections_final/abstract}
+\input{sections_final/introduction}
+\input{sections_final/related_work}
+\input{sections_final/methodology}
+\input{sections_final/experiments}
+\input{sections_final/conclusion}
+
+\bibliography{aaai2026_english}
+
+\end{document}
