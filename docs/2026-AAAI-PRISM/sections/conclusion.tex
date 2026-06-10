@@ -1,0 +1,34 @@
+% ============================================================================
+% LIMITATIONS
+% ============================================================================
+
+\section{Limitations and Failure Modes}
+\label{sec:limitations}
+
+We discuss known failure modes that the screening and escalation mechanisms only partially mitigate, so the reader can calibrate the strength of our claims.
+
+\textbf{(1) Probabilistic, not formal, paradigm soundness.} Triple verification samples $N_p = 50$ constraint subsets and accepts paradigms whose empirical soundness exceeds $\tau_s = 0.90$. Up to 10\% of admitted paradigms may therefore fail on a held-out solver state. The online consistency pre-check filters most such failures before injection, but residual mis-application remains possible on novel constraint configurations not represented in the offline pool.
+
+\textbf{(2) Residual UNSAT-core non-uniqueness.} Canonicalisation (operator aliasing + first-occurrence variable renaming) substantially reduces the divergence of Z3's chosen cores across iterations, but does not eliminate it: cases where two structurally different minimal cores correspond to the same underlying contradiction can still slip past Jaccard-based stagnation detection. Stronger mitigations such as MUS enumeration are left to future work due to their cost.
+
+\textbf{(3) L4 retranslation can degrade good translations.} The L4 escalation discards the current formalisation and asks the LLM to retranslate from natural language. In rare cases — particularly when the latent contradiction was due to a downstream over-constraint rather than a translation error — L4 will produce a worse translation than the one it replaced. We mitigate this by allowing L4 at most once per puzzle, but the recovery action remains coarse.
+
+\textbf{(4) LLM-induced paradigm idiosyncrasies.} The offline distillation invokes an LLM to synthesise paradigm bodies from cluster representatives. Different LLM choices (vendor, model, temperature) can produce libraries with markedly different coverage and trigger style; the triple verification protocol bounds quality but does not eliminate this dependency. Cross-LLM paradigm portability is an open question.
+
+\textbf{(5) Higher-order logical constructs.} The current Z3 wrapper supports quantified constraints via \texttt{ForAll} / \texttt{Exists}, but more advanced theory combinations (uninterpreted functions over richer sorts, recursive datatypes) are out of scope. Extending PRISM to those theories would require lifting the canonicalisation and AST-based ErrorType classification beyond the current arithmetic + propositional fragment.
+
+% ============================================================================
+% CONCLUSION
+% ============================================================================
+
+\section{Conclusion}
+
+PRISM introduces a memory-augmented neuro-symbolic framework tailored to CSP solving. By using Z3 as an automated quality-screening oracle for candidate paradigms, encoding paradigms with SMT pre/post-conditions, and implementing adaptive repair strategies via a typed trajectory memory, PRISM achieves consistent improvements over neural-symbolic and memory-based baselines.
+
+Key findings: (1) experience accumulation yields disproportionately larger gains on harder problems, (2) SMT-based empirical screening of paradigms enables more reliable knowledge transfer than unverified natural-language heuristics, (3) adaptive strategy escalation effectively breaks repair stagnation, (4) paradigms transfer across problem scales and, to a more limited extent, across problem types.
+
+Future work includes: extending to other symbolic domains beyond CSPs, investigating curriculum learning for paradigm discovery, and exploring interaction with classical CSP solvers.
+
+\section*{Acknowledgments}
+
+We acknowledge support from [funding sources]. We thank [individuals] for valuable discussions.

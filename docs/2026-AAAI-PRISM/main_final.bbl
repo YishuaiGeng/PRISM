@@ -1,0 +1,119 @@
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Bradley(2011)}]{BradleyIC3}
+Bradley, A.~R. 2011.
+\newblock {SAT}-Based Model Checking without Unrolling.
+\newblock In \emph{VMCAI}.
+
+\bibitem[{de~Moura and Bj\o{}rner(2008)}]{DeMoura2008}
+de~Moura, L.; and Bj\o{}rner, N. 2008.
+\newblock Z3: An Efficient SMT Solver.
+\newblock In \emph{International Conference on Tools and Algorithms for the
+  Construction and Analysis of Systems}, 337--340.
+
+\bibitem[{Dechter(2003)}]{Dechter2003}
+Dechter, R. 2003.
+\newblock \emph{Constraint Processing}.
+\newblock Morgan Kaufmann.
+
+\bibitem[{DeJong and Mooney(1986)}]{DeJongMooney1986}
+DeJong, G.; and Mooney, R. 1986.
+\newblock Explanation-Based Learning: An Alternative View.
+\newblock \emph{Machine Learning}, 1(2): 145--176.
+
+\bibitem[{Korf(1985)}]{KorfMacro1985}
+Korf, R.~E. 1985.
+\newblock Macro-Operators: A Weak Method for Learning.
+\newblock In \emph{Artificial Intelligence}, volume~26, 35--77.
+
+\bibitem[{Liffiton and Sakallah(2008)}]{LiberatoreSchaerf}
+Liffiton, M.~H.; and Sakallah, K.~A. 2008.
+\newblock Algorithms for Computing Minimal Unsatisfiable Subsets of
+  Constraints.
+\newblock \emph{Journal of Automated Reasoning}, 40(1): 1--33.
+
+\bibitem[{Lin et~al.(2025)Lin, Xie, Tiwari, and Durrett}]{Lin2025}
+Lin, B.~Y.; Xie, J.; Tiwari, A.; and Durrett, G. 2025.
+\newblock ZebraLogic: Benchmarking Logical Reasoning in Large Language Models.
+\newblock In \emph{ICML}.
+
+\bibitem[{Mao et~al.(2019)Mao, Gan, Kohli, Tenenbaum, and Wu}]{Mao2019}
+Mao, J.; Gan, C.; Kohli, P.; Tenenbaum, J.~B.; and Wu, J. 2019.
+\newblock The Neuro-Symbolic Visual Question Answering Conundrum: From
+  Pixel-to-Graph, Not Graph-to-Pixel.
+\newblock In \emph{ICML}.
+
+\bibitem[{Marques-Silva and Sakallah(1996)}]{MarquesSilvaSakallah1996}
+Marques-Silva, J.~P.; and Sakallah, K.~A. 1996.
+\newblock {GRASP}---A New Search Algorithm for Satisfiability.
+\newblock In \emph{Proceedings of the IEEE/ACM International Conference on
+  Computer-Aided Design (ICCAD)}.
+
+\bibitem[{Minton(1990)}]{Minton1990}
+Minton, S. 1990.
+\newblock Quantitative Results Concerning the Utility of Explanation-Based
+  Learning.
+\newblock \emph{Artificial Intelligence}, 42(2--3): 363--391.
+
+\bibitem[{Mitchell, Keller, and
+  Kedar-Cabelli(1986)}]{MitchellKellerKedarCabelli1986}
+Mitchell, T.~M.; Keller, R.~M.; and Kedar-Cabelli, S.~T. 1986.
+\newblock Explanation-Based Generalization: A Unifying View.
+\newblock \emph{Machine Learning}, 1(1): 47--80.
+
+\bibitem[{Olausson et~al.(2023)Olausson, Gu, Lipkin, Zhang, El-Kebir, and
+  Durrett}]{Olausson2023}
+Olausson, T.; Gu, A.; Lipkin, B.; Zhang, C.; El-Kebir, M.; and Durrett, G.
+  2023.
+\newblock Solving Mixed-Domain Constraint Problems using Data-Driven Constraint
+  Relaxation.
+\newblock In \emph{ICLR}.
+
+\bibitem[{Ouyang et~al.(2025)Ouyang, Li, Sun, and Hashimoto}]{Ouyang2025}
+Ouyang, S.; Li, Y.; Sun, J.; and Hashimoto, T. 2025.
+\newblock Meta-Learning for Cross-Task Transfer in Language Agent Memory.
+\newblock In \emph{ICLR}.
+
+\bibitem[{Pan et~al.(2023)Pan, Goyal, Dillon, Johnson, Leite, and
+  Larson}]{Pan2023}
+Pan, A.; Goyal, A.; Dillon, J.~E.; Johnson, J.; Leite, J.~a.~A.; and Larson, S.
+  2023.
+\newblock Logic-LLM: Exploring Logical Reasoning in Large Language Models.
+\newblock In \emph{ICLR}.
+
+\bibitem[{Russell and Norvig(2021)}]{Russell2021}
+Russell, S.; and Norvig, P. 2021.
+\newblock \emph{Artificial Intelligence: A Modern Approach}.
+\newblock Pearson, 4th edition.
+
+\bibitem[{Saparov and He(2023)}]{Saparov2022}
+Saparov, S.; and He, H. 2023.
+\newblock Language Models Are Greedy Reasoners: A Systematic Formal Analysis of
+  Chain-of-Thought.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}.
+
+\bibitem[{Shinn et~al.(2023)Shinn, Cassano, Labash, Gopinath, and
+  Narasimhan}]{Shinn2023}
+Shinn, N.; Cassano, F.; Labash, B.; Gopinath, A.; and Narasimhan, K. 2023.
+\newblock Reflexion: Language Agents with Verbal Reinforcement Learning.
+\newblock In \emph{NeurIPS}.
+
+\bibitem[{Ye, Lin, and Durrett(2023)}]{Ye2023}
+Ye, X.; Lin, B.~Y.; and Durrett, G. 2023.
+\newblock Modular Language Models for Question Answering.
+\newblock In \emph{ACL}.
+
+\bibitem[{Yi et~al.(2019)Yi, Wu, Gan, Torralba, Kohli, and Tenenbaum}]{Yi2019}
+Yi, K.; Wu, J.; Gan, C.; Torralba, A.; Kohli, P.; and Tenenbaum, J.~B. 2019.
+\newblock Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language
+  Understanding.
+\newblock In \emph{NeurIPS}.
+
+\bibitem[{Zhao et~al.(2024)Zhao, Hassan, Gao, and Liu}]{Zhao2024}
+Zhao, S.; Hassan, T.; Gao, Y.; and Liu, S. 2024.
+\newblock Contrastive Learning for Trajectory Memory in Embodied AI.
+\newblock In \emph{ICML}.
+
+\end{thebibliography}

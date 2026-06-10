@@ -1,0 +1,35 @@
+% ============================================================================
+% INTRODUCTION — PRISM AAAI 2026 (Final Rewrite)
+% ============================================================================
+
+\section{Introduction}
+
+Constraint Satisfaction Problems (CSPs)—finding variable assignments that simultaneously satisfy a set of constraints—model a wide class of real-world tasks, from scheduling and resource allocation to logical reasoning. Formally, a CSP is a triple $\mathcal{P} = (\mathbf{X}, \mathbf{D}, \mathbf{C})$ where $\mathbf{X}$ is a set of variables, $\mathbf{D}$ specifies finite domains, and $\mathbf{C}$ is a set of constraints. A solution is a complete assignment $\theta$ satisfying all constraints.
+
+Recent Large Language Models offer complementary capabilities to classical symbolic solvers: flexible natural-language understanding and multi-step inference. This motivates a hybrid approach in which an LLM formalizes natural-language constraints, a solver verifies them, and the LLM repairs failures. However, \citet{Lin2025} document a severe accuracy cliff: across all LLM-based systems, performance drops sharply from 48--60\% at easy scales to 8--15\% (near random) at hard 6$\times$6 scales, with more than 20 solver conflicts as the decisive threshold. Computational scaling—Best-of-$N$, self-verification—provides diminishing returns beyond this threshold.
+
+\textbf{Two structural deficiencies explain this cliff.} First, \textit{repair inefficiency}: when the solver returns UNSAT, existing systems feed back only a raw error string or generic unsatisfiability statement. The LLM must repair essentially blindly, producing near-identical erroneous outputs in successive rounds—a phenomenon termed \textit{stagnation}~\citep{Lin2025}. Second, \textit{absent cross-problem transfer}: every puzzle is solved from scratch. Successful translation patterns, error diagnoses, and repair strategies built up on one problem are discarded when solving the next, causing identical errors to recur across instances.
+
+Agent memory frameworks~\citep{Shinn2023,Zhao2024,Ouyang2025} address the second deficiency by accumulating experiences across tasks. However, two obstacles limit their applicability to CSP reasoning: (a) stored memories are unverified natural-language prose—an incorrect heuristic is indistinguishable from a correct one at storage time; (b) task-level granularity mismatches the operation-level semantic patterns required for constraint reasoning.
+
+\textbf{Key insight.} CSP solving possesses a structural property absent in general agent tasks: \textit{every inference step is mechanically certifiable by an SMT solver}. If a proposed inference step is encoded as a Z3 assertion, the solver can verify whether it is (i) consistent with the current constraint set, and (ii) genuinely informative (i.e., not already entailed). This means that accumulated solving experience can be formally screened before storage—providing a quality guarantee that natural-language memory cannot offer. Moreover, when repairs fail, the solver returns an \textit{UNSAT core}—the minimal unsatisfiable constraint subset—enabling precise semantic localization of contradictions.
+
+\textbf{PRISM} (\textbf{P}aradigm-guided \textbf{R}easoning with \textbf{I}terative \textbf{S}olver \textbf{M}emory) exploits this insight through two decoupled mechanisms:
+
+\textbf{Offline phase (one-time per task distribution).} Given a corpus of training puzzles, PRISM: (1) collects successful solving trajectories via LLM+Z3 interaction; (2) identifies Key Decision Points (KDPs)—steps with significant domain reductions or non-trivial inference types; (3) clusters KDPs by constraint-type features; (4) synthesizes reusable paradigms per cluster via LLM; (5) filters candidates via triple Z3 verification (soundness, effect, trigger selectivity); (6) persists verified paradigms in a Paradigm Library $\mathcal{L}$.
+
+\textbf{Online phase (per puzzle).} PRISM: (1) retrieves relevant paradigms via two-layer filtering (type matching, then LLM semantic judgment); (2) injects passing paradigms as structured hints; (3) verifies each LLM inference step via Z3; (4) upon UNSAT, extracts the UNSAT core for causal attribution and records a typed repair record in Repair Trajectory Memory $\mathcal{M}$; (5) detects stagnation and loops via Jaccard and cosine similarity; (6) triggers four-level strategy escalation; (7) writes verified successful repairs back to $\mathcal{L}$ via a staged batch protocol.
+
+\textbf{Contributions.} We organize contributions around the two primary mechanisms and their enabling infrastructure:
+
+\begin{itemize}
+    \item \textbf{C1 — SMT-Screened Paradigm Representation.} We introduce a paradigm formalism where trigger conditions, inference operations, and outcomes carry Z3 pre/post-conditions, enabling a three-axis empirical screening protocol (soundness sampling, effect via non-contradiction + non-vacuousness, trigger selectivity via set-intersection matching) before library admission. To our knowledge, this is the first LLM-memory framework to apply SMT-based automated screening at the paradigm level.
+
+    \item \textbf{C2 — Typed Repair Trajectory Memory with Four-Level Adaptive Escalation.} We design a structured memory recording canonicalized UNSAT cores, error-type classifications, and structured repair signatures. Coupled with stagnation detection (Jaccard similarity over canonicalized cores) and loop detection (structured triple matching with cosine-similarity fallback), the memory triggers a four-level escalation protocol that mechanically breaks repair stagnation with a bounded worst-case LLM-call budget.
+
+    \item \textbf{C3 — Fully Unsupervised Offline Pipeline.} We instantiate C1 with an end-to-end pipeline—trajectory collection, KDP identification, cross-trajectory clustering, LLM abstraction, and triple verification—that requires no human annotation and produces the verified library on which C2 depends. The pipeline is replaceable by any procedure respecting the same SMT-screening interface.
+
+    \item \textbf{C4 — Paradigm Transferability Protocol.} We formulate and report \textit{paradigm transfer rate} along two axes—cross-scale (L1) and cross-domain (L2)—as an evaluation dimension for memory-augmented neuro-symbolic reasoning, shifting focus from per-puzzle accuracy to whether accumulated experience generalizes.
+\end{itemize}
+
+The remainder of this paper is organized as follows. Section~\ref{sec:related} reviews related work. Section~\ref{sec:method} presents the PRISM methodology in detail. Section~\ref{sec:experiments} describes experimental setup and baselines. Section~\ref{sec:results} reports results and analysis. Section~\ref{sec:conclusion} concludes.

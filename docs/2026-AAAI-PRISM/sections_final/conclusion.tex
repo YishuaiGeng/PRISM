@@ -1,0 +1,31 @@
+% ============================================================================
+% LIMITATIONS AND CONCLUSION — PRISM AAAI 2026 (Final Rewrite)
+% ============================================================================
+
+\section{Limitations}
+\label{sec:limitations}
+
+We discuss known failure modes that the screening and escalation mechanisms only partially mitigate, to calibrate the strength of our claims.
+
+\textbf{Probabilistic, not formal, paradigm soundness.} Triple verification samples $N_p = 50$ constraint subsets and accepts paradigms with empirical soundness $\geq 0.90$. Up to 10\% of admitted paradigms may fail on held-out solver states. The online consistency pre-check filters most such failures before injection, but residual mis-application on novel constraint configurations not represented in the offline pool remains possible.
+
+\textbf{Residual UNSAT-core non-uniqueness.} Canonicalization (operator aliasing and first-occurrence variable renaming) substantially reduces cross-iteration core divergence but does not eliminate it. Cases where two structurally different minimal cores encode the same underlying contradiction can evade Jaccard-based stagnation detection. Stronger mitigations such as MUS enumeration are deferred to future work due to computational cost.
+
+\textbf{L4 retranslation can degrade sound translations.} L4 discards the current formalization and requests a fresh translation. In rare cases—particularly when the latent contradiction stems from an over-constraint in downstream inference rather than a translation error—L4 produces a worse translation than the one it replaces. The single-attempt cap (L4 fires at most once per puzzle) bounds but does not eliminate this risk.
+
+\textbf{LLM-induced paradigm idiosyncrasies.} The offline pipeline uses an LLM to synthesize paradigm bodies. Different LLM choices (vendor, model, temperature) can produce libraries with markedly different coverage and trigger style; triple verification bounds quality but not this cross-model variability. Cross-LLM paradigm portability remains an open question.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented PRISM, a memory-augmented neuro-symbolic framework that addresses two structural deficiencies of existing LLM-based CSP solvers: ineffective repair caused by coarse UNSAT feedback, and the absence of cross-problem experience accumulation. The unifying insight is that SMT verifiability enables formally-grounded experience accumulation: paradigms can be screened before storage, and UNSAT cores enable precise causal attribution during repair.
+
+Four concrete contributions follow from this insight. The SMT-screened Paradigm Library (C1) provides the first LLM-memory framework with mechanical quality control at the paradigm level. The Typed Repair Trajectory Memory with four-level adaptive escalation (C2) mechanically breaks repair stagnation with a bounded per-puzzle LLM-call budget. The fully unsupervised offline pipeline (C3) operationalizes paradigm distillation without human annotation. The paradigm transfer protocol (C4) introduces a new dimension for evaluating memory-augmented neuro-symbolic systems.
+
+Evaluation on ZebraLogic demonstrates that these mechanisms combine synergistically: each component provides independent benefit, and their combination produces compounding improvements that grow monotonically with problem difficulty—the hardest puzzles benefit most from accumulated experience.
+
+More broadly, PRISM demonstrates that \textit{formal verifiability enables more reliable experience accumulation than natural-language heuristics}. Any domain where reasoning steps can be automatically verified—theorem proving, program synthesis, formal planning—is a candidate for analogous formally-grounded memory. We view this as a promising direction for AI systems that not only learn from experience but verify and integrate that experience reliably.
+
+\section*{Acknowledgments}
+
+The authors acknowledge support from [funding sources]. We thank [colleagues] for valuable feedback on early drafts of this work.

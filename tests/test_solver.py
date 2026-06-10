@@ -115,6 +115,15 @@ class TestGetModel:
             assert isinstance(k, str)
             assert isinstance(v, str)
 
+    def test_get_model_omits_internal_tracking_variables(self, solver: Z3SolverWrapper) -> None:
+        solver.add_constraint("Int('x') == 1")
+        assert solver.check() == "SAT"
+
+        model = solver.get_model()
+
+        assert model == {"x": "1"}
+        assert all(not key.startswith("_prism_track_") for key in model)
+
     def test_get_model_raises_when_unsat(self, solver: Z3SolverWrapper) -> None:
         """get_model() must raise SolverError when the formula is UNSAT."""
         solver.add_constraint("Int('x') > 5")

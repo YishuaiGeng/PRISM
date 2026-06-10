@@ -116,6 +116,25 @@ class TrajectoryCollector:
             z3_result="PENDING",
             llm_call_count=calls_after_translate,
         )
+        if not constraints:
+            initial_step = initial_step.model_copy(update={
+                "z3_result": "TRANSLATION_FAILED",
+                "error_type": "NO_VALID_CONSTRAINTS",
+            })
+            steps.append(initial_step)
+            total_calls = self._llm.call_count - llm_calls_start
+            return Trajectory(
+                trajectory_id=str(uuid.uuid4()),
+                puzzle_id=puzzle.puzzle_id,
+                puzzle_nl=puzzle.nl_description,
+                temperature=temperature,
+                seed=seed,
+                steps=steps,
+                final_result="TRANSLATION_FAILED",
+                solved=False,
+                total_llm_calls=total_calls,
+                solution=None,
+            )
 
         for c in constraints:
             solver.add_constraint(c)
@@ -124,8 +143,15 @@ class TrajectoryCollector:
         initial_step = initial_step.model_copy(update={"z3_result": result})
         steps.append(initial_step)
 
-        solved = result == "SAT"
-        solution: Optional[dict] = solver.get_model() if solved else None
+        solution: Optional[dict] = solver.get_model() if result == "SAT" else None
+        solved = result == "SAT" and self._model_within_puzzle_domain(puzzle, solution)
+        if result == "SAT" and not solved:
+            result = "INVALID_MODEL"
+            initial_step = initial_step.model_copy(update={
+                "z3_result": result,
+                "error_type": "MODEL_OUT_OF_DOMAIN",
+            })
+            steps[-1] = initial_step
 
         # ── Repair loop ────────────────────────────────────────────────
         current_constraints = list(constraints)
@@ -175,8 +201,17 @@ class TrajectoryCollector:
             steps.append(step)
 
             if result == "SAT":
-                solved = True
                 solution = solver.get_model()
+                solved = self._model_within_puzzle_domain(puzzle, solution)
+                if solved:
+                    break
+                result = "INVALID_MODEL"
+                step = step.model_copy(update={
+                    "z3_result": result,
+                    "error_type": "MODEL_OUT_OF_DOMAIN",
+                })
+                steps[-1] = step
+                break
 
         total_calls = self._llm.call_count - llm_calls_start
         return Trajectory(
@@ -212,6 +247,30 @@ class TrajectoryCollector:
             if c in unsat_core:
                 return i
         return None
+
+    @staticmethod
+    def _model_within_puzzle_domain(
+        puzzle: PuzzleInstance,
+        solution: Optional[dict],
+    ) -> bool:
+        """Reject SAT models with integer assignments outside the puzzle range."""
+        if not solution or not puzzle.size:
+            return True
+        try:
+            n_entities = int(str(puzzle.size).lower().split("x", 1)[0])
+        except (TypeError, ValueError):
+            return True
+
+        for name, raw_value in solution.items():
+            if str(name).startswith("_prism_track_"):
+                continue
+            try:
+                value = int(str(raw_value))
+            except ValueError:
+                continue
+            if value < 1 or value > n_entities:
+                return False
+        return True
 
     def _save(self, traj: Trajectory) -> None:
         path = self._output_dir / f"{traj.trajectory_id}.json"

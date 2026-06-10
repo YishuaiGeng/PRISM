@@ -22,6 +22,11 @@ _ALL_REPAIR_TYPES: List[str] = [
 # Set conservatively high; real escalation usually happens via stagnation first.
 _L4_ATTEMPT_THRESHOLD: int = 10
 
+# Maximum depth of the L3 revert checkpoint stack.  When an L3 escalation pops
+# a checkpoint that does not break stagnation, the next L3 pops the one below;
+# when the stack is exhausted the next escalation falls through to L4.
+_CHECKPOINT_STACK_LIMIT: int = 5
+
 
 class SwitchLevel(str, Enum):
     """Escalation levels for the repair strategy-switching mechanism.
@@ -79,7 +84,14 @@ class StrategySwitcher:
                     reflects the latest appended records.
         """
         self._memory: RepairMemory = memory
-        self._checkpoint: Optional[Dict] = None
+        # Bounded LIFO stack of checkpoint states (most recent at the top).
+        # ``_checkpoint_stack[-1]`` corresponds to the most recent SAT-adjacent
+        # state worth reverting to; older entries are kept so that successive
+        # L3 escalations can roll back further if the most recent revert does
+        # not break stagnation. Capped at ``_CHECKPOINT_STACK_LIMIT`` to bound
+        # memory.
+        self._checkpoint_stack: List[Dict] = []
+        self._forced_level: Optional[SwitchLevel] = None
 
     # ------------------------------------------------------------------
     # Core API
@@ -91,6 +103,8 @@ class StrategySwitcher:
         Checks are performed in descending severity so the caller always receives
         the *least disruptive* level that the evidence supports:
 
+        0. **Forced** — a prior call to ``force_switch()`` overrides all heuristics
+           for exactly one invocation, then the forced level is consumed.
         1. **L4** — total attempts ≥ threshold with no SAT outcomes ever.
         2. **L3** — ``detect_stagnation()`` fires and a checkpoint exists.
            Falls back to **L4** when stagnation is detected but no checkpoint
@@ -103,6 +117,12 @@ class StrategySwitcher:
         Returns:
             A ``SwitchLevel`` value, or ``None`` if normal repair should continue.
         """
+        # Forced level takes priority (consumed once).
+        if self._forced_level is not None:
+            level = self._forced_level
+            self._forced_level = None
+            return level
+
         records = self._memory._records
         if not records:
             return None
@@ -116,7 +136,7 @@ class StrategySwitcher:
 
         # ── L3 / L4: stagnation (same unsat core keeps reappearing) ────
         if self._memory.detect_stagnation():
-            if self._checkpoint is not None:
+            if self._checkpoint_stack:
                 return SwitchLevel.L3_REVERT_CHECKPOINT
             return SwitchLevel.L4_FULL_RETRANSLATE
 
@@ -134,10 +154,31 @@ class StrategySwitcher:
 
         return None
 
+    def force_switch(
+        self, level: SwitchLevel = SwitchLevel.L2_SWITCH_TYPE
+    ) -> SwitchLevel:
+        """Force the next ``should_switch()`` call to return *level*.
+
+        Used by the caller when it detects an event (e.g. loop detection)
+        outside the normal heuristic window and needs to guarantee that the
+        next repair iteration triggers a strategy change.  The forced level is
+        consumed exactly once; subsequent calls return to normal heuristics.
+
+        Args:
+            level: The ``SwitchLevel`` to force.  Defaults to
+                ``L2_SWITCH_TYPE`` which is the appropriate response to a
+                semantically-looping repair.
+
+        Returns:
+            The *level* that was set (for convenience).
+        """
+        self._forced_level = level
+        return level
+
     def get_switch_prompt(self, level: SwitchLevel, current_state: Dict) -> str:
         """Return an LLM-injectable instruction string for the given switch level.
 
-        The strings are in Chinese and designed to be appended to the user turn
+        The strings are in English and designed to be appended to the user turn
         or system prompt of the next LLM call so the model understands what has
         been tried and what it should attempt instead.
 
@@ -167,7 +208,7 @@ class StrategySwitcher:
         return dispatch[level]()
 
     def save_checkpoint(self, state: Dict) -> None:
-        """Persist *state* as the latest revert point for L3 escalation.
+        """Push *state* onto the bounded L3 revert checkpoint stack.
 
         Call this whenever the solver reaches a partial state worth returning to —
         for example after a repair that reduced the UNSAT core size even though
@@ -179,19 +220,45 @@ class StrategySwitcher:
         - ``"constraints"`` (List[str]): the surviving constraint set.
         - ``"summary"`` (str): human-readable description of the checkpoint.
 
+        The stack is capped at ``_CHECKPOINT_STACK_LIMIT`` entries; when the
+        limit is exceeded the oldest entry is evicted (FIFO eviction at the
+        bottom; LIFO consumption at the top).
+
         Args:
             state: Arbitrary JSON-serialisable dict; stored as a shallow copy.
         """
-        self._checkpoint = dict(state)
+        self._checkpoint_stack.append(dict(state))
+        if len(self._checkpoint_stack) > _CHECKPOINT_STACK_LIMIT:
+            # Evict the oldest entry to bound stack depth.
+            self._checkpoint_stack.pop(0)
 
     def get_checkpoint(self) -> Optional[Dict]:
         """Return a copy of the most recently saved checkpoint, or None.
 
+        This method peeks (does not pop) the top of the checkpoint stack.
+
         Returns:
-            Shallow copy of the checkpoint dict, or ``None`` if
-            ``save_checkpoint`` has never been called.
+            Shallow copy of the top checkpoint dict, or ``None`` if no
+            checkpoint has ever been saved.
         """
-        return dict(self._checkpoint) if self._checkpoint is not None else None
+        if not self._checkpoint_stack:
+            return None
+        return dict(self._checkpoint_stack[-1])
+
+    def pop_checkpoint(self) -> Optional[Dict]:
+        """Consume and return the top checkpoint, or None if the stack is empty.
+
+        Used by L3 revert: after rolling back the solver to the returned state,
+        the checkpoint is removed so that a subsequent L3 escalation (if
+        stagnation persists) rolls back to an older state. When the stack is
+        exhausted, ``should_switch()`` falls through to L4.
+
+        Returns:
+            Shallow copy of the popped checkpoint dict, or ``None`` if empty.
+        """
+        if not self._checkpoint_stack:
+            return None
+        return dict(self._checkpoint_stack.pop())
 
     # ------------------------------------------------------------------
     # Private prompt builders
@@ -221,12 +288,12 @@ class StrategySwitcher:
         candidates = [c for c in unsat_core if c not in tried]
         if not candidates:
             candidates = unsat_core  # all tried — suggest re-examining all
-        tried_str = "、".join(tried) if tried else "无"
-        cand_str = "、".join(candidates) if candidates else "UNSAT core 中的其他约束"
+        tried_str = ", ".join(tried) if tried else "none"
+        cand_str = ", ".join(candidates) if candidates else "other constraints in the UNSAT core"
         return (
-            f"请换一个约束作为修复目标，"
-            f"已尝试修改 [{tried_str}]，"
-            f"请尝试 [{cand_str}]"
+            f"[L1 Strategy Switch] Choose a different repair target. "
+            f"Already tried: [{tried_str}]. "
+            f"Please focus on: [{cand_str}]."
         )
 
     def _prompt_l2(self) -> str:
@@ -234,27 +301,30 @@ class StrategySwitcher:
         candidates = [t for t in _ALL_REPAIR_TYPES if t not in tried]
         if not candidates:
             candidates = _ALL_REPAIR_TYPES  # all tried — cycle back
-        tried_str = "、".join(tried) if tried else "无"
-        cand_str = "、".join(candidates[:3])  # surface top 3 unexplored types
+        tried_str = ", ".join(tried) if tried else "none"
+        cand_str = ", ".join(candidates[:3])  # surface top 3 unexplored types
         return (
-            f"请换一种修复方式，"
-            f"已尝试 [{tried_str}]，"
-            f"请尝试 [{cand_str}]"
+            f"[L2 Strategy Switch] Switch to a different repair strategy class. "
+            f"Already tried: [{tried_str}]. "
+            f"Please try one of: [{cand_str}]."
         )
 
     def _prompt_l3(self) -> str:
-        ckpt = self._checkpoint or {}
-        iteration = ckpt.get("iteration", "未知")
-        summary = ckpt.get("summary", "最近稳定状态")
+        ckpt = self._checkpoint_stack[-1] if self._checkpoint_stack else {}
+        iteration = ckpt.get("iteration", "unknown")
+        summary = ckpt.get("summary", "last stable state")
+        depth = len(self._checkpoint_stack)
         return (
-            f"回退到检查点 {iteration}（{summary}），"
-            f"从另一个推断方向重新开始"
+            f"[L3 Revert | stack depth {depth}] Rolling back to checkpoint at "
+            f"iteration {iteration} ({summary}). Resume from a different "
+            f"inference branch. If stagnation recurs, the next L3 will roll "
+            f"back to the prior checkpoint."
         )
 
     def _prompt_l4(self, current_state: Dict) -> str:
         problem_nl: str = current_state.get("problem_nl", "")
-        base = "重新从自然语言翻译所有约束，忽略之前的形式化。"
-        return base + (f" 原始描述：{problem_nl}" if problem_nl else "")
+        base = "[L4 Retranslate] Discard the current formalisation and retranslate all constraints from the original natural language description."
+        return base + (f" Original description: {problem_nl}" if problem_nl else "")
 
 
 # =============================================================================

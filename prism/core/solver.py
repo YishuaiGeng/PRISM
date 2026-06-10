@@ -158,7 +158,39 @@ class Z3SolverWrapper:
                 "get_model() is only valid after the solver returns SAT."
             )
         model = self._solver.model()
-        return {str(decl): str(model[decl]) for decl in model}
+        return {
+            str(decl): str(model[decl])
+            for decl in model
+            if not str(decl).startswith("_prism_track_")
+        }
+
+    def add_negated_constraint(self, constraint_str: str) -> bool:
+        """Parse *constraint_str* and assert its logical negation.
+
+        Used by paradigm non-vacuousness checks: asserting ``pre ∧ ¬op`` and
+        testing SAT determines whether the operation is implied by the
+        pre-condition. If SAT, there exists a state where ``pre`` holds but
+        ``op`` does not — i.e. ``op`` is genuinely informative.
+
+        Args:
+            constraint_str: A Z3 Python-API expression as a string, evaluating
+                to a Boolean expression that will be negated before assertion.
+
+        Returns:
+            True on success, False if parsing failed (solver unchanged).
+        """
+        try:
+            expr = self._parse(constraint_str)
+        except SolverError:
+            return False
+
+        track_name = self._fresh_track_name()
+        track_var = z3.Bool(track_name)
+        self._solver.assert_and_track(z3.Not(expr), track_var)
+        canonical = f"Not({constraint_str})"
+        self._constraint_strs.append(canonical)
+        self._track_to_str[track_name] = canonical
+        return True
 
     def reset(self) -> None:
         """Clear all constraints and tracking state, returning the solver to its

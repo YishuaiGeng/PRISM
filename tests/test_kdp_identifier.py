@@ -49,6 +49,11 @@ def make_trajectory(steps: list[TrajectoryStep]) -> Trajectory:
     )
 
 
+def make_solved_trajectory(steps: list[TrajectoryStep]) -> Trajectory:
+    traj = make_trajectory(steps)
+    return traj.model_copy(update={"solved": True, "final_result": "SAT"})
+
+
 @pytest.fixture
 def identifier():
     return KDPIdentifier()
@@ -253,3 +258,28 @@ class TestIdentify:
         traj = make_trajectory(steps)
         kdps = identifier.identify(traj)
         assert kdps[0].kdp_type == "DOMAIN_REDUCTION"
+
+    def test_successful_repair_step_is_positive_kdp(self, identifier):
+        steps = [
+            make_step(step_type=StepType.BASIC, z3_result="UNSAT", iteration=0),
+            make_step(
+                step_type=StepType.CONTRADICTION,
+                constraint_added="Int('a') == Int('b') + 1",
+                z3_result="SAT",
+                iteration=1,
+            ).model_copy(update={"action": "repair"}),
+        ]
+        traj = make_solved_trajectory(steps)
+        kdps = identifier.identify(traj)
+        assert kdps[-1].kdp_type == "SUCCESSFUL_REPAIR"
+
+    def test_unsolved_repair_step_is_not_successful_repair_kdp(self, identifier):
+        step = make_step(
+            step_type=StepType.CONTRADICTION,
+            constraint_added="Int('a') == Int('b') + 1",
+            z3_result="SAT",
+            iteration=1,
+        ).model_copy(update={"action": "repair"})
+        traj = make_trajectory([step])
+        kdps = identifier.identify(traj)
+        assert all(k.kdp_type != "SUCCESSFUL_REPAIR" for k in kdps)

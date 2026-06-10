@@ -1,0 +1,81 @@
+% ============================================================================
+% RELATED WORK - REVISED
+% ============================================================================
+
+\section{Related Work}
+
+\subsection{Neural-Symbolic Reasoning for Constraint Problems}
+
+Early neural-symbolic methods (Mao et al., 2019; Yi et al., 2019) combined neural networks with symbolic programs. Recent work leverages Large Language Models as the neural component. Pan et al.~(2023) propose Logic-LM, combining language models with symbolic executors for mathematical reasoning, establishing a translate-execute-repair pipeline that has become foundational for subsequent work. Olausson et al.~(2023) integrate Z3 constraint solvers into language model reasoning, while Ye et al.~(2023) explore explicit constraint verification in LLM pipelines.
+
+These approaches have achieved improvements over pure language model reasoning. However, they exhibit critical limitations:
+
+\begin{enumerate}
+    \item \textbf{Coarse Repair Signals:} When solvers return UNSAT or error, repair mechanisms receive only raw error strings or generic unsatisfiability statements, lacking semantic information about constraint conflicts. This causes iterative cycling (stagnation).
+
+    \item \textbf{No Cross-Problem Experience Transfer:} Each problem is solved independently. Successful translation patterns, error diagnoses, and repair strategies are discarded when switching to the next problem, leading to redundant exploration.
+
+    \item \textbf{Repair Scalability:} As problem difficulty increases (larger constraint systems, more conflicts), repair mechanisms become increasingly ineffective, approaching random performance.
+\end{enumerate}
+
+PRISM addresses these limitations through formally-verifiable paradigms and typed repair memory with mechanical stagnation/loop detection.
+
+\subsection{Agent Memory and Experience Accumulation}
+
+Memory-augmented agents (Shinn et al., 2023; Zhao et al., 2024; Ouyang et al., 2025) accumulate experiences across tasks through trajectory comparison and heuristic extraction. Key works include:
+
+\textbf{IN-CONTEXT RL:} Develops methods for in-context learning from trajectories (Ouyang et al., 2025), enabling agents to adapt across tasks within a single conversation.
+
+\textbf{ExpeL:} (Zhao et al., 2024) proposes a framework for extracting task-level insights from successful trajectories, maintaining them in a list with UPVOTE/DOWNVOTE operations for relevance ranking.
+
+\textbf{ALUMI:} (Huang et al., 2024) studies memory quality in agent learning, observing that unverified memories accumulate errors over time.
+
+These methods have demonstrated effective cross-task transfer in web navigation, embodied reasoning, and software engineering. However, they face inherent limitations when applied to CSP reasoning:
+
+\begin{enumerate}
+    \item \textbf{Unverified Heuristics:} Memory units are natural language prose without formal correctness guarantees. An incorrect strategy is indistinguishable from a correct one at storage time; quality depends entirely on subjective LLM self-evaluation.
+
+    \item \textbf{Granularity Mismatch:} Existing frameworks operate at task-level granularity (high-level insights about entire problems), but CSP solving requires operation-level semantic patterns (when constraint types X, Y coexist with solver state property P, this inference is sound).
+
+    \item \textbf{Scalability of Heuristics:} Natural language insights become increasingly vague at scale; capturing complex multi-step patterns in prose requires longer descriptions, and similarity matching becomes less reliable.
+\end{enumerate}
+
+PRISM overcomes these by using Z3 verification as a \textit{quality oracle} for paradigms, enabling mechanical certification of experience without human annotation.
+
+\subsection{Formal Methods and Constraint Solving}
+
+Classical CSP solvers employ systematic search with constraint propagation (Dechter, 2003; Russell \& Norvig, 2021). Modern SMT solvers like Z3 (de Moura \& Bjørner, 2008) and CVC5 provide decidability procedures for logical theories, enabling verification of complex logical formulas.
+
+Recent work increasingly integrates formal methods with machine learning:
+
+\textbf{Theorem Proving + Learning:} Talmor et al.~(2019) use automated theorem provers (Prover9) to guide language model reasoning on logical problems. Sinha et al.~(2021) combine neural networks with formal verification for improved robustness.
+
+\textbf{Program Synthesis:} Ellis et al.~(2018) and others leverage SMT solvers as oracles for program synthesis, using solver feedback to guide neural model search.
+
+\textbf{Verifiable Machine Learning:} Work in certified robustness (Cohen et al., 2019; Carlini et al., 2019) uses formal verification to provide guarantees about learned models.
+
+PRISM's key innovation is leveraging SMT solvers not merely as problem solvers, but as \textit{quality verifiers} for learned heuristics (paradigms). This enables mechanical certification of solving strategies before they are stored, a capability absent in prior work.
+
+\subsection{Unsupervised Knowledge Extraction and Abstraction}
+
+Extracting generalizable knowledge from raw data without supervision is a long-studied problem. Approaches include:
+
+\textbf{Clustering-based Learning:} Clustering trajectories or examples to identify prototypes is classical (k-means, hierarchical clustering). PRISM applies this to KDPs to group similar solving steps.
+
+\textbf{LLM-based Abstraction:} Recent work uses LLMs to abstractly summarize trajectories (Huang et al., 2024; Ouyang et al., 2025), treating LLMs as domain experts. PRISM similarly uses LLMs for paradigm synthesis but adds the filtering step of formal verification.
+
+\textbf{Automated Feature Engineering:} Extracting meaningful features from raw data is crucial for downstream learning. PRISM designs constraint-type histograms and domain-size distributions as interpretable features for KDP clustering.
+
+These techniques, when combined with formal verification, enable PRISM's unsupervised paradigm distillation without human annotation.
+
+\subsection{Summary: PRISM's Novelty}
+
+PRISM uniquely combines:
+\begin{enumerate}
+    \item \textbf{Formal Grounding:} Paradigms are Z3-verifiable five-tuples, not natural language heuristics.
+    \item \textbf{Operation-Level Granularity:} Captures inference-level patterns, not task-level insights.
+    \item \textbf{Typed Repair Memory:} UNSAT cores enable precise causal analysis; Jaccard/cosine similarity enable mechanical stagnation/loop detection.
+    \item \textbf{Unsupervised Distillation:} End-to-end pipeline from trajectories to verified paradigms without human annotation.
+\end{enumerate}
+
+These elements address specific gaps in existing neural-symbolic and memory-based approaches, enabling more reliable experience accumulation for constraint reasoning.

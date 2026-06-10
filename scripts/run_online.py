@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import logging
 import sys
 from pathlib import Path
@@ -44,6 +45,7 @@ from prism.evaluation.metrics import (
     solve_accuracy,
 )
 from prism.online.guided_solver import GuidedSolver
+from prism.paradigm_library.error_library import ErrorParadigmLibrary
 from prism.paradigm_library.library import ParadigmLibrary
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -55,15 +57,40 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--model", default=None)
     p.add_argument("--library", default="paradigm_store/prism.db")
+    p.add_argument("--error-library", default=None)
     p.add_argument("--data-dir", default="allenai/ZebraLogicBench")
     p.add_argument("--data-source", default="auto", choices=["auto", "hf", "local"])
     p.add_argument("--data-subset", default="grid_mode")
     p.add_argument("--sizes", default=None, help="Comma-separated sizes, e.g. '4x5,5x5'")
     p.add_argument("--max-repair", type=int, default=5)
     p.add_argument("--output", default="results/online_results.csv")
+    p.add_argument(
+        "--trace-output",
+        default=None,
+        help="Optional JSONL path for per-puzzle full step traces.",
+    )
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--no-paradigm", action="store_true")
     p.add_argument("--no-memory", action="store_true")
+    p.add_argument(
+        "--schema-hint-mode",
+        default="puzzle",
+        choices=["puzzle", "none", "solution_keys"],
+        help=(
+            "Variable schema guidance source. 'puzzle' uses only visible puzzle "
+            "text/metadata; 'solution_keys' is an oracle upper-bound diagnostic."
+        ),
+    )
+    p.add_argument(
+        "--translation-normalize",
+        default="none",
+        choices=["none", "initial", "always"],
+        help=(
+            "Optional second-pass LLM cleanup of translated constraints before "
+            "Z3 solving. 'initial' normalizes the first translation; 'always' "
+            "also normalizes validation/retranslation output."
+        ),
+    )
     return p.parse_args(argv)
 
 
@@ -101,6 +128,21 @@ def main() -> None:
         logger.warning("Library file %s not found — using empty library.", args.library)
 
     # ── Build solver ──────────────────────────────────────────────────
+    error_library = None
+    if args.error_library:
+        if Path(args.error_library).exists():
+            error_library = ErrorParadigmLibrary(args.error_library)
+            logger.info(
+                "Error library loaded from %s: %s",
+                args.error_library,
+                error_library.stats(),
+            )
+        else:
+            logger.warning(
+                "Error library file %s not found; negative guidance disabled.",
+                args.error_library,
+            )
+
     llm = LLMClient(model_name=model_name, temperature=0.0)
     guided_solver = GuidedSolver(
         llm_client=llm,
@@ -109,6 +151,9 @@ def main() -> None:
         layer2_enabled=(not args.no_paradigm),
         enable_paradigm=(not args.no_paradigm),
         enable_memory=(not args.no_memory),
+        error_library=error_library,
+        schema_hint_mode=args.schema_hint_mode,
+        translation_normalize=args.translation_normalize,
     )
 
     # ── Evaluate ──────────────────────────────────────────────────────
@@ -134,16 +179,53 @@ def main() -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     _save_csv(results, str(output_path))
     logger.info("Results saved to %s", output_path)
+    if args.trace_output:
+        trace_path = Path(args.trace_output)
+        trace_path.parent.mkdir(parents=True, exist_ok=True)
+        _save_trace_jsonl(results, str(trace_path))
+        logger.info("Trace JSONL saved to %s", trace_path)
 
 
 def _save_csv(results: list[dict], path: str) -> None:
     if not results:
         return
-    keys = ["puzzle_id", "domain", "solved", "llm_calls", "repair_rounds"]
+    keys = [
+        "puzzle_id",
+        "domain",
+        "solved",
+        "llm_calls",
+        "repair_rounds",
+        "initial_solver_result",
+        "initial_z3_result",
+        "final_z3_result",
+        "memory_eligible",
+        "translation_failed",
+        "repair_success",
+        "validated_repair_success",
+        "repair_rejected",
+        "invalid_model_retranslate",
+        "misaligned_model_retranslate",
+        "invalid_model",
+        "model_schema_aligned",
+        "model_key_set_aligned",
+        "misaligned_model",
+        "key_mismatch",
+        "positive_guidance_triggered",
+        "error_guidance_triggered",
+        "ground_truth",
+        "predicted",
+    ]
     with open(path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=keys, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(results)
+
+
+def _save_trace_jsonl(results: list[dict], path: str) -> None:
+    with open(path, "w", encoding="utf-8") as fh:
+        for row in results:
+            fh.write(json.dumps(row, ensure_ascii=False, default=str))
+            fh.write("\n")
 
 
 if __name__ == "__main__":

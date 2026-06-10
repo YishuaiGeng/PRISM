@@ -1,0 +1,49 @@
+% ============================================================================
+% APPENDIX D: QUALITATIVE EXAMPLES
+% ============================================================================
+
+\section{Appendix D: Case Studies}
+
+\subsection{Case Study 1: Successful Paradigm Extraction}
+
+\textbf{Scenario:} 5$\times$5 Logical Grid Puzzle with "binding" and "adjacency" constraints.
+
+\textbf{KDP Cluster:} 12 KDPs sharing constraint signature $\{\text{direct\_binding}, \text{adjacent\_left}\}$, step type "CHAIN\_PROPAGATION".
+
+\textbf{Representative Steps:}
+\begin{itemize}
+    \item Step A: "If house A has color X, then person B cannot have color X"
+    \item Step B: "House 1 has nationality Norwegian; therefore all other houses cannot be Norwegian"
+    \item Step C: "The blue house and the person who drinks wine are adjacent"
+\end{itemize}
+
+\textbf{LLM Abstraction Output:}
+\begin{itemize}
+    \item \textbf{Paradigm:} P1 (Direct Assignment Propagation)
+    \item \textbf{Trigger:} constraint type = \texttt{direct\_binding}; state feature = domain size $\geq 2$ for target.
+    \item \textbf{Operation:} When entity X has unique property V, remove V from all other entities in the category.
+    \item \textbf{Template:} \texttt{domain[X] := \{V\}; for all Y != X: domain[Y] -= V}.
+    \item \textbf{Precondition:} \texttt{Exists c in C: implies(entity\_X, property\_V)}.
+    \item \textbf{Postcondition:} \texttt{entity\_X == property\_V} and all other entities do not take \texttt{property\_V}.
+    \item \textbf{Scope:} 3$\times$5 to 6$\times$6 logical grids, all difficulty levels.
+\end{itemize}
+
+\textbf{Verification Results:}
+- Soundness: 0.94 (47/50 trials successful)
+- Effect: 0.86 (43/50 trials reduced domains)
+- Precision: 0.85 (17/20 negative cases correctly UNSAT)
+- \textbf{Status}: Accepted into Paradigm Library
+
+\subsection{Case Study 2: Repair Escalation}
+
+\textbf{Scenario:} 6$\times$6 puzzle where initial translation generates over-constrained formula.
+
+\textbf{Repair Sequence:}
+\begin{enumerate}
+    \item \textbf{L1 Attempt} (Switch Target): Modify different constraint from UNSAT core $\to$ still UNSAT.
+    \item \textbf{L2 Attempt} (Switch Type): Change from ``relax-bound'' to ``split-constraint'' $\to$ still UNSAT.
+    \item \textbf{Loop Detection Triggers}: Cosine similarity of recent repairs = 0.92 ($> 0.90$ threshold).
+    \item \textbf{L3 Execution} (Revert + Retry): Restore solver to SAT checkpoint; explore alternative inference path $\to$ \textbf{SAT}.
+\end{enumerate}
+
+\textbf{Analysis:} Without adaptive escalation, the system would exhaust repair budget (8 rounds) without solution. L3 strategy enables backtracking to search alternative branches.
