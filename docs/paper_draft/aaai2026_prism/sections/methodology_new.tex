@@ -1,0 +1,226 @@
+% ============================================================================
+% METHODOLOGY - REVISED
+% ============================================================================
+
+\section{Methodology}
+
+\subsection{Problem Definition and Core Concepts}
+
+A Constraint Satisfaction Problem is formally defined as $\mathcal{P} = (\mathbf{X}, \mathbf{D}, \mathbf{C})$ where $\mathbf{X} = \{x_1, \ldots, x_n\}$ is a set of variables, $\mathbf{D} = \{D_1, \ldots, D_n\}$ specifies finite domains ($x_i \in D_i$), and $\mathbf{C} = \{c_1, \ldots, c_m\}$ is a set of constraints. A solution is a complete assignment $\theta: \mathbf{X} \to \bigcup_i D_i$ such that $\theta(x_i) \in D_i$ and all constraints are satisfied. We focus on logical grid puzzles (e.g., Zebra puzzles) where variables represent entity-attribute pairs and constraints are expressed in natural language.
+
+\textbf{Solving Trajectory:} For puzzle instance $\mathcal{P}$, a solving trajectory is a temporal sequence of reasoning states and actions:
+\[
+\mathcal{T} = \langle (S_0, a_1, S_1), (S_1, a_2, S_2), \ldots, (S_{T-1}, a_T, S_T) \rangle
+\]
+where $S_t = (C_t, \delta_t)$ is the solver state at step $t$, with $C_t \subseteq \mathbf{C}$ being the current set of formalized constraints and $\delta_t: \mathbf{X} \to 2^{\bigcup_i D_i}$ being domain assignments (each variable maps to a set of possible values). Action $a_t$ is an LLM-generated inference: a natural language statement plus its Z3 formalization. A trajectory is \textit{successful} if the final state $S_T$ satisfies all constraints (Z3 returns SAT) and the variable assignment matches ground truth.
+
+\textbf{Solving Paradigm:} We define a solving paradigm as a formally verifiable five-tuple:
+\[
+P = (\mathcal{Q}, \mathcal{O}, \phi_{\text{pre}}, \phi_{\text{post}}, \mathcal{S})
+\]
+\begin{itemize}
+    \item $\mathcal{Q}$: trigger conditions specifying constraint types and solver state properties that activate the paradigm.
+    \item $\mathcal{O}$: inference operation, given as a parameterized template (e.g., $\texttt{position}(X) = k + d$).
+    \item $\phi_{\text{pre}}$: Z3-formalized precondition assertion describing properties the constraint set must satisfy before applying the paradigm.
+    \item $\phi_{\text{post}}$: Z3-formalized postcondition assertion describing what the paradigm's operation should establish.
+    \item $\mathcal{S}$: scope documentation indicating applicable puzzle types and scales where the paradigm has been verified.
+\end{itemize}
+
+Critically, $\phi_{\text{pre}}$ and $\phi_{\text{post}}$ are formal logical statements mechanically verifiable by Z3. This distinguishes PRISM from prior memory-based methods that store unverified natural language heuristics.
+
+\subsection{PRISM Architecture Overview}
+
+PRISM operates via two decoupled stages: offline paradigm distillation and online guided reasoning with adaptive repair.
+
+\textbf{Offline Stage:} Given $N$ training puzzles with ground truth solutions, execute the following pipeline (§3.2):
+\begin{enumerate}
+    \item Trajectory Collection: Run LLM+Z3 system on training puzzles to gather successful solving trajectories.
+    \item KDP Identification: Locate Key Decision Points—steps with significant domain reductions or non-trivial inference types.
+    \item Cross-Trajectory Clustering: Group similar KDPs using constraint-type features and complete-linkage agglomerative clustering.
+    \item Paradigm Abstraction: For each cluster, synthesize a reusable paradigm specification via LLM.
+    \item Z3 Triple Verification: Test each paradigm candidate for soundness, effect (non-vacuousness), and trigger precision. Only candidates passing all three checks are admitted.
+    \item Library Ingestion: Persist verified paradigms in the Paradigm Library $\mathcal{L}$.
+\end{enumerate}
+Result: ~35 high-confidence paradigms extracted from ~1500 training trajectories.
+
+\textbf{Online Stage:} For each new puzzle (§3.3--3.4):
+\begin{enumerate}
+    \item Initial Translation: LLM translates natural language constraints to Z3 formulas.
+    \item State-Driven Paradigm Retrieval: Extract constraint-type signature from current solver state; retrieve paradigms via Layer-1 (type matching) and Layer-2 (LLM semantic validation).
+    \item Consistency Pre-Check: Verify each candidate paradigm's operation is satisfiable under current constraints before injection.
+    \item Hint Injection: Pass verified paradigms as structured prompts to guide LLM inference.
+    \item Step Verification: Z3 verifies each LLM-generated inference; returns SAT/UNSAT/ERROR.
+    \item Repair Loop: If UNSAT, extract the UNSAT core (minimal contradiction-causing constraint subset), record repair attempt in Repair Trajectory Memory, and detect stagnation/loops.
+    \item Strategy Escalation: Trigger four-level escalation if stagnation/loop detected.
+    \item Write-Back: Upon success, integrate effective repairs into $\mathcal{L}$.
+\end{enumerate}
+
+\subsection{Offline Stage: Paradigm Distillation}
+
+\subsubsection{Trajectory Collection}
+
+Given $N = 600$ training puzzles across difficulty levels (easy/medium/hard), we execute LLM+Z3 solving with generation temperature $T = 0.7$ to induce trajectory diversity. We run $r = 3$ independent generations per puzzle. We retain only successful trajectories where Z3 returns SAT with variable assignments matching ground truth. This yields approximately 1500 successful trajectories.
+
+Each trajectory step $a_t$ carries metadata:
+\begin{itemize}
+    \item Z3 verification outcome (SAT/UNSAT/ERROR)
+    \item Domain change record $\Delta_t$ (variables with reduced domains)
+    \item Constraint-type signature of current solver state
+    \item Preliminary step-type classification
+\end{itemize}
+
+\subsubsection{Key Decision Point Identification}
+
+A step $(S_{t-1}, a_t, S_t)$ in trajectory $\mathcal{T}$ qualifies as a Key Decision Point if it satisfies at least one of:
+
+\textbf{Condition A (Significant Domain Reduction):} $\exists x \in \Delta_t : |\delta_t(x)| \leq 1$. That is, at least one variable's domain is uniquely determined in this step.
+
+\textbf{Condition B (Non-Trivial Inference Type):} The step is classified as CHAIN\_PROPAGATION (transitive reasoning) or CONTRADICTION\_ELIMINATION (explicit elimination of infeasible assignments).
+
+Step types are assigned via lightweight rule-based classification applied to the natural language action text. Across 1500 trajectories, this process extracts approximately 6000 KDPs.
+
+\subsubsection{Cross-Trajectory Clustering and Paradigm Abstraction}
+
+\textbf{Feature Representation:} Each KDP is represented as a fixed-dimensional vector:
+\[
+\mathbf{f}(\text{kdp}) = [\mathbf{h}_{\text{ct}}, \mathbf{b}_{\text{dom}}, \mathbf{e}_\tau, n_{\text{var}}, n_{\text{con}}]
+\]
+where:
+\begin{itemize}
+    \item $\mathbf{h}_{\text{ct}} \in \mathbb{R}^{|\mathcal{T}_c|}$ is a normalized histogram of constraint types in the current solver state. $\mathcal{T}_c$ is a vocabulary of 10 constraint types (direct assignment, adjacency, relative position, exclusion, binding, etc.).
+    \item $\mathbf{b}_{\text{dom}} \in \mathbb{R}^4$ is a domain-size distribution histogram (counts variables with domain size 1, 2, 3--5, $\geq 6$).
+    \item $\mathbf{e}_\tau$ is a one-hot encoding of the KDP's step type.
+    \item $n_{\text{var}}, n_{\text{con}}$ are normalized problem scale metrics (variable and constraint counts, divided by maximum observed values).
+\end{itemize}
+
+\textbf{Clustering:} We apply complete-linkage agglomerative clustering using cosine distance. Clusters are formed with a distance threshold $\theta = 0.25$ (determined via grid search on a development set). Clusters with fewer than $m_{\min} = 5$ members are discarded to ensure statistical reliability.
+
+\textbf{Paradigm Abstraction:} For each cluster $C_k$ with at least 5 members, we uniformly sample up to 10 representative KDPs. For each KDP, we format: (1) the solver state (current constraints, domain assignments), (2) the reasoning text from the original trajectory, (3) domain change indicators. We then prompt an LLM:
+
+\begin{quote}
+\textit{Given the following similar reasoning steps from successful solving trajectories [formatted examples], extract a general solving paradigm in JSON format with fields: trigger (constraint types and state features), operation (parameterized inference template), precondition\_z3 (Z3-formalized assumptions), postcondition\_z3 (Z3-formalized claims), scope (applicability).}
+\end{quote}
+
+The LLM generates a paradigm candidate $\hat{P}_k$, which enters the verification stage. Up to 2 retries per cluster are permitted to account for LLM variability.
+
+\subsubsection{Z3 Triple Verification}
+
+Each candidate paradigm $\hat{P}_k$ undergoes three independent verification checks. \textit{Any failure results in rejection.}
+
+\textbf{(1) Soundness:} The paradigm's operation must be satisfiable under its precondition.
+\begin{itemize}
+    \item Sample 50 random puzzle solver states satisfying $\hat{P}_k$'s trigger conditions.
+    \item For each state $i$, instantiate $\hat{P}_k$'s operation template with the current bindings and test: $\text{Z3-SAT}(C_i \cup \{\text{op}(\hat{P}_k)\})$.
+    \item Compute: $\text{soundness}(\hat{P}_k) = \frac{1}{50}\sum_{i=1}^{50} \mathbf{1}[\text{Z3-SAT}(...)]$.
+    \item Require: $\text{soundness}(\hat{P}_k) \geq 0.90$.
+\end{itemize}
+
+\textbf{(2) Effect:} The paradigm's operation must genuinely constrain the solution space—it cannot be vacuous or already implied by the precondition.
+\begin{itemize}
+    \item On the 50 states from Soundness check, verify that applying the operation causes net domain reduction: count variables with reduced domains.
+    \item Compute: $\text{effect}(\hat{P}_k) = \frac{\text{states with domain reduction}}{50}$.
+    \item Require: $\text{effect}(\hat{P}_k) \geq 0.80$.
+\end{itemize}
+
+\textbf{(3) Trigger Precision:} The paradigm's trigger conditions must be selective—they should not fire on inappropriate states.
+\begin{itemize}
+    \item Sample 20 random solver states that do \textit{not} satisfy $\hat{P}_k$'s trigger conditions.
+    \item Test: $\text{Z3-UNSAT}(C_i \cup \{\text{op}(\hat{P}_k)\})$ for each state (the operation should be unsatisfiable).
+    \item Compute: $\text{precision}(\hat{P}_k) = \frac{1}{20}\sum_{i=1}^{20} \mathbf{1}[\text{Z3-UNSAT}(...)]$.
+    \item Require: $\text{precision}(\hat{P}_k) \geq 0.80$.
+\end{itemize}
+
+Paradigms passing all three checks are assigned a confidence score and persisted in the SQLite-backed Paradigm Library $\mathcal{L}$. Across 600 training puzzles, the offline stage yields approximately 35 verified paradigms, representing a 40:1 compression ratio.
+
+\subsection{Online Stage: Paradigm-Guided Reasoning and Adaptive Repair}
+
+\subsubsection{Initial Translation and Constraint Formalization}
+
+Given a new puzzle $\mathcal{P}^*$ in natural language, the LLM executes an initial translation to convert constraints into Z3 formulas. The translator outputs a set of Z3 constraints $C^* = \{c_1, \ldots, c_m\}$ and initializes a solver state $S_0 = (C_0, \delta_0)$ where $\delta_0$ assigns each variable its full domain.
+
+\subsubsection{Two-Layer Paradigm Retrieval}
+
+At each reasoning step $t$, we extract the current constraint-type signature $\sigma(S_t) = \text{sorted}(\{type(c) : c \in C_t\})$ and retrieve relevant paradigms using two filtering layers:
+
+\textbf{Layer 1 (Type Matching):} Return all paradigms whose trigger constraint-type requirements are subsumed by the current signature:
+\[
+\mathcal{L}_1(S_t) = \{P \in \mathcal{L} : \mathcal{Q}_P.\text{required\_types} \subseteq \sigma(S_t) \land \text{conf}(P) \geq \tau_{\min}\}
+\]
+This layer executes in $O(|\mathcal{L}|)$ time and typically reduces candidates from ~35 to 3--5.
+
+\textbf{Layer 2 (LLM Semantic Judgment):} If $|\mathcal{L}_1(S_t)| \geq 2$, construct a prompt asking the LLM to judge which paradigms have trigger conditions genuinely satisfied by the current state:
+
+\begin{quote}
+\textit{Given current constraints and solver state [formatted description], which of these paradigm triggers apply? (y/n for each)}
+\end{quote}
+
+This layer is invoked at most once per step and introduces at most one additional LLM call. Return the top $k = 3$ paradigms ordered by confidence, denoted $\mathcal{L}_2(S_t)$.
+
+\subsubsection{Consistency Pre-Check and Hint Injection}
+
+Before injecting paradigms as hints, perform a Z3 consistency check for each candidate $P \in \mathcal{L}_2(S_t)$:
+\[
+\text{consistent}(P, S_t) := \text{Z3-SAT}(C_t \cup \{\text{op}(P, \cdot)\})
+\]
+
+If the paradigm's operation is unsatisfiable under current constraints, remove it from the injection set. This acts as a second safety barrier, ensuring suggested paradigms are logically feasible.
+
+The final injection set $\mathcal{L}_{\text{inject}}(S_t)$ consists of paradigms passing consistency check. Inject these as structured hints in the LLM prompt:
+
+\begin{quote}
+\textit{Current constraint state: [constraints]. Suggested solving patterns: (1) [Paradigm 1 trigger, operation, and rationale]. (2) [Paradigm 2...]}
+\end{quote}
+
+\subsubsection{Step Verification and UNSAT Core Extraction}
+
+The LLM generates a proposed reasoning step (natural language + Z3 formalization). Z3 verifies the step:
+\begin{itemize}
+    \item \textbf{SAT:} Accept the step, update solver state $S_{t+1}$, and continue.
+    \item \textbf{UNSAT:} Extract the UNSAT core—the minimal subset of constraints $U_t \subseteq C_t$ such that $U_t \cup \{\text{proposed\_operation}\}$ is unsatisfiable. Record the failure for repair analysis.
+    \item \textbf{ERROR:} Parse failure message, attempt lower-level correction.
+\end{itemize}
+
+\subsubsection{Repair Trajectory Memory and Adaptive Strategy Escalation}
+
+When step verification fails (UNSAT), record the event in Repair Trajectory Memory:
+\[
+R_t = (\text{error\_type}, U_t, \text{repair\_action}, \text{outcome})
+\]
+
+The error type is inferred from UNSAT core analysis (over-constrained translation, missing binding, contradiction in domain assignments, etc.). The memory maintains a circular buffer of recent repair attempts.
+
+\textbf{Stagnation Detection:} Compute Jaccard similarity between consecutive UNSAT cores:
+\[
+J_t = \frac{|U_t \cap U_{t-1}|}{|U_t \cup U_{t-1}|}
+\]
+
+If $J_t \geq \tau_{\text{stag}} = 0.75$ for three consecutive repair rounds, stagnation is detected (the system is repeatedly hitting the same constraints).
+
+\textbf{Loop Detection:} Embed each repair action $r_t$ into a feature vector (repair type, target constraints, magnitude of change). Compute cosine similarity between recent actions:
+\[
+\cos_t = \frac{\mathbf{r}_t \cdot \mathbf{r}_{t-k}}{|\mathbf{r}_t| |\mathbf{r}_{t-k}|}
+\]
+
+If $\cos_t \geq \tau_{\text{loop}} = 0.90$ for repeated repair attempts with different indices, loop is detected (same action repeated).
+
+\textbf{Four-Level Strategy Escalation:}
+\begin{enumerate}
+    \item \textbf{L1 (Switch Repair Target):} If stagnation detected, switch to repairing a different constraint from the UNSAT core.
+    \item \textbf{L2 (Switch Repair Type):} If L1 fails, switch the type of repair (e.g., from retraction to constraint relaxation).
+    \item \textbf{L3 (Revert to SAT Checkpoint):} If L2 fails, revert to the most recent solver state that returned SAT and take a different inference path.
+    \item \textbf{L4 (Full Retranslation):} If all above fail, discard current constraint formalization and translate the entire puzzle from scratch with modified prompting.
+\end{enumerate}
+
+Each level triggers after at most $K = 8$ repair rounds at the previous level.
+
+\subsubsection{Write-Back and Library Augmentation}
+
+Upon successful solving of puzzle $\mathcal{P}^*$, extract effective repair patterns from the trajectory and write them back to $\mathcal{L}$:
+\begin{itemize}
+    \item For each repair action that led to progress (visible domain reduction or movement toward solution), extract its precondition and postcondition.
+    \item If the pattern is novel (not matched by existing paradigm triggers), create a candidate paradigm.
+    \item Apply Z3 triple verification (accelerated: lower sampling $n = 20$ to reduce overhead).
+    \item If verified, append to $\mathcal{L}$ and update confidence scores.
+\end{itemize}
+
+This enables paradigm libraries to grow and adapt over time.

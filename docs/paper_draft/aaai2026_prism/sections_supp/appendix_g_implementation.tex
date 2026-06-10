@@ -1,0 +1,49 @@
+% ============================================================================
+% APPENDIX G: IMPLEMENTATION NOTES
+% ============================================================================
+
+\section{Appendix G: Implementation and Reproducibility}
+
+\subsection{Code Availability}
+
+All code, trained paradigm libraries, and experimental logs are available at: \texttt{[GitHub URL to be filled]}
+
+\subsection{Reproducibility Requirements}
+
+\begin{itemize}
+    \item \textbf{Python Version}: 3.10+
+    \item \textbf{Key Dependencies}:
+        \begin{itemize}
+            \item z3-solver >= 4.12.0
+            \item sentence-transformers (all-MiniLM-L6-v2)
+            \item scikit-learn (agglomerative clustering)
+            \item OpenAI API >= 0.27 or equivalent
+        \end{itemize}
+    \item \textbf{Computational Requirements}:
+        \begin{itemize}
+            \item Offline phase: ~48 GPU-hours (for LLM abstraction and verification)
+            \item Online evaluation: ~100 CPU-hours (batch evaluation on test set)
+        \end{itemize}
+    \item \textbf{Random Seeds}: All experiments use seed=42 for reproducibility.
+\end{itemize}
+
+\subsection{Configuration Files}
+
+Key configuration parameters (stored in `config/default.yaml`):
+\begin{verbatim}
+clustering:
+  theta: 0.25
+  min_support: 5
+verification:
+  soundness_threshold: 0.90
+  effect_threshold: 0.80
+  precision_threshold: 0.80
+repair:
+  stagnation_jaccard: 0.75
+  loop_cosine: 0.90
+  max_repair_rounds: 8
+retrieval:
+  layer2_enabled: true
+  paradigm_top_k: 3
+  min_confidence: 0.50
+\end{verbatim}

@@ -1,0 +1,57 @@
+% ============================================================================
+% APPENDIX B: PROOF SKETCHES
+% ============================================================================
+
+\section{Appendix B: Theoretical Foundations}
+
+\subsection{Soundness of Paradigm Verification}
+
+\textbf{Claim:} If paradigm $P$ passes the triple verification tests (Soundness $\geq \tau_s$, Effect, Precision $\geq \tau_p$), then applying $P$ to any solver state satisfying trigger conditions $\mathcal{Q}_P$ preserves Z3 satisfiability with high probability.
+
+\textbf{Proof Sketch:}
+The Soundness test directly verifies that $\text{Z3-SAT}(C_i \cup \{\text{op}(P)\})$ holds for representative constraint sets. If the paradigm passes with score $\geq \tau_s = 0.90$, it is guaranteed satisfiable in at least 90\% of sampled trigger-matching scenarios.
+
+The Effect test provides two guarantees: (a) \emph{non-contradiction} — $\phi_{\text{pre}} \wedge \text{op}(P)$ is SAT, so the operation is consistent with the pre-condition; (b) \emph{non-vacuousness} — $\phi_{\text{pre}} \wedge \neg\,\text{op}(P)$ is SAT, certifying that there exists a state where the pre-condition holds but $\text{op}(P)$ does not. Equivalently, $\phi_{\text{pre}}$ does not logically entail $\text{op}(P)$, and the operation contributes information beyond what the pre-condition already forces. A paradigm that fails non-vacuousness is trivially true under the pre-condition and provides no reasoning value.
+
+The Precision test estimates trigger selectivity against a representative pool whose entries are annotated with canonical constraint kinds (\texttt{position\_arithmetic}, \texttt{attribute\_binding}, \texttt{distinct}, etc.).  Matching is performed by set-intersection between the paradigm's declared kinds and the kinds present in each sampled subset — a structured signal that avoids spurious lexical co-occurrence.  A paradigm that fires on most pool samples would produce unhelpful guidance across unrelated solver states.
+
+\subsection{Correctness of UNSAT Core Attribution}
+
+\textbf{Claim:} The two-level causal attribution rule correctly distinguishes \textsc{New\_Assertion} (current action caused contradiction) from \textsc{Legacy\_Error} (contradiction predates current action), and the secondary classification further refines \textsc{New\_Assertion} into a structured \textit{ErrorType}.
+
+\textbf{Proof Sketch (Primary Attribution):}
+Let $a_t$ be the constraint string produced by the current repair and $U_t$ be the UNSAT core extracted after applying $a_t$.  By the definition of UNSAT core, $U_t$ is a minimal subset of constraints whose conjunction is unsatisfiable.
+
+\begin{itemize}
+    \item If $a_t \in U_t$: $a_t$ is \emph{necessary} for unsatisfiability. Removing $a_t$ from the constraint set would restore satisfiability (by minimality of $U_t$). Hence $a_t$ directly caused the contradiction: \textsc{New\_Assertion}.
+    \item If $a_t \notin U_t$: $a_t$ is not required for the unsatisfiable subset. Unsatisfiability exists entirely within the prior constraint set, and $a_t$ merely exposed a latent contradiction: \textsc{Legacy\_Error}.
+\end{itemize}
+
+This primary distinction is mechanically sound: Z3's \texttt{unsat\_core()} guarantees that each returned constraint is necessary for unsatisfiability (i.e., removing it yields a satisfiable set).
+
+\textbf{Secondary Classification:}
+When primary attribution yields \textsc{New\_Assertion}, a structural pass over the Z3 AST of $a_t$ further distinguishes:
+\begin{itemize}
+    \item \textbf{SyntaxError} — $a_t$ fails Z3 parsing (lexical or grammatical defect).
+    \item \textbf{ScopeError} — the parsed expression of $a_t$ references an identifier outside the declared-variable set, indicating a binding/scoping issue introduced by the LLM formalisation.
+    \item \textbf{SemanticFlip} — the AST of $a_t$ contains a pair of comparison atoms over the same operands with contradictory operators (e.g.\ $x \geq k$ and $x < k$). The walk tracks polarity through \texttt{Not(...)} so that syntactically negated forms such as \texttt{Not(x > 0)} are normalised to \texttt{x <= 0} before atom comparison.
+    \item \textbf{OverConstraint} — default case: the new assertion legally tightens the domain beyond satisfiability.
+\end{itemize}
+The AST-based secondary pass replaces an earlier substring-heuristic implementation; it is robust to operator aliasing and double-negation patterns that would otherwise yield mis-classification.
+The \textit{ErrorType} label routes the next repair to the appropriate fix class, enabling semantically-targeted rather than random strategy selection.
+
+\subsection{Termination of the Online Phase}
+
+\textbf{Claim:} For every puzzle, the online phase invokes the LLM at most $R + 2$ times, where $R$ is the maximum number of repair rounds (\texttt{max\_repair\_rounds}, default $5$).
+
+\textbf{Proof sketch:} The online procedure consists of three classes of LLM invocations: an initial translation, repair-round inferences, and a single optional retranslation. We bound each in turn.
+
+\begin{enumerate}
+    \item \emph{Initial translation.} Invoked exactly once at puzzle entry. Contribution: $1$.
+    \item \emph{Repair rounds.} Each iteration of the outer repair loop runs at most one LLM call (the inference / repair generation). The loop exits when (a) Z3 returns SAT, (b) the round counter reaches $R$, or (c) escalation to L4 triggers. The counter is monotonically increasing and bounded, so the number of repair-round LLM calls is at most $R$.
+    \item \emph{L4 Retranslation.} A guard variable \texttt{l4\_used} is set on the first L4 trigger and any subsequent L4 request is suppressed (the puzzle is marked unsolved instead). Therefore L4 contributes at most $1$ additional LLM call.
+\end{enumerate}
+
+Summing the three classes yields the bound $1 + R + 1 = R + 2$. The escalation levels L1, L2, L3 modify the \emph{prompt} of the next repair-round call but do not themselves add new LLM calls; L3 in particular only manipulates the local solver state by popping from the checkpoint stack. Hence the per-puzzle LLM-call budget is bounded, and the online phase terminates in finite time.\hfill$\square$
+
+\textbf{Remarks.} The bound is tight: a puzzle that exhausts all $R$ repair rounds, then triggers L4 once, then fails, achieves exactly $R + 2$ LLM calls. The proof also implies that PRISM's worst-case cost is determined by a single configurable parameter $R$, simplifying budget planning for downstream deployment.
