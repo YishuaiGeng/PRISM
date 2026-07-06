@@ -10,7 +10,7 @@ thresholds:
   kdp_domain_drop: 2              # Condition A in §3.3.2
   kdp_info_gain_bits: 1.0         # Condition C in §3.3.2
   cluster_distance: 0.25          # agglomerative clustering threshold (§3.3.3)
-  cluster_min_size: 5             # minimum members per cluster (§3.3.3)
+  cluster_min_size: 2             # minimum members per cluster (§3.3.3)
   paradigm_soundness: 0.90        # τ_s in §3.3.4
   paradigm_precision_floor: 0.20  # τ_p: minimum non-firing rate; higher = more selective (§3.3.4)
   verification_trials: 50         # N_p in §3.3.4 (soundness + precision sampling)
