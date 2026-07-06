@@ -1,0 +1,73 @@
+[
+  {
+    "id": "P-001",
+    "name": "house_color_difference",
+    "operation": "Or(Int('house1_color') == Int('house2_color') - 1, Int('house1_color') == Int('house2_color') + 1)",
+    "pre_condition": "",
+    "scope": [
+      "inclusion",
+      "logical_implication"
+    ],
+    "trigger": {
+      "constraint_types": [
+        "inclusion",
+        "logical_implication"
+      ],
+      "domain_pattern": "Color assignments for adjacent houses"
+    },
+    "support_count": 7,
+    "source_cluster": 0,
+    "scores": {
+      "soundness": 1.0,
+      "effect": true,
+      "precision": 1.0,
+      "verify": 1.0
+    }
+  },
+  {
+    "id": "P-002",
+    "name": "house_nationality_difference",
+    "operation": "Int('house1_nationality') - Int('house2_nationality') == 1",
+    "pre_condition": "And(Int('house2_nationality') >= 1, Int('house2_nationality') <= 3)",
+    "scope": [
+      "logical_implication"
+    ],
+    "trigger": {
+      "constraint_types": [
+        "logical_implication"
+      ],
+      "domain_pattern": "Difference in nationality between two houses"
+    },
+    "support_count": 5,
+    "source_cluster": 1,
+    "scores": {
+      "soundness": 1.0,
+      "effect": true,
+      "precision": 1.0,
+      "verify": 1.0
+    }
+  },
+  {
+    "id": "P-003",
+    "name": "house_job_difference",
+    "operation": "Int('house1_job') != Int('house2_job')",
+    "pre_condition": "",
+    "scope": [
+      "inclusion"
+    ],
+    "trigger": {
+      "constraint_types": [
+        "inclusion"
+      ],
+      "domain_pattern": "Difference in job assignments between two houses"
+    },
+    "support_count": 2,
+    "source_cluster": 2,
+    "scores": {
+      "soundness": 1.0,
+      "effect": true,
+      "precision": 1.0,
+      "verify": 1.0
+    }
+  }
+]
