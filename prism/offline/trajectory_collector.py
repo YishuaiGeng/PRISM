@@ -27,6 +27,41 @@ _DEFAULT_MAX_REPAIR_ROUNDS: int = 5
 _DEFAULT_N_RUNS: int = 3
 
 
+def _compute_domain_sizes(solver: Z3SolverWrapper, n_houses: int) -> dict[str, int]:
+    """Count how many values in [1..n_houses] remain feasible for each variable.
+
+    For each Z3 Int variable mentioned in the current solver, probe how many
+    values in the puzzle house range are consistent with current constraints.
+    Uses one Z3 clone per variable × per candidate value — O(vars × n_houses)
+    solver calls, each very fast (milliseconds).
+
+    Args:
+        solver: The Z3SolverWrapper instance to analyze.
+        n_houses: The puzzle size (e.g. 3 for a 3x3 puzzle).
+
+    Returns:
+        A dict mapping variable name → count of feasible values in [1..n_houses].
+        Returns empty dict if n_houses <= 0 or no variables found.
+    """
+    if n_houses <= 0:
+        return {}
+    variables = solver.get_variables()
+    if not variables:
+        return {}
+    result: dict[str, int] = {}
+    for var in variables:
+        count = 0
+        for val in range(1, n_houses + 1):
+            probe = Z3SolverWrapper()
+            for c in solver.get_constraints():
+                probe.add_constraint(c)
+            probe.add_constraint(f"Int('{var}') == {val}")
+            if probe.check() == "SAT":
+                count += 1
+        result[var] = max(count, 1)  # floor at 1 to avoid log2(0) in KDP info-gain
+    return result
+
+
 class TrajectoryCollector:
     """Runs the Paper-1 LLM+Z3 pipeline and records solving trajectories.
 
@@ -155,12 +190,16 @@ class TrajectoryCollector:
 
         # ── Repair loop ────────────────────────────────────────────────
         current_constraints = list(constraints)
+        n_houses = self._puzzle_n_houses(puzzle)
         for iteration in range(1, self._max_rounds + 1):
             if solved:
                 break
 
             unsat_core = solver.get_unsat_core() if result == "UNSAT" else []
             calls_before = self._llm.call_count
+
+            # Capture domain sizes BEFORE this repair step
+            sizes_before = _compute_domain_sizes(solver, n_houses)
 
             repair_response = self._llm.repair(
                 constraints=current_constraints,
@@ -177,6 +216,7 @@ class TrajectoryCollector:
                 unsat_core=unsat_core,
                 z3_result="PENDING",
                 llm_call_count=calls_after,
+                domain_sizes_before=sizes_before,
             )
 
             if repair_str:
@@ -197,7 +237,13 @@ class TrajectoryCollector:
                     solver.add_constraint(c)
 
             result = solver.check()
-            step = step.model_copy(update={"z3_result": result})
+
+            # Capture domain sizes AFTER applying repair
+            sizes_after = _compute_domain_sizes(solver, n_houses)
+            step = step.model_copy(update={
+                "z3_result": result,
+                "domain_sizes_after": sizes_after,
+            })
             steps.append(step)
 
             if result == "SAT":
@@ -247,6 +293,21 @@ class TrajectoryCollector:
             if c in unsat_core:
                 return i
         return None
+
+    @staticmethod
+    def _puzzle_n_houses(puzzle: PuzzleInstance) -> int:
+        """Parse n_houses from puzzle.size string like '3x3' or '4x5'.
+
+        Args:
+            puzzle: The puzzle instance with a size string.
+
+        Returns:
+            The first dimension (number of houses), or 0 if parsing fails.
+        """
+        try:
+            return int(str(puzzle.size).lower().split("x", 1)[0])
+        except (TypeError, ValueError, IndexError):
+            return 0
 
     @staticmethod
     def _model_within_puzzle_domain(

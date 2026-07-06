@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 
 import pytest
 
+from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper
 from prism.online.repair_memory import RepairMemory
 from prism.paradigm_library.library import ParadigmLibrary
@@ -130,3 +131,42 @@ def make_paradigm(
         source_cluster=source_cluster,
         created_at=datetime.now(tz=timezone.utc),
     )
+
+
+# --------------------------------------------------------------------------- #
+# Mock LLM client for trajectory collection tests                              #
+# --------------------------------------------------------------------------- #
+
+
+class MockLLMClient(LLMClient):
+    """Mock LLM client for testing that returns safe, deterministic responses."""
+
+    def __init__(self) -> None:
+        """Initialize with empty call count and placeholder model."""
+        # Don't call parent __init__ to avoid needing real model config
+        self._call_count = 0
+        self.model = "mock-gpt-4"
+
+    def translate(self, *args, **kwargs) -> str:
+        """Return a valid mock translation that is satisfiable."""
+        self._call_count += 1
+        # Return basic domain constraints for a 3-house puzzle
+        return 'And(Int("color_Red") >= 1, Int("color_Red") <= 3, Int("color_Blue") >= 1, Int("color_Blue") <= 3, Int("color_Green") >= 1, Int("color_Green") <= 3, Distinct(Int("color_Red"), Int("color_Blue"), Int("color_Green")), Int("color_Red") == 1)'
+
+    def repair(self, *args, **kwargs) -> str:
+        """Return a simple repair that adds a Distinct constraint if not present."""
+        self._call_count += 1
+        # Just relax the constraint space by returning an empty repair (no-op)
+        # This ensures the puzzle eventually becomes solvable
+        return ""
+
+    def generate_repair_candidates(self, **kwargs) -> list[str]:
+        """Not used in these tests."""
+        self._call_count += 1
+        return []
+
+
+@pytest.fixture
+def mock_llm_client() -> MockLLMClient:
+    """Fresh MockLLMClient for each test."""
+    return MockLLMClient()

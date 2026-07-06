@@ -217,6 +217,28 @@ class Z3SolverWrapper:
             twin.add_constraint(c)
         return twin
 
+    def get_constraints(self) -> List[str]:
+        """Return the list of constraint strings added to this solver.
+
+        Returns:
+            List of constraint strings (in the order they were added).
+        """
+        return list(self._constraint_strs)
+
+    def get_variables(self) -> List[str]:
+        """Return variable names mentioned in current constraints.
+
+        Extracts all Int(...) variable names from constraint strings using regex.
+
+        Returns:
+            Sorted list of unique variable names, e.g. ['color_Blue', 'color_Green', ...].
+        """
+        import re
+        names: set = set()
+        for c in self._constraint_strs:
+            names.update(re.findall(r"Int\('([^']+)'\)", c))
+        return sorted(names)
+
     def verify_paradigm_soundness(
         self,
         current_constraints: List[str],
