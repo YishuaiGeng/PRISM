@@ -170,3 +170,42 @@ python scripts/run_online.py --data-dir data/hf/zebralogic/generated_3x_eval_dom
 | 实验结果 CSV | `results/` |
 | 本文档 | `docs/OFFLINE_PIPELINE_PROGRESS.md` |
 | 实验计划 | `docs/superpowers/plans/2026-07-06-offline-pipeline-repair.md` |
+
+---
+
+## 九、4x5/5x5 在线 smoke 对比（2026-07-07）
+
+### 评测设置
+
+- 数据集：`data/hf/zebralogic/generated_4x5_5x5_eval_domain_explicit_10.jsonl`
+- 规模：10 题（5 条 4x5 + 5 条 5x5）
+- 生成命令：
+
+```powershell
+python scripts/generate_zebra_jsonl.py --specs "5:4x5:medium,5:5x5:medium" --domain-explicit --seed 707 --output data/hf/zebralogic/generated_4x5_5x5_eval_domain_explicit_10.jsonl
+```
+
+- 在线设置：`GPT-4o-mini`，`--schema-hint-mode puzzle`，`--translation-normalize initial`，`--max-repair 3`
+- 正向库：`paradigm_store/prism_4x5x_v2.db`
+- 错误库：`paradigm_store/error_4x5x_v2.db`
+
+### 四组结果
+
+| 条件 | 结果文件 | Accuracy | 4x5 | 5x5 | Avg calls | positive_guidance | error_guidance |
+|---|---|---:|---:|---:|---:|---:|---:|
+| baseline（无范式、无记忆） | `results/generated_4x5_5x5_gpt4omini_baseline.csv` | 60% (6/10) | 80% | 40% | 2.30 | 0 | 0 |
+| positive only | `results/generated_4x5_5x5_gpt4omini_positive.csv` | 60% (6/10) | 60% | 60% | 2.10 | 0 | 0 |
+| error only | `results/generated_4x5_5x5_gpt4omini_error.csv` | 70% (7/10) | 80% | 60% | 2.30 | 0 | 0 |
+| positive + error | `results/generated_4x5_5x5_gpt4omini_positive_error.csv` | 60% (6/10) | 80% | 40% | 2.20 | 0 | 0 |
+
+汇总文件：
+
+```text
+results/generated_4x5_5x5_gpt4omini_4way_comparison.csv
+```
+
+### 解释
+
+这轮自然在线评测没有真正触发范式指导：`positive_guidance_triggered=0`，`error_guidance_triggered=0`。因此四组准确率差异主要来自多次 API 调用的输出波动，而不能解释为范式库带来的稳定收益。
+
+当前结论：4x5x 离线库已能被在线脚本加载，但自然在线 smoke 没有进入可验证的 memory/repair 触发路径。若要证明 4x5x 错误库的作用，下一步应跑 controlled repair benchmark 或构造 memory-eligible 子集，而不是只看自然在线总准确率。

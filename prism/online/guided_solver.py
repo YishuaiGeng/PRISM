@@ -65,13 +65,17 @@ def _find_clue_coverage_issues(
     issues: list[ClueCoverageIssue] = []
     expected_positions = _expected_direct_position_constraints(puzzle_text)
     expected_relations = _expected_relation_constraints(puzzle_text)
+    covered_positions: set[str] = set()
+    covered_relations: set[tuple[str, str, str]] = set()
 
     for constraint in constraints:
         parsed_position = _parse_direct_position_constraint(constraint)
         if parsed_position:
-            key, _ = parsed_position
+            key, house = parsed_position
             expected = expected_positions.get(key)
-            if expected and constraint.strip() != expected[0]:
+            if expected and house == _parse_direct_position_constraint(expected[0])[1]:
+                covered_positions.add(key)
+            elif expected:
                 issues.append(ClueCoverageIssue(
                     issue_type="wrong_direct_position",
                     clue_relation="direct_position",
@@ -86,16 +90,27 @@ def _find_clue_coverage_issues(
         if not parsed_relation:
             continue
         relation_kind, left_key, right_key = parsed_relation
-        clue_vars = {left_key, right_key}
         for expected in expected_relations:
             expected_kind, expected_left, expected_right, expected_constraint, source_clue = expected
-            if clue_vars != {expected_left, expected_right}:
-                continue
-            if (
-                relation_kind != expected_kind
-                or left_key != expected_left
-                or right_key != expected_right
+            if not _same_relation_variables(
+                relation_kind,
+                left_key,
+                right_key,
+                expected_kind,
+                expected_left,
+                expected_right,
             ):
+                continue
+            if _relation_matches_expected(
+                relation_kind,
+                left_key,
+                right_key,
+                expected_kind,
+                expected_left,
+                expected_right,
+            ):
+                covered_relations.add((expected_kind, expected_left, expected_right))
+            else:
                 issues.append(ClueCoverageIssue(
                     issue_type="wrong_relation",
                     clue_relation=expected_kind,
@@ -105,6 +120,33 @@ def _find_clue_coverage_issues(
                     source_clue=source_clue,
                 ))
             break
+    for key, (expected_constraint, source_clue) in expected_positions.items():
+        if key in covered_positions:
+            continue
+        if any(issue.expected_constraint == expected_constraint for issue in issues):
+            continue
+        issues.append(ClueCoverageIssue(
+            issue_type="missing_direct_position",
+            clue_relation="direct_position",
+            generated_relation="missing",
+            expected_constraint=expected_constraint,
+            offending_constraint="",
+            source_clue=source_clue,
+        ))
+    for expected_kind, expected_left, expected_right, expected_constraint, source_clue in expected_relations:
+        key = (expected_kind, expected_left, expected_right)
+        if key in covered_relations:
+            continue
+        if any(issue.expected_constraint == expected_constraint for issue in issues):
+            continue
+        issues.append(ClueCoverageIssue(
+            issue_type="missing_relation",
+            clue_relation=expected_kind,
+            generated_relation="missing",
+            expected_constraint=expected_constraint,
+            offending_constraint="",
+            source_clue=source_clue,
+        ))
     return issues
 
 
@@ -411,6 +453,45 @@ def _parse_relation_constraint(constraint: str) -> Optional[tuple[str, str, str]
     return None
 
 
+def _same_relation_variables(
+    relation_kind: str,
+    left_key: str,
+    right_key: str,
+    expected_kind: str,
+    expected_left: str,
+    expected_right: str,
+) -> bool:
+    return {left_key, right_key} == {expected_left, expected_right}
+
+
+def _relation_matches_expected(
+    relation_kind: str,
+    left_key: str,
+    right_key: str,
+    expected_kind: str,
+    expected_left: str,
+    expected_right: str,
+) -> bool:
+    if expected_kind == "adjacent":
+        return (
+            relation_kind == "adjacent"
+            and {left_key, right_key} == {expected_left, expected_right}
+        )
+    if relation_kind == expected_kind and left_key == expected_left and right_key == expected_right:
+        return True
+    inverse_pairs = {
+        ("directly_left", "directly_right"),
+        ("directly_right", "directly_left"),
+        ("somewhere_left", "somewhere_right"),
+        ("somewhere_right", "somewhere_left"),
+    }
+    return (
+        (relation_kind, expected_kind) in inverse_pairs
+        and left_key == expected_right
+        and right_key == expected_left
+    )
+
+
 def _relation_constraint(relation_kind: str, left_key: str, right_key: str) -> str:
     if relation_kind == "directly_left":
         return f"Int('{left_key}') == Int('{right_key}') - 1"
@@ -595,7 +676,12 @@ class GuidedSolver:
         )
         solver = Z3SolverWrapper()
         steps: List[dict] = []
-        paradigm_triggered = False
+        initial_paradigm_hint, initial_paradigm_triggered = (
+            self._build_initial_translation_paradigm_hint(puzzle)
+            if self._enable_paradigm
+            else ("", False)
+        )
+        paradigm_triggered = initial_paradigm_triggered
         error_guidance_triggered = False
         stagnation_detected = False
         # Reset per-puzzle Layer-2 gating bookkeeping.
@@ -603,14 +689,24 @@ class GuidedSolver:
         self._memory_ref = memory
 
         # ── Step 0: initial translation ─────────────────────────────────
-        constraints = self._translator.translate(puzzle)
+        try:
+            constraints = self._translator.translate(
+                puzzle,
+                paradigm_hint=initial_paradigm_hint,
+            )
+        except TypeError:
+            constraints = self._translator.translate(puzzle)
         translation_diagnostics = dict(getattr(self._translator, "last_diagnostics", {}) or {})
+        if initial_paradigm_triggered:
+            translation_diagnostics["initial_translation_paradigm_hint"] = initial_paradigm_hint
         if not constraints:
             steps.append({
                 "iteration": 0,
                 "action": "translate",
                 "z3_result": "TRANSLATION_FAILED",
                 "error": "no_valid_constraints",
+                "paradigm_triggered": initial_paradigm_triggered,
+                "positive_guidance_triggered": initial_paradigm_triggered,
                 **translation_diagnostics,
             })
             self._maybe_flush_pool()
@@ -622,7 +718,7 @@ class GuidedSolver:
                 repair_rounds=0,
                 steps=steps,
                 final_z3_result="TRANSLATION_FAILED",
-                paradigm_triggered=False,
+                paradigm_triggered=paradigm_triggered,
                 stagnation_detected=False,
                 error="translation produced no valid constraints",
             )
@@ -635,6 +731,8 @@ class GuidedSolver:
             "action": "translate",
             "z3_result": result,
             "constraints": list(constraints),
+            "paradigm_triggered": initial_paradigm_triggered,
+            "positive_guidance_triggered": initial_paradigm_triggered,
             **translation_diagnostics,
         })
 
@@ -645,6 +743,8 @@ class GuidedSolver:
                 current_constraints=list(constraints),
                 steps=steps,
                 mark_last_step=True,
+                paradigm_triggered=paradigm_triggered,
+                stagnation_detected=stagnation_detected,
             )
 
         switcher = StrategySwitcher(memory) if memory is not None else None
@@ -887,6 +987,85 @@ class GuidedSolver:
     # ------------------------------------------------------------------
     # Paradigm guidance
     # ------------------------------------------------------------------
+
+    def _build_initial_translation_paradigm_hint(
+        self,
+        puzzle: PuzzleInstance,
+    ) -> tuple[str, bool]:
+        """Return conservative positive guidance for the initial translation."""
+
+        type_bag = [
+            relation_kind
+            for relation_kind, *_ in _expected_relation_constraints(puzzle.nl_description)
+        ]
+        positions = _expected_direct_position_constraints(puzzle.nl_description)
+        type_bag.extend(["direct_position"] * len(positions))
+        query_types = sorted(set(type_bag))
+        if not query_types:
+            return "", False
+
+        try:
+            candidates = self._library.retrieve(
+                query_types,
+                top_k=self._top_k,
+                type_bag=type_bag,
+            )
+        except TypeError:
+            candidates = self._library.retrieve(query_types, top_k=self._top_k)
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("Initial paradigm retrieval failed: %s", exc)
+            return "", False
+        if not candidates:
+            return "", False
+
+        allowed = set(query_types)
+        lines: list[str] = []
+        seen: set[str] = set()
+        for paradigm in candidates:
+            tag, template = self._translation_template_from_positive_paradigm(paradigm)
+            if not template or tag not in allowed or template in seen:
+                continue
+            name = getattr(paradigm, "name", "positive_paradigm")
+            lines.append(f"- [{name}] {template}")
+            seen.add(template)
+            if len(lines) >= self._top_k:
+                break
+        if not lines:
+            return "", False
+        return "\n".join(lines), True
+
+    @staticmethod
+    def _translation_template_from_positive_paradigm(paradigm) -> tuple[str, str]:
+        operation = str(getattr(paradigm, "operation", "") or "").strip()
+        direct = _parse_direct_position_constraint(operation)
+        if direct:
+            return "direct_position", "direct position clue: Int('A') == house_number"
+
+        relation = _parse_relation_constraint(operation)
+        if not relation:
+            same_house = re.fullmatch(
+                r"Int\('([^']+)'\)\s*==\s*Int\('([^']+)'\)",
+                operation,
+            )
+            if same_house:
+                return "same_house", "same-house clue: Int('A') == Int('B')"
+            different = re.fullmatch(
+                r"Int\('([^']+)'\)\s*!=\s*Int\('([^']+)'\)",
+                operation,
+            )
+            if different:
+                return "different", "different-items clue: Int('A') != Int('B')"
+            return "", ""
+
+        relation_kind = relation[0]
+        templates = {
+            "directly_left": "directly-left clue: Int('A') == Int('B') - 1",
+            "directly_right": "directly-right clue: Int('A') == Int('B') + 1",
+            "somewhere_left": "somewhere-left clue: Int('A') < Int('B')",
+            "somewhere_right": "somewhere-right clue: Int('A') > Int('B')",
+            "adjacent": "next-to clue: Abs(Int('A') - Int('B')) == 1",
+        }
+        return relation_kind, templates.get(relation_kind, "")
 
     def _should_run_layer2(self, state: SolverState, candidates: list) -> bool:
         """Decide whether to invoke Layer-2 LLM semantic matching for this step.
@@ -2033,7 +2212,6 @@ class GuidedSolver:
             return None
         if (
             not self._enable_memory
-            or self._error_library is None
             or self._remaining_repair_budget(steps) <= 0
         ):
             return None
@@ -2049,15 +2227,14 @@ class GuidedSolver:
         coverage_state = SolverState(
             puzzle_id=puzzle.puzzle_id,
             constraints=current_constraints,
-            unsat_core=[issue.offending_constraint],
+            unsat_core=[issue.offending_constraint or issue.expected_constraint],
             z3_result="CLUE_MISMATCH",
             iteration=len(steps),
             constraint_types=[issue.clue_relation, issue.issue_type, "clue_coverage_mismatch"],
             problem_nl=puzzle.nl_description,
         )
         error_hint, error_paradigms = self._build_error_guidance(coverage_state)
-        if not error_hint:
-            return None
+        error_triggered = bool(error_hint)
         self._mark_clue_coverage_step(
             steps,
             issues,
@@ -2066,16 +2243,30 @@ class GuidedSolver:
         repaired_constraints = list(current_constraints)
         applied_issues: list[ClueCoverageIssue] = []
         for item in repairable_issues:
-            try:
-                index = repaired_constraints.index(item.offending_constraint)
-            except ValueError:
+            if not item.expected_constraint:
                 continue
-            repaired_constraints[index] = item.expected_constraint
+            if item.offending_constraint:
+                try:
+                    index = repaired_constraints.index(item.offending_constraint)
+                except ValueError:
+                    continue
+                repaired_constraints[index] = item.expected_constraint
+            elif any(
+                self._constraints_equivalent(item.expected_constraint, constraint)
+                for constraint in repaired_constraints
+            ):
+                continue
+            else:
+                repaired_constraints.append(item.expected_constraint)
             applied_issues.append(item)
         if not applied_issues:
             return None
         repaired_solver = self._rebuild_solver(repaired_constraints)
         result = repaired_solver.check()
+        repair_response = "\n".join(item.expected_constraint for item in applied_issues)
+        old_constraint = issue.offending_constraint
+        new_constraint = issue.expected_constraint
+        coverage_core = [old_constraint or new_constraint]
         steps.append({
             "iteration": len(steps),
             "action": "repair",
@@ -2083,15 +2274,15 @@ class GuidedSolver:
             "source": "clue_coverage",
             "paradigm_triggered": False,
             "positive_guidance_triggered": False,
-            "error_guidance_triggered": True,
+            "error_guidance_triggered": error_triggered,
             "stagnated": stagnation_detected,
             "constraint_types": [issue.clue_relation, issue.issue_type],
-            "unsat_core": [issue.offending_constraint],
+            "unsat_core": coverage_core,
             "constraints_before": current_constraints,
-            "repair_response": issue.expected_constraint,
-            "repair_expression": issue.expected_constraint,
-            "old_constraint": issue.offending_constraint,
-            "new_constraint": issue.expected_constraint,
+            "repair_response": repair_response,
+            "repair_expression": repair_response,
+            "old_constraint": old_constraint,
+            "new_constraint": new_constraint,
             "new_unsat_core": repaired_solver.get_unsat_core() if result == "UNSAT" else None,
             "clue_coverage_issue": issue.__dict__,
             "clue_coverage_repairs": [item.__dict__ for item in applied_issues],
@@ -2137,12 +2328,22 @@ class GuidedSolver:
         constraints: List[str],
         issues: list[ClueCoverageIssue],
     ) -> list[ClueCoverageIssue]:
-        repairable: list[ClueCoverageIssue] = []
+        repairable: list[ClueCoverageIssue] = [
+            issue for issue in issues
+            if self._is_deterministic_clue_coverage_issue(issue)
+        ]
+        if self._error_library is None:
+            return repairable
+
+        seen = {
+            (issue.issue_type, issue.expected_constraint, issue.offending_constraint)
+            for issue in repairable
+        }
         for issue in issues:
             state = SolverState(
                 puzzle_id=puzzle.puzzle_id,
                 constraints=constraints,
-                unsat_core=[issue.offending_constraint],
+                unsat_core=[issue.offending_constraint or issue.expected_constraint],
                 z3_result="CLUE_MISMATCH",
                 iteration=0,
                 constraint_types=[
@@ -2154,9 +2355,24 @@ class GuidedSolver:
             )
             _, paradigms = self._build_error_guidance(state)
             targets = self._target_constraints_from_error_paradigms(paradigms)
-            if self._matches_any_target(issue.expected_constraint, targets):
+            key = (issue.issue_type, issue.expected_constraint, issue.offending_constraint)
+            if key not in seen and self._matches_any_target(issue.expected_constraint, targets):
                 repairable.append(issue)
+                seen.add(key)
         return repairable
+
+    @staticmethod
+    def _is_deterministic_clue_coverage_issue(issue: ClueCoverageIssue) -> bool:
+        return (
+            bool(issue.expected_constraint)
+            and bool(issue.source_clue)
+            and issue.issue_type in {
+                "wrong_direct_position",
+                "wrong_relation",
+                "missing_direct_position",
+                "missing_relation",
+            }
+        )
 
     @staticmethod
     def _mark_clue_coverage_step(

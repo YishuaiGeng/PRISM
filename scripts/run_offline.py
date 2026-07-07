@@ -89,24 +89,27 @@ def main() -> None:
     max_repair_rounds = quick_test.get("max_repair_rounds", 5)
 
     # ── 1. Generate training puzzles ──────────────────────────────────
-    logger.info("Generating %d training puzzles...", n_puzzles)
-    gen = PuzzleGenerator(seed=args.seed)
-    specs = _parse_puzzle_specs(args.puzzle_specs, n_puzzles)
+    traj_dir = Path(args.trajectories)
     puzzles = []
-    for count, n_entities, n_attrs, difficulty in specs:
-        if count <= 0:
-            continue
-        try:
-            puzzles.extend(gen.generate(count, n_entities=n_entities, n_attrs=n_attrs, difficulty=difficulty))
-        except RuntimeError as exc:
-            if difficulty != "hard":
-                raise
-            logger.warning("%s; falling back to medium %dx%d puzzles.", exc, n_entities, n_attrs)
-            puzzles.extend(gen.generate(count, n_entities=n_entities, n_attrs=n_attrs, difficulty="medium"))
-    logger.info("Generated %d puzzles.", len(puzzles))
+    if args.resume and traj_dir.exists():
+        logger.info("Skipping puzzle generation because --resume is set and %s exists.", traj_dir)
+    else:
+        logger.info("Generating %d training puzzles...", n_puzzles)
+        gen = PuzzleGenerator(seed=args.seed)
+        specs = _parse_puzzle_specs(args.puzzle_specs, n_puzzles)
+        for count, n_entities, n_attrs, difficulty in specs:
+            if count <= 0:
+                continue
+            try:
+                puzzles.extend(gen.generate(count, n_entities=n_entities, n_attrs=n_attrs, difficulty=difficulty))
+            except RuntimeError as exc:
+                if difficulty != "hard":
+                    raise
+                logger.warning("%s; falling back to medium %dx%d puzzles.", exc, n_entities, n_attrs)
+                puzzles.extend(gen.generate(count, n_entities=n_entities, n_attrs=n_attrs, difficulty="medium"))
+        logger.info("Generated %d puzzles.", len(puzzles))
 
     # ── 2. Collect trajectories ────────────────────────────────────────
-    traj_dir = Path(args.trajectories)
     if args.resume and traj_dir.exists():
         logger.info("Loading trajectories from %s", traj_dir)
         trajectories = _load_trajectories(traj_dir)

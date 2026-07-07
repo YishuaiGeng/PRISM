@@ -77,16 +77,23 @@ class LLMClient:
     # Translation
     # ------------------------------------------------------------------
 
-    def translate(self, puzzle_nl: str, schema_hint: str = "") -> str:
+    def translate(
+        self,
+        puzzle_nl: str,
+        schema_hint: str = "",
+        paradigm_hint: str = "",
+    ) -> str:
         """Request initial NL→Z3 translation for a puzzle.
 
         Args:
             puzzle_nl: Full natural-language puzzle description.
+            schema_hint: Optional visible variable-key schema.
+            paradigm_hint: Optional safe positive guidance templates.
 
         Returns:
             Raw LLM response containing a Python code block with Z3 constraints.
         """
-        prompt = _build_translation_prompt_v2(puzzle_nl, schema_hint)
+        prompt = _build_translation_prompt_v2(puzzle_nl, schema_hint, paradigm_hint)
         return self._call(prompt, max_tokens=_MAX_TOKENS_TRANSLATION)
 
     def normalize_translation(
@@ -411,8 +418,20 @@ KDP evidence:
 """
 
 
-def _build_translation_prompt_v2(puzzle_nl: str, schema_hint: str = "") -> str:
+def _build_translation_prompt_v2(
+    puzzle_nl: str,
+    schema_hint: str = "",
+    paradigm_hint: str = "",
+) -> str:
     schema_section = _format_schema_hint(schema_hint)
+    guidance_section = (
+        "\nVerified reusable patterns from prior solved trajectories:\n"
+        f"{paradigm_hint}\n"
+        "Treat these as templates only. Replace placeholder variables with "
+        "variables from this puzzle, and do not copy training-puzzle names.\n"
+        if paradigm_hint
+        else ""
+    )
     return f"""You are translating a logic-grid CSP puzzle into Z3 Python constraints.
 
 Return only one fenced python code block. Do not include prose, comments,
@@ -435,15 +454,23 @@ Encoding rules:
 - Add domain constraints when useful, for example:
   And(Int('color_Blue') >= 1, Int('color_Blue') <= 5)
 - Use Distinct(...) for all-different groups.
-- Adjacent means Abs(a - b) == 1.
-- Immediately right of means a - b == 1 when a is to the right of b.
-- Immediately left of means b - a == 1 when a is to the left of b.
-- Somewhere left of means a < b.
-- Somewhere right of means a > b.
+- Use these verified Zebra relation templates exactly:
+  - Same house / same person: Int('A') == Int('B')
+  - Different people/items: Int('A') != Int('B')
+  - Adjacent / next to: Abs(Int('A') - Int('B')) == 1
+  - A is immediately/directly left of B: Int('A') == Int('B') - 1
+  - A is immediately/directly right of B: Int('A') == Int('B') + 1
+  - A is somewhere/to the left of B: Int('A') < Int('B')
+  - A is somewhere/to the right of B: Int('A') > Int('B')
+- Avoid common verified translation errors:
+  - Do not reverse left/right signs.
+  - Do not encode left/right/next-to clues as equality.
+  - Do not encode same-house clues as inequality.
+  - Do not weaken directly-left/right clues into only < or >.
 
 If a clue cannot be represented confidently, omit that clue rather than writing
 invalid Python. Still return every valid constraint you can infer.
-{schema_section}
+{schema_section}{guidance_section}
 
 Puzzle:
 {puzzle_nl}

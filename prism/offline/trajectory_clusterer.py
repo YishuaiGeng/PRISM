@@ -62,6 +62,18 @@ class TrajectoryClusterer:
         if not kdps:
             return []
 
+        original_count = len(kdps)
+        kdps = self._filter_nonzero_vectors(kdps)
+        skipped_count = original_count - len(kdps)
+        if skipped_count:
+            logger.warning(
+                "Skipped %d KDPs with zero feature vectors before cosine clustering.",
+                skipped_count,
+            )
+        if not kdps:
+            logger.warning("No nonzero KDP feature vectors available for clustering.")
+            return []
+
         matrix = self._build_matrix(kdps)
         labels = self._fit(matrix)
         clusters = self._build_clusters(kdps, labels, matrix)
@@ -78,6 +90,17 @@ class TrajectoryClusterer:
     # ------------------------------------------------------------------
     # Private helpers
     # ------------------------------------------------------------------
+
+    @staticmethod
+    def _filter_nonzero_vectors(kdps: List[KDP]) -> List[KDP]:
+        """Drop KDPs whose feature vectors cannot be used with cosine distance."""
+        filtered: List[KDP] = []
+        for kdp in kdps:
+            if not kdp.feature_vector:
+                continue
+            if any(value != 0.0 for value in kdp.feature_vector):
+                filtered.append(kdp)
+        return filtered
 
     @staticmethod
     def _build_matrix(kdps: List[KDP]) -> np.ndarray:

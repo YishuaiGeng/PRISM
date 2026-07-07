@@ -57,7 +57,11 @@ class NLToZ3Translator:
     # Public API
     # ------------------------------------------------------------------
 
-    def translate(self, puzzle: PuzzleInstance) -> List[str]:
+    def translate(
+        self,
+        puzzle: PuzzleInstance,
+        paradigm_hint: str = "",
+    ) -> List[str]:
         """Translate puzzle NL description to a list of Z3 constraint strings.
 
         Retries up to ``_MAX_PARSE_RETRIES`` times if the parsed constraint
@@ -65,6 +69,7 @@ class NLToZ3Translator:
 
         Args:
             puzzle: The puzzle instance whose ``nl_description`` is translated.
+            paradigm_hint: Optional initial positive guidance templates.
 
         Returns:
             List of Z3 Python expression strings (may be empty on persistent failure).
@@ -75,6 +80,7 @@ class NLToZ3Translator:
             response = self._translate_with_optional_schema_hint(
                 puzzle.nl_description,
                 schema_hint,
+                paradigm_hint,
             )
             constraints = LLMClient.parse_constraints(response)
             if self._should_normalize_initial():
@@ -199,11 +205,19 @@ class NLToZ3Translator:
         self,
         puzzle_nl: str,
         schema_hint: str,
+        paradigm_hint: str = "",
     ) -> str:
         try:
-            return self._llm.translate(puzzle_nl, schema_hint=schema_hint)
+            return self._llm.translate(
+                puzzle_nl,
+                schema_hint=schema_hint,
+                paradigm_hint=paradigm_hint,
+            )
         except TypeError:
-            return self._llm.translate(puzzle_nl)
+            try:
+                return self._llm.translate(puzzle_nl, schema_hint=schema_hint)
+            except TypeError:
+                return self._llm.translate(puzzle_nl)
 
     def _normalize_constraints(
         self,

@@ -128,8 +128,10 @@ class _StubTranslator:
             if retranslate_result is None
             else retranslate_result
         )
+        self.last_paradigm_hint = ""
 
-    def translate(self, puzzle):
+    def translate(self, puzzle, paradigm_hint=""):
+        self.last_paradigm_hint = paradigm_hint
         return list(self._initial)
 
     def retranslate(self, puzzle, failed_constraints, error_ctx):
@@ -629,6 +631,48 @@ class TestResultFields:
 
 class TestParadigmGuidance:
 
+    def test_positive_paradigm_guides_initial_translation(self, solver):
+        with ParadigmLibrary(":memory:", solver, soundness_threshold=0.0) as lib:
+            lib.add(
+                Paradigm(
+                    id="p-initial-direct-left",
+                    name="direct_left_template",
+                    trigger={"constraint_types": ["directly_left"]},
+                    operation="Int('a') == Int('b') - 1",
+                    pre_condition="",
+                    post_condition="Use the canonical directly-left encoding.",
+                    scope=["directly_left"],
+                    confidence=1.0,
+                    support_count=5,
+                    source_cluster=0,
+                    created_at=datetime.now(tz=timezone.utc),
+                ),
+                verify=False,
+            )
+            translator = _StubTranslator(initial=[
+                "And(Int('job_Chef') >= 1, Int('job_Chef') <= 3)",
+                "And(Int('job_Pilot') >= 1, Int('job_Pilot') <= 3)",
+                "Int('job_Chef') == Int('job_Pilot') - 1",
+            ])
+            gs = GuidedSolver(
+                llm_client=_BaseLLMClient(),
+                library=lib,
+                max_repair_rounds=2,
+                layer2_enabled=False,
+            )
+            gs._translator = translator
+            puzzle = PuzzleInstance(
+                nl_description="Clues:\n1. The Chef job is immediately left of the Pilot job.",
+                puzzle_id="initial_positive_guidance_test",
+                size="3x3",
+            )
+
+            result = gs.solve(puzzle)
+
+            assert "directly-left clue" in translator.last_paradigm_hint
+            assert result.steps[0]["positive_guidance_triggered"] is True
+            assert result.paradigm_triggered is True
+
     def test_paradigm_hint_injected_when_library_has_match(self, solver):
         """With a library paradigm whose scope matches, paradigm_triggered=True."""
         with ParadigmLibrary(":memory:", solver, soundness_threshold=0.0) as lib:
@@ -913,11 +957,33 @@ class TestParadigmGuidance:
         assert issues[0].issue_type == "wrong_direct_position"
         assert issues[0].expected_constraint == "Int('color_Blue') == 1"
 
-    def test_clue_coverage_repair_requires_error_memory(self, empty_library):
+    def test_clue_coverage_detects_missing_relation(self):
+        issues = _find_clue_coverage_issues(
+            "Clues:\n1. The Chef job is immediately left of the Pilot job.",
+            [
+                "And(Int('job_Chef') >= 1, Int('job_Chef') <= 3)",
+                "And(Int('job_Pilot') >= 1, Int('job_Pilot') <= 3)",
+            ],
+        )
+
+        assert len(issues) == 1
+        assert issues[0].issue_type == "missing_relation"
+        assert issues[0].expected_constraint == "Int('job_Chef') == Int('job_Pilot') - 1"
+        assert issues[0].offending_constraint == ""
+
+    def test_clue_coverage_accepts_equivalent_inverse_direct_relation(self):
+        issues = _find_clue_coverage_issues(
+            "Clues:\n1. The Chef job is immediately left of the Pilot job.",
+            ["Int('job_Pilot') - 1 == Int('job_Chef')"],
+        )
+
+        assert issues == []
+
+    def test_clue_coverage_repairs_without_error_memory_target(self, empty_library):
         llm = _BaseLLMClient()
         translator = _StubTranslator(initial=[
-            "Int('job_Chef') == 2",
-            "Int('job_Pilot') == 1",
+            "And(Int('job_Chef') >= 1, Int('job_Chef') <= 3)",
+            "And(Int('job_Pilot') >= 1, Int('job_Pilot') <= 3)",
             "Int('job_Chef') == Int('job_Pilot') + 1",
         ])
         gs = GuidedSolver(
@@ -937,11 +1003,44 @@ class TestParadigmGuidance:
         result = gs.solve(puzzle)
 
         assert result.solved is True
-        assert not any(step.get("action") == "validate_clue_coverage" for step in result.steps)
-        assert not any(
-            step.get("action") == "repair" and step.get("source") == "clue_coverage"
-            for step in result.steps
+        assert any(step.get("action") == "validate_clue_coverage" for step in result.steps)
+        repair_step = next(
+            step for step in result.steps
+            if step.get("action") == "repair" and step.get("source") == "clue_coverage"
         )
+        assert repair_step["old_constraint"] == "Int('job_Chef') == Int('job_Pilot') + 1"
+        assert repair_step["new_constraint"] == "Int('job_Chef') == Int('job_Pilot') - 1"
+        assert repair_step["error_guidance_triggered"] is False
+
+    def test_clue_coverage_appends_missing_constraint(self, empty_library):
+        llm = _BaseLLMClient()
+        translator = _StubTranslator(initial=[
+            "And(Int('job_Chef') >= 1, Int('job_Chef') <= 3)",
+            "And(Int('job_Pilot') >= 1, Int('job_Pilot') <= 3)",
+        ])
+        gs = GuidedSolver(
+            llm_client=llm,
+            library=empty_library,
+            max_repair_rounds=2,
+            layer2_enabled=False,
+            enable_memory=True,
+        )
+        gs._translator = translator
+        puzzle = PuzzleInstance(
+            nl_description="Clues:\n1. The Chef job is immediately left of the Pilot job.",
+            puzzle_id="coverage_missing_constraint_test",
+            size="3x3",
+        )
+
+        result = gs.solve(puzzle)
+
+        repair_step = next(
+            step for step in result.steps
+            if step.get("action") == "repair" and step.get("source") == "clue_coverage"
+        )
+        assert result.solved is True
+        assert repair_step["old_constraint"] == ""
+        assert repair_step["new_constraint"] == "Int('job_Chef') == Int('job_Pilot') - 1"
 
     def test_clue_coverage_uses_error_memory_to_repair_sat_mismatch(self, empty_library):
         with ErrorParadigmLibrary(":memory:") as error_lib:

@@ -220,7 +220,11 @@ def _apply_repairs(constraints: list[str], repairs: list[dict]) -> list[str]:
     for repair in repairs:
         old = str(repair.get("offending_constraint") or "")
         new = str(repair.get("expected_constraint") or "")
-        if not old or not new:
+        if not new:
+            continue
+        if not old:
+            if new not in updated:
+                updated.append(new)
             continue
         try:
             index = updated.index(old)
