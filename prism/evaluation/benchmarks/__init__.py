@@ -1,1 +1,2 @@
-# Benchmark loaders for ZebraLogic and Knights-and-Knaves evaluation sets.
+# Benchmark loaders for ZebraLogic, Knights-and-Knaves, BBH LogicalDeduction,
+# and AR-LSAT.

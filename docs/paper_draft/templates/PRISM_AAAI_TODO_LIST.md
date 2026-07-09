@@ -127,7 +127,7 @@
 
 - [ ] 如果能完成 AR-LSAT 全量实验：
   - [ ] 使用 AR-LSAT train 构建独立范式库。
-  - [ ] 只在 test 231 题上报告最终结果。
+  - [ ] 只在 test 230 题上报告最终结果（注意：官方 test=230、dev=231，Logic-LM 系列在 test 230 上报告；dev 用于调超参）。
   - [ ] 跑 LLM+Z3、PRISM full、至少两个关键消融。
   - [ ] 明确 Logic-LM / Logic-LM++ 是否为引用数值，模型是否不同。
 - [ ] 如果不能完成全量实验：

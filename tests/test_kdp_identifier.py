@@ -175,21 +175,37 @@ class TestFeatureExtraction:
         assert types == ["unknown"]
 
     def test_feature_vector_correct_length(self, identifier):
+        # h_ct + b_dom(4) + e_tau(3) + n_var + n_con
         step = make_step(constraint_added="Distinct(Int('x'))")
         types = identifier._extract_constraint_types(step)
-        vec = identifier._compute_feature_vector(types)
-        assert len(vec) == len(_ALL_TYPES)
+        vec = identifier._compute_feature_vector(types, step)
+        assert len(vec) == len(_ALL_TYPES) + 4 + 3 + 2
 
-    def test_feature_vector_binary(self, identifier):
+    def test_feature_vector_histogram_is_l1_normalised(self, identifier):
         step = make_step(constraint_added="Distinct(Int('x'))")
         types = identifier._extract_constraint_types(step)
-        vec = identifier._compute_feature_vector(types)
-        assert all(v in (0.0, 1.0) for v in vec)
+        vec = identifier._compute_feature_vector(types, step)
+        h_ct = vec[: len(_ALL_TYPES)]
+        assert abs(sum(h_ct) - 1.0) < 1e-9
+        assert all(v >= 0.0 for v in h_ct)
 
     def test_feature_vector_all_zeros_for_unknown(self, identifier):
         vec = identifier._compute_feature_vector(["unknown"])
-        # "unknown" is not in _ALL_TYPES, so all dimensions are 0
-        assert all(v == 0.0 for v in vec)
+        # "unknown" is not in _ALL_TYPES, so the histogram is all zeros
+        assert all(v == 0.0 for v in vec[: len(_ALL_TYPES)])
+
+    def test_feature_vector_encodes_domain_bins_and_step_type(self, identifier):
+        step = make_step(
+            constraint_added="Distinct(Int('x'))",
+            domain_sizes_after={"a": 1, "b": 2, "c": 4, "d": 6},
+        )
+        types = identifier._extract_constraint_types(step)
+        vec = identifier._compute_feature_vector(types, step, n_constraints=15)
+        b_dom = vec[len(_ALL_TYPES): len(_ALL_TYPES) + 4]
+        assert b_dom == [0.25, 0.25, 0.25, 0.25]
+        n_var, n_con = vec[-2], vec[-1]
+        assert n_var == pytest.approx(4 / 36.0)
+        assert n_con == pytest.approx(15 / 30.0)
 
 
 # --------------------------------------------------------------------------- #

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import uuid
 from pathlib import Path
 from typing import List, Optional
@@ -27,23 +28,41 @@ _DEFAULT_MAX_REPAIR_ROUNDS: int = 5
 _DEFAULT_N_RUNS: int = 3
 
 
-def _compute_domain_sizes(solver: Z3SolverWrapper, n_houses: int) -> dict[str, int]:
-    """Count how many values in [1..n_houses] remain feasible for each variable.
+# Widest value range probed when the range is inferred from constraint
+# literals rather than a known grid size; bounds the O(vars × range) probing
+# cost and shields against outlier literals (years, large counts).
+_MAX_INFERRED_RANGE_WIDTH: int = 12
+
+
+def _compute_domain_sizes(
+    solver: Z3SolverWrapper,
+    n_houses: int = 0,
+    value_range: Optional[tuple] = None,
+) -> dict[str, int]:
+    """Count how many values in the puzzle value range remain feasible per variable.
 
     For each Z3 Int variable mentioned in the current solver, probe how many
-    values in the puzzle house range are consistent with current constraints.
-    Uses one Z3 clone per variable × per candidate value — O(vars × n_houses)
-    solver calls, each very fast (milliseconds).
+    values in the range are consistent with current constraints. Uses one Z3
+    clone per variable × per candidate value — O(vars × range) solver calls,
+    each very fast (milliseconds).
 
     Args:
         solver: The Z3SolverWrapper instance to analyze.
-        n_houses: The puzzle size (e.g. 3 for a 3x3 puzzle).
+        n_houses: The grid size (e.g. 3 for a 3x3 puzzle); probes [1..n_houses].
+        value_range: Explicit ``(lo, hi)`` range; overrides *n_houses*. Used by
+            benchmarks without a grid size (see :func:`_infer_value_range`).
 
     Returns:
-        A dict mapping variable name → count of feasible values in [1..n_houses].
-        Returns empty dict if n_houses <= 0 or no variables found.
+        A dict mapping variable name → count of feasible values in the range.
+        Returns empty dict if no usable range or no variables found.
     """
-    if n_houses <= 0:
+    if value_range is not None:
+        lo, hi = value_range
+    elif n_houses > 0:
+        lo, hi = 1, n_houses
+    else:
+        return {}
+    if hi < lo:
         return {}
     variables = solver.get_variables()
     if not variables:
@@ -51,7 +70,7 @@ def _compute_domain_sizes(solver: Z3SolverWrapper, n_houses: int) -> dict[str, i
     result: dict[str, int] = {}
     for var in variables:
         count = 0
-        for val in range(1, n_houses + 1):
+        for val in range(lo, hi + 1):
             probe = Z3SolverWrapper()
             for c in solver.get_constraints():
                 probe.add_constraint(c)
@@ -60,6 +79,35 @@ def _compute_domain_sizes(solver: Z3SolverWrapper, n_houses: int) -> dict[str, i
                 count += 1
         result[var] = max(count, 1)  # floor at 1 to avoid log2(0) in KDP info-gain
     return result
+
+
+def _infer_value_range(constraints: List[str]) -> Optional[tuple]:
+    """Infer a plausible variable value range from constraint integer literals.
+
+    Benchmarks without a grid size (e.g. AR-LSAT) encode positions, slots, or
+    0/1 selection flags whose bounds appear as literals in the translated
+    domain constraints; the span of the non-negative literals approximates the
+    value range. Literals inside quoted variable names are ignored. The width
+    is capped at ``_MAX_INFERRED_RANGE_WIDTH`` so an outlier literal (a year,
+    a large count) cannot explode the probing cost.
+
+    Returns:
+        ``(lo, hi)`` or ``None`` when no usable literals are found (domain
+        tracking stays disabled for this puzzle).
+    """
+    literals: set = set()
+    for constraint in constraints:
+        unquoted = re.sub(r"'[^']*'", "", constraint or "")
+        for match in re.findall(r"-?\d+", unquoted):
+            literals.add(int(match))
+    usable = sorted(v for v in literals if v >= 0)
+    if not usable:
+        return None
+    lo, hi = usable[0], usable[-1]
+    if hi == lo:
+        return None
+    hi = min(hi, lo + _MAX_INFERRED_RANGE_WIDTH - 1)
+    return lo, hi
 
 
 class TrajectoryCollector:
@@ -191,6 +239,10 @@ class TrajectoryCollector:
         # ── Repair loop ────────────────────────────────────────────────
         current_constraints = list(constraints)
         n_houses = self._puzzle_n_houses(puzzle)
+        # Grid puzzles derive the value range from their size; benchmarks
+        # without one (e.g. AR-LSAT) infer it from constraint literals so the
+        # KDP domain-reduction conditions (A/C) stay alive.
+        value_range = (1, n_houses) if n_houses > 0 else _infer_value_range(constraints)
         for iteration in range(1, self._max_rounds + 1):
             if solved:
                 break
@@ -199,7 +251,7 @@ class TrajectoryCollector:
             calls_before = self._llm.call_count
 
             # Capture domain sizes BEFORE this repair step
-            sizes_before = _compute_domain_sizes(solver, n_houses)
+            sizes_before = _compute_domain_sizes(solver, value_range=value_range)
 
             repair_response = self._llm.repair(
                 constraints=current_constraints,
@@ -239,7 +291,7 @@ class TrajectoryCollector:
             result = solver.check()
 
             # Capture domain sizes AFTER applying repair
-            sizes_after = _compute_domain_sizes(solver, n_houses)
+            sizes_after = _compute_domain_sizes(solver, value_range=value_range)
             step = step.model_copy(update={
                 "z3_result": result,
                 "domain_sizes_after": sizes_after,

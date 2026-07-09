@@ -81,6 +81,7 @@ class NLToZ3Translator:
                 puzzle.nl_description,
                 schema_hint,
                 paradigm_hint,
+                domain=puzzle.domain,
             )
             constraints = LLMClient.parse_constraints(response)
             if self._should_normalize_initial():
@@ -118,6 +119,7 @@ class NLToZ3Translator:
             failed_constraints,
             error_ctx,
             self._schema_hint(puzzle),
+            domain=puzzle.domain,
         )
         constraints = LLMClient.parse_constraints(response)
         if self._should_normalize_retranslation():
@@ -177,8 +179,12 @@ class NLToZ3Translator:
             )
             return valid
 
+        # Benchmarks without a fixed variable schema (e.g. AR-LSAT) opt out of
+        # visibility filtering: text-derived keys are spurious there and would
+        # drop every generated constraint.
+        schema_filter_enabled = (puzzle.raw_data or {}).get("schema_filter", True)
         visible = visible_schema_keys(puzzle)
-        if not visible:
+        if not visible or not schema_filter_enabled:
             self.last_diagnostics = self._with_normalization_diagnostics(
                 self._constraint_diagnostics(puzzle, valid)
             )
@@ -206,7 +212,17 @@ class NLToZ3Translator:
         puzzle_nl: str,
         schema_hint: str,
         paradigm_hint: str = "",
+        domain: str = "",
     ) -> str:
+        try:
+            return self._llm.translate(
+                puzzle_nl,
+                schema_hint=schema_hint,
+                paradigm_hint=paradigm_hint,
+                domain=domain,
+            )
+        except TypeError:
+            pass
         try:
             return self._llm.translate(
                 puzzle_nl,
@@ -325,7 +341,18 @@ class NLToZ3Translator:
         failed_constraints: List[str],
         error_ctx: str,
         schema_hint: str,
+        domain: str = "",
     ) -> str:
+        try:
+            return self._llm.retranslate(
+                puzzle_nl,
+                failed_constraints,
+                error_ctx,
+                schema_hint=schema_hint,
+                domain=domain,
+            )
+        except TypeError:
+            pass
         try:
             return self._llm.retranslate(
                 puzzle_nl,

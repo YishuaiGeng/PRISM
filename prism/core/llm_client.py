@@ -21,6 +21,7 @@ _MAX_TOKENS_NORMALIZE: int = 3072
 _MAX_TOKENS_REPAIR: int = 1024
 _MAX_TOKENS_ABSTRACTION: int = 2048
 _MAX_TOKENS_JUDGE: int = 64
+_MAX_TOKENS_ARLSAT_OPTIONS: int = 2048
 
 _TEMPERATURE_EVAL: float = 0.0
 _TEMPERATURE_COLLECT: float = 0.7
@@ -82,6 +83,7 @@ class LLMClient:
         puzzle_nl: str,
         schema_hint: str = "",
         paradigm_hint: str = "",
+        domain: str = "",
     ) -> str:
         """Request initial NL→Z3 translation for a puzzle.
 
@@ -89,11 +91,16 @@ class LLMClient:
             puzzle_nl: Full natural-language puzzle description.
             schema_hint: Optional visible variable-key schema.
             paradigm_hint: Optional safe positive guidance templates.
+            domain: Benchmark domain; ``"arlsat"`` selects the LSAT
+                analytical-reasoning prompt instead of the logic-grid one.
 
         Returns:
             Raw LLM response containing a Python code block with Z3 constraints.
         """
-        prompt = _build_translation_prompt_v2(puzzle_nl, schema_hint, paradigm_hint)
+        if domain == "arlsat":
+            prompt = _build_arlsat_translation_prompt(puzzle_nl, paradigm_hint)
+        else:
+            prompt = _build_translation_prompt_v2(puzzle_nl, schema_hint, paradigm_hint)
         return self._call(prompt, max_tokens=_MAX_TOKENS_TRANSLATION)
 
     def normalize_translation(
@@ -118,6 +125,7 @@ class LLMClient:
         failed_constraints: List[str],
         error_ctx: str,
         schema_hint: str = "",
+        domain: str = "",
     ) -> str:
         """Request a full re-translation after L4 strategy escalation.
 
@@ -125,17 +133,51 @@ class LLMClient:
             puzzle_nl: Original natural-language puzzle description.
             failed_constraints: The constraint set that led to irrecoverable UNSAT.
             error_ctx: Error message or UNSAT core description for context.
+            domain: Benchmark domain; ``"arlsat"`` selects the LSAT
+                analytical-reasoning prompt instead of the logic-grid one.
 
         Returns:
             Raw LLM response with fresh Z3 constraints.
         """
-        prompt = _build_retranslation_prompt_v2(
-            puzzle_nl,
-            failed_constraints,
-            error_ctx,
-            schema_hint,
-        )
+        if domain == "arlsat":
+            prompt = _build_arlsat_retranslation_prompt(
+                puzzle_nl,
+                failed_constraints,
+                error_ctx,
+            )
+        else:
+            prompt = _build_retranslation_prompt_v2(
+                puzzle_nl,
+                failed_constraints,
+                error_ctx,
+                schema_hint,
+            )
         return self._call(prompt, max_tokens=_MAX_TOKENS_TRANSLATION)
+
+    def translate_arlsat_options(
+        self,
+        passage_nl: str,
+        question: str,
+        options: List[str],
+        background_constraints: List[str],
+    ) -> str:
+        """Translate the five AR-LSAT answer options into Z3 boolean formulas.
+
+        Args:
+            passage_nl: The logic-game passage (background conditions).
+            question: The question stem (may embed a local premise).
+            options: The five option texts in A–E order.
+            background_constraints: Z3 constraint strings already produced for
+                the passage; option formulas must reuse these variable names.
+
+        Returns:
+            Raw LLM response containing a fenced JSON block mapping option
+            letters to single-line Z3 boolean expressions.
+        """
+        prompt = _build_arlsat_options_prompt(
+            passage_nl, question, options, background_constraints
+        )
+        return self._call(prompt, max_tokens=_MAX_TOKENS_ARLSAT_OPTIONS)
 
     # ------------------------------------------------------------------
     # Repair
@@ -416,6 +458,156 @@ Field rules:
 KDP evidence:
 {chr(10).join(kdp_strs)}
 """
+
+
+_ARLSAT_ENCODING_RULES = """Use only single-line Z3 boolean expressions, one expression per line. Valid
+constructs include Int('var'), And(...), Or(...), Not(...), Implies(...),
+Distinct(...), Abs(...), Sum(...), If(cond, 1, 0), ==, !=, <, <=, >, >=.
+
+Encoding rules by game type:
+- Ordering / scheduling games: one Int('Name') variable per entity whose value
+  is its position or time slot (1..n). Number multi-day slots consecutively
+  (e.g. Monday morning=1, Monday afternoon=2, Tuesday morning=3, ...) and keep
+  that mapping consistent in every constraint. Add domain bounds
+  And(Int('Name') >= 1, Int('Name') <= n) for every entity, and Distinct(...)
+  when entities occupy distinct slots.
+- Grouping / assignment games: one Int('Name') per entity whose value is the
+  group index (fix a mapping such as group1=1, group2=2 and keep it).
+- Selection games ("exactly k of n are chosen"): one Int('Name') per entity
+  restricted to 0 or 1 (1 = selected), plus a count constraint
+  Sum(If(Int('A') == 1, 1, 0), If(Int('B') == 1, 1, 0), ...) == k.
+- Cardinality conditions ("at most two", "more X than Y") use the same
+  Sum(If(...), ...) pattern with <=, >=, or comparisons between two sums.
+- Conditional rules: "if X then Y" -> Implies(x, y); "X unless Y" ->
+  Implies(Not(y), x); "X and Y cannot both hold" -> Not(And(x, y));
+  "either X or Y (or both)" -> Or(x, y).
+- If the question stem adds a temporary premise (an "If ..." clause), include
+  it as a constraint. Do NOT encode the answer options.
+
+Common errors to avoid:
+- Do not flip "before/after" or "earlier/later" directions.
+- "immediately before" means a position difference of exactly 1, not merely <.
+- Only encode conditions the text states; do not add symmetric or converse
+  rules that are not given (an if-then rule is not a biconditional).
+- Keep one variable name per entity across all constraints."""
+
+
+def _build_arlsat_translation_prompt(
+    puzzle_nl: str,
+    paradigm_hint: str = "",
+) -> str:
+    guidance_section = (
+        "\nVerified reusable patterns from prior solved trajectories:\n"
+        f"{paradigm_hint}\n"
+        "Treat these as templates only. Replace placeholder variables with "
+        "variables from this game, and do not copy training-game names.\n"
+        if paradigm_hint
+        else ""
+    )
+    return f"""You are translating an LSAT analytical-reasoning logic game into Z3 Python constraints.
+
+Return only one fenced python code block. Do not include prose, comments,
+solver.add calls, imports, model extraction code, or markdown outside the code
+block.
+
+{_ARLSAT_ENCODING_RULES}
+
+If a condition cannot be represented confidently, omit that condition rather
+than writing invalid Python. Still return every valid constraint you can infer.
+{guidance_section}
+Game:
+{puzzle_nl}
+
+Output format:
+```python
+And(Int('Ann') >= 1, Int('Ann') <= 6)
+Distinct(Int('Ann'), Int('Bob'), Int('Cal'))
+Implies(Int('Ann') == 1, Int('Bob') == 2)
+```"""
+
+
+def _build_arlsat_retranslation_prompt(
+    puzzle_nl: str,
+    failed_constraints: List[str],
+    error_ctx: str,
+) -> str:
+    failed_str = "\n".join(f"  {c}" for c in failed_constraints)
+    return f"""The previous Z3 formalization of this LSAT analytical-reasoning game could
+not be repaired. Translate the entire game again from scratch.
+
+Return only one fenced python code block. Do not include prose, comments,
+solver.add calls, imports, or markdown outside the code block. Each non-empty
+line inside the block must be one parseable Z3 Python boolean expression.
+
+Ignore the failed constraints except as examples of what may be wrong.
+
+{_ARLSAT_ENCODING_RULES}
+
+Original game:
+{puzzle_nl}
+
+Failed constraints:
+{failed_str}
+
+Error context:
+{error_ctx}
+
+Output format:
+```python
+And(Int('Ann') >= 1, Int('Ann') <= 6)
+Distinct(Int('Ann'), Int('Bob'), Int('Cal'))
+```"""
+
+
+def _build_arlsat_options_prompt(
+    passage_nl: str,
+    question: str,
+    options: List[str],
+    background_constraints: List[str],
+) -> str:
+    letters = "ABCDE"
+    option_lines = "\n".join(
+        f"({letters[i]}) {text}" for i, text in enumerate(options)
+    )
+    constraint_lines = "\n".join(background_constraints)
+    return f"""You are translating LSAT analytical-reasoning answer options into Z3 Python boolean expressions.
+
+The passage below has already been formalised into the background constraints
+shown after it. Translate EACH answer option into ONE single-line Z3 boolean
+expression that states exactly the claim made by that option.
+
+Rules:
+- Reuse exactly the variable names appearing in the background constraints
+  (same Int('...') keys). Do not invent new variable names unless an option
+  mentions an entity that has a variable in the background constraints.
+- Valid constructs: Int('var'), And(...), Or(...), Not(...), Implies(...),
+  Distinct(...), Abs(...), ==, !=, <, <=, >, >=.
+- Translate only the literal claim of each option. Do not add the question's
+  premise or the passage conditions; they are already in the background.
+- Always produce a best-effort formula for every option. Use null ONLY when
+  the option's claim is genuinely unrepresentable over the background
+  variables (for example, it quantifies over hypothetical scenarios). A
+  partially faithful formula is better than null.
+- An option listing a full arrangement (e.g. a schedule or a lineup) should
+  become one And(...) conjoining every listed assignment.
+
+Passage:
+{passage_nl}
+
+Question:
+{question}
+
+Options:
+{option_lines}
+
+Background constraints:
+{constraint_lines}
+
+Output format — return only one fenced json block, mapping each option letter
+to a single-line Z3 expression string (or null):
+```json
+{{"A": "Int('x') == 1", "B": "Not(Int('y') < 2)", "C": null, "D": "...", "E": "..."}}
+```"""
 
 
 def _build_translation_prompt_v2(

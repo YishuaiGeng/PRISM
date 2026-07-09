@@ -25,7 +25,8 @@ import logging
 import math
 from typing import Dict, List, Optional
 
-from prism.core.types import KDP, Trajectory, TrajectoryStep
+from prism.core.constraint_tags import classify_constraint_tags
+from prism.core.types import KDP, StepType, Trajectory, TrajectoryStep
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +45,26 @@ _CONSTRAINT_TYPE_KEYWORDS: Dict[str, List[str]] = {
     "logical_implication": ["And(", "Or(", "Not("],
 }
 
-_ALL_TYPES: List[str] = list(_CONSTRAINT_TYPE_KEYWORDS.keys())
+# Specific relation tags shared with the online extractor
+# (prism.core.constraint_tags). Keeping offline KDP tags in the same
+# namespace as online retrieval queries is what makes Layer-1 scope
+# Jaccard non-zero at inference time.
+_SPECIFIC_TYPES: List[str] = [
+    "directly_left",
+    "directly_right",
+    "somewhere_left",
+    "somewhere_right",
+    "same_house",
+    "domain_bound",
+]
+
+_ALL_TYPES: List[str] = list(_CONSTRAINT_TYPE_KEYWORDS.keys()) + _SPECIFIC_TYPES
+
+# Feature-vector layout (paper §Methodology, f(kdp) = [h_ct, b_dom, e_τ, n_var, n_con]):
+_DOMAIN_SIZE_BINS = ((1, 1), (2, 2), (3, 4), (5, 10**9))
+_STEP_TYPE_ORDER = (StepType.BASIC, StepType.CHAIN, StepType.CONTRADICTION)
+_N_VAR_NORM = 36.0  # 6x6 puzzles: 36 entity-attribute variables
+_N_CON_NORM = 30.0  # rough upper bound on formalized constraints per puzzle
 
 
 class KDPIdentifier:
@@ -80,10 +100,17 @@ class KDPIdentifier:
             List of KDP objects (may be empty for trivial trajectories).
         """
         kdps: List[KDP] = []
+        n_constraints = 0
         for step in trajectory.steps:
+            if step.constraint_added:
+                n_constraints += 1
+            if step.constraint_removed:
+                n_constraints = max(0, n_constraints - 1)
             if self._is_kdp(step, trajectory):
                 constraint_types = self._extract_constraint_types(step)
-                feature_vec = self._compute_feature_vector(constraint_types)
+                feature_vec = self._compute_feature_vector(
+                    constraint_types, step, n_constraints
+                )
                 kdp = KDP(
                     trajectory_id=trajectory.trajectory_id,
                     puzzle_id=trajectory.puzzle_id,
@@ -178,27 +205,68 @@ class KDPIdentifier:
 
     @staticmethod
     def _extract_constraint_types(step: TrajectoryStep) -> List[str]:
-        """Classify the constraint involved in *step* by keyword matching."""
-        text = " ".join(filter(None, [
-            step.constraint_added,
-            step.constraint_removed,
-            step.constraint_modified,
-        ])).lower()
+        """Classify the constraint involved in *step*.
 
-        if not text:
+        Combines the legacy keyword table with the shared online classifier
+        (:func:`prism.core.constraint_tags.classify_constraint_tags`) so that
+        offline paradigm scopes and online retrieval queries live in the same
+        tag namespace.
+        """
+        constraint_strings = [
+            c for c in (
+                step.constraint_added,
+                step.constraint_removed,
+                step.constraint_modified,
+            ) if c
+        ]
+        if not constraint_strings:
             return ["unknown"]
 
-        matched: List[str] = []
+        matched: set = set()
+        text = " ".join(constraint_strings).lower()
         for ctype, keywords in _CONSTRAINT_TYPE_KEYWORDS.items():
             if any(kw.lower() in text for kw in keywords):
-                matched.append(ctype)
-        return matched if matched else ["unknown"]
+                matched.add(ctype)
+        for constraint in constraint_strings:
+            matched.update(classify_constraint_tags(constraint))
+        return sorted(matched) if matched else ["unknown"]
 
     @staticmethod
-    def _compute_feature_vector(constraint_types: List[str]) -> List[float]:
-        """Build a binary feature vector over all known constraint type dimensions."""
-        type_set = set(constraint_types)
-        return [1.0 if ct in type_set else 0.0 for ct in _ALL_TYPES]
+    def _compute_feature_vector(
+        constraint_types: List[str],
+        step: Optional[TrajectoryStep] = None,
+        n_constraints: int = 0,
+    ) -> List[float]:
+        """Build the clustering feature vector f(kdp) = [h_ct, b_dom, e_τ, n_var, n_con].
+
+        - ``h_ct``: L1-normalised histogram over the known constraint types;
+        - ``b_dom``: 4-bin distribution of post-step domain sizes
+          (bins: {1}, {2}, {3-4}, {5+});
+        - ``e_τ``: one-hot step-type encoding (BASIC / CHAIN / CONTRADICTION);
+        - ``n_var`` / ``n_con``: normalised problem-scale metrics.
+        """
+        known = [ct for ct in constraint_types if ct in _ALL_TYPES]
+        total = float(len(known)) or 1.0
+        h_ct = [known.count(ct) / total for ct in _ALL_TYPES]
+
+        b_dom = [0.0] * len(_DOMAIN_SIZE_BINS)
+        n_var = 0.0
+        if step is not None and step.domain_sizes_after:
+            sizes = list(step.domain_sizes_after.values())
+            for size in sizes:
+                for bin_idx, (lo, hi) in enumerate(_DOMAIN_SIZE_BINS):
+                    if lo <= size <= hi:
+                        b_dom[bin_idx] += 1.0
+                        break
+            b_dom = [count / len(sizes) for count in b_dom]
+            n_var = min(1.0, len(sizes) / _N_VAR_NORM)
+
+        e_tau = [
+            1.0 if step is not None and step.step_type == st else 0.0
+            for st in _STEP_TYPE_ORDER
+        ]
+        n_con = min(1.0, max(0, n_constraints) / _N_CON_NORM)
+        return h_ct + b_dom + e_tau + [n_var, n_con]
 
     @staticmethod
     def _kdp_type(step: TrajectoryStep, trajectory: Optional[Trajectory] = None) -> str:

@@ -33,7 +33,10 @@ thresholds:
   writeback_batch_K: 50           # re-verify candidate pool every K solved puzzles (§3.6)
 
   # ── Legacy / convenience ────────────────────────────────────────────
-  min_support: 5                  # alias for cluster_min_size (kept for backward compat)
+  # Alias for cluster_min_size, kept for backward compat. MUST stay equal to
+  # cluster_min_size above — run_offline reads cluster_min_size first and only
+  # falls back to this key when it is absent.
+  min_support: 2
 
 paths:
   data_dir: data/

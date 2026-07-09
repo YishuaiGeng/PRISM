@@ -195,6 +195,24 @@ class ParadigmLibrary:
         if cursor.rowcount == 0:
             raise KeyError(f"No paradigm with id {paradigm_id!r}")
 
+    def increment_support(self, paradigm_id: str, by: int = 1) -> None:
+        """Atomically increment the support counter for an existing paradigm.
+
+        Args:
+            paradigm_id: The ``id`` of the paradigm to update.
+            by: Increment amount (default 1).
+
+        Raises:
+            KeyError: If no paradigm with ``paradigm_id`` exists in the database.
+        """
+        with self._conn:
+            cursor = self._conn.execute(
+                "UPDATE paradigms SET support_count = support_count + ? WHERE id = ?",
+                (by, paradigm_id),
+            )
+        if cursor.rowcount == 0:
+            raise KeyError(f"No paradigm with id {paradigm_id!r}")
+
     def delete(self, paradigm_id: str) -> None:
         """Remove a paradigm by its id.
 
@@ -217,6 +235,7 @@ class ParadigmLibrary:
         constraint_types: List[str],
         top_k: int = 3,
         type_bag: Optional[List[str]] = None,
+        min_confidence: float = 0.0,
     ) -> List[Paradigm]:
         """Return the top-k most relevant paradigms for the given constraint types.
 
@@ -239,7 +258,11 @@ class ParadigmLibrary:
             List of up to *top_k* Paradigm objects sorted by relevance descending.
         """
         return ParadigmRetriever().retrieve(
-            self.get_all(), constraint_types, top_k, type_bag=type_bag
+            self.get_all(),
+            constraint_types,
+            top_k,
+            type_bag=type_bag,
+            min_confidence=min_confidence,
         )
 
     def get_all(self) -> List[Paradigm]:

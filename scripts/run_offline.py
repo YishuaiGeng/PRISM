@@ -54,6 +54,15 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PRISM offline paradigm distillation")
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--model", default=None)
+    p.add_argument(
+        "--benchmark",
+        default="zebra",
+        choices=["zebra", "arlsat"],
+        help="Training-puzzle source: 'zebra' generates grid puzzles, "
+        "'arlsat' loads the AR-LSAT train split from --data-dir.",
+    )
+    p.add_argument("--data-dir", default="data/hf/ar-lsat")
+    p.add_argument("--split", default="train")
     p.add_argument("--n-puzzles", type=int, default=None)
     p.add_argument("--n-runs", type=int, default=None)
     p.add_argument(
@@ -67,6 +76,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output", default="paradigm_store/prism.db")
     p.add_argument("--trajectories", default="data/trajectories")
     p.add_argument("--resume", action="store_true", help="Load existing trajectories from --trajectories dir")
+    p.add_argument(
+        "--trajectory-verdicts",
+        default=None,
+        help="JSON file {trajectory_id: verdict} from verify_arlsat_trajectories.py; "
+        "only 'correct' (answer-verified) trajectories are mined.",
+    )
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()
 
@@ -86,13 +101,22 @@ def main() -> None:
     logger.info("Model: %s", model_name)
     n_puzzles = args.n_puzzles if args.n_puzzles is not None else quick_test.get("n_puzzles", 600)
     n_runs = args.n_runs if args.n_runs is not None else quick_test.get("n_runs", 3)
-    max_repair_rounds = quick_test.get("max_repair_rounds", 5)
+    # thresholds is the canonical source for R; quick_test may override it
+    # for smoke runs (default.yaml has no quick_test section).
+    max_repair_rounds = quick_test.get(
+        "max_repair_rounds", thresholds.get("max_repair_rounds", 5)
+    )
 
-    # ── 1. Generate training puzzles ──────────────────────────────────
+    # ── 1. Load or generate training puzzles ──────────────────────────
     traj_dir = Path(args.trajectories)
     puzzles = []
     if args.resume and traj_dir.exists():
-        logger.info("Skipping puzzle generation because --resume is set and %s exists.", traj_dir)
+        logger.info("Skipping puzzle loading because --resume is set and %s exists.", traj_dir)
+    elif args.benchmark == "arlsat":
+        from prism.evaluation.benchmarks.arlsat import load_arlsat  # noqa: PLC0415
+
+        puzzles = load_arlsat(args.data_dir, split=args.split, max_puzzles=n_puzzles)
+        logger.info("Loaded %d AR-LSAT %s questions.", len(puzzles), args.split)
     else:
         logger.info("Generating %d training puzzles...", n_puzzles)
         gen = PuzzleGenerator(seed=args.seed)
@@ -114,6 +138,17 @@ def main() -> None:
         logger.info("Loading trajectories from %s", traj_dir)
         trajectories = _load_trajectories(traj_dir)
         logger.info("Loaded %d trajectories.", len(trajectories))
+        if args.trajectory_verdicts:
+            with open(args.trajectory_verdicts, encoding="utf-8") as fh:
+                verdicts = json.load(fh)
+            before = len(trajectories)
+            trajectories = [
+                t for t in trajectories if verdicts.get(t.trajectory_id) == "correct"
+            ]
+            logger.info(
+                "Verdict filter: kept %d/%d answer-verified trajectories.",
+                len(trajectories), before,
+            )
     else:
         llm = LLMClient(model_name=model_name, temperature=0.7)
         collector = TrajectoryCollector(

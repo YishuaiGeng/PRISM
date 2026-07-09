@@ -1,23 +1,19 @@
-"""Online inference entry point.
+"""PRISM online inference on the BBH LogicalDeduction benchmark.
 
-Loads a paradigm library and evaluates PRISM on the ZebraLogic benchmark.
+Loads a paradigm library and evaluates PRISM on LogicalDeduction (pure
+ordering CSPs, multiple-choice scoring).  Mirrors ``run_online.py``; results
+are scored by option letter (see
+:mod:`prism.evaluation.benchmarks.logical_deduction`).
 
 Usage::
 
-    python scripts/run_online.py --config config/default.yaml
-
-Key flags::
-
-    --config      Path to YAML configuration file
-    --model       LLM model name (overrides config)
-    --library     Path to paradigm library (.db file)
-    --data-dir    Path to ZebraLogic benchmark data
-    --sizes       Puzzle sizes to evaluate (e.g. "4x5,5x5,6x6")
-    --max-repair  Maximum repair rounds per puzzle (default: 5)
-    --output      Output CSV path for per-puzzle results
-    --seed        Random seed for reproducibility
-    --no-paradigm Disable paradigm library (ablation)
-    --no-memory   Disable repair memory (ablation)
+    python scripts/run_logical_deduction.py \
+        --model GPT-4o-mini \
+        --library paradigm_store/prism_4x5x_v2.db \
+        --error-library paradigm_store/error_4x5x_v2.db \
+        --tasks logical_deduction_three_objects \
+        --max-puzzles 50 \
+        --output results/logical_deduction_smoke.csv
 """
 
 from __future__ import annotations
@@ -35,15 +31,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper
-from prism.evaluation.benchmarks.zebralogic import evaluate_zebralogic, load_zebralogic
-from prism.evaluation.metrics import (
-    avg_llm_calls,
-    avg_repair_rounds,
-    generate_report,
-    paradigm_hit_rate,
-    paradigm_trigger_rate,
-    solve_accuracy,
+from prism.evaluation.benchmarks.logical_deduction import (
+    DEFAULT_TASKS,
+    evaluate_logical_deduction,
+    load_logical_deduction,
 )
+from prism.evaluation.metrics import avg_llm_calls, avg_repair_rounds, solve_accuracy
 from prism.online.guided_solver import GuidedSolver
 from prism.paradigm_library.error_library import ErrorParadigmLibrary
 from prism.paradigm_library.library import ParadigmLibrary
@@ -53,17 +46,20 @@ logger = logging.getLogger(__name__)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="PRISM online inference on ZebraLogic")
+    p = argparse.ArgumentParser(description="PRISM online inference on LogicalDeduction")
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--model", default=None)
     p.add_argument("--library", default="paradigm_store/prism.db")
     p.add_argument("--error-library", default=None)
-    p.add_argument("--data-dir", default="allenai/ZebraLogicBench")
-    p.add_argument("--data-source", default="auto", choices=["auto", "hf", "local"])
-    p.add_argument("--data-subset", default="grid_mode")
-    p.add_argument("--sizes", default=None, help="Comma-separated sizes, e.g. '4x5,5x5'")
+    p.add_argument("--data-dir", default="data/hf/logical-deduction")
+    p.add_argument(
+        "--tasks",
+        default=",".join(DEFAULT_TASKS),
+        help="Comma-separated BBH task names (three/five/seven objects)",
+    )
+    p.add_argument("--max-puzzles", type=int, default=None)
     p.add_argument("--max-repair", type=int, default=5)
-    p.add_argument("--output", default="results/online_results.csv")
+    p.add_argument("--output", default="results/logical_deduction_results.csv")
     p.add_argument(
         "--trace-output",
         default=None,
@@ -75,21 +71,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument(
         "--schema-hint-mode",
         default="puzzle",
-        choices=["puzzle", "none", "solution_keys"],
-        help=(
-            "Variable schema guidance source. 'puzzle' uses only visible puzzle "
-            "text/metadata; 'solution_keys' is an oracle upper-bound diagnostic."
-        ),
+        choices=["puzzle", "none"],
+        help="Variable schema guidance source ('solution_keys' is unavailable: "
+        "LogicalDeduction records carry no per-entity ground truth).",
     )
     p.add_argument(
         "--translation-normalize",
         default="none",
         choices=["none", "initial", "always"],
-        help=(
-            "Optional second-pass LLM cleanup of translated constraints before "
-            "Z3 solving. 'initial' normalizes the first translation; 'always' "
-            "also normalizes validation/retranslation output."
-        ),
     )
     return p.parse_args(argv)
 
@@ -103,15 +92,14 @@ def main() -> None:
     args = parse_args()
     config = load_config(args.config)
     model_name = args.model or config.get("model_name", "GPT-4o")
-    sizes = args.sizes.split(",") if args.sizes else None
-    logger.info("Model: %s | sizes: %s", model_name, sizes or "all")
+    tasks = [t.strip() for t in args.tasks.split(",") if t.strip()]
+    logger.info("Model: %s | tasks: %s", model_name, tasks)
 
     # ── Load benchmark ────────────────────────────────────────────────
-    puzzles = load_zebralogic(
+    puzzles = load_logical_deduction(
         args.data_dir,
-        sizes=sizes,
-        source=args.data_source,
-        subset=args.data_subset,
+        tasks=tasks,
+        max_puzzles=args.max_puzzles,
     )
     if not puzzles:
         logger.error("No puzzles loaded from %s. Check --data-dir.", args.data_dir)
@@ -127,7 +115,6 @@ def main() -> None:
     elif not args.no_paradigm:
         logger.warning("Library file %s not found — using empty library.", args.library)
 
-    # ── Build solver ──────────────────────────────────────────────────
     error_library = None
     if args.error_library:
         if Path(args.error_library).exists():
@@ -143,6 +130,7 @@ def main() -> None:
                 args.error_library,
             )
 
+    # ── Build solver ──────────────────────────────────────────────────
     llm = LLMClient(model_name=model_name, temperature=0.0)
     guided_solver = GuidedSolver(
         llm_client=llm,
@@ -157,28 +145,31 @@ def main() -> None:
     )
 
     # ── Evaluate ──────────────────────────────────────────────────────
-    results = evaluate_zebralogic(guided_solver, puzzles)
+    results = evaluate_logical_deduction(guided_solver, puzzles)
 
-    # Final write-back flush: promote any staged candidates that did not
-    # reach the auto-flush batch size during the run (paper §write-back).
+    # Final write-back flush (paper §write-back): promote staged candidates
+    # that did not reach the auto-flush batch size during the run.
     promoted = guided_solver.flush_candidate_pool()
     if promoted:
         logger.info("Write-back: %d candidate paradigms promoted at end of run.", promoted)
 
     # ── Report ───────────────────────────────────────────────────────
     acc = solve_accuracy(results)
-    calls = avg_llm_calls(results)
-    rounds = avg_repair_rounds(results)
-    trig = paradigm_trigger_rate(results)
-    hit = paradigm_hit_rate(results)
+    extracted = sum(1 for r in results if r.get("prediction_extracted")) / len(results)
     logger.info(
-        "Results: Acc=%.1f%% | LLM calls=%.2f | Repair rounds=%.2f | "
-        "Paradigm trigger=%.1f%% | Hit=%.1f%%",
-        acc * 100, calls, rounds, trig * 100, hit * 100,
+        "Results: Acc=%.1f%% | extracted=%.1f%% | LLM calls=%.2f | repair rounds=%.2f",
+        acc * 100,
+        extracted * 100,
+        avg_llm_calls(results),
+        avg_repair_rounds(results),
     )
-
-    report = generate_report(results, library.stats(), title="PRISM Online Evaluation")
-    print(report)
+    by_task: dict[str, list[dict]] = {}
+    for row in results:
+        by_task.setdefault(str(row.get("task")), []).append(row)
+    for task, rows in sorted(by_task.items()):
+        logger.info(
+            "  %s: Acc=%.1f%% (n=%d)", task, solve_accuracy(rows) * 100, len(rows)
+        )
 
     # ── Save CSV ──────────────────────────────────────────────────────
     output_path = Path(args.output)
@@ -188,7 +179,9 @@ def main() -> None:
     if args.trace_output:
         trace_path = Path(args.trace_output)
         trace_path.parent.mkdir(parents=True, exist_ok=True)
-        _save_trace_jsonl(results, str(trace_path))
+        with open(trace_path, "w", encoding="utf-8") as fh:
+            for row in results:
+                fh.write(json.dumps(row, ensure_ascii=False, default=str) + "\n")
         logger.info("Trace JSONL saved to %s", trace_path)
 
 
@@ -198,40 +191,20 @@ def _save_csv(results: list[dict], path: str) -> None:
     keys = [
         "puzzle_id",
         "domain",
+        "size",
+        "task",
         "solved",
-        "llm_calls",
-        "repair_rounds",
-        "initial_solver_result",
-        "initial_z3_result",
-        "final_z3_result",
-        "memory_eligible",
-        "translation_failed",
-        "repair_success",
-        "validated_repair_success",
-        "repair_rejected",
-        "invalid_model_retranslate",
-        "misaligned_model_retranslate",
-        "invalid_model",
-        "model_schema_aligned",
-        "model_key_set_aligned",
-        "misaligned_model",
-        "key_mismatch",
-        "positive_guidance_triggered",
-        "error_guidance_triggered",
         "ground_truth",
         "predicted",
+        "prediction_extracted",
+        "llm_calls",
+        "repair_rounds",
+        "final_z3_result",
     ]
     with open(path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=keys, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(results)
-
-
-def _save_trace_jsonl(results: list[dict], path: str) -> None:
-    with open(path, "w", encoding="utf-8") as fh:
-        for row in results:
-            fh.write(json.dumps(row, ensure_ascii=False, default=str))
-            fh.write("\n")
 
 
 if __name__ == "__main__":

@@ -1,416 +1,292 @@
 {
-    "GPT-5.5": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-5.5",
-                "params": {}
-            }
-        ]
-    },
-    "GPT-5.4": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-5.4",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "gpt-5.4",
-                "params": {}
-            }
-        ]
-    },
-    "GPT-5.2": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "gpt-5.2",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-5.2",
-                "params": {}
-            }
-        ]
-    },
-    "GPT-5.1-Thinking": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "gpt-5.1-thinking-all",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-5.1-thinking-all",
-                "params": {}
-            }
-        ]
-    },
-    "GPT-4.1-mini": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "gpt-4.1-mini-2025-04-14",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-4.1-mini-2025-04-14",
-                "params": {}
-            }
-        ]
-    },
-    "GPT-4o": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-4o",
-                "params": {}
-            }
-        ]
-    },
-    "GPT-4o-mini": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "gpt-4o-mini",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "gpt-4o-mini",
-                "params": {}
-            }
-        ]
-    },
-    "o3-mini": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "o3-mini",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "o3-mini",
-                "params": {}
-            }
-        ]
-    },
-    "o1-mini": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "o1-mini",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "o1-mini",
-                "params": {}
-            }
-        ]
-    },
-    "DeepSeek-V3.2": {
-        "api_sources": [
-        
-            {
-                "api_name": "mmm",
-                "model_name": "deepseek-ai/DeepSeek-V3.2",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "deepseek-v3.2",
-                "params": {}
-            },
-            {
-                "api_name": "ppinfra",
-                "model_name": "deepseek/deepseek-v3.2",
-                "params": {}
-            }
-        ]
-    },
-    "DeepSeek-R1": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "deepseek-ai/DeepSeek-R1",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "deepseek-r1",
-                "params": {}
-            },
-            {
-                "api_name": "ppinfra",
-                "model_name": "deepseek/deepseek-r1-0528",
-                "params": {}
-            }
-        ]
-    },
-    "DeepSeek-V4-Flash": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "deepseek-v4-flash",
-                "params": {}
-            }
-        ]
-    },
-        
-    "Grok-4": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "grok-4",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "grok-4",
-                "params": {}
-            }
-        ]
-    },
-    "Grok-3": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "grok-3",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "grok-3",
-                "params": {}
-            }
-        ]
-    },
-    "Gemini-3.1-Pro": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "gemini-3.1-pro-preview-medium",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "gemini-3.1-pro-preview",
-                "params": {}
-            }
-        ]
-    },
-    "Gemini-2.5-Pro": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "gemini-2.5-pro",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "gemini-2.5-pro",
-                "params": {}
-            }
-        ]
-    },
-    "Gemini-2.5-Flash": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "gemini-2.5-flash",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "gemini-2.5-flash",
-                "params": {}
-            }
-        ]
-    },
-    "Gemini-2.5-Flash-Thinking": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "gemini-2.5-flash-thinking",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "gemini-2.5-flash-thinking",
-                "params": {}
-            }
-        ]
-    },
-    "Claude-Opus-4-7": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "claude-opus-4-7",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "claude-opus-4-7",
-                "params": {}
-            }
-        ]
-    },
-    "Claude-Sonnet-4-6": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "claude-sonnet-4-6",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "claude-sonnet-4-6",
-                "params": {}
-            }
-        ]
-    },
-
-    "Claude-Sonnet-4-5": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "claude-sonnet-4-5-20250929",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "claude-sonnet-4-5-20250929",
-                "params": {}
-            }
-        ]
-    },
-    "Claude-Haiku-4-5": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "claude-haiku-4-5-20251001",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "claude-haiku-4-5-20251001",
-                "params": {}
-            }
-        ]
-    },
-    "Qwen2.5-72B-Instruct": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "qwen2.5-72b-instruct",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "Qwen/Qwen2.5-72B-Instruct",
-                "params": {}
-            }
-        ]
-    },
-    "Qwen2.5-32B-Instruct": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "qwen2.5-32b-instruct",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "Qwen/Qwen2.5-32B-Instruct",
-                "params": {}
-            }
-        ]
-    },
-    "Qwen2.5-7B-Instruct": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "qwen2.5-7b-instruct",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "Qwen/Qwen2.5-7B-Instruct",
-                "params": {}
-            }
-        ]
-    },
-    "Llama-3.1-70B-Instruct": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "Meta-Llama-3.1-70B-Instruct",
-                "params": {}
-            },
-            {
-                "api_name": "yunwu",
-                "model_name": "llama-3.1-70b",
-                "params": {}
-            },
-            {
-                "api_name": "modelscope",
-                "model_name": "LLM-Research/Meta-Llama-3-70B-Instruct",
-                "params": {}
-            }
-        ]
-    },
-    "Llama-3.1-8B-Instruct": {
-        "api_sources": [
-            {
-                "api_name": "yunwu",
-                "model_name": "llama-3.1-8b",
-                "params": {}
-            },
-            {
-                "api_name": "mmm",
-                "model_name": "llama-3.1-8b",
-                "params": {}
-            },
-            {
-                "api_name": "modelscope",
-                "model_name": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
-                "params": {}
-            }
-        ]
-    },
-    "MiniMax-M2.7": {
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "MiniMax-M2.7",
-                "params": {}
-            }
-        ]
-    },
-    "Kimi-k2.6": {  
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "kimi-k2.6",
-                "params": {}
-            }
-        ]
-    },
-    "GLM-5.1": {  
-        "api_sources": [
-            {
-                "api_name": "mmm",
-                "model_name": "glm-5.1",
-                "params": {}
-            }
-        ]
-    }
-
+  "GPT-5.5": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-5.5",
+        "params": {}
+      }
+    ]
+  },
+  "GPT-5.4": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-5.4",
+        "params": {}
+      }
+    ]
+  },
+  "GPT-5.2": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-5.2",
+        "params": {}
+      }
+    ]
+  },
+  "GPT-5.1-Thinking": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-5.1-thinking-all",
+        "params": {}
+      }
+    ]
+  },
+  "GPT-4.1-mini": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-4.1-mini-2025-04-14",
+        "params": {}
+      }
+    ]
+  },
+  "GPT-4o": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-4o",
+        "params": {}
+      }
+    ]
+  },
+  "GPT-4o-mini": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gpt-4o-mini",
+        "params": {}
+      }
+    ]
+  },
+  "o3-mini": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "o3-mini",
+        "params": {}
+      }
+    ]
+  },
+  "o1-mini": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "o1-mini",
+        "params": {}
+      }
+    ]
+  },
+  "DeepSeek-V3.2": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "deepseek-ai/DeepSeek-V3.2",
+        "params": {}
+      },
+      {
+        "api_name": "ppinfra",
+        "model_name": "deepseek/deepseek-v3.2",
+        "params": {}
+      }
+    ]
+  },
+  "DeepSeek-R1": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "deepseek-ai/DeepSeek-R1",
+        "params": {}
+      },
+      {
+        "api_name": "ppinfra",
+        "model_name": "deepseek/deepseek-r1-0528",
+        "params": {}
+      }
+    ]
+  },
+  "DeepSeek-V4-Flash": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "deepseek-v4-flash",
+        "params": {}
+      }
+    ]
+  },
+  "Grok-4": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "grok-4",
+        "params": {}
+      }
+    ]
+  },
+  "Grok-3": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "grok-3",
+        "params": {}
+      }
+    ]
+  },
+  "Gemini-3.1-Pro": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gemini-3.1-pro-preview-medium",
+        "params": {}
+      }
+    ]
+  },
+  "Gemini-2.5-Pro": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gemini-2.5-pro",
+        "params": {}
+      }
+    ]
+  },
+  "Gemini-2.5-Flash": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gemini-2.5-flash",
+        "params": {}
+      }
+    ]
+  },
+  "Gemini-2.5-Flash-Thinking": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "gemini-2.5-flash-thinking",
+        "params": {}
+      }
+    ]
+  },
+  "Claude-Opus-4-7": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "claude-opus-4-7",
+        "params": {}
+      }
+    ]
+  },
+  "Claude-Sonnet-4-6": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "claude-sonnet-4-6",
+        "params": {}
+      }
+    ]
+  },
+  "Claude-Sonnet-4-5": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "claude-sonnet-4-5-20250929",
+        "params": {}
+      }
+    ]
+  },
+  "Claude-Haiku-4-5": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "claude-haiku-4-5-20251001",
+        "params": {}
+      }
+    ]
+  },
+  "Qwen2.5-72B-Instruct": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "Qwen/Qwen2.5-72B-Instruct",
+        "params": {}
+      }
+    ]
+  },
+  "Qwen2.5-32B-Instruct": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "Qwen/Qwen2.5-32B-Instruct",
+        "params": {}
+      }
+    ]
+  },
+  "Qwen2.5-7B-Instruct": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "Qwen/Qwen2.5-7B-Instruct",
+        "params": {}
+      }
+    ]
+  },
+  "Llama-3.1-70B-Instruct": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "Meta-Llama-3.1-70B-Instruct",
+        "params": {}
+      },
+      {
+        "api_name": "modelscope",
+        "model_name": "LLM-Research/Meta-Llama-3-70B-Instruct",
+        "params": {}
+      }
+    ]
+  },
+  "Llama-3.1-8B-Instruct": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "llama-3.1-8b",
+        "params": {}
+      },
+      {
+        "api_name": "modelscope",
+        "model_name": "LLM-Research/Meta-Llama-3.1-8B-Instruct",
+        "params": {}
+      }
+    ]
+  },
+  "MiniMax-M2.7": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "MiniMax-M2.7",
+        "params": {}
+      }
+    ]
+  },
+  "Kimi-k2.6": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "kimi-k2.6",
+        "params": {}
+      }
+    ]
+  },
+  "GLM-5.1": {
+    "api_sources": [
+      {
+        "api_name": "mmm",
+        "model_name": "glm-5.1",
+        "params": {}
+      }
+    ]
+  }
 }

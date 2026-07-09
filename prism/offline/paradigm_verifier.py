@@ -29,7 +29,8 @@ from __future__ import annotations
 
 import logging
 import random
-from typing import List, Optional
+import re
+from typing import Dict, List, Optional
 
 import z3
 
@@ -64,7 +65,37 @@ _CONSTRAINT_KINDS: List[str] = [
     "integer_equality",      # Int('x') == k
     "integer_inequality",    # Int('x') != Int('y')
     "integer_arithmetic",    # Int('x') + Int('y') < k, Int('z') > Int('x')
+    "implication",           # Implies(a, b) conditional rules (AR-LSAT)
+    "cardinality",           # Sum(If(...), ...) counting constraints (AR-LSAT)
 ]
+
+# Bridge from the KDP / online tag namespace (prism.core.constraint_tags and
+# prism.offline.kdp_identifier) to the canonical pool kinds above. Paradigm
+# triggers are declared in the KDP namespace; without this mapping the
+# set-intersection in verify_trigger_precision would be vacuously empty and
+# the precision check would pass for every paradigm regardless of how
+# over-general its trigger is.
+_TAG_TO_KINDS: Dict[str, frozenset] = {
+    "direct_position": frozenset({"position_equality", "integer_equality"}),
+    "directly_left": frozenset({"position_arithmetic"}),
+    "directly_right": frozenset({"position_arithmetic"}),
+    "somewhere_left": frozenset({"position_inequality", "integer_arithmetic"}),
+    "somewhere_right": frozenset({"position_inequality", "integer_arithmetic"}),
+    "relative_position": frozenset({"position_arithmetic", "position_inequality"}),
+    "adjacent": frozenset({"position_arithmetic"}),
+    "ordering": frozenset({"position_inequality", "integer_arithmetic"}),
+    "exclusion": frozenset({
+        "quantified_exclusion", "distinct", "integer_inequality", "position_inequality",
+    }),
+    "inclusion": frozenset({"attribute_binding", "integer_equality"}),
+    "binding": frozenset({"attribute_binding"}),
+    "all_different": frozenset({"distinct"}),
+    "same_house": frozenset({"attribute_binding", "position_equality"}),
+    "domain_bound": frozenset({"integer_bound"}),
+    "logical_implication": frozenset({"implication", "quantified_exclusion"}),
+    "conditional": frozenset({"implication"}),
+    "counting": frozenset({"cardinality"}),
+}
 
 # Representative CSP constraint pool, each entry annotated with its canonical
 # kind set. Covers ZebraLogic-domain patterns and generic integer arithmetic.
@@ -93,6 +124,13 @@ _REPRESENTATIVE_CONSTRAINT_POOL: List[tuple] = [
     ("Int('x') != Int('y')",                                    {"integer_inequality"}),
     ("Int('x') + Int('y') < 15",                                {"integer_arithmetic"}),
     ("Int('z') > Int('x')",                                     {"integer_arithmetic"}),
+    # AR-LSAT-domain: conditional rules and cardinality constraints
+    ("Implies(Int('a') == 1, Int('b') == 2)",                   {"implication"}),
+    ("Implies(Int('a') != 1, Int('c') == Int('d'))",            {"implication"}),
+    ("Sum(If(Int('sel_A') == 1, 1, 0), If(Int('sel_B') == 1, 1, 0)) == 2",
+                                                                {"cardinality"}),
+    ("Sum(If(Int('p') == 1, 1, 0), If(Int('q') == 1, 1, 0)) <= 1",
+                                                                {"cardinality"}),
 ]
 
 
@@ -163,35 +201,63 @@ class ParadigmVerifier:
         paradigm: Paradigm,
         solver: Optional[Z3SolverWrapper] = None,
     ) -> float:
-        """Estimate soundness via random subset trials.
+        """Estimate soundness over ``n_samples`` random partial solver states.
 
-        Uses ``Z3SolverWrapper.verify_paradigm_soundness`` on a clone of
-        *solver* (or a fresh solver if *None*) so that the existing constraint
-        state is never mutated.
+        Each trial instantiates the pre-condition together with randomly
+        sampled domain bounds for every integer variable mentioned by the
+        paradigm, keeps only states where the pre-condition is satisfiable
+        (states satisfying the trigger), then checks whether adding the
+        operation preserves SAT. Soundness is the SAT fraction over valid
+        trials — a genuine sampled estimate rather than a single
+        deterministic probe.
 
         Args:
             paradigm: Paradigm to test.
-            solver: Optional base solver providing current constraints.
+            solver: Optional base solver providing current constraints
+                (cloned per trial; never mutated).
 
         Returns:
-            Fraction of trials that return SAT in [0.0, 1.0].
+            Fraction of valid trials that return SAT, in [0.0, 1.0].
         """
-        base = (solver.clone() if solver else Z3SolverWrapper())
-        pre = [paradigm.pre_condition] if paradigm.pre_condition.strip() else []
         operation = paradigm.operation.strip()
         if not operation:
             return 0.0
+        pre = paradigm.pre_condition.strip()
         if not pre:
             trial = Z3SolverWrapper()
             if not trial.add_constraint(operation):
                 return 0.0
             return 1.0 if trial.check() == "SAT" else 0.0
 
-        return base.verify_paradigm_soundness(
-            current_constraints=pre,
-            paradigm_assertion=operation,
-            n_trials=self._n_samples,
-        )
+        var_names = sorted(set(re.findall(r"Int\('([^']+)'\)", f"{pre} {operation}")))
+        rng = random.Random(42)
+        successes = 0
+        valid_trials = 0
+        for _ in range(self._n_samples):
+            trial = solver.clone() if solver else Z3SolverWrapper()
+            if not trial.add_constraint(pre):
+                return 0.0  # unparseable pre-condition
+            for var in var_names:
+                lo = rng.randint(1, 4)
+                hi = lo + rng.randint(1, 4)
+                trial.add_constraint(f"And(Int('{var}') >= {lo}, Int('{var}') <= {hi})")
+            if trial.check() != "SAT":
+                continue  # sampled state does not satisfy the trigger
+            if not trial.add_constraint(operation):
+                return 0.0  # unparseable operation
+            valid_trials += 1
+            if trial.check() == "SAT":
+                successes += 1
+
+        if valid_trials == 0:
+            # No sampled state satisfied the pre-condition — fall back to a
+            # single joint-consistency probe so narrow pre-conditions are not
+            # rejected purely for sampling reasons.
+            trial = solver.clone() if solver else Z3SolverWrapper()
+            if not trial.add_constraint(pre) or not trial.add_constraint(operation):
+                return 0.0
+            return 1.0 if trial.check() == "SAT" else 0.0
+        return successes / valid_trials
 
     @staticmethod
     def verify_effect(paradigm: Paradigm) -> bool:
@@ -282,6 +348,10 @@ class ParadigmVerifier:
         trigger_types = {t.strip().lower() for t in trigger_types_raw if t and t.strip()}
         if not trigger_types:
             return 0.0
+        # Expand KDP-namespace tags into canonical pool kinds so the
+        # intersection below is meaningful (see _TAG_TO_KINDS).
+        for tag in list(trigger_types):
+            trigger_types |= _TAG_TO_KINDS.get(tag, frozenset())
 
         rng = random.Random(42)
         pool_size = len(_REPRESENTATIVE_CONSTRAINT_POOL)

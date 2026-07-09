@@ -96,6 +96,7 @@ class ParadigmRetriever:
         constraint_types: List[str],
         top_k: int = 3,
         type_bag: Optional[List[str]] = None,
+        min_confidence: float = 0.0,
     ) -> List[Paradigm]:
         """Return the top-k paradigms ranked by scope relevance and confidence.
 
@@ -112,6 +113,12 @@ class ParadigmRetriever:
             List of up to *top_k* :class:`~prism.paradigm_library.schema.Paradigm`
             objects sorted by relevance descending.
         """
+        if not paradigms:
+            return []
+
+        # Confidence floor (paper §Layer-1: τ_conf) applies before ranking,
+        # including the zero-overlap confidence fallback below.
+        paradigms = [p for p in paradigms if p.confidence >= min_confidence]
         if not paradigms:
             return []
 

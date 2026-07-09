@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from prism.core.solver import Z3SolverWrapper
 from prism.core.types import PuzzleInstance
-from prism.offline.trajectory_collector import TrajectoryCollector, _compute_domain_sizes
+from prism.offline.trajectory_collector import (
+    TrajectoryCollector,
+    _compute_domain_sizes,
+    _infer_value_range,
+)
 
 
 def test_model_within_puzzle_domain_rejects_out_of_range_assignment():
@@ -84,3 +88,57 @@ def test_domain_sizes_decrease_after_constraint(mock_llm_client):
     sizes_after = _compute_domain_sizes(solver, n_houses=3)
     # color_Red is now pinned to 1
     assert sizes_after.get("color_Red") == 1
+
+
+def test_compute_domain_sizes_with_explicit_value_range():
+    """value_range overrides n_houses; 0/1 selection flags are trackable."""
+    solver = Z3SolverWrapper()
+    solver.add_constraint("And(Int('sel_A') >= 0, Int('sel_A') <= 1)")
+    solver.add_constraint("And(Int('sel_B') >= 0, Int('sel_B') <= 1)")
+    sizes = _compute_domain_sizes(solver, value_range=(0, 1))
+    assert sizes.get("sel_A") == 2
+
+    solver.add_constraint("Int('sel_A') == 1")
+    solver.check()
+    sizes = _compute_domain_sizes(solver, value_range=(0, 1))
+    assert sizes.get("sel_A") == 1
+
+
+def test_compute_domain_sizes_no_range_returns_empty():
+    solver = Z3SolverWrapper()
+    solver.add_constraint("Int('x') >= 1")
+    assert _compute_domain_sizes(solver) == {}
+    assert _compute_domain_sizes(solver, value_range=(3, 1)) == {}
+
+
+def test_infer_value_range_from_ordering_constraints():
+    constraints = [
+        "And(Int('slot_Ann') >= 1, Int('slot_Ann') <= 6)",
+        "Distinct(Int('slot_Ann'), Int('slot_Bob'))",
+        "Int('slot_Ann') < Int('slot_Bob')",
+    ]
+    assert _infer_value_range(constraints) == (1, 6)
+
+
+def test_infer_value_range_ignores_quoted_names_and_negatives():
+    # The 1 in 'O1' is inside quotes and must not count as a literal;
+    # the -1 offset must not drag the lower bound below zero.
+    constraints = [
+        "Int('O1') == Int('O2') - 1",
+        "And(Int('O2') >= 0, Int('O2') <= 5)",
+    ]
+    assert _infer_value_range(constraints) == (0, 5)
+
+
+def test_infer_value_range_caps_outlier_span():
+    constraints = ["And(Int('year_X') >= 1, Int('year_X') <= 1991)"]
+    lo, hi = _infer_value_range(constraints)
+    assert lo == 1
+    assert hi - lo + 1 == 12  # capped at _MAX_INFERRED_RANGE_WIDTH
+
+
+def test_infer_value_range_none_when_no_usable_literals():
+    assert _infer_value_range(["Int('a') == Int('b')"]) is None
+    assert _infer_value_range([]) is None
+    # A single distinct literal gives no span to probe.
+    assert _infer_value_range(["Int('a') == 3", "Int('b') == 3"]) is None

@@ -40,6 +40,7 @@ logger = logging.getLogger(__name__)
 
 _DEFAULT_MAX_REPAIR_ROUNDS: int = 5
 _DEFAULT_PARADIGM_TOP_K: int = 3
+_DEFAULT_PARADIGM_CONFIDENCE_FLOOR: float = 0.50
 _LAYER2_ENABLED: bool = True
 _DEFAULT_WRITEBACK_BATCH_K: int = 50
 
@@ -542,6 +543,7 @@ class GuidedSolver:
         library: ParadigmLibrary,
         max_repair_rounds: int = _DEFAULT_MAX_REPAIR_ROUNDS,
         paradigm_top_k: int = _DEFAULT_PARADIGM_TOP_K,
+        paradigm_confidence_floor: float = _DEFAULT_PARADIGM_CONFIDENCE_FLOOR,
         layer2_enabled: bool = _LAYER2_ENABLED,
         layer2_policy: str = _DEFAULT_LAYER2_POLICY,
         enable_paradigm: bool = True,
@@ -563,6 +565,7 @@ class GuidedSolver:
         self._extractor = FeatureExtractor()
         self._max_rounds = max_repair_rounds
         self._top_k = paradigm_top_k
+        self._confidence_floor = paradigm_confidence_floor
         self._layer2 = layer2_enabled
         self._layer2_policy = layer2_policy
         self._enable_paradigm = enable_paradigm
@@ -632,6 +635,9 @@ class GuidedSolver:
             library=library,
             max_repair_rounds=int(t.get("max_repair_rounds", _DEFAULT_MAX_REPAIR_ROUNDS)),
             paradigm_top_k=int(t.get("paradigm_top_k", _DEFAULT_PARADIGM_TOP_K)),
+            paradigm_confidence_floor=float(
+                t.get("paradigm_confidence_floor", _DEFAULT_PARADIGM_CONFIDENCE_FLOOR)
+            ),
             layer2_enabled=bool(t.get("layer2_enabled", _LAYER2_ENABLED)),
             layer2_policy=str(t.get("layer2_policy", _DEFAULT_LAYER2_POLICY)),
             enable_paradigm=bool(t.get("enable_paradigm", True)),
@@ -749,6 +755,7 @@ class GuidedSolver:
 
         switcher = StrategySwitcher(memory) if memory is not None else None
         current_constraints = list(constraints)
+        l4_used = False  # L4 full retranslation fires at most once per puzzle
 
         # ── Repair loop ────────────────────────────────────────────────
         for iteration in range(1, self._max_rounds + 1):
@@ -781,6 +788,18 @@ class GuidedSolver:
                     "problem_nl": puzzle.nl_description,
                 })
                 if switch_level.value == "L4_FULL_RETRANSLATE":
+                    if l4_used:
+                        # A second L4 condition is suppressed: stop repairing
+                        # and mark the puzzle unsolved (bounds the per-puzzle
+                        # LLM-call budget at translate + R repairs + one L4).
+                        steps.append({
+                            "iteration": iteration,
+                            "action": "l4_suppressed",
+                            "z3_result": result,
+                            "stagnated": True,
+                        })
+                        break
+                    l4_used = True
                     current_constraints = self._translator.retranslate(
                         puzzle, current_constraints, "\n".join(unsat_core)
                     )
@@ -800,7 +819,10 @@ class GuidedSolver:
                         break
                     continue
                 if switch_level.value == "L3_REVERT_CHECKPOINT":
-                    ckpt = switcher.get_checkpoint()
+                    # Pop (not peek): successive L3 escalations revert to
+                    # progressively older checkpoints; once the stack is
+                    # depleted the L4 fallback in should_switch() takes over.
+                    ckpt = switcher.pop_checkpoint()
                     if ckpt and "constraints" in ckpt:
                         current_constraints = list(ckpt["constraints"])
                         solver = self._rebuild_solver(current_constraints)
@@ -860,11 +882,27 @@ class GuidedSolver:
                 continue
 
             # ── Loop detection (BEFORE applying the repair) ────────────
-            # Build a provisional action using repair_str as summary so that
-            # the sentence-embedding similarity check is meaningful.
+            # Mirror what _apply_repair would record (dry-run target
+            # selection) so the structured triple (type, target, parameters)
+            # is populated and the primary loop signal can actually fire;
+            # the embedding fallback then only covers paraphrases of
+            # different targets.
+            provisional_idx = (
+                self._select_repair_target_index(
+                    current_constraints, unsat_core, repair_str
+                )
+                if repair_str
+                else None
+            )
+            provisional_target = (
+                current_constraints[provisional_idx]
+                if provisional_idx is not None
+                else ""
+            )
             provisional_action = RepairAction(
-                type="modify_constraint",
-                target_constraint="",
+                type="modify_constraint" if provisional_target else "add_constraint",
+                target_constraint=provisional_target,
+                parameter_signature=self._parameter_signature(repair_str),
                 summary=repair_str or "",
             )
             if (
@@ -904,6 +942,7 @@ class GuidedSolver:
             action = RepairAction(
                 type=self._infer_repair_type(old_constraint, new_constraint),
                 target_constraint=old_constraint or "",
+                parameter_signature=self._parameter_signature(repair_str),
                 summary=repair_str or "",
             )
 
@@ -914,7 +953,11 @@ class GuidedSolver:
             # ── UNSAT Attribution ──────────────────────────────────────
             # Classify error type based on whether the new repair is itself
             # in the resulting UNSAT core (NEW_ASSERTION) or not (LEGACY_ERROR).
-            error_type = self._classify_error_type(new_constraint, new_core)
+            error_type = self._classify_error_type(
+                new_constraint,
+                new_core,
+                declared_vars=set(solver.get_variables()),
+            )
 
             record = RepairRecord(
                 iteration=iteration,
@@ -1009,6 +1052,7 @@ class GuidedSolver:
                 query_types,
                 top_k=self._top_k,
                 type_bag=type_bag,
+                min_confidence=self._confidence_floor,
             )
         except TypeError:
             candidates = self._library.retrieve(query_types, top_k=self._top_k)
@@ -1122,6 +1166,7 @@ class GuidedSolver:
             state.constraint_types,
             top_k=self._top_k,
             type_bag=type_bag,
+            min_confidence=self._confidence_floor,
         )
         if not candidates:
             return "", False
@@ -1146,10 +1191,22 @@ class GuidedSolver:
         if not candidates:
             return "", False
 
-        # Consistency pre-check via Z3 clone
+        # Consistency pre-check: Z3-SAT(C_t ∪ {op(P)}) — the paradigm's
+        # operation must be compatible with the *current puzzle state*, not
+        # merely self-consistent with its own pre-condition. During repair
+        # the raw C_t is itself UNSAT, which would vacuously reject every
+        # paradigm, so the UNSAT-core constraints are excluded and the check
+        # runs against the consistent remainder. Constraints that fail to
+        # parse are skipped best-effort.
+        conflicting = set(state.unsat_core or [])
+        context_constraints = [
+            c for c in state.constraints if c not in conflicting
+        ]
         valid_candidates = []
         for paradigm in candidates:
             trial_solver = Z3SolverWrapper()
+            for current_constraint in context_constraints:
+                trial_solver.add_constraint(current_constraint)
             if paradigm.pre_condition.strip():
                 if not trial_solver.add_constraint(paradigm.pre_condition):
                     continue
@@ -1458,6 +1515,7 @@ class GuidedSolver:
             action = RepairAction(
                 type=self._infer_repair_type(old_constraint, new_constraint),
                 target_constraint=old_constraint or "",
+                parameter_signature=self._parameter_signature(repair_str),
                 summary=repair_str or "",
             )
             solver = self._rebuild_solver(current_constraints)
@@ -1465,7 +1523,11 @@ class GuidedSolver:
             new_core = solver.get_unsat_core() if result == "UNSAT" else None
             record = RepairRecord(
                 iteration=iteration,
-                error_type=self._classify_error_type(new_constraint, new_core),
+                error_type=self._classify_error_type(
+                    new_constraint,
+                    new_core,
+                    declared_vars=set(solver.get_variables()),
+                ),
                 unsat_core=unsat_core,
                 core_fingerprint="",
                 repair_action=action,
@@ -1850,6 +1912,21 @@ class GuidedSolver:
         return "modify_constraint"
 
     @staticmethod
+    def _parameter_signature(repair_str: Optional[str]) -> Optional[str]:
+        """Structural signature of a repair: operator | sorted vars | constants.
+
+        Two repairs share a signature iff they assert the same relation over
+        the same variables with the same numeric parameters — the exact-match
+        granularity the loop detector's structured triple requires.
+        """
+        if not repair_str:
+            return None
+        op = GuidedSolver._constraint_operator(repair_str) or ""
+        vars_ = ",".join(sorted(GuidedSolver._constraint_vars(repair_str)))
+        consts = ",".join(re.findall(r"(?<![\w'])-?\d+(?![\w'])", repair_str))
+        return f"{op}|{vars_}|{consts}"
+
+    @staticmethod
     def _classify_error_type(
         new_constraint: Optional[str],
         new_core: Optional[List[str]],
@@ -2007,6 +2084,7 @@ class GuidedSolver:
             new_conf = min(1.0, paradigm.confidence + 0.01)
             try:
                 self._library.update_confidence(paradigm.id, new_conf)
+                self._library.increment_support(paradigm.id)
             except KeyError:
                 pass
 

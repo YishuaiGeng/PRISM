@@ -205,11 +205,15 @@ class TestVerifyGate:
         """Compatible operation + SAT effect + specific trigger → accepted.
 
         P0 update: operation must be informative (non-vacuous) under its
-        pre-condition. ``Int('x') >= 5`` is not entailed by ``Int('x') > 0``,
-        so the paradigm is genuinely informative and passes the effect check.
+        pre-condition, and — since soundness became a sampled estimate over
+        random domain-bound states — it must also hold on ≥ the soundness
+        threshold of states satisfying the pre-condition. ``Int('x') <= 8``
+        is not entailed by ``Int('x') > 0`` (informative) yet consistent with
+        every sampled bound configuration (sound); ``Int('x') >= 5`` would
+        fail sampled soundness because it contradicts narrow low-range states.
         """
         paradigm = make_paradigm(
-            operation="Int('x') >= 5",
+            operation="Int('x') <= 8",
             pre_condition="Int('x') > 0",
             trigger_types=["nonexistent_type_xyz"],
         )
