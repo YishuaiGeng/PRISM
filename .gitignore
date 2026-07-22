@@ -22,3 +22,17 @@ data/hf/
 *.db
 *.sqlite
 *.sqlite3
+
+# LaTeX build intermediates (keep compiled *.pdf)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.out
+*.toc
+*.xdv
+*.log
+docs/**/tmp/
+.playwright-mcp/
