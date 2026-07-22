@@ -50,3 +50,17 @@
 - 整体回滚：`git checkout main`（main 停在整理前 `a781cc2`）。
 - 回到"整理前含 WIP"状态：`git checkout pre-reorg`。
 - 仅恢复 results 原始布局：解压 scratchpad 的 `results_backup_prereorg.tar.gz`。
+
+---
+
+## 后续跟进（2026-07-22 同日，依次完成）
+
+| # | 事项 | 结果 |
+|---|---|---|
+| 1 | 合并回 `main` | ✅ fast-forward，`main` 现含全部整理（原停 `a781cc2`，tag `pre-reorg` 仍可回退） |
+| 2 | 两份 LaTeX 树去重 | ✅ 保留 `docs/prism/latex_build/`；`latex_canonical/` → `docs/archive/prism_latex_canonical_snapshot/`；加 `latex_build/.gitattributes`（`*.tex` eol=lf） |
+| 3 | 抽离 SPARC π-gate | ✅ `_sparc_gate`+7 助手 → `prism/online/sparc_gate.py:SparcGateMixin`，`GuidedSolver` 继承之；逻辑零改；486 tests pass |
+| 4 | `SUBMISSION_TODO.md` 归位 | ✅ 移入 `docs/prism/`（与 `IMPLEMENTATION_CHECKLIST.md` 同目录，相对链接仍有效） |
+
+剩余未处理开放项：`docs/sparc/authorkit/` 归属复核；`results/prism/` 边界存疑项（如需再迁）；
+是否 `git push` 到 origin（本次仅本地提交）。
