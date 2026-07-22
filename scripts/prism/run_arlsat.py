@@ -12,7 +12,7 @@ Usage::
         --library paradigm_store/arlsat_train.db \
         --split test \
         --max-puzzles 20 \
-        --output results/arlsat_smoke.csv
+        --output results/prism/arlsat_smoke.csv
 """
 
 from __future__ import annotations
@@ -66,7 +66,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Skip the first N questions (for sharding across parallel workers).",
     )
     p.add_argument("--max-repair", type=int, default=5)
-    p.add_argument("--output", default="results/arlsat_results.csv")
+    p.add_argument("--output", default="results/prism/arlsat_results.csv")
     p.add_argument(
         "--trace-output",
         default=None,

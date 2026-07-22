@@ -47,7 +47,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--experiment", choices=["ablation", "generalization"], default="ablation")
     p.add_argument("--config", default="config/default.yaml")
     p.add_argument("--exp-config", default=None, help="Override experiment config path")
-    p.add_argument("--output-dir", default="results/experiments")
+    p.add_argument("--output-dir", default="results/prism/experiments")
     p.add_argument("--model", default=None)
     p.add_argument("--library", default="paradigm_store/prism.db")
     p.add_argument("--data-dir", default="allenai/ZebraLogicBench")

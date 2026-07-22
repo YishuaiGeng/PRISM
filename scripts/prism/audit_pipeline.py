@@ -9,7 +9,7 @@ Usage:
       --trajectories data/trajectories/gpt4o_mini_audit \
       --library paradigm_store/gpt4o_mini_audit.db \
       --min-support 1,2,5 \
-      --json-out results/audit.json
+      --json-out results/prism/audit.json
 """
 
 from __future__ import annotations

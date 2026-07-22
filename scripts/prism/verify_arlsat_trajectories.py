@@ -34,7 +34,7 @@ Usage::
     python scripts/prism/verify_arlsat_trajectories.py \
         --trajectories data/trajectories/arlsat_train_full \
         --model GPT-4o --offset 0 --max-trajectories 500 \
-        --output results/arlsat_traj_verdicts_s0.json
+        --output results/prism/arlsat_traj_verdicts_s0.json
 """
 
 from __future__ import annotations
@@ -67,7 +67,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--model", default="GPT-4o")
     p.add_argument("--offset", type=int, default=0, help="Skip first N trajectory files")
     p.add_argument("--max-trajectories", type=int, default=None)
-    p.add_argument("--output", default="results/arlsat_traj_verdicts.json")
+    p.add_argument("--output", default="results/prism/arlsat_traj_verdicts.json")
     return p.parse_args()
 
 

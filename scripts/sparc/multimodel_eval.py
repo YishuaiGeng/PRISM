@@ -20,7 +20,7 @@ Example (small smoke test)::
       --sc-samples 0 --dry-run
 
     python scripts/sparc/multimodel_eval.py --models GPT-4o,DeepSeek-V3 \
-      --sc-samples 5 --temperature 0.7 --out-dir results/multimodel --execute-paid
+      --sc-samples 5 --temperature 0.7 --out-dir results/sparc/multimodel --execute-paid
 """
 from __future__ import annotations
 
@@ -233,7 +233,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
                         "--sc-samples. b2 (logprob) unsupported by the text-only endpoint.")
     p.add_argument("--temperature", type=float, default=0.7, help="Temp for SC samples")
     p.add_argument("--seed", type=int, default=42)
-    p.add_argument("--out-dir", type=Path, default=Path("results/multimodel"))
+    p.add_argument("--out-dir", type=Path, default=Path("results/sparc/multimodel"))
     p.add_argument("--execute-paid", action="store_true")
     p.add_argument("--dry-run", action="store_true")
     return p.parse_args(argv)

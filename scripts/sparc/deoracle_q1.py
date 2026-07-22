@@ -22,7 +22,7 @@ the no-oracle numbers cited in the paper.
 Usage::
 
     python scripts/sparc/deoracle_q1.py \
-      results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
+      results/sparc/zebra_v2_s42 results/sparc/zebra_v2_s123 results/sparc/zebra_v2_s7
 """
 from __future__ import annotations
 
@@ -46,9 +46,9 @@ from prism.evaluation.benchmarks.zebralogic import answers_match, is_scorable
 SAT_FAMILY = {"SAT", "INVALID_MODEL", "KEY_MISMATCH", "MISALIGNED_MODEL"}
 NO_GATE_SYSTEMS = (("baseline", "baseline"), ("nopar", "aggressive"))
 DEFAULT_DIRS = (
-    Path("results/zebra_v2_s42"),
-    Path("results/zebra_v2_s123"),
-    Path("results/zebra_v2_s7"),
+    Path("results/sparc/zebra_v2_s42"),
+    Path("results/sparc/zebra_v2_s123"),
+    Path("results/sparc/zebra_v2_s7"),
 )
 
 

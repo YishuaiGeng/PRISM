@@ -13,7 +13,7 @@ Usage::
         --error-library paradigm_store/error_4x5x_v2.db \
         --tasks logical_deduction_three_objects \
         --max-puzzles 50 \
-        --output results/logical_deduction_smoke.csv
+        --output results/prism/logical_deduction_smoke.csv
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     p.add_argument("--max-puzzles", type=int, default=None)
     p.add_argument("--max-repair", type=int, default=5)
-    p.add_argument("--output", default="results/logical_deduction_results.csv")
+    p.add_argument("--output", default="results/prism/logical_deduction_results.csv")
     p.add_argument(
         "--trace-output",
         default=None,

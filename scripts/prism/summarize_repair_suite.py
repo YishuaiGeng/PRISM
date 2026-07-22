@@ -7,9 +7,9 @@ generates a unified summary table.
 Usage::
 
     python scripts/prism/summarize_repair_suite.py \
-        --suite-dirs results/repair_suite_3x_solution results/repair_suite_5x_solution \
+        --suite-dirs results/prism/repair_suite_3x_solution results/prism/repair_suite_5x_solution \
         --labels "3x3/3x4 (solution)" "5x5/6x5 (solution)" \
-        --output results/repair_suite_combined_summary.csv
+        --output results/prism/repair_suite_combined_summary.csv
 """
 
 from __future__ import annotations
@@ -48,7 +48,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     p.add_argument(
         "--output",
-        default="results/repair_suite_combined_summary.csv",
+        default="results/prism/repair_suite_combined_summary.csv",
         help="Output CSV path",
     )
     p.add_argument(

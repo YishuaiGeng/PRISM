@@ -9,17 +9,17 @@ Usage::
     # Full suite on 3x3/3x4 (150 records)
     python scripts/prism/run_repair_benchmark_suite.py \
         --data data/hf/zebralogic/generated_3x_eval_domain_explicit_150.jsonl \
-        --output-dir results/repair_suite_3x
+        --output-dir results/prism/repair_suite_3x
 
     # Full suite on 5x5/6x5
     python scripts/prism/run_repair_benchmark_suite.py \
         --data data/hf/zebralogic/generated_5x5_6x5_eval_domain_explicit_100.jsonl \
-        --output-dir results/repair_suite_5x
+        --output-dir results/prism/repair_suite_5x
 
     # Smoke test (5 records, single perturbation type)
     python scripts/prism/run_repair_benchmark_suite.py \
         --data data/hf/zebralogic/generated_3x_eval_domain_explicit_150.jsonl \
-        --output-dir results/repair_suite_smoke \
+        --output-dir results/prism/repair_suite_smoke \
         --perturbation-types directly_right \
         --max-records 5
 """

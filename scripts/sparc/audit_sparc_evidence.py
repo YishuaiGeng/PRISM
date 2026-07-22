@@ -13,9 +13,9 @@ LLM.  Its outputs are intended to make three evidence boundaries explicit:
 Usage::
 
     python scripts/sparc/audit_sparc_evidence.py \
-      results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
+      results/sparc/zebra_v2_s42 results/sparc/zebra_v2_s123 results/sparc/zebra_v2_s7
 
-The default output directory is ``results/sparc_evidence_audit`` and contains
+The default output directory is ``results/sparc/sparc_evidence_audit`` and contains
 JSON, Markdown, and CSV files used by the paper.
 """
 
@@ -41,9 +41,9 @@ from prism.evaluation.benchmarks.zebralogic import answers_match, is_scorable
 
 
 DEFAULT_RESULT_DIRS = (
-    Path("results/zebra_v2_s42"),
-    Path("results/zebra_v2_s123"),
-    Path("results/zebra_v2_s7"),
+    Path("results/sparc/zebra_v2_s42"),
+    Path("results/sparc/zebra_v2_s123"),
+    Path("results/sparc/zebra_v2_s7"),
 )
 PAIRINGS = (
     ("baseline", "basesparc", "baseline"),
@@ -84,20 +84,20 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("results/sparc_evidence_audit"),
+        default=Path("results/sparc/sparc_evidence_audit"),
     )
     parser.add_argument("--bootstrap-replicates", type=int, default=10_000)
     parser.add_argument("--bootstrap-seed", type=int, default=20260712)
     parser.add_argument(
         "--arlsat-dir",
         type=Path,
-        default=Path("results/arlsat_gate_probe"),
+        default=Path("results/sparc/arlsat_gate_probe"),
         help="Optional AR-LSAT pilot directory containing baseline/gate CSV and traces",
     )
     parser.add_argument(
         "--ablation-dir",
         type=Path,
-        default=Path("results/zebra_ablation_s42"),
+        default=Path("results/sparc/zebra_ablation_s42"),
         help="Optional directory containing blind/noinv component traces",
     )
     return parser.parse_args(argv)

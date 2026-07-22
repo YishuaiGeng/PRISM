@@ -10,7 +10,7 @@ puzzles, and prints per-system accuracy plus the SBW ledger.
 
 Usage::
 
-    python scripts/sparc/rescore_zebra_results.py results/zebra_main_s42
+    python scripts/sparc/rescore_zebra_results.py results/sparc/zebra_main_s42
 """
 
 from __future__ import annotations
@@ -64,4 +64,4 @@ def rescore_dir(result_dir: Path) -> None:
 
 
 if __name__ == "__main__":
-    rescore_dir(Path(sys.argv[1] if len(sys.argv) > 1 else "results/zebra_main_s42"))
+    rescore_dir(Path(sys.argv[1] if len(sys.argv) > 1 else "results/sparc/zebra_main_s42"))

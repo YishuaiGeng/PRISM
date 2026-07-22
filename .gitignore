@@ -14,7 +14,8 @@ api/api_configs.json
 config/api/api_configs.json
 
 paradigm_store/
-results/
+results/*
+!results/RESULTS_INDEX.md
 data/trajectories/
 data/hf/
 

@@ -66,7 +66,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--data-subset", default="grid_mode")
     p.add_argument("--sizes", default=None, help="Comma-separated sizes, e.g. '4x5,5x5'")
     p.add_argument("--max-repair", type=int, default=5)
-    p.add_argument("--output", default="results/online_results.csv")
+    p.add_argument("--output", default="results/prism/online_results.csv")
     p.add_argument(
         "--trace-output",
         default=None,

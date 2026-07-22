@@ -11,17 +11,17 @@ Completion variants require the explicit ``--execute-paid`` acknowledgement.
 Examples::
 
     python scripts/sparc/run_frozen_sparc.py prepare \
-      --source-dir results/zebra_v2_s42 --source-system baseline \
-      --output results/frozen_s42_baseline.jsonl
+      --source-dir results/sparc/zebra_v2_s42 --source-system baseline \
+      --output results/sparc/frozen_s42_baseline.jsonl
 
     python scripts/sparc/run_frozen_sparc.py run \
-      --input results/frozen_s42_baseline.jsonl --variant gate_only \
-      --output results/frozen_gate_only.jsonl
+      --input results/sparc/frozen_s42_baseline.jsonl --variant gate_only \
+      --output results/sparc/frozen_gate_only.jsonl
 
     python scripts/sparc/run_frozen_sparc.py run \
-      --input results/frozen_s42_baseline.jsonl --variant sparc_k3 \
+      --input results/sparc/frozen_s42_baseline.jsonl --variant sparc_k3 \
       --model GPT-4o-mini --seed 42 --execute-paid \
-      --output results/frozen_sparc_k3.jsonl
+      --output results/sparc/frozen_sparc_k3.jsonl
 """
 
 from __future__ import annotations

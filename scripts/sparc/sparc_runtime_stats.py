@@ -9,7 +9,7 @@ sections:
   3. wall-clock duration per run derived from err.log timestamps.
 
 Usage:  python scripts/sparc/sparc_runtime_stats.py [results_glob]
-Default results glob: results/zebra_v2_s*
+Default results glob: results/sparc/zebra_v2_s*
 """
 
 from __future__ import annotations
@@ -83,7 +83,7 @@ def wallclock_stats(root_glob: str) -> dict:
 
 
 def main() -> None:
-    root_glob = sys.argv[1] if len(sys.argv) > 1 else "results/zebra_v2_s*"
+    root_glob = sys.argv[1] if len(sys.argv) > 1 else "results/sparc/zebra_v2_s*"
 
     rows = trace_stats(root_glob)
     print("== pi-gate / completion / conflict-repair (SPARC arms) ==")

@@ -13,7 +13,7 @@ budget-k run, so truncation is an exact replay, not a simulation.
 
 Usage::
 
-    python scripts/sparc/budget_sweep_zebra.py results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
+    python scripts/sparc/budget_sweep_zebra.py results/sparc/zebra_v2_s42 results/sparc/zebra_v2_s123 results/sparc/zebra_v2_s7
 """
 
 from __future__ import annotations
@@ -99,5 +99,5 @@ def main(dirs: list[Path]) -> None:
 
 
 if __name__ == "__main__":
-    args = [Path(a) for a in sys.argv[1:]] or [Path("results/zebra_v2_s42")]
+    args = [Path(a) for a in sys.argv[1:]] or [Path("results/sparc/zebra_v2_s42")]
     main(args)

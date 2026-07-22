@@ -168,7 +168,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--sizes", default=None, help="Comma-separated size filter")
     p.add_argument("--max-records", type=int, default=None)
     p.add_argument("--max-repair", type=int, default=1)
-    p.add_argument("--output", default="results/controlled_repair.csv")
+    p.add_argument("--output", default="results/prism/controlled_repair.csv")
     p.add_argument("--trace-output", default=None)
     p.add_argument("--error-library", default=None)
     p.add_argument(

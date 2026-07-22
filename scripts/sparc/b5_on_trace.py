@@ -5,7 +5,7 @@ adds the round-trip calls (back-translate + faithfulness judge) per answered
 puzzle.  Paid; nothing runs without --execute-paid.
 
     python scripts/sparc/b5_on_trace.py \
-      --trace results/rq3_gpt4omini/GPT-4o-mini_nogate.trace.jsonl \
+      --trace results/sparc/rq3_gpt4omini/GPT-4o-mini_nogate.trace.jsonl \
       --model GPT-4o-mini --execute-paid
 """
 from __future__ import annotations
@@ -45,9 +45,9 @@ def main() -> None:
         if p["answered"]:
             print(f"  tau={p['threshold']:>3}: cov={p['coverage_pct']:.1f}% "
                   f"risk={p['risk_pct']:.1f}% (ans={p['answered']})")
-    Path("results/b5_roundtrip.json").write_text(
+    Path("results/sparc/b5_roundtrip.json").write_text(
         json.dumps(points, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("saved results/b5_roundtrip.json")
+    print("saved results/sparc/b5_roundtrip.json")
 
 
 if __name__ == "__main__":

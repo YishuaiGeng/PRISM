@@ -38,7 +38,7 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional error paradigm DB; keeps only repairs materialized by memory.",
     )
-    p.add_argument("--output", default="results/clue_coverage_replay.csv")
+    p.add_argument("--output", default="results/prism/clue_coverage_replay.csv")
     p.add_argument("--trace-output", default=None)
     return p.parse_args()
 

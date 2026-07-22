@@ -1,7 +1,7 @@
 # Step-5 online validation for the v3 paradigm libraries (PowerShell 5.1).
 # Four sequential runs (baseline vs PRISM full, at 3x and 5x scales).
 # Sequential on purpose: parallel runs risk API-gateway 524 timeouts.
-# Each run is logged to results/logs/ and a failure does not stop the rest.
+# Each run is logged to results/prism/logs/ and a failure does not stop the rest.
 
 $ErrorActionPreference = "Continue"
 Set-Location (Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path))
@@ -27,7 +27,7 @@ Invoke-Run "v3_3x_baseline" @(
     "--data-dir", $DATA_3X, "--data-source", "local", "--model", $MODEL,
     "--no-paradigm", "--no-memory", "--max-repair", "3", "--sizes", "3x3,3x4",
     "--schema-hint-mode", "puzzle",
-    "--output", "results/v3_3x_baseline_150.csv"
+    "--output", "results/prism/v3_3x_baseline_150.csv"
 )
 
 Invoke-Run "v3_3x_full" @(
@@ -37,7 +37,7 @@ Invoke-Run "v3_3x_full" @(
     "--error-library", "paradigm_store/error_3x_v3.db",
     "--max-repair", "3", "--sizes", "3x3,3x4",
     "--schema-hint-mode", "puzzle",
-    "--output", "results/v3_3x_full_150.csv"
+    "--output", "results/prism/v3_3x_full_150.csv"
 )
 
 Invoke-Run "v3_5x_baseline" @(
@@ -45,7 +45,7 @@ Invoke-Run "v3_5x_baseline" @(
     "--data-dir", $DATA_5X, "--data-source", "local", "--model", $MODEL,
     "--no-paradigm", "--no-memory", "--max-repair", "3", "--sizes", "5x5,6x5",
     "--schema-hint-mode", "puzzle", "--translation-normalize", "initial",
-    "--output", "results/v3_5x_baseline_100.csv"
+    "--output", "results/prism/v3_5x_baseline_100.csv"
 )
 
 Invoke-Run "v3_5x_full" @(
@@ -55,7 +55,7 @@ Invoke-Run "v3_5x_full" @(
     "--error-library", "paradigm_store/error_5x6x_v3.db",
     "--max-repair", "3", "--sizes", "5x5,6x5",
     "--schema-hint-mode", "puzzle", "--translation-normalize", "initial",
-    "--output", "results/v3_5x_full_100.csv"
+    "--output", "results/prism/v3_5x_full_100.csv"
 )
 
 Write-Host ""
@@ -63,7 +63,7 @@ Write-Host "=== All runs finished: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ===
 Write-Host "--- Quick summary (solved counts) ---"
 python -c @'
 import csv, glob
-for f in sorted(glob.glob("results/v3_*_1?0.csv")):
+for f in sorted(glob.glob("results/prism/v3_*_1?0.csv")):
     with open(f, encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
     if not rows:
