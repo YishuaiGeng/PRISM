@@ -1,0 +1,66 @@
+session:
+  id: "2026-07-15_001"
+  timestamp: "2026-07-15T19:17:35+08:00"
+  summary: "Installed Nature Skills and rewrote the Chinese SPARC manuscript around evidence-calibrated structural diagnosis."
+
+events_logged:
+  - type: experiment
+    id: N07
+    provenance: ai-executed
+    summary: "Recomputed the cached provenance, fixed-state gate, component, and AR-LSAT audits."
+  - type: pivot
+    id: N08
+    provenance: ai-suggested
+    summary: "Made frozen-state structural diagnosis the primary result and demoted unpaired endpoints to descriptive evidence."
+  - type: decision
+    id: N09
+    provenance: ai-suggested
+    summary: "Limited the completion theorem to complete-model progress and disclosed projection and UNKNOWN boundaries."
+  - type: claim
+    id: C07
+    provenance: ai-suggested
+    summary: "Recorded the bounded frozen-state diagnostic scope of the uniqueness gate."
+  - type: claim
+    id: C08
+    provenance: ai-suggested
+    summary: "Recorded that historical endpoint differences are not causal estimates."
+  - type: claim
+    id: C09
+    provenance: ai-suggested
+    summary: "Recorded the full-model, rather than answer-projection, scope of current completion progress."
+
+ai_actions:
+  - action: "Rewrote and reorganized the Chinese SPARC manuscript, including title, abstract, method guarantees, experiment hierarchy, limitations, and conclusion."
+    provenance: ai-executed
+    files_changed: ["docs/paper_draft/sparc_paper_zh.tex"]
+  - action: "Localized the risk-coverage figure and regenerated its PDF and PNG assets."
+    provenance: ai-executed
+    files_changed: ["docs/paper_draft/figures/gen_fig_risk_coverage.py", "docs/paper_draft/figures/fig_risk_coverage.png", "docs/paper_draft/figures/fig_risk_coverage.pdf"]
+  - action: "Compiled and visually checked the 21-page Chinese PDF and ran citation, label, and cached-evidence checks."
+    provenance: ai-executed
+    files_changed: ["docs/paper_draft/sparc_paper_zh.pdf"]
+
+claims_touched:
+  - id: C02
+    action: weakened
+    provenance: ai-suggested
+  - id: C05
+    action: weakened
+    provenance: ai-suggested
+  - id: C07
+    action: created
+    provenance: ai-suggested
+  - id: C08
+    action: created
+    provenance: ai-suggested
+  - id: C09
+    action: created
+    provenance: ai-suggested
+
+open_threads:
+  - "Run prospectively frozen-input paired reruns for the full, blind-completion, and no-protection variants."
+  - "Enforce an explicit answer-variable whitelist and define a deployment policy for UNKNOWN gate outcomes."
+  - "Reverify bibliographic metadata before submission and expand cross-task evaluation."
+
+ai_suggestions_pending:
+  - "Move the evidence-calibrated draft into the target conference template only after the paired experimental plan is complete."

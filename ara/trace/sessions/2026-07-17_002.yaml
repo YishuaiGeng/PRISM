@@ -1,0 +1,50 @@
+session:
+  id: "2026-07-17_002"
+  timestamp: "2026-07-17T13:18:42+08:00"
+  summary: "Directly revised the SPARC TeX manuscript after the user clarified the intended target file."
+
+events_logged:
+  - type: decision
+    id: "N12"
+    provenance: user
+    summary: "Use docs/paper_draft/sparc_paper_zh.tex as the sole target for this revision."
+  - type: claim
+    id: "C11"
+    provenance: ai-suggested
+    summary: "The current risk--coverage evidence supports only sample-specific operating-point ordering."
+  - type: observation
+    id: "O03"
+    provenance: ai-executed
+    summary: "The source had scope overstatements and unproved formal claims that were corrected in place."
+
+ai_actions:
+  - action: "Rewrote the abstract, selected introduction and experiment passages, and limitations in the exact SPARC TeX file."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+  - action: "Added propositions and proofs for pure-underconstraint detection, unique-but-wrong escape, and complete-model contraction."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+  - action: "Compiled the Chinese layout preview with XeLaTeX and visually inspected the revised main-text pages."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.pdf"
+
+claims_touched:
+  - id: "C11"
+    action: created
+    provenance: ai-suggested
+  - id: "C05"
+    action: revised
+    provenance: ai-executed
+  - id: "C09"
+    action: revised
+    provenance: ai-executed
+
+open_threads:
+  - "Run a prespecified, matched evaluation before claiming global Pareto dominance or cross-model benefit."
+  - "Implement an explicit answer-variable whitelist and a fail-closed UNKNOWN policy before broadening the gate claim."
+
+ai_suggestions_pending:
+  - "Keep the Chinese XeLaTeX PDF as an internal review artifact and migrate approved content to the official English PDFLaTeX submission source."

@@ -1,0 +1,76 @@
+session:
+  id: "2026-07-12_001"
+  timestamp: "2026-07-12T10:48:28+08:00"
+  summary: "Reorganized and calibrated the Chinese SPARC manuscript and its reviewer-defense ledger."
+
+events_logged:
+  - type: question
+    id: N01
+    provenance: user
+    summary: "Convert a report-like draft into a formal academic paper."
+  - type: pivot
+    id: N02
+    provenance: ai-suggested
+    summary: "Centered the story on SAT being insufficient for task correctness."
+  - type: decision
+    id: N03
+    provenance: ai-suggested
+    summary: "Adopted an exhaustive answer-projection taxonomy."
+  - type: dead_end
+    id: N04
+    provenance: ai-suggested
+    summary: "Removed a clue-coverage mechanism absent from the implementation."
+  - type: experiment
+    id: N05
+    provenance: ai-executed
+    summary: "Audited the four-outcome ZebraLogic ledger and matched comparisons."
+  - type: decision
+    id: N06
+    provenance: ai-suggested
+    summary: "Withdrew unsupported accuracy and near-zero-cost claims."
+  - type: claim
+    id: C02
+    provenance: ai-suggested
+    summary: "Current ZebraLogic outputs support lower observed SBW and answered-sample risk."
+
+ai_actions:
+  - action: "Rewrote the manuscript into an abstract-introduction-related-work-problem-method-experiment-discussion-conclusion structure."
+    provenance: ai-executed
+    files_changed: ["docs/paper_draft/sparc_paper_zh.tex"]
+  - action: "Rebuilt the current claim, evidence, reviewer-defense, and TODO ledger."
+    provenance: ai-executed
+    files_changed: ["docs/paper_draft/sparc_summary_and_reviewer_defense.md"]
+  - action: "Redrew the method control-flow figure, repaired float placement, and compiled a warning-free 15-page PDF."
+    provenance: ai-executed
+    files_changed: ["docs/paper_draft/sparc_paper_zh.tex", "docs/paper_draft/sparc_paper_zh.pdf"]
+
+claims_touched:
+  - id: C01
+    action: created
+    provenance: ai-suggested
+  - id: C02
+    action: created
+    provenance: ai-suggested
+  - id: C03
+    action: created
+    provenance: ai-suggested
+  - id: C04
+    action: weakened
+    provenance: ai-suggested
+  - id: C05
+    action: created
+    provenance: ai-suggested
+  - id: C06
+    action: weakened
+    provenance: ai-suggested
+
+open_threads:
+  - "Externally reverify all citation metadata before submission."
+  - "Run matched blind-completion and no-protection ablations."
+  - "Expand cross-task and stronger-model experiments with multiple seeds."
+  - "Add a matched-budget repeated-formalization baseline."
+  - "Quantify UNKNOWN/fail-open cases and end-to-end latency."
+
+ai_suggestions_pending:
+  - "Translate into the target conference template only after the evidence scope is frozen."
+

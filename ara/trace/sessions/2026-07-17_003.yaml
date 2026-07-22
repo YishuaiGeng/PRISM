@@ -1,0 +1,31 @@
+session:
+  id: "2026-07-17_003"
+  timestamp: "2026-07-17T13:55:55+08:00"
+  summary: "Completed the in-place SPARC narrative polish, terminology reconciliation, and final PDF verification."
+
+events_logged: []
+
+ai_actions:
+  - action: "Clarified the direct K=0 structural-abstention path, made the RQ3 baseline set explicit, and rewrote the conclusion around contribution, evidence, and scope boundaries."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+  - action: "Unified the B4 name as multi-formalization consistency across the manuscript, table, and risk--coverage figure, then regenerated the figure."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/figures/gen_fig_baseline_rc.py"
+      - "docs/paper_draft/figures/fig_baseline_rc.pdf"
+      - "docs/paper_draft/figures/fig_baseline_rc.png"
+  - action: "Ran XeLaTeX twice and visually inspected the updated main-text and conclusion pages; no undefined references, changed labels, or overfull boxes remained."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.pdf"
+
+claims_touched: []
+
+open_threads:
+  - "Run a prespecified matched evaluation before claiming global Pareto dominance or cross-model benefit."
+  - "Implement an explicit answer-variable whitelist and a fail-closed UNKNOWN policy before broadening the gate claim."
+
+ai_suggestions_pending:
+  - "Keep the Chinese XeLaTeX PDF as an internal review artifact and migrate approved content to the official English PDFLaTeX submission source."

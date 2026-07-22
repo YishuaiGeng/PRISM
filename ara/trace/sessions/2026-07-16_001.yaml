@@ -1,0 +1,30 @@
+session:
+  id: "2026-07-16_001"
+  timestamp: "2026-07-16T03:14:45+08:00"
+  summary: "Created and verified a Chinese AAAI-style layout preview for the SPARC manuscript."
+
+events_logged:
+  - type: observation
+    id: "O01"
+    provenance: ai-suggested
+    summary: "Chinese XeLaTeX output is preview-only under the local AAAI 2026 author-kit requirements."
+
+ai_actions:
+  - action: "Converted the Chinese manuscript to the unmodified AAAI 2026 Letter two-column style and applied an evidence-calibrated title framing."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+  - action: "Regenerated the risk-coverage figure with embedded TrueType fonts and verified the final 7-page PDF for errors, overflows, and Type 3 fonts."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/figures/gen_fig_risk_coverage.py"
+      - "docs/paper_draft/figures/fig_risk_coverage.pdf"
+      - "docs/paper_draft/sparc_paper_zh.pdf"
+
+claims_touched: []
+
+open_threads:
+  - "Maintain an independent English PDFLaTeX manuscript for formal AAAI submission."
+
+ai_suggestions_pending:
+  - "Confirm or revise the suggested English submission title: SPARC: When SAT Is Not Enough for LLM Constraint Formalization."

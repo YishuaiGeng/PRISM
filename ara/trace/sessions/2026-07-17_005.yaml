@@ -1,0 +1,29 @@
+session:
+  id: "2026-07-17_005"
+  timestamp: "2026-07-17T14:36:44+08:00"
+  summary: "Removed process-specific scope narration from the SPARC introduction and verified the revised preview."
+
+events_logged:
+  - type: decision
+    id: "N14"
+    provenance: user-revised
+    summary: "Keep experimental-process and causal-attribution boundaries out of the formal introduction."
+
+ai_actions:
+  - action: "Deleted the process-specific scope paragraph after the contribution list while retaining the same boundaries in their method, experiment, and limitation locations."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+  - action: "Compiled the Chinese preview twice and visually inspected the first page after the deletion."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.pdf"
+
+claims_touched: []
+
+open_threads:
+  - "Run a prespecified matched evaluation before claiming global Pareto dominance or cross-model benefit."
+  - "Implement an explicit answer-variable whitelist and a fail-closed UNKNOWN policy before broadening the gate claim."
+
+ai_suggestions_pending:
+  - "Keep the Chinese XeLaTeX PDF as an internal review artifact and migrate approved content to the official English PDFLaTeX submission source."

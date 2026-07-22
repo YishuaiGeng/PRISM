@@ -300,6 +300,124 @@ class ARLSATOptionChecker:
         return checks
 
 
+def recheck_options(
+    background: List[str],
+    checks: Dict[str, OptionCheck],
+) -> Dict[str, OptionCheck]:
+    """Re-run the solver verdicts for already-translated option formulas.
+
+    Used after the well-definedness gate strengthens the background: no new
+    LLM call is needed because the option formulas are unchanged.
+    """
+    fresh: Dict[str, OptionCheck] = {}
+    for letter, check in checks.items():
+        if not check.formula:
+            fresh[letter] = OptionCheck(formula=check.formula)
+            continue
+        fresh[letter] = OptionCheck(
+            sat_with=_check_with(background, check.formula),
+            sat_with_neg=_check_with(background, f"Not({check.formula})"),
+            formula=check.formula,
+        )
+    return fresh
+
+
+class WellDefinednessGate:
+    """SPARC $\\pi$-gate instantiated for AR-LSAT (well-posedness prior).
+
+    The task prior: exactly one option satisfies the question predicate.
+    A decision with >=2 candidates witnesses an under-constrained background
+    (routed to constraint completion); 0 candidates most often witnesses a
+    failed option translation (routed to one option retranslation).  If the
+    budget is exhausted without reaching exactly one candidate, the gate
+    abstains instead of guessing.
+
+    Visibility-preservation holds trivially: completion only ADDS background
+    constraints (rejected if they make the background UNSAT), and a proposed
+    constraint must eliminate at least one tied candidate without emptying
+    the candidate set (progress guarantee).
+    """
+
+    def __init__(self, llm_client, budget: int = 2) -> None:
+        self._llm = llm_client
+        self.budget = budget
+
+    def run(
+        self,
+        puzzle: PuzzleInstance,
+        background: List[str],
+        checks: Dict[str, OptionCheck],
+        option_checker: "ARLSATOptionChecker",
+        decision: OptionDecision,
+    ) -> tuple[OptionDecision, List[str], Dict[str, OptionCheck], dict]:
+        raw = puzzle.raw_data or {}
+        qtype = str(raw.get("question_type", "unknown"))
+        is_except = bool(raw.get("is_except", False))
+        info = {
+            "gate_initial_candidates": len(decision.candidates),
+            "gate_rounds": 0,
+            "gate_completions": 0,
+            "gate_option_retranslated": False,
+            "gate_llm_calls": 0,
+        }
+        background = list(background)
+        while len(decision.candidates) != 1 and info["gate_rounds"] < self.budget:
+            info["gate_rounds"] += 1
+            if len(decision.candidates) >= 2:
+                response = self._llm.complete_arlsat_background(
+                    passage_nl=str(raw.get("passage", "")),
+                    question=str(raw.get("question", "")),
+                    current_constraints=background,
+                    tied_options=self._describe_tie(decision, checks, raw, qtype, is_except),
+                )
+                info["gate_llm_calls"] += 1
+                from prism.core.llm_client import LLMClient  # local: avoid import cycle
+
+                expr = LLMClient.parse_repair(response)
+                if not expr:
+                    continue
+                new_bg = background + [expr]
+                if _check_with(background, expr) != "SAT":
+                    continue  # would contradict the accepted background
+                new_checks = recheck_options(new_bg, checks)
+                new_dec = decide_option(new_checks, qtype, is_except)
+                survivors = set(new_dec.candidates)
+                if not survivors or not survivors < set(decision.candidates):
+                    continue  # no progress (or over-shoot): reject completion
+                background, checks, decision = new_bg, new_checks, new_dec
+                info["gate_completions"] += 1
+            else:
+                if info["gate_option_retranslated"]:
+                    break  # a second identical retranslation would not help
+                checks = option_checker.check_options(background, puzzle)
+                info["gate_llm_calls"] += option_checker.last_llm_calls
+                info["gate_option_retranslated"] = True
+                decision = decide_option(checks, qtype, is_except)
+        info["gate_final_candidates"] = len(decision.candidates)
+        if len(decision.candidates) != 1:
+            decision = OptionDecision(
+                predicted=None, ambiguous=False, candidates=decision.candidates
+            )
+        return decision, background, checks, info
+
+    @staticmethod
+    def _describe_tie(
+        decision: OptionDecision,
+        checks: Dict[str, OptionCheck],
+        raw: dict,
+        qtype: str,
+        is_except: bool,
+    ) -> str:
+        options = list(raw.get("options") or [])
+        lines = [f"Question type: {qtype}{' EXCEPT' if is_except else ''}"]
+        for letter in decision.candidates:
+            idx = LETTERS.index(letter)
+            text = options[idx] if idx < len(options) else ""
+            formula = (checks.get(letter) or OptionCheck()).formula or "?"
+            lines.append(f"({letter}) {text}\n    formula: {formula}")
+        return "\n".join(lines)
+
+
 def parse_option_block(response: str, n_options: int = 5) -> Dict[str, Optional[str]]:
     """Parse the fenced JSON letter->formula mapping from an LLM response."""
     match = _JSON_BLOCK_RE.search(response or "")
@@ -343,6 +461,7 @@ def evaluate_arlsat(
     option_checker: ARLSATOptionChecker,
     fallback: str = "none",
     seed: int = 42,
+    gate: Optional[WellDefinednessGate] = None,
 ) -> List[dict]:
     """Run the guided *solver* plus option checks on all AR-LSAT *puzzles*.
 
@@ -356,6 +475,9 @@ def evaluate_arlsat(
             protocol); ``"none"`` leaves them unanswered (scored wrong).
         seed: Seed for the fallback guess; combined with the puzzle id so a
             given question always draws the same guess within one seed.
+        gate: Optional :class:`WellDefinednessGate`; when set, decisions with
+            candidate count != 1 are routed through gate repair, and questions
+            still unresolved after the budget are abstained (never guessed).
 
     Returns:
         List of result dicts compatible with :mod:`prism.evaluation.metrics`.
@@ -369,6 +491,7 @@ def evaluate_arlsat(
         predicted: Optional[str] = None
         ambiguous = False
         option_calls = 0
+        gate_info: dict = {}
         option_checks_dump: Dict[str, dict] = {}
         if background:
             checks = option_checker.check_options(background, puzzle)
@@ -378,6 +501,11 @@ def evaluate_arlsat(
                 str(raw.get("question_type", "unknown")),
                 bool(raw.get("is_except", False)),
             )
+            if gate is not None and len(decision.candidates) != 1:
+                decision, background, checks, gate_info = gate.run(
+                    puzzle, background, checks, option_checker, decision
+                )
+                option_calls += gate_info.get("gate_llm_calls", 0)
             predicted, ambiguous = decision.predicted, decision.ambiguous
             option_checks_dump = {
                 letter: {
@@ -389,8 +517,9 @@ def evaluate_arlsat(
             }
 
         extracted = predicted is not None
+        gate_abstain = gate is not None and predicted is None
         fallback_used = False
-        if predicted is None and fallback == "random":
+        if predicted is None and fallback == "random" and gate is None:
             predicted = _fallback_guess(puzzle, seed)
             fallback_used = True
 
@@ -408,6 +537,8 @@ def evaluate_arlsat(
             "prediction_extracted": extracted,
             "fallback_used": fallback_used,
             "ambiguous": ambiguous,
+            "gate_abstain": gate_abstain,
+            **gate_info,
             "option_checks": option_checks_dump,
             "llm_calls": result.total_llm_calls + option_calls,
             "repair_rounds": result.repair_rounds,

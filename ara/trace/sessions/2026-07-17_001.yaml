@@ -1,0 +1,45 @@
+session:
+  id: "2026-07-17_001"
+  timestamp: "2026-07-17T12:48:17+08:00"
+  summary: "Rebuilt the PRISM Chinese source materials as an AAAI-oriented, evidence-calibrated draft."
+
+events_logged:
+  - type: question
+    id: "N10"
+    provenance: user
+    summary: "Target the PRISM Chinese draft at an AAAI submission."
+  - type: decision
+    id: "N11"
+    provenance: ai-suggested
+    summary: "Preserve original notes and generate a canonical draft plus a separate terminology and evidence audit."
+  - type: claim
+    id: "C10"
+    provenance: ai-suggested
+    summary: "Solver screening constrains encoded consistency but does not establish semantic fidelity."
+  - type: observation
+    id: "O02"
+    provenance: ai-executed
+    summary: "The source draft has count and Trigger Rate definition drift that must be resolved from logs."
+
+ai_actions:
+  - action: "Created a formally structured Chinese PRISM draft with abstract, introduction, related work, method, experiment protocol, results, and limitations."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/PRISM_AAAI_chinese_polished.md"
+  - action: "Created a terminology ledger, claim-to-evidence map, and submission verification checklist."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/PRISM_AAAI_chinese_polishing_notes.md"
+
+claims_touched:
+  - id: "C10"
+    action: created
+    provenance: ai-suggested
+
+open_threads:
+  - "Reproduce every numerical result from fixed code, data splits, seeds, and raw logs before using it in a submission."
+  - "Verify all related-work entries and anonymize prior-work references for double-blind review."
+  - "Resolve whether Trigger Rate denotes first-layer matching or final post-precheck triggering."
+
+ai_suggestions_pending:
+  - "Treat L2 cross-puzzle transfer as exploratory until paired, budget-aligned evaluation supports a stronger claim."

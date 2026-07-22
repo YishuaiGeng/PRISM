@@ -1,0 +1,35 @@
+observations:
+  - id: O01
+    timestamp: "2026-07-16T03:14:45+08:00"
+    provenance: ai-suggested
+    content: >
+      The local AAAI 2026 author kit requires PDFLaTeX and does not permit
+      Chinese/non-Roman body text, so the XeLaTeX Chinese document is an
+      internal layout preview rather than a submission artifact.
+    context: "AAAI double-column conversion of docs/paper_draft/sparc_paper_zh.tex"
+    potential_type: decision
+    promoted: false
+  - id: O02
+    timestamp: "2026-07-17T12:48:17+08:00"
+    provenance: ai-executed
+    content: >
+      The PRISM source materials use both approximate and exact counts for the
+      same artifacts (1,500/1,487 trajectories, 6,200/6,218 KDPs, and 35/34
+      admitted paradigms), and use Trigger Rate for both first-layer matching
+      and a metric defined as passing the online consistency check.
+    context: "Evidence-boundary audit while preparing the PRISM Chinese AAAI draft"
+    potential_type: claim
+    promoted: false
+  - id: O03
+    timestamp: "2026-07-17T13:18:42+08:00"
+    provenance: ai-executed
+    content: >
+      The SPARC TeX manuscript originally used stronger wording than its
+      evidence supported in several places: global Pareto dominance, a broad
+      cross-model reading of limited diagnostics, and an unproved complete-model
+      contraction statement. The revised manuscript now limits these claims and
+      supplies propositions for the two uniqueness boundaries and full-model
+      contraction.
+    context: "Direct revision and compilation of docs/paper_draft/sparc_paper_zh.tex"
+    potential_type: claim
+    promoted: false

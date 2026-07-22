@@ -32,6 +32,7 @@ from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper
 from prism.evaluation.benchmarks.arlsat import (
     ARLSATOptionChecker,
+    WellDefinednessGate,
     evaluate_arlsat,
     load_arlsat,
 )
@@ -82,6 +83,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     p.add_argument("--no-paradigm", action="store_true")
     p.add_argument("--no-memory", action="store_true")
+    p.add_argument(
+        "--pi-gate",
+        action="store_true",
+        help="Enable the well-definedness gate (SPARC pi-gate, AR-LSAT "
+        "instantiation): candidate count != 1 routes to gate repair; "
+        "unresolved questions are abstained, never guessed.",
+    )
+    p.add_argument("--gate-budget", type=int, default=2)
     p.add_argument(
         "--schema-hint-mode",
         default="none",
@@ -157,6 +166,9 @@ def main() -> None:
         translation_normalize=args.translation_normalize,
     )
     option_checker = ARLSATOptionChecker(llm)
+    gate = WellDefinednessGate(llm, budget=args.gate_budget) if args.pi_gate else None
+    if gate:
+        logger.info("Well-definedness gate ON (budget=%d); fallback disabled.", args.gate_budget)
 
     # ── Evaluate ──────────────────────────────────────────────────────
     results = evaluate_arlsat(
@@ -165,6 +177,7 @@ def main() -> None:
         option_checker,
         fallback=args.fallback,
         seed=args.seed,
+        gate=gate,
     )
 
     # Final write-back flush (paper §write-back): promote staged candidates
@@ -187,6 +200,15 @@ def main() -> None:
         ambiguous * 100,
         avg_llm_calls(results),
         avg_repair_rounds(results),
+    )
+    # Three-value ledger (answered right / answered wrong / abstained).
+    answered = [r for r in results if r.get("predicted")]
+    abstained = len(results) - len(answered)
+    wrong = sum(1 for r in answered if not r.get("solved"))
+    logger.info(
+        "Ledger: answered=%d (right=%d, wrong=%d, risk=%.0f%%) | abstained=%d",
+        len(answered), len(answered) - wrong, wrong,
+        (wrong / len(answered) * 100) if answered else 0.0, abstained,
     )
     by_type: dict[str, list[dict]] = {}
     for row in results:
@@ -226,6 +248,12 @@ def _save_csv(results: list[dict], path: str) -> None:
         "prediction_extracted",
         "fallback_used",
         "ambiguous",
+        "gate_abstain",
+        "gate_initial_candidates",
+        "gate_final_candidates",
+        "gate_rounds",
+        "gate_completions",
+        "gate_option_retranslated",
         "llm_calls",
         "repair_rounds",
         "final_z3_result",

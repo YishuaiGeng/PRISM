@@ -76,6 +76,11 @@ class APIClient:
     def available_models(self) -> list[str]:
         return self._llm.list_available_models()
 
+    @property
+    def model_config(self) -> dict[str, Any]:
+        """Return a copy of the configured provider/model candidates."""
+        return dict(self._llm.get_model_config(self.model_name))
+
     def test(self, prompt: str = "What is 2+2?") -> dict[str, Any]:
         return self._llm.test_model(self.model_name, prompt)
 

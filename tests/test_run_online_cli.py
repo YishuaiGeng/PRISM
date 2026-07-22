@@ -23,6 +23,12 @@ def test_run_online_accepts_trace_output():
     assert args.trace_output == "results/trace.jsonl"
 
 
+def test_run_online_accepts_manifest_output():
+    args = parse_args(["--manifest-output", "results/run.manifest.json"])
+
+    assert args.manifest_output == "results/run.manifest.json"
+
+
 def test_run_online_accepts_translation_normalize():
     args = parse_args(["--translation-normalize", "initial"])
 

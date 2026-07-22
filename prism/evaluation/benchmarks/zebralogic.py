@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional
 
@@ -157,6 +158,7 @@ def evaluate_zebralogic(
             "puzzle_id": puzzle.puzzle_id,
             "domain": puzzle.size,
             "solved": solved,
+            "scorable": is_scorable(ground_truth),
             "ground_truth": ground_truth,
             "predicted": predicted,
             "llm_calls": result.total_llm_calls,
@@ -379,6 +381,47 @@ def _is_correct(
     ground_truth: Optional[str],
     predicted: Optional[str],
 ) -> bool:
-    if ground_truth is None:
-        return result.solved
-    return predicted == ground_truth
+    if not is_scorable(ground_truth):
+        # No usable ground truth (official test answers are blanked with
+        # '___' for most instances). Such puzzles must NOT count as solved —
+        # falling back to "reached SAT" would score satisfiability, not
+        # correctness. They are excluded from accuracy via the 'scorable'
+        # result field.
+        return False
+    return answers_match(ground_truth, predicted)
+
+
+def is_scorable(ground_truth: Optional[str]) -> bool:
+    """True when the ground-truth string carries actual answer content."""
+    return bool(ground_truth and ground_truth.strip() and "___" not in ground_truth)
+
+
+def answers_match(ground_truth: Optional[str], predicted: Optional[str]) -> bool:
+    """Compare answer strings modulo naming-convention noise.
+
+    Official ground truth uses e.g. ``BookGenre_fantasy=house2`` while the
+    solver model yields ``bookGenre_Fantasy=2``; keys are compared after
+    lowercasing and stripping non-alphanumerics, values after lowercasing and
+    stripping a leading ``house``. Every ground-truth entry must be present
+    and equal in the prediction.
+    """
+    gt = _parse_answer(ground_truth)
+    pred = _parse_answer(predicted)
+    if not gt or not pred:
+        return False
+    return all(key in pred and pred[key] == value for key, value in gt.items())
+
+
+def _parse_answer(blob: Optional[str]) -> dict:
+    entries: dict = {}
+    for part in (blob or "").split("|"):
+        if "=" not in part:
+            continue
+        key, _, value = part.partition("=")
+        norm_key = re.sub(r"[^a-z0-9]", "", key.lower())
+        norm_value = value.strip().lower()
+        norm_value = re.sub(r"^house", "", norm_value)
+        norm_value = re.sub(r"[^a-z0-9]", "", norm_value)
+        if norm_key:
+            entries[norm_key] = norm_value
+    return entries

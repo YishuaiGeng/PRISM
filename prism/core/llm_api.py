@@ -103,23 +103,40 @@ class LLMAPI:
 
     def _request_with_retry(self, method: str, url: str, api_config: dict, **kwargs) -> requests.Response:
         max_retries = api_config.get("max_retries", 2)
+        # Transient overload (503 "system memory overloaded" etc.) can last
+        # minutes; a handful of linear retries kills multi-hour runs. Extend
+        # the budget for overload-class errors with capped exponential backoff.
+        overload_max_retries = api_config.get("overload_max_retries", 10)
         last_error: str | None = None
 
-        for attempt in range(max_retries):
+        attempt = 0
+        budget = max_retries
+        while attempt < budget:
             try:
                 response = requests.request(method, url, **kwargs)
                 if response.status_code >= 500:
                     last_error = f"Server error {response.status_code}: {response.text}"
-                    logger.warning("Request failed (attempt %d/%d): %s", attempt + 1, max_retries, last_error)
-                    time.sleep(2 * (attempt + 1))
+                    overloaded = (
+                        response.status_code in (502, 503, 529)
+                        or "overload" in response.text.lower()
+                    )
+                    if overloaded:
+                        budget = max(budget, overload_max_retries)
+                        delay = min(120, 5 * 2 ** min(attempt, 5))
+                    else:
+                        delay = 2 * (attempt + 1)
+                    logger.warning("Request failed (attempt %d/%d): %s", attempt + 1, budget, last_error)
+                    attempt += 1
+                    time.sleep(delay)
                     continue
                 return response
             except requests.exceptions.RequestException as exc:
                 last_error = str(exc)
-                logger.warning("Request exception (attempt %d/%d): %s", attempt + 1, max_retries, last_error)
+                logger.warning("Request exception (attempt %d/%d): %s", attempt + 1, budget, last_error)
+                attempt += 1
                 time.sleep(2 * (attempt + 1))
 
-        raise RuntimeError(f"Request failed after {max_retries} retries. Last error: {last_error}")
+        raise RuntimeError(f"Request failed after {budget} retries. Last error: {last_error}")
 
     # ------------------------------------------------------------------
     # Internal: normalization helpers

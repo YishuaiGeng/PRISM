@@ -41,6 +41,9 @@ class LLMClient:
         model_name: Model key from ``config/api/model_configs.json``.
         temperature: Sampling temperature (0.0 for eval, 0.7 for collection).
         config_dir: Override for API config directory (mainly for tests).
+        seed: Optional provider-side sampling seed.  The client forwards it on
+            every request, but deterministic replay still depends on provider
+            and model support.
     """
 
     def __init__(
@@ -48,6 +51,7 @@ class LLMClient:
         model_name: str,
         temperature: float = _TEMPERATURE_EVAL,
         config_dir: Optional[str] = None,
+        seed: Optional[int] = None,
     ) -> None:
         self._client = APIClient(
             model_name=model_name,
@@ -55,6 +59,7 @@ class LLMClient:
             temperature=temperature,
         )
         self._call_count: int = 0
+        self._seed = seed
 
     # ------------------------------------------------------------------
     # Call accounting
@@ -69,9 +74,31 @@ class LLMClient:
         """Reset the call counter (e.g. between puzzle instances)."""
         self._call_count = 0
 
+    @property
+    def seed(self) -> Optional[int]:
+        """Provider-side seed forwarded by default on each request."""
+        return self._seed
+
+    @property
+    def model_name(self) -> str:
+        """Requested model alias from ``model_configs.json``."""
+        return self._client.model_name
+
+    @property
+    def model_config(self) -> dict[str, Any]:
+        """Configured provider/model candidates for provenance manifests."""
+        return self._client.model_config
+
+    def ask(self, prompt: str, *, max_tokens: int = 256, **kwargs: Any) -> str:
+        """Generic single-prompt call used by evaluation baselines (e.g. verbalized
+        confidence, round-trip check).  Counted like any other call."""
+        return self._call(prompt, max_tokens=max_tokens, **kwargs)
+
     def _call(self, prompt: str, **kwargs: Any) -> str:
         """Internal dispatch: increments counter and calls the underlying client."""
         self._call_count += 1
+        if self._seed is not None:
+            kwargs.setdefault("seed", self._seed)
         return self._client.call_api(prompt, **kwargs)
 
     # ------------------------------------------------------------------
@@ -178,6 +205,47 @@ class LLMClient:
             passage_nl, question, options, background_constraints
         )
         return self._call(prompt, max_tokens=_MAX_TOKENS_ARLSAT_OPTIONS)
+
+    def complete_constraint(
+        self,
+        puzzle_nl: str,
+        current_constraints: List[str],
+        diff_summary: str,
+    ) -> str:
+        """Ask for one missing constraint that separates two candidate models.
+
+        Used by the SPARC diff-guided completion: the formalization is SAT
+        but admits multiple solutions; *diff_summary* lists the variables on
+        which two concrete models disagree.
+
+        Returns:
+            Raw LLM response containing one Z3 boolean expression.
+        """
+        prompt = _build_diff_completion_prompt(
+            puzzle_nl, current_constraints, diff_summary
+        )
+        return self._call(prompt, max_tokens=_MAX_TOKENS_REPAIR)
+
+    def complete_arlsat_background(
+        self,
+        passage_nl: str,
+        question: str,
+        current_constraints: List[str],
+        tied_options: str,
+    ) -> str:
+        """Ask for one missing background constraint that breaks an option tie.
+
+        AR-LSAT instantiation of the SPARC well-definedness gate: exactly one
+        option should satisfy the question predicate, but *tied_options* all
+        do — the background formalization is under-constrained.
+
+        Returns:
+            Raw LLM response containing one Z3 boolean expression.
+        """
+        prompt = _build_arlsat_completion_prompt(
+            passage_nl, question, current_constraints, tied_options
+        )
+        return self._call(prompt, max_tokens=_MAX_TOKENS_REPAIR)
 
     # ------------------------------------------------------------------
     # Repair
@@ -556,6 +624,83 @@ Output format:
 ```python
 And(Int('Ann') >= 1, Int('Ann') <= 6)
 Distinct(Int('Ann'), Int('Bob'), Int('Cal'))
+```"""
+
+
+def _build_diff_completion_prompt(
+    puzzle_nl: str,
+    current_constraints: List[str],
+    diff_summary: str,
+) -> str:
+    constraint_lines = "\n".join(current_constraints)
+    return f"""You are completing an UNDER-CONSTRAINED Z3 formalization of a logic puzzle.
+
+The puzzle has exactly ONE solution, but the current constraints admit
+MULTIPLE solutions. Two distinct candidate solutions disagree on these
+variables:
+
+{diff_summary}
+
+Re-read the puzzle below and find the clue that decides these variables —
+it is either missing from the constraints entirely or translated too weakly.
+
+Return exactly ONE single-line Z3 boolean expression that:
+- is directly justified by the puzzle text (do not invent information),
+- uses the same Int('...') variable names as the current constraints,
+- rules out at least one of the two candidates above.
+Do not delete, weaken, or restate existing constraints.
+
+Puzzle:
+{puzzle_nl}
+
+Current constraints:
+{constraint_lines}
+
+Output format:
+```python
+Int('a') == Int('b') - 1
+```"""
+
+
+def _build_arlsat_completion_prompt(
+    passage_nl: str,
+    question: str,
+    current_constraints: List[str],
+    tied_options: str,
+) -> str:
+    constraint_lines = "\n".join(current_constraints)
+    return f"""You are completing an UNDER-CONSTRAINED Z3 formalization of an LSAT
+analytical-reasoning game.
+
+The question is well-posed: exactly ONE option is the answer. But under
+the current background constraints the following options are TIED on the
+question's predicate (the solver cannot separate them) — so at least one
+background condition from the passage is missing from the constraints or
+translated too weakly:
+
+{tied_options}
+
+Re-read the passage (and any local premise in the question stem) and find
+the condition that separates these options.
+
+Return exactly ONE single-line Z3 boolean expression that:
+- is directly justified by the passage or question text (do not invent
+  information, and do not encode any option's own claim as background),
+- uses the same Int('...') variable names as the current constraints,
+- rules out at least one of the tied options above.
+Do not delete, weaken, or restate existing constraints.
+
+Passage:
+{passage_nl}
+
+Question: {question}
+
+Current background constraints:
+{constraint_lines}
+
+Output format:
+```python
+Int('a') == Int('b') - 1
 ```"""
 
 

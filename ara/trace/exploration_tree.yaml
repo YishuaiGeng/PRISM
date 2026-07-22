@@ -1,0 +1,160 @@
+tree:
+  - id: N01
+    type: question
+    title: "Turn the SPARC report-style draft into a formal academic manuscript"
+    provenance: user
+    timestamp: "2026-07-12T10:48:28+08:00"
+    description: >
+      Reorganize the Chinese draft around a standard abstract, introduction,
+      related work, methodology, experiments, and conclusion storyline while
+      replacing oral report language with evidence-calibrated academic claims.
+    children:
+      - id: N02
+        type: pivot
+        title: "Center the paper on the SAT-versus-task-correctness gap"
+        provenance: ai-suggested
+        timestamp: "2026-07-12T10:48:28+08:00"
+        from: "A broad repair-system report with several module-level slogans"
+        to: "One falsifiable claim: structural priors reduce observed SBW but do not prove correctness"
+        trigger: "The result ledger supports risk reduction, while accuracy, semantic guarantees, and component claims are not fully supported"
+        children:
+          - id: N03
+            type: decision
+            title: "Use an exhaustive answer-projection taxonomy"
+            provenance: ai-suggested
+            timestamp: "2026-07-12T10:48:28+08:00"
+            choice: >
+              Define equivalent, under-constrained, over-constrained, and
+              mixed/misspecified cases using relations between projected answer spaces.
+            alternatives:
+              - "Retain the incomplete three-class taxonomy from the earlier draft"
+            evidence: "The earlier taxonomy did not cover all set relations and conflated run-level SBW with translation-error classes."
+          - id: N04
+            type: dead_end
+            title: "Remove the clue-coverage ledger from the method"
+            provenance: ai-suggested
+            timestamp: "2026-07-12T10:48:28+08:00"
+            hypothesis: "The implementation explicitly maps model differences back through a clue-coverage ledger."
+            failure_mode: "The current code provides the original text, constraints, and difference summary to the LLM; no such ledger exists."
+            lesson: "Describe model-difference completion at the abstraction actually implemented."
+          - id: N05
+            type: experiment
+            title: "Audit the ZebraLogic four-outcome ledger"
+            provenance: ai-executed
+            timestamp: "2026-07-12T10:48:28+08:00"
+            result: >
+              Each matched configuration sums to 600 runs. SBW changes are
+              78 to 13 and 73 to 26; risk reductions co-occur with lower coverage.
+            evidence: [C02, E01]
+            children:
+              - id: N06
+                type: decision
+                title: "Withdraw unsupported accuracy and near-zero-cost wording"
+                provenance: ai-suggested
+                timestamp: "2026-07-12T10:48:28+08:00"
+                choice: >
+                  Report accuracy as not statistically established, publish the
+                  coverage tradeoff, and report measured solver and LLM call counts.
+                alternatives:
+                  - "Claim accuracy improvement or no loss from positive point estimates"
+                  - "Describe overhead as near zero"
+                evidence: "Current significance analysis and trace accounting do not support the stronger wording."
+                children:
+                  - id: N07
+                    type: experiment
+                    title: "Recompute cached SPARC provenance and fixed-state diagnostics"
+                    provenance: ai-executed
+                    timestamp: "2026-07-15T19:17:35+08:00"
+                    result: >
+                      The cached audit reproduced 175/600 and 199/600 exact
+                      pre-gate matches, the 72/78 and 69/73 frozen-state gate
+                      diagnostics, and the lack of an enforced answer-variable
+                      restriction for completion candidates.
+                    evidence: [E05]
+                    children:
+                      - id: N08
+                        type: pivot
+                        title: "Reframe SPARC as post-SAT structural diagnosis with selective repair"
+                        provenance: ai-suggested
+                        timestamp: "2026-07-15T19:17:35+08:00"
+                        from: "An endpoint-focused repair narrative"
+                        to: "Fixed-state structural diagnosis as the main result; trajectory and endpoint results as conditional or descriptive evidence"
+                        trigger: "The provenance audit showed that most nominal endpoint comparisons do not share the same pre-gate formalization."
+                        children:
+                          - id: N09
+                            type: decision
+                            title: "Scope the completion theorem to complete-model progress"
+                            provenance: ai-suggested
+                            timestamp: "2026-07-15T19:17:35+08:00"
+                            choice: >
+                              Replace the projected-answer-space contraction
+                              claim with a complete-model-space progress claim
+                              and explicitly disclose the missing answer-variable
+                              whitelist and UNKNOWN fail-open branch.
+                            alternatives:
+                              - "Retain an unconditional projected-answer-space contraction claim"
+                            evidence: "E05 shows the implementation does not mechanically restrict completion constraints to answer variables."
+      - id: N12
+        type: decision
+        title: "Revise the exact SPARC TeX working manuscript in place"
+        provenance: user
+        timestamp: "2026-07-17T13:18:42+08:00"
+        choice: >
+          Apply the AAAI-oriented Chinese writing and scope corrections directly
+          to docs/paper_draft/sparc_paper_zh.tex rather than to separate PRISM
+          source notes.
+        alternatives:
+          - "Continue revising the PRISM Chinese source notes"
+          - "Produce a separate rewrite without editing the TeX manuscript"
+        evidence: "The user explicitly corrected the target after the first revision addressed the wrong draft."
+        children:
+          - id: N13
+            type: decision
+            title: "Make the SPARC introduction contribution list concise and citation-anchored"
+            provenance: user
+            timestamp: "2026-07-17T14:25:34+08:00"
+            choice: >
+              Revise the in-place introduction so each contribution is a concise,
+              verifiable statement, move scope limits after the contribution list,
+              and place citations beside the specific claims they support.
+            alternatives:
+              - "Retain the expanded contribution prose and broad citation clusters"
+            evidence: "The user explicitly requested a shorter contribution list and more appropriate citation placement."
+            children:
+              - id: N14
+                type: decision
+                title: "Keep process-specific scope limits out of the SPARC introduction"
+                provenance: user-revised
+                timestamp: "2026-07-17T14:36:44+08:00"
+                choice: >
+                  Remove the process-oriented scope summary from the introduction;
+                  retain those boundaries in the method, experiment-scope, and
+                  limitation sections where they are substantiated.
+                alternatives:
+                  - "Retain the scope and causal-attribution paragraph after the contribution list"
+                evidence: "The user identified the paragraph as process summary rather than formal introduction content."
+  - id: N10
+    type: question
+    title: "Prepare the PRISM Chinese draft for an AAAI submission"
+    provenance: user
+    timestamp: "2026-07-17T12:48:17+08:00"
+    description: >
+      Reorganize the PRISM Chinese source materials into a formal, coherent,
+      evidence-calibrated draft suitable as the basis for later English AAAI writing.
+    children:
+      - id: N11
+        type: decision
+        title: "Preserve source notes and create an evidence-bounded canonical Chinese draft"
+        provenance: ai-suggested
+        timestamp: "2026-07-17T12:48:17+08:00"
+        choice: >
+          Keep the four original Chinese source-note files unchanged, create a
+          compact main-text draft, and move terminology, evidence boundaries,
+          and verification requirements into a separate editorial note.
+        alternatives:
+          - "Overwrite the original section notes directly"
+          - "Perform sentence-level polishing without restructuring claims"
+        evidence: >
+          The source contains an inconsistent four-versus-five-tuple definition,
+          an UNSAT-core minimality overstatement, non-monotonic absolute gains,
+          and metric-definition drift that require structural rather than local edits.

@@ -1,0 +1,531 @@
+% !TEX program = xelatex
+% ============================================================
+% SBW 论文：引言 + 相关工作（核心三小节）重写稿（中文工作稿）
+% 依据 2026-07-21 文献调研（docs/paper_draft/review_notes/sbw_related_work_map.md）
+% 全部引用经 DBLP / OpenAlex / ACL Anthology / 出版方官网至少一源核验；
+% arXiv-only 预印本在文内明示，不作优先权依据。
+% 与主稿 sparc_paper_zh.tex 同一导言区，可独立编译；定稿后按节替换回主稿。
+% ============================================================
+\documentclass[letterpaper]{article}
+\usepackage[submission]{aaai2026_prism/aaai2026}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage[hyphens]{url}
+\urlstyle{rm}
+\def\UrlFont{\rm}
+
+\usepackage{xeCJK}
+\setCJKmainfont[
+  BoldFont=SimHei,
+  ItalicFont=KaiTi,
+  BoldItalicFont=KaiTi
+]{SimSun}
+\setCJKsansfont[BoldFont=SimHei]{SimHei}
+\setCJKmonofont{SimSun}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+\pdfinfo{/TemplateVersion (2026.1)}
+
+\newcommand{\method}{SPARC}
+\newcommand{\sbw}{SBW}
+\newcommand{\Sol}{\mathrm{Sol}}
+\newcommand{\AnsSol}{\mathrm{Sol}_{A}}
+\renewcommand{\refname}{参考文献}
+
+\title{Satisfiable but Wrong: Solver-Decidable Abstention for LLM Constraint Formalization\\
+\normalsize（引言与相关工作重写稿）}
+\author{匿名作者}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\section{引言}
+\label{sec:intro}
+
+自然语言约束推理要求系统从题面恢复变量、关系与全局约束，再交由形式求解器
+生成答案。Logic-LM~\cite{pan2023}、LINC~\cite{olausson2023} 与
+SatLM~\cite{ye2023} 分别将 LLM 与逻辑程序、一阶逻辑证明器和可满足性求解器
+结合，这一范式随后扩展到答案集编程~\cite{ishay2023}、约束建模
+~\cite{tsouros2023,michailidis2024} 与优化建模~\cite{ahmaditeshnizi2024}。
+在基于可满足性求解的流水线中，系统通常将求解器返回 SAT 作为接受答案的依据
+~\cite{pan2023,ye2023}。
+
+这一接受规则存在明确盲区：SAT 只说明生成约束彼此一致，不说明它们忠实表达
+了题意。当线索被遗漏或弱化时，约束集仍然可满足，而求解器给出的答案在任务
+层面是错误的；本文称这类失败为\emph{可满足但错误}
+（satisfiable-but-wrong，\sbw{}）。该盲区并非本文杜撰，而是被该方向的
+奠基工作反复点名却未解决：Logic-LM 明确承认``合法的符号表示不必然等于
+正确的问题形式化''~\cite{pan2023}；其后续改进指出，由于修正环节``没有任何
+证明层面的检查''，语法正确但语义错误的公式会被迭代修复直接接受
+~\cite{kirtania2024}；SatLM 在附录中记录了求解器正常返回、答案却错误的
+案例类别~\cite{ye2023}；在唯一解逻辑谜题上，LLM 生成的答案集程序同样出现
+``能运行但解错''的语义错误，补救手段是人工检查~\cite{ishay2023}。
+SATBench 进一步表明，线索遗漏后欠约束的形式化仍会稳定返回
+SAT~\cite{wei2025}。
+
+现有三类应对均不覆盖这一失败模式。其一，修复流程的触发条件是显式故障——
+语法错误、执行失败或 UNSAT：自反馈复审在推理任务上并不稳定
+~\cite{madaan2023,huang2024}，而以不可满足核为线索的诊断与修复
+~\cite{liffiton2008,chen2024optichat,singh2026}恰好构成 \sbw{} 的对偶——
+社区为``过约束导致冲突''建立了成熟的工具链，为``欠约束保持可满足''没有留下
+任何触发器。其二，语义对齐路线直接比较题面与形式表示，包括学习式对齐评分
+~\cite{lu2025}、候选间符号等价~\cite{li2024symbolic,ryu2025}、回译一致性
+~\cite{ying2024}与经形式验证过滤的多次采样投票~\cite{zhou2024dtv}；这些
+方法要么依赖额外模型与文本比较，要么需要多倍采样，且信号是启发式或
+半可判定的——即便将等价检查确定性化，其召回率也仅约一半
+~\cite{poiroux2025}。其三，选择性预测为``何时拒答''提供了标准框架
+~\cite{chow1957,geifman2017,kamath2020}，但面向 LLM 的拒答信号大多读取
+自评置信度~\cite{xiong2024}或多次采样一致性~\cite{wang2023,farquhar2024}：
+前者被系统性证明过度自信~\cite{xiong2024}，后者只度量输出分布的离散度，
+对``多次采样一致地遗漏同一条线索''原理上失明。
+
+本文因此研究一个更窄、但由求解器可判定的问题：当任务规范本身给出答案空间
+的结构条件时，能否在 SAT 之后、不读取任何金标答案值的前提下，把该条件用作
+选择性作答的拒答依据？在唯一答案任务中，该条件即答案变量投影
+$\AnsSol(C)$ 恰含一个元素。系统只需一次增量阻塞子句查询——禁止已得的
+答案投影并重解——即可判定是否存在第二个不同的答案投影，而无需枚举全部
+模型；确定非唯一即结构性拒答，确定唯一则放行，预算内无法判定的
+UNKNOWN 与``结构通过''被明确分开。
+
+该信号的理论边界是单侧的，本文将其作为立论前提而非事后限定：若真实答案
+唯一，且错误仅来自未排除真实答案的纯欠约束（遗漏或弱化线索），则答案投影
+必然非唯一，唯一性门控必然检出；反之，``唯一但错''的形式化会通过门控。
+因此该信号是形式化质量的\emph{可判定必要条件}检查，不是语义正确性证明，
+也不定位遗漏了哪条线索。诚实地说，构成该门控的每个部件都有先例：阻塞子句
+与增量求解是求解器社区的标准原语~\cite{mcmillan2002,eensorensson2004}，
+``求一解后禁解重查''在数学应用题的病题检测中已被逐字使用
+~\cite{tian2025vcsearch}，SatLM 也已将求解器端的多解与不可满足信号用于
+选择性作答~\cite{ye2023}。本文的贡献不在发明机制，而在把散落的实现细节
+提炼为一个有理论刻画、有明确语义边界、可系统评测的一等接口。
+
+本文的主要贡献如下：
+\begin{itemize}
+  \item \textbf{命名并界定 \sbw{} 的可诊断边界。}在唯一答案、纯欠约束的
+        前提下，答案投影必然非唯一，故可被唯一性门控检出；唯一但错的
+        SAT 输出会逃逸门控。该单侧保证同时给出方法的能与不能。
+  \item \textbf{提出 \method{}：SAT 后结构门控的一等接口。}在一般答案
+        变量集合 $V_A$ 上构造投影阻塞子句，以单次增量查询实现无需训练、
+        不读取金标答案值、由求解器判定的三值输出
+        （结构通过 / 结构性拒答 / UNKNOWN）。
+  \item \textbf{量化检出范围与覆盖率代价。}在冻结的 ZebraLogic~\cite{lin2025}
+        SAT 状态上报告 \sbw{} 检出率与正确输出误拒率，并在风险--覆盖率
+        坐标系下与置信度、多次形式化一致性等启发式拒答基线受控比较。
+\end{itemize}
+
+% ============================================================
+\section{相关工作}
+\label{sec:related}
+
+\subsection{LLM 约束形式化与``SAT 即接受''}
+\label{sec:rw-formalization}
+
+自动形式化~\cite{wu2022}催生了让 LLM 只负责翻译、由求解器负责推理的
+神经符号路线：Logic-LM~\cite{pan2023} 生成逻辑程序并以求解器报错驱动
+自我修正，LINC~\cite{olausson2023} 生成一阶逻辑交给证明器并以多次采样
+投票稀释翻译噪声，SatLM~\cite{ye2023} 以声明式提示生成可满足性约束；
+该范式进一步覆盖答案集编程~\cite{ishay2023}、SMT~\cite{oh2026}、约束
+建模~\cite{tsouros2023,michailidis2024}与优化建模~\cite{ahmaditeshnizi2024}。
+这些系统的共同接受规则是：求解器一旦成功返回，答案即被采纳；其忠实性
+声明均以``形式化正确''为未验证前提~\cite{pan2023}。
+
+与本文最近的三项工作需要逐一划界。\textbf{SatLM}~\cite{ye2023} 已将
+求解器端异常用于选择性作答：其错误分类含 UNSAT 与多可行解导致的
+AMBIG，遇到两者即拒答并报告选择性准确率。但该歧义检查是面向单个标量
+答案变量的实现细节（其 AR-LSAT 路径改用逐选项蕴含检查，机制不同），
+论文未将唯一性上升为任务规范给出的结构谓词，未定义一般 $V_A$ 上的投影
+阻塞查询，未区分 UNKNOWN 与结构通过，也未给出欠约束与非唯一之间的理论
+联系。\textbf{VCSearch}~\cite{tian2025vcsearch} 在数学应用题上逐字实现
+了同一求解器机制——求一解、将其作为约束加入、仍可满足即判多解并拒绝——
+但其目标是检测\emph{病题}（题面本身缺条件或矛盾），采用多轮 LLM 参与的
+迭代搜索，不涉及``好题的坏形式化''，也没有选择性预测评测。
+\textbf{SSV}~\cite{raza2025} 同样在不读金标的前提下用求解器验证信号
+换取高选择性精度，但其信号是 LLM 生成具体实例后的可满足性检验，每题
+需多次模型调用，验证失败先修复重试；本文的唯一性门控只需一次增量求解器
+查询，且两类信号正交、可以叠加。此外，近期工作把答案集数量写入训练
+奖励以惩罚欠约束的程序~\cite{schrader2026}，但该信号服务于迭代修复
+而非拒答。本文相对上述工作的定位是：把``答案投影唯一性''提炼为任务规范
+给出的一等结构谓词，配以单侧保证的理论刻画与系统的风险--覆盖率评测。
+
+\subsection{形式化的验证、修复与语义对齐}
+\label{sec:rw-repair}
+
+修复路线的触发条件决定了它们的覆盖范围。自反馈复审依赖模型自评
+~\cite{madaan2023,shinn2023}，受控研究表明其在推理任务上并不可靠
+~\cite{huang2024,olausson2024}；求解器驱动的修复以显式失败为入口——
+语法错误与执行异常触发 Logic-LM 式自我修正~\cite{pan2023,kirtania2024}，
+UNSAT 与不可满足核触发约束定位与松弛
+~\cite{liffiton2008,chen2024optichat,singh2026,ao2026}。触发条件的普查
+结论是：没有任何一条修复路线以``SAT 但答案投影非唯一''为触发器；不可
+满足核谱系诊断过约束极为成熟，欠约束侧则没有对应工具。软件规格研究
+给出了同构的观察：空洞的后置条件（如恒真式）能通过全部正确性检查，
+必须另测其判别力~\cite{endres2024}——太弱的规格对一切都满足，正如
+欠约束的形式化保持 SAT。
+
+语义对齐路线绕过求解器状态，直接评估题面与形式表示的一致性，按资源
+需求可分为：学习式对齐评分需要额外训练的打分模型~\cite{lu2025}；候选
+间符号等价需要 $k$ 个候选与两两定理证明~\cite{li2024symbolic}，或在
+翻译期用求解器在候选公式间择优~\cite{ryu2025}；回译一致性需要
+反向翻译模型与文本蕴含判断~\cite{ying2024}，且遗漏的约束在回译文本中
+往往不可见；经形式验证过滤的自一致投票需要 $k$ 倍采样，且验证的是
+形式化解的内部一致性而非唯一性~\cite{zhou2024dtv}；自生成测试的执行
+共识则受验证器与被验证对象同源之困~\cite{chen2023codet}。这些信号或是
+启发式分数，或是``找到证明才可靠''的半可判定判据——即便将等价检查
+做成确定性的，召回率也只有约一半，因为自然语言与形式表示的语义等价
+本质上不可判定~\cite{poiroux2025}。本文刻意不检查语义等价，只检查任务
+规范蕴含的可判定结构条件，换取的是单次求解器查询即可得出的确定结论；
+代价是``唯一但错''超出其检测范围——该情形恰是语义对齐方法的适用域，
+两条路线互补而非替代。
+
+\subsection{选择性预测与求解器可判定的拒答信号}
+\label{sec:rw-selective}
+
+不确定时拒答的框架始于 Chow~\cite{chow1957}，经选择性分类的风险--覆盖率
+理论形式化~\cite{elyaniv2010,geifman2017}，并被引入 QA 的分布外场景
+~\cite{kamath2020}。面向 LLM 的拒答信号可按证据强度排成谱系：读取自评
+置信度的方法被系统性证明过度自信~\cite{xiong2024}，拒答能力也可训练
+内化但不提供实例级证据~\cite{zhang2024rtuning}；采样一致性
+~\cite{wang2023}与语义熵~\cite{farquhar2024}度量输出分布的离散度，对
+``一致地错''结构性失明；共形预测把启发式分数包装为分布层面的边际保证
+~\cite{quach2024}，但保证属于分布而非单个实例。近期综述的分类学显示，
+由外部求解器证书提供的确定性拒答信号在现有谱系中几乎缺位~\cite{wen2024}
+——已知的占位者正是 SatLM 的 UNSAT/AMBIG 拒答~\cite{ye2023}，本文将
+其从附带的异常处理提升为有理论刻画的机制。
+
+本文借用的求解器原语均是标准件：阻塞子句枚举出自符号模型检测
+~\cite{mcmillan2002}，增量接口使二次查询近乎免费~\cite{eensorensson2004}，
+投影变量上的阻塞子句已有成熟实现~\cite{gebser2009}。唯一性检验亦有
+正统血统：``给定一解找另一解''被形式化为 ASP 完全问题，动机正是谜题
+唯一解检验~\cite{yato2003}，其复杂度定位（唯一可满足性是 coNP 难的
+~\cite{valiant1986}）解释了本文只做``证伪唯一性''的廉价方向、并以
+UNKNOWN 承接预算耗尽的设计；程序化谜题生成流水线长期以第二解查询
+门控生成的谜题实例~\cite{dekegel2020}——区别在于其被门控对象是约束
+可信的谜题，本文门控的是约束本身不可信的 LLM 形式化。值得强调的是，
+必须在答案变量上投影而非比较全模型：辅助变量的可互换取值会造成与
+答案无关的多解~\cite{freuder1991}。概念上更早的先祖是模型检测中的
+空洞性检测——规约通过验证、但通过方式暴露了规约本身有病
+~\cite{kupferman2003}；本文把同型的``通过即怀疑''检查移到答案投影上。
+
+最后，约束获取与程序合成揭示了本文机制的另一半来路。交互式约束获取
+以可信用户回答成员查询而收敛~\cite{bessiere2013,tsouros2024}，
+反例引导的综合以完整规格或输入输出 oracle 裁决候选
+~\cite{solar2006,jha2010,jha2017}；其中区分性输入查询——问求解器
+``是否存在两个都满足当前约束、行为却不同的对象''——与本文的阻塞子句
+查询在机制上同源~\cite{jha2010}。分叉点在于裁决：这些方法找到区分性
+对象后可以询问可信 oracle 从而继续收敛，而 LLM 形式化场景中不存在
+任何可用的 oracle 接口——题面即规格且无法编译为判定器，用户按设定
+不具备形式化能力，LLM 自生成的检查约束与被检对象同源
+~\cite{chen2023codet}。因此本文只继承机制的查询一半：检测结构性
+欠约束即拒答，不声称获取缺失的约束；LLM 生成候选约束收缩解空间仅是
+探索性补全，不构成经验证的修复。
+
+% ============================================================
+\begin{thebibliography}{99}
+
+% ===== 神经符号形式化管线（2026-07-21 经 DBLP/ACL Anthology 核验）=====
+\bibitem{pan2023}
+Pan, L.; Albalak, A.; Wang, X.; and Wang, W.~Y. 2023.
+Logic-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning.
+In \textit{Findings of EMNLP 2023}, 3806--3824.
+
+\bibitem{olausson2023}
+Olausson, T.~X.; Gu, A.; Lipkin, B.; Zhang, C.; Solar-Lezama, A.; Tenenbaum, J.~B.; and Levy, R. 2023.
+LINC: A Neurosymbolic Approach for Logical Reasoning by Combining Language Models with First-Order Logic Provers.
+In \textit{Proc. EMNLP 2023}, 5153--5176.
+
+\bibitem{ye2023}
+Ye, X.; Chen, Q.; Dillig, I.; and Durrett, G. 2023.
+SatLM: Satisfiability-Aided Language Models Using Declarative Prompting.
+In \textit{Proc. NeurIPS 2023}, vol.~36.
+
+\bibitem{ishay2023}
+Ishay, A.; Yang, Z.; and Lee, J. 2023.
+Leveraging Large Language Models to Generate Answer Set Programs.
+In \textit{Proc. KR 2023}.
+
+\bibitem{kirtania2024}
+Kirtania, S.; Gupta, P.; and Radhakrishna, A. 2024.
+LOGIC-LM++: Multi-Step Refinement for Symbolic Formulations.
+In \textit{Proc. 2nd Workshop on Natural Language Reasoning and Structured
+Explanations (NLRSE@ACL 2024)}, 56--63.
+
+\bibitem{oh2026}
+Oh, H.; Stern, S.; Lee, Y.; and Philipose, M. 2026.
+Neurosymbolic Language Reasoning as Satisfiability Modulo Theory.
+arXiv:2602.18095.
+
+\bibitem{tsouros2023}
+Tsouros, D.; Verhaeghe, H.; Kad{\i}o\u{g}lu, S.; and Guns, T. 2023.
+Holy Grail 2.0: From Natural Language to Constraint Models.
+arXiv:2308.01589.
+
+\bibitem{michailidis2024}
+Michailidis, K.; Tsouros, D.; and Guns, T. 2024.
+Constraint Modelling with LLMs Using In-Context Learning.
+In \textit{Proc. CP 2024}, LIPIcs vol.~307, 20:1--20:27.
+
+\bibitem{ahmaditeshnizi2024}
+AhmadiTeshnizi, A.; Gao, W.; and Udell, M. 2024.
+OptiMUS: Scalable Optimization Modeling with (MI)LP Solvers and Large
+Language Models. In \textit{Proc. ICML 2024}, PMLR 235, 577--596.
+
+\bibitem{wei2025}
+Wei, A.; Wu, Y.; Wan, Y.; Suresh, T.; Tan, H.; Zhou, Z.; Koyejo, S.;
+Wang, K.; and Aiken, A. 2025.
+SATBench: Benchmarking LLMs' Logical Reasoning via Automated Puzzle
+Generation from SAT Formulas. In \textit{Proc. EMNLP 2025}, 33832--33849.
+
+% ===== 最近先例（2026-07-21 经 ACL Anthology / IJCAI / AAAI 核验）=====
+\bibitem{tian2025vcsearch}
+Tian, S.-Y.; Zhou, Z.; Yu, K.-Y.; et al. 2025.
+Bridging the Gap Between Well-Defined and Ill-Defined Problems in
+Mathematical Reasoning. In \textit{Proc. EMNLP 2025}, 12710--12731.
+
+\bibitem{raza2025}
+Raza, M.; and Milic-Frayling, N. 2025.
+Instantiation-based Formalization of Logical Reasoning Tasks using
+Language Models and Logical Solvers.
+In \textit{Proc. IJCAI 2025}.
+
+\bibitem{schrader2026}
+Schrader, T.~P.; Lange, L.; Kaminski, T.; Razniewski, S.; and
+Friedrich, A. 2026.
+A Solver-in-the-Loop Framework for Improving LLMs on Answer Set
+Programming for Logic Puzzle Solving. In \textit{Proc. AAAI 2026}.
+
+% ===== 修复与诊断 =====
+\bibitem{madaan2023}
+Madaan, A.; Tandon, N.; Gupta, P.; et al. 2023.
+Self-Refine: Iterative Refinement with Self-Feedback.
+In \textit{Proc. NeurIPS 2023}, vol.~36.
+
+\bibitem{shinn2023}
+Shinn, N.; Cassano, F.; Labash, B.; Gopinath, A.; and Narasimhan, K. 2023.
+Reflexion: Language Agents with Verbal Reinforcement Learning.
+In \textit{Proc. NeurIPS 2023}, vol.~36.
+
+\bibitem{huang2024}
+Huang, J.; Chen, X.; Mishra, S.; Zheng, H.~S.; Yu, A.~W.; Song, X.; and Zhou, D. 2024.
+Large Language Models Cannot Self-Correct Reasoning Yet.
+In \textit{Proc. ICLR 2024}.
+
+\bibitem{olausson2024}
+Olausson, T.~X.; Inala, J.~P.; Wang, C.; Gao, J.; and Solar-Lezama, A. 2024.
+Is Self-Repair a Silver Bullet for Code Generation?
+In \textit{Proc. ICLR 2024}.
+
+\bibitem{liffiton2008}
+Liffiton, M.~H.; and Sakallah, K.~A. 2008. Algorithms for Computing Minimal
+Unsatisfiable Subsets of Constraints. \textit{J. Automated Reasoning} 40(1):1--33.
+
+\bibitem{chen2024optichat}
+Chen, H.; Constante-Flores, G.~E.; and Li, C. 2024.
+Diagnosing Infeasible Optimization Problems Using Large Language Models.
+\textit{INFOR: Information Systems and Operational Research} 62(4).
+
+\bibitem{singh2026}
+Singh, V.; Cassel, D.; Weir, N.; Feng, N.; and Bayless, S. 2026.
+VERGE: Formal Refinement and Guidance Engine for Verifiable LLM Reasoning.
+arXiv:2601.20055.
+
+\bibitem{ao2026}
+Ao, R.; Simchi-Levi, D.; and Wang, X. 2026.
+OptiRepair: Closed-Loop Diagnosis and Repair of Supply Chain Optimization
+Models with LLM Agents. arXiv:2602.19439.
+
+\bibitem{endres2024}
+Endres, M.; Fakhoury, S.; Chakraborty, S.; and Lahiri, S.~K. 2024.
+Can Large Language Models Transform Natural Language Intent into Formal
+Method Postconditions? \textit{Proc. ACM Softw. Eng.} 1(FSE).
+
+% ===== 语义对齐（2026-07-21 经 OpenReview / ACL Anthology / PMLR 核验）=====
+\bibitem{wu2022}
+Wu, Y.; Jiang, A.~Q.; Li, W.; Rabe, M.~N.; Staats, C.; Jamnik, M.; and
+Szegedy, C. 2022.
+Autoformalization with Large Language Models.
+In \textit{Proc. NeurIPS 2022}, vol.~35.
+
+\bibitem{lu2025}
+Lu, J.; Wan, Y.; Huang, Y.; Xiong, J.; Liu, Z.; and Guo, Z. 2025.
+FormalAlign: Automated Alignment Evaluation for Autoformalization.
+In \textit{Proc. ICLR 2025}.
+
+\bibitem{li2024symbolic}
+Li, Z.; Wu, Y.; Li, Z.; Wei, X.; Zhang, X.; Yang, F.; and Ma, X. 2024.
+Autoformalize Mathematical Statements by Symbolic Equivalence and
+Semantic Consistency. In \textit{Proc. NeurIPS 2024}.
+
+\bibitem{ryu2025}
+Ryu, H.; Kim, G.; Lee, H.~S.; and Yang, E. 2025.
+Divide and Translate: Compositional First-Order Logic Translation and
+Verification for Complex Logical Reasoning.
+In \textit{Proc. ICLR 2025}.
+
+\bibitem{ying2024}
+Ying, H.; Wu, Z.; Geng, Y.; Yuan, Z.; Lin, D.; and Chen, K. 2024.
+Lean Workbook: A Large-Scale Lean Problem Set Formalized from Natural
+Language Math Problems. In \textit{Proc. NeurIPS 2024 Datasets and
+Benchmarks Track}.
+
+\bibitem{zhou2024dtv}
+Zhou, J.~P.; Staats, C.; Li, W.; Szegedy, C.; Weinberger, K.~Q.; and
+Wu, Y. 2024.
+Don't Trust: Verify --- Grounding LLM Quantitative Reasoning with
+Autoformalization. In \textit{Proc. ICLR 2024}.
+
+\bibitem{poiroux2025}
+Poiroux, A.; Weiss, G.; Kun\v{c}ak, V.; and Bosselut, A. 2025.
+Reliable Evaluation and Benchmarks for Statement Autoformalization.
+In \textit{Proc. EMNLP 2025}.
+
+\bibitem{chen2023codet}
+Chen, B.; Zhang, F.; Nguyen, A.; Zan, D.; Lin, Z.; Lou, J.-G.; and
+Chen, W. 2023.
+CodeT: Code Generation with Generated Tests.
+In \textit{Proc. ICLR 2023}.
+
+% ===== 选择性预测 / LLM 拒答（2026-07-21 核验）=====
+\bibitem{chow1957}
+Chow, C.~K. 1957.
+An Optimum Character Recognition System Using Decision Functions.
+\textit{IRE Trans. Electronic Computers} EC-6(4): 247--254.
+
+\bibitem{elyaniv2010}
+El-Yaniv, R.; and Wiener, Y. 2010.
+On the Foundations of Noise-free Selective Classification.
+\textit{J. Machine Learning Research} 11:1605--1641.
+
+\bibitem{geifman2017}
+Geifman, Y.; and El-Yaniv, R. 2017.
+Selective Classification for Deep Neural Networks.
+In \textit{Proc. NeurIPS 2017}, vol.~30.
+
+\bibitem{kamath2020}
+Kamath, A.; Jia, R.; and Liang, P. 2020.
+Selective Question Answering under Domain Shift.
+In \textit{Proc. ACL 2020}, 5684--5696.
+
+\bibitem{xiong2024}
+Xiong, M.; Hu, Z.; Lu, X.; Li, Y.; Fu, J.; He, J.; and Hooi, B. 2024.
+Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence
+Elicitation in LLMs. In \textit{Proc. ICLR 2024}.
+
+\bibitem{zhang2024rtuning}
+Zhang, H.; Diao, S.; Lin, Y.; Fung, Y.~R.; Lian, Q.; Wang, X.; Chen, Y.;
+Ji, H.; and Zhang, T. 2024.
+R-Tuning: Instructing Large Language Models to Say `I Don't Know'.
+In \textit{Proc. NAACL 2024}.
+
+\bibitem{wang2023}
+Wang, X.; Wei, J.; Schuurmans, D.; Le, Q.; Chi, E.; Narang, S.;
+Chowdhery, A.; and Zhou, D. 2023.
+Self-Consistency Improves Chain of Thought Reasoning in Language Models.
+In \textit{Proc. ICLR 2023}.
+
+\bibitem{farquhar2024}
+Farquhar, S.; Kossen, J.; Kuhn, L.; and Gal, Y. 2024.
+Detecting Hallucinations in Large Language Models Using Semantic Entropy.
+\textit{Nature} 630:625--630.
+
+\bibitem{quach2024}
+Quach, V.; Fisch, A.; Schuster, T.; Yala, A.; Sohn, J.~H.;
+Jaakkola, T.~S.; and Barzilay, R. 2024.
+Conformal Language Modeling. In \textit{Proc. ICLR 2024}.
+
+\bibitem{wen2024}
+Wen, B.; Yao, J.; Feng, S.; Xu, C.; Tsvetkov, Y.; Howe, B.; and
+Wang, L.~L. 2025.
+Know Your Limits: A Survey of Abstention in Large Language Models.
+\textit{Trans. ACL} 13:529--556.
+
+% ===== 求解器原语与唯一性（2026-07-21 经 OpenAlex / IEICE / AAAI 核验）=====
+\bibitem{mcmillan2002}
+McMillan, K.~L. 2002.
+Applying SAT Methods in Unbounded Symbolic Model Checking.
+In \textit{Proc. CAV 2002}, LNCS vol.~2404, 250--264. Springer.
+
+\bibitem{eensorensson2004}
+E\'{e}n, N.; and S\"{o}rensson, N. 2004.
+An Extensible SAT-solver.
+In \textit{SAT 2003 Selected Revised Papers}, LNCS vol.~2919, 502--518. Springer.
+
+\bibitem{gebser2009}
+Gebser, M.; Kaufmann, B.; and Schaub, T. 2009.
+Solution Enumeration for Projected Boolean Search Problems.
+In \textit{Proc. CPAIOR 2009}, LNCS vol.~5547, 71--86. Springer.
+
+\bibitem{yato2003}
+Yato, T.; and Seta, T. 2003.
+Complexity and Completeness of Finding Another Solution and Its
+Application to Puzzles.
+\textit{IEICE Trans. Fundamentals} E86-A(5):1052--1060.
+
+\bibitem{valiant1986}
+Valiant, L.~G.; and Vazirani, V.~V. 1986.
+NP is as Easy as Detecting Unique Solutions.
+\textit{Theoretical Computer Science} 47:85--93.
+
+\bibitem{dekegel2020}
+De Kegel, B.; and Haahr, M. 2020.
+Procedural Puzzle Generation: A Survey.
+\textit{IEEE Trans. Games} 12(1):21--40.
+
+\bibitem{freuder1991}
+Freuder, E.~C. 1991.
+Eliminating Interchangeable Values in Constraint Satisfaction Problems.
+In \textit{Proc. AAAI 1991}, 227--233.
+
+% 卷期页码投稿前经 Springer 页面复核
+\bibitem{kupferman2003}
+Kupferman, O.; and Vardi, M.~Y. 2003.
+Vacuity Detection in Temporal Model Checking.
+\textit{Int. J. Software Tools for Technology Transfer} 4(2):224--233.
+
+% ===== 约束获取 / 合成与 oracle 依赖（2026-07-21 核验）=====
+\bibitem{bessiere2013}
+Bessiere, C.; Coletta, R.; Hebrard, E.; Katsirelos, G.; Lazaar, N.;
+Narodytska, N.; Quimper, C.-G.; and Walsh, T. 2013.
+Constraint Acquisition via Partial Queries.
+In \textit{Proc. IJCAI 2013}.
+
+\bibitem{tsouros2024}
+Tsouros, D.; Berden, S.; and Guns, T. 2024.
+Learning to Learn in Interactive Constraint Acquisition.
+In \textit{Proc. AAAI 2024}, 8154--8162.
+
+\bibitem{solar2006}
+Solar-Lezama, A.; Tancau, L.; Bodik, R.; Seshia, S.; and Saraswat, V. 2006.
+Combinatorial Sketching for Finite Programs.
+In \textit{Proc. ASPLOS 2006}, 404--415.
+
+\bibitem{jha2010}
+Jha, S.; Gulwani, S.; Seshia, S.~A.; and Tiwari, A. 2010.
+Oracle-Guided Component-Based Program Synthesis.
+In \textit{Proc. ICSE 2010}, 215--224.
+
+\bibitem{jha2017}
+Jha, S.; and Seshia, S.~A. 2017.
+A Theory of Formal Synthesis via Inductive Learning.
+\textit{Acta Informatica} 54(7):693--726.
+
+% ===== 基准（2026-07-21 经 PMLR / ACL Anthology 核验，author list 已修正）=====
+\bibitem{lin2025}
+Lin, B.~Y.; Le~Bras, R.; Richardson, K.; Sabharwal, A.; Poovendran, R.;
+Clark, P.; and Choi, Y. 2025.
+ZebraLogic: On the Scaling Limits of LLMs for Logical Reasoning.
+In \textit{Proc. ICML 2025}, PMLR 267, 37889--37905.
+
+\bibitem{zhong2022}
+Zhong, W.; Wang, S.; Tang, D.; Xu, Z.; Guo, D.; Chen, Y.; Wang, J.;
+Yin, J.; Zhou, M.; and Duan, N. 2022.
+Analytical Reasoning of Text.
+In \textit{Findings of NAACL 2022}, 2306--2319.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,30 @@
+session:
+  id: "2026-07-17_004"
+  timestamp: "2026-07-17T14:25:34+08:00"
+  summary: "Condensed and citation-anchored the SPARC introduction, then recompiled the Chinese preview."
+
+events_logged:
+  - type: decision
+    id: "N13"
+    provenance: user
+    summary: "Keep introduction contributions concise and attach citations to the specific claims they support."
+
+ai_actions:
+  - action: "Rewrote the introduction as background, SAT gap, research question and positioning, method overview, concise contributions, and scope boundary."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+  - action: "Moved citations to their claim anchors without adding new references, then compiled twice and visually checked the first page."
+    provenance: ai-executed
+    files_changed:
+      - "docs/paper_draft/sparc_paper_zh.tex"
+      - "docs/paper_draft/sparc_paper_zh.pdf"
+
+claims_touched: []
+
+open_threads:
+  - "Run a prespecified matched evaluation before claiming global Pareto dominance or cross-model benefit."
+  - "Implement an explicit answer-variable whitelist and a fail-closed UNKNOWN policy before broadening the gate claim."
+
+ai_suggestions_pending:
+  - "Keep the Chinese XeLaTeX PDF as an internal review artifact and migrate approved content to the official English PDFLaTeX submission source."

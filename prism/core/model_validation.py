@@ -180,13 +180,28 @@ def model_schema_alignment(
     if house_slot_count >= max(1, len(predicted) // 2):
         return {"schema_aligned": False, "key_set_aligned": False}
 
-    overlap = expected & predicted
+    # Compare modulo naming-convention noise: benchmark solutions use e.g.
+    # 'BookGenre_fantasy' while translated models use 'bookGenre_Fantasy'.
+    # Exact string intersection rejected every correctly-solved benchmark
+    # puzzle as MISALIGNED_MODEL (and triggered pointless retranslation).
+    expected_norm = {_normalise_schema_key(k) for k in expected}
+    predicted_norm = {_normalise_schema_key(k) for k in predicted}
+    overlap = expected_norm & predicted_norm
     if not overlap:
         return {"schema_aligned": False, "key_set_aligned": False}
     return {
         "schema_aligned": True,
-        "key_set_aligned": predicted == expected,
+        "key_set_aligned": predicted_norm == expected_norm,
     }
+
+
+def _normalise_schema_key(key: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(key).lower())
+
+
+def normalise_schema_key(key: str) -> str:
+    """Public alias: canonical form for comparing semantic variable keys."""
+    return _normalise_schema_key(key)
 
 
 def expected_solution_key_hint(puzzle: PuzzleInstance, limit: int = 12) -> str:
