@@ -556,6 +556,10 @@ class GuidedSolver:
         writeback_batch_K: int = _DEFAULT_WRITEBACK_BATCH_K,
         schema_hint_mode: str = "puzzle",
         translation_normalize: str = "none",
+        # === SPARC π-gate config (SPARC/SBW work) — belongs to the newer
+        # "Satisfiable but Wrong" selective-abstention work, not PRISM's
+        # paradigm/repair-memory path. Gate implementation is the tail of this
+        # class (see "SPARC π-gate BEGIN" below). ===
         sparc: bool = False,
         sparc_max_completions: int = 3,
         sparc_repair_budget: int = 2,
@@ -2612,9 +2616,18 @@ class GuidedSolver:
             stagnation_detected=stagnation_detected,
         )
 
-    # ------------------------------------------------------------------
-    # SPARC: structural-prior gate (π-gate) + diff-guided completion
-    # ------------------------------------------------------------------
+    # ==================================================================
+    # === SPARC π-gate BEGIN ===========================================
+    # Everything from here to the end of this class belongs to the SPARC
+    # / SBW ("Satisfiable but Wrong") selective-abstention work, NOT to
+    # PRISM's paradigm-library / repair-memory path. It is co-located here
+    # because it reuses the same GuidedSolver/Z3 plumbing. Activated only
+    # when the solver is built with sparc=True (see scripts/sparc/*).
+    # Methods: _sparc_gate, _diff_completion, _sparc_conflict_repair,
+    #   _discriminates, _holds_under, _answer_key_whitelist,
+    #   _answer_projection_vars, _blocking_clause.
+    # Do not entangle new PRISM logic below this line.
+    # ==================================================================
 
     def _sparc_gate(
         self,
@@ -2918,3 +2931,5 @@ class GuidedSolver:
         if not equalities:
             return None
         return f"Not(And({', '.join(equalities)}))"
+
+    # === SPARC π-gate END (end of class) ===
