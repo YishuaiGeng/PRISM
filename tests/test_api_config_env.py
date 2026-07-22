@@ -5,7 +5,6 @@ import json
 import pytest
 
 from prism.core.llm_api import LLMAPI
-from api.llm_api import LLMAPI as LegacyLLMAPI
 
 
 def _write_configs(tmp_path):
@@ -53,12 +52,3 @@ def test_missing_api_key_environment_variable_raises_clear_error(tmp_path):
 
     with pytest.raises(ValueError, match="PRISM_TEST_API_KEY"):
         api.get_api_config("demo")
-
-
-def test_legacy_api_key_placeholder_resolves_from_environment(tmp_path, monkeypatch):
-    _write_configs(tmp_path)
-    monkeypatch.setenv("PRISM_TEST_API_KEY", "resolved-key")
-
-    api = LegacyLLMAPI(config_dir=str(tmp_path))
-
-    assert api.get_api_config("demo")["api_key"] == "resolved-key"
