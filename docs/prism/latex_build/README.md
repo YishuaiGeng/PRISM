@@ -1,6 +1,10 @@
 # AAAI 2026 PRISM Draft
 
-这是 PRISM 的 AAAI 2026 LaTeX 草稿目录。
+这是 PRISM 的 AAAI 2026 LaTeX 草稿目录（唯一现役目录）。已编译 PDF（`main_final.pdf`、
+`main_english.pdf`、`supp_english.pdf`）随源码一并保留。内容相同的旧拷贝
+`latex_canonical/` 已去重归档至 `docs/archive/prism_latex_canonical_snapshot/`
+（当年"分叉"纯属 CRLF/LF 行尾差异，见 `docs/archive/prism_latex_fork_diff.md`）。
+本目录 `.gitattributes` 已锁 `*.tex` 为 LF，避免行尾再次制造假分叉。
 
 ## 推荐编辑入口
 
@@ -13,7 +17,7 @@
 
 - `main_english.tex`：较早的英文主稿入口，使用 `sections/`。
 - `sections/`：早期分节和 `_new.tex` 重写版本，保留用于比对。
-- `compiled_reference/`：从原草稿目录复制的 PDF 参考版本。
+- PDF 参考版：已归档到 `docs/archive/prism_latex_canonical_snapshot/compiled_reference/`。
 
 ## 编译命令
 

@@ -1,0 +1,6 @@
+# LaTeX sources: keep LF line endings so CRLF never fakes a content fork again.
+*.tex text eol=lf
+*.bib text eol=lf
+*.sty text eol=lf
+*.bst text eol=lf
+*.cls text eol=lf

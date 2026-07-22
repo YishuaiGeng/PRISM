@@ -51,3 +51,14 @@
 3. 统一行尾：给该目录加 `.gitattributes`（`*.tex text eol=lf`）避免以后再被 CRLF 制造假分叉。
 
 > 决策前两树均原样保留在 `docs/prism/latex_build/` 与 `docs/prism/latex_canonical/`。
+
+---
+
+## 已处理（2026-07-22）
+
+按方案 1 去重完成：
+- 保留 `docs/prism/latex_build/`（唯一现役 LaTeX 目录，含已编译 PDF）。
+- `latex_canonical/` 整体归档到 `docs/archive/prism_latex_canonical_snapshot/`；
+  其 `README.md`（编辑指南）已并入 `latex_build/README.md`。
+- 新增 `docs/prism/latex_build/.gitattributes`（`*.tex/.bib/.sty/.bst/.cls text eol=lf`），
+  彻底杜绝 CRLF/LF 再次伪造分叉。
