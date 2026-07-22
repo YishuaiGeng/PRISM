@@ -36,3 +36,4 @@ data/hf/
 *.log
 docs/**/tmp/
 .playwright-mcp/
+archive/legacy_api/api_configs.json
