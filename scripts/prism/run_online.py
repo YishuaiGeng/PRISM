@@ -4,7 +4,7 @@ Loads a paradigm library and evaluates PRISM on the ZebraLogic benchmark.
 
 Usage::
 
-    python scripts/run_online.py --config config/default.yaml
+    python scripts/prism/run_online.py --config config/default.yaml
 
 Key flags::
 
@@ -34,7 +34,7 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper
@@ -314,7 +314,7 @@ def _build_run_manifest(
     started_at: datetime,
     output_path: Path,
 ) -> dict:
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = Path(__file__).resolve().parent.parent.parent
     tracked_inputs = (
         Path(args.config),
         project_root / "config/api/model_configs.json",

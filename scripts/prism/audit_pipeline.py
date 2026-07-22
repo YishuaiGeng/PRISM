@@ -5,7 +5,7 @@ where a run produced useful signal or dropped out.
 
 Usage:
 
-    python scripts/audit_pipeline.py \
+    python scripts/prism/audit_pipeline.py \
       --trajectories data/trajectories/gpt4o_mini_audit \
       --library paradigm_store/gpt4o_mini_audit.db \
       --min-support 1,2,5 \
@@ -22,7 +22,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.solver import Z3SolverWrapper
 from prism.core.types import Trajectory

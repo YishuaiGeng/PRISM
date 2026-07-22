@@ -7,11 +7,11 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.generator import PuzzleGenerator
 from prism.core.types import PuzzleInstance
-from scripts.add_zebra_domains_to_puzzle_text import _with_domain_section
+from scripts.shared.add_zebra_domains_to_puzzle_text import _with_domain_section
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:

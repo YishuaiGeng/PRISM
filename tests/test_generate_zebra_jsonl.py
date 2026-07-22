@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from prism.core.types import PuzzleInstance
-from scripts.generate_zebra_jsonl import _parse_specs, _puzzle_to_record
+from scripts.shared.generate_zebra_jsonl import _parse_specs, _puzzle_to_record
 
 
 def test_parse_specs_accepts_comma_separated_sizes():

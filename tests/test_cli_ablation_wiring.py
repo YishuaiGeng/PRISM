@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from scripts.run_experiments import _build_solver
+from scripts.prism.run_experiments import _build_solver
 
 
 def test_experiment_builder_disables_memory_and_paradigm():

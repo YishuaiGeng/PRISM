@@ -16,10 +16,10 @@ given; ``--dry-run`` loads data and builds the solver without any API call.
 
 Example (small smoke test)::
 
-    python scripts/multimodel_eval.py --models GPT-4o-mini --limit 5 \
+    python scripts/sparc/multimodel_eval.py --models GPT-4o-mini --limit 5 \
       --sc-samples 0 --dry-run
 
-    python scripts/multimodel_eval.py --models GPT-4o,DeepSeek-V3 \
+    python scripts/sparc/multimodel_eval.py --models GPT-4o,DeepSeek-V3 \
       --sc-samples 5 --temperature 0.7 --out-dir results/multimodel --execute-paid
 """
 from __future__ import annotations
@@ -32,7 +32,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Sequence
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper
@@ -45,7 +45,7 @@ from prism.evaluation.benchmarks.zebralogic import (
     is_scorable,
     load_zebralogic,
 )
-from scripts.audit_sparc_evidence import reconstruct_constraints, uniqueness_probe
+from scripts.sparc.audit_sparc_evidence import reconstruct_constraints, uniqueness_probe
 
 
 def build_solver(model: str, temperature: float, seed: int) -> GuidedSolver:

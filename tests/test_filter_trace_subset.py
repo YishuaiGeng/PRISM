@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.filter_trace_subset import _selected_ids, _write_subset
+from scripts.shared.filter_trace_subset import _selected_ids, _write_subset
 
 
 def test_filter_trace_subset_selects_memory_eligible_records(tmp_path):

@@ -8,7 +8,7 @@ sections:
      trigger counts;
   3. wall-clock duration per run derived from err.log timestamps.
 
-Usage:  python scripts/sparc_runtime_stats.py [results_glob]
+Usage:  python scripts/sparc/sparc_runtime_stats.py [results_glob]
 Default results glob: results/zebra_v2_s*
 """
 

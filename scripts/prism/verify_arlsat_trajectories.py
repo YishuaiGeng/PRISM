@@ -31,7 +31,7 @@ Output: JSON {trajectory_id: verdict} plus a summary, consumed by
 
 Usage::
 
-    python scripts/verify_arlsat_trajectories.py \
+    python scripts/prism/verify_arlsat_trajectories.py \
         --trajectories data/trajectories/arlsat_train_full \
         --model GPT-4o --offset 0 --max-trajectories 500 \
         --output results/arlsat_traj_verdicts_s0.json
@@ -46,7 +46,7 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper

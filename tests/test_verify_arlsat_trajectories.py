@@ -8,7 +8,7 @@ from pathlib import Path
 
 _spec = importlib.util.spec_from_file_location(
     "verify_arlsat_trajectories",
-    Path(__file__).resolve().parent.parent / "scripts" / "verify_arlsat_trajectories.py",
+    Path(__file__).resolve().parent.parent / "scripts" / "prism" / "verify_arlsat_trajectories.py",
 )
 _mod = importlib.util.module_from_spec(_spec)
 sys.modules["verify_arlsat_trajectories"] = _mod

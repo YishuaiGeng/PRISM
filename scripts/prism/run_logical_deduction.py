@@ -7,7 +7,7 @@ are scored by option letter (see
 
 Usage::
 
-    python scripts/run_logical_deduction.py \
+    python scripts/prism/run_logical_deduction.py \
         --model GPT-4o-mini \
         --library paradigm_store/prism_4x5x_v2.db \
         --error-library paradigm_store/error_4x5x_v2.db \
@@ -27,7 +27,7 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper

@@ -10,7 +10,7 @@ Runs the full offline phase:
 
 Usage::
 
-    python scripts/run_offline.py --config config/default.yaml
+    python scripts/prism/run_offline.py --config config/default.yaml
 
 Key flags::
 
@@ -33,7 +33,7 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.generator import PuzzleGenerator
 from prism.core.llm_client import LLMClient

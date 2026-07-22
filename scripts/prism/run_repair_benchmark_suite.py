@@ -7,17 +7,17 @@ each perturbation type and writing a unified summary CSV.
 Usage::
 
     # Full suite on 3x3/3x4 (150 records)
-    python scripts/run_repair_benchmark_suite.py \
+    python scripts/prism/run_repair_benchmark_suite.py \
         --data data/hf/zebralogic/generated_3x_eval_domain_explicit_150.jsonl \
         --output-dir results/repair_suite_3x
 
     # Full suite on 5x5/6x5
-    python scripts/run_repair_benchmark_suite.py \
+    python scripts/prism/run_repair_benchmark_suite.py \
         --data data/hf/zebralogic/generated_5x5_6x5_eval_domain_explicit_100.jsonl \
         --output-dir results/repair_suite_5x
 
     # Smoke test (5 records, single perturbation type)
-    python scripts/run_repair_benchmark_suite.py \
+    python scripts/prism/run_repair_benchmark_suite.py \
         --data data/hf/zebralogic/generated_3x_eval_domain_explicit_150.jsonl \
         --output-dir results/repair_suite_smoke \
         --perturbation-types directly_right \
@@ -124,7 +124,7 @@ def _run_benchmark(
         cmd.append("--no-wrapper-target")
 
     # Run from the project root (parent of scripts/)
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = Path(__file__).resolve().parent.parent.parent
     print(f"  CMD: {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=False, cwd=str(project_root))
     return result.returncode

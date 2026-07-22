@@ -1,10 +1,10 @@
 """Test PRISM solver on a 5x6 puzzle using GPT-4o-mini.
 
 Usage:
-    python scripts/test_5x6_puzzle.py
+    python scripts/prism/test_5x6_puzzle.py
 
     Or with custom model:
-    python scripts/test_5x6_puzzle.py --model gpt-4o-mini
+    python scripts/prism/test_5x6_puzzle.py --model gpt-4o-mini
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ import logging
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.types import PuzzleInstance

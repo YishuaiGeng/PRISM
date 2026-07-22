@@ -13,7 +13,7 @@ budget-k run, so truncation is an exact replay, not a simulation.
 
 Usage::
 
-    python scripts/budget_sweep_zebra.py results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
+    python scripts/sparc/budget_sweep_zebra.py results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.evaluation.benchmarks.zebralogic import answers_match, is_scorable
 

@@ -4,7 +4,7 @@ Avoids re-formalization: reuses the SAT outputs already in the trace and only
 adds the round-trip calls (back-translate + faithfulness judge) per answered
 puzzle.  Paid; nothing runs without --execute-paid.
 
-    python scripts/b5_on_trace.py \
+    python scripts/sparc/b5_on_trace.py \
       --trace results/rq3_gpt4omini/GPT-4o-mini_nogate.trace.jsonl \
       --model GPT-4o-mini --execute-paid
 """
@@ -15,9 +15,9 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-from scripts.multimodel_eval import roundtrip_consistency
+from scripts.sparc.multimodel_eval import roundtrip_consistency
 from prism.evaluation.benchmarks.zebralogic import load_zebralogic
 
 

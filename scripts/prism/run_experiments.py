@@ -4,8 +4,8 @@ Executes the experiment suite defined in config/experiments/*.yaml.
 
 Usage::
 
-    python scripts/run_experiments.py --experiment ablation
-    python scripts/run_experiments.py --experiment generalization
+    python scripts/prism/run_experiments.py --experiment ablation
+    python scripts/prism/run_experiments.py --experiment generalization
 
 Experiment types::
 
@@ -24,7 +24,7 @@ from typing import Dict, List, Optional
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper

@@ -18,7 +18,7 @@ from prism.evaluation.benchmarks.logical_deduction import (
     predict_option_letter,
     record_to_puzzle,
 )
-from scripts import download_datasets
+from scripts.shared import download_datasets
 
 _PREFIX = (
     "The following paragraphs each describe a set of three objects arranged in a "

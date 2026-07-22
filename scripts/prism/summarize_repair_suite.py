@@ -6,7 +6,7 @@ generates a unified summary table.
 
 Usage::
 
-    python scripts/summarize_repair_suite.py \
+    python scripts/prism/summarize_repair_suite.py \
         --suite-dirs results/repair_suite_3x_solution results/repair_suite_5x_solution \
         --labels "3x3/3x4 (solution)" "5x5/6x5 (solution)" \
         --output results/repair_suite_combined_summary.csv

@@ -10,15 +10,15 @@ Completion variants require the explicit ``--execute-paid`` acknowledgement.
 
 Examples::
 
-    python scripts/run_frozen_sparc.py prepare \
+    python scripts/sparc/run_frozen_sparc.py prepare \
       --source-dir results/zebra_v2_s42 --source-system baseline \
       --output results/frozen_s42_baseline.jsonl
 
-    python scripts/run_frozen_sparc.py run \
+    python scripts/sparc/run_frozen_sparc.py run \
       --input results/frozen_s42_baseline.jsonl --variant gate_only \
       --output results/frozen_gate_only.jsonl
 
-    python scripts/run_frozen_sparc.py run \
+    python scripts/sparc/run_frozen_sparc.py run \
       --input results/frozen_s42_baseline.jsonl --variant sparc_k3 \
       --model GPT-4o-mini --seed 42 --execute-paid \
       --output results/frozen_sparc_k3.jsonl
@@ -34,7 +34,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Sequence
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper
@@ -47,7 +47,7 @@ from prism.evaluation.benchmarks.zebralogic import (
 )
 from prism.online.guided_solver import GuidedSolver
 from prism.paradigm_library.library import ParadigmLibrary
-from scripts.audit_sparc_evidence import (
+from scripts.sparc.audit_sparc_evidence import (
     constraints_sha256,
     load_records,
     reconstruct_constraints,

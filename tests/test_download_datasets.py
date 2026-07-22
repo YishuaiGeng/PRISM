@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts import download_datasets
+from scripts.shared import download_datasets
 
 
 def test_write_jsonl_creates_parent_and_writes_records(tmp_path):

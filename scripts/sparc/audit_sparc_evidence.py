@@ -12,7 +12,7 @@ LLM.  Its outputs are intended to make three evidence boundaries explicit:
 
 Usage::
 
-    python scripts/audit_sparc_evidence.py \
+    python scripts/sparc/audit_sparc_evidence.py \
       results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
 
 The default output directory is ``results/sparc_evidence_audit`` and contains
@@ -33,7 +33,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Iterable, Iterator, Sequence
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.model_validation import normalise_schema_key
 from prism.core.solver import Z3SolverWrapper

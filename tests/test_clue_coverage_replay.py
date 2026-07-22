@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.run_clue_coverage_replay import _iter_replay_rows
+from scripts.prism.run_clue_coverage_replay import _iter_replay_rows
 
 
 def test_clue_coverage_replay_reports_improved_fixed_state(tmp_path):

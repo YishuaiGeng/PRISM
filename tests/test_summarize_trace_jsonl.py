@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.summarize_trace_jsonl import _summarize
+from scripts.prism.summarize_trace_jsonl import _summarize
 
 
 def test_summarize_trace_jsonl_counts_repair_diagnostics(tmp_path):

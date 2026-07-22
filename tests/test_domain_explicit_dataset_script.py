@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.add_zebra_domains_to_puzzle_text import _with_domain_section
+from scripts.shared.add_zebra_domains_to_puzzle_text import _with_domain_section
 
 
 def test_with_domain_section_adds_backtick_candidate_values_before_clues():

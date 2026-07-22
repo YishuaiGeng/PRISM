@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.run_frozen_sparc import (
+from scripts.sparc.run_frozen_sparc import (
     _NoCallLLM,
     _build_gate_solver,
     freeze_rows,

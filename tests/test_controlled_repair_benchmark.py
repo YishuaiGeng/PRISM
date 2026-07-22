@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from prism.core.solver import Z3SolverWrapper
 from prism.core.types import PuzzleInstance
-from scripts.run_controlled_repair_benchmark import (
+from scripts.prism.run_controlled_repair_benchmark import (
     ControlledRepairLLM,
     _add_controlled_target_memory,
     _add_controlled_template_memory,

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import scripts.run_experiments as run_experiments
-import scripts.run_online as run_online
+import scripts.prism.run_experiments as run_experiments
+import scripts.prism.run_online as run_online
 
 
 def test_run_online_defaults_to_hf_zebralogic_dataset():

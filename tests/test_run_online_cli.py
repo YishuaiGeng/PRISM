@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from scripts.run_online import _save_trace_jsonl, parse_args
+from scripts.prism.run_online import _save_trace_jsonl, parse_args
 
 
 def test_run_online_schema_hint_mode_defaults_to_puzzle():

@@ -7,7 +7,7 @@ SatLM-style protocol (see :mod:`prism.evaluation.benchmarks.arlsat`).
 
 Usage::
 
-    python scripts/run_arlsat.py \
+    python scripts/prism/run_arlsat.py \
         --model GPT-4o-mini \
         --library paradigm_store/arlsat_train.db \
         --split test \
@@ -26,7 +26,7 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.llm_client import LLMClient
 from prism.core.solver import Z3SolverWrapper

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import csv
 
-from scripts.summarize_online_csvs import _summarize
+from scripts.prism.summarize_online_csvs import _summarize
 
 
 def test_summarize_online_csv_counts_diagnostics(tmp_path):

@@ -8,9 +8,9 @@ This script validates:
 5. End-to-end solve on sample puzzles
 
 Usage:
-    python scripts/quick_verify.py --mode full   # All checks
-    python scripts/quick_verify.py --mode offline # Offline only
-    python scripts/quick_verify.py --mode online  # Online only
+    python scripts/prism/quick_verify.py --mode full   # All checks
+    python scripts/prism/quick_verify.py --mode offline # Offline only
+    python scripts/prism/quick_verify.py --mode online  # Online only
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ import logging
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.core.generator import PuzzleGenerator
 from prism.core.llm_client import LLMClient

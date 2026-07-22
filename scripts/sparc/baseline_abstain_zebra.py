@@ -16,7 +16,7 @@ record a self-reported confidence score.
 
 Usage::
 
-    python scripts/baseline_abstain_zebra.py \
+    python scripts/sparc/baseline_abstain_zebra.py \
       results/zebra_v2_s42 results/zebra_v2_s123 results/zebra_v2_s7
 """
 from __future__ import annotations
@@ -27,9 +27,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Sequence
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-from scripts.audit_sparc_evidence import (
+from scripts.sparc.audit_sparc_evidence import (
     load_records,
     reconstruct_constraints,
     uniqueness_probe,

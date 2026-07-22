@@ -10,7 +10,7 @@ puzzles, and prints per-system accuracy plus the SBW ledger.
 
 Usage::
 
-    python scripts/rescore_zebra_results.py results/zebra_main_s42
+    python scripts/sparc/rescore_zebra_results.py results/zebra_main_s42
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from prism.evaluation.benchmarks.zebralogic import answers_match, is_scorable
 

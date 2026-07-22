@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import Counter
 
-from scripts.audit_sparc_evidence import (
+from scripts.sparc.audit_sparc_evidence import (
     TraceRecord,
     cluster_bootstrap_ci,
     pairing_audit,
